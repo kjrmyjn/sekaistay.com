@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# サイトページ（Next.js 自動生成）
+Sitemap: https://sekaistay.com/sitemap.xml
+
+# note.com 記事（generate_sitemap.py で生成、public/ に配置）
+Sitemap: https://sekaistay.com/sitemap_note_articles.xml
