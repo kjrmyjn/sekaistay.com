@@ -5,6 +5,7 @@ const SERVICE_LINKS = [
   { href: '/services#phase-1', label: '集客・予約管理' },
   { href: '/services#phase-2', label: '清掃・メンテナンス' },
   { href: '/services#phase-0', label: '開業準備サポート' },
+  { href: '/diagnostic', label: '無料収益診断' },
 ]
 
 const COMPANY_LINKS = [
@@ -12,8 +13,21 @@ const COMPANY_LINKS = [
   { href: '/portfolio', label: '運営実績' },
   { href: '/blog', label: 'コラム' },
   { href: '/pricing', label: '料金' },
+  { href: '/faq', label: 'よくある質問' },
   { href: '/contact', label: 'お問い合わせ' },
   { href: '/privacy', label: 'プライバシーポリシー' },
+]
+
+const AREA_LINKS = [
+  { href: '/area/tokyo', label: '東京' },
+  { href: '/area/osaka', label: '大阪' },
+  { href: '/area/kyoto', label: '京都' },
+  { href: '/area/fukuoka', label: '福岡' },
+  { href: '/area/okinawa', label: '沖縄' },
+  { href: '/area/hokkaido', label: '北海道' },
+  { href: '/area/hakone', label: '箱根' },
+  { href: '/area/karuizawa', label: '軽井沢' },
+  { href: '/area', label: 'すべてのエリア →' },
 ]
 
 export default function Footer() {
@@ -62,12 +76,12 @@ export default function Footer() {
       {/* Footer */}
       <footer className="bg-charcoal text-white px-6 py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-[1fr_auto_auto] gap-12 mb-12">
+          <div className="grid md:grid-cols-[1.2fr_auto_auto_auto] gap-10 md:gap-12 mb-12">
             {/* Brand */}
             <div>
               <img
                 src="/sekai_stay_03_03.png"
-                alt="SEKAI STAY"
+                alt="SEKAI STAY — 民泊運営代行サービス"
                 className="h-9 w-auto mb-5"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
@@ -75,8 +89,11 @@ export default function Footer() {
                 SEKAI STAYは、手数料8%で民泊運営をワンストップで代行するサービスです。
                 OTA最適化・多言語ゲスト対応・清掃管理・ダイナミックプライシングで収益を最大化します。
               </p>
-              <p className="text-xs text-mid-gray/60">
+              <p className="text-xs text-mid-gray/60 mb-2">
                 住宅宿泊管理業 国土交通大臣(01)第F05780号
+              </p>
+              <p className="text-xs text-mid-gray/60">
+                運営: <a href="https://sekaichi.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition underline underline-offset-2">株式会社セカイチ（SEKAICHI Inc.）</a>
               </p>
             </div>
 
@@ -97,6 +114,18 @@ export default function Footer() {
               <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-4">企業情報</p>
               <nav className="flex flex-col gap-2.5">
                 {COMPANY_LINKS.map(l => (
+                  <Link key={l.href} href={l.href} className="text-[13px] text-mid-gray hover:text-white transition">
+                    {l.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Area Links */}
+            <div>
+              <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-4">対応エリア</p>
+              <nav className="flex flex-col gap-2.5">
+                {AREA_LINKS.map(l => (
                   <Link key={l.href} href={l.href} className="text-[13px] text-mid-gray hover:text-white transition">
                     {l.label}
                   </Link>

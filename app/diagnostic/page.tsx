@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 
 type Step = 'property' | 'area' | 'size' | 'current' | 'goal' | 'result'
@@ -119,6 +120,7 @@ export default function DiagnosticPage() {
   return (
     <>
       <Header />
+      <Breadcrumb items={[{ label: '無料収益診断' }]} />
       <main className="min-h-screen bg-cloud-white">
         {/* Hero */}
         <section className="bg-deep-teal px-6 py-12 md:py-16">

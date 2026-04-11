@@ -140,8 +140,11 @@ export default function Home() {
             {/* Logo image — centered */}
             <img
               src="/sekai_stay_02_03.png"
-              alt="SEKAI STAY"
+              alt="SEKAI STAY — 手数料8%の民泊運営代行サービス"
               className="h-12 md:h-16 lg:h-20 w-auto mb-6"
+              width={320}
+              height={64}
+              loading="eager"
             />
 
             {/* Tagline */}

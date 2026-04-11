@@ -7,9 +7,9 @@ const NAV = [
   { href: '/services', label: '民泊運営サービス' },
   { href: '/portfolio', label: '運営実績' },
   { href: '/pricing', label: '料金' },
+  { href: '/area', label: '対応エリア' },
   { href: '/blog', label: 'コラム' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/company', label: '会社概要' },
 ]
 
 export default function Header() {

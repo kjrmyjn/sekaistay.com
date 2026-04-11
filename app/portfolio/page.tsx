@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
@@ -67,6 +68,7 @@ export default function PortfolioPage() {
   return (
     <>
       <Header />
+      <Breadcrumb items={[{ label: '運営実績' }]} />
       <FloatingCTA />
       <main>
         {/* Hero */}

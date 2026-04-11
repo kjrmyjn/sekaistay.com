@@ -1,17 +1,20 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
 export const metadata: Metadata = {
   title: 'プライバシーポリシー',
-  description: 'SEKAI STAY（株式会社セカイチ）のプライバシーポリシー。個人情報の取り扱いについて。',
+  description: 'SEKAI STAY（株式会社セカイチ）のプライバシーポリシー。個人情報の取り扱い、利用目的、第三者提供、開示請求について。',
+  alternates: { canonical: 'https://sekaistay.com/privacy' },
 }
 
 export default function PrivacyPage() {
   return (
     <>
       <Header />
+      <Breadcrumb items={[{ label: 'プライバシーポリシー' }]} />
       <FloatingCTA />
       <main>
         <section className="bg-warm-gradient px-6 section-heavy">

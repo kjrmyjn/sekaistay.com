@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 
@@ -188,18 +189,11 @@ export default function BlogPostPage({ params }: Props) {
   return (
     <>
       <Header />
+      <Breadcrumb items={[{ label: 'コラム', href: '/blog' }, { label: post.title }]} />
       <BlogPostJsonLd post={post} />
       <main>
         <article className="px-6 py-16 md:py-24">
           <div className="max-w-3xl mx-auto">
-            {/* Breadcrumb */}
-            <nav className="text-xs text-mid-gray mb-6" aria-label="パンくずリスト">
-              <Link href="/" className="hover:text-deep-teal transition">ホーム</Link>
-              <span className="mx-1.5">/</span>
-              <Link href="/blog" className="hover:text-deep-teal transition">コラム</Link>
-              <span className="mx-1.5">/</span>
-              <span className="text-dark-gray">{post.category}</span>
-            </nav>
 
             {/* Meta */}
             <div className="flex items-center gap-2 mb-4">

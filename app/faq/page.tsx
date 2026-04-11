@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
@@ -145,6 +146,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getFAQSchema()) }}
       />
       <Header />
+      <Breadcrumb items={[{ label: 'FAQ' }]} />
       <FloatingCTA />
       <main>
         {/* Hero */}

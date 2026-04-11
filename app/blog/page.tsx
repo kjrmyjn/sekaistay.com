@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import { getAllPosts, getCategories } from '@/lib/blog'
@@ -18,6 +19,7 @@ export default function BlogPage() {
   return (
     <>
       <Header />
+      <Breadcrumb items={[{ label: 'コラム' }]} />
       <FloatingCTA />
       <main>
         <section className="bg-warm-gradient px-6 section-heavy">
