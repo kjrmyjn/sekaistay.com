@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import Breadcrumb from '@/components/Breadcrumb'
 import { getAreaBySlug, getAllAreas } from '@/lib/areas'
+import { getOfficeForArea, getHQOffice } from '@/lib/offices'
 
 const SITE_URL = 'https://sekaistay.com'
 const OUR_RATE = 0.08
@@ -56,12 +57,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function LocalBusinessJsonLd({ area }: { area: { name: string; prefecture: string; slug: string } }) {
+  const office = getOfficeForArea(area.slug) || getHQOffice()
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: `SEKAI STAY - ${area.name}`,
+    name: `SEKAI STAY ${office.name}`,
     description: `${area.name}の民泊運用代行サービス`,
     url: `${SITE_URL}/area/${area.slug}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: office.prefecture,
+      addressLocality: office.addressShort,
+      addressCountry: 'JP',
+    },
     serviceArea: {
       '@type': 'AdministrativeArea',
       name: area.prefecture,
@@ -71,7 +79,7 @@ function LocalBusinessJsonLd({ area }: { area: { name: string; prefecture: strin
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      availableLanguage: 'ja',
+      availableLanguage: ['ja', 'en', 'zh', 'ko'],
     },
   }
 
@@ -308,6 +316,37 @@ export default function AreaDetailPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {/* ── Office Info Section ──────────────────────── */}
+        {(() => {
+          const office = getOfficeForArea(area.slug)
+          if (!office) return null
+          return (
+            <section className="px-6 py-12">
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl border border-light-gray p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
+                  <div className="shrink-0">
+                    <div className="w-14 h-14 rounded-xl bg-teal-tint flex items-center justify-center">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#167B81" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-charcoal mb-1">
+                      {area.name}エリア担当：{office.name}
+                    </h2>
+                    <p className="text-sm text-dark-gray">{office.displayAddress}</p>
+                    <p className="text-xs text-mid-gray mt-2">
+                      地元スタッフが{area.name}の物件特性を熟知した運営をサポートします
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )
+        })()}
 
         {/* ── CTA Section ────────────────────────────── */}
         <section className="px-6 py-16">

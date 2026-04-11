@@ -3,10 +3,11 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import { getAllOffices } from '@/lib/offices'
 
 export const metadata: Metadata = {
   title: '会社概要',
-  description: 'SEKAI STAYを運営する株式会社セカイチの会社概要。住宅宿泊管理業 国土交通大臣(01)第F05780号。',
+  description: 'SEKAI STAYを運営する株式会社セカイチの会社概要。住宅宿泊管理業 国土交通大臣(01)第F05780号。東京・沖縄・京都・北海道・長野に拠点。',
 }
 
 const INFO = [
@@ -51,6 +52,42 @@ export default function CompanyPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 拠点一覧 ────────────────────────────── */}
+        <section className="px-6 section-heavy">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-charcoal mb-8 text-center">全国拠点</h2>
+            <p className="text-dark-gray text-center mb-10 max-w-2xl mx-auto">
+              SEKAI STAYは全国7拠点のネットワークで、各地域のオーナー様をサポートしています。
+              地元スタッフが物件の特性を熟知した運営をご提供します。
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {getAllOffices().map(office => (
+                <div
+                  key={office.id}
+                  className={`rounded-2xl border p-6 ${
+                    office.isHQ
+                      ? 'bg-teal-tint border-deep-teal/30 ring-1 ring-deep-teal/10'
+                      : 'bg-white border-light-gray'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className={`w-2.5 h-2.5 rounded-full ${office.isHQ ? 'bg-deep-teal' : 'bg-sekai-teal'}`} />
+                    <h3 className="font-bold text-charcoal">
+                      {office.name}
+                      {office.isHQ && (
+                        <span className="ml-2 text-xs bg-deep-teal text-white px-2 py-0.5 rounded-full">本社</span>
+                      )}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-dark-gray leading-relaxed">
+                    {office.displayAddress}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
