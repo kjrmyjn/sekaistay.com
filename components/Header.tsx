@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const NAV = [
   { href: '/services', label: '民泊運営サービス' },
-  { href: '/portfolio', label: '運営実績' },
+  { href: '/case-studies', label: '導入事例' },
   { href: '/pricing', label: '料金' },
   { href: '/area', label: '対応エリア' },
   { href: '/blog', label: 'コラム' },

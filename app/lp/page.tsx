@@ -182,9 +182,8 @@ function CampaignBanner() {
   return (
     <div className="bg-charcoal text-white text-center py-2.5 px-4">
       <p className="text-xs md:text-sm">
-        <span className="inline-block bg-amber-500 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded mr-2">先着10オーナー</span>
-        移行コスト無料キャンペーン中
-        <span className="text-white/40 ml-2">─ 予告なく終了する場合があります</span>
+        <span className="inline-block bg-amber-500 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded mr-2">レビュー平均4.8</span>
+        初期費用0円キャンペーン中 ─ Airbnbスーパーホスト認定の運営品質
       </p>
     </div>
   )
@@ -274,31 +273,43 @@ function Hero() {
         <div className="md:grid md:grid-cols-[1fr_auto] md:gap-16 md:items-center">
           <div className="text-center md:text-left mb-12 md:mb-0">
             <p className="text-xs font-semibold tracking-[0.3em] text-amber-300 mb-6 uppercase">
-              Minpaku Management
+              Trusted Minpaku Management
             </p>
             <h1 className="text-[32px] md:text-[48px] font-extrabold leading-[1.15] mb-6 tracking-tight">
-              民泊運用代行<br />
+              稼働率を上げる。<br />
               <span className="relative inline-block">
-                手数料、払いすぎて
+                レビューを上げる。
                 <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-amber-400/70 rounded-full" />
               </span>
               <br className="md:hidden" />
-              いませんか。
+              <span className="text-amber-300">収益</span>を上げる。
             </h1>
 
-            <div className="flex items-baseline gap-2 justify-center md:justify-start mb-6">
-              <span className="text-5xl md:text-6xl font-black">8</span>
-              <span className="text-3xl md:text-4xl font-black text-amber-300">%</span>
-              <span className="text-white/50 text-sm ml-1">+ ¥5,000/部屋/月</span>
+            {/* Trust stats */}
+            <div className="flex flex-wrap items-center gap-6 justify-center md:justify-start mb-6">
+              <div className="text-center md:text-left">
+                <span className="text-3xl md:text-4xl font-black text-white">4.8</span>
+                <span className="text-xs text-white/50 block">レビュー平均</span>
+              </div>
+              <div className="w-px h-10 bg-white/20" />
+              <div className="text-center md:text-left">
+                <span className="text-3xl md:text-4xl font-black text-amber-300">8<span className="text-xl">%</span></span>
+                <span className="text-xs text-white/50 block">業界最安手数料</span>
+              </div>
+              <div className="w-px h-10 bg-white/20" />
+              <div className="text-center md:text-left">
+                <span className="text-3xl md:text-4xl font-black text-white">7</span>
+                <span className="text-xs text-white/50 block">全国拠点</span>
+              </div>
             </div>
 
             <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
-              ハイシーズン前の切り替えで、今年の収益を変える。
+              Airbnbスーパーホスト認定。成果で選ばれる民泊運用代行。
             </p>
 
             <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start mb-8 text-sm text-white/70">
-              <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 移行コスト0円</span>
-              <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 解約手数料0円</span>
+              <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 初期費用0円</span>
+              <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 違約金ゼロ</span>
               <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 最短2週間</span>
             </div>
 
