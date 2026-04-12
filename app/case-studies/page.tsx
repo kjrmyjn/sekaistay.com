@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     url: 'https://sekaistay.com/case-studies',
     siteName: 'SEKAI STAY',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '導入事例 | SEKAI STAY',
+    description: 'オーナー様の実績事例を多数掲載。運営代行で実現した収益向上をご確認ください。',
+  },
   alternates: { canonical: 'https://sekaistay.com/case-studies' },
 }
 

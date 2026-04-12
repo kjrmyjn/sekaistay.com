@@ -75,10 +75,20 @@ function LocalBusinessJsonLd({ area }: { area: { name: string; prefecture: strin
       name: area.prefecture,
     },
     serviceType: '民泊運用代行',
-    priceRange: '¥',
+    priceRange: '¥¥',
+    telephone: office.phone,
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
+      telephone: office.phone,
       availableLanguage: ['ja', 'en', 'zh', 'ko'],
     },
   }

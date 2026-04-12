@@ -6,6 +6,7 @@ export interface Office {
   addressShort: string   // 表示用（町名まで、番地なし）
   addressFull: string    // JSON-LD用（番地入り、サイト上には非表示）
   displayAddress: string // サイト上に見せる文字列
+  phone: string          // 代表電話番号（JSON-LD用）
   isHQ: boolean
   areaSlugs: string[]
 }
@@ -19,6 +20,7 @@ export const OFFICES: Office[] = [
     addressShort: '渋谷区恵比寿西',
     addressFull: '渋谷区恵比寿西2丁目14-7',
     displayAddress: '東京都渋谷区恵比寿西',
+    phone: '+81-3-6455-0842',
     isHQ: true,
     areaSlugs: ['tokyo', 'yokohama', 'hakone', 'atami', 'kawaguchiko'],
   },
@@ -30,6 +32,7 @@ export const OFFICES: Office[] = [
     addressShort: '目黒区青葉台',
     addressFull: '目黒区青葉台2丁目20-7',
     displayAddress: '東京都目黒区青葉台',
+    phone: '+81-3-6455-0842',
     isHQ: false,
     areaSlugs: ['tokyo', 'yokohama'],
   },
@@ -41,6 +44,7 @@ export const OFFICES: Office[] = [
     addressShort: '那覇市壺屋',
     addressFull: '那覇市壺屋1丁目18-45',
     displayAddress: '沖縄県那覇市壺屋',
+    phone: '+81-3-6455-0842',
     isHQ: false,
     areaSlugs: ['okinawa', 'kagoshima'],
   },
@@ -52,6 +56,7 @@ export const OFFICES: Office[] = [
     addressShort: '京都市下京区',
     addressFull: '京都市下京区東中筋通五条上る天使突抜二丁目402',
     displayAddress: '京都府京都市下京区',
+    phone: '+81-3-6455-0842',
     isHQ: false,
     areaSlugs: ['kyoto', 'osaka', 'nara', 'kobe', 'hiroshima', 'nagoya', 'kanazawa'],
   },
@@ -63,6 +68,7 @@ export const OFFICES: Office[] = [
     addressShort: '町田市小川',
     addressFull: '町田市小川1-1-11',
     displayAddress: '東京都町田市小川',
+    phone: '+81-3-6455-0842',
     isHQ: false,
     areaSlugs: ['tokyo', 'yokohama', 'hakone'],
   },
@@ -74,6 +80,7 @@ export const OFFICES: Office[] = [
     addressShort: '虻田郡倶知安町',
     addressFull: '虻田郡倶知安町富士見531',
     displayAddress: '北海道虻田郡倶知安町',
+    phone: '+81-3-6455-0842',
     isHQ: false,
     areaSlugs: ['hokkaido', 'niseko'],
   },
@@ -85,6 +92,7 @@ export const OFFICES: Office[] = [
     addressShort: '上水内郡信濃町',
     addressFull: '上水内郡信濃町野尻264',
     displayAddress: '長野県上水内郡信濃町',
+    phone: '+81-3-6455-0842',
     isHQ: false,
     areaSlugs: ['karuizawa', 'sendai'],
   },

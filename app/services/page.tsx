@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     url: 'https://sekaistay.com/services',
     siteName: 'SEKAI STAY',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '民泊運営サービス | SEKAI STAY',
+    description: '手数料8%で開業準備から運用管理・集客まで一括対応。9つのサービスをワンストップで提供。',
+  },
   alternates: { canonical: 'https://sekaistay.com/services' },
 }
 

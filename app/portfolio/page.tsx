@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: 'https://sekaistay.com/portfolio',
     siteName: 'SEKAI STAY',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '運営実績 | SEKAI STAY',
+    description: '稼働率改善、レビュー評価向上、収益200%改善等の実績をご紹介。',
+  },
   alternates: { canonical: 'https://sekaistay.com/portfolio' },
 }
 

@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: 'https://sekaistay.com/faq',
     siteName: 'SEKAI STAY',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'よくあるご質問 | SEKAI STAY',
+    description: '民泊運営代行に関するよくあるご質問。料金・契約・サービス内容・対応エリアなど。',
+  },
   alternates: { canonical: 'https://sekaistay.com/faq' },
 }
 

@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: 'https://sekaistay.com/pricing',
     siteName: 'SEKAI STAY',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '料金 | SEKAI STAY',
+    description: '手数料8%＋月額5,000円/部屋の明朗会計。初期費用0円キャンペーン中。',
+  },
   alternates: { canonical: 'https://sekaistay.com/pricing' },
 }
 
@@ -166,6 +171,51 @@ export default function PricingPage() {
         </section>
 
         {/* CTA — handled by Footer */}
+
+        {/* Product JSON-LD for pricing rich results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Product',
+              name: 'SEKAI STAY 民泊運用代行',
+              description: '管理物件レビュー平均4.8の民泊運用代行サービス。OTA運用・ゲスト対応・清掃・プライシング最適化を一括代行。',
+              brand: { '@type': 'Organization', name: 'SEKAI STAY' },
+              offers: {
+                '@type': 'AggregateOffer',
+                priceCurrency: 'JPY',
+                lowPrice: '0',
+                highPrice: '5000',
+                offerCount: '2',
+                offers: [
+                  {
+                    '@type': 'Offer',
+                    name: '初期費用',
+                    price: '0',
+                    priceCurrency: 'JPY',
+                    description: 'OTA初期設定・画像加工・掲載開始まで含む。キャンペーン中。',
+                    availability: 'https://schema.org/InStock',
+                  },
+                  {
+                    '@type': 'Offer',
+                    name: '月額固定管理費',
+                    price: '5000',
+                    priceCurrency: 'JPY',
+                    description: '1部屋あたり月額5,000円。変動運営委託費は売上の8%。',
+                    availability: 'https://schema.org/InStock',
+                  },
+                ],
+              },
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.8',
+                reviewCount: '47',
+                bestRating: '5',
+              },
+            }),
+          }}
+        />
       </main>
       <Footer />
     </>

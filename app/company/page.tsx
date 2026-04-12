@@ -8,6 +8,20 @@ import { getAllOffices } from '@/lib/offices'
 export const metadata: Metadata = {
   title: '会社概要',
   description: 'SEKAI STAYを運営する株式会社セカイチの会社概要。住宅宿泊管理業 国土交通大臣(01)第F05780号。東京・沖縄・京都・北海道・長野に拠点。',
+  openGraph: {
+    title: '会社概要 | SEKAI STAY',
+    description: '株式会社セカイチの会社概要。住宅宿泊管理業 国土交通大臣(01)第F05780号。全国7拠点。',
+    type: 'website',
+    locale: 'ja_JP',
+    url: 'https://sekaistay.com/company',
+    siteName: 'SEKAI STAY',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '会社概要 | SEKAI STAY',
+    description: '株式会社セカイチの会社概要。住宅宿泊管理業 国土交通大臣(01)第F05780号。',
+  },
+  alternates: { canonical: 'https://sekaistay.com/company' },
 }
 
 const INFO = [
