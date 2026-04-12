@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /result
+Disallow: /api/
 
-# サイトページ（Next.js 自動生成）
+# Sitemap (Next.js dynamic generation)
 Sitemap: https://sekaistay.com/sitemap.xml
-
-# note.com 記事（generate_sitemap.py で生成、public/ に配置）
-Sitemap: https://sekaistay.com/sitemap_note_articles.xml
