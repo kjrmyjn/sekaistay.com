@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 /* ══════════════════════════════════════════════
-   SEKAI STAY — Design System (DESIGN.md 準拠)
+   SEKAI STAY Design System
+   Ref: DESIGN.md + awesome-design-md-jp (STUDIO / SmartHR)
    ══════════════════════════════════════════════ */
 
 @layer base {
@@ -14,73 +15,61 @@
   body {
     @apply bg-white text-charcoal antialiased;
     font-family: var(--font-noto-sans-jp), 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15px;               /* DESIGN.md Body */
-    line-height: 1.8;              /* DESIGN.md 本文行間 */
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     word-break: auto-phrase;
     overflow-wrap: anywhere;
-    -webkit-hyphens: auto;
-    hyphens: auto;
   }
-  /* 見出し系: 禁則処理を厳格に + palt */
   h1, h2, h3, h4 {
     line-break: strict;
     word-break: keep-all;
     overflow-wrap: break-word;
     font-feature-settings: "palt" 1;
   }
-  td, th, .break-normal {
+  td, th {
     word-break: normal;
     overflow-wrap: break-word;
   }
 }
 
-/* ── Card (flat design — no shadow) ── */
 @layer utilities {
-  .card {
+  .card-flat {
     @apply bg-cloud-white rounded-xl;
-    /* DESIGN.md: フラット、シャドウなし、bg-cloud-white で分離 */
-  }
-  .section-alt {
-    background-color: #F7F8FA;
   }
 }
 
-/* ══ Typography Scale (DESIGN.md §3.4) ══ */
+/* ══ Typography Scale ══ */
 
 .heading-display {
-  font-size: clamp(1.5rem, 4vw, 2rem);   /* 32px desktop */
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.02em;
 }
 .heading-section {
-  font-size: clamp(1.25rem, 3vw, 1.5rem); /* 24px desktop */
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 700;
   line-height: 1.4;
 }
 .heading-sub {
-  font-size: clamp(1rem, 2vw, 1.125rem);  /* 18px desktop */
+  font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 700;
   line-height: 1.4;
 }
-.text-body-lg {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.8;
-}
-.text-caption {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.6;
-}
-.text-label {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.4;
+
+/* Section label — monospace uppercase, STUDIO-inspired */
+.section-label {
+  font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
-/* ══ Stat number (tabular nums) ══ */
+/* Stat numbers */
 .stat-number {
   font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 700;
@@ -95,9 +84,8 @@
   font-feature-settings: 'tnum';
 }
 
-/* ══ Layout Spacing (DESIGN.md §5) ══ */
+/* ══ Layout ══ */
 
-/* Container: max-width 960px, px-10 (40px) desktop / px-5 (20px) mobile */
 .container-ds {
   max-width: 960px;
   margin-left: auto;
@@ -112,7 +100,6 @@
   }
 }
 
-/* Section spacing: 80px top / 60px bottom */
 .section-heavy {
   padding-top: clamp(3.5rem, 6vw, 5rem);
   padding-bottom: clamp(3rem, 5vw, 3.75rem);
@@ -122,43 +109,11 @@
   padding-bottom: clamp(2rem, 3vw, 2.5rem);
 }
 
-/* ══ Component Patterns (DESIGN.md §4) ══ */
-
-/* Highlight Box */
-.highlight-box {
-  @apply bg-teal-tint rounded-r-lg;
-  border-left: 4px solid #259DA3;
-  padding: 24px 28px;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-/* Internal Note Box */
-.note-box {
-  @apply bg-pale-gray rounded-r-lg;
-  border-left: 4px solid #9AA0A6;
-  padding: 20px 24px;
-  font-size: 13px;
-  color: #5F6368;
-}
-
-/* Keyword Chips */
-.chip-positive {
-  @apply bg-teal-tint text-deep-teal;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-.chip-negative {
-  background: #FEF2F2;
-  color: #B91C1C;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+/* ══ Section divider — STUDIO-inspired ══ */
+.section-divider {
+  border: none;
+  border-top: 1px solid #DADCE0;
+  margin: 0;
 }
 
 /* ══ Floating CTA ══ */

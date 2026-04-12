@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { IconMail, IconBarChart } from '@/components/Icons'
 
 const SERVICE_LINKS = [
   { href: '/services', label: '民泊運営代行' },
@@ -45,8 +46,8 @@ export default function Footer() {
               href="/contact"
               className="bg-white rounded-card p-6 text-center group"
             >
-              <div className="w-12 h-12 rounded-full bg-teal-tint text-sekai-teal flex items-center justify-center mx-auto mb-3 text-xl">
-                ✉
+              <div className="w-12 h-12 rounded-full bg-teal-tint flex items-center justify-center mx-auto mb-3">
+                <IconMail size={22} color="#259DA3" />
               </div>
               <p className="text-[15px] text-dark-gray mb-3">
                 民泊運営代行やサービスについて
@@ -59,8 +60,8 @@ export default function Footer() {
               href="/lp#diagnostic"
               className="bg-white rounded-card p-6 text-center group"
             >
-              <div className="w-12 h-12 rounded-full bg-teal-tint text-sekai-teal flex items-center justify-center mx-auto mb-3 text-xl">
-                📊
+              <div className="w-12 h-12 rounded-full bg-teal-tint flex items-center justify-center mx-auto mb-3">
+                <IconBarChart size={22} color="#259DA3" />
               </div>
               <p className="text-[15px] text-dark-gray mb-3">
                 所有している物件の収支シミュレーション
