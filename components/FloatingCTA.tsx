@@ -18,14 +18,14 @@ export default function FloatingCTA() {
     <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col">
       <Link
         href="/contact"
-        className="bg-deep-teal hover:bg-deep-teal text-white text-xs font-bold px-3 py-6 rounded-l-lg transition-colors shadow-lg"
+        className="bg-sekai-teal hover:bg-deep-teal text-white text-[12px] font-bold px-3 py-6 rounded-l-btn transition"
         style={{ writingMode: 'vertical-rl' }}
       >
         民泊運営のご相談
       </Link>
       <Link
         href="/diagnostic"
-        className="bg-deep-teal hover:bg-bright-teal text-white text-xs font-bold px-3 py-6 rounded-l-lg transition-colors shadow-lg mt-0.5"
+        className="bg-sekai-teal hover:bg-deep-teal text-white text-[12px] font-bold px-3 py-6 rounded-l-btn transition mt-px"
         style={{ writingMode: 'vertical-rl' }}
       >
         無料診断

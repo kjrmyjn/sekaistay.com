@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════════
+   SEKAI STAY — Design System (DESIGN.md 準拠)
+   ══════════════════════════════════════════════ */
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -10,82 +14,154 @@
   body {
     @apply bg-white text-charcoal antialiased;
     font-family: var(--font-noto-sans-jp), 'Helvetica Neue', Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    word-break: auto-phrase;          /* Chrome 119+ 日本語の自然な改行 */
-    overflow-wrap: anywhere;          /* 長い英単語・URLの折り返し */
+    font-size: 15px;               /* DESIGN.md Body */
+    line-height: 1.8;              /* DESIGN.md 本文行間 */
+    word-break: auto-phrase;
+    overflow-wrap: anywhere;
     -webkit-hyphens: auto;
     hyphens: auto;
   }
-  /* 見出し系は禁則処理を厳格に */
+  /* 見出し系: 禁則処理を厳格に + palt */
   h1, h2, h3, h4 {
     line-break: strict;
     word-break: keep-all;
     overflow-wrap: break-word;
+    font-feature-settings: "palt" 1;
   }
-  /* テーブル・カード内は折り返しを許可 */
   td, th, .break-normal {
     word-break: normal;
     overflow-wrap: break-word;
   }
 }
 
+/* ── Card (flat design — no shadow) ── */
 @layer utilities {
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-light-gray;
+    @apply bg-cloud-white rounded-xl;
+    /* DESIGN.md: フラット、シャドウなし、bg-cloud-white で分離 */
   }
   .section-alt {
     background-color: #F7F8FA;
   }
 }
 
-/* ── Heavy section backgrounds ── */
-.bg-teal-full {
-  background: linear-gradient(135deg, #167B81 0%, #259DA3 100%);
-}
-.bg-teal-dark {
-  background: linear-gradient(135deg, #0d5559 0%, #167B81 100%);
-}
-.bg-warm-gradient {
-  background: linear-gradient(180deg, #E5F4F5 0%, #f7f8fa 40%, #ffffff 100%);
-}
+/* ══ Typography Scale (DESIGN.md §3.4) ══ */
 
-/* ── Large heading utility ── */
 .heading-display {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 4vw, 2rem);   /* 32px desktop */
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
 }
 .heading-section {
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  font-weight: 800;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-.heading-sub {
-  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem); /* 24px desktop */
   font-weight: 700;
   line-height: 1.4;
 }
-
-/* ── Stat number display ── */
-.stat-number {
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-feature-settings: 'tnum';
+.heading-sub {
+  font-size: clamp(1rem, 2vw, 1.125rem);  /* 18px desktop */
+  font-weight: 700;
+  line-height: 1.4;
 }
-.stat-number-sm {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
+.text-body-lg {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+.text-caption {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.text-label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+}
+
+/* ══ Stat number (tabular nums) ══ */
+.stat-number {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
   font-feature-settings: 'tnum';
 }
+.stat-number-sm {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  font-feature-settings: 'tnum';
+}
 
-/* ── Floating CTA ── */
+/* ══ Layout Spacing (DESIGN.md §5) ══ */
+
+/* Container: max-width 960px, px-10 (40px) desktop / px-5 (20px) mobile */
+.container-ds {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (min-width: 641px) {
+  .container-ds {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Section spacing: 80px top / 60px bottom */
+.section-heavy {
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 5vw, 3.75rem);
+}
+.section-medium {
+  padding-top: clamp(2.5rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2rem, 3vw, 2.5rem);
+}
+
+/* ══ Component Patterns (DESIGN.md §4) ══ */
+
+/* Highlight Box */
+.highlight-box {
+  @apply bg-teal-tint rounded-r-lg;
+  border-left: 4px solid #259DA3;
+  padding: 24px 28px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Internal Note Box */
+.note-box {
+  @apply bg-pale-gray rounded-r-lg;
+  border-left: 4px solid #9AA0A6;
+  padding: 20px 24px;
+  font-size: 13px;
+  color: #5F6368;
+}
+
+/* Keyword Chips */
+.chip-positive {
+  @apply bg-teal-tint text-deep-teal;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.chip-negative {
+  background: #FEF2F2;
+  color: #B91C1C;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ══ Floating CTA ══ */
 .floating-cta {
   position: fixed;
   right: 0;
@@ -93,14 +169,4 @@
   transform: translateY(-50%);
   z-index: 40;
   writing-mode: vertical-rl;
-}
-
-/* ── Section spacing ── */
-.section-heavy {
-  padding-top: clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(4rem, 8vw, 7rem);
-}
-.section-medium {
-  padding-top: clamp(3rem, 6vw, 5rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
 }

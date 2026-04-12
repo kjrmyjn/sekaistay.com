@@ -16,21 +16,20 @@ const SITE_URL = 'https://sekaistay.com'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'SEKAI STAY | 手数料8%の民泊運用代行',
+    default: 'SEKAI STAY | 成果で選ばれる民泊運用代行',
     template: '%s | SEKAI STAY',
   },
   description:
-    '民泊運用代行の手数料、払いすぎていませんか？SEKAI STAYは手数料8%+月額5,000円/部屋で、OTA最適化・24時間多言語ゲスト対応・清掃管理・価格最適化を一括代行。最短2週間で切り替え可能。',
+    '管理物件レビュー平均4.8・Airbnbスーパーホスト認定。SEKAI STAYは稼働率と収益を上げる民泊運用代行です。全国7拠点・手数料8%・24時間オーナーダッシュボード。最短2週間で切り替え可能。',
   keywords: [
     '民泊 運用代行',
     '民泊 管理代行',
-    '民泊 手数料 8%',
     'Airbnb 管理代行',
     'Airbnb 運用代行',
     '民泊 代行 比較',
     '民泊 代行 費用',
-    '民泊 代行 安い',
-    '民泊 手数料 安い',
+    '民泊 稼働率 向上',
+    '民泊 レビュー 改善',
     '民泊 運営 委託',
     'Booking.com 運用代行',
     'SEKAI STAY',
@@ -39,9 +38,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: 'SEKAI STAY | 手数料8%の民泊運用代行',
+    title: 'SEKAI STAY | 成果で選ばれる民泊運用代行',
     description:
-      '手数料8%で、OTA最適化・24時間ゲスト対応・清掃管理・価格最適化を一括代行。先着10オーナー移行コスト無料キャンペーン中。',
+      '管理物件レビュー平均4.8。稼働率を上げ、収益を最大化する民泊運用代行サービス。全国7拠点・24時間オーナーダッシュボード。',
     type: 'website',
     locale: 'ja_JP',
     siteName: 'SEKAI STAY',
@@ -51,15 +50,15 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'SEKAI STAY — 手数料8%の民泊運用代行サービス',
+        alt: 'SEKAI STAY — 成果で選ばれる民泊運用代行サービス',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEKAI STAY | 手数料8%の民泊運用代行',
+    title: 'SEKAI STAY | 成果で選ばれる民泊運用代行',
     description:
-      '手数料8%で民泊運営を完全代行。OTA最適化・24時間対応・清掃管理まで。先着10オーナー移行コスト無料。',
+      '管理物件レビュー平均4.8・Airbnbスーパーホスト認定。稼働率と収益を上げる民泊運用代行。全国7拠点。',
     images: [`${SITE_URL}/og-image.jpg`],
   },
   robots: {
@@ -94,7 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               alternateName: '株式会社セカイチ',
               url: SITE_URL,
               logo: `${SITE_URL}/sekai_stay_03_03.png`,
-              description: '手数料8%で民泊運営を一括代行。OTA最適化・多言語ゲスト対応・清掃管理・ダイナミックプライシングをワンストップで提供。',
+              description: '管理物件レビュー平均4.8・Airbnbスーパーホスト認定。稼働率と収益を上げる民泊運用代行サービス。全国7拠点。',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '恵比寿西2丁目14-7',

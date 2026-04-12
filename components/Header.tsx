@@ -19,46 +19,44 @@ export default function Header() {
     <>
       {/* Top bar */}
       <div className="hidden md:block bg-charcoal text-white/70 text-[11px]">
-        <div className="max-w-7xl mx-auto px-6 py-1.5 flex items-center justify-between">
+        <div className="max-w-container mx-auto px-5 md:px-10 py-1.5 flex items-center justify-between">
           <span>住宅宿泊管理業 国土交通大臣(01)第F05780号</span>
-          <span className="flex items-center gap-4">
-            <span>受付 9:00〜18:00（土日祝除く）</span>
-          </span>
+          <span>受付 9:00〜18:00（土日祝除く）</span>
         </div>
       </div>
 
-      {/* Main header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-light-gray shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+      {/* Main header — flat design, no shadow */}
+      <header className="sticky top-0 z-50 bg-white border-b border-light-gray">
+        <div className="max-w-container mx-auto px-5 md:px-10 h-[64px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <img src="/sekai_stay_03_03.png" alt="SEKAI STAY" className="h-8 w-auto" />
+            <img src="/sekai_stay_03_03.png" alt="SEKAI STAY" className="h-7 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {NAV.map(n => (
               <Link
                 key={n.href}
                 href={n.href}
-                className="text-[13px] text-charcoal hover:text-deep-teal font-semibold transition"
+                className="text-[13px] text-charcoal hover:text-sekai-teal font-bold transition"
               >
                 {n.label}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — DESIGN.md §4 Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/diagnostic"
-              className="text-[13px] font-bold text-deep-teal border-2 border-deep-teal px-5 py-2.5 rounded-lg hover:bg-teal-tint transition"
+              className="text-[13px] font-bold text-sekai-teal border border-sekai-teal px-5 py-2 rounded-btn hover:bg-teal-tint transition"
             >
               無料診断
             </Link>
             <Link
               href="/contact"
-              className="text-[13px] font-bold text-white bg-deep-teal hover:bg-deep-teal px-5 py-2.5 rounded-lg transition shadow-sm"
+              className="text-[13px] font-bold text-white bg-sekai-teal hover:bg-deep-teal px-5 py-2 rounded-btn transition"
             >
               無料相談
             </Link>
@@ -67,23 +65,23 @@ export default function Header() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+            className="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5"
             aria-label="メニュー"
           >
-            <span className={`block w-6 h-0.5 bg-charcoal transition-all duration-300 ${open ? 'rotate-45 translate-y-1' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-charcoal transition-all duration-300 ${open ? '-rotate-45 -translate-y-1' : ''}`} />
+            <span className={`block w-5 h-0.5 bg-charcoal transition-all duration-300 ${open ? 'rotate-45 translate-y-1' : ''}`} />
+            <span className={`block w-5 h-0.5 bg-charcoal transition-all duration-300 ${open ? '-rotate-45 -translate-y-1' : ''}`} />
           </button>
         </div>
 
         {/* Mobile Nav Panel */}
         <div className={`lg:hidden overflow-hidden transition-all duration-300 ${open ? 'max-h-[500px] border-t border-light-gray' : 'max-h-0'}`}>
-          <nav className="px-6 py-5 flex flex-col gap-1 bg-white">
+          <nav className="px-5 py-5 flex flex-col gap-1 bg-white">
             {NAV.map(n => (
               <Link
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="text-sm text-charcoal hover:text-deep-teal font-semibold py-3 border-b border-pale-gray transition"
+                className="text-[15px] text-charcoal hover:text-sekai-teal font-bold py-3 border-b border-pale-gray transition"
               >
                 {n.label}
               </Link>
@@ -92,19 +90,19 @@ export default function Header() {
               <Link
                 href="/diagnostic"
                 onClick={() => setOpen(false)}
-                className="text-sm font-bold text-deep-teal border-2 border-deep-teal text-center py-3 rounded-lg"
+                className="text-[15px] font-bold text-sekai-teal border border-sekai-teal text-center py-3 rounded-btn"
               >
                 無料診断
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}
-                className="text-sm font-bold text-white bg-deep-teal text-center py-3 rounded-lg"
+                className="text-[15px] font-bold text-white bg-sekai-teal text-center py-3 rounded-btn"
               >
                 無料相談
               </Link>
             </div>
-            <p className="text-[10px] text-mid-gray mt-3 text-center">
+            <p className="text-[11px] text-mid-gray mt-3 text-center">
               住宅宿泊管理業 国土交通大臣(01)第F05780号
             </p>
           </nav>
