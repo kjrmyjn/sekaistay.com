@@ -70,9 +70,15 @@ function BlogPostJsonLd({ post }: { post: { slug: string; title: string; descrip
     url,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     author: {
-      '@type': 'Organization',
-      name: 'SEKAI STAY',
-      url: SITE_URL,
+      '@type': 'Person',
+      name: '松本凌輔',
+      jobTitle: 'コラム編集長',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'SEKAI STAY',
+        url: SITE_URL,
+      },
+      description: 'agoda Customer Service部門を経て、民泊業界でCS・運営支援に5年間従事。住宅宿泊管理業の修了証を取得。',
     },
     publisher: {
       '@type': 'Organization',
