@@ -31,7 +31,7 @@ export default function Breadcrumb({ items }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav aria-label="パンくずリスト" className="max-w-5xl mx-auto px-6 py-3">
-        <ol className="flex flex-wrap items-center gap-1 text-xs text-mid-gray">
+        <ol className="flex flex-wrap items-center gap-1 text-xs text-dark-gray">
           <li>
             <Link href="/" className="hover:text-deep-teal transition">ホーム</Link>
           </li>

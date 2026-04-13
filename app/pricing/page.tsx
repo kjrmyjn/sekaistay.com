@@ -68,14 +68,14 @@ export default function PricingPage() {
         </section>
 
         {/* Pricing Cards */}
-        <section className="bg-teal-full px-6 section-heavy">
+        <section className="bg-deep-teal px-6 section-heavy">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               {/* Initial Cost */}
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 md:p-10">
+              <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
                 <h2 className="text-2xl font-bold text-white text-center mb-6">初期費用</h2>
                 <div className="text-center mb-6">
-                  <p className="text-white/50 text-sm line-through mb-1">通常 ¥100,000</p>
+                  <p className="text-white/90 text-sm line-through mb-1">通常 ¥100,000</p>
                   <p className="stat-number text-white">0<span className="text-2xl">円</span></p>
                   <span className="inline-block mt-3 bg-amber-400/20 text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full border border-amber-400/30">
                     キャンペーン中
@@ -83,35 +83,35 @@ export default function PricingPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   {['OTA初期設定', '画像加工・掲載', '掲載コンテンツ作成', 'オペレーション構築'].map((item, i) => (
-                    <div key={i} className="bg-white/10 rounded-xl p-4 text-center">
-                      <p className="text-xs text-white/80 font-medium">{item}</p>
+                    <div key={i} className="bg-white/[0.15] rounded-xl p-4 text-center">
+                      <p className="text-xs text-white font-medium">{item}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-white/40 text-center">※物件状況により別途ご相談の場合あり</p>
+                <p className="text-xs text-white/90 text-center">※物件状況により別途ご相談の場合あり</p>
               </div>
 
               {/* Running Cost */}
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 md:p-10">
+              <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
                 <h2 className="text-2xl font-bold text-white text-center mb-6">運営費用</h2>
-                <p className="text-sm text-white/70 text-center mb-8">
+                <p className="text-sm text-white/90 text-center mb-8">
                   月々の費用は「固定管理費」と「変動運営委託費」の合計となります。
                 </p>
                 <div className="space-y-4 mb-8">
-                  <div className="bg-white/10 rounded-xl p-6">
-                    <p className="text-xs text-white/50 font-bold uppercase tracking-wider mb-3">固定管理費</p>
+                  <div className="bg-white/[0.15] rounded-xl p-6">
+                    <p className="text-xs text-white font-bold uppercase tracking-wider mb-3">固定管理費</p>
                     <p className="text-2xl text-white font-bold">
-                      ¥5,000<span className="text-sm font-normal text-white/60 ml-1">/ 1部屋 / 月</span>
+                      ¥5,000<span className="text-sm font-normal text-white/90 ml-1">/ 1部屋 / 月</span>
                     </p>
                   </div>
-                  <div className="bg-white/15 rounded-xl p-6 text-center border border-white/20">
-                    <p className="text-xs text-white/50 font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
+                  <div className="bg-white/[0.2] rounded-xl p-6 text-center border border-white/25">
+                    <p className="text-xs text-white font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
                     <p className="flex items-baseline justify-center gap-1">
                       <span className="text-sm text-white font-bold">売上の</span>
                       <span className="text-[80px] font-black text-white leading-none tracking-tighter">8</span>
                       <span className="text-3xl font-black text-white">%</span>
                     </p>
-                    <p className="text-xs text-white/50 mt-2">他社平均: 15〜25%</p>
+                    <p className="text-xs text-white/90 mt-2">他社平均: 15〜25%</p>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function PricingPage() {
                   <p className="text-white font-bold text-sm">SEKAI STAY</p>
                 </div>
                 <div className="px-6 py-4 bg-pale-gray text-center">
-                  <p className="text-mid-gray font-bold text-sm">他社平均</p>
+                  <p className="text-dark-gray font-bold text-sm">他社平均</p>
                 </div>
               </div>
               {/* Rows */}
@@ -163,7 +163,7 @@ export default function PricingPage() {
                 <div key={i} className={`grid grid-cols-3 border-t border-light-gray ${row.highlight ? 'bg-teal-tint/30' : ''}`}>
                   <div className="px-6 py-5 text-sm text-dark-gray font-medium">{row.label}</div>
                   <div className="px-6 py-5 text-sm text-deep-teal font-bold text-center">{row.us}</div>
-                  <div className="px-6 py-5 text-sm text-mid-gray text-center">{row.others}</div>
+                  <div className="px-6 py-5 text-sm text-dark-gray text-center">{row.others}</div>
                 </div>
               ))}
             </div>

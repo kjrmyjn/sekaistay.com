@@ -185,6 +185,11 @@
   transform: scaleX(1);
 }
 
+/* ══ Background utilities ══ */
+.bg-warm-gradient {
+  background: linear-gradient(135deg, #E5F4F5 0%, #F7F8FA 50%, #F1F3F4 100%);
+}
+
 /* Keep legacy class for other pages */
 .section-heavy {
   padding-top: clamp(3.5rem, 6vw, 5rem);

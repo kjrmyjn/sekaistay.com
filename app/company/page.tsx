@@ -54,9 +54,9 @@ export default function CompanyPage() {
         <section className="px-6 section-heavy">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl border border-light-gray overflow-hidden shadow-sm">
-              <div className="px-8 py-6 bg-teal-full">
+              <div className="px-8 py-6 bg-deep-teal">
                 <p className="text-white font-bold text-xl">SEKAI STAY</p>
-                <p className="text-white/60 text-sm mt-1">株式会社セカイチ（SEKAICHI Inc.）が運営</p>
+                <p className="text-white/80 text-sm mt-1">株式会社セカイチ（SEKAICHI Inc.）が運営</p>
               </div>
               <div className="divide-y divide-light-gray">
                 {INFO.map((row, i) => (

@@ -100,7 +100,7 @@ export default function PortfolioPage() {
             ].map((s, i) => (
               <div key={i}>
                 <p className="stat-number-sm text-bright-teal">{s.value}</p>
-                <p className="text-xs text-white/50 font-medium mt-1">{s.label}</p>
+                <p className="text-xs text-white/80 font-medium mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -128,34 +128,34 @@ export default function PortfolioPage() {
                     {/* Data */}
                     <div className="p-6 md:p-8">
                       <h3 className="text-xl font-bold text-charcoal mb-1">{c.area}</h3>
-                      <p className="text-xs text-mid-gray mb-6">{c.spec}</p>
+                      <p className="text-xs text-dark-gray mb-6">{c.spec}</p>
 
                       {/* Big percentage */}
                       <div className="text-center mb-6 py-4 bg-pale-gray rounded-xl">
                         <p className="stat-number text-deep-teal">{c.pctUp}<span className="text-2xl">%</span></p>
-                        <p className="text-xs text-mid-gray mt-1">収益改善率</p>
+                        <p className="text-xs text-dark-gray mt-1">収益改善率</p>
                       </div>
 
                       {/* Before/After table */}
                       <div className="space-y-3 mb-6">
                         <div className="grid grid-cols-3 text-sm">
-                          <span className="text-mid-gray" />
-                          <span className="text-mid-gray text-center font-medium">導入前</span>
+                          <span className="text-dark-gray" />
+                          <span className="text-dark-gray text-center font-medium">導入前</span>
                           <span className="text-deep-teal text-center font-bold">SEKAI STAY</span>
                         </div>
                         <div className="grid grid-cols-3 text-sm border-t border-light-gray pt-2">
                           <span className="text-dark-gray">稼働率</span>
-                          <span className="text-mid-gray text-center">{c.before.occupancy}</span>
+                          <span className="text-dark-gray text-center">{c.before.occupancy}</span>
                           <span className="text-deep-teal text-center font-bold">{c.after.occupancy}</span>
                         </div>
                         <div className="grid grid-cols-3 text-sm border-t border-light-gray pt-2">
                           <span className="text-dark-gray">粗利（月）</span>
-                          <span className="text-mid-gray text-center">¥{c.before.monthly}</span>
+                          <span className="text-dark-gray text-center">¥{c.before.monthly}</span>
                           <span className="text-deep-teal text-center font-bold">¥{c.after.monthly}</span>
                         </div>
                         <div className="grid grid-cols-3 text-sm border-t border-light-gray pt-2">
                           <span className="text-dark-gray">粗利（年）</span>
-                          <span className="text-mid-gray text-center">¥{c.before.annual}</span>
+                          <span className="text-dark-gray text-center">¥{c.before.annual}</span>
                           <span className="text-deep-teal text-center font-bold">¥{c.after.annual}</span>
                         </div>
                       </div>
@@ -196,7 +196,7 @@ export default function PortfolioPage() {
                     </div>
                     <div>
                       <p className="text-base font-bold text-charcoal">{t.name}</p>
-                      <p className="text-xs text-mid-gray">{t.property}</p>
+                      <p className="text-xs text-dark-gray">{t.property}</p>
                     </div>
                   </div>
                   <p className="text-sm text-dark-gray leading-relaxed">{t.text}</p>

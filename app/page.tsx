@@ -105,15 +105,15 @@ export default function Home() {
                 <div className="flex flex-wrap gap-x-8 gap-y-3 mb-8">
                   <div className="flex items-center gap-2">
                     <span className="text-[22px] font-bold text-sekai-teal">4.8</span>
-                    <span className="text-caption text-mid-gray">レビュー平均</span>
+                    <span className="text-caption text-dark-gray">レビュー平均</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[22px] font-bold text-sekai-teal">7</span>
-                    <span className="text-caption text-mid-gray">全国拠点</span>
+                    <span className="text-caption text-dark-gray">全国拠点</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[22px] font-bold text-sekai-teal">8%</span>
-                    <span className="text-caption text-mid-gray">手数料</span>
+                    <span className="text-caption text-dark-gray">手数料</span>
                   </div>
                 </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
                 </div>
                 {/* Floating stat card — overlapping */}
                 <div className="absolute -bottom-6 -left-10 bg-white rounded-xl p-5 shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-pale-gray">
-                  <p className="text-caption text-mid-gray mb-1">導入後の平均稼働率改善</p>
+                  <p className="text-caption text-dark-gray mb-1">導入後の平均稼働率改善</p>
                   <p className="text-[28px] font-bold text-sekai-teal leading-none">+24<span className="text-[16px]">%</span></p>
                 </div>
               </div>
@@ -162,13 +162,13 @@ export default function Home() {
               {mediaAppearances.map(m => {
                 const Icon = MEDIA_ICONS[m.type] || IconBuilding
                 return (
-                  <div key={m.id} className="flex items-center gap-2.5 opacity-50 hover:opacity-100 transition">
+                  <div key={m.id} className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition">
                     <Icon size={16} color="#5F6368" />
                     <span className="text-[12px] text-charcoal font-bold whitespace-nowrap">{m.name}</span>
                   </div>
                 )
               })}
-              <div className="flex items-center gap-2.5 opacity-50 hover:opacity-100 transition">
+              <div className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition">
                 <IconBuilding size={16} color="#5F6368" />
                 <span className="text-[12px] text-charcoal font-bold">国交大臣登録 第F05780号</span>
               </div>
@@ -183,7 +183,7 @@ export default function Home() {
             <div className="grid md:grid-cols-[0.45fr_1fr] gap-10 md:gap-20">
               {/* Left — problem framing */}
               <div>
-                <div className="eyebrow text-mid-gray mb-3">Owner&apos;s Challenge</div>
+                <div className="eyebrow text-dark-gray mb-3">Owner&apos;s Challenge</div>
                 <h2 className="heading-section text-charcoal mb-4">
                   こんなお悩み、<br />
                   ありませんか？
@@ -248,18 +248,18 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-[16px] font-bold text-charcoal mb-1">{c.name}</h3>
-                    <p className="text-body-sm text-mid-gray mb-5">{c.location} / {c.type}</p>
+                    <p className="text-body-sm text-dark-gray mb-5">{c.location} / {c.type}</p>
                     {/* Result metrics — horizontal */}
                     <div className="flex gap-4 border-t border-pale-gray pt-4">
                       {c.results.occupancyAfter && (
                         <div>
-                          <p className="text-caption text-mid-gray">稼働率</p>
+                          <p className="text-caption text-dark-gray">稼働率</p>
                           <p className="text-[15px] font-bold text-sekai-teal">{c.results.occupancyBefore} → {c.results.occupancyAfter}</p>
                         </div>
                       )}
                       {c.results.reviewScore && (
                         <div>
-                          <p className="text-caption text-mid-gray">レビュー</p>
+                          <p className="text-caption text-dark-gray">レビュー</p>
                           <p className="text-[15px] font-bold text-warning">{c.results.reviewScore}</p>
                         </div>
                       )}
@@ -334,7 +334,7 @@ export default function Home() {
                 <h2 className="heading-section text-white mb-5 leading-snug">
                   24時間365日、<br />あなたの物件を見える化
                 </h2>
-                <p className="text-body text-white/70 mb-8 max-w-[420px]">
+                <p className="text-body text-white/90 mb-8 max-w-[420px]">
                   「代行会社に任せたけど、何をやっているかわからない」そんな不安を解消するのが、SEKAI STAY独自のオーナーダッシュボードです。
                 </p>
                 <div className="space-y-3 mb-8">
@@ -343,7 +343,7 @@ export default function Home() {
                       <div className="w-5 h-5 rounded-full bg-bright-teal/20 flex items-center justify-center flex-shrink-0">
                         <IconCheck size={11} color="#54BEC3" />
                       </div>
-                      <span className="text-[14px] text-white/80">{item}</span>
+                      <span className="text-[14px] text-white/90">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -352,17 +352,17 @@ export default function Home() {
                 </Link>
               </div>
               {/* Dashboard Mock */}
-              <div className="bg-white/[0.06] backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-white/10">
-                <div className="bg-white/[0.06] rounded-lg p-5 mb-3">
-                  <p className="eyebrow text-white/40 mb-3">月間サマリー</p>
+              <div className="bg-white/[0.10] backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-white/10">
+                <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
+                  <p className="eyebrow text-white/85 mb-3">月間サマリー</p>
                   <div className="grid grid-cols-3 gap-4">
-                    <div><p className="text-caption text-white/40">今月の収益</p><p className="text-[18px] font-bold text-white">¥1,340,000</p></div>
-                    <div><p className="text-caption text-white/40">稼働率</p><p className="text-[18px] font-bold text-bright-teal">82%</p></div>
-                    <div><p className="text-caption text-white/40">平均単価</p><p className="text-[18px] font-bold text-white">¥54,200</p></div>
+                    <div><p className="text-caption text-white/85">今月の収益</p><p className="text-[18px] font-bold text-white">¥1,340,000</p></div>
+                    <div><p className="text-caption text-white/85">稼働率</p><p className="text-[18px] font-bold text-bright-teal">82%</p></div>
+                    <div><p className="text-caption text-white/85">平均単価</p><p className="text-[18px] font-bold text-white">¥54,200</p></div>
                   </div>
                 </div>
-                <div className="bg-white/[0.06] rounded-lg p-5 mb-3">
-                  <p className="eyebrow text-white/40 mb-3">直近の予約</p>
+                <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
+                  <p className="eyebrow text-white/85 mb-3">直近の予約</p>
                   {[
                     { guest: 'John S.', dates: '4/15–4/18', amount: '¥162,600', country: 'US' },
                     { guest: 'Tanaka Y.', dates: '4/20–4/22', amount: '¥108,400', country: 'JP' },
@@ -370,24 +370,24 @@ export default function Home() {
                   ].map((r, i) => (
                     <div key={i} className="flex items-center justify-between py-2.5 border-b border-white/5 last:border-0">
                       <div className="flex items-center gap-2.5">
-                        <span className="text-[11px] font-bold text-white/50 bg-white/10 px-1.5 py-0.5 rounded">{r.country}</span>
+                        <span className="text-[11px] font-bold text-white/80 bg-white/10 px-1.5 py-0.5 rounded">{r.country}</span>
                         <span className="text-[13px] text-white font-bold">{r.guest}</span>
                       </div>
-                      <span className="text-caption text-white/40">{r.dates}</span>
+                      <span className="text-caption text-white/85">{r.dates}</span>
                       <span className="text-[13px] font-bold text-bright-teal">{r.amount}</span>
                     </div>
                   ))}
                 </div>
-                <div className="bg-white/[0.06] rounded-lg p-5">
-                  <p className="eyebrow text-white/40 mb-3">レビュースコア推移</p>
+                <div className="bg-white/[0.10] rounded-lg p-5">
+                  <p className="eyebrow text-white/85 mb-3">レビュースコア推移</p>
                   <div className="flex items-end gap-1 h-16">
                     {[4.5, 4.6, 4.7, 4.8, 4.7, 4.9, 4.8, 4.9, 5.0, 4.8, 4.9, 4.8].map((v, i) => (
                       <div key={i} className="flex-1 bg-bright-teal/30 rounded-t" style={{ height: `${(v - 4.0) * 100}%` }} />
                     ))}
                   </div>
                   <div className="flex justify-between mt-2">
-                    <span className="text-[10px] text-white/30 font-mono">1月</span>
-                    <span className="text-[10px] text-white/30 font-mono">12月</span>
+                    <span className="text-[10px] text-white/80 font-mono">1月</span>
+                    <span className="text-[10px] text-white/80 font-mono">12月</span>
                   </div>
                 </div>
               </div>
@@ -441,7 +441,7 @@ export default function Home() {
               {/* Initial cost */}
               <div className="bg-white rounded-2xl p-8 text-center">
                 <h3 className="heading-sub text-charcoal mb-5">初期費用</h3>
-                <p className="text-mid-gray text-[14px] line-through mb-1">通常 ¥100,000</p>
+                <p className="text-dark-gray text-[14px] line-through mb-1">通常 ¥100,000</p>
                 <p className="stat-number text-sekai-teal">0<span className="text-[18px] font-bold">円</span></p>
                 <span className="inline-block mt-4 text-[11px] font-bold text-warning bg-[#FFFBEB] px-4 py-1.5 rounded-full">キャンペーン中</span>
                 <p className="text-body-sm text-dark-gray mt-4">OTA初期設定・画像加工・掲載開始まで含む</p>
@@ -451,7 +451,7 @@ export default function Home() {
                 <h3 className="heading-sub text-charcoal text-center mb-5">運営費用</h3>
                 <div className="space-y-4">
                   <div className="bg-cloud-white rounded-xl p-5">
-                    <p className="eyebrow text-mid-gray mb-2">固定管理費</p>
+                    <p className="eyebrow text-dark-gray mb-2">固定管理費</p>
                     <p className="text-[18px] text-charcoal font-bold">¥5,000<span className="text-[14px] font-normal text-dark-gray"> / 1部屋 / 月</span></p>
                   </div>
                   <div className="bg-teal-tint rounded-xl p-6 text-center border border-sekai-teal/20">
@@ -526,7 +526,7 @@ export default function Home() {
                     <span className="text-2xl text-sekai-teal font-bold">{m.name.charAt(0)}</span>
                   </div>
                   <h3 className="text-[16px] font-bold text-charcoal">{m.name}</h3>
-                  <p className="text-caption text-mid-gray mb-1 font-mono">{m.nameEn}</p>
+                  <p className="text-caption text-dark-gray mb-1 font-mono">{m.nameEn}</p>
                   <p className="text-[14px] font-bold text-sekai-teal mb-3">{m.role}</p>
                   <p className="text-body-sm text-dark-gray">{m.bio}</p>
                 </div>
@@ -587,7 +587,7 @@ export default function Home() {
                       <span className="text-sekai-teal font-bold flex-shrink-0 font-mono">Q.</span>
                       {f.q}
                     </h3>
-                    <svg className="w-4 h-4 text-mid-gray shrink-0 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    <svg className="w-4 h-4 text-dark-gray shrink-0 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                   </summary>
                   <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-pale-gray">
                     <p className="text-body-sm text-dark-gray pt-4 pl-7">{f.a}</p>
@@ -626,7 +626,7 @@ export default function Home() {
           <div className="max-w-[1080px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
               <div>
-                <div className="eyebrow text-mid-gray mb-3">News</div>
+                <div className="eyebrow text-dark-gray mb-3">News</div>
                 <h2 className="heading-section text-charcoal">お知らせ</h2>
               </div>
               <Link href="/blog" className="text-[14px] font-bold text-sekai-teal hover:text-deep-teal transition mt-4 md:mt-0 flex items-center gap-1">
@@ -639,14 +639,14 @@ export default function Home() {
                   <Link key={post.slug} href={`/blog/${post.slug}`} className="block bg-cloud-white rounded-xl p-5 transition group hover:bg-teal-tint/30">
                     <div className="flex items-center gap-3 mb-1.5">
                       <span className="bg-teal-tint text-deep-teal text-[11px] font-bold px-3 py-0.5 rounded-full">{post.category}</span>
-                      <span className="text-caption text-mid-gray font-mono">{post.date}</span>
+                      <span className="text-caption text-dark-gray font-mono">{post.date}</span>
                     </div>
                     <h3 className="text-[14px] font-bold text-charcoal group-hover:text-sekai-teal transition">{post.title}</h3>
                   </Link>
                 ))}
               </div>
             ) : (
-              <p className="text-body-sm text-mid-gray">最新のお知らせはまもなく公開されます。</p>
+              <p className="text-body-sm text-dark-gray">最新のお知らせはまもなく公開されます。</p>
             )}
           </div>
         </section>
@@ -658,7 +658,7 @@ export default function Home() {
           <div className="max-w-[640px] mx-auto text-center relative">
             <div className="eyebrow text-bright-teal mb-4">Get Started</div>
             <h2 className="heading-section text-white mb-4">あなたの物件のポテンシャル、<br />無料で診断します</h2>
-            <p className="text-body text-white/70 mb-10">まずはお気軽にご相談ください。物件の収益ポテンシャル、現在の手数料との比較、最適な運営プランをご提案します。</p>
+            <p className="text-body text-white/90 mb-10">まずはお気軽にご相談ください。物件の収益ポテンシャル、現在の手数料との比較、最適な運営プランをご提案します。</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contact" className="bg-sekai-teal hover:bg-bright-teal text-white font-bold px-8 py-3.5 rounded-btn transition text-[15px]">
                 無料で収益診断する

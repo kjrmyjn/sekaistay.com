@@ -195,12 +195,12 @@ export default function FAQPage() {
         ))}
 
         {/* Bottom CTA */}
-        <section className="bg-teal-full px-6 py-16 md:py-20">
+        <section className="bg-deep-teal px-6 py-16 md:py-20">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               ご不明な点がございましたら、お気軽にお問い合わせください
             </h2>
-            <p className="text-sm text-white/70 mb-10 leading-relaxed">
+            <p className="text-sm text-white/85 mb-10 leading-relaxed">
               FAQに掲載されていないご質問や、物件ごとの個別のご相談にも対応いたします。
               収支シミュレーションの作成も無料で承ります。
             </p>

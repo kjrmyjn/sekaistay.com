@@ -25,7 +25,7 @@ export default function PrivacyPage() {
         </section>
         <section className="px-6 section-heavy">
           <article className="max-w-3xl mx-auto">
-            <p className="text-sm text-mid-gray mb-12 text-center">最終更新日: 2026年4月7日</p>
+            <p className="text-sm text-dark-gray mb-12 text-center">最終更新日: 2026年4月7日</p>
 
             <div className="space-y-8 text-sm text-charcoal leading-relaxed">
               <p>

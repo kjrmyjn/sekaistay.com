@@ -30,7 +30,7 @@ const caseStudies: CaseStudy[] = [
     name: "The Lake House Nojiriko",
     location: "長野県信濃町",
     type: "一棟貸し湖畔ヴィラ",
-    image: "/case-studies/lake-house-nojiriko.jpg",
+    image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "野尻湖の湖畔に立つプライベートヴィラ。1日1組限定で、フィンランド式サウナ、ジャグジー、プライベート桟橋を完備。4ベッドルームで1泊12万円からの高級物件。Booking.com評価は満点の10点満点を獲得し、「Best of Sauna Stay」第一位に選ばれました。",
     highlights: [
@@ -60,7 +60,7 @@ const caseStudies: CaseStudy[] = [
     name: "The Lakeside Inn Nojiriko",
     location: "長野県信濃町",
     type: "トレーラーハウス複合施設",
-    image: "/case-studies/lakeside-inn-nojiriko.jpg",
+    image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "野尻湖畔に4棟のトレーラーハウスを展開するユニークな宿泊施設。各棟が独立した客室として機能し、グループ旅行や企業研修での利用が多い。湖畔の自然を活かしたアウトドア体験が特徴。",
     highlights: [
@@ -89,7 +89,7 @@ const caseStudies: CaseStudy[] = [
     name: "京都町家",
     location: "京都市",
     type: "一棟貸し町家",
-    image: "/case-studies/kyoto-machiya.jpg",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "京都の伝統的な町家をリノベーションした一棟貸し物件。古都の文化と現代の快適さが融合した空間で、インバウンド層を中心に高い需要がある。季節による宿泊ニーズの変動が大きい。",
     highlights: [
@@ -113,7 +113,7 @@ const caseStudies: CaseStudy[] = [
     name: "White House Atami",
     location: "熱海市",
     type: "一棟貸しオーシャンビューヴィラ",
-    image: "/case-studies/atami-white-house.jpg",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "熱海の海を望むオーシャンビュー一棟貸し。2LDKの広々とした間取りに、プライベートサウナ、カラオケ、BBQスペースを完備。enabler DAOが所有していた物件で、SEKAI STAYが全面的な運営を統括。",
     highlights: [
@@ -143,7 +143,7 @@ const caseStudies: CaseStudy[] = [
     name: "弟子屈ロッジ",
     location: "北海道弟子屈町",
     type: "一棟貸しロッジ",
-    image: "/case-studies/teshikaga-lodge.jpg",
+    image: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "北海道の自然に恵まれた弟子屈の一棟貸しロッジ。摩周湖や屈斜路湖などの観光地に近く、春から秋の観光シーズンに高い需要を見込める物件。地方特有の季節変動への対応が課題だった。",
     highlights: [
@@ -173,7 +173,7 @@ const caseStudies: CaseStudy[] = [
     name: "弟子屈タワーサウナ",
     location: "北海道弟子屈町",
     type: "一棟貸しサウナ施設",
-    image: "/case-studies/teshikaga-tower-sauna.jpg",
+    image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "弟子屈に立つユニークなタワーサウナ付き一棟貸し物件。天然温泉とサウナの組み合わせが強みで、ウェルネス観光客を中心とした高付加価値層を獲得。デジタルマーケティングの強化で差別化を図る。",
     highlights: [
@@ -203,7 +203,7 @@ const caseStudies: CaseStudy[] = [
     name: "ハワイ プライベートビーチ",
     location: "ハワイ",
     type: "一棟貸しビーチフロント",
-    image: "/case-studies/hawaii-private-beach.jpg",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop&q=80&auto=format",
     description:
       "ハワイのプライベートビーチ付き一棟貸し物件。enabler(DAO)が所有していた高級リゾート物件で、SEKAI STAYの代表が全物件の統括管理を行ってきた。国際的なゲスト層を相手に、グローバル水準の運営品質を実現。",
     highlights: [

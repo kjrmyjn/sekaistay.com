@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-full bg-deep-teal text-white flex items-center justify-center mx-auto mb-5 text-3xl">✓</div>
                 <h2 className="text-2xl font-bold text-charcoal mb-3">送信完了</h2>
                 <p className="text-sm text-dark-gray mb-8">お問い合わせありがとうございます。2営業日以内にご連絡いたします。</p>
-                <p className="text-xs text-mid-gray">
+                <p className="text-xs text-dark-gray">
                   物件の詳しい診断をご希望の方は、
                   <a href="/lp#diagnostic" className="text-deep-teal font-bold hover:underline">
                     無料診断フォーム
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 >
                   {submitting ? '送信中...' : '送信する →'}
                 </button>
-                <p className="text-[10px] text-mid-gray text-center">
+                <p className="text-[10px] text-dark-gray text-center">
                   送信により<a href="/privacy" className="text-deep-teal hover:underline">プライバシーポリシー</a>に同意したものとみなします。
                 </p>
               </form>

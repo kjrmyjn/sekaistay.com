@@ -289,25 +289,25 @@ function Hero() {
             <div className="flex flex-wrap items-center gap-6 justify-center md:justify-start mb-6">
               <div className="text-center md:text-left">
                 <span className="text-3xl md:text-4xl font-black text-white">4.8</span>
-                <span className="text-xs text-white/50 block">レビュー平均</span>
+                <span className="text-xs text-white/80 block">レビュー平均</span>
               </div>
               <div className="w-px h-10 bg-white/20" />
               <div className="text-center md:text-left">
                 <span className="text-3xl md:text-4xl font-black text-amber-300">8<span className="text-xl">%</span></span>
-                <span className="text-xs text-white/50 block">業界最安手数料</span>
+                <span className="text-xs text-white/80 block">業界最安手数料</span>
               </div>
               <div className="w-px h-10 bg-white/20" />
               <div className="text-center md:text-left">
                 <span className="text-3xl md:text-4xl font-black text-white">7</span>
-                <span className="text-xs text-white/50 block">全国拠点</span>
+                <span className="text-xs text-white/80 block">全国拠点</span>
               </div>
             </div>
 
-            <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+            <p className="text-base md:text-lg text-white/80 leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
               Airbnbスーパーホスト認定。成果で選ばれる民泊運用代行。
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start mb-8 text-sm text-white/70">
+            <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start mb-8 text-sm text-white/85">
               <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 初期費用0円</span>
               <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 違約金ゼロ</span>
               <span className="flex items-center gap-1.5"><IconCheck className="w-4 h-4 text-amber-400" /> 最短2週間</span>
@@ -320,7 +320,7 @@ function Hero() {
               あなたの損失額を診断する
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <p className="text-xs text-white/30 mt-3">10秒で完了</p>
+            <p className="text-xs text-white/80 mt-3">10秒で完了</p>
           </div>
 
           <div className="hidden md:block text-right">
@@ -328,7 +328,7 @@ function Hero() {
               <span className="text-[180px] font-black leading-none text-white/[0.08] select-none block">8%</span>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-[80px] font-black text-white leading-none">8<span className="text-amber-300">%</span></span>
-                <span className="text-sm text-white/50 mt-2 tracking-wider">MANAGEMENT FEE</span>
+                <span className="text-sm text-white/80 mt-2 tracking-wider">MANAGEMENT FEE</span>
               </div>
             </div>
           </div>
@@ -402,14 +402,14 @@ function InlineSimulator() {
             onChange={e => setRevenue(Number(e.target.value))}
             className="w-full accent-sekai-teal h-3 rounded-full cursor-pointer mb-2"
           />
-          <div className="flex justify-between text-xs text-mid-gray mb-14">
+          <div className="flex justify-between text-xs text-dark-gray mb-14">
             <span>10万円</span><span>400万円</span>
           </div>
 
           {/* Before → After 一行比較 */}
           <div className="flex items-center justify-center gap-3 md:gap-5 mb-6">
             <div className="text-right">
-              <p className="text-[10px] text-mid-gray mb-1">現在の年間手取り</p>
+              <p className="text-[10px] text-dark-gray mb-1">現在の年間手取り</p>
               <p className="text-lg md:text-xl font-bold text-slate-400 tabular-nums"><AnimNum value={nowAnnual} suffix="円" /></p>
             </div>
             <div className="text-deep-teal text-2xl font-bold">→</div>
@@ -421,7 +421,7 @@ function InlineSimulator() {
 
           {/* 差額 — ヒーロー */}
           <div className="bg-deep-teal rounded-2xl px-6 py-8 shadow-lg mb-4">
-            <p className="text-white/60 text-xs mb-2">年間の手取り増加額</p>
+            <p className="text-white/80 text-xs mb-2">年間の手取り増加額</p>
             <p className="text-[40px] md:text-[56px] font-black text-white tabular-nums tracking-tighter leading-none">
               <AnimNum value={diff} prefix="+" suffix="円" />
             </p>
@@ -688,7 +688,7 @@ function PriceChartMockup() {
           />
         ))}
       </div>
-      <div className="flex justify-between mt-2 text-[10px] text-mid-gray">
+      <div className="flex justify-between mt-2 text-[10px] text-dark-gray">
         <span>1日</span><span>15日</span><span>30日</span>
       </div>
     </div>
@@ -709,23 +709,23 @@ function DashboardMockup() {
 
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-[10px] text-white/50 mb-1">今月の収益</p>
+          <p className="text-[10px] text-white/80 mb-1">今月の収益</p>
           <p className="text-xl font-black tabular-nums">¥482K</p>
         </div>
         <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-[10px] text-white/50 mb-1">稼働率</p>
+          <p className="text-[10px] text-white/80 mb-1">稼働率</p>
           <p className="text-xl font-black tabular-nums">67%</p>
         </div>
       </div>
 
       <div className="bg-white/5 rounded-xl p-3 mb-3">
-        <p className="text-[10px] text-white/50 mb-2">直近の予約</p>
+        <p className="text-[10px] text-white/80 mb-2">直近の予約</p>
         <div className="space-y-1.5">
           <div className="flex justify-between text-[11px]">
-            <span>John D. (USA)</span><span className="text-white/50">4/5-4/8</span>
+            <span>John D. (USA)</span><span className="text-white/80">4/5-4/8</span>
           </div>
           <div className="flex justify-between text-[11px]">
-            <span>Kim S. (KOR)</span><span className="text-white/50">4/10-4/12</span>
+            <span>Kim S. (KOR)</span><span className="text-white/80">4/10-4/12</span>
           </div>
         </div>
       </div>
@@ -733,15 +733,15 @@ function DashboardMockup() {
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold text-amber-400">★4.95</p>
-          <p className="text-[9px] text-white/40">評価</p>
+          <p className="text-[9px] text-white/85">評価</p>
         </div>
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold">23件</p>
-          <p className="text-[9px] text-white/40">レビュー</p>
+          <p className="text-[9px] text-white/85">レビュー</p>
         </div>
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold">¥32.4K</p>
-          <p className="text-[9px] text-white/40">平均単価</p>
+          <p className="text-[9px] text-white/85">平均単価</p>
         </div>
       </div>
     </div>
@@ -825,7 +825,7 @@ function Pricing() {
         </FadeIn>
 
         <FadeIn delay={100}>
-          <p className="text-sm text-white/50 text-center mb-10">
+          <p className="text-sm text-white/80 text-center mb-10">
             初期費用0円。必要なものは、すべて含まれています。
           </p>
         </FadeIn>
@@ -872,7 +872,7 @@ function Pricing() {
         </FadeIn>
 
         <FadeIn delay={300}>
-          <p className="text-xs text-white/30 text-center mt-8">今後もオプションサービスを順次拡充予定</p>
+          <p className="text-xs text-white/80 text-center mt-8">今後もオプションサービスを順次拡充予定</p>
         </FadeIn>
       </div>
     </section>
@@ -939,7 +939,7 @@ function Portfolio() {
                 <p className="text-xs text-dark-gray mb-4">220㎡ / 1日1組限定</p>
                 <div className="flex items-center gap-6">
                   <div>
-                    <p className="text-[10px] text-mid-gray">導入前稼働率</p>
+                    <p className="text-[10px] text-dark-gray">導入前稼働率</p>
                     <p className="text-lg font-bold text-slate-400">32%</p>
                   </div>
                   <div className="text-deep-teal font-bold text-lg">→</div>
@@ -971,7 +971,7 @@ function Portfolio() {
                 <p className="text-xs text-dark-gray mb-4">全4棟 / ペットOK</p>
                 <div className="flex items-center gap-6">
                   <div>
-                    <p className="text-[10px] text-mid-gray">導入前レビュー</p>
+                    <p className="text-[10px] text-dark-gray">導入前レビュー</p>
                     <p className="text-lg font-bold text-slate-400">19件</p>
                   </div>
                   <div className="text-deep-teal font-bold text-lg">→</div>
@@ -1375,7 +1375,7 @@ function DiagnosticForm() {
             {name}様の物件について、担当者が確認の上<br />
             <strong className="text-charcoal">3営業日以内</strong>にご連絡いたします。
           </p>
-          <p className="text-xs text-mid-gray mb-8">確認メールを {email} にお送りしました。</p>
+          <p className="text-xs text-dark-gray mb-8">確認メールを {email} にお送りしました。</p>
 
           <div className="bg-teal-tint rounded-2xl border border-deep-teal/20 px-6 py-6">
             <p className="text-sm font-bold text-charcoal mb-2">お待ちの間に、サービス資料をご覧ください</p>
@@ -1405,7 +1405,7 @@ function DiagnosticForm() {
             私の物件の収益を診断する
           </h2>
           <p className="text-sm text-dark-gray text-center mb-3">30秒で完了。</p>
-          <p className="text-xs text-mid-gray text-center mb-10">
+          <p className="text-xs text-dark-gray text-center mb-10">
             <span className="inline-block bg-amber-500 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded mr-1">先着10オーナー</span>
             移行コスト無料キャンペーン中
           </p>
@@ -1417,7 +1417,7 @@ function DiagnosticForm() {
             {[1, 2, 3].map(s => (
               <div key={s} className="flex-1">
                 <div className={`h-1.5 rounded-full transition-all duration-300 ${s <= step ? 'bg-deep-teal' : 'bg-light-gray'}`} />
-                <p className={`text-[10px] mt-1.5 ${s <= step ? 'text-deep-teal font-bold' : 'text-mid-gray'}`}>
+                <p className={`text-[10px] mt-1.5 ${s <= step ? 'text-deep-teal font-bold' : 'text-dark-gray'}`}>
                   {s === 1 ? '①物件情報' : s === 2 ? '②運営状況' : '③連絡先'}
                 </p>
               </div>
@@ -1475,7 +1475,7 @@ function DiagnosticForm() {
               <button
                 onClick={() => { if (propertyType) { setStep(2); trackStep(2, '物件情報入力') } }}
                 disabled={!propertyType}
-                className={`w-full py-3.5 rounded-xl text-sm font-bold transition ${propertyType ? 'bg-deep-teal text-white hover:bg-deep-teal' : 'bg-light-gray text-mid-gray cursor-not-allowed'}`}
+                className={`w-full py-3.5 rounded-xl text-sm font-bold transition ${propertyType ? 'bg-deep-teal text-white hover:bg-deep-teal' : 'bg-light-gray text-dark-gray cursor-not-allowed'}`}
               >
                 次へ
               </button>
@@ -1552,7 +1552,7 @@ function DiagnosticForm() {
                 <button
                   onClick={() => { if (currentStatus) { setStep(3); trackStep(3, '運営状況入力') } }}
                   disabled={!currentStatus}
-                  className={`flex-1 py-3 rounded-xl text-sm font-bold transition ${currentStatus ? 'bg-deep-teal text-white hover:bg-deep-teal' : 'bg-light-gray text-mid-gray cursor-not-allowed'}`}
+                  className={`flex-1 py-3 rounded-xl text-sm font-bold transition ${currentStatus ? 'bg-deep-teal text-white hover:bg-deep-teal' : 'bg-light-gray text-dark-gray cursor-not-allowed'}`}
                 >
                   次へ
                 </button>
@@ -1608,7 +1608,7 @@ function DiagnosticForm() {
             </div>
           )}
 
-          <p className="text-[10px] text-mid-gray text-center mt-6">
+          <p className="text-[10px] text-dark-gray text-center mt-6">
             ※ 予告なく終了する場合があります
           </p>
         </FadeIn>
@@ -1629,7 +1629,7 @@ function FinalCTA() {
 
       <div className="relative px-6 py-20 md:py-28 text-center max-w-3xl mx-auto">
         <FadeIn>
-          <p className="text-xs text-white/40 mb-4">
+          <p className="text-xs text-white/85 mb-4">
             <span className="inline-block bg-amber-500 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded mr-1">先着10オーナー</span>
             移行コスト無料キャンペーン中
           </p>
@@ -1637,7 +1637,7 @@ function FinalCTA() {
             田中さんは、年間50万円を取り戻しました。<br />
             次は、あなたの番です。
           </h2>
-          <p className="text-base text-white/60 mb-8">
+          <p className="text-base text-white/80 mb-8">
             夏のハイシーズン前に切り替えて、今年の収益を最大化しませんか？
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1657,7 +1657,7 @@ function FinalCTA() {
               まずは資料だけ見る
             </a>
           </div>
-          <p className="text-xs text-white/30 mt-4">※ キャンペーンは予告なく終了する場合があります</p>
+          <p className="text-xs text-white/80 mt-4">※ キャンペーンは予告なく終了する場合があります</p>
         </FadeIn>
       </div>
     </section>
@@ -1680,7 +1680,7 @@ function CompanyInfo() {
           <div className="bg-cloud-white rounded-2xl border border-light-gray overflow-hidden">
             <div className="px-6 py-4 bg-gradient-to-r from-deep-teal to-sekai-teal">
               <p className="text-white font-bold text-lg">SEKAI STAY</p>
-              <p className="text-white/60 text-xs">株式会社セカイチ（SEKAICHI Inc.）が運営</p>
+              <p className="text-white/80 text-xs">株式会社セカイチ（SEKAICHI Inc.）が運営</p>
             </div>
 
             <div className="divide-y divide-light-gray">
@@ -1722,11 +1722,11 @@ function Footer() {
                 className="h-8 w-auto mb-3"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
-              <p className="text-[13px] text-mid-gray leading-relaxed max-w-xs">
+              <p className="text-[13px] text-dark-gray leading-relaxed max-w-xs">
                 独自の仕組みで、民泊運用のコスト構造を根本から変える運用代行サービス。
               </p>
             </div>
-            <nav className="flex flex-col gap-2.5 text-[13px] text-mid-gray">
+            <nav className="flex flex-col gap-2.5 text-[13px] text-dark-gray">
               <a href="#services" className="hover:text-white transition">サービスについて</a>
               <a href="#pricing" className="hover:text-white transition">料金</a>
               <a href="#portfolio" className="hover:text-white transition">管理実績</a>
@@ -1736,8 +1736,8 @@ function Footer() {
             </nav>
           </div>
           <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-            <p className="text-[11px] text-mid-gray">&copy; 2026 SEKAI STAY / 株式会社セカイチ. All rights reserved.</p>
-            <div className="flex items-center gap-4 text-[11px] text-mid-gray">
+            <p className="text-[11px] text-dark-gray">&copy; 2026 SEKAI STAY / 株式会社セカイチ. All rights reserved.</p>
+            <div className="flex items-center gap-4 text-[11px] text-dark-gray">
               <button onClick={() => setPrivacyOpen(true)} className="hover:text-white transition">プライバシーポリシー</button>
               <span>手数料8%で、世界基準の民泊運営を。</span>
             </div>
@@ -1835,7 +1835,7 @@ function Footer() {
                 </p>
               </div>
 
-              <p className="text-xs text-mid-gray">最終更新日: 2026年4月7日</p>
+              <p className="text-xs text-dark-gray">最終更新日: 2026年4月7日</p>
             </div>
           </div>
         </div>
