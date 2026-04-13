@@ -90,20 +90,20 @@ export default function Footer() {
                 SEKAI STAYは、手数料8%で民泊運営をワンストップで代行するサービスです。
                 稼働率とレビュー品質を上げ、収益を最大化します。
               </p>
-              <p className="text-[11px] text-mid-gray/60 mb-2">
+              <p className="text-[11px] text-light-gray/80 mb-2">
                 住宅宿泊管理業 国土交通大臣(01)第F05780号
               </p>
-              <p className="text-[11px] text-mid-gray/60">
+              <p className="text-[11px] text-light-gray/80">
                 運営: <a href="https://sekaichi.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition underline underline-offset-2">株式会社セカイチ（SEKAICHI Inc.）</a>
               </p>
             </div>
 
             {/* Service Links */}
             <div>
-              <p className="text-label text-white/40 uppercase tracking-[0.08em] mb-4">サービス</p>
+              <p className="text-label text-white/70 uppercase tracking-[0.08em] mb-4">サービス</p>
               <nav className="flex flex-col gap-2.5">
                 {SERVICE_LINKS.map(l => (
-                  <Link key={l.href} href={l.href} className="text-[13px] text-mid-gray hover:text-white transition">
+                  <Link key={l.href} href={l.href} className="text-[13px] text-light-gray hover:text-white transition">
                     {l.label}
                   </Link>
                 ))}
@@ -112,10 +112,10 @@ export default function Footer() {
 
             {/* Company Links */}
             <div>
-              <p className="text-label text-white/40 uppercase tracking-[0.08em] mb-4">企業情報</p>
+              <p className="text-label text-white/70 uppercase tracking-[0.08em] mb-4">企業情報</p>
               <nav className="flex flex-col gap-2.5">
                 {COMPANY_LINKS.map(l => (
-                  <Link key={l.href} href={l.href} className="text-[13px] text-mid-gray hover:text-white transition">
+                  <Link key={l.href} href={l.href} className="text-[13px] text-light-gray hover:text-white transition">
                     {l.label}
                   </Link>
                 ))}
@@ -124,10 +124,10 @@ export default function Footer() {
 
             {/* Area Links */}
             <div>
-              <p className="text-label text-white/40 uppercase tracking-[0.08em] mb-4">対応エリア</p>
+              <p className="text-label text-white/70 uppercase tracking-[0.08em] mb-4">対応エリア</p>
               <nav className="flex flex-col gap-2.5">
                 {AREA_LINKS.map(l => (
-                  <Link key={l.href} href={l.href} className="text-[13px] text-mid-gray hover:text-white transition">
+                  <Link key={l.href} href={l.href} className="text-[13px] text-light-gray hover:text-white transition">
                     {l.label}
                   </Link>
                 ))}
@@ -137,8 +137,8 @@ export default function Footer() {
 
           {/* Bottom */}
           <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-            <p className="text-[11px] text-mid-gray/60">&copy; 2026 SEKAI STAY / 株式会社セカイチ（SEKAICHI Inc.）. All rights reserved.</p>
-            <Link href="/privacy" className="text-[11px] text-mid-gray/60 hover:text-white transition">
+            <p className="text-[11px] text-light-gray/80">&copy; 2026 SEKAI STAY / 株式会社セカイチ（SEKAICHI Inc.）. All rights reserved.</p>
+            <Link href="/privacy" className="text-[11px] text-light-gray/80 hover:text-white transition">
               プライバシーポリシー
             </Link>
           </div>

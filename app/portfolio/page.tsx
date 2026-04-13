@@ -100,7 +100,7 @@ export default function PortfolioPage() {
             ].map((s, i) => (
               <div key={i}>
                 <p className="stat-number-sm text-bright-teal">{s.value}</p>
-                <p className="text-xs text-white/50 font-medium mt-1">{s.label}</p>
+                <p className="text-xs text-white/80 font-medium mt-1">{s.label}</p>
               </div>
             ))}
           </div>

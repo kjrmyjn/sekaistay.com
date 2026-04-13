@@ -102,7 +102,7 @@ export default function Header() {
                 無料相談
               </Link>
             </div>
-            <p className="text-[11px] text-mid-gray mt-3 text-center">
+            <p className="text-[11px] text-dark-gray mt-3 text-center">
               住宅宿泊管理業 国土交通大臣(01)第F05780号
             </p>
           </nav>

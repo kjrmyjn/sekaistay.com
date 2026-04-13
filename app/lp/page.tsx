@@ -289,17 +289,17 @@ function Hero() {
             <div className="flex flex-wrap items-center gap-6 justify-center md:justify-start mb-6">
               <div className="text-center md:text-left">
                 <span className="text-3xl md:text-4xl font-black text-white">4.8</span>
-                <span className="text-xs text-white/50 block">レビュー平均</span>
+                <span className="text-xs text-white/80 block">レビュー平均</span>
               </div>
               <div className="w-px h-10 bg-white/20" />
               <div className="text-center md:text-left">
                 <span className="text-3xl md:text-4xl font-black text-amber-300">8<span className="text-xl">%</span></span>
-                <span className="text-xs text-white/50 block">業界最安手数料</span>
+                <span className="text-xs text-white/80 block">業界最安手数料</span>
               </div>
               <div className="w-px h-10 bg-white/20" />
               <div className="text-center md:text-left">
                 <span className="text-3xl md:text-4xl font-black text-white">7</span>
-                <span className="text-xs text-white/50 block">全国拠点</span>
+                <span className="text-xs text-white/80 block">全国拠点</span>
               </div>
             </div>
 
@@ -320,7 +320,7 @@ function Hero() {
               あなたの損失額を診断する
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <p className="text-xs text-white/30 mt-3">10秒で完了</p>
+            <p className="text-xs text-white/60 mt-3">10秒で完了</p>
           </div>
 
           <div className="hidden md:block text-right">
@@ -328,7 +328,7 @@ function Hero() {
               <span className="text-[180px] font-black leading-none text-white/[0.08] select-none block">8%</span>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-[80px] font-black text-white leading-none">8<span className="text-amber-300">%</span></span>
-                <span className="text-sm text-white/50 mt-2 tracking-wider">MANAGEMENT FEE</span>
+                <span className="text-sm text-white/80 mt-2 tracking-wider">MANAGEMENT FEE</span>
               </div>
             </div>
           </div>
@@ -709,23 +709,23 @@ function DashboardMockup() {
 
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-[10px] text-white/50 mb-1">今月の収益</p>
+          <p className="text-[10px] text-white/80 mb-1">今月の収益</p>
           <p className="text-xl font-black tabular-nums">¥482K</p>
         </div>
         <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-[10px] text-white/50 mb-1">稼働率</p>
+          <p className="text-[10px] text-white/80 mb-1">稼働率</p>
           <p className="text-xl font-black tabular-nums">67%</p>
         </div>
       </div>
 
       <div className="bg-white/5 rounded-xl p-3 mb-3">
-        <p className="text-[10px] text-white/50 mb-2">直近の予約</p>
+        <p className="text-[10px] text-white/80 mb-2">直近の予約</p>
         <div className="space-y-1.5">
           <div className="flex justify-between text-[11px]">
-            <span>John D. (USA)</span><span className="text-white/50">4/5-4/8</span>
+            <span>John D. (USA)</span><span className="text-white/80">4/5-4/8</span>
           </div>
           <div className="flex justify-between text-[11px]">
-            <span>Kim S. (KOR)</span><span className="text-white/50">4/10-4/12</span>
+            <span>Kim S. (KOR)</span><span className="text-white/80">4/10-4/12</span>
           </div>
         </div>
       </div>
@@ -733,15 +733,15 @@ function DashboardMockup() {
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold text-amber-400">★4.95</p>
-          <p className="text-[9px] text-white/40">評価</p>
+          <p className="text-[9px] text-white/70">評価</p>
         </div>
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold">23件</p>
-          <p className="text-[9px] text-white/40">レビュー</p>
+          <p className="text-[9px] text-white/70">レビュー</p>
         </div>
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold">¥32.4K</p>
-          <p className="text-[9px] text-white/40">平均単価</p>
+          <p className="text-[9px] text-white/70">平均単価</p>
         </div>
       </div>
     </div>
@@ -825,7 +825,7 @@ function Pricing() {
         </FadeIn>
 
         <FadeIn delay={100}>
-          <p className="text-sm text-white/50 text-center mb-10">
+          <p className="text-sm text-white/80 text-center mb-10">
             初期費用0円。必要なものは、すべて含まれています。
           </p>
         </FadeIn>
@@ -872,7 +872,7 @@ function Pricing() {
         </FadeIn>
 
         <FadeIn delay={300}>
-          <p className="text-xs text-white/30 text-center mt-8">今後もオプションサービスを順次拡充予定</p>
+          <p className="text-xs text-white/60 text-center mt-8">今後もオプションサービスを順次拡充予定</p>
         </FadeIn>
       </div>
     </section>
@@ -1629,7 +1629,7 @@ function FinalCTA() {
 
       <div className="relative px-6 py-20 md:py-28 text-center max-w-3xl mx-auto">
         <FadeIn>
-          <p className="text-xs text-white/40 mb-4">
+          <p className="text-xs text-white/70 mb-4">
             <span className="inline-block bg-amber-500 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded mr-1">先着10オーナー</span>
             移行コスト無料キャンペーン中
           </p>
@@ -1657,7 +1657,7 @@ function FinalCTA() {
               まずは資料だけ見る
             </a>
           </div>
-          <p className="text-xs text-white/30 mt-4">※ キャンペーンは予告なく終了する場合があります</p>
+          <p className="text-xs text-white/60 mt-4">※ キャンペーンは予告なく終了する場合があります</p>
         </FadeIn>
       </div>
     </section>
