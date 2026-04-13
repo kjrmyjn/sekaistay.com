@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <>
       {/* Top bar */}
-      <div className="hidden md:block bg-charcoal text-white/70 text-[11px]">
+      <div className="hidden md:block bg-charcoal text-white/85 text-[11px]">
         <div className="max-w-container mx-auto px-5 md:px-10 py-1.5 flex items-center justify-between">
           <span>住宅宿泊管理業 国土交通大臣(01)第F05780号</span>
           <span>受付 9:00〜18:00（土日祝除く）</span>

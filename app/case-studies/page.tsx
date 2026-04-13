@@ -34,7 +34,7 @@ export default function CaseStudiesPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-teal-full min-h-96 flex items-center justify-center relative overflow-hidden">
+      <section className="bg-deep-teal min-h-96 flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-bright-teal rounded-full blur-3xl"></div>
         </div>
@@ -95,14 +95,14 @@ export default function CaseStudiesPage() {
                     {caseStudy.name}
                   </h3>
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-sm text-mid-gray">{caseStudy.location}</span>
+                    <span className="text-sm text-dark-gray">{caseStudy.location}</span>
                     <span className="text-xs px-2 py-1 bg-teal-tint text-deep-teal rounded-full font-medium">
                       {caseStudy.type}
                     </span>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm text-mid-gray mb-6 leading-relaxed">
+                  <p className="text-sm text-dark-gray mb-6 leading-relaxed">
                     {caseStudy.description}
                   </p>
 
@@ -139,7 +139,7 @@ export default function CaseStudiesPage() {
                       {caseStudy.results.occupancyBefore && (
                         <div>
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-xs uppercase tracking-widest font-semibold text-mid-gray">
+                            <span className="text-xs uppercase tracking-widest font-semibold text-dark-gray">
                               稼働率
                             </span>
                             <span className="text-sm font-bold text-sekai-teal">
@@ -159,11 +159,11 @@ export default function CaseStudiesPage() {
 
                       {caseStudy.results.revenueBefore && (
                         <div>
-                          <div className="text-xs uppercase tracking-widest font-semibold text-mid-gray mb-2">
+                          <div className="text-xs uppercase tracking-widest font-semibold text-dark-gray mb-2">
                             月間収益
                           </div>
                           <div className="flex justify-between items-baseline">
-                            <span className="text-sm text-mid-gray line-through">
+                            <span className="text-sm text-dark-gray line-through">
                               {caseStudy.results.revenueBefore}
                             </span>
                             <span className="text-lg font-bold text-deep-teal">
@@ -175,14 +175,14 @@ export default function CaseStudiesPage() {
 
                       {caseStudy.results.reviewScore !== undefined && (
                         <div className="flex justify-between items-center">
-                          <span className="text-xs uppercase tracking-widest font-semibold text-mid-gray">
+                          <span className="text-xs uppercase tracking-widest font-semibold text-dark-gray">
                             平均評価
                           </span>
                           <div className="flex items-center gap-1">
                             <span className="text-sm font-bold text-charcoal">
                               {caseStudy.results.reviewScore}
                             </span>
-                            <span className="text-xs text-mid-gray">/5.0</span>
+                            <span className="text-xs text-dark-gray">/5.0</span>
                           </div>
                         </div>
                       )}
@@ -211,7 +211,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Banner Section */}
-      <section className="bg-teal-full relative overflow-hidden py-16 md:py-20">
+      <section className="bg-deep-teal relative overflow-hidden py-16 md:py-20">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-bright-teal rounded-full blur-3xl"></div>
         </div>
@@ -297,7 +297,7 @@ export default function CaseStudiesPage() {
                     </svg>
                   </span>
                 </summary>
-                <p className="mt-4 text-mid-gray leading-relaxed">{faq.a}</p>
+                <p className="mt-4 text-dark-gray leading-relaxed">{faq.a}</p>
               </details>
             ))}
           </div>

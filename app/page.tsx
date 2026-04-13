@@ -183,7 +183,7 @@ export default function Home() {
             <div className="grid md:grid-cols-[0.45fr_1fr] gap-10 md:gap-20">
               {/* Left — problem framing */}
               <div>
-                <div className="eyebrow text-mid-gray mb-3">Owner&apos;s Challenge</div>
+                <div className="eyebrow text-dark-gray mb-3">Owner&apos;s Challenge</div>
                 <h2 className="heading-section text-charcoal mb-4">
                   こんなお悩み、<br />
                   ありませんか？
@@ -354,6 +354,7 @@ export default function Home() {
               {/* Dashboard Mock */}
               <div className="bg-white/[0.10] backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-white/10">
                 <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
+<<<<<<< HEAD
                   <p className="eyebrow text-white/70 mb-3">月間サマリー</p>
                   <div className="grid grid-cols-3 gap-4">
                     <div><p className="text-caption text-white/70">今月の収益</p><p className="text-[18px] font-bold text-white">¥1,340,000</p></div>
@@ -363,6 +364,17 @@ export default function Home() {
                 </div>
                 <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
                   <p className="eyebrow text-white/70 mb-3">直近の予約</p>
+=======
+                  <p className="eyebrow text-white/85 mb-3">月間サマリー</p>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div><p className="text-caption text-white/85">今月の収益</p><p className="text-[18px] font-bold text-white">¥1,340,000</p></div>
+                    <div><p className="text-caption text-white/85">稼働率</p><p className="text-[18px] font-bold text-bright-teal">82%</p></div>
+                    <div><p className="text-caption text-white/85">平均単価</p><p className="text-[18px] font-bold text-white">¥54,200</p></div>
+                  </div>
+                </div>
+                <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
+                  <p className="eyebrow text-white/85 mb-3">直近の予約</p>
+>>>>>>> design-system-redesign
                   {[
                     { guest: 'John S.', dates: '4/15–4/18', amount: '¥162,600', country: 'US' },
                     { guest: 'Tanaka Y.', dates: '4/20–4/22', amount: '¥108,400', country: 'JP' },
@@ -373,21 +385,34 @@ export default function Home() {
                         <span className="text-[11px] font-bold text-white/80 bg-white/10 px-1.5 py-0.5 rounded">{r.country}</span>
                         <span className="text-[13px] text-white font-bold">{r.guest}</span>
                       </div>
+<<<<<<< HEAD
                       <span className="text-caption text-white/70">{r.dates}</span>
+=======
+                      <span className="text-caption text-white/85">{r.dates}</span>
+>>>>>>> design-system-redesign
                       <span className="text-[13px] font-bold text-bright-teal">{r.amount}</span>
                     </div>
                   ))}
                 </div>
                 <div className="bg-white/[0.10] rounded-lg p-5">
+<<<<<<< HEAD
                   <p className="eyebrow text-white/70 mb-3">レビュースコア推移</p>
+=======
+                  <p className="eyebrow text-white/85 mb-3">レビュースコア推移</p>
+>>>>>>> design-system-redesign
                   <div className="flex items-end gap-1 h-16">
                     {[4.5, 4.6, 4.7, 4.8, 4.7, 4.9, 4.8, 4.9, 5.0, 4.8, 4.9, 4.8].map((v, i) => (
                       <div key={i} className="flex-1 bg-bright-teal/30 rounded-t" style={{ height: `${(v - 4.0) * 100}%` }} />
                     ))}
                   </div>
                   <div className="flex justify-between mt-2">
+<<<<<<< HEAD
                     <span className="text-[10px] text-white/60 font-mono">1月</span>
                     <span className="text-[10px] text-white/60 font-mono">12月</span>
+=======
+                    <span className="text-[10px] text-white/80 font-mono">1月</span>
+                    <span className="text-[10px] text-white/80 font-mono">12月</span>
+>>>>>>> design-system-redesign
                   </div>
                 </div>
               </div>
@@ -526,7 +551,7 @@ export default function Home() {
                     <span className="text-2xl text-sekai-teal font-bold">{m.name.charAt(0)}</span>
                   </div>
                   <h3 className="text-[16px] font-bold text-charcoal">{m.name}</h3>
-                  <p className="text-caption text-mid-gray mb-1 font-mono">{m.nameEn}</p>
+                  <p className="text-caption text-dark-gray mb-1 font-mono">{m.nameEn}</p>
                   <p className="text-[14px] font-bold text-sekai-teal mb-3">{m.role}</p>
                   <p className="text-body-sm text-dark-gray">{m.bio}</p>
                 </div>
@@ -587,7 +612,7 @@ export default function Home() {
                       <span className="text-sekai-teal font-bold flex-shrink-0 font-mono">Q.</span>
                       {f.q}
                     </h3>
-                    <svg className="w-4 h-4 text-mid-gray shrink-0 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    <svg className="w-4 h-4 text-dark-gray shrink-0 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                   </summary>
                   <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-pale-gray">
                     <p className="text-body-sm text-dark-gray pt-4 pl-7">{f.a}</p>
@@ -626,7 +651,7 @@ export default function Home() {
           <div className="max-w-[1080px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
               <div>
-                <div className="eyebrow text-mid-gray mb-3">News</div>
+                <div className="eyebrow text-dark-gray mb-3">News</div>
                 <h2 className="heading-section text-charcoal">お知らせ</h2>
               </div>
               <Link href="/blog" className="text-[14px] font-bold text-sekai-teal hover:text-deep-teal transition mt-4 md:mt-0 flex items-center gap-1">
@@ -646,7 +671,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-body-sm text-mid-gray">最新のお知らせはまもなく公開されます。</p>
+              <p className="text-body-sm text-dark-gray">最新のお知らせはまもなく公開されます。</p>
             )}
           </div>
         </section>

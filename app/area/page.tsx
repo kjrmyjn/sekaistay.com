@@ -79,7 +79,7 @@ export default function AreaPage() {
                     <h2 className="text-2xl font-black text-charcoal group-hover:text-deep-teal transition">
                       {area.name}
                     </h2>
-                    <p className="text-sm text-mid-gray mt-1">{area.prefecture}</p>
+                    <p className="text-sm text-dark-gray mt-1">{area.prefecture}</p>
                   </div>
 
                   {/* Description */}
@@ -89,7 +89,7 @@ export default function AreaPage() {
 
                   {/* Revenue Indicator */}
                   <div className="bg-teal-tint rounded-lg px-4 py-2.5 mb-4">
-                    <p className="text-[11px] text-mid-gray mb-1">月間運営実績（平均）</p>
+                    <p className="text-[11px] text-dark-gray mb-1">月間運営実績（平均）</p>
                     <p className="text-lg font-bold text-deep-teal">
                       ¥{(area.avgRevenue / 1000).toFixed(0)}k
                     </p>

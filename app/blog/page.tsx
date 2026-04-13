@@ -53,7 +53,7 @@ export default function BlogPage() {
             {/* Posts */}
             {posts.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-mid-gray text-lg">記事の準備中です。</p>
+                <p className="text-dark-gray text-lg">記事の準備中です。</p>
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -69,7 +69,7 @@ export default function BlogPage() {
                     <div className="p-5">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="text-[10px] font-bold text-deep-teal bg-teal-tint px-2 py-0.5 rounded">{post.category}</span>
-                        <span className="text-[10px] text-mid-gray">{post.date}</span>
+                        <span className="text-[10px] text-dark-gray">{post.date}</span>
                       </div>
                       <h2 className="text-sm font-bold text-charcoal group-hover:text-deep-teal transition leading-relaxed mb-2">
                         {post.title}

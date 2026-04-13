@@ -142,17 +142,17 @@ export default function ServicesPage() {
         </section>
 
         {/* 8% Banner */}
-        <section className="bg-teal-full px-6 py-10 md:py-14">
+        <section className="bg-deep-teal px-6 py-10 md:py-14">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6">
             <p className="flex items-baseline gap-1">
-              <span className="text-sm text-white/70 font-bold">手数料</span>
+              <span className="text-sm text-white/85 font-bold">手数料</span>
               <span className="text-[80px] md:text-[100px] font-black text-white leading-none tracking-tighter">8</span>
               <span className="text-3xl md:text-4xl font-black text-amber-300">%</span>
             </p>
             <div className="w-px h-16 bg-white/20 hidden md:block" />
             <div className="text-center md:text-left">
               <p className="text-white font-bold text-lg mb-1">これだけのサービスが、すべて含まれています</p>
-              <p className="text-white/60 text-sm">他社平均15〜25% → SEKAI STAYなら8%。初期費用は今なら0円。</p>
+              <p className="text-white/80 text-sm">他社平均15〜25% → SEKAI STAYなら8%。初期費用は今なら0円。</p>
             </div>
           </div>
         </section>
@@ -203,12 +203,12 @@ export default function ServicesPage() {
               <div className="bg-white border-2 border-light-gray rounded-2xl p-8 text-center">
                 <p className="text-sm text-charcoal font-bold mb-2">Airbnb ホストレビュー平均</p>
                 <p className="stat-number text-deep-teal">4.7<span className="text-3xl">点</span></p>
-                <p className="text-xs text-mid-gray mt-3">5点満点中</p>
+                <p className="text-xs text-dark-gray mt-3">5点満点中</p>
               </div>
               <div className="bg-white border-2 border-light-gray rounded-2xl p-8 text-center">
                 <p className="text-sm text-charcoal font-bold mb-2">Booking.com 平均口コミスコア</p>
                 <p className="stat-number text-deep-teal">4.8<span className="text-3xl">点</span></p>
-                <p className="text-xs text-mid-gray mt-3">5点満点中</p>
+                <p className="text-xs text-dark-gray mt-3">5点満点中</p>
               </div>
             </div>
 
@@ -217,15 +217,15 @@ export default function ServicesPage() {
               {REVENUE_CASES.map((c, i) => (
                 <div key={i} className="bg-white rounded-2xl border border-light-gray p-6 md:p-8">
                   <h3 className="text-lg font-bold text-charcoal mb-1">{c.area}</h3>
-                  <p className="text-xs text-mid-gray mb-6">{c.spec}</p>
+                  <p className="text-xs text-dark-gray mb-6">{c.spec}</p>
                   <div className="text-center mb-6">
                     <p className="stat-number text-deep-teal">{c.pctUp}<span className="text-2xl">%</span></p>
-                    <p className="text-xs text-mid-gray mt-1">収益改善率</p>
+                    <p className="text-xs text-dark-gray mt-1">収益改善率</p>
                   </div>
                   <div className="flex items-end gap-4 justify-center mb-6 h-28">
                     <div className="flex flex-col items-center gap-2">
                       <div className="w-16 bg-light-gray rounded-t" style={{ height: '45%' }} />
-                      <p className="text-[10px] text-mid-gray">他社/自主運営</p>
+                      <p className="text-[10px] text-dark-gray">他社/自主運営</p>
                     </div>
                     <div className="flex flex-col items-center gap-2">
                       <div className="w-16 bg-deep-teal rounded-t" style={{ height: '90%' }} />
@@ -234,13 +234,13 @@ export default function ServicesPage() {
                   </div>
                   <div className="border-t border-light-gray pt-4 space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-mid-gray">粗利（月）</span>
-                      <span className="text-mid-gray line-through text-xs">¥{c.before.monthly}</span>
+                      <span className="text-dark-gray">粗利（月）</span>
+                      <span className="text-dark-gray line-through text-xs">¥{c.before.monthly}</span>
                       <span className="text-deep-teal font-bold">¥{c.after.monthly}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-mid-gray">粗利（年）</span>
-                      <span className="text-mid-gray line-through text-xs">¥{c.before.annual}</span>
+                      <span className="text-dark-gray">粗利（年）</span>
+                      <span className="text-dark-gray line-through text-xs">¥{c.before.annual}</span>
                       <span className="text-deep-teal font-bold">¥{c.after.annual}</span>
                     </div>
                   </div>
@@ -271,7 +271,7 @@ export default function ServicesPage() {
                     </div>
                     <div>
                       <p className="text-sm font-bold text-charcoal">{t.name}</p>
-                      <p className="text-xs text-mid-gray">{t.role}</p>
+                      <p className="text-xs text-dark-gray">{t.role}</p>
                     </div>
                     <span className="ml-auto text-xs font-bold text-amber-500 bg-amber-50 px-2.5 py-1 rounded-full">★ {t.rating}</span>
                   </div>
@@ -283,46 +283,67 @@ export default function ServicesPage() {
         </section>
 
         {/* ━━━ 明確な料金設計 ━━━ */}
-        <section className="bg-teal-full px-6 section-heavy">
+        <section className="bg-deep-teal px-6 section-heavy">
           <div className="max-w-5xl mx-auto">
+<<<<<<< HEAD
             <p className="text-xs font-bold text-white/80 tracking-[0.2em] uppercase mb-3 text-center">Pricing</p>
+=======
+            <p className="text-xs font-bold text-white/90 tracking-[0.2em] uppercase mb-3 text-center">Pricing</p>
+>>>>>>> design-system-redesign
             <h2 className="heading-section text-white text-center mb-6">
               明確な料金設計
             </h2>
-            <p className="text-sm text-white/60 text-center max-w-2xl mx-auto mb-16 leading-relaxed">
+            <p className="text-sm text-white/90 text-center max-w-2xl mx-auto mb-16 leading-relaxed">
               民泊運営代行サービスをご利用いただく際には、開業準備時の「初期費用」と、運営開始後の「月額運営費用」が発生します。
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-10">
               {/* Initial Cost */}
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 md:p-10">
+              <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
                 <h3 className="text-2xl font-bold text-white text-center mb-6">初期費用</h3>
                 <div className="text-center mb-6">
+<<<<<<< HEAD
                   <p className="text-white/80 text-sm line-through mb-1">通常 ¥100,000</p>
+=======
+                  <p className="text-white/90 text-sm line-through mb-1">通常 ¥100,000</p>
+>>>>>>> design-system-redesign
                   <p className="stat-number text-white">0<span className="text-2xl">円</span></p>
                   <span className="inline-block mt-3 bg-amber-400/20 text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full border border-amber-400/30">
                     キャンペーン中
                   </span>
                 </div>
-                <p className="text-sm text-white/60 text-center">OTA初期設定・画像加工・掲載開始まで含む</p>
+                <p className="text-sm text-white/90 text-center">OTA初期設定・画像加工・掲載開始まで含む</p>
               </div>
 
               {/* Running Cost */}
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 md:p-10">
+              <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
                 <h3 className="text-2xl font-bold text-white text-center mb-6">運営費用</h3>
                 <div className="space-y-4">
+<<<<<<< HEAD
                   <div className="bg-white/10 rounded-xl p-5">
                     <p className="text-xs text-white/80 font-bold uppercase tracking-wider mb-2">固定管理費</p>
                     <p className="text-lg text-white font-bold">¥5,000<span className="text-sm font-normal text-white/60"> / 1部屋 / 月</span></p>
                   </div>
                   <div className="bg-white/15 rounded-xl p-6 text-center border border-white/20">
                     <p className="text-xs text-white/80 font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
+=======
+                  <div className="bg-white/[0.15] rounded-xl p-5">
+                    <p className="text-xs text-white font-bold uppercase tracking-wider mb-2">固定管理費</p>
+                    <p className="text-lg text-white font-bold">¥5,000<span className="text-sm font-normal text-white/90"> / 1部屋 / 月</span></p>
+                  </div>
+                  <div className="bg-white/[0.2] rounded-xl p-6 text-center border border-white/25">
+                    <p className="text-xs text-white font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
+>>>>>>> design-system-redesign
                     <p className="flex items-baseline justify-center gap-1">
                       <span className="text-sm text-white font-bold">売上の</span>
                       <span className="text-[80px] font-black text-white leading-none tracking-tighter">8</span>
                       <span className="text-3xl font-black text-white">%</span>
                     </p>
+<<<<<<< HEAD
                     <p className="text-xs text-white/80 mt-2">他社平均: 15〜25%</p>
+=======
+                    <p className="text-xs text-white/90 mt-2">他社平均: 15〜25%</p>
+>>>>>>> design-system-redesign
                   </div>
                 </div>
               </div>
@@ -336,7 +357,7 @@ export default function ServicesPage() {
                   <p className="text-white font-bold text-sm">SEKAI STAY</p>
                 </div>
                 <div className="p-4 border-b border-pale-gray bg-cloud-white">
-                  <p className="text-mid-gray font-bold text-sm">他社平均</p>
+                  <p className="text-dark-gray font-bold text-sm">他社平均</p>
                 </div>
               </div>
               {[
@@ -357,7 +378,7 @@ export default function ServicesPage() {
                     <p className="text-deep-teal font-bold text-sm">{sekai}</p>
                   </div>
                   <div className="p-4">
-                    <p className="text-mid-gray text-sm">{other}</p>
+                    <p className="text-dark-gray text-sm">{other}</p>
                   </div>
                 </div>
               ))}

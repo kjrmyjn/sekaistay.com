@@ -128,7 +128,7 @@ export default function DiagnosticPage() {
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
               無料診断 — あなたの物件の収益ポテンシャル
             </h1>
-            <p className="text-sm md:text-base text-white/70 leading-relaxed">
+            <p className="text-sm md:text-base text-white/85 leading-relaxed">
               5つの質問に答えるだけで、あなたの物件の想定収益とSEKAI STAYの手数料8%による手取り額をシミュレーションします。
             </p>
           </div>
@@ -166,7 +166,7 @@ export default function DiagnosticPage() {
                   >
                     <span className="text-2xl">{opt.icon}</span>
                     <span className="text-base font-bold text-charcoal group-hover:text-deep-teal transition">{opt.label}</span>
-                    <span className="ml-auto text-mid-gray group-hover:text-deep-teal transition">→</span>
+                    <span className="ml-auto text-dark-gray group-hover:text-deep-teal transition">→</span>
                   </button>
                 ))}
               </div>
@@ -186,11 +186,11 @@ export default function DiagnosticPage() {
                     className="flex items-center gap-4 w-full text-left bg-white border-2 border-light-gray rounded-xl px-6 py-4 hover:border-deep-teal hover:bg-teal-tint/30 transition-all group"
                   >
                     <span className="text-base font-bold text-charcoal group-hover:text-deep-teal transition">{opt.label}</span>
-                    <span className="ml-auto text-mid-gray group-hover:text-deep-teal transition">→</span>
+                    <span className="ml-auto text-dark-gray group-hover:text-deep-teal transition">→</span>
                   </button>
                 ))}
               </div>
-              <button onClick={goBack} className="mt-6 text-sm text-mid-gray hover:text-charcoal transition">← 戻る</button>
+              <button onClick={goBack} className="mt-6 text-sm text-dark-gray hover:text-charcoal transition">← 戻る</button>
             </div>
           )}
 
@@ -207,11 +207,11 @@ export default function DiagnosticPage() {
                     className="flex items-center gap-4 w-full text-left bg-white border-2 border-light-gray rounded-xl px-6 py-4 hover:border-deep-teal hover:bg-teal-tint/30 transition-all group"
                   >
                     <span className="text-base font-bold text-charcoal group-hover:text-deep-teal transition">{opt.label}</span>
-                    <span className="ml-auto text-mid-gray group-hover:text-deep-teal transition">→</span>
+                    <span className="ml-auto text-dark-gray group-hover:text-deep-teal transition">→</span>
                   </button>
                 ))}
               </div>
-              <button onClick={goBack} className="mt-6 text-sm text-mid-gray hover:text-charcoal transition">← 戻る</button>
+              <button onClick={goBack} className="mt-6 text-sm text-dark-gray hover:text-charcoal transition">← 戻る</button>
             </div>
           )}
 
@@ -228,11 +228,11 @@ export default function DiagnosticPage() {
                     className="flex items-center gap-4 w-full text-left bg-white border-2 border-light-gray rounded-xl px-6 py-4 hover:border-deep-teal hover:bg-teal-tint/30 transition-all group"
                   >
                     <span className="text-base font-bold text-charcoal group-hover:text-deep-teal transition">{opt.label}</span>
-                    <span className="ml-auto text-mid-gray group-hover:text-deep-teal transition">→</span>
+                    <span className="ml-auto text-dark-gray group-hover:text-deep-teal transition">→</span>
                   </button>
                 ))}
               </div>
-              <button onClick={goBack} className="mt-6 text-sm text-mid-gray hover:text-charcoal transition">← 戻る</button>
+              <button onClick={goBack} className="mt-6 text-sm text-dark-gray hover:text-charcoal transition">← 戻る</button>
             </div>
           )}
 
@@ -249,11 +249,11 @@ export default function DiagnosticPage() {
                     className="flex items-center gap-4 w-full text-left bg-white border-2 border-light-gray rounded-xl px-6 py-4 hover:border-deep-teal hover:bg-teal-tint/30 transition-all group"
                   >
                     <span className="text-base font-bold text-charcoal group-hover:text-deep-teal transition">{opt.label}</span>
-                    <span className="ml-auto text-mid-gray group-hover:text-deep-teal transition">→</span>
+                    <span className="ml-auto text-dark-gray group-hover:text-deep-teal transition">→</span>
                   </button>
                 ))}
               </div>
-              <button onClick={goBack} className="mt-6 text-sm text-mid-gray hover:text-charcoal transition">← 戻る</button>
+              <button onClick={goBack} className="mt-6 text-sm text-dark-gray hover:text-charcoal transition">← 戻る</button>
             </div>
           )}
 
@@ -269,9 +269,9 @@ export default function DiagnosticPage() {
               {/* Revenue Card */}
               <div className="bg-white rounded-2xl border-2 border-deep-teal/20 p-6 md:p-8 mb-6">
                 <div className="text-center mb-6">
-                  <p className="text-xs text-mid-gray font-bold uppercase tracking-wider mb-1">想定月間売上</p>
+                  <p className="text-xs text-dark-gray font-bold uppercase tracking-wider mb-1">想定月間売上</p>
                   <p className="text-4xl md:text-5xl font-black text-charcoal">¥{result.monthlyRevenue.toLocaleString()}</p>
-                  <p className="text-xs text-mid-gray mt-2">宿泊単価 ¥{result.nightlyRate.toLocaleString()}/泊 × 稼働率 {result.occupancy}%</p>
+                  <p className="text-xs text-dark-gray mt-2">宿泊単価 ¥{result.nightlyRate.toLocaleString()}/泊 × 稼働率 {result.occupancy}%</p>
                 </div>
 
                 <div className="border-t border-light-gray pt-6">
@@ -297,19 +297,19 @@ export default function DiagnosticPage() {
 
                     {/* Other company */}
                     <div className="bg-pale-gray rounded-xl p-5">
-                      <p className="text-xs font-bold text-mid-gray mb-4">他社平均（手数料20%）</p>
+                      <p className="text-xs font-bold text-dark-gray mb-4">他社平均（手数料20%）</p>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-mid-gray">変動手数料（20%）</span>
-                          <span className="text-mid-gray">−¥{Math.round(result.monthlyRevenue * 0.2).toLocaleString()}</span>
+                          <span className="text-dark-gray">変動手数料（20%）</span>
+                          <span className="text-dark-gray">−¥{Math.round(result.monthlyRevenue * 0.2).toLocaleString()}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-mid-gray">固定管理費</span>
-                          <span className="text-mid-gray">−¥20,000</span>
+                          <span className="text-dark-gray">固定管理費</span>
+                          <span className="text-dark-gray">−¥20,000</span>
                         </div>
                         <div className="flex justify-between border-t border-light-gray pt-2 mt-2">
-                          <span className="font-bold text-mid-gray">オーナー手取り（月）</span>
-                          <span className="font-bold text-mid-gray text-lg">¥{result.otherProfit.toLocaleString()}</span>
+                          <span className="font-bold text-dark-gray">オーナー手取り（月）</span>
+                          <span className="font-bold text-dark-gray text-lg">¥{result.otherProfit.toLocaleString()}</span>
                         </div>
                       </div>
                     </div>
@@ -319,13 +319,13 @@ export default function DiagnosticPage() {
 
               {/* Annual Difference */}
               <div className="bg-deep-teal rounded-2xl p-6 md:p-8 text-center mb-8">
-                <p className="text-white/60 text-xs font-bold uppercase tracking-wider mb-2">SEKAI STAYなら年間</p>
+                <p className="text-white/80 text-xs font-bold uppercase tracking-wider mb-2">SEKAI STAYなら年間</p>
                 <p className="text-3xl md:text-4xl font-black text-white mb-1">+¥{result.annualDiff.toLocaleString()}</p>
-                <p className="text-white/60 text-sm">他社平均と比較して手取りが増加</p>
+                <p className="text-white/80 text-sm">他社平均と比較して手取りが増加</p>
               </div>
 
               {/* Note */}
-              <p className="text-xs text-mid-gray text-center mb-10 leading-relaxed">
+              <p className="text-xs text-dark-gray text-center mb-10 leading-relaxed">
                 ※ 上記はエリア平均データに基づく概算です。実際の収益は物件の状態・立地・季節等により変動します。<br />
                 より正確なシミュレーションは無料相談にてご案内いたします。
               </p>

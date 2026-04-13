@@ -215,7 +215,7 @@ export default function AreaDetailPage({ params }: Props) {
               <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-light-gray">
                 {/* Monthly Revenue */}
                 <div className="p-6 md:p-8">
-                  <p className="text-sm text-mid-gray mb-2">月間運営実績（平均）</p>
+                  <p className="text-sm text-dark-gray mb-2">月間運営実績（平均）</p>
                   <p className="text-3xl font-black text-charcoal">
                     ¥{(monthlyRevenue / 10000).toFixed(1)}万
                   </p>
@@ -223,7 +223,7 @@ export default function AreaDetailPage({ params }: Props) {
 
                 {/* Annual with Competitor */}
                 <div className="p-6 md:p-8">
-                  <p className="text-sm text-mid-gray mb-2">年間手数料（20%の場合）</p>
+                  <p className="text-sm text-dark-gray mb-2">年間手数料（20%の場合）</p>
                   <p className="text-3xl font-black text-dark-gray">
                     ¥{(competitorAnnualFee / 10000).toFixed(1)}万
                   </p>
@@ -348,7 +348,7 @@ export default function AreaDetailPage({ params }: Props) {
                       {area.name}エリア担当：{office.name}
                     </h2>
                     <p className="text-sm text-dark-gray">{office.displayAddress}</p>
-                    <p className="text-xs text-mid-gray mt-2">
+                    <p className="text-xs text-dark-gray mt-2">
                       地元スタッフが{area.name}の物件特性を熟知した運営をサポートします
                     </p>
                   </div>

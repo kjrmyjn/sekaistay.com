@@ -204,7 +204,7 @@ export default function BlogPostPage({ params }: Props) {
             {/* Meta */}
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-bold text-deep-teal bg-teal-tint px-2 py-0.5 rounded">{post.category}</span>
-              <time className="text-[10px] text-mid-gray" dateTime={post.date}>{post.date}</time>
+              <time className="text-[10px] text-dark-gray" dateTime={post.date}>{post.date}</time>
             </div>
 
             <h1 className="text-2xl md:text-3xl font-black text-charcoal tracking-tight leading-tight mb-6">
@@ -251,7 +251,7 @@ export default function BlogPostPage({ params }: Props) {
                       className="block bg-cloud-white rounded-xl border border-light-gray p-4 hover:border-deep-teal/30 transition group"
                     >
                       <p className="text-sm font-bold text-charcoal group-hover:text-deep-teal transition">{r.title}</p>
-                      <p className="text-[10px] text-mid-gray mt-1">{r.date} · {r.category}</p>
+                      <p className="text-[10px] text-dark-gray mt-1">{r.date} · {r.category}</p>
                     </Link>
                   ))}
                 </div>
