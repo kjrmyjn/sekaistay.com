@@ -285,11 +285,7 @@ export default function ServicesPage() {
         {/* ━━━ 明確な料金設計 ━━━ */}
         <section className="bg-deep-teal px-6 section-heavy">
           <div className="max-w-5xl mx-auto">
-<<<<<<< HEAD
-            <p className="text-xs font-bold text-white/80 tracking-[0.2em] uppercase mb-3 text-center">Pricing</p>
-=======
             <p className="text-xs font-bold text-white/90 tracking-[0.2em] uppercase mb-3 text-center">Pricing</p>
->>>>>>> design-system-redesign
             <h2 className="heading-section text-white text-center mb-6">
               明確な料金設計
             </h2>
@@ -302,11 +298,7 @@ export default function ServicesPage() {
               <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
                 <h3 className="text-2xl font-bold text-white text-center mb-6">初期費用</h3>
                 <div className="text-center mb-6">
-<<<<<<< HEAD
-                  <p className="text-white/80 text-sm line-through mb-1">通常 ¥100,000</p>
-=======
                   <p className="text-white/90 text-sm line-through mb-1">通常 ¥100,000</p>
->>>>>>> design-system-redesign
                   <p className="stat-number text-white">0<span className="text-2xl">円</span></p>
                   <span className="inline-block mt-3 bg-amber-400/20 text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full border border-amber-400/30">
                     キャンペーン中
@@ -319,31 +311,18 @@ export default function ServicesPage() {
               <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
                 <h3 className="text-2xl font-bold text-white text-center mb-6">運営費用</h3>
                 <div className="space-y-4">
-<<<<<<< HEAD
-                  <div className="bg-white/10 rounded-xl p-5">
-                    <p className="text-xs text-white/80 font-bold uppercase tracking-wider mb-2">固定管理費</p>
-                    <p className="text-lg text-white font-bold">¥5,000<span className="text-sm font-normal text-white/60"> / 1部屋 / 月</span></p>
-                  </div>
-                  <div className="bg-white/15 rounded-xl p-6 text-center border border-white/20">
-                    <p className="text-xs text-white/80 font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
-=======
                   <div className="bg-white/[0.15] rounded-xl p-5">
                     <p className="text-xs text-white font-bold uppercase tracking-wider mb-2">固定管理費</p>
                     <p className="text-lg text-white font-bold">¥5,000<span className="text-sm font-normal text-white/90"> / 1部屋 / 月</span></p>
                   </div>
                   <div className="bg-white/[0.2] rounded-xl p-6 text-center border border-white/25">
                     <p className="text-xs text-white font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
->>>>>>> design-system-redesign
                     <p className="flex items-baseline justify-center gap-1">
                       <span className="text-sm text-white font-bold">売上の</span>
                       <span className="text-[80px] font-black text-white leading-none tracking-tighter">8</span>
                       <span className="text-3xl font-black text-white">%</span>
                     </p>
-<<<<<<< HEAD
-                    <p className="text-xs text-white/80 mt-2">他社平均: 15〜25%</p>
-=======
                     <p className="text-xs text-white/90 mt-2">他社平均: 15〜25%</p>
->>>>>>> design-system-redesign
                   </div>
                 </div>
               </div>

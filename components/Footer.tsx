@@ -100,11 +100,7 @@ export default function Footer() {
 
             {/* Service Links */}
             <div>
-<<<<<<< HEAD
-              <p className="text-label text-white/70 uppercase tracking-[0.08em] mb-4">サービス</p>
-=======
               <p className="text-label text-white/85 uppercase tracking-[0.08em] mb-4">サービス</p>
->>>>>>> design-system-redesign
               <nav className="flex flex-col gap-2.5">
                 {SERVICE_LINKS.map(l => (
                   <Link key={l.href} href={l.href} className="text-[13px] text-light-gray hover:text-white transition">
@@ -116,11 +112,7 @@ export default function Footer() {
 
             {/* Company Links */}
             <div>
-<<<<<<< HEAD
-              <p className="text-label text-white/70 uppercase tracking-[0.08em] mb-4">企業情報</p>
-=======
               <p className="text-label text-white/85 uppercase tracking-[0.08em] mb-4">企業情報</p>
->>>>>>> design-system-redesign
               <nav className="flex flex-col gap-2.5">
                 {COMPANY_LINKS.map(l => (
                   <Link key={l.href} href={l.href} className="text-[13px] text-light-gray hover:text-white transition">
@@ -132,11 +124,7 @@ export default function Footer() {
 
             {/* Area Links */}
             <div>
-<<<<<<< HEAD
-              <p className="text-label text-white/70 uppercase tracking-[0.08em] mb-4">対応エリア</p>
-=======
               <p className="text-label text-white/85 uppercase tracking-[0.08em] mb-4">対応エリア</p>
->>>>>>> design-system-redesign
               <nav className="flex flex-col gap-2.5">
                 {AREA_LINKS.map(l => (
                   <Link key={l.href} href={l.href} className="text-[13px] text-light-gray hover:text-white transition">

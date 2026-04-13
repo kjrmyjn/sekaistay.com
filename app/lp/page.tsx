@@ -320,11 +320,7 @@ function Hero() {
               あなたの損失額を診断する
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-<<<<<<< HEAD
-            <p className="text-xs text-white/60 mt-3">10秒で完了</p>
-=======
             <p className="text-xs text-white/80 mt-3">10秒で完了</p>
->>>>>>> design-system-redesign
           </div>
 
           <div className="hidden md:block text-right">
@@ -737,17 +733,6 @@ function DashboardMockup() {
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold text-amber-400">★4.95</p>
-<<<<<<< HEAD
-          <p className="text-[9px] text-white/70">評価</p>
-        </div>
-        <div className="bg-white/5 rounded-lg p-2 text-center">
-          <p className="text-sm font-bold">23件</p>
-          <p className="text-[9px] text-white/70">レビュー</p>
-        </div>
-        <div className="bg-white/5 rounded-lg p-2 text-center">
-          <p className="text-sm font-bold">¥32.4K</p>
-          <p className="text-[9px] text-white/70">平均単価</p>
-=======
           <p className="text-[9px] text-white/85">評価</p>
         </div>
         <div className="bg-white/5 rounded-lg p-2 text-center">
@@ -757,7 +742,6 @@ function DashboardMockup() {
         <div className="bg-white/5 rounded-lg p-2 text-center">
           <p className="text-sm font-bold">¥32.4K</p>
           <p className="text-[9px] text-white/85">平均単価</p>
->>>>>>> design-system-redesign
         </div>
       </div>
     </div>
@@ -888,11 +872,7 @@ function Pricing() {
         </FadeIn>
 
         <FadeIn delay={300}>
-<<<<<<< HEAD
-          <p className="text-xs text-white/60 text-center mt-8">今後もオプションサービスを順次拡充予定</p>
-=======
           <p className="text-xs text-white/80 text-center mt-8">今後もオプションサービスを順次拡充予定</p>
->>>>>>> design-system-redesign
         </FadeIn>
       </div>
     </section>
@@ -1649,11 +1629,7 @@ function FinalCTA() {
 
       <div className="relative px-6 py-20 md:py-28 text-center max-w-3xl mx-auto">
         <FadeIn>
-<<<<<<< HEAD
-          <p className="text-xs text-white/70 mb-4">
-=======
           <p className="text-xs text-white/85 mb-4">
->>>>>>> design-system-redesign
             <span className="inline-block bg-amber-500 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded mr-1">先着10オーナー</span>
             移行コスト無料キャンペーン中
           </p>
@@ -1681,11 +1657,7 @@ function FinalCTA() {
               まずは資料だけ見る
             </a>
           </div>
-<<<<<<< HEAD
-          <p className="text-xs text-white/60 mt-4">※ キャンペーンは予告なく終了する場合があります</p>
-=======
           <p className="text-xs text-white/80 mt-4">※ キャンペーンは予告なく終了する場合があります</p>
->>>>>>> design-system-redesign
         </FadeIn>
       </div>
     </section>

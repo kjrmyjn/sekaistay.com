@@ -354,17 +354,6 @@ export default function Home() {
               {/* Dashboard Mock */}
               <div className="bg-white/[0.10] backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-white/10">
                 <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
-<<<<<<< HEAD
-                  <p className="eyebrow text-white/70 mb-3">月間サマリー</p>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div><p className="text-caption text-white/70">今月の収益</p><p className="text-[18px] font-bold text-white">¥1,340,000</p></div>
-                    <div><p className="text-caption text-white/70">稼働率</p><p className="text-[18px] font-bold text-bright-teal">82%</p></div>
-                    <div><p className="text-caption text-white/70">平均単価</p><p className="text-[18px] font-bold text-white">¥54,200</p></div>
-                  </div>
-                </div>
-                <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
-                  <p className="eyebrow text-white/70 mb-3">直近の予約</p>
-=======
                   <p className="eyebrow text-white/85 mb-3">月間サマリー</p>
                   <div className="grid grid-cols-3 gap-4">
                     <div><p className="text-caption text-white/85">今月の収益</p><p className="text-[18px] font-bold text-white">¥1,340,000</p></div>
@@ -374,7 +363,6 @@ export default function Home() {
                 </div>
                 <div className="bg-white/[0.10] rounded-lg p-5 mb-3">
                   <p className="eyebrow text-white/85 mb-3">直近の予約</p>
->>>>>>> design-system-redesign
                   {[
                     { guest: 'John S.', dates: '4/15–4/18', amount: '¥162,600', country: 'US' },
                     { guest: 'Tanaka Y.', dates: '4/20–4/22', amount: '¥108,400', country: 'JP' },
@@ -385,34 +373,21 @@ export default function Home() {
                         <span className="text-[11px] font-bold text-white/80 bg-white/10 px-1.5 py-0.5 rounded">{r.country}</span>
                         <span className="text-[13px] text-white font-bold">{r.guest}</span>
                       </div>
-<<<<<<< HEAD
-                      <span className="text-caption text-white/70">{r.dates}</span>
-=======
                       <span className="text-caption text-white/85">{r.dates}</span>
->>>>>>> design-system-redesign
                       <span className="text-[13px] font-bold text-bright-teal">{r.amount}</span>
                     </div>
                   ))}
                 </div>
                 <div className="bg-white/[0.10] rounded-lg p-5">
-<<<<<<< HEAD
-                  <p className="eyebrow text-white/70 mb-3">レビュースコア推移</p>
-=======
                   <p className="eyebrow text-white/85 mb-3">レビュースコア推移</p>
->>>>>>> design-system-redesign
                   <div className="flex items-end gap-1 h-16">
                     {[4.5, 4.6, 4.7, 4.8, 4.7, 4.9, 4.8, 4.9, 5.0, 4.8, 4.9, 4.8].map((v, i) => (
                       <div key={i} className="flex-1 bg-bright-teal/30 rounded-t" style={{ height: `${(v - 4.0) * 100}%` }} />
                     ))}
                   </div>
                   <div className="flex justify-between mt-2">
-<<<<<<< HEAD
-                    <span className="text-[10px] text-white/60 font-mono">1月</span>
-                    <span className="text-[10px] text-white/60 font-mono">12月</span>
-=======
                     <span className="text-[10px] text-white/80 font-mono">1月</span>
                     <span className="text-[10px] text-white/80 font-mono">12月</span>
->>>>>>> design-system-redesign
                   </div>
                 </div>
               </div>
