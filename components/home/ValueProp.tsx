@@ -3,7 +3,7 @@ import { VALUE } from '@/content/home/copy'
 export default function ValueProp() {
   return (
     <section className="bg-cloud-white">
-      <div className="max-w-[1120px] mx-auto px-5 md:px-10 section-xl">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         <div className="max-w-[780px] mb-12 md:mb-16">
           <div className="divider-teal mb-5" />
           <h2 className="heading-section text-charcoal mb-5">

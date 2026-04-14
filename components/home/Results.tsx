@@ -5,7 +5,7 @@ import { IconArrowRight } from '@/components/Icons'
 export default function Results() {
   return (
     <section className="bg-white">
-      <div className="max-w-[1120px] mx-auto px-5 md:px-10 section-xl">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-14">
           <div className="max-w-[640px]">
             <div className="eyebrow text-sekai-teal mb-4">Case Studies</div>

@@ -7,6 +7,7 @@ import Hero from '@/components/home/Hero'
 import EntryPoints from '@/components/home/EntryPoints'
 import Simulation from '@/components/home/Simulation'
 import ValueProp from '@/components/home/ValueProp'
+import Ecosystem from '@/components/home/Ecosystem'
 import Results from '@/components/home/Results'
 import Dashboard from '@/components/home/Dashboard'
 import Flow from '@/components/home/Flow'
@@ -45,6 +46,7 @@ export default function Home() {
         <EntryPoints />
         <Simulation />
         <ValueProp />
+        <Ecosystem />
         <Results />
         <Dashboard />
         <Flow />

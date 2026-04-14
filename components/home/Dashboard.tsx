@@ -12,12 +12,12 @@ export default function Dashboard() {
         style={{ background: 'radial-gradient(circle, rgba(37,157,163,0.35) 0%, transparent 70%)' }}
       />
 
-      <div className="relative max-w-[1120px] mx-auto px-5 md:px-10 section-xl">
-        <div className="grid md:grid-cols-[1fr_1.05fr] gap-10 md:gap-14 items-center">
+      <div className="relative max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
+        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
           {/* ── Text ── */}
-          <div>
+          <div className="min-w-0">
             <div className="eyebrow text-bright-teal mb-4">Owner Dashboard</div>
-            <h2 className="heading-section text-white mb-5">
+            <h2 className="heading-section text-white mb-5 jp-keep">
               {DASHBOARD.headline.line1}
               <br />
               <span className="text-bright-teal">{DASHBOARD.headline.line2}</span>
@@ -42,28 +42,28 @@ export default function Dashboard() {
               <span className="w-2.5 h-2.5 rounded-full bg-light-gray" />
               <span className="w-2.5 h-2.5 rounded-full bg-light-gray" />
               <span className="w-2.5 h-2.5 rounded-full bg-light-gray" />
-              <div className="ml-3 flex items-center gap-1.5 text-[11px] text-mid-gray">
+              <div className="ml-3 flex items-center gap-1.5 text-[11px] text-mid-gray min-w-0 truncate">
                 <IconDashboard size={12} color="#9AA0A6" />
-                owner.sekaistay.com
+                <span className="truncate">owner.sekaistay.com</span>
               </div>
             </div>
 
             {/* Top KPIs */}
-            <div className="grid grid-cols-3 gap-3 mb-4">
-              <div className="bg-teal-tint rounded-btn p-3">
-                <div className="text-[10px] text-dark-gray mb-1">今月の売上</div>
-                <div className="text-[18px] font-bold text-deep-teal">¥1.34M</div>
-                <div className="text-[10px] text-sekai-teal font-bold">+18% MoM</div>
+            <div className="grid grid-cols-3 gap-2 md:gap-3 mb-4">
+              <div className="bg-teal-tint rounded-btn p-2.5 md:p-3 min-w-0">
+                <div className="text-[10px] text-dark-gray mb-1 truncate">今月の売上</div>
+                <div className="text-[16px] md:text-[18px] font-bold text-deep-teal">¥1.34M</div>
+                <div className="text-[10px] text-sekai-teal font-bold truncate">+18% MoM</div>
               </div>
-              <div className="bg-cloud-white rounded-btn p-3">
+              <div className="bg-cloud-white rounded-btn p-2.5 md:p-3 min-w-0">
                 <div className="text-[10px] text-dark-gray mb-1">稼働率</div>
-                <div className="text-[18px] font-bold text-charcoal">82%</div>
+                <div className="text-[16px] md:text-[18px] font-bold text-charcoal">82%</div>
                 <div className="text-[10px] text-sekai-teal font-bold">+24pt</div>
               </div>
-              <div className="bg-cloud-white rounded-btn p-3">
-                <div className="text-[10px] text-dark-gray mb-1">予約ペース</div>
-                <div className="text-[18px] font-bold text-charcoal">順調</div>
-                <div className="text-[10px] text-mid-gray">vs 先月</div>
+              <div className="bg-cloud-white rounded-btn p-2.5 md:p-3 min-w-0">
+                <div className="text-[10px] text-dark-gray mb-1 truncate">予約ペース</div>
+                <div className="text-[16px] md:text-[18px] font-bold text-charcoal">順調</div>
+                <div className="text-[10px] text-mid-gray truncate">vs 先月</div>
               </div>
             </div>
 
@@ -97,10 +97,10 @@ export default function Dashboard() {
               ].map((a, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between text-[12px] bg-white border border-pale-gray rounded px-3 py-2"
+                  className="flex items-center justify-between gap-2 text-[12px] bg-white border border-pale-gray rounded px-3 py-2 min-w-0"
                 >
-                  <span className="text-charcoal">{a.txt}</span>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                  <span className="text-charcoal truncate">{a.txt}</span>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0 ${
                     a.tag === '優先'
                       ? 'bg-teal-tint text-deep-teal'
                       : 'bg-pale-gray text-dark-gray'

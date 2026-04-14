@@ -5,10 +5,10 @@ import { IconArrowRight, IconCheck, IconChart } from '@/components/Icons'
 export default function Simulation() {
   return (
     <section className="relative bg-white">
-      <div className="max-w-[1120px] mx-auto px-5 md:px-10 section-xl">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         <div className="max-w-[720px] mb-10 md:mb-14">
           <div className="eyebrow text-sekai-teal mb-4">Income Simulation</div>
-          <h2 className="heading-section text-charcoal mb-4">
+          <h2 className="heading-section text-charcoal mb-4 jp-keep">
             {SIMULATION.headline.line1}
             <br />
             <span className="text-sekai-teal">{SIMULATION.headline.line2}</span>

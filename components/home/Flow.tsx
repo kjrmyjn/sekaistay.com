@@ -5,7 +5,7 @@ import { IconArrowRight } from '@/components/Icons'
 export default function Flow() {
   return (
     <section className="bg-white">
-      <div className="max-w-[1120px] mx-auto px-5 md:px-10 section-xl">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         <div className="max-w-[720px] mb-12 md:mb-14">
           <div className="divider-teal mb-5" />
           <h2 className="heading-section text-charcoal mb-4">

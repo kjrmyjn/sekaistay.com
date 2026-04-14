@@ -11,7 +11,7 @@ const ICONS = {
 export default function EntryPoints() {
   return (
     <section className="bg-cloud-white">
-      <div className="max-w-[1120px] mx-auto px-5 md:px-10 section-lg">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-lg">
         <div className="max-w-[720px] mb-12 md:mb-14">
           <div className="divider-teal mb-5" />
           <h2 className="heading-section text-charcoal mb-4">

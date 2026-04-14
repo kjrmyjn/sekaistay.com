@@ -5,7 +5,7 @@ import { IconArrowRight, IconCheck } from '@/components/Icons'
 export default function Pricing() {
   return (
     <section className="bg-cloud-white">
-      <div className="max-w-[1120px] mx-auto px-5 md:px-10 section-xl">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         <div className="max-w-[880px] mx-auto text-center mb-10">
           <div className="eyebrow text-sekai-teal mb-4 flex justify-center">
             Pricing
