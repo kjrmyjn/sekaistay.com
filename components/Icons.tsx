@@ -24,6 +24,26 @@ export function IconTV({ size = 24, color = 'currentColor', className }: IconPro
   )
 }
 
+export function IconYouTube({ size = 24, className }: IconProps) {
+  // Authentic YouTube brand mark — red rounded rectangle + white play triangle
+  return (
+    <svg
+      width={size}
+      height={size * (18 / 24)}
+      viewBox="0 0 24 18"
+      fill="none"
+      className={className}
+      aria-label="YouTube"
+    >
+      <path
+        d="M23.498 2.81a3.008 3.008 0 00-2.12-2.13C19.505.2 12 .2 12 .2s-7.505 0-9.378.48A3.008 3.008 0 00.502 2.81C.02 4.687 0 8.5 0 8.5s.02 3.813.502 5.69a3.008 3.008 0 002.12 2.13C4.495 16.8 12 16.8 12 16.8s7.505 0 9.378-.48a3.008 3.008 0 002.12-2.13C23.98 12.313 24 8.5 24 8.5s-.02-3.813-.502-5.69z"
+        fill="#FF0000"
+      />
+      <path d="M9.6 12.2V4.8L15.8 8.5l-6.2 3.7z" fill="#FFFFFF" />
+    </svg>
+  )
+}
+
 export function IconTrophy({ size = 24, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>

@@ -7,11 +7,12 @@ import {
   IconSparkle,
   IconChart,
   IconTV,
+  IconYouTube,
 } from '@/components/Icons'
 import { JP } from '@/components/JP'
 
-const SPOT_IMGS = [IMG.fbNojiri, IMG.fbKyoto, IMG.fbAmbient]
 const PILLAR_ICONS = [IconChart, IconSparkle, IconTV, IconGlobe]
+const YOUTUBE_PILLAR_INDEX = 2
 
 export default function Ecosystem() {
   return (
@@ -78,7 +79,7 @@ export default function Ecosystem() {
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="text-[10px] text-white/75 font-mono mb-0.5">SPOT 01</div>
                     <div className="text-[14px] font-bold text-white">The World Cafe</div>
-                    <div className="text-[11px] text-white/80">長野・野尻湖</div>
+                    <div className="text-[11px] text-white/80">東京・中目黒</div>
                   </div>
                 </div>
                 {/* Small spot 1 */}
@@ -165,15 +166,25 @@ export default function Ecosystem() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 bg-light-gray gap-px">
             {ECOSYSTEM.media.pillars.map((p, i) => {
               const Icon = PILLAR_ICONS[i]
+              const isYouTube = i === YOUTUBE_PILLAR_INDEX
               return (
                 <div
                   key={p.title}
                   className="bg-white p-6 md:p-7 flex flex-col"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-full bg-teal-tint flex items-center justify-center">
-                      <Icon size={18} color="#167B81" />
-                    </div>
+                    {isYouTube ? (
+                      <div className="inline-flex items-center gap-1.5">
+                        <IconYouTube size={30} />
+                        <span className="text-[11px] font-bold text-charcoal">
+                          20万+
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-teal-tint flex items-center justify-center">
+                        <Icon size={18} color="#167B81" />
+                      </div>
+                    )}
                     <span className="text-[10px] font-mono text-mid-gray">
                       {String(i + 1).padStart(2, '0')}
                     </span>

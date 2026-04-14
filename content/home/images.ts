@@ -38,12 +38,14 @@ export const IMG = {
 
   // ─── Ecosystem: F&B spots ─────────────────
   fbNojiri: {
-    src: UNSPLASH('1511920170033-f8396924c348', 800, 600),
-    alt: 'The World Cafe（長野・野尻湖）のカウンター',
+    // 都市型カフェの自然光の入る店内（中目黒の雰囲気）
+    src: UNSPLASH('1525610553991-2bede1a236e2', 900, 700),
+    alt: 'The World Cafe（東京・中目黒）の店内',
   },
   fbKyoto: {
-    src: UNSPLASH('1509042239860-f550ce710b93', 800, 600),
-    alt: '京都の飲食事業拠点',
+    // 和食・食のクローズアップ
+    src: UNSPLASH('1580959375944-abd7e991f971', 900, 700),
+    alt: '京都の飲食事業のフードイメージ',
   },
   fbAmbient: {
     src: UNSPLASH('1554118811-1e0d58224f24', 1200, 600),

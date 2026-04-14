@@ -72,17 +72,44 @@ export default function Dashboard() {
             <div className="bg-cloud-white rounded-btn p-4 mb-4">
               <div className="flex items-center justify-between mb-3">
                 <div className="text-[11px] font-bold text-charcoal">レビュー推移</div>
-                <div className="text-[10px] text-dark-gray">6ヶ月</div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-[11px] font-bold text-sekai-teal">4.8</span>
+                  <span className="text-[9px] text-mid-gray">/ 5.0</span>
+                </div>
               </div>
-              <div className="flex items-end justify-between h-16 gap-1.5">
-                {[35, 48, 55, 62, 78, 92].map((h, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-1">
+              <div className="flex items-end justify-between gap-1.5 h-20">
+                {[
+                  { h: 35, m: '11月' },
+                  { h: 48, m: '12月' },
+                  { h: 55, m: '1月' },
+                  { h: 62, m: '2月' },
+                  { h: 78, m: '3月' },
+                  { h: 92, m: '4月' },
+                ].map((b, i, arr) => {
+                  const isLast = i === arr.length - 1
+                  return (
                     <div
-                      className="w-full rounded-sm bg-sekai-teal"
-                      style={{ height: `${h}%`, opacity: 0.4 + i * 0.1 }}
-                    />
-                  </div>
-                ))}
+                      key={i}
+                      className="flex-1 flex flex-col items-center gap-1 h-full"
+                      title={`${b.m}: ${b.h}`}
+                    >
+                      <div className="flex-1 w-full flex items-end">
+                        <div
+                          className={`w-full rounded-sm transition-all ${
+                            isLast ? 'bg-deep-teal' : 'bg-sekai-teal'
+                          }`}
+                          style={{
+                            height: `${b.h}%`,
+                            opacity: isLast ? 1 : 0.35 + i * 0.12,
+                          }}
+                        />
+                      </div>
+                      <span className="text-[9px] text-mid-gray leading-none">
+                        {b.m}
+                      </span>
+                    </div>
+                  )
+                })}
               </div>
             </div>
 

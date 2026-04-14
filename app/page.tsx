@@ -48,10 +48,10 @@ export default function Home() {
         <EntryPoints />
         <Simulation />
         <ValueProp />
-        <Ecosystem />
         <Results />
         <Dashboard />
         <Flow />
+        <Ecosystem />
         <Pricing />
         <FAQ />
         <FinalCTA />
