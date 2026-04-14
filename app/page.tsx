@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
 import Hero from '@/components/home/Hero'
+import AuthorityBar from '@/components/home/AuthorityBar'
 import EntryPoints from '@/components/home/EntryPoints'
 import Simulation from '@/components/home/Simulation'
 import ValueProp from '@/components/home/ValueProp'
@@ -43,6 +44,7 @@ export default function Home() {
       <FloatingCTA />
       <main>
         <Hero />
+        <AuthorityBar />
         <EntryPoints />
         <Simulation />
         <ValueProp />

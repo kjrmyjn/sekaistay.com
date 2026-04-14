@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { FINAL_CTA } from '@/content/home/copy'
 import { IMG } from '@/content/home/images'
 import { IconArrowRight } from '@/components/Icons'
+import { JP } from '@/components/JP'
 
 export default function FinalCTA() {
   return (
@@ -41,7 +42,7 @@ export default function FinalCTA() {
           Start Here
         </div>
         <h2 className="heading-hero text-white mb-6 jp-keep">
-          {FINAL_CTA.headline}
+          <JP>{FINAL_CTA.headline}</JP>
         </h2>
         <p className="text-body text-white/85 mb-10 max-w-[640px] mx-auto jp-break">
           {FINAL_CTA.body}

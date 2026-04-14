@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { FLOW } from '@/content/home/copy'
 import { IconArrowRight } from '@/components/Icons'
+import { JP } from '@/components/JP'
 
 export default function Flow() {
   return (
@@ -8,10 +9,10 @@ export default function Flow() {
       <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         <div className="max-w-[720px] mb-12 md:mb-14">
           <div className="divider-teal mb-5" />
-          <h2 className="heading-section text-charcoal mb-4">
-            {FLOW.headline}
+          <h2 className="heading-section text-charcoal mb-4 jp-keep">
+            <JP>{FLOW.headline}</JP>
           </h2>
-          <p className="text-body text-dark-gray">
+          <p className="text-body text-dark-gray jp-break">
             {FLOW.body}
           </p>
         </div>
@@ -40,10 +41,10 @@ export default function Flow() {
                 </div>
 
                 <div className="bg-cloud-white md:bg-white rounded-card md:border md:border-light-gray p-5 md:p-6 md:lift">
-                  <h3 className="heading-sub text-charcoal mb-2">
-                    {s.title}
+                  <h3 className="heading-sub text-charcoal mb-2 jp-keep">
+                    <JP>{s.title}</JP>
                   </h3>
-                  <p className="text-body-sm text-dark-gray">
+                  <p className="text-body-sm text-dark-gray jp-break">
                     {s.body}
                   </p>
                 </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { DASHBOARD } from '@/content/home/copy'
 import { IconArrowRight, IconDashboard } from '@/components/Icons'
+import { JP } from '@/components/JP'
 
 export default function Dashboard() {
   return (
@@ -18,9 +19,9 @@ export default function Dashboard() {
           <div className="min-w-0">
             <div className="eyebrow text-bright-teal mb-4">Owner Dashboard</div>
             <h2 className="heading-section text-white mb-5 jp-keep">
-              {DASHBOARD.headline.line1}
-              <br />
-              <span className="text-bright-teal">{DASHBOARD.headline.line2}</span>
+              <JP>{DASHBOARD.headline.line1}</JP>
+              <br className="hidden sm:inline" />
+              {' '}<span className="text-bright-teal"><JP>{DASHBOARD.headline.line2}</JP></span>
             </h2>
             <p className="text-body text-white/75 mb-8">
               {DASHBOARD.body}

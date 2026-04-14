@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ENTRY } from '@/content/home/copy'
 import { IMG } from '@/content/home/images'
 import { IconArrowRight, IconCheckCircle, IconSparkle, IconChart } from '@/components/Icons'
+import { JP } from '@/components/JP'
 
 const ICONS = {
   existing: IconCheckCircle,
@@ -22,8 +23,8 @@ export default function EntryPoints() {
       <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-lg">
         <div className="max-w-[720px] mb-12 md:mb-14">
           <div className="divider-teal mb-5" />
-          <h2 className="heading-section text-charcoal mb-4">
-            {ENTRY.headline}
+          <h2 className="heading-section text-charcoal mb-4 jp-keep">
+            <JP>{ENTRY.headline}</JP>
           </h2>
           <p className="text-body text-dark-gray jp-break">
             {ENTRY.body}
@@ -69,7 +70,7 @@ export default function EntryPoints() {
                 {/* Content */}
                 <div className="p-6 md:p-7 flex flex-col flex-1">
                   <h3 className="heading-sub text-charcoal mb-3 jp-keep">
-                    {c.title}
+                    <JP>{c.title}</JP>
                   </h3>
 
                   <p className="text-body-sm text-dark-gray mb-5 flex-1 jp-break">

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SIMULATION } from '@/content/home/copy'
 import { IconArrowRight, IconCheck, IconChart } from '@/components/Icons'
+import { JP } from '@/components/JP'
 
 export default function Simulation() {
   return (
@@ -9,9 +10,9 @@ export default function Simulation() {
         <div className="max-w-[720px] mb-10 md:mb-14">
           <div className="eyebrow text-sekai-teal mb-4">Income Simulation</div>
           <h2 className="heading-section text-charcoal mb-4 jp-keep">
-            {SIMULATION.headline.line1}
-            <br />
-            <span className="text-sekai-teal">{SIMULATION.headline.line2}</span>
+            <JP>{SIMULATION.headline.line1}</JP>
+            <br className="hidden sm:inline" />
+            {' '}<span className="text-sekai-teal"><JP>{SIMULATION.headline.line2}</JP></span>
           </h2>
           <p className="text-body text-dark-gray jp-break">
             {SIMULATION.body}

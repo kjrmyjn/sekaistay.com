@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { VALUE } from '@/content/home/copy'
 import { IMG } from '@/content/home/images'
+import { JP } from '@/components/JP'
 
 export default function ValueProp() {
   return (
@@ -10,7 +11,7 @@ export default function ValueProp() {
           <div>
             <div className="divider-teal mb-5" />
             <h2 className="heading-section text-charcoal jp-keep">
-              {VALUE.headline}
+              <JP>{VALUE.headline}</JP>
             </h2>
           </div>
           <p className="text-body text-dark-gray jp-break">
@@ -61,7 +62,7 @@ export default function ValueProp() {
                 </div>
 
                 <h3 className="heading-sub text-charcoal mb-3 jp-keep">
-                  {item.title}
+                  <JP>{item.title}</JP>
                 </h3>
 
                 <p className="text-body-sm text-dark-gray jp-break">

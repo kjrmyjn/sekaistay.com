@@ -8,6 +8,7 @@ import {
   IconChart,
   IconTV,
 } from '@/components/Icons'
+import { JP } from '@/components/JP'
 
 const SPOT_IMGS = [IMG.fbNojiri, IMG.fbKyoto, IMG.fbAmbient]
 const PILLAR_ICONS = [IconChart, IconSparkle, IconTV, IconGlobe]
@@ -20,9 +21,9 @@ export default function Ecosystem() {
         <div className="max-w-[720px] mb-12 md:mb-16">
           <div className="eyebrow text-sekai-teal mb-4">{ECOSYSTEM.eyebrow}</div>
           <h2 className="heading-section text-charcoal mb-5 jp-keep">
-            {ECOSYSTEM.headline.line1}
+            <JP>{ECOSYSTEM.headline.line1}</JP>
             <br className="hidden sm:inline" />
-            {ECOSYSTEM.headline.line2}
+            <JP>{ECOSYSTEM.headline.line2}</JP>
           </h2>
           <p className="text-body text-dark-gray jp-break">{ECOSYSTEM.body}</p>
         </div>
@@ -42,7 +43,7 @@ export default function Ecosystem() {
               </div>
 
               <h3 className="heading-sub text-charcoal mb-4 jp-keep">
-                {ECOSYSTEM.hospitality.title}
+                <JP>{ECOSYSTEM.hospitality.title}</JP>
               </h3>
 
               <p className="text-body text-dark-gray mb-4 jp-break">
@@ -151,7 +152,7 @@ export default function Ecosystem() {
               </div>
 
               <h3 className="heading-sub text-white mb-4 max-w-[620px] jp-keep">
-                {ECOSYSTEM.media.title}
+                <JP>{ECOSYSTEM.media.title}</JP>
               </h3>
 
               <p className="text-body text-white/80 max-w-[720px] jp-break">
@@ -179,7 +180,7 @@ export default function Ecosystem() {
                   </div>
 
                   <h4 className="text-[15px] font-bold text-charcoal mb-3 leading-snug jp-keep">
-                    {p.title}
+                    <JP>{p.title}</JP>
                   </h4>
 
                   <p className="text-body-sm text-dark-gray jp-break">
