@@ -1,21 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { HERO } from '@/content/home/copy'
+import { IMG } from '@/content/home/images'
 import { IconArrowRight, IconSparkle } from '@/components/Icons'
 
 export default function Hero() {
   return (
     <section className="relative bg-white overflow-hidden">
-      {/* Soft decorative gradient — non-intrusive */}
+      {/* Soft warm glow — upper right */}
       <div
         aria-hidden
-        className="absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl pointer-events-none"
+        className="absolute -top-40 right-[-12%] w-[520px] h-[520px] rounded-full opacity-50 blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #E5F4F5 0%, transparent 70%)' }}
       />
 
-      <div className="relative max-w-[1080px] mx-auto px-5 md:px-10 pt-12 pb-14 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24">
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-start">
+      <div className="relative max-w-[1120px] mx-auto px-5 md:px-10 pt-12 pb-14 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
           {/* ── Left : headline + CTAs ── */}
-          <div className="min-w-0">
+          <div className="min-w-0 relative z-10">
             <div className="eyebrow text-sekai-teal mb-5">
               Vacation Rental Management
             </div>
@@ -26,7 +28,7 @@ export default function Hero() {
               {HERO.headline.line2}
             </h1>
 
-            <p className="text-body text-dark-gray max-w-[560px] mb-8 jp-break">
+            <p className="text-body text-dark-gray max-w-[540px] mb-8 jp-break">
               {HERO.body}
             </p>
 
@@ -46,7 +48,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 mb-4">
               <Link
                 href={HERO.primaryCta.href}
-                className="inline-flex items-center justify-center gap-2 bg-sekai-teal hover:bg-deep-teal text-white font-bold px-6 py-3.5 rounded-btn transition text-[15px]"
+                className="inline-flex items-center justify-center gap-2 bg-sekai-teal hover:bg-deep-teal text-white font-bold px-6 py-3.5 rounded-btn transition text-[15px] shadow-[0_4px_16px_rgba(37,157,163,0.25)]"
               >
                 {HERO.primaryCta.label}
                 <IconArrowRight size={16} />
@@ -68,52 +70,67 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* ── Right : Simulation side card ── */}
-          <aside className="min-w-0">
-            <div className="bg-white rounded-card border border-light-gray shadow-[0_8px_32px_rgba(22,123,129,0.08)] p-6 md:p-8 lift">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-9 h-9 rounded-full bg-teal-tint flex items-center justify-center flex-shrink-0">
-                  <IconSparkle size={18} color="#167B81" />
+          {/* ── Right : Property image + floating sim card ── */}
+          <div className="relative min-w-0">
+            {/* Main property image */}
+            <div className="relative aspect-[4/5] w-full rounded-[20px] overflow-hidden">
+              <Image
+                src={IMG.heroMain.src}
+                alt={IMG.heroMain.alt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              {/* Subtle teal tint overlay for brand cohesion */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(22,123,129,0) 0%, rgba(22,123,129,0.12) 100%)',
+                }}
+              />
+              {/* Reviewed badge */}
+              <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 shadow-sm">
+                <span className="text-[16px] font-bold text-sekai-teal leading-none">
+                  ★ 4.8
+                </span>
+                <span className="text-[11px] text-dark-gray">管理物件レビュー平均</span>
+              </div>
+            </div>
+
+            {/* Floating Simulation card — overlap bottom-left on desktop; below on mobile */}
+            <div className="md:absolute md:-bottom-10 md:-left-10 md:w-[340px] mt-5 md:mt-0 bg-white rounded-card border border-light-gray shadow-[0_12px_40px_rgba(22,123,129,0.12)] p-6 lift">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 rounded-full bg-teal-tint flex items-center justify-center flex-shrink-0">
+                  <IconSparkle size={16} color="#167B81" />
                 </div>
                 <span className="eyebrow text-sekai-teal">Free · 3 min</span>
               </div>
 
-              <h2 className="heading-sub text-charcoal mb-3 jp-keep">
+              <h2 className="text-[16px] font-bold text-charcoal mb-2 leading-snug jp-keep">
                 {HERO.sideCard.title}
               </h2>
 
-              <p className="text-body-sm text-dark-gray mb-6 jp-break">
+              <p className="text-[13px] text-dark-gray mb-4 leading-relaxed jp-break">
                 {HERO.sideCard.body}
               </p>
 
-              {/* Preview "form" — non-functional visual */}
-              <div className="space-y-2.5 mb-6">
-                {['エリア', '物件タイプ', '部屋数'].map((f) => (
-                  <div
-                    key={f}
-                    className="flex items-center justify-between bg-pale-gray/60 border border-light-gray rounded-btn px-4 py-2.5 text-[13px] text-dark-gray"
-                  >
-                    <span>{f}</span>
-                    <span className="text-mid-gray">選択する</span>
-                  </div>
-                ))}
-              </div>
-
               <Link
                 href={HERO.sideCard.cta.href}
-                className="w-full inline-flex items-center justify-center gap-2 bg-charcoal hover:bg-deep-teal text-white font-bold py-3.5 rounded-btn transition text-[14px]"
+                className="w-full inline-flex items-center justify-center gap-2 bg-charcoal hover:bg-deep-teal text-white font-bold py-3 rounded-btn transition text-[13px]"
               >
                 {HERO.sideCard.cta.label}
-                <IconArrowRight size={16} />
+                <IconArrowRight size={14} />
               </Link>
-
-              <p className="text-[11px] text-mid-gray mt-4 text-center">
-                登録不要・メール受取のみ
-              </p>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
+
+      {/* Bottom spacer for floating card overlap on desktop */}
+      <div aria-hidden className="hidden md:block h-12" />
     </section>
   )
 }
