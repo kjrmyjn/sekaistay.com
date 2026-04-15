@@ -10,6 +10,7 @@ const SERVICE_LINKS = [
 ]
 
 const COMPANY_LINKS = [
+  { href: '/about', label: '私たちについて' },
   { href: '/company', label: '会社概要' },
   { href: '/case-studies', label: '導入事例' },
   { href: '/blog', label: 'コラム' },

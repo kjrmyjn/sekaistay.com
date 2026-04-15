@@ -8,6 +8,7 @@ const NAV = [
   { href: '/case-studies', label: '導入事例' },
   { href: '/pricing', label: '料金' },
   { href: '/area', label: '対応エリア' },
+  { href: '/about', label: '私たちについて' },
   { href: '/blog', label: 'コラム' },
   { href: '/faq', label: 'FAQ' },
 ]
