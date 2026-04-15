@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { getAllSubmissions, type Submission } from '@/lib/storage'
 import { calculateScore } from '@/lib/scoring'
 import { CATEGORY_LABELS } from '@/data/questions'
+import { IconMail, IconPhone, IconCalendar } from '@/components/Icons'
 
 type SortKey = 'submittedAt' | 'totalScore'
 type FilterMode = 'all' | 'consultation' | 'lowScore'
@@ -321,10 +322,21 @@ function DetailModal({
           </div>
 
           {/* 連絡先 */}
-          <div className="border-t border-slate-100 pt-4 space-y-1 text-xs text-slate-600">
-            <p>📧 {submission.email}</p>
-            {submission.tel && <p>📞 {submission.tel}</p>}
-            <p>📅 {new Date(submission.submittedAt).toLocaleString('ja-JP')}</p>
+          <div className="border-t border-slate-100 pt-4 space-y-2 text-xs text-slate-600">
+            <p className="flex items-center gap-2">
+              <IconMail size={13} className="text-slate-400" />
+              <span>{submission.email}</span>
+            </p>
+            {submission.tel && (
+              <p className="flex items-center gap-2">
+                <IconPhone size={13} className="text-slate-400" />
+                <span>{submission.tel}</span>
+              </p>
+            )}
+            <p className="flex items-center gap-2">
+              <IconCalendar size={13} className="text-slate-400" />
+              <span>{new Date(submission.submittedAt).toLocaleString('ja-JP')}</span>
+            </p>
           </div>
         </div>
       </div>

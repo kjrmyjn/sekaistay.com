@@ -6,6 +6,7 @@ import { getAllSubmissions, type Submission } from '@/lib/storage'
 import { calculateScore, type AuditScore } from '@/lib/scoring'
 import { RESULT_COPIES, CATEGORY_ISSUE_COPY } from '@/data/resultCopy'
 import { CATEGORY_LABELS } from '@/data/questions'
+import { IconCheck, IconAlert, IconTarget, IconArrowRight } from '@/components/Icons'
 
 export default function ResultPage() {
   const [submission, setSubmission] = useState<Submission | null>(null)
@@ -118,15 +119,24 @@ export default function ResultPage() {
         {/* ── 強みと改善余地 ──────────────────── */}
         <div className="card px-5 py-5 space-y-4">
           <div>
-            <p className="text-xs font-semibold text-emerald-700 mb-1">✓ 現状の強み</p>
+            <div className="inline-flex items-center gap-1.5 mb-1">
+              <IconCheck size={14} className="text-emerald-600" />
+              <p className="text-xs font-semibold text-emerald-700">現状の強み</p>
+            </div>
             <p className="text-sm text-slate-700">{copy.strength}</p>
           </div>
           <div className="border-t border-slate-100 pt-4">
-            <p className="text-xs font-semibold text-amber-700 mb-1">△ 改善余地</p>
+            <div className="inline-flex items-center gap-1.5 mb-1">
+              <IconAlert size={14} className="text-amber-600" />
+              <p className="text-xs font-semibold text-amber-700">改善余地</p>
+            </div>
             <p className="text-sm text-slate-700">{copy.improvement}</p>
           </div>
           <div className="border-t border-slate-100 pt-4">
-            <p className="text-xs font-semibold text-blue-700 mb-1">→ 優先して見直すこと</p>
+            <div className="inline-flex items-center gap-1.5 mb-1">
+              <IconTarget size={14} className="text-blue-600" />
+              <p className="text-xs font-semibold text-blue-700">優先して見直すこと</p>
+            </div>
             <p className="text-sm text-slate-700">{copy.priority}</p>
           </div>
           <div className="border-t border-slate-100 pt-4">
@@ -139,12 +149,13 @@ export default function ResultPage() {
         <div className="card px-6 py-7 text-center bg-deep-teal text-white">
           <p className="text-base font-bold mb-2">{copy.ctaText}</p>
           <p className="text-xs text-bright-teal mb-5">{copy.ctaSubtext}</p>
-          <a
-            href="mailto:contact@example.com?subject=民泊運営の無料相談を希望します"
-            className="block w-full bg-white text-deep-teal text-sm font-bold py-3.5 rounded-xl active:opacity-90 transition"
+          <Link
+            href="/contact"
+            className="group inline-flex items-center justify-center gap-2 w-full bg-white text-deep-teal text-sm font-bold py-3.5 rounded-xl active:opacity-90 transition"
           >
             無料相談を申し込む
-          </a>
+            <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
+          </Link>
           <p className="text-xs text-teal-tint mt-3">完全無料 ・ 営業は一切しません</p>
         </div>
 

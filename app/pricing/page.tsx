@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import { IconCheck, IconArrowRight } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: '料金',
@@ -119,10 +120,11 @@ export default function PricingPage() {
 
             <div className="text-center mt-10">
               <Link
-                href="/lp#diagnostic"
-                className="inline-block bg-white text-deep-teal font-bold px-12 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
+                href="/simulate"
+                className="group inline-flex items-center gap-2 bg-white text-deep-teal font-bold px-12 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
               >
-                収支シミュレーションはこちら →
+                収支シミュレーションはこちら
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
             </div>
           </div>
@@ -135,7 +137,9 @@ export default function PricingPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               {INCLUDES.map((item, i) => (
                 <div key={i} className="flex items-center gap-4 bg-cloud-white rounded-xl p-5 border border-light-gray">
-                  <span className="w-8 h-8 rounded-full bg-deep-teal text-white flex items-center justify-center text-sm flex-shrink-0">✓</span>
+                  <span className="w-8 h-8 rounded-full bg-deep-teal text-white flex items-center justify-center flex-shrink-0">
+                    <IconCheck size={14} className="text-white" />
+                  </span>
                   <span className="text-base font-medium text-charcoal">{item}</span>
                 </div>
               ))}

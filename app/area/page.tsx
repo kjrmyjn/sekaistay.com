@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import Breadcrumb from '@/components/Breadcrumb'
 import { getAllAreas } from '@/lib/areas'
+import { IconArrowRight } from '@/components/Icons'
 
 const SITE_URL = 'https://sekaistay.com'
 
@@ -98,7 +99,7 @@ export default function AreaPage() {
                   {/* CTA Arrow */}
                   <div className="flex items-center gap-2 text-deep-teal font-semibold text-sm group-hover:gap-3 transition">
                     <span>詳しく見る</span>
-                    <span className="text-lg">→</span>
+                    <IconArrowRight size={14} />
                   </div>
                 </Link>
               ))}

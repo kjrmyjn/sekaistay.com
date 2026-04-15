@@ -7,6 +7,7 @@ import FloatingCTA from '@/components/FloatingCTA'
 import Breadcrumb from '@/components/Breadcrumb'
 import { getAreaBySlug, getAllAreas } from '@/lib/areas'
 import { getOfficeForArea, getHQOffice } from '@/lib/offices'
+import { IconArrowRight } from '@/components/Icons'
 
 const SITE_URL = 'https://sekaistay.com'
 const OUR_RATE = 0.08
@@ -253,9 +254,10 @@ export default function AreaDetailPage({ params }: Props) {
             <div className="mt-8 text-center">
               <Link
                 href="/simulate"
-                className="inline-block text-deep-teal font-semibold underline hover:no-underline transition"
+                className="group inline-flex items-center gap-1.5 text-deep-teal font-semibold hover:underline transition"
               >
-                詳細なシミュレーションを見る →
+                詳細なシミュレーションを見る
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
             </div>
           </div>

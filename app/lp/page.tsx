@@ -412,7 +412,7 @@ function InlineSimulator() {
               <p className="text-[10px] text-dark-gray mb-1">現在の年間手取り</p>
               <p className="text-lg md:text-xl font-bold text-slate-400 tabular-nums"><AnimNum value={nowAnnual} suffix="円" /></p>
             </div>
-            <div className="text-deep-teal text-2xl font-bold">→</div>
+            <IconArrowRight className="w-6 h-6 text-deep-teal" />
             <div className="text-left">
               <p className="text-[10px] text-deep-teal font-medium mb-1">SEKAI STAY なら</p>
               <p className="text-lg md:text-xl font-bold text-deep-teal tabular-nums"><AnimNum value={sekaiAnnual} suffix="円" /></p>
@@ -732,7 +732,10 @@ function DashboardMockup() {
 
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/5 rounded-lg p-2 text-center">
-          <p className="text-sm font-bold text-amber-400">★4.95</p>
+          <p className="text-sm font-bold text-amber-400 inline-flex items-center justify-center gap-0.5">
+            <IconStar className="w-3 h-3" />
+            4.95
+          </p>
           <p className="text-[9px] text-white/85">評価</p>
         </div>
         <div className="bg-white/5 rounded-lg p-2 text-center">
@@ -942,7 +945,7 @@ function Portfolio() {
                     <p className="text-[10px] text-dark-gray">導入前稼働率</p>
                     <p className="text-lg font-bold text-slate-400">32%</p>
                   </div>
-                  <div className="text-deep-teal font-bold text-lg">→</div>
+                  <IconArrowRight className="w-5 h-5 text-deep-teal" />
                   <div>
                     <p className="text-[10px] text-deep-teal font-medium">導入後稼働率</p>
                     <p className="text-lg font-bold text-deep-teal">67% <span className="text-xs text-deep-teal">(+35pt)</span></p>
@@ -974,7 +977,7 @@ function Portfolio() {
                     <p className="text-[10px] text-dark-gray">導入前レビュー</p>
                     <p className="text-lg font-bold text-slate-400">19件</p>
                   </div>
-                  <div className="text-deep-teal font-bold text-lg">→</div>
+                  <IconArrowRight className="w-5 h-5 text-deep-teal" />
                   <div>
                     <p className="text-[10px] text-deep-teal font-medium">導入後レビュー</p>
                     <p className="text-lg font-bold text-deep-teal">61件 <span className="text-xs text-deep-teal">(3倍↑)</span></p>

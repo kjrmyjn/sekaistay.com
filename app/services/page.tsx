@@ -5,6 +5,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import { IMG } from '@/lib/images'
+import { IconCheck, IconStar, IconArrowRight } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: '民泊運営サービス',
@@ -152,7 +153,7 @@ export default function ServicesPage() {
             <div className="w-px h-16 bg-white/20 hidden md:block" />
             <div className="text-center md:text-left">
               <p className="text-white font-bold text-lg mb-1">これだけのサービスが、すべて含まれています</p>
-              <p className="text-white/80 text-sm">他社平均15〜25% → SEKAI STAYなら8%。初期費用は今なら0円。</p>
+              <p className="text-white/80 text-sm">他社平均15〜25%、SEKAI STAYなら8%。初期費用は今なら0円。</p>
             </div>
           </div>
         </section>
@@ -175,7 +176,7 @@ export default function ServicesPage() {
                     <div className="space-y-2">
                       {s.details.map((d, j) => (
                         <div key={j} className="flex items-start gap-2 text-sm text-dark-gray">
-                          <span className="text-sekai-teal mt-0.5 flex-shrink-0 text-xs">✓</span>
+                          <IconCheck size={14} className="text-sekai-teal mt-0.5 flex-shrink-0" />
                           <span>{d}</span>
                         </div>
                       ))}
@@ -248,8 +249,9 @@ export default function ServicesPage() {
               ))}
             </div>
             <div className="text-center mt-10">
-              <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-deep-teal border-2 border-deep-teal px-8 py-3 rounded-lg hover:bg-teal-tint transition">
-                実績をもっとみる →
+              <Link href="/portfolio" className="group inline-flex items-center gap-2 text-sm font-bold text-deep-teal border-2 border-deep-teal px-8 py-3 rounded-lg hover:bg-teal-tint transition">
+                実績をもっとみる
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
             </div>
           </div>
@@ -273,7 +275,10 @@ export default function ServicesPage() {
                       <p className="text-sm font-bold text-charcoal">{t.name}</p>
                       <p className="text-xs text-dark-gray">{t.role}</p>
                     </div>
-                    <span className="ml-auto text-xs font-bold text-amber-500 bg-amber-50 px-2.5 py-1 rounded-full">★ {t.rating}</span>
+                    <span className="ml-auto inline-flex items-center gap-0.5 text-xs font-bold text-amber-500 bg-amber-50 px-2.5 py-1 rounded-full">
+                      <IconStar size={11} className="text-amber-400" />
+                      {t.rating}
+                    </span>
                   </div>
                   <p className="text-sm text-dark-gray leading-relaxed flex-1">{t.text}</p>
                 </div>
@@ -365,10 +370,11 @@ export default function ServicesPage() {
 
             <div className="text-center mt-10">
               <Link
-                href="/lp#diagnostic"
-                className="inline-block bg-white text-deep-teal font-bold px-12 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
+                href="/simulate"
+                className="group inline-flex items-center gap-2 bg-white text-deep-teal font-bold px-12 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
               >
-                収支シミュレーションはこちら →
+                収支シミュレーションはこちら
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
             </div>
           </div>
@@ -406,9 +412,10 @@ export default function ServicesPage() {
             <div className="text-center mt-14">
               <Link
                 href="/contact"
-                className="inline-block bg-deep-teal hover:bg-sekai-teal text-white font-bold px-12 py-4 rounded-lg transition shadow-lg text-sm"
+                className="group inline-flex items-center gap-2 bg-deep-teal hover:bg-sekai-teal text-white font-bold px-12 py-4 rounded-lg transition shadow-lg text-sm"
               >
-                無料で相談する →
+                無料で相談する
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
             </div>
           </div>

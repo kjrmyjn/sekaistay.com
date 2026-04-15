@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import { IconArrowRight } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'よくあるご質問（FAQ）',
@@ -207,15 +208,17 @@ export default function FAQPage() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/contact"
-                className="bg-white text-deep-teal font-bold px-10 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
+                className="group inline-flex items-center gap-2 bg-white text-deep-teal font-bold px-10 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
               >
-                無料で相談する →
+                無料で相談する
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
               <Link
-                href="/lp#diagnostic"
-                className="border-2 border-white/40 text-white font-bold px-10 py-4 rounded-lg transition hover:bg-white/10 text-sm"
+                href="/simulate"
+                className="group inline-flex items-center gap-2 border-2 border-white/40 text-white font-bold px-10 py-4 rounded-lg transition hover:bg-white/10 text-sm"
               >
-                収支シミュレーション →
+                収支シミュレーション
+                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
               </Link>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { QUESTIONS, STEPS, type Question } from '@/data/questions'
 import { saveCurrentAnswers, submitAnswers, getCurrentAnswers } from '@/lib/storage'
 import type { Answers } from '@/lib/scoring'
+import { IconArrowRight, IconArrowLeft } from '@/components/Icons'
 
 // ステップごとの設問グループ
 const STEP_QUESTIONS = STEPS.map(s => ({
@@ -122,16 +123,18 @@ export default function AuditPage() {
         <div className="pt-4 space-y-3">
           <button
             onClick={handleNext}
-            className="w-full bg-deep-teal text-white text-base font-semibold py-4 rounded-xl shadow-sm active:opacity-90 transition"
+            className="group w-full inline-flex items-center justify-center gap-2 bg-deep-teal text-white text-base font-semibold py-4 rounded-xl shadow-sm active:opacity-90 transition"
           >
-            {step === TOTAL_STEPS ? '診断結果を見る →' : '次へ →'}
+            {step === TOTAL_STEPS ? '診断結果を見る' : '次へ'}
+            <IconArrowRight size={16} className="group-hover:translate-x-0.5 transition" />
           </button>
           {step > 1 && (
             <button
               onClick={handleBack}
-              className="w-full text-sm text-slate-400 py-2"
+              className="w-full inline-flex items-center justify-center gap-1.5 text-sm text-slate-400 py-2"
             >
-              ← 前に戻る
+              <IconArrowLeft size={14} />
+              前に戻る
             </button>
           )}
         </div>

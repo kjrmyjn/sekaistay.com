@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import { IconStar, IconCheckCircle } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: '運営実績',
@@ -120,7 +121,10 @@ export default function PortfolioPage() {
                     <div className="relative h-64 md:h-auto">
                       <img src={c.image} alt={c.area} className="w-full h-full object-cover" />
                       <div className="absolute top-4 left-4 flex items-center gap-2">
-                        <span className="bg-black/60 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full">★ {c.rating}</span>
+                        <span className="inline-flex items-center gap-1 bg-black/60 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                          <IconStar size={11} className="text-amber-400" />
+                          {c.rating}
+                        </span>
                         <span className="bg-deep-teal/90 text-white text-[10px] font-bold px-2.5 py-1.5 rounded-full">{c.tag}</span>
                       </div>
                     </div>
@@ -175,7 +179,8 @@ export default function PortfolioPage() {
             <div className="flex flex-wrap items-center justify-center gap-3">
               {BADGES.map((b, i) => (
                 <span key={i} className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-[12px] font-semibold ${b.color}`}>
-                  ★ {b.text}
+                  <IconCheckCircle size={13} className="text-deep-teal" />
+                  {b.text}
                 </span>
               ))}
             </div>

@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import { IconCheck, IconArrowRight } from '@/components/Icons'
 
 const WEB3FORMS_KEY = '85597b1f-b146-40b9-94af-7a8dc25dfe1b'
 
@@ -54,7 +55,9 @@ export default function ContactPage() {
           <div className="max-w-xl mx-auto">
             {done ? (
               <div className="bg-teal-tint rounded-2xl border border-deep-teal/20 p-10 text-center">
-                <div className="w-16 h-16 rounded-full bg-deep-teal text-white flex items-center justify-center mx-auto mb-5 text-3xl">✓</div>
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-deep-teal to-sekai-teal flex items-center justify-center mx-auto mb-5 shadow-[0_8px_24px_rgba(22,123,129,0.25)]">
+                  <IconCheck size={28} className="text-white" />
+                </div>
                 <h2 className="text-2xl font-bold text-charcoal mb-3">送信完了</h2>
                 <p className="text-sm text-dark-gray mb-8">お問い合わせありがとうございます。2営業日以内にご連絡いたします。</p>
                 <p className="text-xs text-dark-gray">
@@ -102,9 +105,14 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-deep-teal hover:bg-bright-teal text-white font-bold py-4 rounded-xl transition text-sm disabled:opacity-50 shadow-lg"
+                  className="group w-full inline-flex items-center justify-center gap-2 bg-deep-teal hover:bg-sekai-teal text-white font-bold py-4 rounded-xl transition text-sm disabled:opacity-50 shadow-lg"
                 >
-                  {submitting ? '送信中...' : '送信する →'}
+                  {submitting ? '送信中...' : (
+                    <>
+                      送信する
+                      <IconArrowRight size={16} className="group-hover:translate-x-0.5 transition" />
+                    </>
+                  )}
                 </button>
                 <p className="text-[10px] text-dark-gray text-center">
                   送信により<a href="/privacy" className="text-deep-teal hover:underline">プライバシーポリシー</a>に同意したものとみなします。
@@ -119,9 +127,10 @@ export default function ContactPage() {
                 <p className="text-sm text-dark-gray mb-6">詳しい物件情報をご入力いただくと、個別の収益シミュレーションをお届けします。</p>
                 <a
                   href="/lp#diagnostic"
-                  className="inline-block bg-deep-teal/10 border-2 border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white font-bold px-8 py-3 rounded-lg transition text-sm"
+                  className="group inline-flex items-center gap-2 bg-deep-teal/10 border-2 border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white font-bold px-8 py-3 rounded-lg transition text-sm"
                 >
-                  無料診断フォームへ →
+                  無料診断フォームへ
+                  <IconArrowRight size={16} className="group-hover:translate-x-0.5 transition" />
                 </a>
               </div>
             )}

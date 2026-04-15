@@ -4,7 +4,9 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
+import FloatingCTA from '@/components/FloatingCTA'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { IconArrowRight, IconCalendar, IconCheck } from '@/components/Icons'
 
 const SITE_URL = 'https://sekaistay.com'
 
@@ -192,27 +194,58 @@ export default function BlogPostPage({ params }: Props) {
   const others = allPosts.filter(p => p.slug !== post.slug && p.category !== post.category)
   const related = [...sameCategory, ...others].slice(0, 3)
 
+  // Estimated reading time (Japanese: ~500 chars/min)
+  const plainLength = post.body.replace(/[#*|\-\[\]()]/g, '').length
+  const readingMinutes = Math.max(1, Math.round(plainLength / 500))
+
   return (
     <>
       <Header />
       <Breadcrumb items={[{ label: 'コラム', href: '/blog' }, { label: post.title }]} />
       <BlogPostJsonLd post={post} />
+      <FloatingCTA />
       <main>
-        <article className="px-6 py-16 md:py-24">
+        {/* ── Hero ─────────────────────────────────────── */}
+        <section className="bg-warm-gradient px-6 pt-14 pb-10 md:pt-20 md:pb-14 border-b border-light-gray">
           <div className="max-w-3xl mx-auto">
-
-            {/* Meta */}
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-[10px] font-bold text-deep-teal bg-teal-tint px-2 py-0.5 rounded">{post.category}</span>
-              <time className="text-[10px] text-dark-gray" dateTime={post.date}>{post.date}</time>
+            <div className="flex flex-wrap items-center gap-2 mb-5">
+              <span className="text-[10px] font-bold text-deep-teal bg-teal-tint px-2.5 py-1 rounded tracking-wider">
+                {post.category}
+              </span>
+              <time className="inline-flex items-center gap-1.5 text-[11px] text-dark-gray" dateTime={post.date}>
+                <IconCalendar size={12} />
+                {post.date}
+              </time>
+              <span className="text-[11px] text-dark-gray">·</span>
+              <span className="text-[11px] text-dark-gray">読了 約{readingMinutes}分</span>
             </div>
 
-            <h1 className="text-2xl md:text-3xl font-black text-charcoal tracking-tight leading-tight mb-6">
+            <h1 className="text-2xl md:text-[34px] font-black text-charcoal tracking-tight leading-[1.35] mb-5">
               {post.title}
             </h1>
-            <p className="text-base text-dark-gray leading-relaxed mb-10 border-b border-light-gray pb-10">
+            <p className="text-base text-dark-gray leading-relaxed">
               {post.description}
             </p>
+          </div>
+        </section>
+
+        {/* ── Article body ─────────────────────────────── */}
+        <article className="px-6 py-12 md:py-16">
+          <div className="max-w-3xl mx-auto">
+            {/* Author card */}
+            <div className="flex items-center gap-3 mb-10 pb-6 border-b border-light-gray">
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-deep-teal to-sekai-teal flex items-center justify-center text-white font-black text-sm flex-shrink-0">
+                松
+              </div>
+              <div>
+                <p className="text-[13px] font-bold text-charcoal leading-tight">
+                  松本凌輔<span className="text-[11px] font-normal text-dark-gray ml-2">コラム編集長</span>
+                </p>
+                <p className="text-[11px] text-dark-gray mt-0.5 leading-relaxed">
+                  agoda CS部門出身 / 民泊業界5年 / 住宅宿泊管理業修了
+                </p>
+              </div>
+            </div>
 
             {/* Body */}
             <div
@@ -223,40 +256,90 @@ export default function BlogPostPage({ params }: Props) {
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t border-light-gray">
               {post.tags.map(tag => (
-                <span key={tag} className="text-[11px] text-dark-gray bg-pale-gray px-3 py-1 rounded-full">{tag}</span>
+                <span key={tag} className="text-[11px] text-dark-gray bg-pale-gray px-3 py-1 rounded-full">#{tag}</span>
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="bg-teal-tint rounded-2xl border border-deep-teal/20 p-6 md:p-8 mt-10 text-center">
-              <p className="text-lg font-bold text-charcoal mb-2">民泊運営のご相談はお気軽に</p>
-              <p className="text-sm text-dark-gray mb-6">SEKAI STAYが手数料8%で一括代行します。</p>
-              <Link
-                href="/contact"
-                className="inline-block bg-deep-teal hover:bg-sekai-teal text-white font-bold px-8 py-3.5 rounded-xl transition text-sm"
-              >
-                無料相談する
-              </Link>
+            {/* Premium CTA */}
+            <div className="relative overflow-hidden bg-charcoal rounded-3xl p-8 md:p-10 mt-12 text-center">
+              {/* Teal glow */}
+              <div
+                className="absolute inset-0 opacity-40 pointer-events-none"
+                style={{
+                  background:
+                    'radial-gradient(circle at 20% 0%, rgba(84,190,195,0.45), transparent 50%), radial-gradient(circle at 80% 100%, rgba(22,123,129,0.4), transparent 55%)',
+                }}
+              />
+              <div className="relative">
+                <p className="text-[10px] font-bold text-bright-teal tracking-[0.25em] uppercase mb-3">
+                  SEKAI STAY Management
+                </p>
+                <p className="text-xl md:text-2xl font-black text-white leading-snug mb-3">
+                  民泊運営を、まるごと。<br className="md:hidden" />手数料8%で一括代行。
+                </p>
+                <p className="text-sm text-white/75 leading-relaxed mb-7 max-w-md mx-auto">
+                  OTA掲載・プライシング・ゲスト対応・清掃まで。<br />
+                  初期費用0円・最低契約期間なし。
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-2 bg-white text-deep-teal font-bold px-8 py-3.5 rounded-xl transition hover:bg-cloud-white text-sm shadow-lg"
+                  >
+                    無料相談する
+                    <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
+                  </Link>
+                  <Link
+                    href="/simulate"
+                    className="group inline-flex items-center gap-2 border border-white/30 text-white font-bold px-8 py-3.5 rounded-xl transition hover:bg-white/10 text-sm"
+                  >
+                    収支シミュレーション
+                    <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
+                  </Link>
+                </div>
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-6 text-[10px] text-white/60">
+                  <span className="inline-flex items-center gap-1"><IconCheck size={11} color="#54BEC3" /> 初期費用0円</span>
+                  <span className="inline-flex items-center gap-1"><IconCheck size={11} color="#54BEC3" /> 手数料8%</span>
+                  <span className="inline-flex items-center gap-1"><IconCheck size={11} color="#54BEC3" /> 全国対応</span>
+                </div>
+              </div>
             </div>
 
             {/* Related */}
             {related.length > 0 && (
               <div className="mt-16">
-                <h2 className="text-lg font-bold text-charcoal mb-6">関連記事</h2>
-                <div className="space-y-4">
+                <p className="text-[10px] font-bold text-deep-teal tracking-[0.2em] uppercase mb-4">Related Articles</p>
+                <h2 className="text-xl font-black text-charcoal mb-6">関連記事</h2>
+                <div className="grid md:grid-cols-3 gap-4">
                   {related.map(r => (
                     <Link
                       key={r.slug}
                       href={`/blog/${r.slug}`}
-                      className="block bg-cloud-white rounded-xl border border-light-gray p-4 hover:border-deep-teal/30 transition group"
+                      className="group block bg-cloud-white rounded-xl border border-light-gray p-5 hover:border-deep-teal/40 hover:shadow-md transition"
                     >
-                      <p className="text-sm font-bold text-charcoal group-hover:text-deep-teal transition">{r.title}</p>
-                      <p className="text-[10px] text-dark-gray mt-1">{r.date} · {r.category}</p>
+                      <span className="inline-block text-[9px] font-bold text-deep-teal bg-teal-tint px-2 py-0.5 rounded tracking-wider mb-3">
+                        {r.category}
+                      </span>
+                      <p className="text-sm font-bold text-charcoal group-hover:text-deep-teal transition leading-snug mb-2 line-clamp-3">
+                        {r.title}
+                      </p>
+                      <p className="text-[10px] text-dark-gray">{r.date}</p>
                     </Link>
                   ))}
                 </div>
               </div>
             )}
+
+            {/* Back to index */}
+            <div className="mt-12 pt-8 border-t border-light-gray text-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-sm font-bold text-deep-teal hover:text-sekai-teal transition"
+              >
+                コラム一覧へ戻る
+                <IconArrowRight size={14} />
+              </Link>
+            </div>
           </div>
         </article>
       </main>
