@@ -183,7 +183,7 @@ export const RESULTS = {
 
   // Aggregate summary — 支援実績のハイライト
   summary: [
-    { value: '+24', unit: 'pt', label: '稼働率の改善幅（平均）' },
+    { value: '1.4', unit: '倍', label: '稼働率の改善倍率（平均）' },
     { value: '+57', unit: '%', label: '月間売上の改善幅（平均）' },
     { value: '4.8', unit: '/5', label: '管理物件のレビュー平均' },
     { value: '5年+', unit: '', label: '運用支援の継続期間' },
@@ -194,7 +194,7 @@ export const RESULTS = {
       title: '野尻湖エリアの貸別荘',
       tag: 'リゾート物件',
       metrics: [
-        { label: '稼働率', from: '58%', to: '82%', delta: '+24pt', percent: 82 },
+        { label: '稼働率', from: '58%', to: '82%', delta: '約1.4倍', percent: 82 },
         { label: '月間売上', from: '85万円', to: '134万円', delta: '+57%', percent: 89 },
       ],
       body: '写真と訴求、価格設計、見せ方を再設計し、稼働率と売上の両方を改善しました。',

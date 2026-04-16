@@ -948,7 +948,7 @@ function Portfolio() {
                   <IconArrowRight className="w-5 h-5 text-deep-teal" />
                   <div>
                     <p className="text-[10px] text-deep-teal font-medium">導入後稼働率</p>
-                    <p className="text-lg font-bold text-deep-teal">67% <span className="text-xs text-deep-teal">(+35pt)</span></p>
+                    <p className="text-lg font-bold text-deep-teal">67% <span className="text-xs text-deep-teal">（約2.1倍）</span></p>
                   </div>
                 </div>
               </div>

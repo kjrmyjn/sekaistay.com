@@ -59,7 +59,7 @@ export default function Dashboard() {
               <div className="bg-cloud-white rounded-btn p-2.5 md:p-3 min-w-0">
                 <div className="text-[10px] text-dark-gray mb-1">稼働率</div>
                 <div className="text-[16px] md:text-[18px] font-bold text-charcoal">82%</div>
-                <div className="text-[10px] text-sekai-teal font-bold">+24pt</div>
+                <div className="text-[10px] text-sekai-teal font-bold">約1.4倍</div>
               </div>
               <div className="bg-cloud-white rounded-btn p-2.5 md:p-3 min-w-0">
                 <div className="text-[10px] text-dark-gray mb-1 truncate">予約ペース</div>

@@ -106,7 +106,7 @@ function FounderCard({
 /* ─── Page ────────────────────────────────────────────────────── */
 export default function AboutPage() {
   const stats = [
-    { icon: IconTrendingUp, value: '+24', unit: 'pt', label: '稼働率', sub: '運用改善と見せ方の最適化によって、稼働率の向上を実現。' },
+    { icon: IconTrendingUp, value: '1.4', unit: '倍', label: '稼働率', sub: '運用改善と見せ方の最適化によって、稼働率の向上を実現（平均改善倍率）。' },
     { icon: IconChart,      value: '+57', unit: '%',  label: '月間売上', sub: '価格設計、導線改善、集客強化を通じて、売上成長を支援。' },
     { icon: IconStar,       value: '4.8', unit: '/5', label: 'レビュー評価', sub: '管理物件において、高い顧客満足度を維持。' },
     { icon: IconShield,     value: '5',   unit: '年+', label: '運用支援', sub: '現場に根ざした運用改善を継続。' },

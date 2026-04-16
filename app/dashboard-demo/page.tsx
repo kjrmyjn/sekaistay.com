@@ -273,7 +273,7 @@ export default function DashboardDemoPage() {
                   <KpiCard
                     label="稼働率"
                     value={`${property.occupancy}%`}
-                    delta={`+${property.occupancyDelta}pt`}
+                    delta={`+${property.occupancyDelta}%ポイント`}
                     icon={<IconTrendingUp size={14} color="#167B81" />}
                   />
                   <KpiCard
