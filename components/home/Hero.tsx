@@ -29,9 +29,18 @@ export default function Hero() {
               {' '}<JP>{HERO.headline.line2}</JP>
             </h1>
 
-            <p className="text-body text-dark-gray max-w-[540px] mb-8 jp-break">
+            <p className="text-body text-dark-gray max-w-[540px] mb-5 jp-break">
               {HERO.body}
             </p>
+
+            {/* ── 他社比較1行（AEO / 信頼の即提示） ── */}
+            <div className="mb-8 max-w-[540px] rounded-card border border-light-gray bg-cloud-white px-4 py-3">
+              <p className="text-[12.5px] text-charcoal leading-relaxed jp-break">
+                一般的な運用代行の手数料<span className="font-bold">15〜25%</span> に対し、
+                SEKAI STAY は<span className="font-bold text-sekai-teal">8%＋月5,000円/室</span>。
+                最低契約期間なし、初期費用0円。
+              </p>
+            </div>
 
             {/* Stats — horizontal trust cluster */}
             <div className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
@@ -45,29 +54,33 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-4">
+            {/* CTAs — 階層：①試算が最速導線 / ②相談で深掘り / ③診断はテキスト */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
               <Link
                 href={HERO.primaryCta.href}
-                className="inline-flex items-center justify-center gap-2 bg-sekai-teal hover:bg-deep-teal text-white font-bold px-6 py-3.5 rounded-btn transition text-[15px] shadow-[0_4px_16px_rgba(37,157,163,0.25)]"
+                className="group inline-flex items-center justify-center gap-2 bg-sekai-teal hover:bg-deep-teal text-white font-bold px-7 py-4 rounded-btn transition text-[15.5px] shadow-[0_10px_28px_rgba(22,123,129,0.28)] hover:shadow-[0_14px_36px_rgba(22,123,129,0.38)]"
               >
                 {HERO.primaryCta.label}
-                <IconArrowRight size={16} />
+                <IconArrowRight size={16} className="group-hover:translate-x-0.5 transition" />
               </Link>
               <Link
                 href={HERO.secondaryCta.href}
-                className="inline-flex items-center justify-center bg-white border border-charcoal/20 text-charcoal hover:border-sekai-teal hover:text-sekai-teal font-bold px-6 py-3.5 rounded-btn transition text-[15px]"
+                className="inline-flex items-center justify-center text-charcoal/80 hover:text-sekai-teal font-bold px-3 py-2 transition text-[14.5px] underline underline-offset-4 decoration-charcoal/20 hover:decoration-sekai-teal"
               >
                 {HERO.secondaryCta.label}
               </Link>
             </div>
 
+            <p className="text-[12.5px] text-dark-gray mb-4 leading-relaxed">
+              入力3分・無料・営業連絡なし。迷ったら、まず「収益シミュレーション」から。
+            </p>
+
             <Link
               href={HERO.textLink.href}
-              className="inline-flex items-center gap-1.5 text-[14px] text-dark-gray hover:text-sekai-teal font-bold transition underline underline-offset-4 decoration-light-gray hover:decoration-sekai-teal"
+              className="inline-flex items-center gap-1.5 text-[13px] text-mid-gray hover:text-sekai-teal transition"
             >
-              {HERO.textLink.label}
-              <IconArrowRight size={14} />
+              すでに運用中の方は、無料診断へ
+              <IconArrowRight size={12} />
             </Link>
           </div>
 

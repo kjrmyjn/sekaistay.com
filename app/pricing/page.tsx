@@ -36,6 +36,33 @@ const INCLUDES = [
   '緊急時対応（24時間）',
 ]
 
+const PRICING_FAQ = [
+  {
+    q: 'SEKAI STAYの民泊運用代行の料金は？',
+    a: '初期費用0円（キャンペーン中・通常10万円）、固定管理費5,000円/室/月、変動運営委託費は売上の8%です。月々の費用はこの2つの合計のみで、別途請求はありません。',
+  },
+  {
+    q: '他社からの乗り換えに費用はかかりますか？',
+    a: '乗り換え費用は0円です。Airbnb・Booking.com等のOTAアカウント引き継ぎ、掲載情報の最適化、ゲスト対応引き継ぎまで無料で対応します。最短2週間で移行完了です。',
+  },
+  {
+    q: '他社は手数料15〜25%なのに、なぜ8%なのですか？',
+    a: '自社運営のオペレーション基盤と、清掃パートナーネットワーク、多言語ゲスト対応センターを内製化することで、一般的な代行業者の運営コストを大幅に削減しているためです。その差分をオーナー様に還元しています。',
+  },
+  {
+    q: '最低契約期間はありますか？',
+    a: 'ありません。最低契約期間・解約手数料ともに0円です。成果でご判断いただけるよう、縛りは設けていません。',
+  },
+  {
+    q: '宿泊予約がない月も費用はかかりますか？',
+    a: '固定管理費（5,000円/室）のみ発生し、変動運営委託費（8%）は売上連動のため0円です。閑散期の固定費は1部屋で月5,000円に限定されます。',
+  },
+  {
+    q: '清掃費や備品補充は別途請求されますか？',
+    a: '清掃費はゲスト負担（宿泊料金に含む）が基本です。清掃手配と品質管理は運営代行サービスに含まれており、オーナー様への追加請求はありません。消耗品の実費のみ、別途ご相談のうえ精算します。',
+  },
+]
+
 const COMPARE = [
   { label: '手数料率', us: '8%', others: '15〜25%', highlight: true },
   { label: '月額固定費', us: '¥5,000/部屋', others: '¥15,000〜30,000', highlight: false },
@@ -61,9 +88,15 @@ export default function PricingPage() {
             <h1 className="heading-display text-charcoal mb-6">
               民泊運営代行の料金
             </h1>
-            <p className="text-base text-dark-gray leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base text-dark-gray leading-relaxed max-w-2xl mx-auto mb-6">
               民泊運営代行サービスをご利用いただく際には、初期費用0円。
               月々の費用は「固定管理費」と「変動手数料」のシンプルな2段階構成です。
+            </p>
+            {/* 比較1文（AEO対応） */}
+            <p className="text-sm text-charcoal max-w-3xl mx-auto leading-relaxed bg-white/60 border border-light-gray rounded-xl px-5 py-3">
+              一般的な運用代行の手数料<span className="font-bold">15〜25%</span> に対し、SEKAI STAYは
+              <span className="font-bold text-deep-teal"> 8%＋月5,000円/室</span>。
+              最低契約期間なし・初期費用0円・解約手数料0円です。
             </p>
           </div>
         </section>
@@ -174,7 +207,47 @@ export default function PricingPage() {
           </div>
         </section>
 
+        {/* AEO FAQ — 料金編 */}
+        <section className="px-6 section-heavy">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3 text-center">Pricing FAQ</p>
+            <h2 className="heading-section text-charcoal text-center mb-10">料金に関するよくあるご質問</h2>
+            <div className="space-y-4">
+              {PRICING_FAQ.map((f, i) => (
+                <div key={i} className="bg-white rounded-2xl border border-light-gray p-6 md:p-8">
+                  <h3 className="text-base font-bold text-charcoal mb-3 flex items-start gap-3">
+                    <span className="text-deep-teal font-black flex-shrink-0 text-lg">Q.</span>
+                    {f.q}
+                  </h3>
+                  <div className="pl-8">
+                    <p className="text-sm text-dark-gray leading-relaxed">{f.a}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-mid-gray text-center mt-6">
+              さらに詳しいご質問は <Link href="/faq" className="text-deep-teal font-bold underline underline-offset-2">FAQページ</Link> をご覧ください。
+            </p>
+          </div>
+        </section>
+
         {/* CTA — handled by Footer */}
+
+        {/* FAQPage JSON-LD — 料金編 AEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: PRICING_FAQ.map(f => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
 
         {/* Product JSON-LD for pricing rich results */}
         <script

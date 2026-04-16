@@ -13,6 +13,7 @@ import Results from '@/components/home/Results'
 import Dashboard from '@/components/home/Dashboard'
 import Flow from '@/components/home/Flow'
 import Pricing from '@/components/home/Pricing'
+import Credentials from '@/components/home/Credentials'
 import FAQ from '@/components/home/FAQ'
 import FinalCTA from '@/components/home/FinalCTA'
 import FooterCatch from '@/components/home/FooterCatch'
@@ -53,6 +54,7 @@ export default function Home() {
         <Ecosystem />
         <Flow />
         <Pricing />
+        <Credentials />
         <FAQ />
         <FinalCTA />
         <FooterCatch />

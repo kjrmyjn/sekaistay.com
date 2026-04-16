@@ -152,6 +152,14 @@ export default function AreaDetailPage({ params }: Props) {
       question: `${area.name}への移管手続きはどのように進みますか？`,
       answer: `現在ご利用中のOTA（Airbnb、Booking.com等）から弊社への管理移行は、最短2週間で完了します。既存ゲスト対応からの引継ぎまで、スムーズにサポートいたします。初期手数料や移管コストもかかりません。`,
     },
+    {
+      question: `${area.name}の民泊運用代行の料金はいくらですか？`,
+      answer: `初期費用0円（キャンペーン中）、固定管理費5,000円/室/月、変動運営委託費は売上の8%です。一般的な運用代行の15〜25%に対して大幅に低い水準で、最低契約期間もありません。${area.name}でも全国一律の料金でご利用いただけます。`,
+    },
+    {
+      question: `${area.name}で民泊運営をする際の許認可はどうなりますか？`,
+      answer: `${area.name}（${area.prefecture}）では、住宅宿泊事業法（民泊新法）または旅館業法（簡易宿所）のいずれかに基づいて営業します。物件条件や運用方針に応じて、SEKAI STAYが最適な許認可経路をご提案し、届出・申請サポートまで対応します。許認可取得後の運用も一気通貫で代行可能です。`,
+    },
   ]
 
   return (
@@ -159,6 +167,21 @@ export default function AreaDetailPage({ params }: Props) {
       <Header />
       <LocalBusinessJsonLd area={area} />
       <ServiceJsonLd area={area} />
+      {/* FAQPage JSON-LD — エリア別 AEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map(f => ({
+              '@type': 'Question',
+              name: f.question,
+              acceptedAnswer: { '@type': 'Answer', text: f.answer },
+            })),
+          }),
+        }}
+      />
       <Breadcrumb
         items={[
           { label: '対応エリア', href: '/area' },
@@ -174,10 +197,18 @@ export default function AreaDetailPage({ params }: Props) {
               {area.name}
               <span className="block text-deep-teal mt-2">民泊運用代行ならSEKAI STAY</span>
             </h1>
-            <p className="text-lg md:text-xl text-dark-gray leading-relaxed">
+            <p className="text-lg md:text-xl text-dark-gray leading-relaxed mb-6">
               {area.prefecture}でのOTA運営・ゲスト対応・清掃手配・プライシング最適化を、
               手数料8%で一括代行します。
             </p>
+            {/* 比較1文（AEO対応） */}
+            <div className="inline-block rounded-xl border border-deep-teal/20 bg-teal-tint/60 px-4 py-3">
+              <p className="text-sm text-charcoal leading-relaxed">
+                一般的な運用代行の手数料 <span className="font-bold">15〜25%</span> に対し、SEKAI STAYは
+                <span className="font-bold text-deep-teal"> 8%＋月5,000円/室</span>。
+                {area.name}では住宅宿泊事業法・旅館業法いずれにも対応します。
+              </p>
+            </div>
           </div>
         </section>
 

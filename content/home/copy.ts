@@ -405,6 +405,64 @@ export const FAQ = {
   ],
 } as const
 
+// ═══ 9.5 Credentials — E-E-A-T 証明ブロック ═══
+export const CREDENTIALS = {
+  eyebrow: 'Operational Trust',
+  headline: {
+    line1: '任せる前に、確認してほしい。',
+    line2: '運営体制と、法令・資格の裏付け。',
+  },
+  body: '民泊運営は、お金と法令が同時に動く事業です。SEKAI STAYは、住宅宿泊管理業の登録を取得した正規の運営会社として、適用法令の確認から、OTA運用、多言語ゲスト対応、清掃・メンテナンスまで一気通貫で運営しています。契約前に運営体制・実績・対応範囲をすべてご確認いただけます。',
+  blocks: [
+    {
+      label: '運営会社',
+      primary: '株式会社セカイチ',
+      secondary: 'SEKAICHI Inc.',
+      href: 'https://sekaichi.org',
+      external: true,
+    },
+    {
+      label: '登録免許',
+      primary: '住宅宿泊管理業',
+      secondary: '国土交通大臣(01)第F05780号',
+    },
+    {
+      label: '対応法令',
+      primary: '住宅宿泊事業法',
+      secondary: '旅館業法・特区民泊にも対応',
+    },
+    {
+      label: '対応OTA',
+      primary: '主要5サイト+',
+      secondary: 'Airbnb / Booking.com / Vrbo / Expedia / 楽天トラベル',
+    },
+    {
+      label: '対応言語',
+      primary: '4言語・24時間',
+      secondary: '日本語 / 英語 / 中国語 / 韓国語',
+    },
+    {
+      label: '対応エリア',
+      primary: '全国20エリア',
+      secondary: '東京・大阪・京都・福岡・沖縄 他',
+    },
+    {
+      label: '運用知見',
+      primary: '5年以上',
+      secondary: '都市・リゾート・地方の全タイプで実績',
+    },
+    {
+      label: '自社運営',
+      primary: '飲食・宿泊',
+      secondary: '現場運営の知見をオーナー物件に還元',
+    },
+  ],
+  compareHeadline: '一般的な運用代行と何が違うのか。',
+  compareOneLiner:
+    '一般的な運用代行の手数料15〜25%に対して、SEKAI STAYは 8%＋月5,000円/室。最低契約期間なし、初期費用0円、解約手数料も0円です。',
+  note: '※ 各契約は物件の適用法令（住宅宿泊事業法・旅館業法・特区民泊）を確認のうえ締結します。登録・許認可の取得状況は契約書面にてご案内します。',
+} as const
+
 // ═══ 10. Final CTA ═══
 export const FINAL_CTA = {
   headline: 'まずは、あなたの物件の伸びしろを見てみませんか？',
