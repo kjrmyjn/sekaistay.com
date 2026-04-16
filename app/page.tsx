@@ -50,8 +50,8 @@ export default function Home() {
         <ValueProp />
         <Results />
         <Dashboard />
-        <Flow />
         <Ecosystem />
+        <Flow />
         <Pricing />
         <FAQ />
         <FinalCTA />

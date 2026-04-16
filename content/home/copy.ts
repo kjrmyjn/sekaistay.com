@@ -237,7 +237,7 @@ export const DASHBOARD = {
     'レビュー推移',
     '今後の改善アクション',
   ],
-  cta: { label: 'ダッシュボードについて見る', href: '/services' },
+  cta: { label: 'ダッシュボードのデモを見る', href: '/dashboard-demo' },
 } as const
 
 // ═══ 7. Flow ═══

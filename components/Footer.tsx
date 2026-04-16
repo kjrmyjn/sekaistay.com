@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { IconMail, IconBarChart } from '@/components/Icons'
 
 const SERVICE_LINKS = [
   { href: '/services', label: '民泊運営代行' },
@@ -35,46 +34,6 @@ const AREA_LINKS = [
 export default function Footer() {
   return (
     <>
-      {/* Pre-footer CTA */}
-      <section className="bg-teal-tint px-5 md:px-10 section-heavy">
-        <div className="max-w-container mx-auto text-center">
-          <p className="heading-section text-charcoal mb-3">
-            民泊運営代行や集客についての不明な点は<br className="hidden md:inline" />
-            お気軽にお問い合わせください
-          </p>
-          <div className="grid md:grid-cols-2 gap-5 max-w-[640px] mx-auto mt-10">
-            <Link
-              href="/contact"
-              className="bg-white rounded-card p-6 text-center group"
-            >
-              <div className="w-12 h-12 rounded-full bg-teal-tint flex items-center justify-center mx-auto mb-3">
-                <IconMail size={22} color="#259DA3" />
-              </div>
-              <p className="text-[15px] text-dark-gray mb-3">
-                民泊運営代行やサービスについて
-              </p>
-              <div className="bg-sekai-teal text-white font-bold text-[15px] py-3 rounded-btn group-hover:bg-deep-teal transition">
-                お問い合わせ
-              </div>
-            </Link>
-            <Link
-              href="/lp#diagnostic"
-              className="bg-white rounded-card p-6 text-center group"
-            >
-              <div className="w-12 h-12 rounded-full bg-teal-tint flex items-center justify-center mx-auto mb-3">
-                <IconBarChart size={22} color="#259DA3" />
-              </div>
-              <p className="text-[15px] text-dark-gray mb-3">
-                所有している物件の収支シミュレーション
-              </p>
-              <div className="bg-sekai-teal text-white font-bold text-[15px] py-3 rounded-btn group-hover:bg-deep-teal transition">
-                収益シミュレーション
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Footer — charcoal bg は DESIGN.md の Black 5% 枠内 */}
       <footer className="bg-charcoal text-white px-5 md:px-10 py-14">
         <div className="max-w-container mx-auto">

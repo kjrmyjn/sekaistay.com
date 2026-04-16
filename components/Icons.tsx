@@ -332,3 +332,120 @@ export function IconSparkles({ size = 24, color = 'currentColor', className }: I
     </svg>
   )
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   Brand-mark icons — designed to match visual weight of real brand
+   logos (e.g. YouTube). Used in Ecosystem section pillars.
+   Each is a self-contained 36×36 mark with its own color signature.
+   ───────────────────────────────────────────────────────────────── */
+
+// 広告事業部 — Performance media operations
+// Deep navy gradient + ascending bars + accent dot (premium analytics feel)
+export function IconAdBrand({ size = 36, className }: IconProps) {
+  const id = 'ad-grad'
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 36 36"
+      fill="none"
+      className={className}
+      aria-label="広告事業部"
+    >
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#1E3A8A" />
+          <stop offset="1" stopColor="#0B1635" />
+        </linearGradient>
+      </defs>
+      <rect width="36" height="36" rx="8" fill={`url(#${id})`} />
+      {/* Ascending bars */}
+      <rect x="9"  y="20" width="3" height="7"  rx="1" fill="#FFFFFF" opacity="0.55" />
+      <rect x="14" y="16" width="3" height="11" rx="1" fill="#FFFFFF" opacity="0.75" />
+      <rect x="19" y="12" width="3" height="15" rx="1" fill="#FFFFFF" opacity="0.92" />
+      <rect x="24" y="8"  width="3" height="19" rx="1" fill="#FFFFFF" />
+      {/* Accent dot */}
+      <circle cx="25.5" cy="9" r="2.5" fill="#FB923C" />
+      <circle cx="25.5" cy="9" r="2.5" stroke="#1E3A8A" strokeWidth="1" />
+    </svg>
+  )
+}
+
+// インフルエンサー事業部 — Creator network / social marketing
+// Instagram-inspired warm gradient + sparkle/star composition
+export function IconInfluencerBrand({ size = 36, className }: IconProps) {
+  const id = 'inf-grad'
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 36 36"
+      fill="none"
+      className={className}
+      aria-label="インフルエンサー事業部"
+    >
+      <defs>
+        <linearGradient id={id} x1="4" y1="32" x2="32" y2="4" gradientUnits="userSpaceOnUse">
+          <stop offset="0"    stopColor="#FEDA77" />
+          <stop offset="0.35" stopColor="#F58529" />
+          <stop offset="0.7"  stopColor="#DD2A7B" />
+          <stop offset="1"    stopColor="#8134AF" />
+        </linearGradient>
+      </defs>
+      <rect width="36" height="36" rx="8" fill={`url(#${id})`} />
+      {/* Camera body */}
+      <rect x="9" y="11.5" width="18" height="14" rx="3.5" stroke="#FFFFFF" strokeWidth="1.6" />
+      {/* Lens */}
+      <circle cx="18" cy="18.5" r="3.6" stroke="#FFFFFF" strokeWidth="1.6" />
+      {/* Top accent dot */}
+      <circle cx="23" cy="14.5" r="0.9" fill="#FFFFFF" />
+      {/* Sparkle (top-right corner) */}
+      <path
+        d="M28.5 7.5l.65 1.65L30.8 9.8l-1.65.65L28.5 12l-.65-1.55L26.2 9.8l1.65-.65L28.5 7.5z"
+        fill="#FFFFFF"
+      />
+    </svg>
+  )
+}
+
+// ASHIMOTO制作 — Production house / creative partner
+// Charcoal background + bold "A" monogram + production accent line
+export function IconAshimotoBrand({ size = 36, className }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 36 36"
+      fill="none"
+      className={className}
+      aria-label="ASHIMOTO制作"
+    >
+      <rect width="36" height="36" rx="8" fill="#0F1115" />
+      {/* Subtle inner gradient for depth */}
+      <defs>
+        <linearGradient id="ash-shine" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.06" />
+          <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <rect width="36" height="36" rx="8" fill="url(#ash-shine)" />
+      {/* Bold geometric "A" monogram */}
+      <path
+        d="M11 26 L18 9 L25 26"
+        stroke="#FFFFFF"
+        strokeWidth="2.4"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        fill="none"
+      />
+      <path
+        d="M14 21 L22 21"
+        stroke="#FFFFFF"
+        strokeWidth="2.4"
+        strokeLinecap="square"
+      />
+      {/* Production accent — small bright corner mark */}
+      <rect x="27" y="6" width="3" height="3" rx="0.5" fill="#54BEC3" />
+    </svg>
+  )
+}

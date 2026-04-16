@@ -4,19 +4,26 @@ import { IMG } from '@/content/home/images'
 import {
   IconBuilding,
   IconGlobe,
-  IconSparkle,
-  IconChart,
-  IconTV,
   IconYouTube,
+  IconAdBrand,
+  IconInfluencerBrand,
+  IconAshimotoBrand,
 } from '@/components/Icons'
 import { JP } from '@/components/JP'
 
-const PILLAR_ICONS = [IconChart, IconSparkle, IconTV, IconGlobe]
-const YOUTUBE_PILLAR_INDEX = 2
+// Brand-mark renderers for each pillar.
+// All marks share visual weight (~36px square brand mark) so they
+// read as a coherent set alongside the real YouTube logo.
+const PILLAR_BRAND_MARKS: { render: () => JSX.Element; tag?: string }[] = [
+  { render: () => <IconAdBrand size={36} />,         tag: 'Performance' },
+  { render: () => <IconInfluencerBrand size={36} />, tag: 'Creator Network' },
+  { render: () => <IconYouTube size={36} />,         tag: '20万+' },
+  { render: () => <IconAshimotoBrand size={36} />,   tag: 'Production Partner' },
+]
 
 export default function Ecosystem() {
   return (
-    <section className="bg-white">
+    <section className="bg-cloud-white">
       <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
         {/* ── Section header ── */}
         <div className="max-w-[720px] mb-12 md:mb-16">
@@ -165,26 +172,21 @@ export default function Ecosystem() {
           {/* Pillars grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 bg-light-gray gap-px">
             {ECOSYSTEM.media.pillars.map((p, i) => {
-              const Icon = PILLAR_ICONS[i]
-              const isYouTube = i === YOUTUBE_PILLAR_INDEX
+              const mark = PILLAR_BRAND_MARKS[i]
               return (
                 <div
                   key={p.title}
                   className="bg-white p-6 md:p-7 flex flex-col"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    {isYouTube ? (
-                      <div className="inline-flex items-center gap-1.5">
-                        <IconYouTube size={30} />
-                        <span className="text-[11px] font-bold text-charcoal">
-                          20万+
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="flex items-center gap-2.5">
+                      {mark.render()}
+                      {mark.tag && (
+                        <span className="text-[10px] font-bold text-charcoal bg-pale-gray rounded px-1.5 py-0.5 leading-none">
+                          {mark.tag}
                         </span>
-                      </div>
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-teal-tint flex items-center justify-center">
-                        <Icon size={18} color="#167B81" />
-                      </div>
-                    )}
+                      )}
+                    </div>
                     <span className="text-[10px] font-mono text-mid-gray">
                       {String(i + 1).padStart(2, '0')}
                     </span>
