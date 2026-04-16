@@ -71,7 +71,7 @@ const COMPARE = [
   { label: '多言語対応', us: '4言語', others: '日英のみが多い', highlight: false },
   { label: 'レポート頻度', us: '月次', others: '四半期 or なし', highlight: false },
   { label: 'OTA対応数', us: '主要5サイト+', others: 'Airbnbのみが多い', highlight: false },
-  { label: 'ホストレビュー平均', us: '4.7点（5点満点）', others: '保証なし', highlight: true },
+  { label: 'ホストレビュー平均', us: '4.7点（5点満点）※', others: '保証なし', highlight: true },
 ]
 
 export default function PricingPage() {
@@ -204,6 +204,9 @@ export default function PricingPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-5 text-[11px] text-mid-gray leading-relaxed">
+              ※ ホストレビュー平均は SEKAI STAY 管理物件（Airbnb / Booking.com 掲載）の加重平均（2024-2025）。他社平均の料率・固定費・最低契約期間は各社公開情報からの一般的水準。実際の条件は契約形態により異なります。
+            </p>
           </div>
         </section>
 

@@ -33,7 +33,7 @@ export default function Results() {
         </div>
 
         {/* ── Summary strip ── */}
-        <div className="bg-gradient-to-br from-teal-tint to-cloud-white rounded-card border border-light-gray p-6 md:p-8 mb-8 md:mb-10">
+        <div className="bg-gradient-to-br from-teal-tint to-cloud-white rounded-card border border-light-gray p-6 md:p-8 mb-3">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-4">
             {RESULTS.summary.map((s, i) => (
               <div
@@ -59,6 +59,9 @@ export default function Results() {
             ))}
           </div>
         </div>
+        <p className="text-[11px] text-mid-gray mb-8 md:mb-10 leading-relaxed jp-break">
+          {RESULTS.summarySource}
+        </p>
 
         {/* ── Case cards ── */}
         <div className="grid md:grid-cols-3 gap-5 md:gap-6">

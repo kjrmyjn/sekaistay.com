@@ -11,6 +11,16 @@ type CredBlock = {
   external?: boolean
 }
 
+// 公式カラー準拠の OTA ワードマーク（正規ロゴ画像は別途差し替え可）
+const OTA_PARTNERS: { name: string; color: string; sub?: string }[] = [
+  { name: 'airbnb',        color: '#FF5A5F', sub: 'Superhost 多数' },
+  { name: 'Booking.com',   color: '#003580', sub: 'Preferred Partner' },
+  { name: 'Vrbo',          color: '#245ABC' },
+  { name: 'Expedia',       color: '#FDB813' },
+  { name: '楽天トラベル',   color: '#BF0000' },
+  { name: 'agoda',         color: '#5B2D90' },
+]
+
 export default function Credentials() {
   const blocks = CREDENTIALS.blocks as readonly CredBlock[]
   return (
@@ -72,6 +82,38 @@ export default function Credentials() {
               </div>
             )
           })}
+        </div>
+
+        {/* ── OTA Partners Strip ── */}
+        <div className="mb-10 md:mb-14">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-6 h-px bg-sekai-teal" />
+            <span className="eyebrow text-sekai-teal">Channel Partners</span>
+            <span className="text-[11px] text-mid-gray">公式API・パートナープログラム経由で運用</span>
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+            {OTA_PARTNERS.map((p) => (
+              <div
+                key={p.name}
+                className="bg-white border border-light-gray rounded-card px-3 py-4 flex flex-col items-center justify-center min-h-[76px] text-center"
+              >
+                <span
+                  className="text-[13px] md:text-[14px] font-bold tracking-tight leading-none"
+                  style={{ color: p.color }}
+                >
+                  {p.name}
+                </span>
+                {p.sub && (
+                  <span className="mt-1.5 text-[10px] text-dark-gray leading-tight">
+                    {p.sub}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-[11px] text-mid-gray leading-relaxed jp-break">
+            ※ 各社のロゴ・ブランドは各社に帰属します。掲載状況・Superhost認定・Preferred Partnerステータスは物件ごとに異なります。
+          </p>
         </div>
 
         {/* ── Comparison One-Liner ── */}

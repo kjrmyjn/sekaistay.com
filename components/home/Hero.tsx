@@ -43,7 +43,7 @@ export default function Hero() {
             </div>
 
             {/* Stats — horizontal trust cluster */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+            <div className="flex flex-wrap gap-x-6 gap-y-3 mb-2">
               {HERO.stats.map((s) => (
                 <div key={s.label} className="flex items-baseline gap-1.5 whitespace-nowrap">
                   <span className="text-[18px] font-bold text-sekai-teal leading-none">
@@ -53,6 +53,9 @@ export default function Hero() {
                 </div>
               ))}
             </div>
+            <p className="text-[10.5px] text-mid-gray mb-9 leading-relaxed">
+              ※ レビュー平均は Airbnb / Booking.com 掲載の管理物件（2024-2025）の加重平均。運用支援期間は株式会社セカイチの宿泊・運営事業実績に基づきます。
+            </p>
 
             {/* CTAs — 階層：①試算が最速導線 / ②相談で深掘り / ③診断はテキスト */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
@@ -105,12 +108,17 @@ export default function Hero() {
                     'linear-gradient(180deg, rgba(22,123,129,0) 40%, rgba(22,123,129,0.22) 100%)',
                 }}
               />
-              {/* Reviewed badge */}
-              <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 shadow-sm">
-                <span className="text-[16px] font-bold text-sekai-teal leading-none">
-                  ★ 4.8
-                </span>
-                <span className="text-[11px] text-dark-gray">管理物件レビュー平均</span>
+              {/* Reviewed badge — 出典付き */}
+              <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-2.5 shadow-sm max-w-[220px]">
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[16px] font-bold text-sekai-teal leading-none">
+                    ★ 4.8
+                  </span>
+                  <span className="text-[11px] text-dark-gray leading-none">管理物件レビュー平均</span>
+                </div>
+                <p className="text-[9.5px] text-mid-gray leading-tight">
+                  Airbnb / Booking.com 掲載物件／2024-2025
+                </p>
               </div>
             </div>
 
