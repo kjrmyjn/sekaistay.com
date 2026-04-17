@@ -115,6 +115,7 @@ function BlogPostJsonLd({ post }: { post: { slug: string; title: string; descrip
 
 // ── Markdown Renderer ─────────────────────────────────────────────
 function renderMarkdown(md: string) {
+  if (!md) return '<p class="text-sm text-dark-gray">記事の本文を準備中です。</p>'
   const lines = md.split('\n')
   const html: string[] = []
   let inTable = false
