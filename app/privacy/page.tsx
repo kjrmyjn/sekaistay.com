@@ -88,7 +88,7 @@ export default function PrivacyPage() {
               <div>
                 <h2 className="text-base font-bold text-charcoal mb-2">10. お問い合わせ窓口</h2>
                 <p>
-                  株式会社セカイチ / 〒150-0021 東京都渋谷区恵比寿西2丁目14-7 / メール: info@sekaistay.com
+                  株式会社セカイチ / 〒150-0021 東京都渋谷区恵比寿西2丁目14-7 / メール: contact@sekaistay.com
                 </p>
               </div>
             </div>

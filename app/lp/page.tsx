@@ -1834,7 +1834,7 @@ function Footer() {
                 <p>
                   株式会社セカイチ<br />
                   〒150-0021 東京都渋谷区恵比寿西2丁目14-7<br />
-                  メール: info@sekaistay.com
+                  メール: contact@sekaistay.com
                 </p>
               </div>
 
