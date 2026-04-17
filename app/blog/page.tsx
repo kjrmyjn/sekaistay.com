@@ -64,7 +64,7 @@ export default function BlogPage() {
                     className="block bg-white rounded-2xl border border-light-gray overflow-hidden hover:shadow-lg hover:border-deep-teal/30 transition-all group"
                   >
                     <div className="aspect-[16/10] overflow-hidden">
-                      <img src={IMG.blogPlaceholder} alt={post.title} className="w-full h-full object-cover" />
+                      <img src={post.image || IMG.blogPlaceholder} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-5">
                       <div className="flex items-center gap-2 mb-3">

@@ -9,6 +9,7 @@ export interface BlogPost {
   category: string
   tags: string[]
   body: string
+  image?: string
 }
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')

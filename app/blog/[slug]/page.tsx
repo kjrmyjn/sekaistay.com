@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: 'SEKAI STAY',
       locale: 'ja_JP',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+      images: [{ url: post.image || `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // ── Structured Data (BlogPosting + BreadcrumbList) ────────────────
-function BlogPostJsonLd({ post }: { post: { slug: string; title: string; description: string; date: string; category: string; tags: string[]; body: string } }) {
+function BlogPostJsonLd({ post }: { post: { slug: string; title: string; description: string; date: string; category: string; tags: string[]; body: string; image?: string } }) {
   const url = `${SITE_URL}/blog/${post.slug}`
   const wordCount = post.body.replace(/[#*|\-\[\]()]/g, '').length
 
@@ -88,7 +88,7 @@ function BlogPostJsonLd({ post }: { post: { slug: string; title: string; descrip
       url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/sekai_stay_03_03.png` },
     },
-    image: `${SITE_URL}/og-image.jpg`,
+    image: post.image || `${SITE_URL}/og-image.jpg`,
     wordCount,
     keywords: post.tags.join(', '),
     articleSection: post.category,
@@ -208,6 +208,17 @@ export default function BlogPostPage({ params }: Props) {
         {/* ── Hero ─────────────────────────────────────── */}
         <section className="bg-warm-gradient px-6 pt-14 pb-10 md:pt-20 md:pb-14 border-b border-light-gray">
           <div className="max-w-3xl mx-auto">
+            {/* Hero image */}
+            {post.image && (
+              <div className="aspect-[2/1] sm:aspect-[5/2] rounded-2xl overflow-hidden mb-8">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-2 mb-5">
               <span className="text-[10px] font-bold text-deep-teal bg-teal-tint px-2.5 py-1 rounded tracking-wider">
                 {post.category}
