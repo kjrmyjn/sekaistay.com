@@ -12,6 +12,9 @@ export interface BlogPost {
   image?: string
 }
 
+/** Lightweight version for list pages (no body) */
+export type BlogPostSummary = Omit<BlogPost, 'body'>
+
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 export function getAllPosts(): BlogPost[] {
@@ -22,6 +25,11 @@ export function getAllPosts(): BlogPost[] {
     return JSON.parse(raw) as BlogPost
   })
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
+
+/** Returns posts without body — for list pages to keep client payload small */
+export function getAllPostSummaries(): BlogPostSummary[] {
+  return getAllPosts().map(({ body, ...rest }) => rest)
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
