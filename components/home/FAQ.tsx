@@ -21,7 +21,7 @@ export default function FAQ() {
 
   return (
     <section className="bg-white">
-      <div className="max-w-[960px] mx-auto px-5 md:px-10 section-xl">
+      <div className="max-w-[960px] mx-auto px-5 md:px-10 py-12 md:py-16 lg:py-20">
         {/* ── Header ── */}
         <div className="mb-10 md:mb-12 max-w-[720px]">
           <div className="eyebrow text-sekai-teal mb-4">FAQ</div>

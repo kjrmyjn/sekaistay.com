@@ -149,15 +149,15 @@ export default function FAQClient() {
       <FloatingCTA />
       <main>
         {/* ── Hero ── */}
-        <section className="bg-warm-gradient px-5 md:px-10 section-heavy">
+        <section className="bg-warm-gradient px-5 md:px-10 pt-10 pb-8 md:pt-14 md:pb-10">
           <div className="max-w-[800px] mx-auto text-center">
             <p className="text-[11px] font-bold text-deep-teal tracking-[0.2em] uppercase mb-3">
               FAQ
             </p>
-            <h1 className="heading-display text-charcoal mb-5">
+            <h1 className="heading-display text-charcoal mb-4">
               よくあるご質問
             </h1>
-            <p className="text-[15px] md:text-base text-dark-gray leading-relaxed max-w-[600px] mx-auto">
+            <p className="text-[14px] md:text-[15px] text-dark-gray leading-relaxed max-w-[600px] mx-auto">
               SEKAI STAYの民泊運営代行サービスに関して、
               オーナー様からよくいただくご質問をまとめました。
             </p>
@@ -165,10 +165,10 @@ export default function FAQClient() {
         </section>
 
         {/* ── Category tabs + Accordion ── */}
-        <section className="px-5 md:px-10 section-xl bg-white">
+        <section className="px-5 md:px-10 pt-8 pb-12 md:pt-10 md:pb-16 bg-white">
           <div className="max-w-[800px] mx-auto">
             {/* Category filter */}
-            <div className="flex gap-2 mb-8 md:mb-10 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide">
+            <div className="flex gap-2 mb-6 md:mb-8 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide">
               {FAQ_CATEGORIES.map((cat) => {
                 const count =
                   cat.id === 'all'
@@ -199,7 +199,7 @@ export default function FAQClient() {
             </div>
 
             {/* Accordion list */}
-            <div className="space-y-3">
+            <div className="space-y-2.5 md:space-y-3">
               {visibleItems.map((item, i) => {
                 const isOpen = openIndex === i
                 return (
@@ -211,7 +211,7 @@ export default function FAQClient() {
                   >
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : i)}
-                      className="w-full flex items-start justify-between gap-4 p-5 md:p-6 text-left cursor-pointer"
+                      className="w-full flex items-start justify-between gap-3 p-4 md:p-5 lg:p-6 text-left cursor-pointer"
                       aria-expanded={isOpen}
                     >
                       <div className="flex items-start gap-3 md:gap-4 flex-1 min-w-0">
@@ -255,7 +255,7 @@ export default function FAQClient() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-5 md:px-6 pb-5 md:pb-6 pl-[52px] md:pl-[64px]">
+                        <div className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6 pl-[44px] md:pl-[56px] lg:pl-[64px]">
                           <div className="border-t border-light-gray pt-4">
                             <p className="text-[13px] md:text-[14px] text-dark-gray leading-[1.85]">
                               {item.a}
@@ -278,7 +278,7 @@ export default function FAQClient() {
         </section>
 
         {/* ── Bottom CTA ── */}
-        <section className="bg-deep-teal px-5 md:px-10 py-16 md:py-20">
+        <section className="bg-deep-teal px-5 md:px-10 py-12 md:py-16 lg:py-20">
           <div className="max-w-[700px] mx-auto text-center">
             <h2 className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
               ご不明な点がございましたら、<br className="hidden sm:inline" />
