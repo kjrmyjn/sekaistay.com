@@ -22,6 +22,7 @@
     -moz-osx-font-smoothing: grayscale;
     word-break: auto-phrase;
     overflow-wrap: anywhere;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4 {
     line-break: strict;

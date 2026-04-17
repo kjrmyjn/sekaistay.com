@@ -120,7 +120,7 @@ export default function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-5 md:px-6 pb-5 md:pb-6 pl-[60px] md:pl-[68px]">
+                    <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 pl-[48px] sm:pl-[60px] md:pl-[68px]">
                       <p className="text-body-sm text-dark-gray jp-break">
                         {item.a}
                       </p>

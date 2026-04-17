@@ -33,7 +33,7 @@ export default function Results() {
         </div>
 
         {/* ── Summary strip ── */}
-        <div className="bg-gradient-to-br from-teal-tint to-cloud-white rounded-card border border-light-gray p-6 md:p-8 mb-3">
+        <div className="bg-gradient-to-br from-teal-tint to-cloud-white rounded-card border border-light-gray p-4 sm:p-6 md:p-8 mb-3">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-4">
             {RESULTS.summary.map((s, i) => (
               <div
@@ -43,11 +43,11 @@ export default function Results() {
                 }`}
               >
                 <div className="flex items-baseline gap-0.5 mb-1">
-                  <span className="text-[32px] md:text-[40px] font-bold text-deep-teal leading-none tracking-tight">
+                  <span className="text-[26px] sm:text-[32px] md:text-[40px] font-bold text-deep-teal leading-none tracking-tight">
                     {s.value}
                   </span>
                   {s.unit && (
-                    <span className="text-[14px] md:text-[16px] font-bold text-sekai-teal">
+                    <span className="text-[12px] sm:text-[14px] md:text-[16px] font-bold text-sekai-teal">
                       {s.unit}
                     </span>
                   )}
@@ -104,7 +104,7 @@ export default function Results() {
                   </div>
                 </div>
 
-                <div className="p-6 md:p-7 flex flex-col flex-1">
+                <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-1">
                   {/* Metrics with visual bars */}
                   <div className="space-y-4 mb-5 pb-5 border-b border-pale-gray">
                     {c.metrics.map((m, i) => (
@@ -119,12 +119,12 @@ export default function Results() {
                         </div>
 
                         {m.from ? (
-                          <div className="flex items-baseline gap-2 text-charcoal flex-wrap mb-2">
-                            <span className="text-[13px] text-mid-gray line-through">
+                          <div className="flex items-baseline gap-1.5 sm:gap-2 text-charcoal flex-wrap mb-2">
+                            <span className="text-[12px] sm:text-[13px] text-mid-gray line-through">
                               {m.from}
                             </span>
                             <IconArrowRight size={11} color="#259DA3" />
-                            <span className="text-[17px] md:text-[18px] font-bold text-deep-teal leading-none">
+                            <span className="text-[15px] sm:text-[17px] md:text-[18px] font-bold text-deep-teal leading-none">
                               {m.to}
                             </span>
                           </div>

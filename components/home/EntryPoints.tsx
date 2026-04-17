@@ -68,7 +68,7 @@ export default function EntryPoints() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 md:p-7 flex flex-col flex-1">
+                <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-1">
                   <h3 className="heading-sub text-charcoal mb-3 jp-keep">
                     <JP>{c.title}</JP>
                   </h3>

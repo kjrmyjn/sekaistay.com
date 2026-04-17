@@ -59,7 +59,7 @@ export default function Credentials() {
               </>
             )
             const baseClass =
-              'bg-cloud-white rounded-card border border-light-gray p-4 md:p-5 h-full transition hover:border-sekai-teal/50'
+              'bg-cloud-white rounded-card border border-light-gray p-3 sm:p-4 md:p-5 h-full transition hover:border-sekai-teal/50'
             if (b.href) {
               return (
                 <a
@@ -86,19 +86,19 @@ export default function Credentials() {
 
         {/* ── OTA Partners Strip ── */}
         <div className="mb-10 md:mb-14">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
             <span className="w-6 h-px bg-sekai-teal" />
             <span className="eyebrow text-sekai-teal">Channel Partners</span>
-            <span className="text-[11px] text-mid-gray">公式API・パートナープログラム経由で運用</span>
+            <span className="text-[10px] sm:text-[11px] text-mid-gray">公式API・パートナープログラム経由で運用</span>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
             {OTA_PARTNERS.map((p) => (
               <div
                 key={p.name}
-                className="bg-white border border-light-gray rounded-card px-3 py-4 flex flex-col items-center justify-center min-h-[76px] text-center"
+                className="bg-white border border-light-gray rounded-card px-2 sm:px-3 py-3 sm:py-4 flex flex-col items-center justify-center min-h-[68px] sm:min-h-[76px] text-center"
               >
                 <span
-                  className="text-[13px] md:text-[14px] font-bold tracking-tight leading-none"
+                  className="text-[11px] sm:text-[13px] md:text-[14px] font-bold tracking-tight leading-none"
                   style={{ color: p.color }}
                 >
                   {p.name}
@@ -117,7 +117,7 @@ export default function Credentials() {
         </div>
 
         {/* ── Comparison One-Liner ── */}
-        <div className="rounded-card border border-sekai-teal/25 bg-teal-tint/40 p-6 md:p-8">
+        <div className="rounded-card border border-sekai-teal/25 bg-teal-tint/40 p-4 sm:p-6 md:p-8">
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-full bg-white border border-sekai-teal/30 flex items-center justify-center flex-shrink-0 mt-0.5">
               <IconShield size={18} color="#167B81" />

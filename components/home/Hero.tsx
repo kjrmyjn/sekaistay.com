@@ -34,8 +34,8 @@ export default function Hero() {
             </p>
 
             {/* ── 他社比較1行（AEO / 信頼の即提示） ── */}
-            <div className="mb-8 max-w-[540px] rounded-card border border-light-gray bg-cloud-white px-4 py-3">
-              <p className="text-[12.5px] text-charcoal leading-relaxed jp-break">
+            <div className="mb-8 max-w-[540px] rounded-card border border-light-gray bg-cloud-white px-3 py-2.5 sm:px-4 sm:py-3">
+              <p className="text-[11.5px] sm:text-[12.5px] text-charcoal leading-relaxed jp-break">
                 一般的な運用代行の手数料<span className="font-bold">15〜25%</span> に対し、
                 SEKAI STAY は<span className="font-bold text-sekai-teal">8%＋月5,000円/室</span>。
                 最低契約期間なし、初期費用0円。
@@ -43,13 +43,13 @@ export default function Hero() {
             </div>
 
             {/* Stats — horizontal trust cluster */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 mb-2">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-6 gap-y-3 mb-2">
               {HERO.stats.map((s) => (
-                <div key={s.label} className="flex items-baseline gap-1.5 whitespace-nowrap">
-                  <span className="text-[18px] font-bold text-sekai-teal leading-none">
+                <div key={s.label} className="flex items-baseline gap-1.5">
+                  <span className="text-[16px] sm:text-[18px] font-bold text-sekai-teal leading-none">
                     {s.value}
                   </span>
-                  <span className="text-[12px] text-dark-gray">{s.label}</span>
+                  <span className="text-[11px] sm:text-[12px] text-dark-gray">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -109,7 +109,7 @@ export default function Hero() {
                 }}
               />
               {/* Reviewed badge — 出典付き */}
-              <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-2.5 shadow-sm max-w-[220px]">
+              <div className="absolute top-3 left-3 sm:top-5 sm:left-5 bg-white/95 backdrop-blur-sm rounded-2xl px-3 py-2 sm:px-4 sm:py-2.5 shadow-sm max-w-[200px] sm:max-w-[220px]">
                 <div className="flex items-center gap-2 mb-0.5">
                   <span className="text-[16px] font-bold text-sekai-teal leading-none">
                     ★ 4.8
@@ -123,7 +123,7 @@ export default function Hero() {
             </div>
 
             {/* Sim card — contained within right column, overlaps bottom at lg */}
-            <div className="mt-5 lg:mt-0 lg:absolute lg:-bottom-14 lg:left-6 lg:right-6 bg-white rounded-card border border-light-gray shadow-[0_12px_40px_rgba(22,123,129,0.14)] p-5 lift">
+            <div className="mt-5 lg:mt-0 lg:absolute lg:-bottom-14 lg:left-6 lg:right-6 bg-white rounded-card border border-light-gray shadow-[0_12px_40px_rgba(22,123,129,0.14)] p-4 sm:p-5 lift">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-teal-tint flex items-center justify-center flex-shrink-0 mt-0.5">
                   <IconSparkle size={18} color="#167B81" />

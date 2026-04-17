@@ -169,7 +169,7 @@ export default function Simulation() {
 
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-5 md:gap-6">
           {/* ── Form (interactive) ── */}
-          <div className="bg-white rounded-card border border-light-gray p-6 md:p-8 min-w-0">
+          <div className="bg-white rounded-card border border-light-gray p-4 sm:p-6 md:p-8 min-w-0">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
                 <div className="w-1 h-5 bg-sekai-teal rounded" />
@@ -329,7 +329,7 @@ export default function Simulation() {
           </div>
 
           {/* ── Live result card ── */}
-          <div className="bg-gradient-to-br from-deep-teal to-sekai-teal rounded-card p-6 md:p-8 text-white flex flex-col min-w-0 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-deep-teal to-sekai-teal rounded-card p-4 sm:p-6 md:p-8 text-white flex flex-col min-w-0 relative overflow-hidden">
             {/* Decorative glow */}
             <div
               aria-hidden
@@ -351,12 +351,12 @@ export default function Simulation() {
             {/* Projected monthly revenue range */}
             <div className="relative mb-6">
               <div className="text-[11px] text-white/75 mb-2">想定月商レンジ</div>
-              <div className="flex items-baseline gap-2 mb-3 transition-all duration-300">
-                <span className="text-[28px] md:text-[34px] font-bold leading-none tabular-nums">
+              <div className="flex items-baseline gap-1.5 sm:gap-2 mb-3 transition-all duration-300 flex-wrap">
+                <span className="text-[22px] sm:text-[28px] md:text-[34px] font-bold leading-none tabular-nums">
                   {manYen(result.low)}
                 </span>
                 <span className="text-white/70">〜</span>
-                <span className="text-[28px] md:text-[34px] font-bold leading-none tabular-nums">
+                <span className="text-[22px] sm:text-[28px] md:text-[34px] font-bold leading-none tabular-nums">
                   {manYen(result.high)}
                 </span>
               </div>

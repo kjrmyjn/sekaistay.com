@@ -37,7 +37,7 @@ export default function Dashboard() {
           </div>
 
           {/* ── Dashboard mockup ── */}
-          <div className="bg-white rounded-card p-5 md:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+          <div className="bg-white rounded-card p-3 sm:p-5 md:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
             {/* Window chrome */}
             <div className="flex items-center gap-1.5 mb-4 pb-3 border-b border-pale-gray">
               <span className="w-2.5 h-2.5 rounded-full bg-light-gray" />
@@ -50,26 +50,26 @@ export default function Dashboard() {
             </div>
 
             {/* Top KPIs */}
-            <div className="grid grid-cols-3 gap-2 md:gap-3 mb-4">
-              <div className="bg-teal-tint rounded-btn p-2.5 md:p-3 min-w-0">
-                <div className="text-[10px] text-dark-gray mb-1 truncate">今月の売上</div>
-                <div className="text-[16px] md:text-[18px] font-bold text-deep-teal">¥1.34M</div>
-                <div className="text-[10px] text-sekai-teal font-bold truncate">+18% MoM</div>
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 mb-4">
+              <div className="bg-teal-tint rounded-btn p-2 sm:p-2.5 md:p-3 min-w-0">
+                <div className="text-[9px] sm:text-[10px] text-dark-gray mb-1 truncate">今月の売上</div>
+                <div className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-deep-teal truncate">¥1.34M</div>
+                <div className="text-[9px] sm:text-[10px] text-sekai-teal font-bold truncate">+18% MoM</div>
               </div>
-              <div className="bg-cloud-white rounded-btn p-2.5 md:p-3 min-w-0">
-                <div className="text-[10px] text-dark-gray mb-1">稼働率</div>
-                <div className="text-[16px] md:text-[18px] font-bold text-charcoal">82%</div>
-                <div className="text-[10px] text-sekai-teal font-bold">約1.4倍</div>
+              <div className="bg-cloud-white rounded-btn p-2 sm:p-2.5 md:p-3 min-w-0">
+                <div className="text-[9px] sm:text-[10px] text-dark-gray mb-1 truncate">稼働率</div>
+                <div className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-charcoal">82%</div>
+                <div className="text-[9px] sm:text-[10px] text-sekai-teal font-bold truncate">約1.4倍</div>
               </div>
-              <div className="bg-cloud-white rounded-btn p-2.5 md:p-3 min-w-0">
-                <div className="text-[10px] text-dark-gray mb-1 truncate">予約ペース</div>
-                <div className="text-[16px] md:text-[18px] font-bold text-charcoal">順調</div>
-                <div className="text-[10px] text-mid-gray truncate">vs 先月</div>
+              <div className="bg-cloud-white rounded-btn p-2 sm:p-2.5 md:p-3 min-w-0">
+                <div className="text-[9px] sm:text-[10px] text-dark-gray mb-1 truncate">予約ペース</div>
+                <div className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-charcoal">順調</div>
+                <div className="text-[9px] sm:text-[10px] text-mid-gray truncate">vs 先月</div>
               </div>
             </div>
 
             {/* Bar chart */}
-            <div className="bg-cloud-white rounded-btn p-4 mb-4">
+            <div className="bg-cloud-white rounded-btn p-3 sm:p-4 mb-4">
               <div className="flex items-center justify-between mb-3">
                 <div className="text-[11px] font-bold text-charcoal">レビュー推移</div>
                 <div className="flex items-baseline gap-1.5">
@@ -125,7 +125,7 @@ export default function Dashboard() {
               ].map((a, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between gap-2 text-[12px] bg-white border border-pale-gray rounded px-3 py-2 min-w-0"
+                  className="flex items-center justify-between gap-2 text-[11px] sm:text-[12px] bg-white border border-pale-gray rounded px-2 sm:px-3 py-2 min-w-0"
                 >
                   <span className="text-charcoal truncate">{a.txt}</span>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0 ${
@@ -146,7 +146,7 @@ export default function Dashboard() {
           {DASHBOARD.items.map((item) => (
             <span
               key={item}
-              className="text-[12px] text-white/70 border border-white/15 rounded-full px-4 py-1.5"
+              className="text-[11px] sm:text-[12px] text-white/70 border border-white/15 rounded-full px-3 sm:px-4 py-1.5"
             >
               {item}
             </span>

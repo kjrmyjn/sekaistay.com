@@ -52,7 +52,7 @@ export default function ValueProp() {
             {VALUE.items.map((item) => (
               <article
                 key={item.number}
-                className="bg-white rounded-card border border-light-gray p-6 md:p-8"
+                className="bg-white rounded-card border border-light-gray p-4 sm:p-6 md:p-8"
               >
                 <div className="flex items-baseline gap-4 mb-4">
                   <span className="text-[22px] font-bold text-sekai-teal font-mono leading-none">

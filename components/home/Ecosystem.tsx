@@ -40,7 +40,7 @@ export default function Ecosystem() {
         <div className="relative rounded-card overflow-hidden border border-light-gray mb-6 md:mb-8 bg-cloud-white">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-0">
             {/* Left: copy */}
-            <div className="p-7 md:p-10 lg:p-12 order-2 lg:order-1">
+            <div className="p-5 sm:p-7 md:p-10 lg:p-12 order-2 lg:order-1">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center border border-light-gray">
                   <IconBuilding size={16} color="#167B81" />
@@ -64,7 +64,7 @@ export default function Ecosystem() {
             </div>
 
             {/* Right: photo grid of spots */}
-            <div className="order-1 lg:order-2 relative bg-charcoal min-h-[320px] lg:min-h-[480px]">
+            <div className="order-1 lg:order-2 relative bg-charcoal min-h-[240px] sm:min-h-[320px] lg:min-h-[480px]">
               <div className="grid grid-cols-2 grid-rows-2 h-full gap-0">
                 {/* Large spot */}
                 <div className="relative row-span-2 overflow-hidden">
@@ -149,7 +149,7 @@ export default function Ecosystem() {
               }}
             />
 
-            <div className="relative p-7 md:p-10 lg:p-12">
+            <div className="relative p-5 sm:p-7 md:p-10 lg:p-12">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
                   <IconGlobe size={16} color="#54BEC3" />
@@ -176,7 +176,7 @@ export default function Ecosystem() {
               return (
                 <div
                   key={p.title}
-                  className="bg-white p-6 md:p-7 flex flex-col"
+                  className="bg-white p-4 sm:p-6 md:p-7 flex flex-col"
                 >
                   <div className="flex items-start justify-between mb-5">
                     <div className="flex items-center gap-2.5">

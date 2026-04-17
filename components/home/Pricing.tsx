@@ -21,7 +21,7 @@ export default function Pricing() {
         {/* ── Main plan card ── */}
         <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-5 md:gap-6">
           {/* Left: Hero price card (teal) */}
-          <div className="relative bg-gradient-to-br from-deep-teal to-sekai-teal rounded-card p-7 md:p-9 text-white overflow-hidden flex flex-col">
+          <div className="relative bg-gradient-to-br from-deep-teal to-sekai-teal rounded-card p-5 sm:p-7 md:p-9 text-white overflow-hidden flex flex-col">
             {/* Subtle radial glow */}
             <div
               aria-hidden
@@ -45,14 +45,14 @@ export default function Pricing() {
                 <div className="text-[12px] text-white/75 mb-2">
                   {PRICING.plan.feeLabel}
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-[72px] md:text-[88px] font-bold leading-none tracking-tight">
+                <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
+                  <span className="text-[52px] sm:text-[72px] md:text-[88px] font-bold leading-none tracking-tight">
                     {PRICING.plan.feeValue}
                   </span>
-                  <span className="text-[32px] md:text-[40px] font-bold leading-none">
+                  <span className="text-[24px] sm:text-[32px] md:text-[40px] font-bold leading-none">
                     {PRICING.plan.feeUnit}
                   </span>
-                  <span className="text-[12px] text-white/75 ml-1">
+                  <span className="text-[11px] sm:text-[12px] text-white/75 ml-1">
                     {PRICING.plan.feeSub}
                   </span>
                 </div>
@@ -104,7 +104,7 @@ export default function Pricing() {
           </div>
 
           {/* Right: Details breakdown */}
-          <div className="bg-white rounded-card border border-light-gray p-7 md:p-9 flex flex-col">
+          <div className="bg-white rounded-card border border-light-gray p-5 sm:p-7 md:p-9 flex flex-col">
             <div className="eyebrow text-sekai-teal mb-4">Plan Details</div>
             <h3 className="text-[17px] font-bold text-charcoal mb-5 jp-keep">
               <JP>料金の内訳と、含まれているもの</JP>
