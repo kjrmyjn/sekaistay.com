@@ -5,9 +5,10 @@ import './globals.css'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '700', '800', '900'],
+  weight: ['400', '700', '900'],
   display: 'swap',
   variable: '--font-noto-sans-jp',
+  preload: true,
 })
 
 const GA_ID = 'G-B7M920RCGR'
@@ -39,13 +40,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
       { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: [
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/icon-192.png',
+    shortcut: '/favicon.ico',
   },
   manifest: '/manifest.json',
   openGraph: {
@@ -93,12 +95,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja" className={notoSansJP.variable}>
       <head>
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" />
+        {/* dns-prefetch for third-party origins */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         {/* Organization JSON-LD */}
         <script
           type="application/ld+json"
@@ -131,48 +130,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-        {/* GA4 — gtag.js loader */}
+        {/* GA4 — gtag.js loader (lazyOnload to avoid render-blocking) */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        {/* GA4 — config + enhanced conversions */}
-        <Script id="ga4-init" strategy="afterInteractive">
+        {/* GA4 config + engagement tracking — combined & deferred */}
+        <Script id="ga4-init" strategy="lazyOnload">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', {
-              send_page_view: true,
-              cookie_flags: 'SameSite=None;Secure'
-            });
-          `}
-        </Script>
-        {/* スクロール深度 & 滞在時間 & CTA クリック & フォームステップ トラッキング */}
-        <Script id="engagement-tracking" strategy="afterInteractive">
-          {`
-            (function(){
-              var maxScroll=0, tracked={};
-              window.addEventListener('scroll',function(){
-                var pct=Math.round(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100);
-                if(pct>maxScroll) maxScroll=pct;
-                [25,50,75,100].forEach(function(t){
-                  if(maxScroll>=t&&!tracked[t]){tracked[t]=1;if(typeof gtag!=='undefined')gtag('event','scroll_depth',{depth_percentage:t});}
-                });
-              },{passive:true});
-              var start=Date.now();
-              window.addEventListener('beforeunload',function(){
-                var sec=Math.round((Date.now()-start)/1000);
-                if(sec>5&&typeof gtag!=='undefined')gtag('event','time_on_page',{duration_seconds:sec});
-              });
-
-              // UTM パラメータを sessionStorage に保持
-              var params=new URLSearchParams(window.location.search);
-              ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){
-                var v=params.get(k);
-                if(v) sessionStorage.setItem(k,v);
-              });
-            })();
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+            gtag('js',new Date());gtag('config','${GA_ID}',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});
+            var _ms=0,_tr={};
+            window.addEventListener('scroll',function(){var p=Math.round(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100);if(p>_ms)_ms=p;[25,50,75,100].forEach(function(t){if(_ms>=t&&!_tr[t]){_tr[t]=1;gtag('event','scroll_depth',{depth_percentage:t})}})},{passive:true});
+            var _st=Date.now();window.addEventListener('beforeunload',function(){var s=Math.round((Date.now()-_st)/1000);if(s>5)gtag('event','time_on_page',{duration_seconds:s})});
+            var _p=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=_p.get(k);if(v)sessionStorage.setItem(k,v)});
           `}
         </Script>
       </head>

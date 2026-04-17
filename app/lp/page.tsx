@@ -7,7 +7,7 @@
 //       → Pricing → Portfolio → Testimonials → Flow → FAQ → Form → CTA → Company → Footer
 // ─────────────────────────────────────────────────────────────────────
 
-import { useState, useEffect, useRef, ReactNode } from 'react'
+import { useState, useEffect, useRef, ReactNode, lazy, Suspense } from 'react'
 
 const OUR_RATE = 0.08
 const MONTHLY_FEE = 5000 // 部屋/月
@@ -216,6 +216,8 @@ function Nav() {
           <img
             src="/sekai_stay_03_03.png"
             alt="SEKAI STAY"
+            width={95}
+            height={36}
             className={`h-8 md:h-9 w-auto transition-all duration-300 ${scrolled ? '' : 'invert brightness-0 invert'}`}
             style={scrolled ? {} : { filter: 'brightness(0) invert(1)' }}
           />
@@ -928,6 +930,10 @@ function Portfolio() {
                 <img
                   src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=500&fit=crop&q=80&auto=format"
                   alt="S様の高級ヴィラ"
+                  width={800}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-full">
@@ -960,6 +966,10 @@ function Portfolio() {
                 <img
                   src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&h=500&fit=crop&q=80&auto=format"
                   alt="T様のトレーラーハウス"
+                  width={800}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-full">
@@ -1723,6 +1733,8 @@ function Footer() {
               <img
                 src="/sekai_stay_03_03.png"
                 alt="SEKAI STAY"
+                width={85}
+                height={32}
                 className="h-8 w-auto mb-3"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />

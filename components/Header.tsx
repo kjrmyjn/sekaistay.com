@@ -31,7 +31,7 @@ export default function Header() {
         <div className="max-w-container mx-auto px-5 md:px-10 h-[64px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <img src="/sekai_stay_03_03.png" alt="SEKAI STAY" className="h-7 w-auto" />
+            <img src="/sekai_stay_03_03.png" alt="SEKAI STAY" className="h-7 w-auto" width={74} height={28} />
           </Link>
 
           {/* Desktop Nav */}

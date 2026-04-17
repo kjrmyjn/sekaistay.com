@@ -44,6 +44,8 @@ export default function Footer() {
                 src="/sekai_stay_03_03.png"
                 alt="SEKAI STAY"
                 className="h-8 w-auto mb-4"
+                width={85}
+                height={32}
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
               <p className="text-[13px] text-light-gray leading-[1.8] mb-4 max-w-sm">
