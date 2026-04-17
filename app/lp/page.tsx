@@ -1321,7 +1321,8 @@ function DiagnosticForm() {
         body: JSON.stringify({
           access_key: accessKey,
           subject: `【無料診断】${name}様 - ${propertyType} / ${area} / ${rooms}`,
-          from_name: 'SEKAI STAY 無料診断フォーム',
+          from_name: 'SEKAI STAY',
+          replyto: 'contact@sekaistay.com',
           name,
           email,
           phone: phone || '未入力',

@@ -19,7 +19,8 @@ export default function ContactPage() {
     const data = new FormData(form)
     data.append('access_key', WEB3FORMS_KEY)
     data.append('subject', '【SEKAI STAY】お問い合わせ')
-    data.append('from_name', 'SEKAI STAY Website')
+    data.append('from_name', 'SEKAI STAY')
+    data.append('replyto', 'contact@sekaistay.com')
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
