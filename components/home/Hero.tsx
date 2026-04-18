@@ -96,7 +96,8 @@ export default function Hero() {
                 alt={IMG.heroMain.alt}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 530px"
+                quality={75}
                 className="object-cover"
               />
               {/* Subtle teal tint overlay */}

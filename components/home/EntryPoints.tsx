@@ -47,7 +47,9 @@ export default function EntryPoints() {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 340px"
+                    quality={70}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div

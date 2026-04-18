@@ -1,22 +1,26 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import FloatingCTA from '@/components/FloatingCTA'
 
+/* ── Above-fold: static imports (critical path) ── */
 import Hero from '@/components/home/Hero'
 import AuthorityBar from '@/components/home/AuthorityBar'
 import EntryPoints from '@/components/home/EntryPoints'
-import Simulation from '@/components/home/Simulation'
-import ValueProp from '@/components/home/ValueProp'
-import Ecosystem from '@/components/home/Ecosystem'
-import Results from '@/components/home/Results'
-import Dashboard from '@/components/home/Dashboard'
-import Flow from '@/components/home/Flow'
-import Pricing from '@/components/home/Pricing'
-import Credentials from '@/components/home/Credentials'
-import FAQ from '@/components/home/FAQ'
-import FinalCTA from '@/components/home/FinalCTA'
-import FooterCatch from '@/components/home/FooterCatch'
+
+/* ── Below-fold: dynamic imports (reduce initial JS bundle ~69 KiB) ── */
+const FloatingCTA = dynamic(() => import('@/components/FloatingCTA'), { ssr: false })
+const Simulation = dynamic(() => import('@/components/home/Simulation'))
+const ValueProp = dynamic(() => import('@/components/home/ValueProp'))
+const Results = dynamic(() => import('@/components/home/Results'))
+const Dashboard = dynamic(() => import('@/components/home/Dashboard'))
+const Ecosystem = dynamic(() => import('@/components/home/Ecosystem'))
+const Flow = dynamic(() => import('@/components/home/Flow'))
+const Pricing = dynamic(() => import('@/components/home/Pricing'))
+const Credentials = dynamic(() => import('@/components/home/Credentials'))
+const FAQ = dynamic(() => import('@/components/home/FAQ'))
+const FinalCTA = dynamic(() => import('@/components/home/FinalCTA'))
+const FooterCatch = dynamic(() => import('@/components/home/FooterCatch'))
 
 /* ─── SEO Meta ────────────────────────────────── */
 

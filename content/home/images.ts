@@ -7,7 +7,7 @@
 const UNSPLASH = (id: string, w = 1200, h?: number) =>
   `https://images.unsplash.com/photo-${id}?w=${w}${
     h ? `&h=${h}` : ''
-  }&fit=crop&q=80&auto=format`
+  }&fit=crop&q=70&auto=format`
 
 export const IMG = {
   // ─── Hero ─────────────────────────────────

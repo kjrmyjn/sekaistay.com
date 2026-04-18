@@ -8,7 +8,8 @@ const notoSansJP = Noto_Sans_JP({
   weight: ['400', '700', '900'],
   display: 'swap',
   variable: '--font-noto-sans-jp',
-  preload: true,
+  preload: false,
+  adjustFontFallback: false,
 })
 
 const GA_ID = 'G-B7M920RCGR'
