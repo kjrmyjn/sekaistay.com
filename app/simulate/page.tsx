@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
@@ -16,12 +17,55 @@ const RATE_PRESETS: { label: string; value: number | null }[] = [
   { label: 'カスタム', value: null },
 ]
 
+// ホームのSimulationセクションから引き継がれるクエリパラメータを初期値にマッピング
+const AREA_NIGHTLY: Record<string, number> = {
+  tokyo: 15000,
+  kyoto: 18000,
+  osaka: 13000,
+  okinawa: 22000,
+  fukuoka: 12000,
+  other: 11000,
+}
+
+function PrefillSync({ onPrefill }: { onPrefill: (v: { rooms?: number; nightly?: number }) => void }) {
+  const searchParams = useSearchParams()
+  useEffect(() => {
+    const rooms = searchParams.get('rooms')
+    const area = searchParams.get('area')
+    const rev = searchParams.get('rev')
+    const update: { rooms?: number; nightly?: number } = {}
+    if (rooms) {
+      const n = parseInt(rooms, 10)
+      if (!isNaN(n) && n > 0) update.rooms = Math.min(Math.max(n, 1), 30)
+    }
+    if (rev) {
+      // 月商から1泊単価を逆算（65%稼働・3部屋の前提）
+      const revNum = parseInt(rev, 10)
+      if (!isNaN(revNum) && revNum > 0) {
+        const rooms = update.rooms ?? 3
+        const nightsPerMonth = Math.round(30 * 0.65)
+        const est = Math.round(revNum / (rooms * nightsPerMonth) / 1000) * 1000
+        if (est >= 3000 && est <= 200000) update.nightly = est
+      }
+    } else if (area && AREA_NIGHTLY[area]) {
+      update.nightly = AREA_NIGHTLY[area]
+    }
+    if (Object.keys(update).length > 0) onPrefill(update)
+  }, [searchParams, onPrefill])
+  return null
+}
+
 export default function SimulatePage() {
   const [properties, setProperties] = useState(3)
   const [occupancy, setOccupancy] = useState(65)
   const [nightly, setNightly] = useState(15000)
   const [selectedRate, setSelectedRate] = useState<number | null>(15)
   const [customRate, setCustomRate] = useState('')
+
+  const handlePrefill = ({ rooms, nightly: nightlyParam }: { rooms?: number; nightly?: number }) => {
+    if (rooms !== undefined) setProperties(rooms)
+    if (nightlyParam !== undefined) setNightly(nightlyParam)
+  }
 
   const isCustom = selectedRate === null
   const compareRate = isCustom
@@ -41,6 +85,9 @@ export default function SimulatePage() {
     <>
       <Header />
       <Breadcrumb items={[{ label: '収支シミュレーター' }]} />
+      <Suspense fallback={null}>
+        <PrefillSync onPrefill={handlePrefill} />
+      </Suspense>
       <main className="bg-ivory pb-20">
 
         {/* Hero */}
@@ -395,10 +442,10 @@ export default function SimulatePage() {
                       <IconArrowRight size={14} />
                     </Link>
                     <Link
-                      href="/diagnostic"
+                      href="/audit"
                       className="btn border-ivory/40 text-ivory hover:bg-ivory/10 hover:border-ivory justify-center"
                     >
-                      無料収益診断をする
+                      無料で運営診断する
                     </Link>
                   </div>
                   <p className="text-caption text-bright-teal/80 mt-5 font-sans text-center">

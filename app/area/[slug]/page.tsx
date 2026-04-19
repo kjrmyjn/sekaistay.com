@@ -472,7 +472,7 @@ export default function AreaDetailPage({ params }: Props) {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
-                    href="/diagnostic"
+                    href="/audit"
                     className="group inline-flex items-center justify-between gap-4 bg-ivory text-ink px-7 py-5 transition hover:bg-bright-teal"
                   >
                     <div>

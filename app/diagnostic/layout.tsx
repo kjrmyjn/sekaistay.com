@@ -1,18 +1,12 @@
+// このページは /audit に統合済み。layout は残骸だが残しておいても動作に影響なし。
+// canonicalは /audit に向ける。
+
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '無料収益診断',
-  description:
-    '民泊物件の収益ポテンシャルを無料診断。物件タイプ・エリア・面積から、SEKAI STAYの運営代行による収益シミュレーションを即座に算出。',
-  openGraph: {
-    title: '無料収益診断 | SEKAI STAY',
-    description: '民泊物件の収益ポテンシャルを無料診断。手数料8%の場合の収益を即座にシミュレーション。',
-    type: 'website',
-    locale: 'ja_JP',
-    url: 'https://sekaistay.com/diagnostic',
-    siteName: 'SEKAI STAY',
-  },
-  alternates: { canonical: 'https://sekaistay.com/diagnostic' },
+  title: '運営診断（/audit へ移動しました）',
+  robots: { index: false, follow: false },
+  alternates: { canonical: 'https://sekaistay.com/audit' },
 }
 
 export default function DiagnosticLayout({ children }: { children: React.ReactNode }) {

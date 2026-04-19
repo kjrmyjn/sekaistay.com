@@ -43,6 +43,21 @@ const nextConfig = {
       },
     ]
   },
+  // 動線整理: /diagnostic は /audit に統合済み
+  async redirects() {
+    return [
+      {
+        source: '/diagnostic',
+        destination: '/audit',
+        permanent: true,
+      },
+      {
+        source: '/diagnostic/:path*',
+        destination: '/audit',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

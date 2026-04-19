@@ -74,7 +74,7 @@ export default function Header() {
 
           {/* CTAs */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <Link href="/diagnostic" className="btn btn-ghost text-[11.5px] px-5 py-3">
+            <Link href="/audit" className="btn btn-ghost text-[11.5px] px-5 py-3">
               無料診断
             </Link>
             <Link href="/contact" className="btn btn-primary text-[11.5px] px-5 py-3">
@@ -118,7 +118,7 @@ export default function Header() {
             ))}
             <div className="flex flex-col gap-3 mt-8">
               <Link
-                href="/diagnostic"
+                href="/audit"
                 onClick={() => setOpen(false)}
                 className="btn btn-ghost w-full"
               >

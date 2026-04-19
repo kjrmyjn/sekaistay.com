@@ -4,14 +4,28 @@
  */
 
 // ═══ CTA リンク一元管理 ═══
+// 3動線の整理:
+//   simulate  = 「うちの物件、いくらいく？」（売上試算・収支比較）
+//   audit     = 「今の運用、採点してほしい」（運営診断スコア）
+//   contact   = 「人と話したい・任せたい」（無料相談）
 export const CTA_LINKS = {
-  contact: '/contact',       // 無料相談
-  diagnostic: '/diagnostic', // 無料診断
-  simulate: '/simulate',     // 収益シミュレーション
+  contact: '/contact',
+  audit: '/audit',
+  simulate: '/simulate',
   caseStudies: '/case-studies',
   services: '/services',
   pricing: '/pricing',
   faq: '/faq',
+} as const
+
+// ═══ CTA ラベル統一（全ページで同じ言葉を使う） ═══
+export const CTA_LABELS = {
+  simulate: '無料シミュレーション',
+  simulateAction: '無料でシミュレーションする',
+  audit: '無料運営診断',
+  auditAction: '無料で運営診断する',
+  contact: '無料相談',
+  contactAction: '無料相談を予約する',
 } as const
 
 // ═══ 1. Hero ═══
@@ -25,15 +39,15 @@ export const HERO = {
     { value: '4.8', label: 'レビュー平均' },
     { value: '全国', label: '対応エリア' },
     { value: '5年+', label: '運用知見' },
-    { value: '35名', label: '運用チーム' },
+    { value: '8%', label: '業界平均の半分以下' },
   ],
-  primaryCta: { label: '無料で収益シミュレーションする', href: '/simulate' },
+  primaryCta: { label: '無料でシミュレーションする', href: '/simulate' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: '今の運用を無料診断する', href: '/diagnostic' },
+  textLink: { label: '今の運用を無料で診断する', href: '/audit' },
   sideCard: {
     title: 'まずは3分で、物件の可能性をチェック',
     body: 'エリア・物件タイプ・部屋数などの情報から、想定売上や改善余地の目安を無料で確認できます。',
-    cta: { label: '収益シミュレーションを始める', href: '/simulate' },
+    cta: { label: 'シミュレーションを始める', href: '/simulate' },
   },
 } as const
 
@@ -41,11 +55,11 @@ export const HERO = {
 export const AUTHORITY = {
   label: 'Trusted Operation',
   items: [
-    { metric: '5年+', label: '民泊運用支援の知見' },
-    { metric: '全国', label: '都市・リゾート・地方エリア対応' },
-    { metric: '多言語', label: '英・中・韓を含むゲスト対応' },
-    { metric: '自社運営', label: '飲食・宿泊を現場で運営' },
-    { metric: '20万+', label: '自社YouTubeの登録者数' },
+    { metric: '5年+', label: '運用の実績' },
+    { metric: '全国', label: '対応エリア' },
+    { metric: '3言語', label: '英・中・韓のゲスト対応' },
+    { metric: '自社運営', label: '宿泊・飲食の現場力' },
+    { metric: '20万+', label: 'YouTube登録者数' },
   ],
   note: '※ 数値は当社管理物件（Airbnb / Booking.com ほか主要OTA掲載）に基づく集計値／2024-2025。住宅宿泊事業法（民泊新法）・旅館業法いずれにも対応し、契約時に適用法令・許認可をご案内します。',
 } as const
@@ -59,8 +73,8 @@ export const ENTRY = {
       id: 'existing',
       label: 'FOR EXISTING OWNERS',
       title: 'すでに民泊を運用している方へ',
-      body: '今の運用に改善余地があるか、手数料や稼働率、レビュー改善の可能性を無料で診断します。',
-      cta: { label: '無料診断する', href: '/diagnostic' },
+      body: '今の運用に改善余地があるか、手数料・稼働率・レビューを7項目で採点します。',
+      cta: { label: '無料で運営診断する', href: '/audit' },
     },
     {
       id: 'starting',
@@ -73,8 +87,8 @@ export const ENTRY = {
       id: 'exploring',
       label: 'FOR EXPLORERS',
       title: 'まずは収益感を知りたい方へ',
-      body: 'エリアや物件条件をもとに、想定売上や改善余地を簡易シミュレーションできます。',
-      cta: { label: '収益を試算する', href: '/simulate' },
+      body: 'エリア・物件タイプ・部屋数から、想定売上レンジと改善余地をその場で試算します。',
+      cta: { label: '無料でシミュレーションする', href: '/simulate' },
     },
   ],
 } as const
@@ -473,9 +487,9 @@ export const CREDENTIALS = {
 export const FINAL_CTA = {
   headline: 'まずは、あなたの物件の伸びしろを見てみませんか？',
   body: '今の運用を見直したい方も、これから民泊を始めたい方も。SEKAI STAYが、現状整理から収益化の方向性まで一緒に考えます。',
-  primaryCta: { label: '無料で収益シミュレーションする', href: '/simulate' },
+  primaryCta: { label: '無料でシミュレーションする', href: '/simulate' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: '今の運用を無料診断する', href: '/diagnostic' },
+  textLink: { label: '今の運用を無料で診断する', href: '/audit' },
 } as const
 
 // ═══ 11. Footer Catch ═══

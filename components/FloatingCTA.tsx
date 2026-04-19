@@ -24,11 +24,11 @@ export default function FloatingCTA() {
         <span className="text-[12.5px] font-medium tracking-wide">無料相談</span>
       </Link>
       <Link
-        href="/diagnostic"
+        href="/audit"
         className="group bg-ivory hover:bg-ink border border-ink text-ink hover:text-ivory transition-all px-5 py-3 flex items-center gap-3 shadow-lift-sm"
       >
         <span className="eyebrow-mono text-sekai-teal">Audit</span>
-        <span className="text-[12.5px] font-medium tracking-wide">無料診断</span>
+        <span className="text-[12.5px] font-medium tracking-wide">無料運営診断</span>
       </Link>
     </div>
   )
