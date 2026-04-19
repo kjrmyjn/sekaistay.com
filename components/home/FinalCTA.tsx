@@ -110,7 +110,7 @@ export default function FinalCTA() {
         <div className="mt-16 md:mt-24 pt-10 border-t border-ivory/10">
           <div className="flex flex-col md:flex-row items-baseline justify-between gap-4">
             <p className="eyebrow-mono text-ivory/40">
-              住宅宿泊管理業 — 届出番号 準備中 / Tokyo · Kyoto · Nagano
+              住宅宿泊管理業 — 国土交通大臣(01) 第F05780号 / Tokyo · Osaka · Kyoto
             </p>
             <p className="font-sans font-light text-[20px] md:text-[22px] text-ivory/30 tracking-[0.08em]">
               SEKAI · STAY · VACATION · RENTAL

@@ -6,7 +6,7 @@ const SERVICE_LINKS = [
   { href: '/services#phase-2', label: '清掃・メンテナンス' },
   { href: '/services#phase-0', label: '開業準備サポート' },
   { href: '/simulate', label: '無料シミュレーション' },
-  { href: '/audit', label: '無料運営診断' },
+  { href: '/audit', label: '無料物件診断' },
 ]
 
 const COMPANY_LINKS = [

@@ -28,7 +28,7 @@ export default function FloatingCTA() {
         className="group bg-ivory hover:bg-ink border border-ink text-ink hover:text-ivory transition-all px-5 py-3 flex items-center gap-3 shadow-lift-sm"
       >
         <span className="eyebrow-mono text-sekai-teal">Audit</span>
-        <span className="text-[12.5px] font-medium tracking-wide">無料運営診断</span>
+        <span className="text-[12.5px] font-medium tracking-wide">無料物件診断</span>
       </Link>
     </div>
   )

@@ -5,9 +5,10 @@
 
 // ═══ CTA リンク一元管理 ═══
 // 3動線の整理:
-//   simulate  = 「うちの物件、いくらいく？」（売上試算・収支比較）
-//   audit     = 「今の運用、採点してほしい」（運営診断スコア）
+//   audit     = 「うちの物件、ちゃんと稼げてる？」（無料物件診断レポート：現状採点＋収益試算を一通で届ける）
+//   simulate  = 「ざっくり差額だけ知りたい」（収益シミュレーター：軽量な先行体感ツール）
 //   contact   = 「人と話したい・任せたい」（無料相談）
+// メイン導線は audit に集約。simulate は副次的な入口として留める。
 export const CTA_LINKS = {
   contact: '/contact',
   audit: '/audit',
@@ -20,10 +21,10 @@ export const CTA_LINKS = {
 
 // ═══ CTA ラベル統一（全ページで同じ言葉を使う） ═══
 export const CTA_LABELS = {
-  simulate: '無料シミュレーション',
-  simulateAction: '無料でシミュレーションする',
-  audit: '無料運営診断',
-  auditAction: '無料で運営診断する',
+  simulate: '収益シミュレーション',
+  simulateAction: '収益をシミュレーションする',
+  audit: '無料物件診断',
+  auditAction: '無料で物件診断を受ける',
   contact: '無料相談',
   contactAction: '無料相談を予約する',
 } as const
@@ -41,13 +42,13 @@ export const HERO = {
     { value: '5年+', label: '運用知見' },
     { value: '8%', label: '業界平均の半分以下' },
   ],
-  primaryCta: { label: '無料でシミュレーションする', href: '/simulate' },
+  primaryCta: { label: '無料で物件診断を受ける', href: '/audit' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: '今の運用を無料で診断する', href: '/audit' },
+  textLink: { label: 'まずは収益シミュレーションから', href: '/simulate' },
   sideCard: {
-    title: 'まずは3分で、物件の可能性をチェック',
-    body: 'エリア・物件タイプ・部屋数などの情報から、想定売上や改善余地の目安を無料で確認できます。',
-    cta: { label: 'シミュレーションを始める', href: '/simulate' },
+    title: 'まずは3分で、物件の伸びしろを確認',
+    body: '現在のリスティング・売上・手数料をもとに、稼働率と収益の改善余地を算出。担当アナリストが個別レポートでお届けします。',
+    cta: { label: '物件診断を始める', href: '/audit' },
   },
 } as const
 
@@ -73,8 +74,8 @@ export const ENTRY = {
       id: 'existing',
       label: 'FOR EXISTING OWNERS',
       title: 'すでに民泊を運用している方へ',
-      body: '今の運用に改善余地があるか、手数料・稼働率・レビューを7項目で採点します。',
-      cta: { label: '無料で運営診断する', href: '/audit' },
+      body: 'レビュー評価・差別化度・価格最適化・収益効率の4軸で、物件の現状をレポートで採点します。',
+      cta: { label: '無料で物件診断を受ける', href: '/audit' },
     },
     {
       id: 'starting',
@@ -265,7 +266,7 @@ export const FLOW = {
   headline: 'ご相談から運用開始まで、スムーズに。',
   body: '既存物件の乗り換えも、これから始める立ち上げも。状況を整理しながら、最適な形でご提案します。',
   steps: [
-    { num: '01', title: '無料相談・無料診断', body: 'まずは現状やご希望をお聞きします。' },
+    { num: '01', title: '無料相談・無料物件診断', body: 'まずは現状やご希望をお聞きします。' },
     { num: '02', title: '現状確認・物件ヒアリング', body: '現在の運用状況、または立ち上げ予定物件の条件を確認します。' },
     { num: '03', title: '収益シミュレーション・ご提案', body: '想定売上や改善余地、運用方針をご提案します。' },
     { num: '04', title: '契約・準備開始', body: '必要な設定や準備を進めます。' },
@@ -487,9 +488,9 @@ export const CREDENTIALS = {
 export const FINAL_CTA = {
   headline: 'まずは、あなたの物件の伸びしろを見てみませんか？',
   body: '今の運用を見直したい方も、これから民泊を始めたい方も。SEKAI STAYが、現状整理から収益化の方向性まで一緒に考えます。',
-  primaryCta: { label: '無料でシミュレーションする', href: '/simulate' },
+  primaryCta: { label: '無料で物件診断を受ける', href: '/audit' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: '今の運用を無料で診断する', href: '/audit' },
+  textLink: { label: 'まずは収益シミュレーションから', href: '/simulate' },
 } as const
 
 // ═══ 11. Footer Catch ═══

@@ -477,7 +477,7 @@ export default function AreaDetailPage({ params }: Props) {
                   >
                     <div>
                       <p className="eyebrow-mono text-mid-gray mb-1">Path A</p>
-                      <p className="font-sans font-medium text-[15px]">運営診断を受ける</p>
+                      <p className="font-sans font-medium text-[15px]">物件診断を受ける</p>
                     </div>
                     <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
                   </Link>

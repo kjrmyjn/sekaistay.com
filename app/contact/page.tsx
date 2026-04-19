@@ -86,7 +86,7 @@ export default function ContactPage() {
                       href="/audit"
                       className="btn btn-primary text-[14px]"
                     >
-                      無料運営診断へ
+                      無料物件診断へ
                       <IconArrowRight size={14} />
                     </a>
                     <a
@@ -174,7 +174,7 @@ export default function ContactPage() {
                       href="/audit"
                       className="btn btn-ghost text-[14px]"
                     >
-                      無料運営診断（3分）
+                      無料物件診断（3分）
                       <IconArrowRight size={14} />
                     </a>
                     <a

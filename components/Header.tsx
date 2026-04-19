@@ -75,7 +75,7 @@ export default function Header() {
           {/* CTAs */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <Link href="/audit" className="btn btn-ghost text-[11.5px] px-5 py-3">
-              無料運営診断
+              無料物件診断
             </Link>
             <Link href="/contact" className="btn btn-primary text-[11.5px] px-5 py-3">
               無料相談
@@ -122,7 +122,7 @@ export default function Header() {
                 onClick={() => setOpen(false)}
                 className="btn btn-ghost w-full"
               >
-                無料運営診断
+                無料物件診断
               </Link>
               <Link
                 href="/contact"

@@ -14,7 +14,7 @@ import { IconArrowRight } from '@/components/Icons'
  * LP の #simulator セクションをベースに、メインサイトのページ骨格に統合。
  * - 現在 月商 → 年間手取り差額 を即時表示
  * - 前提: 稼働率改善 +30% / 手数料削減 15%→8%
- * - メイン導線: 無料運営診断 (/audit) / お問い合わせ (/contact)
+ * - メイン導線: 無料物件診断 (/audit) / お問い合わせ (/contact)
  * ──────────────────────────────────────────────────────────── */
 
 const OUR_RATE = 0.08
@@ -143,7 +143,7 @@ function SimulatorCore() {
             href={`/audit?rev=${revenue}`}
             className="group flex items-center justify-between gap-3 bg-paper border-t border-rule px-7 py-5 hover:bg-mist transition"
           >
-            <span className="font-sans font-medium text-[14px] text-ink">この差額を手に入れる — 無料運営診断</span>
+            <span className="font-sans font-medium text-[14px] text-ink">この差額を手に入れる — 無料物件診断</span>
             <IconArrowRight className="w-4 h-4 text-sekai-teal group-hover:translate-x-1 transition" />
           </Link>
         </div>
@@ -162,8 +162,8 @@ const ASSUMPTIONS: { label: string; value: string; note: string }[] = [
 const FAQ: { q: string; a: string }[] = [
   { q: 'この試算は誰にでも当てはまりますか？', a: '弊社が管理を行った物件の平均値をベースにした目安です。物件の立地・設備・現状の運営状況によって差は出ますが、手数料削減の効果はすべての物件で確実に得られます。' },
   { q: 'なぜ手数料8%で成立するのですか？', a: '自社運営のオペレーション基盤・清掃パートナーネットワーク・多言語ゲスト対応センターを内製化することで、一般的な代行業者の運営コストを大幅に削減しているためです。詳しくは料金ページをご覧ください。' },
-  { q: '個別の収益試算を依頼できますか？', a: 'はい、無料運営診断では物件の状態に合わせた個別シミュレーションをお届けします。立地・築年数・稼働率の情報をいただければ、より精度の高い試算をご提示します。' },
-  { q: '現在の月商がわからない場合は？', a: '過去3ヶ月の平均で結構です。オーナー様が把握されていない場合、運営診断の中で代行業者への開示請求のテンプレートもお渡ししています。' },
+  { q: '個別の収益試算を依頼できますか？', a: 'はい、無料物件診断では物件の状態に合わせた個別シミュレーションをお届けします。立地・築年数・稼働率の情報をいただければ、より精度の高い試算をご提示します。' },
+  { q: '現在の月商がわからない場合は？', a: '過去3ヶ月の平均で結構です。オーナー様が把握されていない場合、物件診断の中で代行業者への開示請求のテンプレートもお渡ししています。' },
 ]
 
 export default function SimulatePage() {
@@ -230,7 +230,7 @@ export default function SimulatePage() {
               ))}
             </div>
             <p className="font-sans text-caption text-mid-gray mt-6 leading-[2]">
-              — 上記はあくまで平均的な想定値です。物件ごとの詳細試算は無料運営診断でお渡しします。
+              — 上記はあくまで平均的な想定値です。物件ごとの詳細試算は無料物件診断でお渡しします。
             </p>
           </div>
         </section>
@@ -268,7 +268,7 @@ export default function SimulatePage() {
               次は、<span className="text-bright-teal">物件の状態</span>を診断しましょう
             </h2>
             <p className="font-sans text-body-sm md:text-body text-ivory/70 leading-[2.1] max-w-2xl mx-auto mb-10">
-              3分の無料運営診断で、立地・設備・現状の運営を加味した個別の改善提案をお届けします。
+              3分の無料物件診断で、立地・設備・現状の運営を加味した個別の改善提案をお届けします。
               シミュレーションの数値がそのまま実現可能か、担当者が直接ご説明します。
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -276,7 +276,7 @@ export default function SimulatePage() {
                 href="/audit"
                 className="btn bg-ivory text-teal-ink hover:bg-bright-teal hover:text-ivory border-ivory text-[14px]"
               >
-                無料運営診断（3分）
+                無料物件診断（3分）
                 <IconArrowRight size={14} />
               </Link>
               <Link

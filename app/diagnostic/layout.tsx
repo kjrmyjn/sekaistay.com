@@ -4,7 +4,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '運営診断（/audit へ移動しました）',
+  title: '物件診断（/audit へ移動しました）',
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://sekaistay.com/audit' },
 }

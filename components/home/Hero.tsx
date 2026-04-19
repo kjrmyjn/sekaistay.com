@@ -83,8 +83,8 @@ export default function Hero() {
               href={HERO.textLink.href}
               className="mt-6 inline-flex items-center gap-2 text-[13px] text-ink/60 hover:text-sekai-teal transition group"
             >
-              <span className="font-sans">すでに運用中の方は</span>
-              <span className="underline-grow">無料運営診断へ</span>
+              <span className="font-sans">ざっくり差額だけ知りたい方は</span>
+              <span className="underline-grow">{HERO.textLink.label}</span>
               <IconArrowRight size={12} className="group-hover:translate-x-1 transition" />
             </Link>
           </div>
