@@ -61,20 +61,20 @@ export default function CaseStudiesPage() {
             aria-hidden
             className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-bright-teal/15 blur-3xl pointer-events-none"
           />
-          <div className="container-edit relative px-5 md:px-10 pt-24 md:pt-32 pb-20 md:pb-28">
-            <div className="flex items-center gap-3 mb-8">
+          <div className="container-edit relative section-hero">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅰ · Success Stories</p>
             </div>
-            <h1 className="font-sans font-bold text-[32px] sm:text-[40px] md:text-[56px] leading-[1.3] mb-10">
+            <h1 className="heading-display heading-mb-lg jp-keep">
               導入事例
-              <span className="block font-sans font-bold text-bright-teal mt-2 text-[0.6em]">Case Studies</span>
+              <span className="block text-bright-teal mt-2 text-[0.6em]">Case Studies</span>
             </h1>
-            <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 items-start">
+            <div className="section-grid items-start">
               <p className="font-sans text-[17px] md:text-[19px] text-bright-teal/90 leading-[1.85]">
                 —&nbsp;From Kyoto&#39;s machiya to urban flats.
               </p>
-              <p className="font-sans text-body md:text-[17px] text-ivory/80 leading-[1.95] max-w-2xl">
+              <p className="text-body text-ivory/80 leading-[1.95] max-w-2xl jp-break">
                 SEKAI STAYの運営ノウハウで実現した、オーナー様の成功事例をご紹介します。京都古民家から高級ヴィラ、都心アパートまで、多様な物件での実績をご確認ください。
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function CaseStudiesPage() {
         {/* Chapter Ⅱ — case studies grid */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-10">
+            <div className="chapter-marker">
               <span className="eyebrow-mono text-mid-gray">§ 02</span>
               <span className="h-px bg-rule flex-1" />
               <p className="eyebrow text-sekai-teal">Case Files · {caseStudies.length}</p>
@@ -218,8 +218,8 @@ export default function CaseStudiesPage() {
             aria-hidden
             className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-bright-teal/15 blur-3xl pointer-events-none"
           />
-          <div className="container-narrow relative px-5 md:px-8 py-24 md:py-32 max-w-4xl">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-narrow relative px-5 md:px-8 section-xl max-w-4xl">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅲ · Start Growing</p>
             </div>
@@ -258,7 +258,7 @@ export default function CaseStudiesPage() {
         {/* Chapter Ⅳ — FAQ */}
         <section className="section-xl bg-bone border-t border-rule">
           <div className="container-narrow px-5 md:px-8 max-w-3xl">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅳ · FAQ</p>
             </div>

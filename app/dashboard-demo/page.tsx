@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
+import { JP } from '@/components/JP'
 import {
   IconArrowRight,
   IconStar,
@@ -163,19 +164,19 @@ export default function DashboardDemoPage() {
             className="absolute -bottom-40 -left-40 w-[420px] h-[420px] rounded-full bg-sekai-teal/8 blur-3xl pointer-events-none"
           />
 
-          <div className="relative container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20 max-w-6xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="relative container-edit section-hero max-w-6xl mx-auto">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅰ · Owner Dashboard Demo</p>
             </div>
-            <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-16 items-end">
-              <h1 className="font-sans font-bold text-[30px] sm:text-[38px] md:text-[56px] leading-[1.3]">
-                物件の状態が、
-                <span className="block font-sans text-bright-teal">一画面でわかる。</span>
+            <div className="hero-grid">
+              <h1 className="heading-display jp-keep">
+                <JP>物件の状態が、</JP>
+                <span className="block text-bright-teal"><JP>一画面でわかる。</JP></span>
               </h1>
               <div className="md:text-right">
                 <p className="eyebrow-mono text-ivory/60 mb-2">Demo · 2026 Spring</p>
-                <p className="font-sans font-light text-[72px] md:text-[112px] text-bright-teal leading-none tabular-nums">
+                <p className="font-sans font-light text-[64px] md:text-[96px] text-bright-teal leading-none tabular-nums">
                   {String(PROPERTIES.length).padStart(2, '0')}
                 </p>
                 <p className="eyebrow-mono text-ivory/60 mt-1">Sample Properties</p>
@@ -183,10 +184,10 @@ export default function DashboardDemoPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mt-14 pt-10 border-t border-ivory/15">
-              <p className="font-sans text-body md:text-[17px] text-ivory/85 leading-[2]">
+              <p className="text-body text-ivory/85 leading-[2] jp-break">
                 SEKAI STAYのオーナーダッシュボードは、売上・稼働率・予約・レビュー・改善アクションまで、物件の動きを一望できる設計。
               </p>
-              <p className="font-sans text-body md:text-[17px] text-ivory/85 leading-[2]">
+              <p className="text-body text-ivory/85 leading-[2] jp-break">
                 下のサンプルは実データを匿名化したもの。物件を切り替えて、実際の使い心地を体験してください。
               </p>
             </div>
@@ -196,7 +197,7 @@ export default function DashboardDemoPage() {
         {/* ─────────── Demo Surface ─────────── */}
         <section className="section-xl bg-paper border-b border-rule">
           <div className="container-edit px-5 md:px-8 max-w-6xl mx-auto">
-            <div className="flex items-center gap-3 mb-10">
+            <div className="chapter-marker">
               <span className="eyebrow-mono text-mid-gray">§ 02</span>
               <span className="h-px bg-rule flex-1" />
               <p className="eyebrow text-sekai-teal">Live Preview</p>
@@ -513,7 +514,7 @@ export default function DashboardDemoPage() {
                 className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full bg-bright-teal/10 blur-3xl pointer-events-none"
               />
               <div className="relative">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
                   <p className="eyebrow text-bright-teal">Chapter Ⅳ · Next Step</p>
                 </div>

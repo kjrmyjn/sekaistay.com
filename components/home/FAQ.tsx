@@ -23,14 +23,14 @@ export default function FAQ() {
     <section className="bg-bone">
       <div className="container-narrow section-xl">
         {/* Header */}
-        <div className="mb-14 md:mb-20">
-          <div className="flex items-center gap-4 mb-8">
+        <div className="heading-mb-lg">
+          <div className="chapter-marker">
             <span className="chapter">Chapter Ⅺ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">Frequently Asked Questions</span>
           </div>
           <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-16 items-end">
-            <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+            <h2 className="heading-hero text-ink jp-keep">
               <JP>{FAQ_DATA.headline}</JP>
             </h2>
             <p className="lead text-dark-gray jp-break">

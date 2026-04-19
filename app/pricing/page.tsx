@@ -72,7 +72,7 @@ export default function PricingPage() {
               <span className="eyebrow">Pricing · The Clean Math</span>
             </div>
             <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-20 items-end">
-              <h1 className="heading-display text-ink jp-keep !text-[clamp(2rem,5vw,4rem)] leading-[1.1]">
+              <h1 className="heading-masthead text-ink jp-keep">
                 運営代行の料金、
                 <br />
                 <span className="font-sans font-light text-sekai-teal">
@@ -109,7 +109,7 @@ export default function PricingPage() {
               <span className="w-6 h-px bg-bright-teal" />
               <span className="eyebrow !text-bright-teal">Two-Tier Cost</span>
             </div>
-            <h2 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(1.75rem,3.8vw,3rem)] mb-14 max-w-3xl">
+            <h2 className="heading-hero !font-sans text-ivory jp-keep mb-14 max-w-3xl">
               月々の費用は、
               <span className="font-sans font-light text-bright-teal">2つだけ。</span>
             </h2>

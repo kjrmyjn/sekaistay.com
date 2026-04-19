@@ -36,7 +36,7 @@ export default function Footer() {
     <footer className="relative bg-ink text-ivory overflow-hidden">
       {/* Brand credo band */}
       <div className="relative border-b border-ivory/10">
-        <div className="container-edit py-16 md:py-24 text-center">
+        <div className="container-edit section-lg text-center">
           <p className="eyebrow text-bright-teal mb-6">A Letter from SEKAI STAY</p>
           <p className="heading-display text-ivory !font-sans max-w-[22ch] mx-auto leading-[1.2]">
             運用は、<span className="text-bright-teal">丸投げでいい。</span>
@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-edit py-16 md:py-20">
+      <div className="container-edit section-lg">
         <div className="grid md:grid-cols-12 gap-12 mb-16">
           {/* Brand column */}
           <div className="md:col-span-5">

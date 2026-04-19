@@ -67,8 +67,8 @@ export default function PrivacyPage() {
       <main className="bg-ivory">
         {/* Chapter Ⅰ — masthead */}
         <section className="bg-paper border-b border-rule">
-          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit section-hero">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Legal</p>
             </div>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3 mb-10">
+            <div className="chapter-marker">
               <span className="eyebrow-mono text-mid-gray">§ Articles</span>
               <span className="h-px bg-rule flex-1" />
               <p className="eyebrow text-sekai-teal">Ten Provisions</p>

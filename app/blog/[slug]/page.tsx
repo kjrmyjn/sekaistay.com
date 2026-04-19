@@ -207,7 +207,7 @@ export default function BlogPostPage({ params }: Props) {
         {/* ── Hero ─────────────────────────────────────── */}
         <section className="bg-paper border-b border-rule">
           <div className="container-narrow px-5 md:px-8 pt-14 md:pt-20 pb-12 md:pb-16 max-w-3xl">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">{post.category}</p>
             </div>
@@ -288,7 +288,7 @@ export default function BlogPostPage({ params }: Props) {
                 }}
               />
               <div className="relative px-7 py-10 md:px-10 md:py-14">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
                   <p className="eyebrow text-bright-teal">SEKAI STAY Management</p>
                 </div>
@@ -326,7 +326,7 @@ export default function BlogPostPage({ params }: Props) {
             {/* Related */}
             {related.length > 0 && (
               <div className="mt-20">
-                <div className="flex items-center gap-3 mb-8">
+                <div className="chapter-marker">
                   <span className="rule-teal-sm" />
                   <p className="eyebrow text-sekai-teal">Related Articles</p>
                 </div>

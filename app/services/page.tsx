@@ -65,7 +65,7 @@ export default function ServicesPage() {
               <span className="eyebrow">Services · Full Spectrum</span>
             </div>
             <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-20 items-end">
-              <h1 className="heading-display text-ink jp-keep !text-[clamp(2rem,5vw,4rem)] leading-[1.1]">
+              <h1 className="heading-masthead text-ink jp-keep">
                 民泊運営を支える、
                 <br />
                 <span className="font-sans font-light text-sekai-teal">
@@ -87,7 +87,7 @@ export default function ServicesPage() {
             className="absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl"
             style={{ background: 'radial-gradient(circle, rgba(22,123,129,0.5) 0%, transparent 70%)' }}
           />
-          <div className="relative container-edit py-14 md:py-20">
+          <div className="relative container-edit section-lg">
             <div className="grid md:grid-cols-[auto_1fr_auto] gap-10 items-center">
               <div>
                 <p className="eyebrow-mono text-ivory/50 mb-4">Flat Fee — Industry Reset</p>
@@ -171,8 +171,8 @@ export default function ServicesPage() {
               <span className="rule-teal-sm" />
               <span className="eyebrow">Results · Before / After</span>
             </div>
-            <div className="grid lg:grid-cols-[0.55fr_0.45fr] gap-10 lg:gap-16 items-end mb-14 md:mb-16">
-              <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end heading-mb">
+              <h2 className="heading-hero text-ink jp-keep">
                 収益は、
                 <span className="font-sans font-light text-sekai-teal">数字で、証明する。</span>
               </h2>
@@ -309,8 +309,8 @@ export default function ServicesPage() {
               <span className="w-6 h-px bg-bright-teal" />
               <span className="eyebrow !text-bright-teal">Clear Pricing</span>
             </div>
-            <div className="grid lg:grid-cols-[0.55fr_0.45fr] gap-10 lg:gap-16 items-end mb-14 md:mb-16">
-              <h2 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end heading-mb">
+              <h2 className="heading-hero !font-sans text-ivory jp-keep">
                 明確な、
                 <span className="font-sans font-light text-bright-teal">料金設計。</span>
               </h2>
@@ -409,8 +409,8 @@ export default function ServicesPage() {
               <span className="rule-teal-sm" />
               <span className="eyebrow">Process · From Inquiry to Launch</span>
             </div>
-            <div className="grid lg:grid-cols-[0.55fr_0.45fr] gap-10 lg:gap-16 items-end mb-14 md:mb-16">
-              <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end heading-mb">
+              <h2 className="heading-hero text-ink jp-keep">
                 開業から運営まで、
                 <span className="font-sans font-light text-sekai-teal">最短二週間。</span>
               </h2>

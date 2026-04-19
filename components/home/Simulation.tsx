@@ -124,14 +124,14 @@ export default function Simulation() {
     <section className="relative bg-mist">
       <div className="container-edit section-xl">
         {/* Header */}
-        <div className="mb-14 md:mb-16 grid md:grid-cols-12 gap-8">
+        <div className="heading-mb grid md:grid-cols-12 gap-8">
           <div className="md:col-span-7">
-            <div className="flex items-center gap-4 mb-6">
+            <div className="chapter-marker">
               <span className="chapter">Chapter Ⅲ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Income Simulation</span>
             </div>
-            <h2 className="heading-section text-ink jp-keep">
+            <h2 className="heading-hero text-ink jp-keep">
               <JP>{SIMULATION.headline.line1}</JP>
               <br />
               <span className="font-sans font-light text-sekai-teal">

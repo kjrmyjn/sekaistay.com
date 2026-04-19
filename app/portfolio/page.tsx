@@ -85,8 +85,8 @@ export default function PortfolioPage() {
       <main className="bg-ivory">
         {/* Chapter Ⅰ — masthead */}
         <section className="bg-paper border-b border-rule">
-          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit section-hero">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Track Record</p>
             </div>
@@ -102,8 +102,8 @@ export default function PortfolioPage() {
 
         {/* Chapter Ⅱ — Quality Stats dark band */}
         <section className="bg-ink text-ivory">
-          <div className="container-edit px-5 md:px-8 py-16 md:py-20">
-            <div className="flex items-center gap-3 mb-10">
+          <div className="container-edit px-5 md:px-8 section-lg">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Quality Indicators</p>
             </div>
@@ -125,7 +125,7 @@ export default function PortfolioPage() {
         {/* Chapter Ⅲ — Revenue Cases */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Revenue Results</p>
             </div>
@@ -207,7 +207,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Chapter Ⅳ — Credential badges */}
-        <section className="bg-bone border-y border-rule py-14 md:py-20">
+        <section className="bg-bone border-y border-rule section-lg">
           <div className="container-edit px-5 md:px-8">
             <div className="flex items-center justify-center gap-4 mb-10">
               <span className="h-px w-10 bg-rule" />
@@ -231,7 +231,7 @@ export default function PortfolioPage() {
         {/* Chapter Ⅴ — Testimonials */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8 max-w-5xl">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅴ · Voice</p>
             </div>

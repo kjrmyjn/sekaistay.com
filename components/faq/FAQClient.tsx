@@ -150,8 +150,8 @@ export default function FAQClient() {
       <main className="bg-ivory">
         {/* Chapter Ⅰ — masthead */}
         <section className="bg-paper border-b border-rule">
-          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit section-hero">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Frequently Asked</p>
             </div>
@@ -168,7 +168,7 @@ export default function FAQClient() {
         {/* Chapter Ⅱ — category rail + accordion */}
         <section className="section-xl">
           <div className="container-narrow px-5 md:px-8 max-w-3xl">
-            <div className="flex items-center gap-3 mb-10">
+            <div className="chapter-marker">
               <span className="eyebrow-mono text-mid-gray">§ 02</span>
               <span className="h-px bg-rule flex-1" />
               <p className="eyebrow text-sekai-teal">Tag Rail</p>
@@ -285,8 +285,8 @@ export default function FAQClient() {
         {/* Chapter Ⅲ — CTA */}
         <section className="bg-ink relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-gradient-radial from-sekai-teal/20 to-transparent blur-3xl pointer-events-none" />
-          <div className="container-narrow px-5 md:px-8 py-20 md:py-28 relative">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-narrow px-5 md:px-8 section-xl relative">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-bright-teal">Chapter Ⅲ · Closing</p>
             </div>

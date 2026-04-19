@@ -47,7 +47,7 @@ export default function FinalCTA() {
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-20 items-center">
           {/* Left — Statement */}
           <div>
-            <h2 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(2rem,5vw,4rem)] leading-[1.12] mb-8">
+            <h2 className="heading-masthead text-ivory jp-keep mb-8">
               <JP>{FINAL_CTA.headline}</JP>
             </h2>
             <p className="text-body-lg text-ivory/80 jp-break max-w-[540px] mb-10">

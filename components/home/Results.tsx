@@ -12,14 +12,14 @@ export default function Results() {
     <section className="bg-mist">
       <div className="container-edit section-xl">
         {/* Header */}
-        <div className="mb-14 md:mb-16 grid md:grid-cols-12 gap-8 items-end">
+        <div className="heading-mb grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
-            <div className="flex items-center gap-4 mb-6">
+            <div className="chapter-marker">
               <span className="chapter">Chapter Ⅴ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Case Studies · Numbers</span>
             </div>
-            <h2 className="heading-section text-ink mb-5 jp-keep">
+            <h2 className="heading-hero text-ink mb-5 jp-keep">
               <JP>{RESULTS.headline}</JP>
             </h2>
             <p className="text-body-sm text-dark-gray jp-break max-w-prose-jp">

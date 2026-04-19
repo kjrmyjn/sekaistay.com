@@ -59,47 +59,57 @@
   *::-webkit-scrollbar-thumb:hover { background: rgba(26,26,26,0.4); }
 }
 
-/* ══ Typography — 階層 ══ */
+/* ══ Typography — 階層 ══
+   5段階スケール（モバイル → デスクトップ）:
+     masthead  36px → 64px   (LP / big hero)
+     display   30px → 52px   (page hero)
+     hero      26px → 42px   (sub-hero / large CTA)
+     feature   22px → 34px   (big section headings)
+     section   20px → 26px   (standard h2)
+   line-height はすべて 1.35〜1.4 を統一、日本語の分節と詰まりを両立
+   ══════════════════════════════════════════════ */
 
-/* Display — ヒーロー用 */
-.heading-display {
+.heading-masthead,
+.heading-display,
+.heading-hero,
+.heading-feature,
+.heading-section,
+.heading-sub {
   font-family: var(--font-noto-sans-jp), 'Helvetica Neue', Arial, sans-serif;
-  font-size: clamp(1.875rem, 5.2vw, 3.25rem);
   font-weight: 700;
-  line-height: 1.35;
   letter-spacing: 0.005em;
   font-feature-settings: "palt" 1;
   word-break: auto-phrase;
   overflow-wrap: break-word;
 }
 
-/* Hero — セカンダリ */
+.heading-masthead {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.25;
+}
+
+.heading-display {
+  font-size: clamp(1.875rem, 4.8vw, 3.25rem);
+  line-height: 1.3;
+}
+
 .heading-hero {
-  font-family: var(--font-noto-sans-jp), 'Helvetica Neue', Arial, sans-serif;
-  font-size: clamp(1.625rem, 4.2vw, 2.625rem);
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.005em;
-  word-break: auto-phrase;
-  overflow-wrap: break-word;
+  font-size: clamp(1.625rem, 3.8vw, 2.625rem);
+  line-height: 1.35;
 }
 
-/* Section — h2相当 (ガイド: 24px) */
+.heading-feature {
+  font-size: clamp(1.375rem, 2.8vw, 2.125rem);
+  line-height: 1.4;
+}
+
 .heading-section {
-  font-family: var(--font-noto-sans-jp), 'Helvetica Neue', Arial, sans-serif;
-  font-size: clamp(1.375rem, 2.8vw, 1.75rem);
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.005em;
-  word-break: auto-phrase;
-  overflow-wrap: break-word;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.45;
 }
 
-/* Sub */
 .heading-sub {
-  font-family: var(--font-noto-sans-jp), sans-serif;
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  font-weight: 700;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
   line-height: 1.5;
 }
 
@@ -168,19 +178,27 @@
 
 /* ══ Layout ══ */
 
+/* セクション縦リズム ― 3段階のみ */
 .section-xl {
-  padding-top: clamp(4rem, 9vw, 8rem);
-  padding-bottom: clamp(4rem, 9vw, 8rem);
+  padding-top: clamp(4.5rem, 9vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 9vw, 7.5rem);
 }
 .section-lg {
-  padding-top: clamp(3rem, 7vw, 6rem);
-  padding-bottom: clamp(3rem, 7vw, 6rem);
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 7vw, 5.5rem);
 }
 .section-md {
   padding-top: clamp(2.5rem, 5vw, 4rem);
   padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
+/* ヒーロー専用：上下で微妙に違う余白 */
+.section-hero {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+/* コンテナ幅 ― 2段階のみ */
 .container-edit {
   width: 100%;
   max-width: 1180px;
@@ -197,6 +215,58 @@
   margin-right: auto;
   padding-left: clamp(1.25rem, 4vw, 3rem);
   padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* 見出し直下の余白 ― 統一 */
+.heading-mb { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.heading-mb-lg { margin-bottom: clamp(2.25rem, 4vw, 3.5rem); }
+
+/* Chapter marker ― 見出し直前のバー + eyebrow の横並び */
+.chapter-marker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: clamp(1.25rem, 2.4vw, 2rem);
+}
+
+/* カード ― 編集紙カード */
+.card-edit {
+  background: #FFFDF9;
+  border: 1px solid #E6E1D6;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.card-ink {
+  background: #1A1A1A;
+  color: #FBF9F4;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.card-compact {
+  background: #FFFDF9;
+  border: 1px solid #E6E1D6;
+  padding: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+/* ヒーロー専用グリッド ― [1.15fr 0.85fr] に統一 */
+.hero-grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: end;
+}
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* セクション内グリッド ― [1fr 1.2fr]（説明 → 本文） */
+.section-grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+@media (min-width: 768px) {
+  .section-grid {
+    grid-template-columns: 1fr 1.2fr;
+  }
 }
 
 /* ══ Rules & dividers ══ */

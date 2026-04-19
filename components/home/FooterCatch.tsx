@@ -4,7 +4,7 @@ import { JP } from '@/components/JP'
 export default function FooterCatch() {
   return (
     <section className="bg-paper border-t border-rule">
-      <div className="container-narrow py-16 md:py-24 text-center">
+      <div className="container-narrow section-lg text-center">
         <div className="flex items-center justify-center gap-4 mb-10">
           <span className="w-10 h-px bg-sekai-teal" />
           <span className="eyebrow-mono text-sekai-teal">Epilogue</span>

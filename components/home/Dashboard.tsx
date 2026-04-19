@@ -15,14 +15,14 @@ export default function Dashboard() {
 
       <div className="relative container-edit section-xl">
         {/* Header */}
-        <div className="mb-14 md:mb-16">
-          <div className="flex items-center gap-4 mb-8">
+        <div className="heading-mb">
+          <div className="chapter-marker">
             <span className="chapter text-bright-teal">Chapter Ⅵ</span>
             <span className="w-6 h-px bg-bright-teal" />
             <span className="eyebrow !text-bright-teal">Owner Dashboard</span>
           </div>
           <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-end">
-            <h2 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+            <h2 className="heading-hero !font-sans text-ivory jp-keep">
               <JP>{DASHBOARD.headline.line1}</JP>
               <br />
               <span className="font-sans font-light text-bright-teal">

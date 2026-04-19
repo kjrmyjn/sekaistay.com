@@ -59,7 +59,7 @@ export default function ResultPage() {
       {/* Chapter Ⅰ — masthead */}
       <section className="bg-paper border-b border-rule">
         <div className="container-edit px-5 md:px-8 pt-16 md:pt-24 pb-14 md:pb-20 max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="chapter-marker">
             <span className="rule-teal-sm" />
             <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Diagnostic Report</p>
           </div>
@@ -100,7 +100,7 @@ export default function ResultPage() {
       {/* Chapter Ⅱ — category ledger */}
       <section className="section-xl">
         <div className="container-edit px-5 md:px-8 max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-10">
+          <div className="chapter-marker">
             <span className="eyebrow-mono text-mid-gray">§ 02</span>
             <span className="h-px bg-rule flex-1" />
             <p className="eyebrow text-sekai-teal">Category Scores</p>
@@ -171,7 +171,7 @@ export default function ResultPage() {
       {/* Chapter Ⅳ — editorial analysis */}
       <section className="section-xl">
         <div className="container-edit px-5 md:px-8 max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-10">
+          <div className="chapter-marker">
             <span className="eyebrow-mono text-mid-gray">§ 04</span>
             <span className="h-px bg-rule flex-1" />
             <p className="eyebrow text-sekai-teal">Editorial Analysis</p>
@@ -238,7 +238,7 @@ export default function ResultPage() {
               className="absolute -top-24 -right-24 w-[480px] h-[480px] bg-bright-teal/10 rounded-full blur-3xl pointer-events-none"
             />
             <div className="relative">
-              <div className="flex items-center gap-3 mb-6">
+              <div className="chapter-marker">
                 <span className="h-px w-10 bg-bright-teal" />
                 <p className="eyebrow text-bright-teal">Chapter Ⅴ · Next Step</p>
               </div>

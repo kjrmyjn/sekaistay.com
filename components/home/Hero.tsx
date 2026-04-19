@@ -15,14 +15,14 @@ export default function Hero() {
         style={{ background: 'radial-gradient(circle, #E8F2F3 0%, transparent 70%)' }}
       />
 
-      <div className="container-edit relative pt-12 pb-24 md:pt-20 md:pb-28 lg:pt-28 lg:pb-36">
+      <div className="container-edit relative section-hero">
         {/* Chapter label */}
-        <div className="flex items-center gap-4 mb-10">
+        <div className="chapter-marker">
           <span className="rule-teal-sm" />
           <span className="eyebrow">Chapter Ⅰ · Vacation Rental Management</span>
         </div>
 
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-14 lg:gap-20 items-end">
+        <div className="hero-grid">
           {/* ── Left : headline + CTAs ── */}
           <div className="min-w-0 relative z-10 anim-fade-up">
             <h1 className="heading-display text-ink mb-10 jp-keep">

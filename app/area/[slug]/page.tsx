@@ -214,8 +214,8 @@ export default function AreaDetailPage({ params }: Props) {
       <main className="bg-ivory pb-20">
         {/* Chapter Ⅰ — masthead */}
         <section className="bg-paper border-b border-rule">
-          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit section-hero">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Area Guide · {area.prefecture}</p>
             </div>
@@ -241,7 +241,7 @@ export default function AreaDetailPage({ params }: Props) {
         {/* Chapter Ⅱ — Why this area */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅱ · Market Brief</p>
             </div>
@@ -280,8 +280,8 @@ export default function AreaDetailPage({ params }: Props) {
             aria-hidden
             className="absolute top-0 right-0 w-[36rem] h-[36rem] bg-bright-teal/10 rounded-full blur-3xl pointer-events-none"
           />
-          <div className="container-edit px-5 md:px-8 py-20 md:py-28 relative">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit px-5 md:px-8 section-xl relative">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅲ · Ledger</p>
             </div>
@@ -345,7 +345,7 @@ export default function AreaDetailPage({ params }: Props) {
         {/* Chapter Ⅳ — Services */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅳ · Our Services</p>
             </div>
@@ -374,7 +374,7 @@ export default function AreaDetailPage({ params }: Props) {
         {/* Chapter Ⅴ — FAQ */}
         <section className="section-xl bg-bone border-y border-rule">
           <div className="container-narrow px-5 md:px-8 max-w-3xl">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅴ · FAQ</p>
             </div>
@@ -459,7 +459,7 @@ export default function AreaDetailPage({ params }: Props) {
                 }}
               />
               <div className="relative">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
                   <p className="eyebrow text-bright-teal">Chapter Ⅶ · Begin</p>
                 </div>

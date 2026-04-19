@@ -64,7 +64,7 @@ export default function SimulatePage() {
             </div>
 
             <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-20 items-end">
-              <h1 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(2rem,5vw,4rem)] leading-[1.1]">
+              <h1 className="heading-masthead !font-sans text-ivory jp-keep">
                 管理報酬を変えるだけで、
                 <br />
                 <span className="font-sans font-light text-bright-teal">

@@ -16,14 +16,14 @@ export default function EntryPoints() {
     <section className="bg-ivory">
       <div className="container-edit section-lg">
         {/* Header */}
-        <div className="mb-16 md:mb-20 grid md:grid-cols-12 gap-8 items-end">
+        <div className="heading-mb-lg grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-7">
-            <div className="flex items-center gap-4 mb-6">
+            <div className="chapter-marker">
               <span className="chapter">Chapter Ⅱ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Three Entrances</span>
             </div>
-            <h2 className="heading-section text-ink jp-keep">
+            <h2 className="heading-hero text-ink jp-keep">
               <JP>{ENTRY.headline}</JP>
             </h2>
           </div>

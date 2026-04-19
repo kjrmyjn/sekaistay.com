@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import { JP } from '@/components/JP'
 import {
   IconArrowRight,
   IconCheck,
@@ -175,20 +176,20 @@ export default function AboutPage() {
             style={{ background: 'radial-gradient(circle, rgba(22,123,129,0.6), transparent 60%)' }}
           />
 
-          <div className="container-edit relative px-5 md:px-10 pt-24 md:pt-32 pb-20 md:pb-28">
-            <div className="flex items-center gap-3 mb-8">
+          <div className="container-edit relative section-hero">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅰ · About SEKAI STAY</p>
             </div>
-            <h1 className="font-sans font-bold text-[28px] sm:text-[36px] md:text-[56px] leading-[1.3] mb-10">
-              宿を管理するのではない。
-              <span className="block font-sans font-bold text-bright-teal mt-2">宿の価値を伸ばす。</span>
+            <h1 className="heading-display heading-mb-lg jp-keep">
+              <JP>宿を管理するのではない。</JP>
+              <span className="block text-bright-teal mt-2"><JP>宿の価値を伸ばす。</JP></span>
             </h1>
-            <div className="grid md:grid-cols-[1fr_1.3fr] gap-8 md:gap-14 items-start">
+            <div className="section-grid items-start">
               <p className="font-sans text-[16px] md:text-[18px] text-bright-teal/90 leading-[1.9]">
                 —&nbsp;Not a manager. A steward of value.
               </p>
-              <p className="font-sans text-body md:text-[17px] text-ivory/80 leading-[1.95] max-w-2xl">
+              <p className="text-body text-ivory/80 leading-[1.95] max-w-2xl jp-break">
                 SEKAI STAYは、ただ宿を預かるための会社ではありません。宿の魅力を正しく伝え、売上まで伸ばす。運用代行の枠を超えて、宿の価値そのものを育てることを目指しています。
               </p>
             </div>
@@ -198,7 +199,7 @@ export default function AboutPage() {
         {/* ─────────── Chapter Ⅱ. Mission ─────────── */}
         <section className="section-xl">
           <div className="container-narrow px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅱ · Our Mission</p>
             </div>
@@ -252,7 +253,7 @@ export default function AboutPage() {
         {/* ─────────── Chapter Ⅲ. Origin ─────────── */}
         <section className="section-xl bg-bone border-y border-rule">
           <div className="container-narrow px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Origin Story</p>
             </div>
@@ -290,7 +291,7 @@ export default function AboutPage() {
         {/* ─────────── Chapter Ⅳ. Founders ─────────── */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅳ · Founders</p>
             </div>
@@ -343,8 +344,8 @@ export default function AboutPage() {
             style={{ background: 'radial-gradient(circle, rgba(84,190,195,0.5), transparent 60%)' }}
           />
 
-          <div className="container-edit relative px-5 md:px-8 py-20 md:py-28">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit relative px-5 md:px-8 section-xl">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅴ · Numbers</p>
             </div>
@@ -393,7 +394,7 @@ export default function AboutPage() {
         {/* ─────────── Chapter Ⅵ. Team & Culture ─────────── */}
         <section className="section-xl">
           <div className="container-narrow px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅵ · Team &amp; Culture</p>
             </div>
@@ -442,7 +443,7 @@ export default function AboutPage() {
         {/* ─────────── Chapter Ⅶ. Credo ─────────── */}
         <section className="section-xl bg-bone border-y border-rule">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅶ · Credo</p>
             </div>
@@ -490,8 +491,8 @@ export default function AboutPage() {
                 'radial-gradient(circle at 20% 0%, rgba(84,190,195,0.4), transparent 50%), radial-gradient(circle at 80% 100%, rgba(22,123,129,0.35), transparent 55%)',
             }}
           />
-          <div className="container-narrow relative px-5 md:px-8 py-24 md:py-32">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-narrow relative px-5 md:px-8 section-xl">
+            <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
               <p className="eyebrow text-bright-teal">Chapter Ⅷ · Begin</p>
             </div>

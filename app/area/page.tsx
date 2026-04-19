@@ -49,8 +49,8 @@ export default function AreaPage() {
       <main className="bg-ivory pb-20">
         {/* Chapter Ⅰ — masthead */}
         <section className="bg-paper border-b border-rule">
-          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit section-hero">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Coverage</p>
             </div>
@@ -81,7 +81,7 @@ export default function AreaPage() {
         {/* Chapter Ⅱ — area grid */}
         <section className="section-xl">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-10">
+            <div className="chapter-marker">
               <span className="eyebrow-mono text-mid-gray">§ 02</span>
               <span className="h-px bg-rule flex-1" />
               <p className="eyebrow text-sekai-teal">Atlas of Areas</p>
@@ -139,7 +139,7 @@ export default function AreaPage() {
                 className="absolute -top-24 -right-24 w-96 h-96 bg-bright-teal/10 rounded-full blur-3xl pointer-events-none"
               />
               <div className="relative">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
                   <p className="eyebrow text-bright-teal">Chapter Ⅲ · Not Listed?</p>
                 </div>

@@ -46,8 +46,8 @@ export default function CompanyPage() {
       <main className="bg-ivory">
         {/* Chapter Ⅰ — editorial masthead */}
         <section className="bg-paper border-b border-rule">
-          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-16 md:pb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="container-edit section-hero">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Company</p>
             </div>
@@ -65,7 +65,7 @@ export default function CompanyPage() {
         {/* Chapter Ⅱ — corporate ledger */}
         <section className="section-xl">
           <div className="container-narrow px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-10">
+            <div className="chapter-marker">
               <span className="eyebrow-mono text-mid-gray">§ 02</span>
               <span className="h-px bg-rule flex-1" />
               <p className="eyebrow text-sekai-teal">Corporate Ledger</p>
@@ -107,7 +107,7 @@ export default function CompanyPage() {
         {/* Chapter Ⅲ — offices */}
         <section className="section-xl bg-bone border-y border-rule">
           <div className="container-edit px-5 md:px-8">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="chapter-marker">
               <span className="rule-teal-sm" />
               <p className="eyebrow text-sekai-teal">Chapter Ⅲ · National Network</p>
             </div>

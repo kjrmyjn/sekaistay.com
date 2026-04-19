@@ -159,13 +159,13 @@ export default function DiagnosticPage() {
         <Header />
         <Breadcrumb items={[{ label: '無料収益診断' }]} />
         <main className="min-h-screen bg-ivory">
-          <section className="container-narrow px-5 md:px-8 py-24 md:py-32">
+          <section className="container-narrow px-5 md:px-8 section-xl">
             <div className="text-center">
               <div className="w-20 h-20 border-2 border-sekai-teal flex items-center justify-center mx-auto mb-10">
                 <IconCheck size={28} color="#167B81" />
               </div>
               <p className="eyebrow-mono text-sekai-teal mb-4">Received</p>
-              <h1 className="heading-display text-ink mb-6 !text-[clamp(1.75rem,3.8vw,2.5rem)] jp-keep">
+              <h1 className="heading-hero text-ink mb-6 jp-keep">
                 レポート作成を、
                 <br />
                 <span className="font-sans font-light text-sekai-teal">
@@ -230,14 +230,14 @@ export default function DiagnosticPage() {
             className="absolute -bottom-40 -left-32 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl"
             style={{ background: 'radial-gradient(circle, rgba(84,190,195,0.3) 0%, transparent 70%)' }}
           />
-          <div className="relative container-narrow px-5 md:px-8 py-16 md:py-24">
+          <div className="relative container-narrow px-5 md:px-8 section-lg">
             <div className="flex items-center gap-4 mb-10">
               <span className="chapter text-bright-teal">Chapter Ⅰ</span>
               <span className="w-6 h-px bg-bright-teal" />
               <span className="eyebrow !text-bright-teal">Free Revenue Report</span>
             </div>
 
-            <h1 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.15] mb-6">
+            <h1 className="heading-display !font-sans text-ivory jp-keep mb-6">
               あなたの物件の、
               <br />
               <span className="font-sans font-light text-bright-teal">
@@ -285,7 +285,7 @@ export default function DiagnosticPage() {
         </div>
 
         {/* Form Area */}
-        <div className="container-narrow px-5 md:px-8 py-12 md:py-16">
+        <div className="container-narrow px-5 md:px-8 section-md">
 
           {/* STEP 1 */}
           {step === 1 && (

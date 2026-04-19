@@ -273,18 +273,18 @@ function Hero() {
 
       <div className="relative container-edit px-5 md:px-8 pt-16 md:pt-24 pb-20 md:pb-28 max-w-6xl mx-auto">
         {/* Top editorial marker */}
-        <div className="flex items-center gap-3 mb-8 md:mb-10">
+        <div className="chapter-marker">
           <span className="h-px w-10 bg-bright-teal" />
           <p className="eyebrow text-bright-teal">Chapter Ⅰ · Cover</p>
         </div>
 
-        <div className="grid md:grid-cols-[1.3fr_1fr] gap-12 md:gap-16 items-end">
+        <div className="hero-grid">
           <div>
             <p className="eyebrow-mono text-bright-teal mb-5">Issue · 2026 Spring · No. 001</p>
-            <h1 className="font-sans font-bold text-[32px] sm:text-[44px] md:text-[64px] leading-[1.25] mb-10">
+            <h1 className="heading-masthead heading-mb-lg">
               稼働率を上げる。
               <span className="block">レビューを上げる。</span>
-              <span className="block font-sans text-bright-teal">収益を上げる。</span>
+              <span className="block text-bright-teal">収益を上げる。</span>
             </h1>
 
             {/* Editorial stats ledger */}
@@ -407,7 +407,7 @@ function InlineSimulator() {
 
   return (
     <section id="simulator" className="bg-paper border-y border-rule">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-5xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-5xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -492,7 +492,7 @@ function InlineSimulator() {
 function StorySection() {
   return (
     <section className="bg-ivory">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-4xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-4xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -531,9 +531,9 @@ function Pains() {
 
   return (
     <section className="bg-paper border-y border-rule">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-24 max-w-5xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-5xl mx-auto">
         <FadeIn>
-          <div className="flex items-center gap-3 mb-10">
+          <div className="chapter-marker">
             <span className="eyebrow-mono text-mid-gray">§ 04</span>
             <span className="h-px bg-rule flex-1" />
             <p className="eyebrow text-sekai-teal">Three Symptoms</p>
@@ -567,7 +567,7 @@ function Pains() {
 function Services() {
   return (
     <section id="services" className="bg-ivory">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-6xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -576,7 +576,7 @@ function Services() {
           <h2 className="heading-section text-ink mb-5">
             「安い」だけじゃない。<span className="block font-sans text-sekai-teal">仕組みが違う。</span>
           </h2>
-          <p className="font-sans text-body-sm md:text-[15px] text-dark-gray leading-[2] max-w-xl mb-16 md:mb-20">
+          <p className="font-sans text-body-sm md:text-[15px] text-dark-gray leading-[2] max-w-xl heading-mb-lg">
             コスト削減と品質向上を同時に実現する、SEKAI STAYのサービス体制。
           </p>
         </FadeIn>
@@ -805,7 +805,7 @@ function WhyEightPercent() {
 
   return (
     <section className="bg-paper border-y border-rule">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-5xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-5xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -859,7 +859,7 @@ function Pricing() {
         <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-bright-teal/6 blur-3xl" />
       </div>
 
-      <div className="relative container-edit px-5 md:px-8 py-20 md:py-28 max-w-5xl mx-auto">
+      <div className="relative container-edit px-5 md:px-8 section-xl max-w-5xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="h-px w-10 bg-bright-teal" />
@@ -952,7 +952,7 @@ function Portfolio() {
 
   return (
     <section id="portfolio" className="bg-ivory">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-6xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -1108,7 +1108,7 @@ function Testimonials() {
 
   return (
     <section id="voice" className="bg-paper border-y border-rule">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-6xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -1163,7 +1163,7 @@ function ServiceFlow() {
 
   return (
     <section className="bg-ivory">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-5xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-5xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -1229,7 +1229,7 @@ function FAQ() {
 
   return (
     <section id="faq" className="bg-paper border-y border-rule">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-3xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-3xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -1296,7 +1296,7 @@ function BlogSection() {
 
   return (
     <section className="bg-ivory">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-24 max-w-6xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -1449,8 +1449,8 @@ function DiagnosticForm() {
   if (submitted) {
     return (
       <section id="diagnostic" className="bg-paper border-y border-rule">
-        <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-3xl mx-auto">
-          <div className="flex items-center gap-3 mb-10">
+        <div className="container-edit px-5 md:px-8 section-xl max-w-3xl mx-auto">
+          <div className="chapter-marker">
             <span className="rule-teal-sm" />
             <p className="eyebrow text-sekai-teal">Received · Thank You</p>
           </div>
@@ -1496,7 +1496,7 @@ function DiagnosticForm() {
 
   return (
     <section id="diagnostic" className="bg-ivory">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-28 max-w-2xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-2xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />
@@ -1754,7 +1754,7 @@ function FinalCTA() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sekai-teal/8 blur-3xl" />
       </div>
 
-      <div className="relative container-edit px-5 md:px-8 py-20 md:py-28 max-w-4xl mx-auto text-center">
+      <div className="relative container-edit px-5 md:px-8 section-xl max-w-4xl mx-auto text-center">
         <FadeIn>
           <p className="eyebrow-mono text-bright-teal mb-6">
             ★ 先着10オーナー · 移行コスト無料キャンペーン実施中
@@ -1815,7 +1815,7 @@ function CompanyInfo() {
 
   return (
     <section className="bg-paper border-y border-rule">
-      <div className="container-edit px-5 md:px-8 py-20 md:py-24 max-w-4xl mx-auto">
+      <div className="container-edit px-5 md:px-8 section-xl max-w-4xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-3">
             <span className="rule-teal-sm" />

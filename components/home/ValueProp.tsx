@@ -8,14 +8,14 @@ export default function ValueProp() {
     <section className="bg-ivory">
       <div className="container-edit section-xl">
         {/* Header */}
-        <div className="mb-16 md:mb-20">
-          <div className="flex items-center gap-4 mb-8">
+        <div className="heading-mb-lg">
+          <div className="chapter-marker">
             <span className="chapter">Chapter Ⅳ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">The Difference</span>
           </div>
-          <div className="grid lg:grid-cols-[0.55fr_0.45fr] gap-10 lg:gap-16 items-end">
-            <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end">
+            <h2 className="heading-hero text-ink jp-keep">
               <JP>{VALUE.headline}</JP>
             </h2>
             <p className="lead text-dark-gray jp-break">
