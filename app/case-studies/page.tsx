@@ -6,6 +6,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import { getCaseStudies } from '@/lib/case-studies'
+import { IconArrowRight } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: '導入事例 | SEKAI STAY',
@@ -26,147 +27,160 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://sekaistay.com/case-studies' },
 }
 
+const FAQS = [
+  {
+    q: 'どの事例が自分の物件に近いですか？',
+    a: '各事例は地域・物件タイプ・賃貸形態で分類されています。タグから自分の物件に最も近い事例を見つけ、改善の参考にしてください。ご不明な点は無料相談でお答えします。',
+  },
+  {
+    q: 'これらの成果は何ヶ月で実現できますか？',
+    a: '通常、運営改善は1〜3ヶ月で効果が出始めます。ただし物件の立地・シーズン・初期設定状況により異なります。詳細はお問い合わせください。',
+  },
+  {
+    q: '費用はいくらかかりますか？',
+    a: 'SEKAI STAYの手数料は、民泊運営代行で月額売上の8%です。詳細な料金設定・シミュレーションは、無料相談でご説明いたします。',
+  },
+  {
+    q: '今すぐ成果が出ない物件でも大丈夫ですか？',
+    a: 'はい。どの物件にも改善の余地があります。市場調査・競合分析・運営最適化を通じて、あなたの物件のポテンシャルを最大限引き出すご提案をいたします。',
+  },
+]
+
 export default function CaseStudiesPage() {
   const caseStudies = getCaseStudies()
 
   return (
     <>
       <Header />
-
-      {/* Hero Section */}
-      <section className="bg-deep-teal min-h-96 flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-bright-teal rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-5xl mx-auto px-6 py-20 relative z-10 text-center">
-          <div className="mb-4 inline-block">
-            <span className="text-xs uppercase tracking-widest font-semibold text-sekai-teal">
-              Success Stories
-            </span>
-          </div>
-          <h1 className="heading-section text-cloud-white mb-4">
-            導入事例
-          </h1>
-          <p className="text-lg text-cloud-white opacity-90 max-w-2xl mx-auto">
-            SEKAI STAYの運営ノウハウで実現した、オーナー様の成功事例をご紹介します。京都古民家から高級ヴィラ、都心アパートまで、多様な物件での実績をご確認ください。
-          </p>
-        </div>
-      </section>
-
-      {/* Breadcrumb */}
       <Breadcrumb items={[{ label: '導入事例' }]} />
 
-      {/* Case Studies Grid */}
-      <section className="bg-cloud-white section-heavy">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map((caseStudy) => (
-              <article
-                key={caseStudy.id}
-                className="rounded-2xl border border-light-gray bg-white overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                {/* Image Container */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                  <Image
-                    src={caseStudy.image}
-                    alt={caseStudy.name}
-                    fill
-                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                  />
-                  {/* Tags Overlay */}
-                  {caseStudy.tags.length > 0 && (
-                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                      {caseStudy.tags.slice(0, 2).map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-deep-teal text-cloud-white text-xs font-semibold rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+      <main className="bg-ivory">
+        {/* Chapter Ⅰ — dark editorial masthead */}
+        <section className="relative bg-ink text-ivory overflow-hidden">
+          <div
+            aria-hidden
+            className="absolute -top-32 -right-32 w-[32rem] h-[32rem] rounded-full bg-bright-teal/15 blur-3xl pointer-events-none"
+          />
+          <div className="container-edit relative px-5 md:px-10 pt-24 md:pt-32 pb-20 md:pb-28">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="h-px w-10 bg-bright-teal" />
+              <p className="eyebrow text-bright-teal">Chapter Ⅰ · Success Stories</p>
+            </div>
+            <h1 className="font-sans font-bold text-[32px] sm:text-[40px] md:text-[56px] leading-[1.3] mb-10">
+              導入事例
+              <span className="block font-sans font-bold text-bright-teal mt-2 text-[0.6em]">Case Studies</span>
+            </h1>
+            <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 items-start">
+              <p className="font-sans text-[17px] md:text-[19px] text-bright-teal/90 leading-[1.85]">
+                —&nbsp;From Kyoto&#39;s machiya to urban flats.
+              </p>
+              <p className="font-sans text-body md:text-[17px] text-ivory/80 leading-[1.95] max-w-2xl">
+                SEKAI STAYの運営ノウハウで実現した、オーナー様の成功事例をご紹介します。京都古民家から高級ヴィラ、都心アパートまで、多様な物件での実績をご確認ください。
+              </p>
+            </div>
+          </div>
+        </section>
 
-                {/* Content */}
-                <div className="p-6">
-                  {/* Header */}
-                  <h3 className="text-lg font-bold text-charcoal mb-2">
-                    {caseStudy.name}
-                  </h3>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-sm text-dark-gray">{caseStudy.location}</span>
-                    <span className="text-xs px-2 py-1 bg-teal-tint text-deep-teal rounded-full font-medium">
-                      {caseStudy.type}
-                    </span>
+        {/* Chapter Ⅱ — case studies grid */}
+        <section className="section-xl">
+          <div className="container-edit px-5 md:px-8">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="eyebrow-mono text-mid-gray">§ 02</span>
+              <span className="h-px bg-rule flex-1" />
+              <p className="eyebrow text-sekai-teal">Case Files · {caseStudies.length}</p>
+            </div>
+
+            <div className="bg-rule grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px border border-rule">
+              {caseStudies.map((caseStudy, i) => (
+                <article
+                  key={caseStudy.id}
+                  className="bg-paper group"
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-mist">
+                    <Image
+                      src={caseStudy.image}
+                      alt={caseStudy.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Case № overlay */}
+                    <div className="absolute top-4 left-4 bg-ivory/95 backdrop-blur-sm px-3 py-1 border border-rule">
+                      <p className="eyebrow-mono text-ink">Case № {String(i + 1).padStart(3, '0')}</p>
+                    </div>
+                    {/* Tags overlay */}
+                    {caseStudy.tags.length > 0 && (
+                      <div className="absolute bottom-4 left-4 flex flex-wrap gap-1.5">
+                        {caseStudy.tags.slice(0, 2).map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-0.5 bg-ink/90 backdrop-blur-sm text-ivory font-sans text-[11px]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  {/* Description */}
-                  <p className="text-sm text-dark-gray mb-6 leading-relaxed">
-                    {caseStudy.description}
-                  </p>
+                  {/* Content */}
+                  <div className="p-7 md:p-8">
+                    {/* Header */}
+                    <div className="mb-5 pb-4 border-b border-rule">
+                      <p className="eyebrow text-sekai-teal mb-2">{caseStudy.type}</p>
+                      <h3 className="font-sans font-medium text-[18px] md:text-[20px] text-ink leading-tight mb-1">
+                        {caseStudy.name}
+                      </h3>
+                      <p className="font-sans text-caption text-mid-gray">{caseStudy.location}</p>
+                    </div>
 
-                  {/* Highlights */}
-                  <div className="mb-6">
-                    <ul className="space-y-2">
+                    {/* Description */}
+                    <p className="font-sans text-body-sm text-dark-gray leading-[1.95] mb-6 line-clamp-3">
+                      {caseStudy.description}
+                    </p>
+
+                    {/* Highlights — ledger */}
+                    <ul className="space-y-2 mb-6">
                       {caseStudy.highlights.slice(0, 3).map((highlight, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2 text-xs text-charcoal"
+                          className="flex items-start gap-3 font-sans text-caption text-ink leading-[1.85]"
                         >
-                          <span className="inline-block w-5 h-5 flex-shrink-0 mt-0.5">
-                            <svg
-                              className="w-full h-full text-sekai-teal"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
+                          <span className="font-sans text-[14px] text-sekai-teal leading-none tabular-nums flex-shrink-0 mt-[2px]">
+                            {String(idx + 1).padStart(2, '0')}
                           </span>
                           <span>{highlight}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
 
-                  {/* Results Metrics */}
-                  <div className="border-t border-light-gray pt-6">
-                    <div className="space-y-4">
+                    {/* Results Ledger */}
+                    <div className="border-t border-rule pt-5 space-y-4">
                       {caseStudy.results.occupancyBefore && (
                         <div>
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-xs uppercase tracking-widest font-semibold text-dark-gray">
-                              稼働率
-                            </span>
-                            <span className="text-sm font-bold text-sekai-teal">
+                          <div className="flex justify-between items-baseline mb-2">
+                            <span className="eyebrow-mono text-mid-gray">Occupancy</span>
+                            <span className="font-sans font-light text-[18px] text-sekai-teal tabular-nums">
                               {caseStudy.results.occupancyBefore} → {caseStudy.results.occupancyAfter}
                             </span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div className="w-full bg-rule h-[2px]">
                             <div
-                              className="bg-sekai-teal h-2 rounded-full"
-                              style={{
-                                width: `${parseInt(caseStudy.results.occupancyAfter || '0')}%`,
-                              }}
-                            ></div>
+                              className="bg-sekai-teal h-[2px]"
+                              style={{ width: `${parseInt(caseStudy.results.occupancyAfter || '0')}%` }}
+                            />
                           </div>
                         </div>
                       )}
 
                       {caseStudy.results.revenueBefore && (
                         <div>
-                          <div className="text-xs uppercase tracking-widest font-semibold text-dark-gray mb-2">
-                            月間収益
-                          </div>
+                          <p className="eyebrow-mono text-mid-gray mb-2">Monthly Revenue</p>
                           <div className="flex justify-between items-baseline">
-                            <span className="text-sm text-dark-gray line-through">
+                            <span className="font-sans text-caption text-mid-gray line-through">
                               {caseStudy.results.revenueBefore}
                             </span>
-                            <span className="text-lg font-bold text-deep-teal">
+                            <span className="font-sans font-light text-[20px] text-ink tabular-nums">
                               {caseStudy.results.revenueAfter}
                             </span>
                           </div>
@@ -174,135 +188,118 @@ export default function CaseStudiesPage() {
                       )}
 
                       {caseStudy.results.reviewScore !== undefined && (
-                        <div className="flex justify-between items-center">
-                          <span className="text-xs uppercase tracking-widest font-semibold text-dark-gray">
-                            平均評価
+                        <div className="flex justify-between items-baseline">
+                          <span className="eyebrow-mono text-mid-gray">Avg Review</span>
+                          <span className="font-sans text-[18px] text-ink tabular-nums">
+                            {caseStudy.results.reviewScore}<span className="font-sans text-caption text-mid-gray ml-1">/5.0</span>
                           </span>
-                          <div className="flex items-center gap-1">
-                            <span className="text-sm font-bold text-charcoal">
-                              {caseStudy.results.reviewScore}
-                            </span>
-                            <span className="text-xs text-dark-gray">/5.0</span>
-                          </div>
                         </div>
                       )}
 
                       {caseStudy.results.superhost && (
-                        <div className="flex items-center gap-2 pt-2 border-t border-light-gray">
-                          <svg
-                            className="w-4 h-4 text-deep-teal"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
+                        <div className="flex items-center gap-2 pt-3 border-t border-rule">
+                          <svg className="w-3.5 h-3.5 text-sekai-teal" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
-                          <span className="text-xs font-semibold text-deep-teal">
-                            Superhost獲得
-                          </span>
+                          <span className="eyebrow text-sekai-teal">Superhost獲得</span>
                         </div>
                       )}
                     </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Banner Section */}
-      <section className="bg-deep-teal relative overflow-hidden py-16 md:py-20">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-bright-teal rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <div className="mb-4">
-            <span className="text-xs uppercase tracking-widest font-semibold text-sekai-teal">
-              Start Growing
-            </span>
-          </div>
-          <h2 className="heading-section text-cloud-white mb-4">
-            あなたの物件も同じように成長させませんか？
-          </h2>
-          <p className="text-lg text-cloud-white opacity-90 mb-8 max-w-2xl mx-auto">
-            SEKAI STAYの運営ノウハウは、すべてのオーナー様にご利用いただけます。京都古民家から都心アパート、高級ヴィラまで、多様な物件での実績があります。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-4 bg-deep-teal hover:bg-sekai-teal text-cloud-white font-bold rounded-2xl transition-colors duration-300"
-            >
-              無料相談を申し込む
-            </Link>
-            <Link
-              href="/services"
-              className="inline-block px-8 py-4 bg-transparent border-2 border-cloud-white text-cloud-white hover:bg-cloud-white hover:text-deep-teal font-bold rounded-2xl transition-colors duration-300"
-            >
-              サービスを詳しく見る
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="bg-cloud-white section-heavy">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest font-semibold text-sekai-teal mb-2 inline-block">
-              Frequently Asked
-            </span>
-            <h2 className="heading-section text-charcoal">
-              導入事例について
+        {/* Chapter Ⅲ — CTA */}
+        <section className="relative bg-ink text-ivory overflow-hidden">
+          <div
+            aria-hidden
+            className="absolute -bottom-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-bright-teal/15 blur-3xl pointer-events-none"
+          />
+          <div className="container-narrow relative px-5 md:px-8 py-24 md:py-32 max-w-4xl">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-bright-teal" />
+              <p className="eyebrow text-bright-teal">Chapter Ⅲ · Start Growing</p>
+            </div>
+            <h2 className="font-sans font-bold text-[28px] md:text-[44px] leading-[1.3] mb-8">
+              あなたの物件も同じように
+              <span className="block font-sans text-bright-teal mt-1">成長させませんか？</span>
             </h2>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              {
-                q: 'どの事例が自分の物件に近いですか？',
-                a: '各事例は地域・物件タイプ・賃貸形態で分類されています。タグから自分の物件に最も近い事例を見つけ、改善の参考にしてください。ご不明な点は無料相談でお答えします。',
-              },
-              {
-                q: 'これらの成果は何ヶ月で実現できますか？',
-                a: '通常、運営改善は1〜3ヶ月で効果が出始めます。ただし物件の立地・シーズン・初期設定状況により異なります。詳細はお問い合わせください。',
-              },
-              {
-                q: '費用はいくらかかりますか？',
-                a: 'SEKAI STAYの手数料は、民泊運営代行で月額売上の8%です。詳細な料金設定・シミュレーションは、無料相談でご説明いたします。',
-              },
-              {
-                q: '今すぐ成果が出ない物件でも大丈夫ですか？',
-                a: 'はい。どの物件にも改善の余地があります。市場調査・競合分析・運営最適化を通じて、あなたの物件のポテンシャルを最大限引き出すご提案をいたします。',
-              },
-            ].map((faq, idx) => (
-              <details
-                key={idx}
-                className="group border border-light-gray rounded-2xl p-6 cursor-pointer hover:border-sekai-teal transition-colors"
+            <p className="font-sans text-body md:text-[17px] text-ivory/80 leading-[1.95] mb-10 max-w-2xl">
+              SEKAI STAYの運営ノウハウは、すべてのオーナー様にご利用いただけます。京都古民家から都心アパート、高級ヴィラまで、多様な物件での実績があります。
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center justify-between gap-4 bg-ivory text-ink px-7 py-5 transition hover:bg-bright-teal"
               >
-                <summary className="flex items-center justify-between font-bold text-charcoal text-base">
-                  {faq.q}
-                  <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-teal-tint text-deep-teal rounded-full group-open:bg-deep-teal group-open:text-cloud-white transition-colors">
-                    <svg
-                      className="w-4 h-4 transform group-open:rotate-180 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="mt-4 text-dark-gray leading-relaxed">{faq.a}</p>
-              </details>
-            ))}
+                <div>
+                  <p className="eyebrow-mono text-mid-gray mb-1">Path A</p>
+                  <p className="font-sans font-medium text-[15px]">無料相談を申し込む</p>
+                </div>
+                <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
+              </Link>
+              <Link
+                href="/services"
+                className="group inline-flex items-center justify-between gap-4 border border-ivory/30 text-ivory px-7 py-5 transition hover:bg-ivory/5 hover:border-bright-teal"
+              >
+                <div>
+                  <p className="eyebrow-mono text-bright-teal mb-1">Path B</p>
+                  <p className="font-sans font-medium text-[15px]">サービスを詳しく見る</p>
+                </div>
+                <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Chapter Ⅳ — FAQ */}
+        <section className="section-xl bg-bone border-t border-rule">
+          <div className="container-narrow px-5 md:px-8 max-w-3xl">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅳ · FAQ</p>
+            </div>
+            <h2 className="heading-section text-ink mb-12">
+              導入事例について、
+              <span className="font-sans text-sekai-teal">よくあるご質問。</span>
+            </h2>
+
+            <div className="border-t border-rule">
+              {FAQS.map((faq, idx) => (
+                <details
+                  key={idx}
+                  className="group border-b border-rule py-6"
+                >
+                  <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
+                    <div className="flex items-start gap-5 flex-1">
+                      <span className="font-sans font-light text-[24px] md:text-[28px] text-sekai-teal leading-none tabular-nums flex-shrink-0 pt-1">
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <p className="eyebrow-mono text-mid-gray mb-1">Question № {String(idx + 1).padStart(2, '0')}</p>
+                        <p className="font-sans font-medium text-[15px] md:text-[17px] text-ink leading-snug">{faq.q}</p>
+                      </div>
+                    </div>
+                    <span className="flex-shrink-0 w-8 h-8 border border-rule flex items-center justify-center text-mid-gray group-open:border-ink group-open:bg-ink group-open:text-ivory transition mt-1">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="group-open:rotate-180 transition-transform">
+                        <path d="M1 3l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="mt-5 pl-10 md:pl-14">
+                    <blockquote className="border-l-2 border-sekai-teal pl-5">
+                      <p className="font-sans text-body-sm md:text-body text-dark-gray leading-[2]">{faq.a}</p>
+                    </blockquote>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
       <FloatingCTA />

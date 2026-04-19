@@ -7,14 +7,9 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import {
   IconArrowRight,
-  IconDashboard,
-  IconChart,
   IconStar,
-  IconCalendar,
   IconCheckCircle,
   IconAlert,
-  IconTrendingUp,
-  IconSparkles,
 } from '@/components/Icons'
 
 /* ─── Sample property data ──────────────────────────────────── */
@@ -30,7 +25,6 @@ type Property = {
   reviewAvg: number
   reviewCount: number
   upcomingBookings: number
-  // 6-month chart series (low → recent)
   series: { m: string; rev: number; occ: number; rating: number }[]
 }
 
@@ -39,7 +33,7 @@ const PROPERTIES: Property[] = [
     id: 'nojiri',
     name: '野尻湖ビュー貸別荘',
     area: '長野・野尻湖',
-    type: '貸別荘 / 1棟貸し',
+    type: '貸別荘 · 1棟貸し',
     monthlyRevenue: 1_340_000,
     occupancy: 82,
     occupancyDelta: 24,
@@ -59,7 +53,7 @@ const PROPERTIES: Property[] = [
     id: 'kyoto',
     name: '京都・町家ステイ',
     area: '京都市東山区',
-    type: '町家 / インバウンド',
+    type: '町家 · インバウンド',
     monthlyRevenue: 980_000,
     occupancy: 88,
     occupancyDelta: 12,
@@ -79,7 +73,7 @@ const PROPERTIES: Property[] = [
     id: 'okinawa',
     name: '恩納村オーシャンヴィラ',
     area: '沖縄・恩納村',
-    type: 'ヴィラ / リゾート',
+    type: 'ヴィラ · リゾート',
     monthlyRevenue: 1_780_000,
     occupancy: 76,
     occupancyDelta: 18,
@@ -99,29 +93,29 @@ const PROPERTIES: Property[] = [
 
 type Metric = 'rev' | 'occ' | 'rating'
 
-const METRIC_META: Record<Metric, { label: string; unit: string; color: string }> = {
-  rev:    { label: '売上推移',     unit: '万円', color: '#167B81' },
-  occ:    { label: '稼働率推移',   unit: '%',    color: '#259DA3' },
-  rating: { label: 'レビュー推移', unit: '/5',   color: '#54BEC3' },
+const METRIC_META: Record<Metric, { label: string; unit: string }> = {
+  rev:    { label: '売上', unit: '万円' },
+  occ:    { label: '稼働率', unit: '%' },
+  rating: { label: 'レビュー', unit: '/ 5' },
 }
 
 const ACTIONS = [
-  { txt: '週末価格の見直し（+8%想定）',          tag: '優先',   pri: 1 },
-  { txt: 'ギャラリー写真2枚の差し替え',          tag: '中',     pri: 2 },
-  { txt: '多言語リスティング調整（英・繁・韓）', tag: '中',     pri: 2 },
-  { txt: 'チェックイン動線の動画化',             tag: '低',     pri: 3 },
+  { txt: '週末価格の見直し（+8%想定）',          tag: 'Priority', pri: 1 },
+  { txt: 'ギャラリー写真2枚の差し替え',          tag: 'Medium',   pri: 2 },
+  { txt: '多言語リスティング調整（英・繁・韓）', tag: 'Medium',   pri: 2 },
+  { txt: 'チェックイン動線の動画化',             tag: 'Low',      pri: 3 },
 ]
 
 const BOOKINGS = [
-  { date: '4/18 (土)', guest: 'L. Anderson',  nights: 3, total: 84_000,  src: 'Airbnb',     country: 'US' },
+  { date: '4/18 (土)', guest: 'L. Anderson',  nights: 3, total: 84_000,  src: 'Airbnb',      country: 'US' },
   { date: '4/22 (水)', guest: 'Tan Wei Ling', nights: 2, total: 56_000,  src: 'Booking.com', country: 'SG' },
-  { date: '4/25 (土)', guest: '山田 健太',    nights: 1, total: 28_000,  src: 'VRBO',       country: 'JP' },
-  { date: '5/02 (土)', guest: 'Park Min-jun', nights: 4, total: 112_000, src: 'Airbnb',     country: 'KR' },
+  { date: '4/25 (土)', guest: '山田 健太',    nights: 1, total: 28_000,  src: 'VRBO',        country: 'JP' },
+  { date: '5/02 (土)', guest: 'Park Min-jun', nights: 4, total: 112_000, src: 'Airbnb',      country: 'KR' },
 ]
 
 /* ─── Helpers ──────────────────────────────────────────────── */
 
-const fmtMan = (rev: number) => '¥' + (rev / 10_000).toFixed(0) + '万'
+const fmtMan = (rev: number) => '¥' + (rev / 10_000).toFixed(0)
 const fmtFull = (n: number) => '¥' + n.toLocaleString('ja-JP')
 
 /* ─── Page ─────────────────────────────────────────────────── */
@@ -135,18 +129,14 @@ export default function DashboardDemoPage() {
     [selectedId],
   )
 
-  // Series for selected metric
   const series = property.series
   const values = series.map(s => s[metric])
   const seriesMax = Math.max(...values)
 
-  // Booking calendar heatmap (4 weeks × 7 days)
-  // Generate deterministic-ish density based on property + day
   const heatmap = useMemo(() => {
     const base = property.occupancy / 100
     const cells: number[] = []
     for (let i = 0; i < 28; i++) {
-      // Weekend (5,6,12,13,19,20,26,27) → higher
       const isWeekend = i % 7 === 5 || i % 7 === 6
       const noise = ((i * 9301 + 49297) % 233280) / 233280
       let v = base * (isWeekend ? 1.15 : 0.85) + (noise - 0.5) * 0.25
@@ -159,162 +149,174 @@ export default function DashboardDemoPage() {
   return (
     <>
       <Header />
-      <Breadcrumb
-        items={[
-          { label: 'オーナーダッシュボード デモ' },
-        ]}
-      />
+      <Breadcrumb items={[{ label: 'オーナーダッシュボード デモ' }]} />
 
-      <main>
+      <main className="bg-ivory pb-20">
         {/* ─────────── Hero ─────────── */}
-        <section className="relative bg-charcoal text-white overflow-hidden">
+        <section className="bg-ink text-ivory relative overflow-hidden">
           <div
             aria-hidden
-            className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full opacity-40 blur-3xl pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(84,190,195,0.5), transparent 60%)' }}
+            className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-bright-teal/8 blur-3xl pointer-events-none"
           />
           <div
             aria-hidden
-            className="absolute -bottom-40 -left-40 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(22,123,129,0.6), transparent 60%)' }}
+            className="absolute -bottom-40 -left-40 w-[420px] h-[420px] rounded-full bg-sekai-teal/8 blur-3xl pointer-events-none"
           />
 
-          <div className="relative max-w-[1080px] mx-auto px-6 md:px-10 py-16 md:py-24">
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3.5 py-1.5 mb-6">
-              <IconSparkles size={13} color="#54BEC3" />
-              <span className="text-[11px] font-bold text-white/90 tracking-[0.15em] uppercase">
-                Owner Dashboard Demo
-              </span>
+          <div className="relative container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20 max-w-6xl mx-auto">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-bright-teal" />
+              <p className="eyebrow text-bright-teal">Chapter Ⅰ · Owner Dashboard Demo</p>
             </div>
-            <h1 className="text-3xl md:text-[44px] font-black tracking-tight leading-[1.25] mb-5">
-              物件の状態が、<br />
-              <span className="text-bright-teal">一画面でわかる。</span>
-            </h1>
-            <p className="text-base text-white/80 leading-relaxed max-w-2xl">
-              SEKAI STAYのオーナーダッシュボードは、売上・稼働率・予約・レビュー・改善アクションまで、物件の動きを一望できる設計です。<br />
-              下のサンプルは実データを匿名化したもの。物件を切り替えて、実際の使い心地を体験してください。
-            </p>
+            <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-16 items-end">
+              <h1 className="font-sans font-bold text-[30px] sm:text-[38px] md:text-[56px] leading-[1.3]">
+                物件の状態が、
+                <span className="block font-sans text-bright-teal">一画面でわかる。</span>
+              </h1>
+              <div className="md:text-right">
+                <p className="eyebrow-mono text-ivory/60 mb-2">Demo · 2026 Spring</p>
+                <p className="font-sans font-light text-[72px] md:text-[112px] text-bright-teal leading-none tabular-nums">
+                  {String(PROPERTIES.length).padStart(2, '0')}
+                </p>
+                <p className="eyebrow-mono text-ivory/60 mt-1">Sample Properties</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mt-14 pt-10 border-t border-ivory/15">
+              <p className="font-sans text-body md:text-[17px] text-ivory/85 leading-[2]">
+                SEKAI STAYのオーナーダッシュボードは、売上・稼働率・予約・レビュー・改善アクションまで、物件の動きを一望できる設計。
+              </p>
+              <p className="font-sans text-body md:text-[17px] text-ivory/85 leading-[2]">
+                下のサンプルは実データを匿名化したもの。物件を切り替えて、実際の使い心地を体験してください。
+              </p>
+            </div>
           </div>
         </section>
 
         {/* ─────────── Demo Surface ─────────── */}
-        <section className="bg-cloud-white px-6 py-10 md:py-16 border-b border-light-gray">
-          <div className="max-w-[1080px] mx-auto">
-            {/* Property selector */}
-            <div className="bg-white rounded-2xl border border-light-gray p-4 md:p-5 mb-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono text-mid-gray tracking-wider">SELECT PROPERTY</span>
-                <span className="inline-block w-1 h-4 bg-deep-teal rounded-full" />
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {PROPERTIES.map(p => {
-                  const active = p.id === selectedId
-                  return (
-                    <button
-                      key={p.id}
-                      onClick={() => setSelectedId(p.id)}
-                      className={`text-[12px] md:text-[13px] font-bold px-3.5 py-2 rounded-btn border transition ${
-                        active
-                          ? 'bg-deep-teal text-white border-deep-teal shadow-[0_4px_12px_rgba(22,123,129,0.3)]'
-                          : 'bg-white text-charcoal border-light-gray hover:border-deep-teal/40'
-                      }`}
-                    >
-                      {p.name}
-                    </button>
-                  )
-                })}
-              </div>
+        <section className="section-xl bg-paper border-b border-rule">
+          <div className="container-edit px-5 md:px-8 max-w-6xl mx-auto">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="eyebrow-mono text-mid-gray">§ 02</span>
+              <span className="h-px bg-rule flex-1" />
+              <p className="eyebrow text-sekai-teal">Live Preview</p>
+            </div>
+
+            {/* Property selector — editorial tag rail */}
+            <div className="flex items-center gap-6 pb-4 border-b border-rule mb-8 overflow-x-auto">
+              <p className="eyebrow-mono text-mid-gray whitespace-nowrap">Select Property</p>
+              {PROPERTIES.map((p, i) => {
+                const active = p.id === selectedId
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setSelectedId(p.id)}
+                    className={`relative group flex items-center gap-3 py-2 whitespace-nowrap transition ${
+                      active ? 'text-sekai-teal' : 'text-mid-gray hover:text-ink'
+                    }`}
+                  >
+                    <span className="eyebrow-mono">№ 0{i + 1}</span>
+                    <span className="font-sans text-[13px]">{p.name}</span>
+                    {active && (
+                      <span className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-sekai-teal" />
+                    )}
+                  </button>
+                )
+              })}
             </div>
 
             {/* Dashboard frame */}
-            <div className="bg-white rounded-2xl border border-light-gray overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+            <div className="bg-ivory border border-rule">
               {/* Window chrome */}
-              <div className="flex items-center gap-2 px-5 py-3 bg-cloud-white border-b border-light-gray">
-                <span className="w-3 h-3 rounded-full bg-light-gray" />
-                <span className="w-3 h-3 rounded-full bg-light-gray" />
-                <span className="w-3 h-3 rounded-full bg-light-gray" />
-                <div className="ml-3 flex items-center gap-1.5 text-[11px] text-mid-gray">
-                  <IconDashboard size={12} color="#9AA0A6" />
-                  <span className="truncate">owner.sekaistay.com / {property.area}</span>
+              <div className="flex items-center justify-between px-5 py-3 bg-paper border-b border-rule">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-rule" />
+                  <span className="w-2 h-2 rounded-full bg-rule" />
+                  <span className="w-2 h-2 rounded-full bg-rule" />
+                  <span className="ml-3 font-sans text-caption text-mid-gray truncate">
+                    — owner.sekaistay.com / {property.area}
+                  </span>
                 </div>
-                <span className="ml-auto text-[10px] font-mono text-mid-gray hidden sm:inline">LIVE PREVIEW</span>
+                <span className="eyebrow-mono text-mid-gray hidden sm:inline flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sekai-teal animate-pulse" />
+                  Live Preview
+                </span>
               </div>
 
-              <div className="p-5 md:p-7">
+              <div className="p-6 md:p-10">
                 {/* Property header */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 pb-8 border-b border-rule">
                   <div>
-                    <p className="text-[10px] font-mono text-mid-gray tracking-wider mb-1">
-                      {property.type}
-                    </p>
-                    <h2 className="text-xl md:text-2xl font-black text-charcoal leading-tight">
+                    <p className="eyebrow-mono text-mid-gray mb-2">{property.type}</p>
+                    <h2 className="font-sans font-bold text-[28px] md:text-[36px] text-ink leading-[1.3] mb-2">
                       {property.name}
                     </h2>
-                    <p className="text-[12px] text-dark-gray mt-1">{property.area}</p>
+                    <p className="font-sans text-caption text-mid-gray">— {property.area}</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-sekai-teal bg-teal-tint px-2.5 py-1 rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sekai-teal" />
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex items-center gap-2 bg-ink text-ivory font-sans text-[12px] px-3 py-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-bright-teal animate-pulse" />
                       運用中
                     </span>
-                    <span className="text-[11px] text-mid-gray">最終更新 04/16 09:12</span>
+                    <span className="eyebrow-mono text-mid-gray">Updated · 04/16 09:12</span>
                   </div>
                 </div>
 
-                {/* KPI Cards */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                  <KpiCard
-                    label="今月の売上"
-                    value={fmtMan(property.monthlyRevenue)}
+                {/* KPI Ledger */}
+                <div className="bg-rule grid grid-cols-2 lg:grid-cols-4 gap-px border border-rule mb-10">
+                  <KpiCell
+                    label="Monthly Revenue"
+                    valueDisplay={fmtMan(property.monthlyRevenue)}
+                    valueSuffix="万"
                     delta="+18% MoM"
-                    icon={<IconChart size={14} color="#167B81" />}
                     accent
                   />
-                  <KpiCard
-                    label="稼働率"
-                    value={`${property.occupancy}%`}
-                    delta={`+${property.occupancyDelta}%ポイント`}
-                    icon={<IconTrendingUp size={14} color="#167B81" />}
+                  <KpiCell
+                    label="Occupancy"
+                    valueDisplay={`${property.occupancy}`}
+                    valueSuffix="%"
+                    delta={`+${property.occupancyDelta}pt`}
                   />
-                  <KpiCard
-                    label="レビュー"
-                    value={`${property.reviewAvg}`}
-                    sub={`/ 5.0  ・ ${property.reviewCount}件`}
-                    icon={<IconStar size={14} color="#167B81" />}
+                  <KpiCell
+                    label="Review"
+                    valueDisplay={`${property.reviewAvg}`}
+                    valueSuffix=""
+                    delta={`${property.reviewCount}件`}
                   />
-                  <KpiCard
-                    label="今後30日の予約"
-                    value={`${property.upcomingBookings}件`}
+                  <KpiCell
+                    label="Next 30 Days"
+                    valueDisplay={`${property.upcomingBookings}`}
+                    valueSuffix="件"
                     delta="ペース順調"
-                    icon={<IconCalendar size={14} color="#167B81" />}
                   />
                 </div>
 
                 {/* Chart + Heatmap */}
-                <div className="grid lg:grid-cols-[1.4fr_1fr] gap-4 mb-6">
+                <div className="grid lg:grid-cols-[1.4fr_1fr] gap-px bg-rule border border-rule mb-10">
                   {/* Chart panel */}
-                  <div className="bg-cloud-white rounded-xl border border-light-gray p-5">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+                  <div className="bg-paper p-6 md:p-7">
+                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 pb-4 border-b border-rule">
                       <div>
-                        <p className="text-[11px] font-bold text-charcoal mb-0.5">
-                          {METRIC_META[metric].label}
-                        </p>
-                        <p className="text-[11px] text-mid-gray">過去6ヶ月のトレンド</p>
+                        <p className="eyebrow-mono text-mid-gray mb-1">Trend · 6 months</p>
+                        <h3 className="font-sans font-medium text-[16px] text-ink">
+                          {METRIC_META[metric].label}推移
+                        </h3>
                       </div>
-                      <div className="inline-flex items-center bg-white border border-light-gray rounded-btn p-1">
+                      <div className="flex items-center gap-5">
                         {(Object.keys(METRIC_META) as Metric[]).map(m => {
                           const active = m === metric
                           return (
                             <button
                               key={m}
                               onClick={() => setMetric(m)}
-                              className={`text-[11px] font-bold px-3 py-1.5 rounded transition ${
-                                active
-                                  ? 'bg-deep-teal text-white'
-                                  : 'text-dark-gray hover:text-charcoal'
+                              className={`relative font-sans text-[12px] py-1 transition ${
+                                active ? 'text-sekai-teal font-medium' : 'text-mid-gray hover:text-ink'
                               }`}
                             >
-                              {m === 'rev' ? '売上' : m === 'occ' ? '稼働率' : 'レビュー'}
+                              {METRIC_META[m].label}
+                              {active && (
+                                <span className="absolute -bottom-[5px] left-0 right-0 h-[2px] bg-sekai-teal" />
+                              )}
                             </button>
                           )
                         })}
@@ -322,52 +324,48 @@ export default function DashboardDemoPage() {
                     </div>
 
                     {/* Bar chart */}
-                    <div className="flex items-end justify-between gap-2 h-32 mb-2">
+                    <div className="flex items-end justify-between gap-2 h-36 mb-3">
                       {series.map((s, i) => {
                         const pct = (s[metric] / seriesMax) * 100
                         const isLast = i === series.length - 1
                         return (
-                          <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full">
+                          <div key={i} className="flex-1 flex flex-col items-center gap-2 h-full">
                             <div className="flex-1 w-full flex items-end relative group">
                               <div
-                                className={`w-full rounded-md transition-all duration-500 ease-out ${
-                                  isLast ? 'bg-deep-teal' : 'bg-sekai-teal'
+                                className={`w-full transition-all duration-500 ease-out ${
+                                  isLast ? 'bg-ink' : 'bg-sekai-teal'
                                 }`}
                                 style={{
                                   height: `${pct}%`,
-                                  opacity: isLast ? 1 : 0.45 + i * 0.1,
+                                  opacity: isLast ? 1 : 0.35 + i * 0.1,
                                 }}
                               />
-                              {/* Tooltip on hover */}
                               <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition pointer-events-none">
-                                <span className="text-[10px] font-mono text-white bg-charcoal px-1.5 py-0.5 rounded whitespace-nowrap">
-                                  {s[metric].toFixed(metric === 'rating' ? 1 : 0)}
-                                  {METRIC_META[metric].unit}
+                                <span className="eyebrow-mono bg-ink text-ivory px-2 py-0.5 whitespace-nowrap">
+                                  {s[metric].toFixed(metric === 'rating' ? 1 : 0)}{METRIC_META[metric].unit}
                                 </span>
                               </div>
                             </div>
-                            <span className="text-[10px] text-mid-gray leading-none">{s.m}</span>
+                            <span className="eyebrow-mono text-mid-gray leading-none">{s.m}</span>
                           </div>
                         )
                       })}
                     </div>
-                    <div className="flex items-center justify-between text-[10px] text-mid-gray font-mono pt-3 border-t border-light-gray">
-                      <span>最小 {Math.min(...values).toFixed(metric === 'rating' ? 1 : 0)}{METRIC_META[metric].unit}</span>
-                      <span>最大 {seriesMax.toFixed(metric === 'rating' ? 1 : 0)}{METRIC_META[metric].unit}</span>
+                    <div className="flex items-center justify-between eyebrow-mono text-mid-gray pt-3 border-t border-rule">
+                      <span>Min {Math.min(...values).toFixed(metric === 'rating' ? 1 : 0)}{METRIC_META[metric].unit}</span>
+                      <span>Max {seriesMax.toFixed(metric === 'rating' ? 1 : 0)}{METRIC_META[metric].unit}</span>
                     </div>
                   </div>
 
                   {/* Heatmap panel */}
-                  <div className="bg-cloud-white rounded-xl border border-light-gray p-5">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <p className="text-[11px] font-bold text-charcoal mb-0.5">予約カレンダー</p>
-                        <p className="text-[11px] text-mid-gray">向こう4週間の埋まり具合</p>
-                      </div>
+                  <div className="bg-paper p-6 md:p-7">
+                    <div className="pb-4 border-b border-rule mb-6">
+                      <p className="eyebrow-mono text-mid-gray mb-1">Calendar · Next 4 weeks</p>
+                      <h3 className="font-sans font-medium text-[16px] text-ink">予約の埋まり具合</h3>
                     </div>
                     <div className="grid grid-cols-7 gap-1.5 mb-3">
                       {['月', '火', '水', '木', '金', '土', '日'].map(d => (
-                        <div key={d} className="text-[10px] text-center text-mid-gray font-bold">
+                        <div key={d} className="eyebrow-mono text-center text-mid-gray">
                           {d}
                         </div>
                       ))}
@@ -376,7 +374,7 @@ export default function DashboardDemoPage() {
                       {heatmap.map((v, i) => (
                         <div
                           key={i}
-                          className="aspect-square rounded transition"
+                          className="aspect-square transition"
                           style={{
                             backgroundColor: `rgba(22, 123, 129, ${0.08 + v * 0.85})`,
                           }}
@@ -384,45 +382,46 @@ export default function DashboardDemoPage() {
                         />
                       ))}
                     </div>
-                    <div className="flex items-center gap-2 mt-4 text-[10px] text-mid-gray">
-                      <span>低</span>
+                    <div className="flex items-center gap-2 mt-5 eyebrow-mono text-mid-gray">
+                      <span>Low</span>
                       <div className="flex gap-1 flex-1">
                         {[0.1, 0.3, 0.5, 0.7, 0.9].map(v => (
                           <div
                             key={v}
-                            className="flex-1 h-1.5 rounded"
+                            className="flex-1 h-[2px]"
                             style={{ backgroundColor: `rgba(22, 123, 129, ${0.08 + v * 0.85})` }}
                           />
                         ))}
                       </div>
-                      <span>高</span>
+                      <span>High</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Bookings + Actions */}
-                <div className="grid lg:grid-cols-2 gap-4">
+                <div className="grid lg:grid-cols-2 gap-px bg-rule border border-rule">
                   {/* Upcoming bookings */}
-                  <div className="bg-cloud-white rounded-xl border border-light-gray p-5">
-                    <div className="flex items-center justify-between mb-4">
-                      <p className="text-[11px] font-bold text-charcoal">直近の予約</p>
-                      <span className="text-[10px] font-mono text-mid-gray">UPCOMING</span>
+                  <div className="bg-paper p-6 md:p-7">
+                    <div className="flex items-center justify-between pb-4 border-b border-rule mb-5">
+                      <div>
+                        <p className="eyebrow-mono text-mid-gray mb-1">Upcoming</p>
+                        <h3 className="font-sans font-medium text-[16px] text-ink">直近の予約</h3>
+                      </div>
                     </div>
-                    <div className="divide-y divide-light-gray">
+                    <div className="border-t border-rule divide-y divide-rule">
                       {BOOKINGS.map((b, i) => (
-                        <div key={i} className="flex items-center justify-between py-2.5 first:pt-0 last:pb-0">
-                          <div className="min-w-0 flex-1">
-                            <p className="text-[12px] font-bold text-charcoal truncate">
+                        <div key={i} className="grid grid-cols-[auto_1fr_auto] gap-4 py-3 items-center">
+                          <p className="eyebrow-mono text-mid-gray w-8">№ 0{i + 1}</p>
+                          <div className="min-w-0">
+                            <p className="font-sans font-medium text-[13px] text-ink truncate">
                               {b.guest}
-                              <span className="ml-2 text-[10px] font-mono text-mid-gray">
-                                {b.country}
-                              </span>
+                              <span className="ml-2 eyebrow-mono text-mid-gray">{b.country}</span>
                             </p>
-                            <p className="text-[10px] text-mid-gray">
+                            <p className="eyebrow-mono text-mid-gray mt-0.5">
                               {b.date} · {b.nights}泊 · {b.src}
                             </p>
                           </div>
-                          <span className="text-[12px] font-bold text-deep-teal tabular-nums">
+                          <span className="font-sans text-[18px] text-sekai-teal tabular-nums">
                             {fmtFull(b.total)}
                           </span>
                         </div>
@@ -431,33 +430,30 @@ export default function DashboardDemoPage() {
                   </div>
 
                   {/* Improvement actions */}
-                  <div className="bg-cloud-white rounded-xl border border-light-gray p-5">
-                    <div className="flex items-center justify-between mb-4">
-                      <p className="text-[11px] font-bold text-charcoal">改善アクション</p>
-                      <span className="text-[10px] font-mono text-mid-gray">RECOMMENDED</span>
+                  <div className="bg-paper p-6 md:p-7">
+                    <div className="flex items-center justify-between pb-4 border-b border-rule mb-5">
+                      <div>
+                        <p className="eyebrow-mono text-mid-gray mb-1">Recommended</p>
+                        <h3 className="font-sans font-medium text-[16px] text-ink">改善アクション</h3>
+                      </div>
                     </div>
-                    <div className="space-y-2">
+                    <div className="border-t border-rule divide-y divide-rule">
                       {ACTIONS.map((a, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center justify-between gap-2 bg-white border border-pale-gray rounded-btn px-3 py-2.5"
-                        >
-                          <div className="flex items-center gap-2 min-w-0">
+                        <div key={i} className="grid grid-cols-[auto_1fr_auto] gap-4 py-3 items-center">
+                          <span className="w-6 flex items-center justify-center">
                             {a.pri === 1 ? (
-                              <IconAlert size={13} color="#F59E0B" />
+                              <IconAlert size={14} className="text-sekai-teal" />
                             ) : (
-                              <IconCheckCircle size={13} color="#54BEC3" />
+                              <IconCheckCircle size={14} className="text-mid-gray" />
                             )}
-                            <span className="text-[12px] text-charcoal truncate">{a.txt}</span>
-                          </div>
-                          <span
-                            className={`text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0 ${
-                              a.tag === '優先'
-                                ? 'bg-amber-100 text-amber-700'
-                                : 'bg-pale-gray text-dark-gray'
-                            }`}
-                          >
-                            {a.tag}
+                          </span>
+                          <span className="font-sans text-[13px] text-dark-gray leading-snug">
+                            {a.txt}
+                          </span>
+                          <span className={`eyebrow-mono ${
+                            a.tag === 'Priority' ? 'text-sekai-teal' : 'text-mid-gray'
+                          }`}>
+                            — {a.tag}
                           </span>
                         </div>
                       ))}
@@ -467,24 +463,27 @@ export default function DashboardDemoPage() {
               </div>
             </div>
 
-            <p className="text-[11px] text-mid-gray text-center mt-5">
-              ※ 上記は実運用画面を匿名化・簡略化したサンプルです。実際のダッシュボードはより詳細なデータを表示します。
+            <p className="font-sans text-caption text-mid-gray text-center mt-6">
+              — 上記は実運用画面を匿名化・簡略化したサンプルです。実際のダッシュボードはより詳細なデータを表示します。
             </p>
           </div>
         </section>
 
         {/* ─────────── Feature Strip ─────────── */}
-        <section className="bg-white px-6 py-16 md:py-20">
-          <div className="max-w-[1080px] mx-auto">
-            <div className="text-center mb-10">
-              <p className="text-[11px] font-bold text-deep-teal tracking-[0.25em] uppercase mb-4">
-                Dashboard Features
-              </p>
-              <h2 className="text-2xl md:text-3xl font-black text-charcoal">
-                毎日見たくなる、6つの機能
-              </h2>
+        <section className="section-xl">
+          <div className="container-edit px-5 md:px-8 max-w-6xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Features</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h2 className="heading-section text-ink mb-3">
+              毎日見たくなる、<span className="font-sans text-sekai-teal">6つの機能。</span>
+            </h2>
+            <p className="font-sans text-body-sm md:text-[15px] text-dark-gray leading-[2] mb-14 max-w-xl">
+              運用の裏側をガラス張りにする、オーナーダッシュボードの機能群。
+            </p>
+
+            <div className="bg-rule grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px border border-rule">
               {[
                 { t: 'リアルタイム売上', d: '今月の売上・前月比・年間累計を、PC/スマホでいつでも確認。' },
                 { t: '稼働率トラッキング', d: '日別・週別・月別の稼働状況を可視化。空室期間も一目で把握。' },
@@ -492,13 +491,13 @@ export default function DashboardDemoPage() {
                 { t: 'レビュー集約', d: 'Airbnb / Booking / VRBO のレビューを横断的に確認。' },
                 { t: '改善アクション', d: '運用チームが提案する改善施策を、優先度付きで提示。' },
                 { t: 'エクスポート', d: '月次レポートをPDF/Excelで自動生成・ダウンロード可能。' },
-              ].map(f => (
-                <div
-                  key={f.t}
-                  className="bg-cloud-white border border-light-gray rounded-xl p-5 hover:border-deep-teal/30 hover:shadow-md transition"
-                >
-                  <p className="text-[14px] font-bold text-charcoal mb-2">{f.t}</p>
-                  <p className="text-[12px] text-dark-gray leading-relaxed">{f.d}</p>
+              ].map((f, i) => (
+                <div key={i} className="bg-paper p-7 md:p-8">
+                  <p className="eyebrow-mono text-mid-gray mb-4">Feature № {String(i + 1).padStart(2, '0')}</p>
+                  <h3 className="font-sans font-medium text-[18px] md:text-[20px] text-ink leading-snug mb-3">
+                    {f.t}
+                  </h3>
+                  <p className="font-sans text-body-sm text-dark-gray leading-[1.95]">{f.d}</p>
                 </div>
               ))}
             </div>
@@ -506,40 +505,46 @@ export default function DashboardDemoPage() {
         </section>
 
         {/* ─────────── CTA ─────────── */}
-        <section className="bg-white px-6 pb-20 md:pb-28">
-          <div className="max-w-3xl mx-auto">
-            <div className="relative overflow-hidden bg-charcoal rounded-3xl p-8 md:p-12 text-center">
+        <section className="section-xl">
+          <div className="container-narrow px-5 md:px-8 max-w-4xl mx-auto">
+            <div className="bg-ink text-ivory p-10 md:p-16 relative overflow-hidden">
               <div
                 aria-hidden
-                className="absolute inset-0 opacity-50 pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(circle at 20% 0%, rgba(84,190,195,0.45), transparent 50%), radial-gradient(circle at 80% 100%, rgba(22,123,129,0.4), transparent 55%)',
-                }}
+                className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full bg-bright-teal/10 blur-3xl pointer-events-none"
               />
               <div className="relative">
-                <h2 className="text-2xl md:text-[32px] font-black text-white leading-tight mb-4">
-                  あなたの物件も、<br className="md:hidden" />
-                  この画面で見えるようになります。
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="h-px w-10 bg-bright-teal" />
+                  <p className="eyebrow text-bright-teal">Chapter Ⅳ · Next Step</p>
+                </div>
+                <h2 className="font-sans font-bold text-[28px] md:text-[40px] leading-[1.3] mb-6">
+                  あなたの物件も、
+                  <span className="block font-sans text-bright-teal mt-1">この画面で見えるようになります。</span>
                 </h2>
-                <p className="text-sm md:text-base text-white/75 leading-relaxed mb-8 max-w-xl mx-auto">
-                  運用代行のお申し込みと同時に、オーナーダッシュボードのアカウントを発行します。<br />
-                  まずはお気軽にご相談ください。
+                <p className="font-sans text-body-sm md:text-[15px] text-ivory/80 leading-[2] mb-10 max-w-lg">
+                  運用代行のお申し込みと同時に、オーナーダッシュボードのアカウントを発行します。まずはお気軽にご相談ください。
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+
+                <div className="grid sm:grid-cols-2 gap-3 max-w-xl">
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center gap-2 bg-white text-deep-teal font-bold px-8 py-4 rounded-xl transition hover:bg-cloud-white text-sm shadow-lg"
+                    className="group inline-flex items-center justify-between gap-3 bg-ivory text-ink px-6 py-4 hover:bg-bright-teal transition"
                   >
-                    無料で相談する
-                    <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
+                    <div>
+                      <p className="eyebrow-mono text-mid-gray mb-0.5">Path A</p>
+                      <p className="font-sans font-medium text-[14px]">無料で相談する</p>
+                    </div>
+                    <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
                   </Link>
                   <Link
                     href="/simulate"
-                    className="group inline-flex items-center gap-2 border border-white/30 text-white font-bold px-8 py-4 rounded-xl transition hover:bg-white/10 text-sm"
+                    className="group inline-flex items-center justify-between gap-3 border border-ivory/30 px-6 py-4 hover:bg-ivory/5 transition"
                   >
-                    収益シミュレーション
-                    <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
+                    <div>
+                      <p className="eyebrow-mono text-ivory/60 mb-0.5">Path B</p>
+                      <p className="font-sans font-medium text-[14px] text-ivory">収益シミュレーション</p>
+                    </div>
+                    <IconArrowRight size={14} className="text-ivory group-hover:translate-x-1 transition" />
                   </Link>
                 </div>
               </div>
@@ -552,42 +557,41 @@ export default function DashboardDemoPage() {
   )
 }
 
-/* ─── KPI Card ────────────────────────────────────────────── */
-function KpiCard({
+/* ─── KPI Cell ────────────────────────────────────────────── */
+function KpiCell({
   label,
-  value,
+  valueDisplay,
+  valueSuffix,
   delta,
-  sub,
-  icon,
   accent,
 }: {
   label: string
-  value: string
+  valueDisplay: string
+  valueSuffix?: string
   delta?: string
-  sub?: string
-  icon: React.ReactNode
   accent?: boolean
 }) {
   return (
-    <div
-      className={`rounded-xl p-4 md:p-5 border transition ${
-        accent
-          ? 'bg-teal-tint border-deep-teal/20'
-          : 'bg-cloud-white border-light-gray'
-      }`}
-    >
-      <div className="flex items-center gap-1.5 mb-2">
-        {icon}
-        <span className="text-[10px] font-bold text-dark-gray tracking-wider uppercase">{label}</span>
-      </div>
-      <div className="text-xl md:text-[26px] font-black text-charcoal tracking-tight tabular-nums leading-none mb-1">
-        {value}
+    <div className={`p-6 ${accent ? 'bg-ink text-ivory' : 'bg-paper'}`}>
+      <p className={`eyebrow-mono mb-3 ${accent ? 'text-bright-teal' : 'text-mid-gray'}`}>
+        {label}
+      </p>
+      <div className="flex items-baseline gap-1 mb-3">
+        <span className={`font-sans font-light text-[32px] md:text-[40px] leading-none tabular-nums ${
+          accent ? 'text-ivory' : 'text-ink'
+        }`}>
+          {valueDisplay}
+        </span>
+        {valueSuffix && (
+          <span className={`font-sans text-[16px] ${accent ? 'text-ivory/70' : 'text-mid-gray'}`}>
+            {valueSuffix}
+          </span>
+        )}
       </div>
       {delta && (
-        <div className="text-[11px] font-bold text-sekai-teal">{delta}</div>
-      )}
-      {sub && (
-        <div className="text-[10px] text-mid-gray">{sub}</div>
+        <p className={`font-sans text-caption ${accent ? 'text-bright-teal' : 'text-sekai-teal'}`}>
+          — {delta}
+        </p>
       )}
     </div>
   )

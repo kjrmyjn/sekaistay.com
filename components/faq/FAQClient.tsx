@@ -147,28 +147,35 @@ export default function FAQClient() {
       <Header />
       <Breadcrumb items={[{ label: 'FAQ' }]} />
       <FloatingCTA />
-      <main>
-        {/* ── Hero ── */}
-        <section className="bg-warm-gradient px-5 md:px-10 pt-10 pb-8 md:pt-14 md:pb-10">
-          <div className="max-w-[800px] mx-auto text-center">
-            <p className="text-[11px] font-bold text-deep-teal tracking-[0.2em] uppercase mb-3">
-              FAQ
-            </p>
-            <h1 className="heading-display text-charcoal mb-4">
+      <main className="bg-ivory">
+        {/* Chapter Ⅰ — masthead */}
+        <section className="bg-paper border-b border-rule">
+          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Frequently Asked</p>
+            </div>
+            <h1 className="heading-display text-ink mb-5">
               よくあるご質問
+              <span className="block font-sans font-light text-mid-gray text-[0.55em] mt-3">Questions &amp; Answers</span>
             </h1>
-            <p className="text-[14px] md:text-[15px] text-dark-gray leading-relaxed max-w-[600px] mx-auto">
-              SEKAI STAYの民泊運営代行サービスに関して、
-              オーナー様からよくいただくご質問をまとめました。
+            <p className="lead text-dark-gray max-w-2xl">
+              SEKAI STAYの民泊運営代行サービスに関して、オーナー様からよくいただくご質問をまとめました。
             </p>
           </div>
         </section>
 
-        {/* ── Category tabs + Accordion ── */}
-        <section className="px-5 md:px-10 pt-8 pb-12 md:pt-10 md:pb-16 bg-white">
-          <div className="max-w-[800px] mx-auto">
-            {/* Category filter */}
-            <div className="flex gap-2 mb-6 md:mb-8 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide">
+        {/* Chapter Ⅱ — category rail + accordion */}
+        <section className="section-xl">
+          <div className="container-narrow px-5 md:px-8 max-w-3xl">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="eyebrow-mono text-mid-gray">§ 02</span>
+              <span className="h-px bg-rule flex-1" />
+              <p className="eyebrow text-sekai-teal">Tag Rail</p>
+            </div>
+
+            {/* Editorial tag rail */}
+            <div className="flex gap-0 mb-10 overflow-x-auto pb-1 border-b border-rule">
               {FAQ_CATEGORIES.map((cat) => {
                 const count =
                   cat.id === 'all'
@@ -179,55 +186,53 @@ export default function FAQClient() {
                   <button
                     key={cat.id}
                     onClick={() => handleCategoryChange(cat.id)}
-                    className={`inline-flex items-center gap-2 text-[13px] font-bold px-4 py-2.5 rounded-full border transition whitespace-nowrap flex-shrink-0 ${
+                    className={`relative inline-flex items-baseline gap-2 text-[13px] md:text-[14px] px-4 md:px-5 py-3 md:py-4 whitespace-nowrap flex-shrink-0 transition font-sans ${
                       active
-                        ? 'bg-charcoal text-white border-charcoal'
-                        : 'bg-white text-dark-gray border-light-gray hover:border-sekai-teal hover:text-sekai-teal'
+                        ? 'text-ink'
+                        : 'text-mid-gray hover:text-ink'
                     }`}
                   >
                     <span>{cat.label}</span>
-                    <span
-                      className={`text-[10px] font-mono ${
-                        active ? 'text-white/70' : 'text-mid-gray'
-                      }`}
-                    >
-                      {count}
-                    </span>
+                    <span className="eyebrow-mono text-mid-gray/80">{String(count).padStart(2, '0')}</span>
+                    {active && (
+                      <span className="absolute left-4 right-4 bottom-0 h-[2px] bg-sekai-teal" />
+                    )}
                   </button>
                 )
               })}
             </div>
 
             {/* Accordion list */}
-            <div className="space-y-2.5 md:space-y-3">
+            <div className="border-t border-rule">
               {visibleItems.map((item, i) => {
                 const isOpen = openIndex === i
                 return (
                   <div
                     key={item.globalIndex}
-                    className={`bg-white rounded-2xl border transition-colors ${
-                      isOpen ? 'border-sekai-teal shadow-sm' : 'border-light-gray'
-                    }`}
+                    className="border-b border-rule"
                   >
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : i)}
-                      className="w-full flex items-start justify-between gap-3 p-4 md:p-5 lg:p-6 text-left cursor-pointer"
+                      className="w-full flex items-start justify-between gap-4 py-6 md:py-7 text-left cursor-pointer group"
                       aria-expanded={isOpen}
                     >
-                      <div className="flex items-start gap-3 md:gap-4 flex-1 min-w-0">
-                        <span className="text-[12px] font-mono font-bold text-sekai-teal mt-0.5 flex-shrink-0">
-                          Q{String(item.globalIndex + 1).padStart(2, '0')}
+                      <div className="flex items-start gap-4 md:gap-6 flex-1 min-w-0">
+                        <span className="font-sans font-light text-[24px] md:text-[28px] text-sekai-teal leading-none tabular-nums flex-shrink-0 pt-1">
+                          {String(item.globalIndex + 1).padStart(2, '0')}
                         </span>
-                        <span className="text-[14px] md:text-[15px] font-bold text-charcoal leading-relaxed">
-                          {item.q}
-                        </span>
+                        <div className="flex-1">
+                          <p className="eyebrow-mono text-mid-gray mb-1">Question № {String(item.globalIndex + 1).padStart(2, '0')}</p>
+                          <p className="font-sans font-medium text-[15px] md:text-[17px] text-ink leading-snug group-hover:text-sekai-teal transition">
+                            {item.q}
+                          </p>
+                        </div>
                       </div>
                       <span
                         aria-hidden
-                        className={`flex-shrink-0 w-7 h-7 rounded-full border-2 flex items-center justify-center transition mt-0.5 ${
+                        className={`flex-shrink-0 w-8 h-8 border flex items-center justify-center transition mt-1 ${
                           isOpen
-                            ? 'border-sekai-teal bg-sekai-teal text-white'
-                            : 'border-light-gray text-mid-gray'
+                            ? 'border-ink bg-ink text-ivory'
+                            : 'border-rule text-mid-gray group-hover:border-ink group-hover:text-ink'
                         }`}
                       >
                         <svg
@@ -240,7 +245,7 @@ export default function FAQClient() {
                           <path
                             d="M1 3l4 4 4-4"
                             stroke="currentColor"
-                            strokeWidth="1.8"
+                            strokeWidth="1.6"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
@@ -255,12 +260,12 @@ export default function FAQClient() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6 pl-[44px] md:pl-[56px] lg:pl-[64px]">
-                          <div className="border-t border-light-gray pt-4">
-                            <p className="text-[13px] md:text-[14px] text-dark-gray leading-[1.85]">
+                        <div className="pl-10 md:pl-14 pb-7 md:pb-8">
+                          <blockquote className="border-l-2 border-sekai-teal pl-5 md:pl-6">
+                            <p className="font-sans text-body-sm md:text-body text-dark-gray leading-[2]">
                               {item.a}
                             </p>
-                          </div>
+                          </blockquote>
                         </div>
                       </div>
                     </div>
@@ -270,39 +275,53 @@ export default function FAQClient() {
             </div>
 
             {visibleItems.length === 0 && (
-              <div className="text-center text-[13px] text-mid-gray py-12">
+              <div className="text-center font-sans text-body-sm text-mid-gray py-16">
                 該当する項目がありません。
               </div>
             )}
           </div>
         </section>
 
-        {/* ── Bottom CTA ── */}
-        <section className="bg-deep-teal px-5 md:px-10 py-12 md:py-16 lg:py-20">
-          <div className="max-w-[700px] mx-auto text-center">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
-              ご不明な点がございましたら、<br className="hidden sm:inline" />
-              お気軽にお問い合わせください
-            </h2>
-            <p className="text-[13px] md:text-[14px] text-white/80 mb-10 leading-relaxed">
-              FAQに掲載されていないご質問や、物件ごとの個別のご相談にも対応いたします。
-              収支シミュレーションの作成も無料で承ります。
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-white text-deep-teal font-bold px-10 py-4 rounded-btn transition hover:bg-cloud-white text-[14px] shadow-lg"
-              >
-                無料で相談する
-                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
-              </Link>
-              <Link
-                href="/simulate"
-                className="group inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-bold px-10 py-4 rounded-btn transition hover:bg-white/10 text-[14px]"
-              >
-                収支シミュレーション
-                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
-              </Link>
+        {/* Chapter Ⅲ — CTA */}
+        <section className="bg-ink relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-gradient-radial from-sekai-teal/20 to-transparent blur-3xl pointer-events-none" />
+          <div className="container-narrow px-5 md:px-8 py-20 md:py-28 relative">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-bright-teal">Chapter Ⅲ · Closing</p>
+            </div>
+            <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
+              <div>
+                <h2 className="font-sans font-bold text-[28px] md:text-[40px] leading-[1.3] text-ivory mb-6">
+                  ご不明な点がございましたら、
+                  <span className="block font-sans font-light text-bright-teal mt-2">お気軽にお問い合わせください。</span>
+                </h2>
+                <p className="font-sans text-body-sm text-ivory/70 leading-[1.9] max-w-lg">
+                  FAQに掲載されていないご質問や、物件ごとの個別のご相談にも対応いたします。収支シミュレーションの作成も無料で承ります。
+                </p>
+              </div>
+              <div className="space-y-3">
+                <Link
+                  href="/contact"
+                  className="group w-full inline-flex items-center justify-between gap-4 bg-ivory text-ink px-7 py-5 transition hover:bg-bright-teal"
+                >
+                  <div>
+                    <p className="eyebrow-mono text-mid-gray mb-1">Path A</p>
+                    <p className="font-sans font-medium text-[15px]">無料で相談する</p>
+                  </div>
+                  <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
+                </Link>
+                <Link
+                  href="/simulate"
+                  className="group w-full inline-flex items-center justify-between gap-4 border border-ivory/30 text-ivory px-7 py-5 transition hover:bg-ivory/5 hover:border-bright-teal"
+                >
+                  <div>
+                    <p className="eyebrow-mono text-bright-teal mb-1">Path B</p>
+                    <p className="font-sans font-medium text-[15px]">収支シミュレーション</p>
+                  </div>
+                  <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

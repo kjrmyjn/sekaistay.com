@@ -20,21 +20,36 @@ export default function BlogPage() {
       <Header />
       <Breadcrumb items={[{ label: 'コラム' }]} />
       <FloatingCTA />
-      <main>
-        <section className="bg-warm-gradient px-6 section-heavy">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3">Column</p>
-            <h1 className="heading-display text-charcoal mb-6">
-              民泊運営お役立ち情報
-            </h1>
-            <p className="text-base text-dark-gray leading-relaxed max-w-2xl mx-auto">
+      <main className="bg-ivory">
+        {/* Chapter Ⅰ — masthead */}
+        <section className="bg-paper border-b border-rule">
+          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Column</p>
+            </div>
+            <div className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-end">
+              <h1 className="heading-display text-ink">
+                民泊運営お役立ち情報
+                <span className="block font-sans font-light text-mid-gray text-[0.55em] mt-3">The Journal</span>
+              </h1>
+              <div className="text-right">
+                <p className="eyebrow-mono text-mid-gray mb-2">Issue · 2026 Spring</p>
+                <p className="font-sans font-light text-[44px] md:text-[56px] text-sekai-teal leading-none tabular-nums">
+                  {String(posts.length).padStart(2, '0')}
+                </p>
+                <p className="eyebrow-mono text-mid-gray mt-1">Articles</p>
+              </div>
+            </div>
+            <p className="lead text-dark-gray mt-10 max-w-2xl">
               民泊運営のノウハウ、業界動向、成功事例をお届けします。
             </p>
           </div>
         </section>
 
-        <section className="px-6 section-heavy">
-          <div className="max-w-5xl mx-auto">
+        {/* Chapter Ⅱ — grid */}
+        <section className="section-xl">
+          <div className="container-edit px-5 md:px-8">
             <BlogGrid posts={posts} categories={categories} />
           </div>
         </section>

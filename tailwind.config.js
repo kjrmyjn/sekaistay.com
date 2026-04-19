@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-// SEKAI STAY デザインシステム（DESIGN.md 準拠）
+// SEKAI STAY — Editorial Luxury Design System (v4)
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,38 +11,69 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ── Primary (DESIGN.md §2) ────────────
-        'sekai-black':  '#000000',
-        'deep-teal':    '#167B81',
-        'sekai-teal':   '#259DA3',
+        // Primary
+        'sekai-black':  '#0B0B0B',
+        'deep-teal':    '#0F5F65',
+        'sekai-teal':   '#167B81',
         'bright-teal':  '#54BEC3',
-        'teal-tint':    '#E5F4F5',
-        // ── Semantic ──────────────────────────
-        'danger':       '#B91C1C',
-        'danger-bg':    '#FEF2F2',
-        'danger-border':'#FECACA',
-        'warning':      '#F59E0B',
-        'success':      '#259DA3',
-        'success-bg':   '#E5F4F5',
+        'teal-tint':    '#E8F2F3',
+        'teal-ink':     '#073A3E',
+        // Warm editorial neutrals — 旧ブランドの純白・純黒から脱し、上質な紙風ベージュを基調に
+        'ivory':        '#FBF9F4',
+        'bone':         '#F4EEE4',
+        'paper':        '#FFFDF9',
+        'mist':         '#F7F5F0',
+        'rule':         '#E6E1D6',
+        'ink':          '#1A1A1A',
+        // Legacy / semantic
+        'danger':        '#B91C1C',
+        'danger-bg':     '#FEF2F2',
+        'danger-border': '#FECACA',
+        'warning':       '#F59E0B',
+        'success':       '#167B81',
+        'success-bg':    '#E8F2F3',
         'success-border':'#C5E8E9',
-        // ── Neutral ──────────────────────────
-        'charcoal':     '#2D2D2D',
-        'dark-gray':    '#5F6368',
-        'mid-gray':     '#9AA0A6',
-        'light-gray':   '#DADCE0',
-        'pale-gray':    '#F1F3F4',
-        'cloud-white':  '#F7F8FA',
+        // Neutrals (preserved for back-compat)
+        'charcoal':     '#1A1A1A',
+        'dark-gray':    '#4F4F4F',
+        'mid-gray':     '#8B8B8B',
+        'light-gray':   '#E6E1D6',
+        'pale-gray':    '#F4EEE4',
+        'cloud-white':  '#FBF9F4',
       },
       fontFamily: {
-        sans: ['var(--font-noto-sans-jp)', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        // ブランドガイド準拠: Noto Sans JP (JP) / Helvetica Neue (EN)
+        sans: ['var(--font-noto-sans-jp)', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        // 後方互換のため serif/display/mincho も sans に統合
+        serif: ['var(--font-noto-sans-jp)', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        display: ['Helvetica Neue', 'var(--font-noto-sans-jp)', 'Arial', 'sans-serif'],
+        mincho: ['var(--font-noto-sans-jp)', 'Helvetica Neue', 'Arial', 'sans-serif'],
         mono: ['SFMono-Regular', 'Consolas', 'Menlo', 'monospace'],
       },
+      fontSize: {
+        'display-xl': ['clamp(2.75rem, 7vw, 5.75rem)', { lineHeight: '1.02', letterSpacing: '-0.02em' }],
+        'display-lg': ['clamp(2.25rem, 5.5vw, 4.25rem)', { lineHeight: '1.08', letterSpacing: '-0.015em' }],
+        'display-md': ['clamp(1.75rem, 3.6vw, 2.75rem)', { lineHeight: '1.18', letterSpacing: '-0.005em' }],
+        'display-sm': ['clamp(1.375rem, 2.4vw, 1.75rem)', { lineHeight: '1.3', letterSpacing: '0' }],
+      },
       borderRadius: {
-        'card': '12px',
-        'btn':  '8px',
+        'card': '2px',
+        'btn':  '0px',
+        'pill': '999px',
+        'soft': '6px',
+      },
+      letterSpacing: {
+        'editorial': '0.14em',
+        'ticker': '0.22em',
       },
       maxWidth: {
-        'container': '960px',
+        'container': '1180px',
+        'prose-jp': '62ch',
+      },
+      boxShadow: {
+        'lift-sm': '0 1px 2px rgba(26,26,26,0.04), 0 8px 24px rgba(26,26,26,0.04)',
+        'lift':    '0 4px 16px rgba(26,26,26,0.06), 0 20px 40px rgba(26,26,26,0.05)',
+        'lift-lg': '0 12px 32px rgba(26,26,26,0.08), 0 40px 80px rgba(26,26,26,0.06)',
       },
     },
   },

@@ -7,7 +7,6 @@ import { saveCurrentAnswers, submitAnswers, getCurrentAnswers } from '@/lib/stor
 import type { Answers } from '@/lib/scoring'
 import { IconArrowRight, IconArrowLeft } from '@/components/Icons'
 
-// ステップごとの設問グループ
 const STEP_QUESTIONS = STEPS.map(s => ({
   ...s,
   questions: QUESTIONS.filter(q => q.step === s.step),
@@ -21,7 +20,6 @@ export default function AuditPage() {
   const [answers, setAnswers] = useState<Answers>({})
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  // ページロード時に一時保存データを復元
   useEffect(() => {
     const saved = getCurrentAnswers()
     if (Object.keys(saved).length > 0) setAnswers(saved)
@@ -30,18 +28,15 @@ export default function AuditPage() {
   const currentStep = STEP_QUESTIONS.find(s => s.step === step)!
   const progress = Math.round(((step - 1) / TOTAL_STEPS) * 100)
 
-  // 回答を更新
   function handleAnswer(questionId: string, value: string) {
     const next = { ...answers, [questionId]: value }
     setAnswers(next)
     saveCurrentAnswers(next)
-    // エラーをクリア
     if (errors[questionId]) {
       setErrors(prev => { const e = { ...prev }; delete e[questionId]; return e })
     }
   }
 
-  // バリデーション
   function validate(): boolean {
     const newErrors: Record<string, string> = {}
     for (const q of currentStep.questions) {
@@ -67,7 +62,6 @@ export default function AuditPage() {
       setStep(s => s + 1)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
-      // 最終ステップ → 送信
       const submission = submitAnswers(answers)
       router.push(`/result?id=${submission.id}`)
     }
@@ -79,59 +73,69 @@ export default function AuditPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 pb-12">
-      {/* ── ヘッダー ─────────────────────────── */}
-      <header className="bg-white border-b border-slate-100 px-6 py-4 sticky top-0 z-10">
-        <div className="flex items-center justify-between max-w-lg mx-auto">
-          <p className="text-sm font-semibold text-deep-teal">無料診断</p>
-          <p className="text-xs text-slate-400">
-            STEP {step} / {TOTAL_STEPS}
-          </p>
-        </div>
-        {/* プログレスバー */}
-        <div className="mt-3 max-w-lg mx-auto">
-          <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+    <main className="min-h-screen bg-ivory pb-16">
+      {/* Editorial progress header */}
+      <header className="bg-paper border-b border-rule sticky top-0 z-10 backdrop-blur-sm">
+        <div className="container-narrow px-5 md:px-8 py-5">
+          <div className="flex items-baseline justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">無料診断</p>
+            </div>
+            <p className="eyebrow-mono text-mid-gray">
+              Step <span className="font-sans text-ink">{String(step).padStart(2, '0')}</span> / {String(TOTAL_STEPS).padStart(2, '0')}
+            </p>
+          </div>
+          <div className="h-px bg-rule overflow-hidden">
             <div
-              className="h-full bg-deep-teal rounded-full transition-all duration-500"
+              className="h-[2px] bg-sekai-teal transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
       </header>
 
-      {/* ── 設問エリア ───────────────────────── */}
-      <div className="max-w-lg mx-auto px-5 pt-8 space-y-6">
-        {/* ステップタイトル */}
-        <div>
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
-            {currentStep.title}
-          </p>
+      {/* Question area */}
+      <div className="container-narrow px-5 md:px-8 pt-12 md:pt-16">
+        <div className="mb-10 md:mb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="font-sans font-light text-[44px] md:text-[56px] text-sekai-teal leading-none tabular-nums">
+              {String(step).padStart(2, '0')}
+            </span>
+            <div className="flex-1">
+              <p className="eyebrow-mono text-mid-gray mb-1">Chapter</p>
+              <h1 className="font-sans font-medium text-[20px] md:text-[26px] text-ink leading-snug">
+                {currentStep.title}
+              </h1>
+            </div>
+          </div>
         </div>
 
-        {/* 設問カード */}
-        {currentStep.questions.map(q => (
-          <QuestionCard
-            key={q.id}
-            question={q}
-            value={String(answers[q.id] ?? '')}
-            error={errors[q.id]}
-            onChange={v => handleAnswer(q.id, v)}
-          />
-        ))}
+        <div className="space-y-5 md:space-y-6">
+          {currentStep.questions.map(q => (
+            <QuestionCard
+              key={q.id}
+              question={q}
+              value={String(answers[q.id] ?? '')}
+              error={errors[q.id]}
+              onChange={v => handleAnswer(q.id, v)}
+            />
+          ))}
+        </div>
 
-        {/* ナビゲーションボタン */}
-        <div className="pt-4 space-y-3">
+        {/* Navigation */}
+        <div className="pt-10 space-y-3">
           <button
             onClick={handleNext}
-            className="group w-full inline-flex items-center justify-center gap-2 bg-deep-teal text-white text-base font-semibold py-4 rounded-xl shadow-sm active:opacity-90 transition"
+            className="btn btn-primary w-full justify-center text-[15px] py-4"
           >
-            {step === TOTAL_STEPS ? '診断結果を見る' : '次へ'}
-            <IconArrowRight size={16} className="group-hover:translate-x-0.5 transition" />
+            {step === TOTAL_STEPS ? '診断結果を見る' : '次へ進む'}
+            <IconArrowRight size={14} />
           </button>
           {step > 1 && (
             <button
               onClick={handleBack}
-              className="w-full inline-flex items-center justify-center gap-1.5 text-sm text-slate-400 py-2"
+              className="w-full inline-flex items-center justify-center gap-2 text-body-sm text-mid-gray hover:text-ink py-3 font-sans transition"
             >
               <IconArrowLeft size={14} />
               前に戻る
@@ -143,8 +147,6 @@ export default function AuditPage() {
   )
 }
 
-// ── 設問カードコンポーネント ─────────────────────────────
-
 type CardProps = {
   question: Question
   value: string
@@ -154,31 +156,29 @@ type CardProps = {
 
 function QuestionCard({ question, value, error, onChange }: CardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 px-5 py-5">
-      {/* 質問文 */}
-      <p className="text-base font-semibold text-slate-800 leading-snug mb-1">
+    <div className="bg-paper border border-rule px-6 py-7 md:px-8 md:py-8">
+      <p className="font-sans font-medium text-[15px] md:text-[17px] text-ink leading-snug mb-2">
         {question.text}
         {question.required && (
-          <span className="text-red-500 ml-1 text-sm">*</span>
+          <span className="text-sekai-teal ml-1 font-sans">*</span>
         )}
       </p>
       {question.subtext && (
-        <p className="text-xs text-slate-400 mb-4">{question.subtext}</p>
+        <p className="text-caption text-mid-gray mb-5 font-sans">{question.subtext}</p>
       )}
-      {!question.subtext && <div className="mb-4" />}
+      {!question.subtext && <div className="mb-5" />}
 
-      {/* 選択式 */}
       {question.type === 'single' && question.options && (
         <div className="space-y-2">
           {question.options.map(opt => (
             <button
               key={opt.label}
               onClick={() => onChange(opt.label)}
-              className={`w-full text-left text-sm px-4 py-3.5 rounded-xl border transition-all
-                ${value === opt.label
-                  ? 'bg-deep-teal text-white border-deep-teal font-semibold'
-                  : 'bg-slate-50 text-slate-700 border-slate-200 active:bg-slate-100'
-                }`}
+              className={`w-full text-left text-body-sm px-5 py-4 border transition ${
+                value === opt.label
+                  ? 'bg-ink text-ivory border-ink font-sans'
+                  : 'bg-mist text-dark-gray border-rule hover:border-ink hover:text-ink font-sans'
+              }`}
             >
               {opt.label}
             </button>
@@ -186,7 +186,6 @@ function QuestionCard({ question, value, error, onChange }: CardProps) {
         </div>
       )}
 
-      {/* テキスト入力 */}
       {(question.type === 'text' || question.type === 'email' || question.type === 'tel') && (
         <input
           type={question.type}
@@ -197,15 +196,14 @@ function QuestionCard({ question, value, error, onChange }: CardProps) {
             : question.type === 'tel' ? '090-0000-0000'
             : ''
           }
-          className={`w-full text-sm px-4 py-3.5 rounded-xl border outline-none transition
-            focus:border-deep-teal focus:ring-2 focus:ring-teal-tint
-            ${error ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50'}`}
+          className={`w-full text-body-sm px-5 py-4 border outline-none transition font-sans focus:border-sekai-teal ${
+            error ? 'border-red-500/60 bg-red-50/30' : 'border-rule bg-mist'
+          }`}
         />
       )}
 
-      {/* エラー表示 */}
       {error && (
-        <p className="mt-2 text-xs text-red-500">{error}</p>
+        <p className="mt-3 text-caption text-red-600 font-sans">{error}</p>
       )}
     </div>
   )

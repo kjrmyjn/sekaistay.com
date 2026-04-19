@@ -30,18 +30,18 @@ export default function Breadcrumb({ items }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav aria-label="パンくずリスト" className="max-w-5xl mx-auto px-6 py-3">
-        <ol className="flex flex-wrap items-center gap-1 text-xs text-dark-gray">
+      <nav aria-label="パンくずリスト" className="container-edit pt-6 pb-2">
+        <ol className="flex flex-wrap items-center gap-2 text-[10.5px] font-mono tracking-[0.22em] uppercase text-ink/55">
           <li>
-            <Link href="/" className="hover:text-deep-teal transition">ホーム</Link>
+            <Link href="/" className="hover:text-sekai-teal transition">Home</Link>
           </li>
           {items.map((item, i) => (
-            <li key={i} className="flex items-center gap-1">
-              <span className="mx-1">/</span>
+            <li key={i} className="flex items-center gap-2">
+              <span className="text-ink/25">—</span>
               {item.href && i < items.length - 1 ? (
-                <Link href={item.href} className="hover:text-deep-teal transition">{item.label}</Link>
+                <Link href={item.href} className="hover:text-sekai-teal transition">{item.label}</Link>
               ) : (
-                <span className="text-charcoal font-medium">{item.label}</span>
+                <span className="text-ink">{item.label}</span>
               )}
             </li>
           ))}

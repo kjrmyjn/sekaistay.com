@@ -1,15 +1,28 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FBF9F4' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1A1A' },
+  ],
+}
+
+// SEKAI STAY ブランドガイドライン準拠:
+//   日本語: Noto Sans JP / 英語: Helvetica Neue
+// 見出しBold(700) / 本文Regular(400) のみ使用
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['400', '500', '700'],
   display: 'swap',
   variable: '--font-noto-sans-jp',
-  preload: false,
-  adjustFontFallback: false,
+  preload: true,
+  adjustFontFallback: true,
 })
 
 const GA_ID = 'G-B7M920RCGR'
@@ -87,7 +100,6 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Google Search Console verification — set in Vercel env
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
   },
 }
@@ -96,10 +108,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja" className={notoSansJP.variable}>
       <head>
-        {/* dns-prefetch for third-party origins */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        {/* Organization JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -131,12 +141,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-        {/* GA4 — gtag.js loader (lazyOnload to avoid render-blocking) */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="lazyOnload"
         />
-        {/* GA4 config + engagement tracking — combined & deferred */}
         <Script id="ga4-init" strategy="lazyOnload">
           {`
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}

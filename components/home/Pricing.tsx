@@ -1,169 +1,181 @@
 import Link from 'next/link'
 import { PRICING } from '@/content/home/copy'
-import { IconArrowRight, IconCheck } from '@/components/Icons'
+import { IconArrowRight } from '@/components/Icons'
 import { JP } from '@/components/JP'
 
 export default function Pricing() {
   return (
-    <section className="bg-cloud-white">
-      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
-        {/* ── Section header ── */}
-        <div className="max-w-[720px] mb-12 md:mb-14">
-          <div className="eyebrow text-sekai-teal mb-4">Pricing</div>
-          <h2 className="heading-section text-charcoal mb-4 jp-keep">
-            <JP>{PRICING.headline}</JP>
-          </h2>
-          <p className="text-body text-dark-gray jp-break">
-            {PRICING.body}
-          </p>
+    <section className="bg-mist">
+      <div className="container-edit section-xl">
+        {/* Header */}
+        <div className="mb-14 md:mb-20">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="chapter">Chapter Ⅸ</span>
+            <span className="rule-teal-sm" />
+            <span className="eyebrow">Pricing · Transparent by Design</span>
+          </div>
+          <div className="grid lg:grid-cols-[0.55fr_0.45fr] gap-10 lg:gap-16 items-end">
+            <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+              <JP>{PRICING.headline}</JP>
+            </h2>
+            <p className="lead text-dark-gray jp-break">
+              {PRICING.body}
+            </p>
+          </div>
         </div>
 
-        {/* ── Main plan card ── */}
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-5 md:gap-6">
-          {/* Left: Hero price card (teal) */}
-          <div className="relative bg-gradient-to-br from-deep-teal to-sekai-teal rounded-card p-5 sm:p-7 md:p-9 text-white overflow-hidden flex flex-col">
-            {/* Subtle radial glow */}
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-4">
+          {/* Left: Hero price — editorial ink panel */}
+          <div className="relative bg-ink text-ivory overflow-hidden flex flex-col">
+            {/* Atmospheric teal glow */}
             <div
               aria-hidden
-              className="absolute -top-16 -right-16 w-72 h-72 rounded-full opacity-30 blur-3xl"
-              style={{ background: 'radial-gradient(circle, rgba(229,244,245,0.8), transparent 70%)' }}
+              className="absolute -top-40 -right-40 w-[480px] h-[480px] rounded-full opacity-40 blur-3xl"
+              style={{ background: 'radial-gradient(circle, rgba(22,123,129,0.45) 0%, transparent 70%)' }}
             />
 
-            <div className="relative flex-1 flex flex-col">
-              <div className="flex items-center justify-between mb-6">
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold bg-white/15 backdrop-blur-sm rounded-full px-3 py-1 text-white">
-                  {PRICING.plan.badge}
-                </span>
-                <span className="text-[10px] font-mono text-white/60">01 / 01</span>
+            <div className="relative p-8 md:p-10 lg:p-12 flex-1 flex flex-col">
+              <div className="flex items-center justify-between mb-10">
+                <span className="eyebrow !text-bright-teal">{PRICING.plan.badge}</span>
+                <span className="font-sans text-[14px] text-ivory/50">№ 01</span>
               </div>
 
-              <h3 className="text-[18px] md:text-[19px] font-bold mb-6 jp-keep leading-snug">
+              <p className="eyebrow-mono text-ivory/50 mb-3">Plan</p>
+              <h3 className="font-sans font-medium text-[22px] md:text-[26px] text-ivory mb-10 leading-snug jp-keep">
                 <JP>{PRICING.plan.title}</JP>
               </h3>
 
-              <div className="mb-2">
-                <div className="text-[12px] text-white/75 mb-2">
+              {/* Hero fee */}
+              <div className="border-t border-ivory/15 pt-8 mb-10">
+                <p className="eyebrow-mono text-ivory/50 mb-5">
                   {PRICING.plan.feeLabel}
-                </div>
-                <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
-                  <span className="text-[52px] sm:text-[72px] md:text-[88px] font-bold leading-none tracking-tight">
+                </p>
+                <div className="flex items-baseline gap-2 flex-wrap mb-3">
+                  <span className="font-sans font-light text-[88px] md:text-[112px] leading-none tracking-tight text-ivory tabular-nums">
                     {PRICING.plan.feeValue}
                   </span>
-                  <span className="text-[24px] sm:text-[32px] md:text-[40px] font-bold leading-none">
+                  <span className="font-sans font-light text-[44px] md:text-[56px] text-bright-teal leading-none">
                     {PRICING.plan.feeUnit}
                   </span>
-                  <span className="text-[11px] sm:text-[12px] text-white/75 ml-1">
-                    {PRICING.plan.feeSub}
-                  </span>
                 </div>
+                <p className="font-sans text-[14px] text-ivory/70 mb-2">
+                  {PRICING.plan.feeSub}
+                </p>
+                <p className="text-caption text-ivory/50">
+                  {PRICING.plan.compare}
+                </p>
               </div>
 
-              <div className="text-[12px] text-white/70 mb-6">
-                {PRICING.plan.compare}
-              </div>
-
-              {/* Comparison visual */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-btn p-4 mb-6">
-                <div className="text-[11px] text-white/75 mb-3">
+              {/* Comparison ledger */}
+              <div className="mt-auto">
+                <p className="eyebrow-mono text-ivory/50 mb-4">
                   {PRICING.comparison.label}
-                </div>
-                <div className="space-y-2.5">
+                </p>
+                <div className="space-y-5">
                   <div>
-                    <div className="flex items-baseline justify-between mb-1">
-                      <span className="text-[12px] font-bold text-white">
+                    <div className="flex items-baseline justify-between mb-2">
+                      <span className="font-sans text-[13px] text-ivory">
                         {PRICING.comparison.sekai.label}
                       </span>
-                      <span className="text-[16px] font-bold text-white">
+                      <span className="font-sans text-[20px] text-bright-teal tabular-nums">
                         {PRICING.comparison.sekai.value}
                       </span>
                     </div>
-                    <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-                      <div className="h-full w-[35%] bg-white rounded-full" />
+                    <div className="h-px bg-ivory/15 overflow-hidden">
+                      <div className="h-[2px] bg-bright-teal" style={{ width: '35%' }} />
                     </div>
                   </div>
                   <div>
-                    <div className="flex items-baseline justify-between mb-1">
-                      <span className="text-[12px] text-white/75">
+                    <div className="flex items-baseline justify-between mb-2">
+                      <span className="font-sans text-[13px] text-ivory/60">
                         {PRICING.comparison.industry.label}
                       </span>
-                      <span className="text-[14px] font-bold text-white/75">
+                      <span className="font-sans text-[18px] text-ivory/60 tabular-nums">
                         {PRICING.comparison.industry.value}
                       </span>
                     </div>
-                    <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-                      <div className="h-full w-[85%] bg-white/45 rounded-full" />
+                    <div className="h-px bg-ivory/15 overflow-hidden">
+                      <div className="h-[2px] bg-ivory/40" style={{ width: '85%' }} />
                     </div>
                   </div>
                 </div>
+                <p className="text-caption text-ivory/40 mt-5 leading-relaxed">
+                  {PRICING.comparison.note}
+                </p>
               </div>
-
-              <p className="text-[12px] text-white/65 mt-auto leading-relaxed">
-                {PRICING.comparison.note}
-              </p>
             </div>
           </div>
 
-          {/* Right: Details breakdown */}
-          <div className="bg-white rounded-card border border-light-gray p-5 sm:p-7 md:p-9 flex flex-col">
-            <div className="eyebrow text-sekai-teal mb-4">Plan Details</div>
-            <h3 className="text-[17px] font-bold text-charcoal mb-5 jp-keep">
-              <JP>料金の内訳と、含まれているもの</JP>
-            </h3>
-
-            {/* Line items */}
-            <div className="divide-y divide-pale-gray mb-6">
-              {PRICING.lines.map((line) => (
-                <div key={line.label} className="py-3 flex items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="text-[13px] text-dark-gray mb-0.5">
-                      {line.label}
-                    </div>
-                    <div className="text-[11px] text-mid-gray">
-                      {line.note}
-                    </div>
-                  </div>
-                  <div className="text-[15px] font-bold text-charcoal text-right whitespace-nowrap flex-shrink-0">
-                    {line.value}
-                  </div>
+          {/* Right: Details — paper ledger */}
+          <div className="bg-paper border border-rule flex flex-col">
+            <div className="p-8 md:p-10 lg:p-12 flex-1 flex flex-col">
+              <div className="flex items-center justify-between mb-10 pb-5 border-b border-rule">
+                <div>
+                  <p className="eyebrow-mono text-mid-gray mb-2">Plan Details</p>
+                  <h3 className="font-sans font-medium text-[20px] text-ink jp-keep">
+                    <JP>料金の内訳と、含まれているもの</JP>
+                  </h3>
                 </div>
-              ))}
-            </div>
-
-            {/* Included services */}
-            <div className="bg-cloud-white rounded-btn p-5 mb-6">
-              <div className="text-[12px] font-bold text-charcoal mb-3">
-                {PRICING.included.title}
+                <span className="font-sans text-[16px] text-mid-gray">№ 02</span>
               </div>
-              <ul className="space-y-2">
-                {PRICING.included.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[13px] text-charcoal">
-                    <span className="flex-shrink-0 w-4 h-4 mt-0.5 rounded-full bg-teal-tint flex items-center justify-center">
-                      <IconCheck size={10} color="#167B81" />
-                    </span>
-                    <span className="jp-break">{item}</span>
-                  </li>
+
+              {/* Line items — ledger table */}
+              <div className="mb-10">
+                {PRICING.lines.map((line, i, arr) => (
+                  <div
+                    key={line.label}
+                    className={`py-4 grid grid-cols-[1fr_auto] gap-6 items-baseline ${
+                      i !== arr.length - 1 ? 'border-b border-rule' : ''
+                    }`}
+                  >
+                    <div className="min-w-0">
+                      <p className="font-sans text-[14px] md:text-[15px] text-ink mb-1 jp-keep">
+                        <JP>{line.label}</JP>
+                      </p>
+                      <p className="text-caption text-mid-gray jp-break">
+                        {line.note}
+                      </p>
+                    </div>
+                    <div className="font-sans font-light text-[18px] md:text-[20px] text-ink whitespace-nowrap tabular-nums">
+                      {line.value}
+                    </div>
+                  </div>
                 ))}
-              </ul>
-            </div>
+              </div>
 
-            <p className="text-[12px] text-dark-gray mb-5 leading-relaxed jp-break">
-              {PRICING.note}
-            </p>
+              {/* Included services */}
+              <div className="bg-mist p-6 md:p-7 mb-8">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="rule-teal-sm" />
+                  <p className="eyebrow text-sekai-teal">
+                    {PRICING.included.title}
+                  </p>
+                </div>
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                  {PRICING.included.items.map((item, i) => (
+                    <li key={item} className="flex items-baseline gap-3 text-body-sm text-ink jp-break">
+                      <span className="font-sans text-[12px] text-sekai-teal tabular-nums flex-shrink-0 mt-0.5">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-              <Link
-                href={PRICING.cta.href}
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-sekai-teal hover:bg-deep-teal text-white font-bold py-3.5 rounded-btn transition text-[14px]"
-              >
-                {PRICING.cta.label}
-                <IconArrowRight size={16} />
-              </Link>
-              <Link
-                href={PRICING.ctaSecondary.href}
-                className="flex-1 inline-flex items-center justify-center bg-white border border-charcoal/20 text-charcoal hover:border-sekai-teal hover:text-sekai-teal font-bold py-3.5 rounded-btn transition text-[14px]"
-              >
-                {PRICING.ctaSecondary.label}
-              </Link>
+              <p className="text-caption text-dark-gray mb-8 leading-relaxed jp-break">
+                {PRICING.note}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                <Link href={PRICING.cta.href} className="btn btn-primary flex-1 justify-center">
+                  {PRICING.cta.label}
+                  <IconArrowRight size={14} />
+                </Link>
+                <Link href={PRICING.ctaSecondary.href} className="btn btn-ghost flex-1 justify-center">
+                  {PRICING.ctaSecondary.label}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

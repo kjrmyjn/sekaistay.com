@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
@@ -51,10 +50,10 @@ const CASES = [
 ]
 
 const BADGES = [
-  { text: 'Airbnb ホストレビュー平均 4.7点', color: 'text-amber-700 bg-amber-50 border-amber-200' },
-  { text: 'Guest Favourite 物件あり', color: 'text-rose-600 bg-rose-50 border-rose-200' },
-  { text: 'Best of Minpaku 受賞', color: 'text-blue-600 bg-blue-50 border-blue-200' },
-  { text: '住宅宿泊管理業 国土交通大臣(01)第F05780号', color: 'text-deep-teal bg-teal-tint border-deep-teal/20' },
+  'Airbnb ホストレビュー平均 4.7点',
+  'Guest Favourite 物件あり',
+  'Best of Minpaku 受賞',
+  '住宅宿泊管理業 国土交通大臣(01)第F05780号',
 ]
 
 const TESTIMONIALS = [
@@ -70,148 +69,199 @@ const TESTIMONIALS = [
   },
 ]
 
+const STATS = [
+  { value: '4', unit: '年+', label: 'スタッフ平均運営歴' },
+  { value: '4.7', unit: '', label: 'Airbnbレビュー平均' },
+  { value: '95', unit: '%', label: '平均稼働率' },
+  { value: '4.8', unit: '+', label: '平均ゲスト評価' },
+]
+
 export default function PortfolioPage() {
   return (
     <>
       <Header />
       <Breadcrumb items={[{ label: '運営実績' }]} />
       <FloatingCTA />
-      <main>
-        {/* Hero */}
-        <section className="bg-warm-gradient px-6 section-heavy">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3">Track Record</p>
-            <h1 className="heading-display text-charcoal mb-6">
+      <main className="bg-ivory">
+        {/* Chapter Ⅰ — masthead */}
+        <section className="bg-paper border-b border-rule">
+          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Track Record</p>
+            </div>
+            <h1 className="heading-display text-ink mb-5">
               民泊運営代行の実績
+              <span className="block font-sans font-light text-mid-gray text-[0.6em] mt-3">Portfolio</span>
             </h1>
-            <p className="text-base text-dark-gray leading-relaxed max-w-2xl mx-auto">
+            <p className="lead text-dark-gray max-w-2xl">
               SEKAI STAYの運営代行で、収益が大幅に改善したオーナー様の実例をご紹介します。
             </p>
           </div>
         </section>
 
-        {/* Quality Stats */}
-        <section className="bg-charcoal px-6 py-14">
-          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            {[
-              { value: '4年+', label: 'スタッフ平均運営歴' },
-              { value: '4.7', label: 'Airbnbレビュー平均' },
-              { value: '95%', label: '平均稼働率' },
-              { value: '4.8+', label: '平均ゲスト評価' },
-            ].map((s, i) => (
-              <div key={i}>
-                <p className="stat-number-sm text-bright-teal">{s.value}</p>
-                <p className="text-xs text-white/80 font-medium mt-1">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Revenue Cases */}
-        <section className="px-6 section-heavy">
-          <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3 text-center">Revenue Results</p>
-            <h2 className="heading-section text-charcoal text-center mb-16">民泊収益アップ実績</h2>
-
-            <div className="space-y-12">
-              {CASES.map((c, i) => (
-                <div key={i} className="bg-white rounded-2xl border border-light-gray overflow-hidden shadow-sm">
-                  <div className="grid md:grid-cols-[1fr_1.2fr]">
-                    {/* Image */}
-                    <div className="relative h-64 md:h-auto">
-                      <img src={c.image} alt={c.area} className="w-full h-full object-cover" />
-                      <div className="absolute top-4 left-4 flex items-center gap-2">
-                        <span className="inline-flex items-center gap-1 bg-black/60 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full">
-                          <IconStar size={11} className="text-amber-400" />
-                          {c.rating}
-                        </span>
-                        <span className="bg-deep-teal/90 text-white text-[10px] font-bold px-2.5 py-1.5 rounded-full">{c.tag}</span>
-                      </div>
-                    </div>
-
-                    {/* Data */}
-                    <div className="p-6 md:p-8">
-                      <h3 className="text-xl font-bold text-charcoal mb-1">{c.area}</h3>
-                      <p className="text-xs text-dark-gray mb-6">{c.spec}</p>
-
-                      {/* Big percentage */}
-                      <div className="text-center mb-6 py-4 bg-pale-gray rounded-xl">
-                        <p className="stat-number text-deep-teal">{c.pctUp}<span className="text-2xl">%</span></p>
-                        <p className="text-xs text-dark-gray mt-1">収益改善率</p>
-                      </div>
-
-                      {/* Before/After table */}
-                      <div className="space-y-3 mb-6">
-                        <div className="grid grid-cols-3 text-sm">
-                          <span className="text-dark-gray" />
-                          <span className="text-dark-gray text-center font-medium">導入前</span>
-                          <span className="text-deep-teal text-center font-bold">SEKAI STAY</span>
-                        </div>
-                        <div className="grid grid-cols-3 text-sm border-t border-light-gray pt-2">
-                          <span className="text-dark-gray">稼働率</span>
-                          <span className="text-dark-gray text-center">{c.before.occupancy}</span>
-                          <span className="text-deep-teal text-center font-bold">{c.after.occupancy}</span>
-                        </div>
-                        <div className="grid grid-cols-3 text-sm border-t border-light-gray pt-2">
-                          <span className="text-dark-gray">粗利（月）</span>
-                          <span className="text-dark-gray text-center">¥{c.before.monthly}</span>
-                          <span className="text-deep-teal text-center font-bold">¥{c.after.monthly}</span>
-                        </div>
-                        <div className="grid grid-cols-3 text-sm border-t border-light-gray pt-2">
-                          <span className="text-dark-gray">粗利（年）</span>
-                          <span className="text-dark-gray text-center">¥{c.before.annual}</span>
-                          <span className="text-deep-teal text-center font-bold">¥{c.after.annual}</span>
-                        </div>
-                      </div>
-
-                      <p className="text-sm text-dark-gray leading-relaxed">{c.story}</p>
-                    </div>
-                  </div>
+        {/* Chapter Ⅱ — Quality Stats dark band */}
+        <section className="bg-ink text-ivory">
+          <div className="container-edit px-5 md:px-8 py-16 md:py-20">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="h-px w-10 bg-bright-teal" />
+              <p className="eyebrow text-bright-teal">Quality Indicators</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ivory/10 border border-ivory/10">
+              {STATS.map((s, i) => (
+                <div key={i} className="bg-ink p-6 md:p-8">
+                  <p className="eyebrow-mono text-bright-teal mb-3">№ {String(i + 1).padStart(2, '0')}</p>
+                  <p className="font-sans font-light text-[44px] md:text-[64px] text-ivory leading-none tabular-nums">
+                    {s.value}
+                    <span className="font-sans text-[20px] text-bright-teal ml-1">{s.unit}</span>
+                  </p>
+                  <p className="font-sans text-caption text-ivory/70 mt-3">{s.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Badges */}
-        <section className="bg-pale-gray px-6 section-medium">
-          <div className="max-w-4xl mx-auto">
+        {/* Chapter Ⅲ — Revenue Cases */}
+        <section className="section-xl">
+          <div className="container-edit px-5 md:px-8">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Revenue Results</p>
+            </div>
+            <h2 className="heading-section text-ink mb-14 max-w-3xl">
+              民泊収益アップ
+              <span className="font-sans text-sekai-teal">実績</span>
+            </h2>
+
+            <div className="space-y-10">
+              {CASES.map((c, i) => (
+                <article key={i} className="bg-paper border border-rule">
+                  <div className="grid md:grid-cols-[1fr_1.2fr]">
+                    {/* Image */}
+                    <div className="relative h-64 md:h-auto">
+                      <img src={c.image} alt={c.area} className="w-full h-full object-cover" />
+                      <div className="absolute top-4 left-4 bg-ivory/95 backdrop-blur-sm px-3 py-1 border border-rule">
+                        <p className="eyebrow-mono text-ink">Case № {String(i + 1).padStart(2, '0')}</p>
+                      </div>
+                      <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1 bg-ink/90 backdrop-blur-sm text-ivory font-sans text-[12px] px-2.5 py-1">
+                          <IconStar size={10} className="text-bright-teal" />
+                          {c.rating}
+                        </span>
+                        <span className="bg-bright-teal/90 backdrop-blur-sm text-ink font-sans text-[11px] px-2.5 py-1">
+                          {c.tag}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Data */}
+                    <div className="p-7 md:p-10">
+                      <div className="mb-6 pb-5 border-b border-rule">
+                        <p className="eyebrow-mono text-mid-gray mb-2">Case File</p>
+                        <h3 className="font-sans font-medium text-[22px] md:text-[26px] text-ink leading-tight mb-2">{c.area}</h3>
+                        <p className="font-sans text-caption text-mid-gray">{c.spec}</p>
+                      </div>
+
+                      {/* Big percentage — editorial feature */}
+                      <div className="bg-ink text-ivory p-6 md:p-7 mb-8 flex items-baseline justify-between">
+                        <p className="eyebrow-mono text-bright-teal">Revenue Uplift</p>
+                        <p className="font-sans font-light text-[56px] md:text-[72px] leading-none tabular-nums">
+                          {c.pctUp}<span className="text-bright-teal text-[28px] ml-1">%</span>
+                        </p>
+                      </div>
+
+                      {/* Before/After ledger */}
+                      <div className="border-t border-rule">
+                        <div className="grid grid-cols-[1fr_1fr_1fr] py-3 border-b border-rule">
+                          <span className="eyebrow-mono text-mid-gray">—</span>
+                          <span className="eyebrow-mono text-mid-gray text-center">Before</span>
+                          <span className="eyebrow text-sekai-teal text-center">SEKAI STAY</span>
+                        </div>
+                        <div className="grid grid-cols-[1fr_1fr_1fr] py-3 border-b border-rule items-baseline">
+                          <span className="font-sans text-body-sm text-dark-gray">稼働率</span>
+                          <span className="font-sans text-body-sm text-mid-gray text-center line-through">{c.before.occupancy}</span>
+                          <span className="font-sans text-[18px] text-ink text-center tabular-nums">{c.after.occupancy}</span>
+                        </div>
+                        <div className="grid grid-cols-[1fr_1fr_1fr] py-3 border-b border-rule items-baseline">
+                          <span className="font-sans text-body-sm text-dark-gray">粗利（月）</span>
+                          <span className="font-sans text-body-sm text-mid-gray text-center line-through">¥{c.before.monthly}</span>
+                          <span className="font-sans text-[18px] text-ink text-center tabular-nums">¥{c.after.monthly}</span>
+                        </div>
+                        <div className="grid grid-cols-[1fr_1fr_1fr] py-3 items-baseline">
+                          <span className="font-sans text-body-sm text-dark-gray">粗利（年）</span>
+                          <span className="font-sans text-body-sm text-mid-gray text-center line-through">¥{c.before.annual}</span>
+                          <span className="font-sans text-[18px] text-sekai-teal text-center tabular-nums">¥{c.after.annual}</span>
+                        </div>
+                      </div>
+
+                      <p className="font-sans text-body-sm text-dark-gray leading-[1.95] mt-6 pt-6 border-t border-rule">
+                        {c.story}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Chapter Ⅳ — Credential badges */}
+        <section className="bg-bone border-y border-rule py-14 md:py-20">
+          <div className="container-edit px-5 md:px-8">
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <span className="h-px w-10 bg-rule" />
+              <p className="eyebrow text-sekai-teal">Credentials</p>
+              <span className="h-px w-10 bg-rule" />
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              {BADGES.map((b, i) => (
-                <span key={i} className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-[12px] font-semibold ${b.color}`}>
-                  <IconCheckCircle size={13} className="text-deep-teal" />
-                  {b.text}
+              {BADGES.map((text, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-2 bg-paper border border-rule px-5 py-3 font-sans text-[13px] text-ink"
+                >
+                  <IconCheckCircle size={13} className="text-sekai-teal" />
+                  {text}
                 </span>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="px-6 section-heavy">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3 text-center">Voice</p>
-            <h2 className="heading-section text-charcoal text-center mb-16">お客様の声</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+        {/* Chapter Ⅴ — Testimonials */}
+        <section className="section-xl">
+          <div className="container-edit px-5 md:px-8 max-w-5xl">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅴ · Voice</p>
+            </div>
+            <h2 className="heading-section text-ink mb-14 max-w-3xl">
+              お客様の
+              <span className="font-sans text-sekai-teal">声</span>
+            </h2>
+            <div className="bg-rule grid md:grid-cols-2 gap-px border border-rule">
               {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="bg-cloud-white rounded-2xl border border-light-gray p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-12 h-12 rounded-full bg-deep-teal text-white flex items-center justify-center font-bold text-lg">
-                      {t.name.charAt(0)}
+                <div key={i} className="bg-paper p-8 md:p-10">
+                  <div className="flex items-center justify-between mb-6 pb-5 border-b border-rule">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-ink text-ivory flex items-center justify-center font-sans font-medium text-[18px]">
+                        {t.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-sans font-medium text-[15px] text-ink">{t.name}</p>
+                        <p className="font-sans text-caption text-mid-gray mt-0.5">{t.property}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-base font-bold text-charcoal">{t.name}</p>
-                      <p className="text-xs text-dark-gray">{t.property}</p>
-                    </div>
+                    <p className="eyebrow-mono text-sekai-teal">Voice № {String(i + 1).padStart(2, '0')}</p>
                   </div>
-                  <p className="text-sm text-dark-gray leading-relaxed">{t.text}</p>
+                  <blockquote className="border-l-2 border-sekai-teal pl-5">
+                    <p className="font-sans text-body-sm text-dark-gray leading-[2]">{t.text}</p>
+                  </blockquote>
                 </div>
               ))}
             </div>
           </div>
         </section>
-
-        {/* CTA — handled by Footer */}
       </main>
       <Footer />
     </>

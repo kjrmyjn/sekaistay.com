@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
-import { IconCheck, IconArrowRight } from '@/components/Icons'
+import { IconArrowRight } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: '料金',
@@ -37,30 +37,12 @@ const INCLUDES = [
 ]
 
 const PRICING_FAQ = [
-  {
-    q: 'SEKAI STAYの民泊運用代行の料金は？',
-    a: '初期費用0円（キャンペーン中・通常10万円）、固定管理費5,000円/室/月、変動運営委託費は売上の8%です。月々の費用はこの2つの合計のみで、別途請求はありません。',
-  },
-  {
-    q: '他社からの乗り換えに費用はかかりますか？',
-    a: '乗り換え費用は0円です。Airbnb・Booking.com等のOTAアカウント引き継ぎ、掲載情報の最適化、ゲスト対応引き継ぎまで無料で対応します。最短2週間で移行完了です。',
-  },
-  {
-    q: '他社は手数料15〜25%なのに、なぜ8%なのですか？',
-    a: '自社運営のオペレーション基盤と、清掃パートナーネットワーク、多言語ゲスト対応センターを内製化することで、一般的な代行業者の運営コストを大幅に削減しているためです。その差分をオーナー様に還元しています。',
-  },
-  {
-    q: '最低契約期間はありますか？',
-    a: 'ありません。最低契約期間・解約手数料ともに0円です。成果でご判断いただけるよう、縛りは設けていません。',
-  },
-  {
-    q: '宿泊予約がない月も費用はかかりますか？',
-    a: '固定管理費（5,000円/室）のみ発生し、変動運営委託費（8%）は売上連動のため0円です。閑散期の固定費は1部屋で月5,000円に限定されます。',
-  },
-  {
-    q: '清掃費や備品補充は別途請求されますか？',
-    a: '清掃費はゲスト負担（宿泊料金に含む）が基本です。清掃手配と品質管理は運営代行サービスに含まれており、オーナー様への追加請求はありません。消耗品の実費のみ、別途ご相談のうえ精算します。',
-  },
+  { q: 'SEKAI STAYの民泊運用代行の料金は？', a: '初期費用0円（キャンペーン中・通常10万円）、固定管理費5,000円/室/月、変動運営委託費は売上の8%です。月々の費用はこの2つの合計のみで、別途請求はありません。' },
+  { q: '他社からの乗り換えに費用はかかりますか？', a: '乗り換え費用は0円です。Airbnb・Booking.com等のOTAアカウント引き継ぎ、掲載情報の最適化、ゲスト対応引き継ぎまで無料で対応します。最短2週間で移行完了です。' },
+  { q: '他社は手数料15〜25%なのに、なぜ8%なのですか？', a: '自社運営のオペレーション基盤と、清掃パートナーネットワーク、多言語ゲスト対応センターを内製化することで、一般的な代行業者の運営コストを大幅に削減しているためです。その差分をオーナー様に還元しています。' },
+  { q: '最低契約期間はありますか？', a: 'ありません。最低契約期間・解約手数料ともに0円です。成果でご判断いただけるよう、縛りは設けていません。' },
+  { q: '宿泊予約がない月も費用はかかりますか？', a: '固定管理費（5,000円/室）のみ発生し、変動運営委託費（8%）は売上連動のため0円です。閑散期の固定費は1部屋で月5,000円に限定されます。' },
+  { q: '清掃費や備品補充は別途請求されますか？', a: '清掃費はゲスト負担（宿泊料金に含む）が基本です。清掃手配と品質管理は運営代行サービスに含まれており、オーナー様への追加請求はありません。消耗品の実費のみ、別途ご相談のうえ精算します。' },
 ]
 
 const COMPARE = [
@@ -71,7 +53,7 @@ const COMPARE = [
   { label: '多言語対応', us: '4言語', others: '日英のみが多い', highlight: false },
   { label: 'レポート頻度', us: '月次', others: '四半期 or なし', highlight: false },
   { label: 'OTA対応数', us: '主要5サイト+', others: 'Airbnbのみが多い', highlight: false },
-  { label: 'ホストレビュー平均', us: '4.7点（5点満点）※', others: '保証なし', highlight: true },
+  { label: 'ホストレビュー平均', us: '4.7 / 5.0 ※', others: '保証なし', highlight: true },
 ]
 
 export default function PricingPage() {
@@ -80,163 +62,236 @@ export default function PricingPage() {
       <Header />
       <Breadcrumb items={[{ label: '料金' }]} />
       <FloatingCTA />
-      <main>
+      <main className="bg-ivory">
         {/* Hero */}
-        <section className="bg-warm-gradient px-6 section-heavy">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3">Pricing</p>
-            <h1 className="heading-display text-charcoal mb-6">
-              民泊運営代行の料金
-            </h1>
-            <p className="text-base text-dark-gray leading-relaxed max-w-2xl mx-auto mb-6">
-              民泊運営代行サービスをご利用いただく際には、初期費用0円。
-              月々の費用は「固定管理費」と「変動手数料」のシンプルな2段階構成です。
-            </p>
-            {/* 比較1文（AEO対応） */}
-            <p className="text-sm text-charcoal max-w-3xl mx-auto leading-relaxed bg-white/60 border border-light-gray rounded-xl px-5 py-3">
-              一般的な運用代行の手数料<span className="font-bold">15〜25%</span> に対し、SEKAI STAYは
-              <span className="font-bold text-deep-teal"> 8%＋月5,000円/室</span>。
-              最低契約期間なし・初期費用0円・解約手数料0円です。
-            </p>
+        <section className="bg-ivory border-b border-rule">
+          <div className="container-edit section-xl">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="chapter">Chapter Ⅰ</span>
+              <span className="rule-teal-sm" />
+              <span className="eyebrow">Pricing · The Clean Math</span>
+            </div>
+            <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-20 items-end">
+              <h1 className="heading-display text-ink jp-keep !text-[clamp(2rem,5vw,4rem)] leading-[1.1]">
+                運営代行の料金、
+                <br />
+                <span className="font-sans font-light text-sekai-teal">
+                  ぜんぶ出します。
+                </span>
+              </h1>
+              <p className="lead text-dark-gray jp-break">
+                初期費用0円。月々の費用は「固定管理費」と「変動手数料」のシンプルな2段階構成です。
+              </p>
+            </div>
+
+            {/* Summary strip */}
+            <div className="mt-14 bg-paper border border-rule px-8 py-6">
+              <p className="text-body text-ink jp-break leading-relaxed">
+                一般的な運用代行の手数料 <span className="font-sans text-[20px] text-mid-gray">15〜25%</span> に対し、
+                SEKAI STAY は <span className="font-sans text-[24px] text-sekai-teal">8%</span> ＋
+                月 <span className="font-sans text-[20px] text-sekai-teal">¥5,000/室</span>。
+                最低契約期間なし・初期費用0円・解約手数料0円です。
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Pricing Cards */}
-        <section className="bg-deep-teal px-6 section-heavy">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Initial Cost */}
-              <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
-                <h2 className="text-2xl font-bold text-white text-center mb-6">初期費用</h2>
-                <div className="text-center mb-6">
-                  <p className="text-white/90 text-sm line-through mb-1">通常 ¥100,000</p>
-                  <p className="stat-number text-white">0<span className="text-2xl">円</span></p>
-                  <span className="inline-block mt-3 bg-amber-400/20 text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full border border-amber-400/30">
-                    キャンペーン中
-                  </span>
+        {/* Pricing panels — dark */}
+        <section className="bg-ink text-ivory relative overflow-hidden">
+          <div
+            aria-hidden
+            className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-40 blur-3xl"
+            style={{ background: 'radial-gradient(circle, rgba(22,123,129,0.5) 0%, transparent 70%)' }}
+          />
+          <div className="relative container-edit section-xl">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="chapter text-bright-teal">Chapter Ⅱ</span>
+              <span className="w-6 h-px bg-bright-teal" />
+              <span className="eyebrow !text-bright-teal">Two-Tier Cost</span>
+            </div>
+            <h2 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(1.75rem,3.8vw,3rem)] mb-14 max-w-3xl">
+              月々の費用は、
+              <span className="font-sans font-light text-bright-teal">2つだけ。</span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10">
+              {/* Initial */}
+              <div className="bg-ink p-10 md:p-12">
+                <div className="flex items-start justify-between mb-8">
+                  <p className="eyebrow-mono text-ivory/50">01 — Initial Cost</p>
+                  <span className="font-sans text-[14px] text-bright-teal">Campaign</span>
                 </div>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                <p className="font-sans text-[14px] text-ivory/60 line-through mb-3">通常 ¥100,000</p>
+                <div className="flex items-baseline gap-2 mb-10">
+                  <span className="font-sans font-light text-[120px] text-ivory leading-none tabular-nums">0</span>
+                  <span className="font-sans text-[28px] text-bright-teal">円</span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-px bg-ivory/10 border border-ivory/10">
                   {['OTA初期設定', '画像加工・掲載', '掲載コンテンツ作成', 'オペレーション構築'].map((item, i) => (
-                    <div key={i} className="bg-white/[0.15] rounded-xl p-4 text-center">
-                      <p className="text-xs text-white font-medium">{item}</p>
+                    <div key={i} className="bg-ink/60 px-5 py-4">
+                      <p className="eyebrow-mono text-ivory/50 !text-[9px] mb-1">{String(i + 1).padStart(2, '0')}</p>
+                      <p className="text-body-sm text-ivory">{item}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-white/90 text-center">※物件状況により別途ご相談の場合あり</p>
+                <p className="text-caption text-ivory/40 mt-5 font-sans">※物件状況により別途ご相談の場合あり</p>
               </div>
 
-              {/* Running Cost */}
-              <div className="bg-white/20 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/10">
-                <h2 className="text-2xl font-bold text-white text-center mb-6">運営費用</h2>
-                <p className="text-sm text-white/90 text-center mb-8">
-                  月々の費用は「固定管理費」と「変動運営委託費」の合計となります。
-                </p>
-                <div className="space-y-4 mb-8">
-                  <div className="bg-white/[0.15] rounded-xl p-6">
-                    <p className="text-xs text-white font-bold uppercase tracking-wider mb-3">固定管理費</p>
-                    <p className="text-2xl text-white font-bold">
-                      ¥5,000<span className="text-sm font-normal text-white/90 ml-1">/ 1部屋 / 月</span>
-                    </p>
-                  </div>
-                  <div className="bg-white/[0.2] rounded-xl p-6 text-center border border-white/25">
-                    <p className="text-xs text-white font-bold uppercase tracking-wider mb-3">変動運営委託費</p>
-                    <p className="flex items-baseline justify-center gap-1">
-                      <span className="text-sm text-white font-bold">売上の</span>
-                      <span className="text-[80px] font-black text-white leading-none tracking-tighter">8</span>
-                      <span className="text-3xl font-black text-white">%</span>
-                    </p>
-                    <p className="text-xs text-white/90 mt-2">他社平均: 15〜25%</p>
-                  </div>
+              {/* Running */}
+              <div className="bg-ink p-10 md:p-12">
+                <div className="flex items-start justify-between mb-8">
+                  <p className="eyebrow-mono text-ivory/50">02 — Running Cost</p>
+                  <span className="font-sans text-[14px] text-ivory/40">monthly</span>
                 </div>
+
+                <div className="pb-8 border-b border-ivory/10 mb-8">
+                  <p className="eyebrow text-bright-teal mb-3">固定管理費</p>
+                  <p className="font-sans text-[24px] text-ivory">
+                    ¥5,000
+                    <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
+                  </p>
+                </div>
+
+                <p className="eyebrow text-bright-teal mb-3">変動運営委託費</p>
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="font-sans text-[14px] text-ivory">売上の</span>
+                  <span className="font-sans font-light text-[120px] text-ivory leading-none tabular-nums">8</span>
+                  <span className="font-sans font-light text-[48px] text-bright-teal">%</span>
+                </div>
+                <p className="font-sans text-[13px] text-ivory/60">他社平均: 15〜25%</p>
               </div>
             </div>
 
-            <div className="text-center mt-10">
+            <div className="mt-12 flex justify-center">
               <Link
                 href="/simulate"
-                className="group inline-flex items-center gap-2 bg-white text-deep-teal font-bold px-12 py-4 rounded-lg transition hover:bg-cloud-white text-sm shadow-lg"
+                className="btn bg-ivory text-teal-ink hover:bg-bright-teal hover:text-ivory border-ivory"
               >
-                収支シミュレーションはこちら
-                <IconArrowRight size={14} className="group-hover:translate-x-0.5 transition" />
+                収支シミュレーション
+                <IconArrowRight size={12} />
               </Link>
             </div>
           </div>
         </section>
 
-        {/* What's Included */}
-        <section className="px-6 section-heavy">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="heading-section text-charcoal text-center mb-16">運営費用に含まれるサービス</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
+        {/* Includes */}
+        <section className="bg-paper">
+          <div className="container-edit section-xl">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="chapter">Chapter Ⅲ</span>
+              <span className="rule-teal-sm" />
+              <span className="eyebrow">What's Included</span>
+            </div>
+            <h2 className="heading-section text-ink jp-keep mb-14 max-w-2xl">
+              運営費用に含まれる
+              <span className="font-sans font-light text-sekai-teal">サービス。</span>
+            </h2>
+
+            <div className="grid sm:grid-cols-2 bg-rule gap-px border border-rule">
               {INCLUDES.map((item, i) => (
-                <div key={i} className="flex items-center gap-4 bg-cloud-white rounded-xl p-5 border border-light-gray">
-                  <span className="w-8 h-8 rounded-full bg-deep-teal text-white flex items-center justify-center flex-shrink-0">
-                    <IconCheck size={14} className="text-white" />
+                <div key={i} className="bg-paper px-6 py-7 flex items-baseline gap-5">
+                  <span className="font-sans font-light text-[28px] text-sekai-teal leading-none tabular-nums flex-shrink-0">
+                    {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-base font-medium text-charcoal">{item}</span>
+                  <span className="font-sans text-[15px] md:text-[16px] text-ink">{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Comparison Table */}
-        <section className="bg-pale-gray px-6 section-heavy">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="heading-section text-charcoal text-center mb-16">他社との比較</h2>
-            <div className="bg-white rounded-2xl border border-light-gray overflow-hidden shadow-sm">
-              {/* Header */}
-              <div className="grid grid-cols-3">
-                <div className="px-6 py-4 bg-pale-gray" />
-                <div className="px-6 py-4 bg-deep-teal text-center">
-                  <p className="text-white font-bold text-sm">SEKAI STAY</p>
+        {/* Comparison */}
+        <section className="bg-mist">
+          <div className="container-edit section-xl">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="chapter">Chapter Ⅳ</span>
+              <span className="rule-teal-sm" />
+              <span className="eyebrow">Side by Side</span>
+            </div>
+            <h2 className="heading-section text-ink jp-keep mb-14 max-w-2xl">
+              他社との
+              <span className="font-sans font-light text-sekai-teal">比較。</span>
+            </h2>
+
+            <div className="bg-paper border border-rule">
+              <div className="grid grid-cols-3 border-b border-rule">
+                <div className="p-5 bg-mist" />
+                <div className="p-5 bg-ink text-center">
+                  <p className="eyebrow !text-bright-teal">SEKAI STAY</p>
                 </div>
-                <div className="px-6 py-4 bg-pale-gray text-center">
-                  <p className="text-dark-gray font-bold text-sm">他社平均</p>
+                <div className="p-5 bg-mist text-center">
+                  <p className="eyebrow text-mid-gray">業界平均</p>
                 </div>
               </div>
-              {/* Rows */}
-              {COMPARE.map((row, i) => (
-                <div key={i} className={`grid grid-cols-3 border-t border-light-gray ${row.highlight ? 'bg-teal-tint/30' : ''}`}>
-                  <div className="px-6 py-5 text-sm text-dark-gray font-medium">{row.label}</div>
-                  <div className="px-6 py-5 text-sm text-deep-teal font-bold text-center">{row.us}</div>
-                  <div className="px-6 py-5 text-sm text-dark-gray text-center">{row.others}</div>
+              {COMPARE.map((row, i, arr) => (
+                <div
+                  key={i}
+                  className={`grid grid-cols-3 items-center ${i !== arr.length - 1 ? 'border-b border-rule' : ''}`}
+                >
+                  <div className="p-5 bg-mist">
+                    <p className="font-sans text-[14px] text-ink">{row.label}</p>
+                  </div>
+                  <div className={`p-5 text-center ${row.highlight ? 'bg-[rgba(22,123,129,0.05)]' : ''}`}>
+                    <p className="font-sans text-[20px] text-sekai-teal tabular-nums">{row.us}</p>
+                  </div>
+                  <div className="p-5 text-center">
+                    <p className="font-sans text-[13px] text-mid-gray">{row.others}</p>
+                  </div>
                 </div>
               ))}
             </div>
-            <p className="mt-5 text-[11px] text-mid-gray leading-relaxed">
+            <p className="mt-5 text-caption text-mid-gray leading-relaxed jp-break max-w-3xl">
               ※ ホストレビュー平均は SEKAI STAY 管理物件（Airbnb / Booking.com 掲載）の加重平均（2024-2025）。他社平均の料率・固定費・最低契約期間は各社公開情報からの一般的水準。実際の条件は契約形態により異なります。
             </p>
           </div>
         </section>
 
-        {/* AEO FAQ — 料金編 */}
-        <section className="px-6 section-heavy">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3 text-center">Pricing FAQ</p>
-            <h2 className="heading-section text-charcoal text-center mb-10">料金に関するよくあるご質問</h2>
-            <div className="space-y-4">
-              {PRICING_FAQ.map((f, i) => (
-                <div key={i} className="bg-white rounded-2xl border border-light-gray p-6 md:p-8">
-                  <h3 className="text-base font-bold text-charcoal mb-3 flex items-start gap-3">
-                    <span className="text-deep-teal font-black flex-shrink-0 text-lg">Q.</span>
-                    {f.q}
-                  </h3>
-                  <div className="pl-8">
-                    <p className="text-sm text-dark-gray leading-relaxed">{f.a}</p>
+        {/* Pricing FAQ */}
+        <section className="bg-bone">
+          <div className="container-narrow section-xl">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="chapter">Chapter Ⅴ</span>
+              <span className="rule-teal-sm" />
+              <span className="eyebrow">Pricing FAQ</span>
+            </div>
+            <h2 className="heading-section text-ink jp-keep mb-14 max-w-2xl">
+              料金に関する、
+              <span className="font-sans font-light text-sekai-teal">よくあるご質問。</span>
+            </h2>
+
+            <div>
+              {PRICING_FAQ.map((f, i, arr) => (
+                <div
+                  key={i}
+                  className={`py-8 grid grid-cols-[auto_1fr] gap-6 md:gap-10 ${
+                    i !== arr.length - 1 ? 'border-b border-rule' : ''
+                  }`}
+                >
+                  <span className="font-sans font-light text-[32px] text-sekai-teal leading-none tabular-nums">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="font-sans font-medium text-[17px] md:text-[19px] text-ink mb-4 leading-snug">
+                      {f.q}
+                    </h3>
+                    <p className="text-body text-dark-gray jp-break max-w-prose-jp">{f.a}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-mid-gray text-center mt-6">
-              さらに詳しいご質問は <Link href="/faq" className="text-deep-teal font-bold underline underline-offset-2">FAQページ</Link> をご覧ください。
+
+            <p className="text-caption text-mid-gray text-center mt-10">
+              さらに詳しいご質問は{' '}
+              <Link href="/faq" className="text-sekai-teal border-b border-sekai-teal/40 hover:border-sekai-teal pb-0.5 font-sans">
+                FAQページ
+              </Link>{' '}
+              をご覧ください。
             </p>
           </div>
         </section>
 
-        {/* CTA — handled by Footer */}
-
-        {/* FAQPage JSON-LD — 料金編 AEO */}
+        {/* FAQPage JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -252,7 +307,6 @@ export default function PricingPage() {
           }}
         />
 
-        {/* Product JSON-LD for pricing rich results */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -269,30 +323,11 @@ export default function PricingPage() {
                 highPrice: '5000',
                 offerCount: '2',
                 offers: [
-                  {
-                    '@type': 'Offer',
-                    name: '初期費用',
-                    price: '0',
-                    priceCurrency: 'JPY',
-                    description: 'OTA初期設定・画像加工・掲載開始まで含む。キャンペーン中。',
-                    availability: 'https://schema.org/InStock',
-                  },
-                  {
-                    '@type': 'Offer',
-                    name: '月額固定管理費',
-                    price: '5000',
-                    priceCurrency: 'JPY',
-                    description: '1部屋あたり月額5,000円。変動運営委託費は売上の8%。',
-                    availability: 'https://schema.org/InStock',
-                  },
+                  { '@type': 'Offer', name: '初期費用', price: '0', priceCurrency: 'JPY', description: 'OTA初期設定・画像加工・掲載開始まで含む。キャンペーン中。', availability: 'https://schema.org/InStock' },
+                  { '@type': 'Offer', name: '月額固定管理費', price: '5000', priceCurrency: 'JPY', description: '1部屋あたり月額5,000円。変動運営委託費は売上の8%。', availability: 'https://schema.org/InStock' },
                 ],
               },
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: '4.8',
-                reviewCount: '47',
-                bestRating: '5',
-              },
+              aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '47', bestRating: '5' },
             }),
           }}
         />

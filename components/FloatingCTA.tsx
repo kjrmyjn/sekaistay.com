@@ -15,20 +15,20 @@ export default function FloatingCTA() {
   if (!visible) return null
 
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col">
+    <div className="fixed right-4 bottom-4 md:right-6 md:bottom-6 z-40 flex flex-col gap-2">
       <Link
         href="/contact"
-        className="bg-sekai-teal hover:bg-deep-teal text-white text-[12px] font-bold px-3 py-6 rounded-l-btn transition"
-        style={{ writingMode: 'vertical-rl' }}
+        className="group bg-ink hover:bg-sekai-teal text-ivory border border-ink hover:border-sekai-teal transition-all px-5 py-3 flex items-center gap-3 shadow-lift"
       >
-        民泊運営のご相談
+        <span className="eyebrow-mono text-bright-teal">Consult</span>
+        <span className="text-[12.5px] font-medium tracking-wide">無料相談</span>
       </Link>
       <Link
         href="/diagnostic"
-        className="bg-sekai-teal hover:bg-deep-teal text-white text-[12px] font-bold px-3 py-6 rounded-l-btn transition mt-px"
-        style={{ writingMode: 'vertical-rl' }}
+        className="group bg-ivory hover:bg-ink border border-ink text-ink hover:text-ivory transition-all px-5 py-3 flex items-center gap-3 shadow-lift-sm"
       >
-        無料診断
+        <span className="eyebrow-mono text-sekai-teal">Audit</span>
+        <span className="text-[12.5px] font-medium tracking-wide">無料診断</span>
       </Link>
     </div>
   )

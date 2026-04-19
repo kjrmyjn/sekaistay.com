@@ -36,33 +36,67 @@ const INFO = [
 ]
 
 export default function CompanyPage() {
+  const offices = getAllOffices()
+
   return (
     <>
       <Header />
       <Breadcrumb items={[{ label: '会社概要' }]} />
       <FloatingCTA />
-      <main>
-        <section className="bg-warm-gradient px-6 section-heavy">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-xs font-bold text-deep-teal tracking-[0.2em] uppercase mb-3">Company</p>
-            <h1 className="heading-display text-charcoal mb-6">
+      <main className="bg-ivory">
+        {/* Chapter Ⅰ — editorial masthead */}
+        <section className="bg-paper border-b border-rule">
+          <div className="container-edit px-5 md:px-8 pt-20 md:pt-28 pb-16 md:pb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Company</p>
+            </div>
+            <h1 className="heading-display text-ink mb-5">
               会社概要
+              <span className="block font-sans font-light text-mid-gray text-[0.7em] mt-3">SEKAICHI Inc.</span>
             </h1>
+            <p className="lead text-dark-gray max-w-2xl">
+              SEKAI STAY は、株式会社セカイチ（SEKAICHI Inc.）が運営する民泊運用代行サービスです。
+              住宅宿泊管理業 国土交通大臣(01)第F05780号として、全国7拠点のネットワークでオーナー様の資産価値向上を支援しています。
+            </p>
           </div>
         </section>
 
-        <section className="px-6 section-heavy">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl border border-light-gray overflow-hidden shadow-sm">
-              <div className="px-8 py-6 bg-deep-teal">
-                <p className="text-white font-bold text-xl">SEKAI STAY</p>
-                <p className="text-white/80 text-sm mt-1">株式会社セカイチ（SEKAICHI Inc.）が運営</p>
+        {/* Chapter Ⅱ — corporate ledger */}
+        <section className="section-xl">
+          <div className="container-narrow px-5 md:px-8">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="eyebrow-mono text-mid-gray">§ 02</span>
+              <span className="h-px bg-rule flex-1" />
+              <p className="eyebrow text-sekai-teal">Corporate Ledger</p>
+            </div>
+
+            <div className="bg-paper border border-rule">
+              {/* Header band */}
+              <div className="bg-ink text-ivory px-8 py-6 flex items-baseline justify-between">
+                <div>
+                  <p className="eyebrow-mono text-bright-teal mb-1">SEKAI STAY</p>
+                  <p className="font-sans text-[17px] md:text-[19px]">株式会社セカイチ（SEKAICHI Inc.）</p>
+                </div>
+                <p className="eyebrow-mono text-mid-gray hidden md:block">Est. — Company Record</p>
               </div>
-              <div className="divide-y divide-light-gray">
+
+              {/* Info rows */}
+              <div>
                 {INFO.map((row, i) => (
-                  <div key={i} className="grid grid-cols-[140px_1fr] md:grid-cols-[200px_1fr]">
-                    <div className="px-6 py-5 text-sm font-bold text-dark-gray bg-pale-gray">{row.label}</div>
-                    <div className="px-6 py-5 text-sm text-charcoal whitespace-pre-line leading-relaxed">{row.value}</div>
+                  <div
+                    key={i}
+                    className="grid grid-cols-[120px_1fr] md:grid-cols-[220px_1fr] border-t border-rule"
+                  >
+                    <div className="px-5 md:px-8 py-5 md:py-6 bg-mist border-r border-rule">
+                      <p className="eyebrow-mono text-mid-gray mb-1">№ {String(i + 1).padStart(2, '0')}</p>
+                      <p className="font-sans text-[13px] md:text-[14px] text-ink font-medium">{row.label}</p>
+                    </div>
+                    <div className="px-5 md:px-8 py-5 md:py-6">
+                      <p className="font-sans text-body-sm text-ink whitespace-pre-line leading-[1.8]">
+                        {row.value}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -70,34 +104,43 @@ export default function CompanyPage() {
           </div>
         </section>
 
-        {/* ── 拠点一覧 ────────────────────────────── */}
-        <section className="px-6 section-heavy">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-charcoal mb-8 text-center">全国拠点</h2>
-            <p className="text-dark-gray text-center mb-10 max-w-2xl mx-auto">
-              SEKAI STAYは全国7拠点のネットワークで、各地域のオーナー様をサポートしています。
-              地元スタッフが物件の特性を熟知した運営をご提供します。
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {getAllOffices().map(office => (
+        {/* Chapter Ⅲ — offices */}
+        <section className="section-xl bg-bone border-y border-rule">
+          <div className="container-edit px-5 md:px-8">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="rule-teal-sm" />
+              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · National Network</p>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+              <h2 className="heading-section text-ink max-w-2xl">
+                全国<span className="font-sans text-sekai-teal">7拠点</span>のネットワーク
+              </h2>
+              <p className="font-sans text-body-sm text-dark-gray max-w-md leading-[1.9]">
+                各地域のスタッフが物件の特性を熟知した運営をお届けします。清掃・ゲスト対応・緊急対応まで、ローカル体制で一貫してカバー。
+              </p>
+            </div>
+
+            <div className="bg-rule grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
+              {offices.map((office, idx) => (
                 <div
                   key={office.id}
-                  className={`rounded-2xl border p-6 ${
-                    office.isHQ
-                      ? 'bg-teal-tint border-deep-teal/30 ring-1 ring-deep-teal/10'
-                      : 'bg-white border-light-gray'
-                  }`}
+                  className={`p-8 ${office.isHQ ? 'bg-ink text-ivory' : 'bg-paper text-ink'}`}
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className={`w-2.5 h-2.5 rounded-full ${office.isHQ ? 'bg-deep-teal' : 'bg-sekai-teal'}`} />
-                    <h3 className="font-bold text-charcoal">
-                      {office.name}
-                      {office.isHQ && (
-                        <span className="ml-2 text-xs bg-deep-teal text-white px-2 py-0.5 rounded-full">本社</span>
-                      )}
-                    </h3>
+                  <div className="flex items-start justify-between mb-6">
+                    <p className={`eyebrow-mono ${office.isHQ ? 'text-bright-teal' : 'text-mid-gray'}`}>
+                      Office № {String(idx + 1).padStart(2, '0')}
+                    </p>
+                    {office.isHQ && (
+                      <span className="px-2 py-0.5 text-[10px] tracking-[0.15em] font-mono uppercase bg-bright-teal text-ink">
+                        HQ
+                      </span>
+                    )}
                   </div>
-                  <p className="text-sm text-dark-gray leading-relaxed">
+                  <h3 className={`font-sans font-medium text-[19px] md:text-[21px] mb-2 ${office.isHQ ? 'text-ivory' : 'text-ink'}`}>
+                    {office.name}
+                  </h3>
+                  <span className={`block w-8 h-px mb-5 ${office.isHQ ? 'bg-bright-teal' : 'bg-sekai-teal'}`} />
+                  <p className={`font-sans text-caption leading-[1.85] ${office.isHQ ? 'text-ivory/80' : 'text-dark-gray'}`}>
                     {office.displayAddress}
                   </p>
                 </div>
@@ -106,7 +149,20 @@ export default function CompanyPage() {
           </div>
         </section>
 
-        {/* CTA — handled by Footer */}
+        {/* Chapter Ⅳ — epilogue */}
+        <section className="section-xl">
+          <div className="container-narrow px-5 md:px-8 text-center">
+            <p className="eyebrow-mono text-mid-gray mb-4">Colophon</p>
+            <p className="font-sans font-light text-[24px] md:text-[32px] text-ink leading-[1.4] max-w-3xl mx-auto">
+              「旅の記憶になる宿を、すべての地域に。」
+            </p>
+            <div className="flex items-center justify-center gap-4 mt-10">
+              <span className="h-px w-16 bg-rule" />
+              <p className="eyebrow text-sekai-teal">SEKAI · STAY</p>
+              <span className="h-px w-16 bg-rule" />
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

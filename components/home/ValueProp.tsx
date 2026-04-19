@@ -5,24 +5,30 @@ import { JP } from '@/components/JP'
 
 export default function ValueProp() {
   return (
-    <section className="bg-cloud-white">
-      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-xl">
-        <div className="grid lg:grid-cols-[0.42fr_0.58fr] gap-8 md:gap-12 mb-12 md:mb-16 items-end">
-          <div>
-            <div className="divider-teal mb-5" />
-            <h2 className="heading-section text-charcoal jp-keep">
+    <section className="bg-ivory">
+      <div className="container-edit section-xl">
+        {/* Header */}
+        <div className="mb-16 md:mb-20">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="chapter">Chapter Ⅳ</span>
+            <span className="rule-teal-sm" />
+            <span className="eyebrow">The Difference</span>
+          </div>
+          <div className="grid lg:grid-cols-[0.55fr_0.45fr] gap-10 lg:gap-16 items-end">
+            <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
               <JP>{VALUE.headline}</JP>
             </h2>
+            <p className="lead text-dark-gray jp-break">
+              {VALUE.body}
+            </p>
           </div>
-          <p className="text-body text-dark-gray jp-break">
-            {VALUE.body}
-          </p>
         </div>
 
-        {/* Asymmetric layout: visual left, items right */}
-        <div className="grid lg:grid-cols-[0.42fr_0.58fr] gap-8 md:gap-12">
-          <div className="relative lg:sticky lg:top-24 lg:self-start">
-            <div className="relative aspect-[4/5] rounded-card overflow-hidden">
+        <div className="grid lg:grid-cols-[0.42fr_0.58fr] gap-10 md:gap-16">
+          {/* Figure */}
+          <div className="relative lg:sticky lg:top-28 lg:self-start">
+            <p className="eyebrow-mono text-mid-gray mb-4">Plate No.04 — Kyoto</p>
+            <div className="figure-frame relative aspect-[4/5]">
               <Image
                 src={IMG.valueAccent.src}
                 alt={IMG.valueAccent.alt}
@@ -30,47 +36,48 @@ export default function ValueProp() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
               />
-              {/* Bottom gradient */}
               <div
                 aria-hidden
-                className="absolute inset-x-0 bottom-0 h-32"
+                className="absolute inset-x-0 bottom-0 h-40"
                 style={{
                   background:
-                    'linear-gradient(180deg, rgba(22,123,129,0) 0%, rgba(22,123,129,0.7) 100%)',
+                    'linear-gradient(180deg, rgba(7,58,62,0) 0%, rgba(7,58,62,0.85) 100%)',
                 }}
               />
-              <div className="absolute bottom-5 left-5 right-5">
-                <div className="eyebrow text-white/90 mb-1">Not just Management</div>
-                <div className="text-[18px] font-bold text-white leading-snug">
-                  宿は、設計で伸びる。
-                </div>
+              <div className="absolute bottom-7 left-7 right-7 text-ivory">
+                <p className="eyebrow !text-bright-teal mb-3">Not Just Management</p>
+                <p className="font-sans font-light text-[26px] leading-tight">
+                  宿は、<span className="font-sans text-ivory">設計で伸びる。</span>
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="space-y-4 md:space-y-5">
-            {VALUE.items.map((item) => (
-              <article
+          {/* Items as editorial list */}
+          <ol className="space-y-0">
+            {VALUE.items.map((item, i) => (
+              <li
                 key={item.number}
-                className="bg-white rounded-card border border-light-gray p-4 sm:p-6 md:p-8"
+                className={`py-10 md:py-12 grid grid-cols-[auto_1fr] gap-6 md:gap-10 ${
+                  i !== 0 ? 'border-t border-rule' : ''
+                }`}
               >
-                <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-[22px] font-bold text-sekai-teal font-mono leading-none">
+                <div className="flex flex-col items-start">
+                  <span className="font-sans font-light text-[56px] text-sekai-teal leading-none">
                     {item.number}
                   </span>
-                  <span className="h-px flex-1 bg-light-gray" />
                 </div>
-
-                <h3 className="heading-sub text-charcoal mb-3 jp-keep">
-                  <JP>{item.title}</JP>
-                </h3>
-
-                <p className="text-body-sm text-dark-gray jp-break">
-                  {item.body}
-                </p>
-              </article>
+                <div className="pt-3">
+                  <h3 className="font-sans text-[22px] md:text-[26px] font-medium text-ink mb-4 leading-snug jp-keep">
+                    <JP>{item.title}</JP>
+                  </h3>
+                  <p className="text-body text-dark-gray jp-break">
+                    {item.body}
+                  </p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     </section>

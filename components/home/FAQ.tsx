@@ -20,80 +20,88 @@ export default function FAQ() {
   }
 
   return (
-    <section className="bg-white">
-      <div className="max-w-[960px] mx-auto px-5 md:px-10 py-12 md:py-16 lg:py-20">
-        {/* ── Header ── */}
-        <div className="mb-10 md:mb-12 max-w-[720px]">
-          <div className="eyebrow text-sekai-teal mb-4">FAQ</div>
-          <h2 className="heading-section text-charcoal mb-4 jp-keep">
-            <JP>{FAQ_DATA.headline}</JP>
-          </h2>
-          <p className="text-body text-dark-gray jp-break">
-            {FAQ_DATA.body}
-          </p>
+    <section className="bg-bone">
+      <div className="container-narrow section-xl">
+        {/* Header */}
+        <div className="mb-14 md:mb-20">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="chapter">Chapter Ⅺ</span>
+            <span className="rule-teal-sm" />
+            <span className="eyebrow">Frequently Asked Questions</span>
+          </div>
+          <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-16 items-end">
+            <h2 className="heading-display text-ink jp-keep !text-[clamp(1.75rem,3.8vw,3rem)]">
+              <JP>{FAQ_DATA.headline}</JP>
+            </h2>
+            <p className="lead text-dark-gray jp-break">
+              {FAQ_DATA.body}
+            </p>
+          </div>
         </div>
 
-        {/* ── Category tabs ── */}
-        <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
-          {FAQ_DATA.categories.map((cat) => {
-            const count =
-              cat.id === 'all'
-                ? FAQ_DATA.items.length
-                : FAQ_DATA.items.filter((i) => i.category === cat.id).length
-            const active = activeCat === cat.id
-            return (
-              <button
-                key={cat.id}
-                onClick={() => handleCategoryChange(cat.id)}
-                className={`inline-flex items-center gap-2 text-[13px] font-bold px-4 py-2 rounded-full border transition ${
-                  active
-                    ? 'bg-charcoal text-white border-charcoal'
-                    : 'bg-white text-dark-gray border-light-gray hover:border-sekai-teal hover:text-sekai-teal'
-                }`}
-              >
-                <span>{cat.label}</span>
-                <span
-                  className={`text-[10px] font-mono ${
-                    active ? 'text-white/70' : 'text-mid-gray'
+        {/* Category filter — editorial tag rail */}
+        <div className="border-y border-rule py-4 mb-10 md:mb-12">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 items-center">
+            <span className="eyebrow-mono text-mid-gray !text-[9px]">Filter —</span>
+            {FAQ_DATA.categories.map((cat) => {
+              const count =
+                cat.id === 'all'
+                  ? FAQ_DATA.items.length
+                  : FAQ_DATA.items.filter((i) => i.category === cat.id).length
+              const active = activeCat === cat.id
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => handleCategoryChange(cat.id)}
+                  className={`group inline-flex items-baseline gap-2 transition ${
+                    active ? 'text-ink' : 'text-mid-gray hover:text-ink'
                   }`}
                 >
-                  {count}
-                </span>
-              </button>
-            )
-          })}
+                  <span
+                    className={`font-sans text-[14px] md:text-[15px] ${
+                      active ? 'border-b-2 border-sekai-teal pb-1' : ''
+                    }`}
+                  >
+                    {cat.label}
+                  </span>
+                  <span className="font-sans text-[12px] text-mid-gray tabular-nums">
+                    {String(count).padStart(2, '0')}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
         </div>
 
-        {/* ── Questions list ── */}
-        <div className="space-y-3">
-          {visibleItems.map((item, i) => {
+        {/* Questions — ledger */}
+        <div>
+          {visibleItems.map((item, i, arr) => {
             const isOpen = open === i
+            const isLast = i === arr.length - 1
             return (
               <div
                 key={item.originalIndex}
-                className={`bg-white rounded-card border transition-colors ${
-                  isOpen ? 'border-sekai-teal' : 'border-light-gray'
-                }`}
+                className={`${!isLast ? 'border-b border-rule' : ''} transition`}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-start justify-between gap-4 p-5 md:p-6 text-left"
+                  className="w-full flex items-start justify-between gap-6 py-6 md:py-7 text-left group"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-start gap-4 flex-1 min-w-0">
-                    <span className="text-[12px] font-mono font-bold text-sekai-teal mt-1 flex-shrink-0">
-                      Q{String(item.originalIndex + 1).padStart(2, '0')}
+                  <div className="flex items-start gap-5 md:gap-7 flex-1 min-w-0">
+                    <span className="font-sans font-light text-[24px] md:text-[28px] text-sekai-teal leading-none flex-shrink-0 tabular-nums pt-1">
+                      {String(item.originalIndex + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-[15px] md:text-[16px] font-bold text-charcoal jp-keep">
+                    <span className="font-sans font-medium text-[16px] md:text-[18px] text-ink leading-snug jp-keep pt-1">
                       <JP>{item.q}</JP>
                     </span>
                   </div>
                   <span
                     aria-hidden
-                    className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition ${
+                    className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition mt-1 ${
                       isOpen
-                        ? 'border-sekai-teal bg-sekai-teal text-white'
-                        : 'border-light-gray text-dark-gray'
+                        ? 'border-sekai-teal bg-sekai-teal text-ivory'
+                        : 'border-rule text-mid-gray group-hover:border-ink group-hover:text-ink'
                     }`}
                   >
                     <svg
@@ -120,10 +128,12 @@ export default function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 pl-[48px] sm:pl-[60px] md:pl-[68px]">
-                      <p className="text-body-sm text-dark-gray jp-break">
-                        {item.a}
-                      </p>
+                    <div className="pl-[44px] md:pl-[76px] pb-8 pr-14">
+                      <div className="border-l-2 border-sekai-teal pl-5 py-1">
+                        <p className="text-body text-dark-gray jp-break leading-relaxed">
+                          {item.a}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -133,7 +143,7 @@ export default function FAQ() {
         </div>
 
         {visibleItems.length === 0 && (
-          <div className="text-center text-[13px] text-mid-gray py-10">
+          <div className="text-center text-body-sm text-mid-gray py-14 font-sans">
             該当する項目がありません。
           </div>
         )}

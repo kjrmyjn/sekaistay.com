@@ -5,14 +5,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
-import {
-  IconArrowRight,
-  IconCheck,
-  IconSparkles,
-  IconLock,
-  IconShield,
-  IconTrendingUp,
-} from '@/components/Icons'
+import { IconArrowRight } from '@/components/Icons'
 
 const OUR_RATE = 0.08
 
@@ -48,77 +41,83 @@ export default function SimulatePage() {
     <>
       <Header />
       <Breadcrumb items={[{ label: '収支シミュレーター' }]} />
-      <main className="min-h-screen bg-cloud-white pb-20">
+      <main className="bg-ivory pb-20">
 
-        {/* ─────────────────── Hero ─────────────────── */}
-        <section className="relative bg-charcoal text-white overflow-hidden">
+        {/* Hero */}
+        <section className="relative bg-ink text-ivory overflow-hidden">
           <div
             aria-hidden
-            className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full opacity-40 blur-3xl"
-            style={{ background: 'radial-gradient(circle, rgba(37,157,163,0.40) 0%, transparent 70%)' }}
+            className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl"
+            style={{ background: 'radial-gradient(circle, rgba(22,123,129,0.4) 0%, transparent 70%)' }}
           />
           <div
             aria-hidden
             className="absolute -bottom-40 -left-32 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl"
-            style={{ background: 'radial-gradient(circle, rgba(84,190,195,0.30) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(circle, rgba(84,190,195,0.3) 0%, transparent 70%)' }}
           />
 
-          <div className="relative max-w-3xl mx-auto px-5 md:px-8 py-14 md:py-20 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur mb-6">
-              <IconSparkles size={14} className="text-bright-teal" />
-              <span className="text-[11px] md:text-xs font-bold tracking-wider text-bright-teal uppercase">
-                Fee Savings Calculator
-              </span>
+          <div className="relative container-edit pt-16 md:pt-24 pb-24 md:pb-32">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="chapter text-bright-teal">Chapter Ⅰ</span>
+              <span className="w-6 h-px bg-bright-teal" />
+              <span className="eyebrow !text-bright-teal">Fee Savings Calculator</span>
             </div>
-            <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-5">
-              管理報酬を変えるだけで、<br />
-              <span className="text-bright-teal">年間いくら残せるか</span>を試算する。
-            </h1>
-            <p className="text-sm md:text-base text-white/75 leading-relaxed max-w-xl mx-auto">
-              現在の管理報酬率・物件数・稼働率を入力すると、SEKAI STAY（8%）との差額が
-              <br className="hidden md:inline" />
-              月単位・年単位で即座に算出されます。
-            </p>
 
-            <div className="mt-8 flex items-center justify-center flex-wrap gap-x-6 gap-y-2 text-[11px] md:text-xs text-white/60">
-              <span className="inline-flex items-center gap-1.5">
-                <IconLock size={12} className="text-bright-teal" />
+            <div className="grid lg:grid-cols-[0.6fr_0.4fr] gap-10 lg:gap-20 items-end">
+              <h1 className="heading-display !font-sans text-ivory jp-keep !text-[clamp(2rem,5vw,4rem)] leading-[1.1]">
+                管理報酬を変えるだけで、
+                <br />
+                <span className="font-sans font-light text-bright-teal">
+                  いくら残せるか。
+                </span>
+              </h1>
+              <p className="lead text-ivory/75 jp-break">
+                現在の管理報酬率・物件数・稼働率を入力すると、
+                SEKAI STAY（8%）との差額が月単位・年単位で即座に算出されます。
+              </p>
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-ivory/15 flex flex-wrap gap-x-10 gap-y-3 text-caption text-ivory/60">
+              <span className="inline-flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-bright-teal" />
                 個人情報入力不要
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <IconShield size={12} className="text-bright-teal" />
+              <span className="inline-flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-bright-teal" />
                 リアルタイム試算
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <IconCheck size={12} className="text-bright-teal" />
+              <span className="inline-flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-bright-teal" />
                 完全無料
               </span>
             </div>
           </div>
         </section>
 
-        {/* ─────────────────── Layout ─────────────────── */}
-        <div className="max-w-5xl mx-auto px-5 md:px-8 -mt-10 md:-mt-14 relative">
-          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-5 md:gap-6">
+        {/* Layout */}
+        <div className="container-edit -mt-14 relative">
+          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-4">
 
-            {/* ── Left: Input Panel ── */}
-            <div className="bg-white rounded-card shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-light-gray p-6 md:p-8">
-
-              <div className="mb-6">
-                <p className="eyebrow text-deep-teal mb-2">Inputs</p>
-                <h2 className="text-lg md:text-xl font-bold text-charcoal leading-tight">
-                  物件情報と現状の手数料を入力
-                </h2>
+            {/* Left: Input Panel */}
+            <div className="bg-paper border border-rule shadow-lift-lg p-7 md:p-10">
+              <div className="flex items-center gap-4 mb-8 pb-6 border-b border-rule">
+                <span className="font-sans text-[14px] text-mid-gray">№ 01</span>
+                <div>
+                  <p className="eyebrow-mono text-mid-gray mb-1">Inputs</p>
+                  <h2 className="font-sans font-medium text-[20px] text-ink">
+                    物件情報と現状の手数料
+                  </h2>
+                </div>
               </div>
 
-              <div className="space-y-7">
+              <div className="space-y-10">
                 {/* Compare Rate */}
                 <div>
-                  <label className="text-sm font-bold text-charcoal block mb-3">
-                    現在の管理報酬率
-                    <span className="text-xs font-normal text-mid-gray ml-2">（比較対象）</span>
-                  </label>
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="flex items-baseline justify-between mb-4">
+                    <label className="eyebrow-mono text-mid-gray">現在の管理報酬率</label>
+                    <span className="font-sans text-[11px] text-mid-gray">比較対象</span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-px bg-rule border border-rule">
                     {RATE_PRESETS.map(preset => (
                       <button
                         key={preset.label}
@@ -126,19 +125,18 @@ export default function SimulatePage() {
                           setSelectedRate(preset.value)
                           if (preset.value !== null) setCustomRate('')
                         }}
-                        className={`px-2 py-2.5 rounded-btn text-sm font-bold border transition
-                          ${
-                            selectedRate === preset.value
-                              ? 'bg-deep-teal text-white border-deep-teal shadow-[0_4px_12px_rgba(22,123,129,0.25)]'
-                              : 'bg-cloud-white text-dark-gray border-light-gray hover:border-deep-teal/40'
-                          }`}
+                        className={`px-2 py-3 text-[13px] transition ${
+                          selectedRate === preset.value
+                            ? 'bg-ink text-ivory font-sans'
+                            : 'bg-paper text-dark-gray hover:text-ink font-sans'
+                        }`}
                       >
                         {preset.label}
                       </button>
                     ))}
                   </div>
                   {isCustom && (
-                    <div className="mt-3 flex items-center gap-2">
+                    <div className="mt-4 flex items-center gap-3">
                       <input
                         type="number"
                         min={1}
@@ -146,20 +144,20 @@ export default function SimulatePage() {
                         value={customRate}
                         onChange={e => setCustomRate(e.target.value)}
                         placeholder="例: 18"
-                        className="w-28 text-sm px-3 py-2.5 rounded-btn border border-light-gray bg-cloud-white outline-none focus:border-deep-teal text-center font-bold text-charcoal"
+                        className="w-28 text-[14px] px-3 py-2.5 border border-rule bg-mist outline-none focus:border-sekai-teal text-center font-sans text-ink"
                       />
-                      <span className="text-sm text-dark-gray">% を入力</span>
+                      <span className="font-sans text-[13px] text-dark-gray">% を入力</span>
                     </div>
                   )}
                 </div>
 
                 {/* Properties */}
                 <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-bold text-charcoal">物件数</label>
-                    <span className="text-xl font-bold text-deep-teal tracking-tight">
+                  <div className="flex justify-between items-baseline mb-4">
+                    <label className="eyebrow-mono text-mid-gray">物件数</label>
+                    <span className="font-sans font-light text-[32px] text-sekai-teal leading-none tabular-nums">
                       {properties}
-                      <span className="text-xs font-normal text-mid-gray ml-1">件</span>
+                      <span className="font-sans text-[12px] text-mid-gray ml-1">件</span>
                     </span>
                   </div>
                   <input
@@ -171,30 +169,30 @@ export default function SimulatePage() {
                     onChange={e => setProperties(Number(e.target.value))}
                     className="w-full accent-[#167B81]"
                   />
-                  <div className="flex justify-between text-[10px] text-mid-gray mt-1 font-mono">
+                  <div className="flex justify-between text-[10px] text-mid-gray mt-2 font-mono tracking-wider">
                     <span>1</span>
                     <span>10</span>
                     <span>20</span>
                     <span>30+</span>
                   </div>
                   {properties === 30 && (
-                    <p className="text-xs text-dark-gray mt-2">
-                      30件以上の場合は
-                      <Link href="/contact" className="text-deep-teal underline font-bold mx-1">
+                    <p className="text-caption text-dark-gray mt-3 font-sans">
+                      30件以上の場合は{' '}
+                      <Link href="/contact" className="text-sekai-teal border-b border-sekai-teal/40">
                         無料相談
                       </Link>
-                      にて直接ご案内いたします。
+                      {' '}にて直接ご案内いたします。
                     </p>
                   )}
                 </div>
 
                 {/* Occupancy */}
                 <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-bold text-charcoal">稼働率</label>
-                    <span className="text-xl font-bold text-deep-teal tracking-tight">
+                  <div className="flex justify-between items-baseline mb-4">
+                    <label className="eyebrow-mono text-mid-gray">稼働率</label>
+                    <span className="font-sans font-light text-[32px] text-sekai-teal leading-none tabular-nums">
                       {occupancy}
-                      <span className="text-xs font-normal text-mid-gray ml-1">%</span>
+                      <span className="font-sans text-[14px] text-mid-gray ml-1">%</span>
                     </span>
                   </div>
                   <input
@@ -206,7 +204,7 @@ export default function SimulatePage() {
                     onChange={e => setOccupancy(Number(e.target.value))}
                     className="w-full accent-[#167B81]"
                   />
-                  <div className="flex justify-between text-[10px] text-mid-gray mt-1 font-mono">
+                  <div className="flex justify-between text-[10px] text-mid-gray mt-2 font-mono tracking-wider">
                     <span>20%</span>
                     <span>50%</span>
                     <span>80%</span>
@@ -216,9 +214,9 @@ export default function SimulatePage() {
 
                 {/* Nightly */}
                 <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-bold text-charcoal">1泊あたりの平均単価</label>
-                    <span className="text-xl font-bold text-deep-teal tracking-tight">
+                  <div className="flex justify-between items-baseline mb-4">
+                    <label className="eyebrow-mono text-mid-gray">1泊あたりの平均単価</label>
+                    <span className="font-sans font-light text-[28px] text-sekai-teal leading-none tabular-nums">
                       ¥{fmt(nightly)}
                     </span>
                   </div>
@@ -231,7 +229,7 @@ export default function SimulatePage() {
                     onChange={e => setNightly(Number(e.target.value))}
                     className="w-full accent-[#167B81]"
                   />
-                  <div className="flex justify-between text-[10px] text-mid-gray mt-1 font-mono">
+                  <div className="flex justify-between text-[10px] text-mid-gray mt-2 font-mono tracking-wider">
                     <span>¥3,000</span>
                     <span>¥50,000</span>
                     <span>¥100,000</span>
@@ -240,190 +238,171 @@ export default function SimulatePage() {
                 </div>
 
                 {/* Monthly revenue summary */}
-                <div className="bg-cloud-white rounded-card px-4 md:px-5 py-4 border border-light-gray">
-                  <p className="text-[10px] font-mono tracking-widest text-mid-gray uppercase mb-1">
-                    Estimated Monthly Revenue
-                  </p>
-                  <p className="text-2xl md:text-3xl font-bold text-charcoal tracking-tight">
+                <div className="bg-mist border-t-2 border-sekai-teal pt-6 px-5 pb-5 -mx-2">
+                  <p className="eyebrow-mono text-sekai-teal mb-2">Estimated Monthly Revenue</p>
+                  <p className="font-sans font-light text-[36px] md:text-[44px] text-ink leading-none tabular-nums">
                     ¥{fmt(monthlyRevenue)}
                   </p>
-                  <p className="text-[11px] text-mid-gray mt-1">
+                  <p className="text-caption text-mid-gray mt-2 font-sans">
                     {properties}件 × {nightsPerMonth}泊 × ¥{fmt(nightly)}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* ── Right: Results ── */}
-            <div className="space-y-5 md:space-y-6">
+            {/* Right: Results */}
+            <div className="space-y-4">
 
               {/* Comparison Card */}
-              <div className="bg-white rounded-card shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-light-gray p-6 md:p-8">
-                <div className="mb-5">
-                  <p className="eyebrow text-deep-teal mb-2">Comparison</p>
-                  <h2 className="text-lg md:text-xl font-bold text-charcoal">月間管理費の比較</h2>
+              <div className="bg-paper border border-rule shadow-lift-lg p-7 md:p-10">
+                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-rule">
+                  <span className="font-sans text-[14px] text-mid-gray">№ 02</span>
+                  <div>
+                    <p className="eyebrow-mono text-mid-gray mb-1">Comparison</p>
+                    <h2 className="font-sans font-medium text-[20px] text-ink">
+                      月間管理費の比較
+                    </h2>
+                  </div>
                 </div>
 
-                <div className="space-y-3">
-                  {/* Comparison (other) */}
-                  <div className="flex items-center justify-between gap-3 bg-cloud-white rounded-btn px-4 py-3.5 border border-light-gray">
+                <div className="space-y-3 mb-6">
+                  {/* Other */}
+                  <div className="flex items-center justify-between gap-4 bg-mist px-5 py-4 border border-rule">
                     <div className="min-w-0">
-                      <p className="text-[10px] text-mid-gray font-mono tracking-wider uppercase mb-0.5">
-                        現在の管理費
-                      </p>
-                      <p className="text-base md:text-lg font-bold text-mid-gray line-through tabular-nums">
+                      <p className="eyebrow-mono text-mid-gray mb-1">現在の管理費</p>
+                      <p className="font-sans text-[18px] text-mid-gray line-through tabular-nums">
                         ¥{fmt(compareFee)}
                       </p>
                     </div>
-                    <span className="flex-shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-full bg-pale-gray text-dark-gray font-bold text-sm">
+                    <span className="font-sans font-light text-[28px] text-mid-gray tabular-nums">
                       {compareLabel}
                     </span>
                   </div>
 
                   {/* Ours */}
-                  <div className="flex items-center justify-between gap-3 bg-gradient-to-br from-teal-tint to-white rounded-btn px-4 py-3.5 border-2 border-deep-teal shadow-[0_8px_20px_rgba(22,123,129,0.12)]">
+                  <div className="flex items-center justify-between gap-4 bg-paper border-2 border-sekai-teal px-5 py-5">
                     <div className="min-w-0">
-                      <p className="text-[10px] text-deep-teal font-mono tracking-wider uppercase mb-0.5 font-bold">
-                        SEKAI STAY
-                      </p>
-                      <p className="text-xl md:text-2xl font-bold text-deep-teal tabular-nums">
+                      <p className="eyebrow text-sekai-teal mb-1">SEKAI STAY</p>
+                      <p className="font-sans font-light text-[32px] md:text-[36px] text-ink leading-none tabular-nums">
                         ¥{fmt(ourFee)}
                       </p>
                     </div>
-                    <span className="flex-shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-full bg-deep-teal text-white font-bold text-sm shadow-[0_4px_12px_rgba(22,123,129,0.3)]">
+                    <span className="font-sans font-light text-[40px] text-sekai-teal tabular-nums">
                       8%
                     </span>
                   </div>
                 </div>
 
-                {/* Yearly savings hero */}
+                {/* Annual savings hero */}
                 {monthlyDiff > 0 ? (
-                  <div className="relative mt-5 bg-charcoal rounded-card overflow-hidden p-5 md:p-6">
+                  <div className="relative bg-ink overflow-hidden p-7 md:p-8">
                     <div
                       aria-hidden
                       className="absolute inset-0 opacity-40"
-                      style={{
-                        background: 'radial-gradient(circle at 20% 50%, rgba(37,157,163,0.35) 0%, transparent 60%)',
-                      }}
+                      style={{ background: 'radial-gradient(circle at 20% 50%, rgba(22,123,129,0.4) 0%, transparent 60%)' }}
                     />
-                    <div className="relative text-center">
-                      <div className="inline-flex items-center gap-1.5 mb-2">
-                        <IconTrendingUp size={14} className="text-bright-teal" />
-                        <p className="text-[10px] font-mono tracking-widest text-bright-teal uppercase font-bold">
-                          Annual Savings
-                        </p>
+                    <div className="relative">
+                      <p className="eyebrow-mono text-bright-teal mb-4">Annual Savings</p>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="font-sans font-light text-[28px] text-bright-teal">+</span>
+                        <span className="font-sans font-light text-[56px] md:text-[64px] text-ivory leading-none tabular-nums">
+                          ¥{fmt(yearlyDiff)}
+                        </span>
                       </div>
-                      <p className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-1">
-                        <span className="text-bright-teal">+</span>¥{fmt(yearlyDiff)}
-                      </p>
-                      <p className="text-sm text-white/80">年間で手元に残る</p>
-                      <p className="text-[11px] text-white/60 mt-2">
+                      <p className="font-sans text-[15px] text-ivory/80 mb-2">年間で手元に残る</p>
+                      <p className="text-caption text-ivory/60">
                         月あたり +¥{fmt(monthlyDiff)} の差
                       </p>
                     </div>
                   </div>
                 ) : (
-                  <div className="mt-5 bg-cloud-white rounded-card px-5 py-5 text-center border border-light-gray">
-                    <p className="text-sm text-dark-gray">比較対象の料率を設定してください</p>
+                  <div className="bg-mist px-5 py-6 text-center border border-rule">
+                    <p className="font-sans text-[14px] text-dark-gray">
+                      比較対象の料率を設定してください
+                    </p>
                   </div>
                 )}
               </div>
 
-              {/* Year Table */}
-              <div className="bg-white rounded-card shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-light-gray p-6 md:p-7">
-                <div className="mb-4">
-                  <p className="eyebrow text-deep-teal mb-2">Detailed Breakdown</p>
-                  <h2 className="text-lg md:text-xl font-bold text-charcoal">月次・年次の内訳</h2>
+              {/* Detailed Table */}
+              <div className="bg-paper border border-rule shadow-lift p-7 md:p-8">
+                <div className="mb-5">
+                  <p className="eyebrow-mono text-mid-gray mb-1">Detailed Breakdown</p>
+                  <h2 className="font-sans font-medium text-[18px] text-ink">
+                    月次・年次の内訳
+                  </h2>
                 </div>
-                <table className="w-full text-sm">
+                <table className="w-full">
                   <thead>
-                    <tr className="text-[10px] text-mid-gray font-mono uppercase tracking-wider border-b border-light-gray">
-                      <th className="pb-2 text-left font-bold"></th>
-                      <th className="pb-2 text-right font-bold">月額</th>
-                      <th className="pb-2 text-right font-bold">年額</th>
+                    <tr className="border-b border-rule">
+                      <th className="pb-3 text-left"></th>
+                      <th className="pb-3 text-right eyebrow-mono text-mid-gray !text-[9px]">月額</th>
+                      <th className="pb-3 text-right eyebrow-mono text-mid-gray !text-[9px]">年額</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-pale-gray">
-                    <tr>
-                      <td className="py-3 text-xs text-dark-gray">売上</td>
-                      <td className="py-3 text-right font-bold text-charcoal tabular-nums">
-                        ¥{fmt(monthlyRevenue)}
-                      </td>
-                      <td className="py-3 text-right font-bold text-charcoal tabular-nums">
-                        ¥{fmt(monthlyRevenue * 12)}
-                      </td>
+                  <tbody>
+                    <tr className="border-b border-rule">
+                      <td className="py-4 font-sans text-[13px] text-ink">売上</td>
+                      <td className="py-4 text-right font-sans text-[14px] text-ink tabular-nums">¥{fmt(monthlyRevenue)}</td>
+                      <td className="py-4 text-right font-sans text-[14px] text-ink tabular-nums">¥{fmt(monthlyRevenue * 12)}</td>
                     </tr>
-                    <tr>
-                      <td className="py-3 text-xs text-mid-gray">現在の管理費 ({compareLabel})</td>
-                      <td className="py-3 text-right text-mid-gray line-through tabular-nums">
-                        ¥{fmt(compareFee)}
-                      </td>
-                      <td className="py-3 text-right text-mid-gray line-through tabular-nums">
-                        ¥{fmt(compareFee * 12)}
-                      </td>
+                    <tr className="border-b border-rule">
+                      <td className="py-4 font-sans text-[13px] text-mid-gray">現在の管理費 ({compareLabel})</td>
+                      <td className="py-4 text-right font-sans text-[14px] text-mid-gray line-through tabular-nums">¥{fmt(compareFee)}</td>
+                      <td className="py-4 text-right font-sans text-[14px] text-mid-gray line-through tabular-nums">¥{fmt(compareFee * 12)}</td>
                     </tr>
-                    <tr>
-                      <td className="py-3 text-xs text-deep-teal font-bold">SEKAI STAY (8%)</td>
-                      <td className="py-3 text-right font-bold text-deep-teal tabular-nums">
-                        ¥{fmt(ourFee)}
-                      </td>
-                      <td className="py-3 text-right font-bold text-deep-teal tabular-nums">
-                        ¥{fmt(ourFee * 12)}
-                      </td>
+                    <tr className="border-b border-rule">
+                      <td className="py-4 font-sans text-[13px] text-sekai-teal">SEKAI STAY (8%)</td>
+                      <td className="py-4 text-right font-sans text-[16px] text-sekai-teal tabular-nums">¥{fmt(ourFee)}</td>
+                      <td className="py-4 text-right font-sans text-[16px] text-sekai-teal tabular-nums">¥{fmt(ourFee * 12)}</td>
                     </tr>
-                    <tr className="bg-teal-tint/40">
-                      <td className="py-3 pl-2 text-xs text-deep-teal font-bold">差額（節約額）</td>
-                      <td className="py-3 text-right font-bold text-deep-teal tabular-nums">
-                        ¥{fmt(monthlyDiff)}
-                      </td>
-                      <td className="py-3 pr-2 text-right font-bold text-deep-teal tabular-nums">
-                        ¥{fmt(yearlyDiff)}
-                      </td>
+                    <tr className="bg-mist">
+                      <td className="py-4 pl-3 font-sans font-medium text-[13px] text-sekai-teal">差額（節約額）</td>
+                      <td className="py-4 text-right font-sans text-[18px] text-sekai-teal tabular-nums">¥{fmt(monthlyDiff)}</td>
+                      <td className="py-4 pr-3 text-right font-sans text-[18px] text-sekai-teal tabular-nums">¥{fmt(yearlyDiff)}</td>
                     </tr>
                   </tbody>
                 </table>
-                <p className="text-[10px] text-mid-gray mt-4 leading-relaxed">
-                  ※ 管理報酬のみの比較です。清掃費・備品費・OTA手数料などは含みません。
-                  SEKAI STAYは固定管理費が別途 ¥5,000/月 かかります。
+                <p className="text-caption text-mid-gray mt-5 leading-relaxed jp-break">
+                  ※ 管理報酬のみの比較です。清掃費・備品費・OTA手数料などは含みません。SEKAI STAYは固定管理費が別途 ¥5,000/月 かかります。
                 </p>
               </div>
 
               {/* CTA */}
-              <div className="relative bg-charcoal rounded-card overflow-hidden p-6 md:p-8 text-center">
+              <div className="relative bg-ink overflow-hidden p-8 md:p-10">
                 <div
                   aria-hidden
-                  className="absolute inset-0 opacity-40"
-                  style={{
-                    background: 'radial-gradient(circle at 80% 50%, rgba(37,157,163,0.40) 0%, transparent 60%)',
-                  }}
+                  className="absolute inset-0 opacity-50"
+                  style={{ background: 'radial-gradient(circle at 80% 50%, rgba(22,123,129,0.4) 0%, transparent 60%)' }}
                 />
                 <div className="relative">
-                  <p className="eyebrow text-bright-teal mb-2">Next Step</p>
-                  <p className="text-base md:text-lg font-bold text-white mb-2 leading-snug">
-                    年間 ¥{fmt(yearlyDiff)}、<br className="sm:hidden" />
+                  <p className="eyebrow-mono text-bright-teal mb-4">Next Step</p>
+                  <p className="font-sans text-[20px] md:text-[22px] text-ivory mb-3 leading-snug">
+                    年間 <span className="font-sans text-bright-teal">¥{fmt(yearlyDiff)}</span>、
+                    <br />
                     残せるかもしれません。
                   </p>
-                  <p className="text-xs text-white/70 mb-5 leading-relaxed">
+                  <p className="text-body-sm text-ivory/70 mb-8 jp-break">
                     現状の運営状況を整理するだけでも、無料相談は十分お役に立てます。
                   </p>
 
-                  <div className="space-y-2.5">
+                  <div className="flex flex-col gap-3">
                     <Link
                       href="/contact"
-                      className="group inline-flex items-center justify-center gap-2 w-full bg-white text-charcoal hover:bg-teal-tint font-bold text-sm md:text-base py-4 rounded-btn transition"
+                      className="btn bg-ivory text-teal-ink hover:bg-bright-teal hover:text-ivory border-ivory justify-center"
                     >
                       無料相談を申し込む
-                      <IconArrowRight size={16} className="group-hover:translate-x-0.5 transition" />
+                      <IconArrowRight size={14} />
                     </Link>
                     <Link
                       href="/diagnostic"
-                      className="inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white hover:bg-white/15 font-bold text-sm py-3.5 rounded-btn transition"
+                      className="btn border-ivory/40 text-ivory hover:bg-ivory/10 hover:border-ivory justify-center"
                     >
                       無料収益診断をする
                     </Link>
                   </div>
-                  <p className="text-[11px] text-bright-teal/90 mt-4">
-                    完全無料・しつこい営業は一切いたしません
+                  <p className="text-caption text-bright-teal/80 mt-5 font-sans text-center">
+                    完全無料・しつこい営業は一切いたしません。
                   </p>
                 </div>
               </div>

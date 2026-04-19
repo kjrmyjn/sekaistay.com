@@ -29,78 +29,87 @@ export default function BlogGrid({ posts, categories }: Props) {
 
   return (
     <>
-      {/* Category filter tabs */}
+      {/* Editorial tag rail */}
       {categories.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-10 md:mb-12">
-          <button
-            onClick={() => setActive('all')}
-            className={`text-xs font-bold px-4 py-2 rounded-full border transition ${
-              active === 'all'
-                ? 'text-white bg-charcoal border-charcoal'
-                : 'text-dark-gray bg-white border-light-gray hover:border-sekai-teal hover:text-sekai-teal'
-            }`}
-          >
-            すべて
-            <span className={`ml-1.5 text-[10px] font-mono ${active === 'all' ? 'text-white/70' : 'text-mid-gray'}`}>
-              {posts.length}
-            </span>
-          </button>
-          {categories.map(cat => {
-            const isActive = active === cat
-            return (
-              <button
-                key={cat}
-                onClick={() => setActive(cat)}
-                className={`text-xs font-bold px-4 py-2 rounded-full border transition ${
-                  isActive
-                    ? 'text-white bg-charcoal border-charcoal'
-                    : 'text-dark-gray bg-white border-light-gray hover:border-sekai-teal hover:text-sekai-teal'
-                }`}
-              >
-                {cat}
-                <span className={`ml-1.5 text-[10px] font-mono ${isActive ? 'text-white/70' : 'text-mid-gray'}`}>
-                  {counts[cat] || 0}
-                </span>
-              </button>
-            )
-          })}
+        <div className="mb-12 md:mb-16">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="eyebrow-mono text-mid-gray">§ Categories</span>
+            <span className="h-px bg-rule flex-1" />
+          </div>
+          <div className="flex gap-0 overflow-x-auto border-b border-rule">
+            <button
+              onClick={() => setActive('all')}
+              className={`relative inline-flex items-baseline gap-2 text-[13px] md:text-[14px] px-4 md:px-5 py-3 md:py-4 whitespace-nowrap flex-shrink-0 transition font-sans ${
+                active === 'all' ? 'text-ink' : 'text-mid-gray hover:text-ink'
+              }`}
+            >
+              <span>すべて</span>
+              <span className="eyebrow-mono text-mid-gray/80">{String(posts.length).padStart(2, '0')}</span>
+              {active === 'all' && (
+                <span className="absolute left-4 right-4 bottom-0 h-[2px] bg-sekai-teal" />
+              )}
+            </button>
+            {categories.map(cat => {
+              const isActive = active === cat
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActive(cat)}
+                  className={`relative inline-flex items-baseline gap-2 text-[13px] md:text-[14px] px-4 md:px-5 py-3 md:py-4 whitespace-nowrap flex-shrink-0 transition font-sans ${
+                    isActive ? 'text-ink' : 'text-mid-gray hover:text-ink'
+                  }`}
+                >
+                  <span>{cat}</span>
+                  <span className="eyebrow-mono text-mid-gray/80">{String(counts[cat] || 0).padStart(2, '0')}</span>
+                  {isActive && (
+                    <span className="absolute left-4 right-4 bottom-0 h-[2px] bg-sekai-teal" />
+                  )}
+                </button>
+              )
+            })}
+          </div>
         </div>
       )}
 
       {/* Posts grid */}
       {filtered.length === 0 ? (
-        <div className="text-center py-20">
-          <p className="text-dark-gray text-lg">該当する記事がありません。</p>
+        <div className="text-center py-24">
+          <p className="font-sans text-body text-mid-gray">該当する記事がありません。</p>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map(post => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-rule border border-rule">
+          {filtered.map((post, i) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="block bg-white rounded-2xl border border-light-gray overflow-hidden hover:shadow-lg hover:border-deep-teal/30 transition-all group"
+              className="block bg-paper group transition hover:bg-mist"
             >
-              <div className="aspect-[16/10] overflow-hidden bg-pale-gray">
+              <div className="aspect-[16/10] overflow-hidden bg-mist relative">
                 <img
                   src={post.image || IMG.blogPlaceholder}
                   alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-              </div>
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-[10px] font-bold text-deep-teal bg-teal-tint px-2 py-0.5 rounded">
-                    {post.category}
-                  </span>
-                  <span className="text-[10px] text-dark-gray">{post.date}</span>
+                <div className="absolute top-4 left-4 bg-ivory/95 backdrop-blur-sm px-3 py-1 border border-rule">
+                  <p className="eyebrow-mono text-ink">№ {String(i + 1).padStart(3, '0')}</p>
                 </div>
-                <h2 className="text-sm font-bold text-charcoal group-hover:text-deep-teal transition leading-relaxed mb-2 line-clamp-2">
+              </div>
+              <div className="p-6 md:p-7">
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-rule">
+                  <p className="eyebrow text-sekai-teal">{post.category}</p>
+                  <p className="eyebrow-mono text-mid-gray">{post.date}</p>
+                </div>
+                <h2 className="font-sans font-medium text-[16px] md:text-[17px] text-ink leading-snug mb-3 line-clamp-3 group-hover:text-sekai-teal transition">
                   {post.title}
                 </h2>
-                <p className="text-xs text-dark-gray line-clamp-2 leading-relaxed">
+                <p className="font-sans text-caption text-dark-gray line-clamp-2 leading-[1.85]">
                   {post.description}
                 </p>
+                <div className="mt-5 flex items-center gap-2 text-sekai-teal">
+                  <span className="eyebrow-mono">Read</span>
+                  <span className="block w-6 h-px bg-sekai-teal group-hover:w-10 transition-[width]" />
+                </div>
               </div>
             </Link>
           ))}
@@ -108,12 +117,12 @@ export default function BlogGrid({ posts, categories }: Props) {
       )}
 
       {/* Result count */}
-      <p className="mt-6 text-[11px] text-mid-gray text-center">
+      <p className="mt-8 font-sans text-caption text-mid-gray text-center">
         {filtered.length}件の記事を表示中
         {active !== 'all' && (
           <button
             onClick={() => setActive('all')}
-            className="ml-2 text-sekai-teal hover:text-deep-teal font-bold transition"
+            className="ml-3 text-sekai-teal hover:text-ink transition font-normal border-b border-sekai-teal pb-0.5"
           >
             すべて表示
           </button>

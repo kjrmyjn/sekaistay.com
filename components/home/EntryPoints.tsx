@@ -2,14 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ENTRY } from '@/content/home/copy'
 import { IMG } from '@/content/home/images'
-import { IconArrowRight, IconCheckCircle, IconSparkle, IconChart } from '@/components/Icons'
+import { IconArrowRight } from '@/components/Icons'
 import { JP } from '@/components/JP'
-
-const ICONS = {
-  existing: IconCheckCircle,
-  starting: IconSparkle,
-  exploring: IconChart,
-} as const
 
 const IMAGES = {
   existing: IMG.entryExisting,
@@ -19,69 +13,78 @@ const IMAGES = {
 
 export default function EntryPoints() {
   return (
-    <section className="bg-cloud-white">
-      <div className="max-w-[1080px] mx-auto px-5 md:px-10 section-lg">
-        <div className="max-w-[720px] mb-12 md:mb-14">
-          <div className="divider-teal mb-5" />
-          <h2 className="heading-section text-charcoal mb-4 jp-keep">
-            <JP>{ENTRY.headline}</JP>
-          </h2>
-          <p className="text-body text-dark-gray jp-break">
+    <section className="bg-ivory">
+      <div className="container-edit section-lg">
+        {/* Header */}
+        <div className="mb-16 md:mb-20 grid md:grid-cols-12 gap-8 items-end">
+          <div className="md:col-span-7">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="chapter">Chapter Ⅱ</span>
+              <span className="rule-teal-sm" />
+              <span className="eyebrow">Three Entrances</span>
+            </div>
+            <h2 className="heading-section text-ink jp-keep">
+              <JP>{ENTRY.headline}</JP>
+            </h2>
+          </div>
+          <p className="md:col-span-5 text-body-sm text-dark-gray jp-break md:pb-2">
             {ENTRY.body}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-          {ENTRY.cards.map((c) => {
-            const Icon = ICONS[c.id as keyof typeof ICONS]
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          {ENTRY.cards.map((c, i) => {
             const img = IMAGES[c.id as keyof typeof IMAGES]
             return (
               <Link
                 key={c.id}
                 href={c.cta.href}
-                className="group bg-white rounded-card border border-light-gray overflow-hidden flex flex-col lift hover:border-sekai-teal"
+                className="group relative flex flex-col bg-paper border border-rule overflow-hidden transition-all duration-500 hover:border-ink"
               >
-                {/* Image banner */}
-                <div className="relative h-40 md:h-44 overflow-hidden">
+                {/* Number */}
+                <span className="absolute top-5 right-5 z-10 font-sans text-[40px] font-light text-ivory/80 mix-blend-difference leading-none">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
                     loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 340px"
-                    quality={70}
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 360px"
+                    quality={75}
+                    className="object-cover group-hover:scale-[1.04] transition-transform duration-[800ms]"
                   />
                   <div
                     aria-hidden
                     className="absolute inset-0"
                     style={{
                       background:
-                        'linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%)',
+                        'linear-gradient(180deg, rgba(26,26,26,0) 45%, rgba(26,26,26,0.45) 100%)',
                     }}
                   />
-                  {/* Icon badge floating on image */}
-                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center">
-                    <Icon size={18} color="#167B81" />
+                  <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between text-ivory">
+                    <p className="eyebrow !text-ivory tracking-[0.32em]">{c.label}</p>
                   </div>
-                  <span className="absolute bottom-4 left-4 eyebrow text-white">
-                    {c.label}
-                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-1">
-                  <h3 className="heading-sub text-charcoal mb-3 jp-keep">
+                {/* Body */}
+                <div className="p-7 md:p-8 flex flex-col flex-1">
+                  <h3 className="font-sans text-[19px] md:text-[20px] font-medium text-ink mb-4 leading-snug jp-keep">
                     <JP>{c.title}</JP>
                   </h3>
 
-                  <p className="text-body-sm text-dark-gray mb-5 flex-1 jp-break">
+                  <p className="text-body-sm text-dark-gray mb-7 flex-1 jp-break">
                     {c.body}
                   </p>
 
-                  <span className="inline-flex items-center gap-1.5 text-[14px] font-bold text-sekai-teal group-hover:text-deep-teal transition">
+                  <span className="inline-flex items-center gap-3 text-[12.5px] font-medium uppercase tracking-[0.16em] text-ink group-hover:text-sekai-teal transition">
                     {c.cta.label}
-                    <IconArrowRight size={16} />
+                    <span className="block w-6 h-px bg-ink group-hover:bg-sekai-teal group-hover:w-10 transition-all" />
+                    <IconArrowRight size={12} />
                   </span>
                 </div>
               </Link>
