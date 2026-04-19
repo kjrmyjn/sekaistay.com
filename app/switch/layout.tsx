@@ -1,8 +1,13 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
-const TITLE = '民泊運用代行の乗り換えなら SEKAI STAY｜手数料8%'
+/* ─────────────────────────────────────────────────────────────
+ * /switch のメタデータ — 元LP (sekaistay-lp.vercel.app/switch) と一致させる
+ * ページ本体は page.tsx でiframeミラーとして元LPを表示
+ * ───────────────────────────────────────────────────────────── */
+
+const TITLE = 'SEKAI STAY | 手数料8%の民泊運用代行'
 const DESCRIPTION =
-  '業界平均15〜25%の手数料を8%に。最短2週間で切り替え完了、解約金0円。限定10オーナーまで初期費用¥0。無料診断レポートを次営業日にお届け。'
+  '独自の仕組みで手数料8%を実現。OTA掲載管理・ゲスト対応・清掃手配・価格調整まで、民泊運営のすべてをお任せください。'
 const URL = 'https://sekaistay.com/switch'
 
 export const metadata: Metadata = {
@@ -11,22 +16,27 @@ export const metadata: Metadata = {
   alternates: { canonical: URL },
   openGraph: {
     title: TITLE,
-    description: DESCRIPTION,
+    description: '手数料、払いすぎていませんか。SEKAI STAYなら8%で高品質な運営を実現。',
     url: URL,
     type: 'website',
     locale: 'ja_JP',
     siteName: 'SEKAI STAY',
-    images: [{ url: 'https://sekaistay.com/og-image.jpg', width: 1200, height: 630, alt: 'SEKAI STAY 乗り換え' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
-    description: DESCRIPTION,
-    images: ['https://sekaistay.com/og-image.jpg'],
+    description: '手数料、払いすぎていませんか。SEKAI STAYなら8%で高品質な運営を実現。',
   },
   robots: { index: true, follow: true },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export default function SwitchLayout({ children }: { children: React.ReactNode }) {
+  // 親の root layout が <html><body> を提供。子レイアウトはパススルーのみ。
   return <>{children}</>
 }
