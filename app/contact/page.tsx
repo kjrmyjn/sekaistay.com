@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import { IconCheck, IconArrowRight } from '@/components/Icons'
 
-const WEB3FORMS_KEY = '85597b1f-b146-40b9-94af-7a8dc25dfe1b'
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
 
 const inputCls =
   'w-full bg-mist border border-rule px-5 py-4 text-[15px] font-sans text-ink placeholder:text-mid-gray/70 outline-none transition focus:border-sekai-teal focus:bg-paper'
