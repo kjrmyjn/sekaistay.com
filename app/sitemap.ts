@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/company`,      lastModified: new Date('2026-02-01'), changeFrequency: 'yearly',  priority: 0.6 },
     { url: `${baseUrl}/contact`,      lastModified: new Date('2026-02-01'), changeFrequency: 'yearly',  priority: 0.7 },
     { url: `${baseUrl}/simulate`,     lastModified: new Date('2026-04-18'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/switch`,       lastModified: new Date('2026-04-20'), changeFrequency: 'weekly',  priority: 0.9 },
     // NOTE: /lp は広告の着地ページ専用。メインサイトのサイトマップには含めない（noindex）。
     { url: `${baseUrl}/privacy`,      lastModified: new Date('2026-01-01'), changeFrequency: 'yearly',  priority: 0.3 },
   ]
