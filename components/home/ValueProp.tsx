@@ -16,7 +16,8 @@ export default function ValueProp() {
           </div>
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end">
             <h2 className="heading-hero text-ink jp-keep">
-              <JP>{VALUE.headline}</JP>
+              <JP>{VALUE.headline.line1}</JP>
+              <span className="block"><JP>{VALUE.headline.line2}</JP></span>
             </h2>
             <p className="lead text-dark-gray jp-break">
               {VALUE.body}

@@ -52,10 +52,6 @@ export default function Header() {
               width={74}
               height={28}
             />
-            <span className="hidden sm:inline-block h-4 w-px bg-ink/15" />
-            <span className="hidden sm:inline-block wordmark text-[11px] text-ink/70 group-hover:text-sekai-teal transition">
-              Est. Tokyo
-            </span>
           </Link>
 
           {/* Nav */}

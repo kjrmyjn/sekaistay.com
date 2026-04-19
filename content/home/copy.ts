@@ -25,7 +25,7 @@ export const HERO = {
     { value: '4.8', label: 'レビュー平均' },
     { value: '全国', label: '対応エリア' },
     { value: '5年+', label: '運用知見' },
-    { value: '高級物件', label: '運用実績多数' },
+    { value: '35名', label: '運用チーム' },
   ],
   primaryCta: { label: '無料で収益シミュレーションする', href: '/simulate' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
@@ -45,7 +45,7 @@ export const AUTHORITY = {
     { metric: '全国', label: '都市・リゾート・地方エリア対応' },
     { metric: '多言語', label: '英・中・韓を含むゲスト対応' },
     { metric: '自社運営', label: '飲食・宿泊を現場で運営' },
-    { metric: '自社メディア', label: '登録者20万人超の発信基盤' },
+    { metric: '20万+', label: '自社YouTubeの登録者数' },
   ],
   note: '※ 数値は当社管理物件（Airbnb / Booking.com ほか主要OTA掲載）に基づく集計値／2024-2025。住宅宿泊事業法（民泊新法）・旅館業法いずれにも対応し、契約時に適用法令・許認可をご案内します。',
 } as const
@@ -107,7 +107,10 @@ export const SIMULATION = {
 
 // ═══ 4. Value Proposition ═══
 export const VALUE = {
-  headline: 'SEKAI STAYが、ただの運用代行で終わらない理由',
+  headline: {
+    line1: 'ただの運用代行で、',
+    line2: '終わらない理由。',
+  },
   body: '民泊は、ただ管理するだけでは伸びません。地域ごとの需要を読み、物件の魅力を正しく伝え、予約につながる形に整えることで成果が変わります。SEKAI STAYは、運営だけでなく“伸ばすための設計”まで支援します。',
   items: [
     {
@@ -265,7 +268,7 @@ export const PRICING = {
   // ── 中央のメインプラン ──
   plan: {
     badge: 'Standard Plan',
-    title: '運営委託プラン（フルサポート）',
+    title: '運営委託プラン',
     feeLabel: '運営委託費',
     feeValue: '8',
     feeUnit: '%',

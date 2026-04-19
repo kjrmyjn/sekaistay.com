@@ -78,7 +78,7 @@ export default function CompanyPage() {
                   <p className="eyebrow-mono text-bright-teal mb-1">SEKAI STAY</p>
                   <p className="font-sans text-[17px] md:text-[19px]">株式会社セカイチ（SEKAICHI Inc.）</p>
                 </div>
-                <p className="eyebrow-mono text-mid-gray hidden md:block">Est. — Company Record</p>
+                <p className="eyebrow-mono text-mid-gray hidden md:block">Company Record</p>
               </div>
 
               {/* Info rows */}

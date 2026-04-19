@@ -99,7 +99,7 @@ export default function FinalCTA() {
               <div className="flex items-center gap-4">
                 <span className="w-8 h-px bg-ivory/30" />
                 <span className="eyebrow-mono text-ivory/50">
-                  SEKAI STAY — Est. Tokyo
+                  SEKAI STAY
                 </span>
               </div>
             </div>

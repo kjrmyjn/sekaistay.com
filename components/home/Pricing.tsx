@@ -50,11 +50,11 @@ export default function Pricing() {
                 <p className="eyebrow-mono text-ivory/50 mb-5">
                   {PRICING.plan.feeLabel}
                 </p>
-                <div className="flex items-baseline gap-2 flex-wrap mb-3">
-                  <span className="font-sans font-light text-[88px] md:text-[112px] leading-none tracking-tight text-ivory tabular-nums">
+                <div className="flex items-baseline gap-1 flex-wrap mb-3">
+                  <span className="font-sans font-light text-[88px] md:text-[112px] leading-[0.9] text-ivory">
                     {PRICING.plan.feeValue}
                   </span>
-                  <span className="font-sans font-light text-[44px] md:text-[56px] text-bright-teal leading-none">
+                  <span className="font-sans font-light text-[44px] md:text-[56px] text-bright-teal leading-[0.9]">
                     {PRICING.plan.feeUnit}
                   </span>
                 </div>

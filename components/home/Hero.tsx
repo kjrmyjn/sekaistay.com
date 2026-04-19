@@ -117,7 +117,6 @@ export default function Hero() {
               />
               <div className="absolute top-5 left-5 right-5 flex justify-between items-start text-ivory">
                 <p className="eyebrow-mono !text-[10px] tracking-[0.24em]">SEKAI STAY</p>
-                <p className="font-sans text-[14px] opacity-90">Est. 2021</p>
               </div>
               <div className="absolute bottom-6 left-6 right-6 text-ivory">
                 <p className="font-sans text-[42px] leading-none font-light">★ 4.8</p>
