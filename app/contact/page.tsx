@@ -76,18 +76,27 @@ export default function ContactPage() {
                     2営業日以内に担当より返信いたします。
                   </p>
                 </div>
-                <div className="px-8 py-8 text-center">
+                <div className="px-8 py-8 text-center space-y-3">
                   <p className="eyebrow-mono text-mid-gray mb-3">Next Step</p>
                   <p className="font-sans text-body-sm text-dark-gray mb-5">
-                    物件の詳しい診断をご希望の方は
+                    ご自身の物件の状態を今すぐ把握したい方は
                   </p>
-                  <a
-                    href="/lp#diagnostic"
-                    className="btn btn-primary text-[14px]"
-                  >
-                    無料診断フォームへ
-                    <IconArrowRight size={14} />
-                  </a>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a
+                      href="/audit"
+                      className="btn btn-primary text-[14px]"
+                    >
+                      無料運営診断へ
+                      <IconArrowRight size={14} />
+                    </a>
+                    <a
+                      href="/simulate"
+                      className="btn btn-ghost text-[14px]"
+                    >
+                      収益シミュレーション
+                      <IconArrowRight size={14} />
+                    </a>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -148,25 +157,34 @@ export default function ContactPage() {
                   </div>
                 </form>
 
-                {/* Alt lead-in — diagnostic */}
+                {/* Alt lead-in — audit / simulate */}
                 <div className="mt-10 bg-bone border border-rule p-8 md:p-10">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="rule-teal-sm" />
                     <p className="eyebrow text-sekai-teal">Alternative Path</p>
                   </div>
                   <h3 className="font-sans font-medium text-[20px] md:text-[24px] text-ink leading-snug mb-3">
-                    物件の収益シミュレーションを<br className="hidden md:block" />ご希望ですか？
+                    すぐに物件の状態を<br className="hidden md:block" />チェックしたい方へ
                   </h3>
                   <p className="font-sans text-body-sm text-dark-gray leading-[1.9] mb-6">
-                    詳しい物件情報をご入力いただくと、個別の収益試算レポートをお届けします。
+                    3分の診断と収益シミュレーションをご用意しています。結果をもとに、最適な運営方針をご提案します。
                   </p>
-                  <a
-                    href="/lp#diagnostic"
-                    className="btn btn-ghost text-[14px]"
-                  >
-                    無料診断フォームへ
-                    <IconArrowRight size={14} />
-                  </a>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="/audit"
+                      className="btn btn-ghost text-[14px]"
+                    >
+                      無料運営診断（3分）
+                      <IconArrowRight size={14} />
+                    </a>
+                    <a
+                      href="/simulate"
+                      className="btn btn-ghost text-[14px]"
+                    >
+                      収益シミュレーション
+                      <IconArrowRight size={14} />
+                    </a>
+                  </div>
                 </div>
               </div>
             )}

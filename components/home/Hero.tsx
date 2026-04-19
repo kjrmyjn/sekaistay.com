@@ -84,7 +84,7 @@ export default function Hero() {
               className="mt-6 inline-flex items-center gap-2 text-[13px] text-ink/60 hover:text-sekai-teal transition group"
             >
               <span className="font-sans">すでに運用中の方は</span>
-              <span className="underline-grow">無料診断へ</span>
+              <span className="underline-grow">無料運営診断へ</span>
               <IconArrowRight size={12} className="group-hover:translate-x-1 transition" />
             </Link>
           </div>

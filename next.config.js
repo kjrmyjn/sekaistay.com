@@ -43,19 +43,13 @@ const nextConfig = {
       },
     ]
   },
-  // 動線整理: /diagnostic は /audit に統合済み
+  // 動線整理: /diagnostic と /result は /audit に統合済み
   async redirects() {
     return [
-      {
-        source: '/diagnostic',
-        destination: '/audit',
-        permanent: true,
-      },
-      {
-        source: '/diagnostic/:path*',
-        destination: '/audit',
-        permanent: true,
-      },
+      { source: '/diagnostic',         destination: '/audit', permanent: true },
+      { source: '/diagnostic/:path*',  destination: '/audit', permanent: true },
+      { source: '/result',             destination: '/audit', permanent: true },
+      { source: '/result/:path*',      destination: '/audit', permanent: true },
     ]
   },
 }
