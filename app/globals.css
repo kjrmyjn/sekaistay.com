@@ -543,3 +543,186 @@
 @supports (padding: env(safe-area-inset-bottom)) {
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 }
+
+/* ══════════════════════════════════════════════
+   /switch LP Port — Custom CSS
+   LP (sekaistay-lp) から移植したカスタムアニメーション・ユーティリティ
+   クラス名は switch- プレフィックス化した Tailwind カスタム色と整合。
+   ══════════════════════════════════════════════ */
+
+:root {
+  --color-switch-teal:        #259da3;
+  --color-switch-teal-deep:   #167b81;
+  --color-switch-teal-bright: #54bec3;
+  --color-switch-teal-tint:   #e5f4f5;
+  --color-switch-accent:        #e8653a;
+  --color-switch-accent-hover:  #d4552d;
+  --color-switch-charcoal:      #2d2d2d;
+  --color-switch-stone-text:   #23221e;
+  --color-switch-stone-border: #d6d3d0;
+  --switch-radius-md:          6px;
+  --switch-shadow-card:        0 2px 4px rgba(0, 0, 0, 0.1);
+  --switch-shadow-modal:       0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Scroll-triggered fade-in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.stagger > .fade-in:nth-child(1) { transition-delay: 0ms; }
+.stagger > .fade-in:nth-child(2) { transition-delay: 100ms; }
+.stagger > .fade-in:nth-child(3) { transition-delay: 200ms; }
+.stagger > .fade-in:nth-child(4) { transition-delay: 300ms; }
+.stagger > .fade-in:nth-child(5) { transition-delay: 400ms; }
+.stagger > .fade-in:nth-child(6) { transition-delay: 500ms; }
+
+/* Dynamic fadeIn animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* CTA shadow behaviours */
+.cta-glow {
+  box-shadow: var(--switch-shadow-card);
+}
+.cta-glow:hover {
+  box-shadow: var(--switch-shadow-modal);
+}
+.cta-breath {
+  animation: none;
+}
+
+/* Count-up pop */
+@keyframes number-pop {
+  0%   { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-number-pop {
+  animation: number-pop 0.4s ease-out forwards;
+}
+
+/* Down-arrow bounce */
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+.bounce-arrow {
+  animation: bounce-arrow 1.6s ease-in-out infinite;
+}
+
+/* Warning icon micro-shake */
+@keyframes micro-shake {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-4deg); }
+  75%      { transform: rotate(4deg); }
+}
+.micro-shake {
+  animation: micro-shake 2.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Highlight marker — bold + teal underline */
+.highlight-marker,
+.highlight-marker-draw {
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-switch-teal);
+  padding-bottom: 1px;
+}
+
+/* Hero keyword emphasis */
+.gradient-highlight-box {
+  display: inline;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  background: none;
+  box-shadow: none;
+  border-bottom: 3px solid var(--color-switch-teal-bright);
+}
+.gradient-text-hero {
+  color: var(--color-switch-teal-bright);
+  font-weight: 700;
+}
+
+/* Hero の「8」 - 金色メタリック */
+.gradient-text-mega {
+  background: linear-gradient(110deg,
+    #d97706 0%,
+    #f59e0b 18%,
+    #fbbf24 32%,
+    #fde68a 44%,
+    #ffffff 50%,
+    #fde68a 56%,
+    #fbbf24 68%,
+    #f59e0b 82%,
+    #d97706 100%);
+  background-size: 260% 100%;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.35))
+          drop-shadow(0 0 22px rgba(245, 158, 11, 0.22));
+  animation: gradient-shine-sweep 3.6s ease-in-out infinite;
+}
+@keyframes gradient-shine-sweep {
+  0%   { background-position: 100% 50%; }
+  50%  { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* SmartHR-style utility classes (LP 内で使用) */
+.shr-card {
+  background: #ffffff;
+  border: 1px solid var(--color-switch-stone-border);
+  border-radius: var(--switch-radius-md);
+  box-shadow: var(--switch-shadow-card);
+}
+.shr-input {
+  background: #ffffff;
+  border: 1px solid var(--color-switch-stone-border);
+  border-radius: var(--switch-radius-md);
+  padding: 8px 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.shr-input:focus {
+  outline: none;
+  border-color: var(--color-switch-teal);
+  box-shadow: 0 0 0 1px var(--color-switch-teal);
+}
+.shr-btn-primary {
+  background: var(--color-switch-accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 8px 16px;
+  border-radius: var(--switch-radius-md);
+  transition: background 0.15s ease;
+}
+.shr-btn-primary:hover {
+  background: var(--color-switch-accent-hover);
+}
+.shr-btn-secondary {
+  background: transparent;
+  color: var(--color-switch-teal);
+  border: 1px solid var(--color-switch-teal);
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--switch-radius-md);
+}

@@ -1,106 +1,118 @@
-/* ─────────────────────────────────────────────────────────────────
- * /switch — 社内LP (sekaistay-lp.vercel.app/switch) の完全ミラー
+"use client";
+
+/* ─────────────────────────────────────────────────────────────
+ * /switch — sekaistay.com のネイティブ実装（社内LPを完全移植）
  *
- * 元LPのHTMLをサーバーサイドで取得し、全ての相対パス
- * （/_next/*, /images/*, /favicon*）を元LPドメインへの絶対URLに
- * 書き換えて iframe srcDoc に注入する。
- *
- * 結果:
- *  - sekaistay.com/switch のURLで元LPがそのまま表示される
- *  - CSS・JS・画像・フォントは sekaistay-lp.vercel.app から読み込まれる
- *  - フォームやインタラクションも元LPと同一に動作する
- *  - LPチームが更新すると最短5分で反映（revalidate）
- * ───────────────────────────────────────────────────────────────── */
+ * 以前は sekaistay-lp.vercel.app を iframe でミラーしていたが、
+ * SEO・LCP・保守性のため sekaistay.com 本体に直接統合。
+ * 色クラスは `switch-` プレフィックス版に置換済み（色衝突回避）。
+ * ───────────────────────────────────────────────────────────── */
 
-export const revalidate = 300 // 5分ごとに再取得
+import { useState } from "react";
+import LpFooter from "@/components/switch/_shared/LpFooter";
+import LpCompanyInfo from "@/components/switch/_shared/LpCompanyInfo";
+import SwitchHeader from "@/components/switch/SwitchHeader";
+import SwitchHero from "@/components/switch/SwitchHero";
+import SwitchSimulator from "@/components/switch/SwitchSimulator";
+import SwitchPainPoints from "@/components/switch/SwitchPainPoints";
+import SwitchServices from "@/components/switch/SwitchServices";
+import SwitchComparison from "@/components/switch/SwitchComparison";
+import SwitchResults from "@/components/switch/SwitchResults";
+import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
+import SwitchPricing from "@/components/switch/SwitchPricing";
+import SwitchFlow from "@/components/switch/SwitchFlow";
+import SwitchFAQ from "@/components/switch/SwitchFAQ";
+import SwitchContactForm, {
+  type PrefillState,
+} from "@/components/switch/SwitchContactForm";
+import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
+import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
+import WaveDivider from "@/components/switch/deco/WaveDivider";
 
-const LP_ORIGIN = 'https://sekaistay-lp.vercel.app'
-const LP_URL = `${LP_ORIGIN}/switch`
+export default function SwitchPage() {
+  const [prefill, setPrefill] = useState<PrefillState>(null);
 
-function rewriteAssetUrls(html: string): string {
-  let out = html
-
-  // 1. href/src/action/content 属性内の絶対パス → LP絶対URL
-  out = out.replace(
-    /(href|src|action|content)="\/([^/"][^"]*?)"/g,
-    (_m, attr, path) => `${attr}="${LP_ORIGIN}/${path}"`
-  )
-
-  // 2. srcSet 属性（カンマ区切りの複数URL）
-  out = out.replace(/srcSet="([^"]+)"/g, (_m, val: string) => {
-    const rewritten = val.replace(
-      /(^|\s|,\s*)\/([^/\s][^\s,]*)/g,
-      (_s, sep: string, path: string) => `${sep}${LP_ORIGIN}/${path}`
-    )
-    return `srcSet="${rewritten}"`
-  })
-
-  // 3. RSC (React Server Components) ペイロード内のエスケープされたURL
-  //    self.__next_f.push(...) に \"/_next/...\" の形で埋め込まれている
-  out = out.replace(
-    /\\"\/([^/\\"][^\\"]*?)\\"/g,
-    (_m, path) => `\\"${LP_ORIGIN}/${path}\\"`
-  )
-
-  return out
-}
-
-async function fetchLP(): Promise<string> {
-  const res = await fetch(LP_URL, {
-    next: { revalidate: 300 },
-    headers: { 'user-agent': 'sekaistay-proxy/1.0' },
-  })
-  if (!res.ok) throw new Error(`LP fetch failed: ${res.status}`)
-  const html = await res.text()
-  return rewriteAssetUrls(html)
-}
-
-export default async function SwitchPage() {
-  let html = ''
-  try {
-    html = await fetchLP()
-  } catch {
-    return (
-      <div
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontFamily: 'sans-serif',
-          padding: '2rem',
-          textAlign: 'center',
-        }}
-      >
-        <div>
-          <h1 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-            ページを読み込めませんでした
-          </h1>
-          <p style={{ color: '#666' }}>
-            しばらく経ってから再度アクセスしてください。
-          </p>
-          <a href="/" style={{ color: '#0891b2', marginTop: '1rem', display: 'inline-block' }}>
-            トップへ戻る →
-          </a>
-        </div>
-      </div>
-    )
-  }
+  const handleApply = (v: {
+    currentFeeRate: number;
+    monthlyRevenue: number;
+    pastYears: number;
+    futureYears: number;
+  }) => {
+    setPrefill(v);
+    setTimeout(() => {
+      document
+        .getElementById("contact-form")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  };
 
   return (
-    <iframe
-      srcDoc={html}
-      title="SEKAI STAY｜手数料8%の民泊運用代行"
-      style={{
-        position: 'fixed',
-        inset: 0,
-        width: '100vw',
-        height: '100vh',
-        border: 0,
-        margin: 0,
-        padding: 0,
-        display: 'block',
-      }}
-    />
-  )
+    <>
+      <SwitchHeader />
+      <main>
+        {/* §1 Hero */}
+        <SwitchHero />
+        <WaveDivider fromColor="#2d2d2d" toColor="#167b81" withDots />
+
+        {/* §2 簡易診断 */}
+        <SwitchSimulator onApply={handleApply} />
+        <WaveDivider fromColor="#167b81" toColor="#ffffff" />
+
+        {/* §3 共感ストーリー（松本さん・悩み） */}
+        <SwitchPainPoints />
+
+        {/* MidCTA① — 共感 → プライマリCTA（濃紺ヒーロー） */}
+        <SwitchPrimaryCTA />
+
+        {/* §4 サービス内容 */}
+        <SwitchServices />
+
+        {/* MidCTA② — 機能 → プライマリCTA（同デザイン） */}
+        <SwitchPrimaryCTA title="どんなサービスなのか気になった方へ" />
+
+        {/* §5 他社比較 */}
+        <SwitchComparison />
+
+        {/* MidCTA③ — 差分 → PrimaryCTA（同デザイン + 数値比較） */}
+        <SwitchPrimaryCTA
+          title="他社との手数料差は、あなたの物件だと…"
+          compareStat={{
+            leftLabel: "松本さんの場合（手数料20%）",
+            leftValue: 1440000,
+            leftSuffix: "/ 年",
+            rightLabel: "SEKAI STAY（手数料8%）",
+            rightValue: 636000,
+            rightSuffix: "/ 年",
+            diffLabel: "年間差額",
+            diffValue: 804000,
+            diffSuffix: "/ 年",
+            note: "※ 1部屋想定・月額固定費 ¥5,000/部屋 込みで試算",
+          }}
+        />
+
+        {/* §7 実績 */}
+        <SwitchResults />
+
+        {/* §8 オーナー様の声（松本さん・乗り換え後） */}
+        <SwitchTestimonials />
+
+        {/* §9 料金 */}
+        <SwitchPricing />
+
+        {/* §10 ご利用の流れ */}
+        <SwitchFlow />
+
+        {/* §11 FAQ */}
+        <SwitchFAQ />
+
+        {/* §13 無料診断フォーム */}
+        <SwitchContactForm prefill={prefill} />
+
+        {/* §14 会社概要 */}
+        <LpCompanyInfo />
+      </main>
+      <LpFooter />
+      <SwitchStickyCTA />
+    </>
+  );
 }
