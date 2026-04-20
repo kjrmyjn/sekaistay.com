@@ -8,7 +8,6 @@
  * 色クラスは `switch-` プレフィックス版に置換済み（色衝突回避）。
  * ───────────────────────────────────────────────────────────── */
 
-import { useState } from "react";
 import LpFooter from "@/components/switch/_shared/LpFooter";
 import LpCompanyInfo from "@/components/switch/_shared/LpCompanyInfo";
 import SwitchHeader from "@/components/switch/SwitchHeader";
@@ -22,23 +21,13 @@ import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
 import SwitchPricing from "@/components/switch/SwitchPricing";
 import SwitchFlow from "@/components/switch/SwitchFlow";
 import SwitchFAQ from "@/components/switch/SwitchFAQ";
-import SwitchContactForm, {
-  type PrefillState,
-} from "@/components/switch/SwitchContactForm";
+import SwitchReportFormEmbed from "@/components/switch/SwitchReportFormEmbed";
 import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 import WaveDivider from "@/components/switch/deco/WaveDivider";
 
 export default function SwitchPage() {
-  const [prefill, setPrefill] = useState<PrefillState>(null);
-
-  const handleApply = (v: {
-    currentFeeRate: number;
-    monthlyRevenue: number;
-    pastYears: number;
-    futureYears: number;
-  }) => {
-    setPrefill(v);
+  const handleApply = () => {
     setTimeout(() => {
       document
         .getElementById("contact-form")
@@ -105,8 +94,8 @@ export default function SwitchPage() {
         {/* §11 FAQ */}
         <SwitchFAQ />
 
-        {/* §13 無料診断フォーム */}
-        <SwitchContactForm prefill={prefill} />
+        {/* §13 無料診断フォーム（japanvillas のレポート申請フォームを iframe 埋め込み） */}
+        <SwitchReportFormEmbed />
 
         {/* §14 会社概要 */}
         <LpCompanyInfo />
