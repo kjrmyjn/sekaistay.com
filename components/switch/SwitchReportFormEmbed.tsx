@@ -78,7 +78,7 @@ export default function SwitchReportFormEmbed() {
             style={{
               width: "100%",
               maxWidth: "640px",
-              height: "1900px",
+              height: "1050px",
               border: "none",
               display: "block",
               margin: "0 auto",
