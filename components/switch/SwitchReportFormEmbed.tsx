@@ -6,18 +6,28 @@ import { useScrollFade } from "@/hooks/useScrollFade";
 const EMBED_ORIGIN = "https://japanvillas.kss-cloud.com";
 const EMBED_SRC = `${EMBED_ORIGIN}/report-request?embed=1`;
 
+// kss-cloud form: padding-top 24px, padding-bottom 80px (pb-20)
+// We crop 56px from the bottom so top/bottom whitespace match (24px each)
+const BOTTOM_CROP = 56;
+
 export default function SwitchReportFormEmbed() {
   const ref = useScrollFade();
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (e.origin !== EMBED_ORIGIN) return;
       const data = e.data as { type?: string; height?: number } | null;
       if (!data || data.type !== "japan-villas-height") return;
-      const iframe = iframeRef.current;
-      if (iframe && typeof data.height === "number") {
-        iframe.style.height = `${data.height}px`;
+      if (typeof data.height !== "number") return;
+      // iframe takes full native height (no internal scrollbar),
+      // wrapper is 56px shorter with overflow:hidden to clip the form's oversized bottom padding
+      if (iframeRef.current) {
+        iframeRef.current.style.height = `${data.height}px`;
+      }
+      if (wrapperRef.current) {
+        wrapperRef.current.style.height = `${data.height - BOTTOM_CROP}px`;
       }
     };
     window.addEventListener("message", handler);
@@ -70,22 +80,31 @@ export default function SwitchReportFormEmbed() {
         </div>
 
         <div className="fade-in bg-white rounded-2xl p-4 sm:p-6 shadow-2xl">
-          <iframe
-            ref={iframeRef}
-            id="sekai-report-form"
-            src={EMBED_SRC}
-            title="SEKAI STAY 物件診断レポート申請"
+          <div
+            ref={wrapperRef}
             style={{
               width: "100%",
               maxWidth: "640px",
-              height: "850px",
-              border: "none",
-              display: "block",
+              height: `${850 - BOTTOM_CROP}px`,
               margin: "0 auto",
-              background: "transparent",
+              overflow: "hidden",
             }}
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          >
+            <iframe
+              ref={iframeRef}
+              id="sekai-report-form"
+              src={EMBED_SRC}
+              title="SEKAI STAY 物件診断レポート申請"
+              style={{
+                width: "100%",
+                height: "850px",
+                border: "none",
+                display: "block",
+                background: "transparent",
+              }}
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </div>
     </section>
