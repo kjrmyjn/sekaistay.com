@@ -182,14 +182,13 @@ export default function SwitchContactForm({ prefill }: Props) {
     };
 
     try {
-      const res = await fetch(
-        "https://japanvillas.kss-cloud.com/api/lp/owner-lead",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        },
-      );
+      // 同一オリジンのNext.js API routeを経由して japanvillas に proxy
+      // （ブラウザ直叩きだと localhost / preview が CORS 許可外で弾かれるため）
+      const res = await fetch("/api/switch-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
       const data = await res
         .json()
         .catch(() => ({ ok: false, error: "invalid response" }));

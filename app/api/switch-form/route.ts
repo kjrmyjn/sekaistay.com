@@ -1,110 +1,135 @@
 /* ─────────────────────────────────────────────────────────────
- * /switch フォーム送信プロキシ — Web3Forms 経由で通知メール配信
+ * /api/switch-form — japanvillas リード登録 API への Server-side Proxy
  *
- * LP（社内リポ）の /api/switch-form は createLead + sendThanksMail に
- * 依存した実装だが、Vercel のファイルシステム制限とメール基盤未整備
- * のためそのまま移植しない。メインサイトの /contact・/audit と同じ
- * Web3Forms パターンに差し替え、今すぐ Vercel で動くようにする。
+ * 設計意図:
+ *   - ブラウザから japanvillas.kss-cloud.com を直接叩くと CORS に阻まれる
+ *     （許可Originは本番ドメインのみ: sekaistay.com / www.sekaistay.com /
+ *      lp-ten-gamma.vercel.app）
+ *   - サーバー間通信なら CORS の対象外なので、ここで中継する
  *
- * レスポンス仕様は LP と互換: 成功時 { hash } を返す。
+ * 可観測性と耐障害性:
+ *   - 各試行 15s タイムアウト
+ *   - 上流 5xx のときは 1回だけリトライ（1秒後、合計2試行）
+ *   - 各試行の結果をコンソール出力
  * ───────────────────────────────────────────────────────────── */
 
 import { NextResponse } from 'next/server'
 
-type SwitchFormBody = {
-  name?: unknown
-  email?: unknown
-  phone?: unknown
-  propertyName?: unknown
-  propertyType?: unknown
-  area?: unknown
-  rooms?: unknown
-  currentManager?: unknown
-  currentFeeRate?: unknown
-  monthlyRevenue?: unknown
-  pastYears?: unknown
-  futureYears?: unknown
-  otaUrls?: unknown
-  temperature?: unknown
-  note?: unknown
-  propertySource?: unknown
-  airbnbUrl?: unknown
-  bookingUrl?: unknown
-  peakRevenue?: unknown
-  offpeakRevenue?: unknown
-}
+const UPSTREAM =
+  'https://japanvillas.kss-cloud.com/api/lp/owner-lead'
+const ATTEMPT_TIMEOUT_MS = 15_000
+const RETRY_DELAY_MS = 1_000
+const USER_AGENT = 'sekaistay-form-proxy/1.0 (+https://sekaistay.com)'
 
-function asString(v: unknown): string {
-  if (v === undefined || v === null) return ''
-  return String(v)
+export const runtime = 'nodejs'
+
+async function postOnce(
+  bodyStr: string,
+): Promise<{ status: number; text: string; contentType: string | null }> {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(
+    () => controller.abort(),
+    ATTEMPT_TIMEOUT_MS,
+  )
+  try {
+    const res = await fetch(UPSTREAM, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': USER_AGENT,
+        Origin: 'https://sekaistay.com',
+      },
+      body: bodyStr,
+      cache: 'no-store',
+      signal: controller.signal,
+    })
+    const text = await res.text()
+    return {
+      status: res.status,
+      text,
+      contentType: res.headers.get('content-type'),
+    }
+  } finally {
+    clearTimeout(timeoutId)
+  }
 }
 
 export async function POST(request: Request) {
+  let body: unknown
   try {
-    const body = (await request.json()) as SwitchFormBody
+    body = await request.json()
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: 'invalid json' },
+      { status: 400 },
+    )
+  }
 
-    if (!body.name || !body.email) {
-      return NextResponse.json(
-        { error: 'name and email are required' },
-        { status: 400 },
+  const email = (body as { email?: unknown })?.email
+  if (typeof email !== 'string' || email.trim() === '') {
+    return NextResponse.json(
+      { ok: false, error: 'email is required' },
+      { status: 400 },
+    )
+  }
+
+  const bodyStr = JSON.stringify(body)
+
+  try {
+    console.log('[switch-form proxy] attempt#1 → upstream POST')
+    const t0 = Date.now()
+    let result = await postOnce(bodyStr)
+    console.log(
+      `[switch-form proxy] attempt#1 ← ${result.status} in ${Date.now() - t0}ms`,
+      result.text.slice(0, 200),
+    )
+
+    // 上流 5xx は一時障害の可能性 → 1回だけリトライ
+    if (result.status >= 500 && result.status < 600) {
+      await new Promise((r) => setTimeout(r, RETRY_DELAY_MS))
+      console.log('[switch-form proxy] attempt#2 → retrying after 5xx')
+      const t1 = Date.now()
+      result = await postOnce(bodyStr)
+      console.log(
+        `[switch-form proxy] attempt#2 ← ${result.status} in ${Date.now() - t1}ms`,
+        result.text.slice(0, 200),
       )
     }
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY
-    if (!accessKey) {
-      console.error('[switch-form] NEXT_PUBLIC_WEB3FORMS_KEY is not set')
-      return NextResponse.json({ error: 'form not configured' }, { status: 500 })
+    // 上流が HTML エラーページを返した場合は JSON で包み直す
+    const ct = (result.contentType || '').toLowerCase()
+    if (result.status >= 500 && !ct.includes('application/json')) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: `upstream ${result.status}`,
+        },
+        { status: 502 },
+      )
     }
 
-    const name = asString(body.name)
-    const area = asString(body.area) || '未入力'
-    const propertyType = asString(body.propertyType) || '未入力'
-
-    const payload: Record<string, unknown> = {
-      access_key: accessKey,
-      subject: `【SEKAI STAY /switch】${name}様 - ${area} / ${propertyType}`,
-      from_name: 'SEKAI STAY /switch',
-      replyto: 'contact@sekaistay.com',
-      // 全フィールドを Web3Forms の通知メール本文に展開
-      name,
-      email: asString(body.email),
-      phone: asString(body.phone),
-      property_name: asString(body.propertyName),
-      property_type: propertyType,
-      area,
-      rooms: asString(body.rooms),
-      current_manager: asString(body.currentManager),
-      current_fee_rate: asString(body.currentFeeRate),
-      monthly_revenue: asString(body.monthlyRevenue),
-      past_years: asString(body.pastYears),
-      future_years: asString(body.futureYears),
-      ota_urls: asString(body.otaUrls),
-      temperature: asString(body.temperature),
-      note: asString(body.note),
-      property_source: asString(body.propertySource),
-      airbnb_url: asString(body.airbnbUrl),
-      booking_url: asString(body.bookingUrl),
-      peak_revenue: asString(body.peakRevenue),
-      offpeak_revenue: asString(body.offpeakRevenue),
-    }
-
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+    return new NextResponse(result.text, {
+      status: result.status,
+      headers: {
+        'Content-Type': result.contentType || 'application/json',
+      },
     })
-    const data = (await res.json().catch(() => ({}))) as { success?: boolean }
-
-    if (!res.ok || !data.success) {
-      console.error('[switch-form] Web3Forms submission failed', res.status, data)
-      return NextResponse.json({ error: 'submission failed' }, { status: 502 })
-    }
-
-    // LP 互換: サンクスページへのリダイレクトキー
-    const hash = Math.random().toString(36).slice(2, 10)
-    return NextResponse.json({ hash })
   } catch (e) {
-    console.error('[switch-form]', e)
-    return NextResponse.json({ error: 'internal error' }, { status: 500 })
+    const aborted = e instanceof Error && e.name === 'AbortError'
+    console.error(
+      `[switch-form proxy] ${aborted ? 'timeout' : 'error'}`,
+      e,
+    )
+    return NextResponse.json(
+      {
+        ok: false,
+        error: aborted
+          ? 'upstream timeout'
+          : e instanceof Error
+            ? e.message
+            : 'upstream error',
+      },
+      { status: aborted ? 504 : 502 },
+    )
   }
 }
