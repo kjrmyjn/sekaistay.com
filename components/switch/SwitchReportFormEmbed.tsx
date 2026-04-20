@@ -17,8 +17,7 @@ export default function SwitchReportFormEmbed() {
       if (!data || data.type !== "japan-villas-height") return;
       const iframe = iframeRef.current;
       if (iframe && typeof data.height === "number") {
-        // kss-cloud form has pb-20 (80px) bottom padding; subtract it and keep 24px buffer
-        iframe.style.height = `${data.height - 56}px`;
+        iframe.style.height = `${data.height}px`;
       }
     };
     window.addEventListener("message", handler);
@@ -79,7 +78,7 @@ export default function SwitchReportFormEmbed() {
             style={{
               width: "100%",
               maxWidth: "640px",
-              height: "620px",
+              height: "850px",
               border: "none",
               display: "block",
               margin: "0 auto",
