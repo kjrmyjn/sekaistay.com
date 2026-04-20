@@ -80,6 +80,9 @@ export default function SwitchContactForm({ prefill }: Props) {
   const [temperature, setTemperature] = useState("");
   const [note, setNote] = useState("");
 
+  // honeypot（スパム対策・常に空のはず）
+  const [honeypot, setHoneypot] = useState("");
+
   const estimatedAnnual = peakRevenue * 4 + offpeakRevenue * 8;
 
   function step1Valid() {
@@ -105,40 +108,110 @@ export default function SwitchContactForm({ prefill }: Props) {
       setError("お名前とメールアドレスは必須です");
       return;
     }
+    // honeypot: 非空ならサイレントに完了扱い（スパム対策）
+    if (honeypot) {
+      router.push(`/switch/thanks`);
+      return;
+    }
     setSubmitting(true);
 
     const years = YEAR_OPTIONS[yearsIdx] ?? YEAR_OPTIONS[2];
     const monthlyRevenue = Math.round((peakRevenue + offpeakRevenue) / 2);
 
+    // 姓名分割（スペース無し入力なら全部 lastname に入れる）
+    const nameParts = name.trim().split(/\s+/);
+    const lastname = nameParts[0] || "";
+    const firstname = nameParts.slice(1).join(" ") || undefined;
+
+    // property_type をガイド準拠ラベルへマッピング
+    const propertyTypeMap: Record<string, string> = {
+      house: "戸建",
+      apartment: "マンション",
+      "whole-building": "マンション",
+      villa: "VILLA",
+      other: "その他",
+    };
+
+    // area を日本語ラベルへマッピング
+    const areaMap: Record<string, string> = {
+      tokyo: "東京都",
+      osaka: "大阪府",
+      kyoto: "京都府",
+      fukuoka: "福岡県",
+      hokkaido: "北海道",
+      okinawa: "沖縄県",
+      other: "その他",
+    };
+
+    // UTM（layout.tsx で sessionStorage に保存済み）
+    const readUtm = (k: string) =>
+      typeof window !== "undefined"
+        ? sessionStorage.getItem(k) || undefined
+        : undefined;
+
+    const body = {
+      // --- ガイド記載の標準フィールド ---
+      email,
+      lastname,
+      firstname,
+      phone: phone || undefined,
+      property_type: propertyTypeMap[propertyType] || undefined,
+      area: areaMap[area] || undefined,
+      room_count: Number(rooms) || undefined,
+      estimated_revenue:
+        monthlyRevenue > 0 ? monthlyRevenue * 10000 : undefined,
+      lp_url:
+        typeof window !== "undefined" ? window.location.href : undefined,
+      utm_source: readUtm("utm_source"),
+      utm_medium: readUtm("utm_medium"),
+      utm_campaign: readUtm("utm_campaign"),
+      website: honeypot,
+
+      // --- カスタムプロパティ（HubSpot 側でそのままキー名で連携される） ---
+      propertyName: propertyName.trim() || undefined,
+      airbnbUrl: airbnbUrl || undefined,
+      bookingUrl: bookingUrl || undefined,
+      propertySource: derivePropertySource(),
+      currentFeeRate: feeRate < 0 ? undefined : feeRate,
+      pastYears: years.past,
+      futureYears: years.future,
+      peakRevenue,
+      offpeakRevenue,
+      temperature: temperature || undefined,
+      note: note || undefined,
+    };
+
     try {
-      const res = await fetch("/api/switch-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          propertyName: propertyName.trim() || undefined,
-          propertyType,
-          area,
-          rooms: Number(rooms),
-          currentManager: "",
-          currentFeeRate: feeRate < 0 ? 0.2 : feeRate,
-          monthlyRevenue,
-          pastYears: years.past,
-          futureYears: years.future,
-          peakRevenue,
-          offpeakRevenue,
-          propertySource: derivePropertySource(),
-          airbnbUrl: airbnbUrl || undefined,
-          bookingUrl: bookingUrl || undefined,
-          temperature,
-          note,
-        }),
-      });
-      if (!res.ok) throw new Error("送信に失敗しました");
-      const { hash } = await res.json();
-      router.push(`/switch/thanks?id=${hash}`);
+      const res = await fetch(
+        "https://japanvillas.kss-cloud.com/api/lp/owner-lead",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        },
+      );
+      const data = await res
+        .json()
+        .catch(() => ({ ok: false, error: "invalid response" }));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "送信に失敗しました");
+      }
+
+      // GA4 リードイベント（年間の手数料差額想定値を value に）
+      if (typeof window !== "undefined") {
+        const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void })
+          .gtag;
+        if (typeof gtag === "function") {
+          gtag("event", "generate_lead", {
+            currency: "JPY",
+            value: Math.round(estimatedAnnual * 10000 * 0.12),
+          });
+        }
+      }
+
+      router.push(
+        `/switch/thanks?id=${data.contact_id || ""}`,
+      );
     } catch (e) {
       setError(e instanceof Error ? e.message : "送信に失敗しました");
       setSubmitting(false);
@@ -228,6 +301,29 @@ export default function SwitchContactForm({ prefill }: Props) {
             >
               {/* === ① 物件情報 === */}
               <div className="w-full shrink-0 px-1">
+                {/* honeypot: スパム対策・画面外配置・常に空のはず */}
+                <label
+                  aria-hidden
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    top: "auto",
+                    width: 1,
+                    height: 1,
+                    overflow: "hidden",
+                  }}
+                >
+                  Website
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </label>
+
                 <StepTitle no="①" title="物件を教えてください" />
 
                 <div className="mb-3">
