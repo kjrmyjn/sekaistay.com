@@ -5,7 +5,7 @@ import SectionHead from "./deco/SectionHead";
 
 const testimonials = [
   {
-    name: "山本 様",
+    name: "Y.A. 様",
     age: "48歳",
     type: "戸建て2棟 / 神奈川県",
     years: "オーナー歴2年",
@@ -17,7 +17,7 @@ const testimonials = [
     text: "前の代行は18%で、正直「民泊ってこんなに引かれるものなのか」と諦めていた。SEKAI STAYは数字が全部アプリで見える。はじめて『自分の事業』として数字を追う感覚を持てました。妻に見せたら「ちゃんと増えてるね」と。",
   },
   {
-    name: "鈴木 様",
+    name: "S.U. 様",
     age: "42歳",
     type: "マンション2室 / 大阪府",
     years: "オーナー歴1年",
@@ -29,7 +29,7 @@ const testimonials = [
     text: "副業で始めたけど、自分で運営する時間がなくて稼働率がボロボロだった。SEKAI STAYに任せてからは予約サイトの掲載が見違えた。写真の順番を変えただけで予約が入り始めたのは衝撃的でした。",
   },
   {
-    name: "佐藤 様",
+    name: "S.A. 様",
     age: "61歳",
     type: "一棟アパート / 福岡県",
     years: "オーナー歴5年",
@@ -59,7 +59,7 @@ export default function SwitchTestimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="fade-in bg-white rounded-md overflow-hidden shadow-sm hover:shadow transition-shadow"
+              className="fade-in bg-white rounded-md overflow-hidden shadow-sm hover:shadow transition-shadow flex flex-col"
             >
               {/* Impact */}
               <div
@@ -79,7 +79,7 @@ export default function SwitchTestimonials() {
                 </p>
               </div>
 
-              <div className="p-5">
+              <div className="p-5 flex flex-col flex-1">
                 <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, j) => (
                     <svg
@@ -97,7 +97,7 @@ export default function SwitchTestimonials() {
                   「{t.text}」
                 </p>
 
-                <div className="pt-3 border-t border-switch-gray-light">
+                <div className="mt-auto pt-3 border-t border-switch-gray-light">
                   <p className="text-sm font-bold text-switch-charcoal">
                     {t.name}{" "}
                     <span className="text-xs text-switch-gray-mid">
