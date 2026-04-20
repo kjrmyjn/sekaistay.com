@@ -85,7 +85,6 @@ export default function SwitchReportFormEmbed() {
               background: "transparent",
             }}
             referrerPolicy="no-referrer-when-downgrade"
-            loading="lazy"
           />
         </div>
       </div>
