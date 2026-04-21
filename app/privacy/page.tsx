@@ -33,7 +33,7 @@ const ARTICLES = [
   {
     title: '外部サービスの利用',
     body:
-      '当サイトではGoogle Analyticsを使用しています。クッキーにより利用者情報を収集しますが、個人を特定する情報は含まれません。お問い合わせフォームの送信にはWeb3Formsを利用しています。',
+      '当サイトでは広告効果測定およびサイト改善のため以下の外部サービスを利用しています。【アクセス解析】Google Analytics 4（Google LLC）、Microsoft Clarity（Microsoft Corporation）によりセッション情報・ヒートマップを収集します。【広告効果測定】Google 広告（Google LLC）、Meta Pixel および Conversions API（Meta Platforms, Inc.）により広告経由の成果を計測します。お問い合わせフォームにご入力いただいたメールアドレス・電話番号等の情報は、送信前に不可逆な暗号化（SHA-256 ハッシュ化）を施した上で、上記広告媒体に送信される場合があります。【フォーム送信】一部のお問い合わせフォームの送信処理には Web3Forms（Web3Forms, operated by Surmon Software Ltd.）を利用しています。【タグ管理】Google タグ マネージャー（Google LLC）により上記タグを管理しています。いずれも個人を特定できる形式で第三者に提供されることはありません。',
   },
   {
     title: 'クッキーについて',

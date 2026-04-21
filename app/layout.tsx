@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
 import Script from 'next/script'
+import { Suspense } from 'react'
+import AnalyticsRouteTracker from '@/components/AnalyticsRouteTracker'
 import './globals.css'
 
 export const viewport: Viewport = {
@@ -26,6 +28,8 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 const GA_ID = 'G-B7M920RCGR'
+const META_PIXEL_ID = '1658477098524563'
+const GTM_ID = 'GTM-PCBG8HPX'
 const SITE_URL = 'https://sekaistay.com'
 
 export const metadata: Metadata = {
@@ -109,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja" className={notoSansJP.variable}>
       <head>
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <script
           type="application/ld+json"
@@ -151,12 +156,47 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('js',new Date());gtag('config','${GA_ID}',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});
             var _ms=0,_tr={};
             window.addEventListener('scroll',function(){var p=Math.round(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100);if(p>_ms)_ms=p;[25,50,75,100].forEach(function(t){if(_ms>=t&&!_tr[t]){_tr[t]=1;gtag('event','scroll_depth',{depth_percentage:t})}})},{passive:true});
-            var _st=Date.now();window.addEventListener('beforeunload',function(){var s=Math.round((Date.now()-_st)/1000);if(s>5)gtag('event','time_on_page',{duration_seconds:s})});
+            var _st=Date.now(),_sent=false;function _sendTime(){if(_sent)return;var s=Math.round((Date.now()-_st)/1000);if(s>5){_sent=true;gtag('event','time_on_page',{duration_seconds:s})}}document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')_sendTime()});window.addEventListener('pagehide',_sendTime);
             var _p=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=_p.get(k);if(v)sessionStorage.setItem(k,v)});
           `}
         </Script>
+        {/* Google Tag Manager — 他タグ追加の基盤 */}
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+        {/* End Google Tag Manager */}
+
+        {/* Meta Pixel — Facebook / Instagram 広告計測 */}
+        <Script id="meta-pixel-init" strategy="afterInteractive">
+          {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
+        </Script>
+        {/* End Meta Pixel */}
       </head>
-      <body>{children}</body>
+      <body>
+        {/* GTM noscript: JavaScript無効環境でのフォールバック */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* Meta Pixel noscript: JavaScript無効環境でのフォールバック */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
+        <Suspense fallback={null}>
+          <AnalyticsRouteTracker />
+        </Suspense>
+        {children}
+      </body>
     </html>
   )
 }
