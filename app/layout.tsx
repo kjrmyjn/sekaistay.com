@@ -147,21 +147,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="ga4-init" strategy="lazyOnload">
-          {`
-            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-            gtag('js',new Date());gtag('config','${GA_ID}',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});
-            var _ms=0,_tr={};
-            window.addEventListener('scroll',function(){var p=Math.round(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100);if(p>_ms)_ms=p;[25,50,75,100].forEach(function(t){if(_ms>=t&&!_tr[t]){_tr[t]=1;gtag('event','scroll_depth',{depth_percentage:t})}})},{passive:true});
-            var _st=Date.now(),_sent=false;function _sendTime(){if(_sent)return;var s=Math.round((Date.now()-_st)/1000);if(s>5){_sent=true;gtag('event','time_on_page',{duration_seconds:s})}}document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')_sendTime()});window.addEventListener('pagehide',_sendTime);
-            var _p=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=_p.get(k);if(v)sessionStorage.setItem(k,v)});
-          `}
+        {/* UTM パラメータの sessionStorage 保存（GTM から参照可能）— GA/Pixel は GTM(${GTM_ID}) 経由で管理 */}
+        <Script id="utm-save" strategy="afterInteractive">
+          {`var _p=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=_p.get(k);if(v)sessionStorage.setItem(k,v)});`}
         </Script>
-        {/* Google Tag Manager — 他タグ追加の基盤 */}
+        {/* Google Tag Manager — GA4/Meta Pixel/他タグ の統合管理基盤 */}
         <Script id="gtm-init" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
