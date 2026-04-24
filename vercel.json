@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/lp",
+      "destination": "/switch",
+      "permanent": true
+    }
+  ]
+}
