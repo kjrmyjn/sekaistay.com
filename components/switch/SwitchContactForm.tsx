@@ -206,6 +206,15 @@ export default function SwitchContactForm({ prefill }: Props) {
             value: Math.round(estimatedAnnual * 10000 * 0.12),
           });
         }
+
+        // GTM 経由で Google Ads / Meta Pixel に共通イベント発火
+        const w = window as unknown as { dataLayer?: unknown[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "lead_form_submit",
+          form_id: "switch",
+          contact_id: data.contact_id || "",
+        });
       }
 
       router.push(
