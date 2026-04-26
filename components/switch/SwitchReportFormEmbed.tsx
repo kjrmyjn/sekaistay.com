@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScrollFade } from "@/hooks/useScrollFade";
 
 const EMBED_ORIGIN = "https://japanvillas.kss-cloud.com";
@@ -38,7 +38,14 @@ export default function SwitchReportFormEmbed() {
   const ref = useScrollFade();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const embedSrc = useMemo(buildEmbedSrc, []);
+  // SSR では window 不在なので BASE_EMBED_SRC で初期化し、マウント後に
+  // クライアント側で UTM/gclid/fbclid/landing_url を載せた URL に置換する。
+  // useMemo([]) ではクライアント hydration で再評価されず UTM が iframe に
+  // 渡らないため、useState + useEffect でマウント後の更新を保証する。
+  const [embedSrc, setEmbedSrc] = useState<string>(BASE_EMBED_SRC);
+  useEffect(() => {
+    setEmbedSrc(buildEmbedSrc());
+  }, []);
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
