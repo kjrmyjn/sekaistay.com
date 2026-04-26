@@ -1,19 +1,44 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useScrollFade } from "@/hooks/useScrollFade";
 
 const EMBED_ORIGIN = "https://japanvillas.kss-cloud.com";
-const EMBED_SRC = `${EMBED_ORIGIN}/report-request?embed=1`;
+const BASE_EMBED_SRC = `${EMBED_ORIGIN}/report-request?embed=1`;
+
+// 広告経路を iframe (japan-villas 側) に渡すために forwarding する URL パラメータ。
+// utm_*: 標準UTM / gclid: Google Ads クリックID / fbclid: Meta クリックID
+const FORWARDED_PARAMS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "gclid",
+  "fbclid",
+];
 
 // kss-cloud form: padding-top 24px, padding-bottom 80px (pb-20)
 // We crop 56px from the bottom so top/bottom whitespace match (24px each)
 const BOTTOM_CROP = 56;
 
+function buildEmbedSrc(): string {
+  if (typeof window === "undefined") return BASE_EMBED_SRC;
+  const here = new URLSearchParams(window.location.search);
+  const out = new URL(BASE_EMBED_SRC);
+  for (const k of FORWARDED_PARAMS) {
+    const v = here.get(k);
+    if (v) out.searchParams.set(k, v.slice(0, 200));
+  }
+  out.searchParams.set("landing_url", window.location.href.slice(0, 1000));
+  return out.toString();
+}
+
 export default function SwitchReportFormEmbed() {
   const ref = useScrollFade();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const embedSrc = useMemo(buildEmbedSrc, []);
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
@@ -113,7 +138,7 @@ export default function SwitchReportFormEmbed() {
             <iframe
               ref={iframeRef}
               id="sekai-report-form"
-              src={EMBED_SRC}
+              src={embedSrc}
               title="SEKAI STAY 物件診断レポート申請"
               style={{
                 width: "100%",
