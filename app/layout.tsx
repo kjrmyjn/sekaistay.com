@@ -27,7 +27,6 @@ const notoSansJP = Noto_Sans_JP({
   adjustFontFallback: true,
 })
 
-const GTM_ID = 'GTM-PW2KDRFF'
 const SITE_URL = 'https://sekaistay.com'
 
 export const metadata: Metadata = {
@@ -113,8 +112,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja" className={notoSansJP.variable}>
       <head>
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <script
           type="application/ld+json"
@@ -147,26 +144,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-        {/* UTM パラメータの sessionStorage 保存（GTM から参照可能）— GA/Pixel は GTM(${GTM_ID}) 経由で管理 */}
+        {/* UTM パラメータの sessionStorage 保存 */}
         <Script id="utm-save" strategy="afterInteractive">
           {`var _p=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=_p.get(k);if(v)sessionStorage.setItem(k,v)});`}
         </Script>
-        {/* Google Tag Manager — GA4/Meta Pixel/他タグ の統合管理基盤 */}
-        <Script id="gtm-init" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
-        </Script>
-        {/* End Google Tag Manager */}
       </head>
       <body>
-        {/* GTM noscript: JavaScript無効環境でのフォールバック */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
         <Suspense fallback={null}>
           <AnalyticsRouteTracker />
         </Suspense>
