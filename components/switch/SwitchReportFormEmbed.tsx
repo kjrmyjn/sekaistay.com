@@ -18,8 +18,18 @@ export default function SwitchReportFormEmbed() {
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (e.origin !== EMBED_ORIGIN) return;
-      const data = e.data as { type?: string; height?: number } | null;
-      if (!data || data.type !== "japan-villas-height") return;
+      const data = e.data as { type?: string; height?: number; form_id?: string } | null;
+      if (!data) return;
+      if (data.type === "japan-villas-form-submitted") {
+        const w = window as Window & { dataLayer?: Array<Record<string, unknown>> };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "lead_form_submit",
+          form_id: data.form_id || "switch",
+        });
+        return;
+      }
+      if (data.type !== "japan-villas-height") return;
       if (typeof data.height !== "number") return;
       // iframe takes full native height (no internal scrollbar),
       // wrapper is 56px shorter with overflow:hidden to clip the form's oversized bottom padding
