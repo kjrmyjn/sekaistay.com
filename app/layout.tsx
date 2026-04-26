@@ -28,6 +28,8 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 const SITE_URL = 'https://sekaistay.com'
+const GA_MEASUREMENT_ID = 'G-B7M920RCGR'
+const META_PIXEL_ID = '1658477098524563'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -113,6 +115,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja" className={notoSansJP.variable}>
       <head>
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -148,8 +152,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="utm-save" strategy="afterInteractive">
           {`var _p=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=_p.get(k);if(v)sessionStorage.setItem(k,v)});`}
         </Script>
+        {/* Google tag (gtag.js) — GA4 + Google Ads コンバージョン */}
+        <Script
+          id="ga4-loader"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`}
+        </Script>
+        {/* Meta Pixel — Facebook/Instagram 広告コンバージョン */}
+        <Script id="meta-pixel-init" strategy="afterInteractive">
+          {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
+        </Script>
       </head>
       <body>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
         <Suspense fallback={null}>
           <AnalyticsRouteTracker />
         </Suspense>

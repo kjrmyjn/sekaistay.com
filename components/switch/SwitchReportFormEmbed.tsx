@@ -21,12 +21,22 @@ export default function SwitchReportFormEmbed() {
       const data = e.data as { type?: string; height?: number; form_id?: string } | null;
       if (!data) return;
       if (data.type === "japan-villas-form-submitted") {
-        const w = window as Window & { dataLayer?: Array<Record<string, unknown>> };
+        const w = window as Window & {
+          dataLayer?: Array<Record<string, unknown>>;
+          gtag?: (...a: unknown[]) => void;
+          fbq?: (...a: unknown[]) => void;
+        };
+        const formId = data.form_id || "switch";
         w.dataLayer = w.dataLayer || [];
-        w.dataLayer.push({
-          event: "lead_form_submit",
-          form_id: data.form_id || "switch",
-        });
+        w.dataLayer.push({ event: "lead_form_submit", form_id: formId });
+        // GA4 + Google Ads conversion (imported from GA4)
+        if (typeof w.gtag === "function") {
+          w.gtag("event", "switch_lead", { form_id: formId });
+        }
+        // Meta Pixel Lead
+        if (typeof w.fbq === "function") {
+          w.fbq("track", "Lead", { form_id: formId });
+        }
         return;
       }
       if (data.type !== "japan-villas-height") return;
