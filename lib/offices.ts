@@ -13,28 +13,18 @@ export interface Office {
 
 export const OFFICES: Office[] = [
   {
+    // 2026-04-27: 本社を恵比寿西 → 中目黒（KM中目黒ビル1F）に移転（吉田指示）。
+    // 旧 nakameguro 支店エントリは本社移転に伴い統合・削除。
     id: 'ebisu',
-    name: '本社（恵比寿）',
-    postalCode: '150-0021',
-    prefecture: '東京都',
-    addressShort: '渋谷区恵比寿西',
-    addressFull: '渋谷区恵比寿西2丁目14-7',
-    displayAddress: '東京都渋谷区恵比寿西',
-    phone: '+81-3-6455-0842',
-    isHQ: true,
-    areaSlugs: ['tokyo', 'yokohama', 'hakone', 'atami', 'kawaguchiko'],
-  },
-  {
-    id: 'nakameguro',
-    name: '中目黒支店',
+    name: '本社（中目黒）',
     postalCode: '153-0042',
     prefecture: '東京都',
     addressShort: '目黒区青葉台',
-    addressFull: '目黒区青葉台2丁目20-7',
+    addressFull: '目黒区青葉台2-20-7 KM中目黒ビル1F',
     displayAddress: '東京都目黒区青葉台',
     phone: '+81-3-6455-0842',
-    isHQ: false,
-    areaSlugs: ['tokyo', 'yokohama'],
+    isHQ: true,
+    areaSlugs: ['tokyo', 'yokohama', 'hakone', 'atami', 'kawaguchiko'],
   },
   {
     id: 'okinawa',

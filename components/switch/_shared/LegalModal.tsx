@@ -55,7 +55,7 @@ function PrivacyContent() {
       <section>
         <h3 className="text-base font-bold text-black mb-2">7. お問い合わせ先</h3>
         <p>株式会社セカイチ（SEKAICHI Inc.）</p>
-        <p>〒150-0021 東京都渋谷区恵比寿西2丁目14-7</p>
+        <p>〒153-0042 東京都目黒区青葉台2-20-7 KM中目黒ビル1F</p>
         <p>メール: info@sekaichi.org</p>
       </section>
     </div>
@@ -71,7 +71,7 @@ function TokushohoContent() {
             ["販売事業者", "株式会社セカイチ（SEKAICHI Inc.）"],
             ["法人番号", "4011001162956"],
             ["代表者", "劉 添毅、明神 洸次郎"],
-            ["所在地", "〒150-0021 東京都渋谷区恵比寿西2丁目14-7"],
+            ["所在地", "〒153-0042 東京都目黒区青葉台2-20-7 KM中目黒ビル1F"],
             ["連絡先", "info@sekaichi.org"],
             ["サービス名", "SEKAI STAY（民泊運用代行サービス）"],
             ["料金", "運用代行手数料: 売上の8%\n月額管理費: 5,000円（税別）/ 部屋"],

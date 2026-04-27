@@ -130,10 +130,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description: '管理物件レビュー平均4.8・Airbnbスーパーホスト認定。稼働率と収益を上げる民泊運用代行サービス。全国7拠点。',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '恵比寿西2丁目14-7',
-                addressLocality: '渋谷区',
+                streetAddress: '青葉台2-20-7 KM中目黒ビル1F',
+                addressLocality: '目黒区',
                 addressRegion: '東京都',
-                postalCode: '150-0021',
+                postalCode: '153-0042',
                 addressCountry: 'JP',
               },
               areaServed: { '@type': 'Country', name: 'JP' },

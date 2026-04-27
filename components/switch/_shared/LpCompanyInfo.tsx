@@ -38,7 +38,7 @@ export default function CompanyInfo() {
               </tr>
               <tr className="border-b border-switch-gray-light">
                 <td className="py-3 pr-4 text-switch-gray-mid font-bold align-top">所在地</td>
-                <td className="py-3 text-switch-charcoal">〒150-0021<br />東京都渋谷区恵比寿西2丁目14-7</td>
+                <td className="py-3 text-switch-charcoal">〒153-0042<br />東京都目黒区青葉台2-20-7 KM中目黒ビル1F</td>
               </tr>
               <tr className="border-b border-switch-gray-light">
                 <td className="py-3 pr-4 text-switch-gray-mid font-bold align-top">資本金<br /><span className="font-normal text-[10px]">(資本準備金含む)</span></td>
