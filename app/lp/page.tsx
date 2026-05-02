@@ -59,7 +59,7 @@ function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
-      { '@type': 'Question', name: '本当に手数料8%だけですか？隠れた費用はありませんか？', acceptedAnswer: { '@type': 'Answer', text: '手数料は売上の8%と、月額5,000円/部屋のみです。それ以外の費用は一切かかりません。清掃費はゲスト負担のため、オーナー様の負担には含まれません。' } },
+      { '@type': 'Question', name: '本当に手数料8%だけですか？隠れた費用はありませんか？', acceptedAnswer: { '@type': 'Answer', text: '手数料は売上の8%と、月額10,000円/部屋のみです。それ以外の費用は一切かかりません。清掃費はゲスト負担のため、オーナー様の負担には含まれません。' } },
       { '@type': 'Question', name: '途中で解約できますか？', acceptedAnswer: { '@type': 'Answer', text: 'はい、2ヶ月前にご連絡いただくだけで解約可能です。サービスに自信があるため解約手数料はかかりません。' } },
       { '@type': 'Question', name: '物件が遠方でも大丈夫ですか？', acceptedAnswer: { '@type': 'Answer', text: 'はい、対応可能です。現地パートナーと連携し、清掃・点検・緊急対応まで一貫してカバーします。' } },
       { '@type': 'Question', name: '既に他社に委託中ですが、切り替えできますか？', acceptedAnswer: { '@type': 'Answer', text: 'はい、最短2週間で切り替え可能です。予約の精算や引き継ぎ対応は弊社がすべて行います。' } },
@@ -89,7 +89,7 @@ function StructuredData() {
     areaServed: { '@type': 'Country', name: 'Japan' },
     offers: {
       '@type': 'Offer',
-      description: '売上の8% + 月額5,000円/部屋',
+      description: '売上の8% + 月額10,000円/部屋',
       priceCurrency: 'JPY',
     },
     hasOfferCatalog: {
@@ -351,7 +351,7 @@ function Hero() {
               </div>
               <div className="flex justify-between font-sans text-[13px] text-ivory/80">
                 <span>Monthly (per room)</span>
-                <span className="font-medium text-ivory">¥5,000</span>
+                <span className="font-medium text-ivory">¥10,000</span>
               </div>
               <div className="flex justify-between font-sans text-[13px] text-ivory/80">
                 <span>Initial Cost</span>
@@ -890,7 +890,7 @@ function Pricing() {
                 </div>
                 <div className="flex justify-between font-sans text-[14px]">
                   <span className="text-ivory/70">Monthly · per room</span>
-                  <span className="text-ivory font-medium">¥5,000</span>
+                  <span className="text-ivory font-medium">¥10,000</span>
                 </div>
                 <div className="flex justify-between font-sans text-[14px]">
                   <span className="text-ivory/70">Initial Cost</span>
@@ -1219,7 +1219,7 @@ function ServiceFlow() {
 // ─────────────────────────────────────────────────────────────────────
 function FAQ() {
   const items = [
-    { q: '本当に手数料8%だけですか？隠れた費用はありませんか？', a: '手数料は売上の8%と、月額5,000円/部屋のみです。それ以外の費用は一切かかりません。清掃費はゲスト負担のため、オーナー様の負担には含まれません。' },
+    { q: '本当に手数料8%だけですか？隠れた費用はありませんか？', a: '手数料は売上の8%と、月額10,000円/部屋のみです。それ以外の費用は一切かかりません。清掃費はゲスト負担のため、オーナー様の負担には含まれません。' },
     { q: '途中で解約できますか？', a: 'はい、2ヶ月前にご連絡いただくだけで解約可能です。サービスに自信があるため解約手数料はかかりません。予約済みのゲスト対応は最後まで責任を持って行います。' },
     { q: '物件が遠方でも大丈夫ですか？', a: 'はい、対応可能です。現地パートナーと連携し、清掃・点検・緊急対応まで一貫してカバーします。対応エリアについてはお気軽にご相談ください。' },
     { q: '既に他社に委託中ですが、切り替えできますか？', a: 'はい、最短2週間で切り替え可能です。解約手続きはオーナー様にお願いしますが、すでに入っている予約の精算や引き継ぎ対応は弊社がすべて行います。ゲスト対応の空白期間が生まれないよう、途切れなく移行しますのでご安心ください。' },

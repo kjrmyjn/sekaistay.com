@@ -68,7 +68,7 @@ export default function SwitchPricing() {
                 </span>
               </div>
               <div className="text-xl sm:text-2xl font-bold text-switch-charcoal mb-5 leading-tight">
-                ＋ ¥5,000
+                ＋ ¥10,000
                 <span className="text-sm text-switch-gray-mid ml-1 font-semibold">
                   / 部屋 / 月
                 </span>
@@ -107,7 +107,7 @@ export default function SwitchPricing() {
                 <div className="flex justify-between items-center pb-3 border-b border-switch-gray-light">
                   <span className="text-switch-gray-dark">部屋固定費</span>
                   <span className="font-bold text-switch-charcoal tabular-nums">
-                    ¥5,000
+                    ¥10,000
                   </span>
                 </div>
                 <div className="flex justify-between items-center pt-1">
@@ -115,7 +115,7 @@ export default function SwitchPricing() {
                     お支払い合計
                   </span>
                   <span className="text-xl sm:text-2xl font-bold text-switch-teal-deep tabular-nums">
-                    ¥85,000
+                    ¥90,000
                   </span>
                 </div>
               </div>

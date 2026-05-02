@@ -154,7 +154,7 @@ function SimulatorCore() {
 
 const ASSUMPTIONS: { label: string; value: string; note: string }[] = [
   { label: '現在の手数料', value: '15%', note: '業界平均相当（他社代行の中央値）' },
-  { label: 'SEKAI STAY 手数料', value: '8%', note: '固定管理費 ¥5,000/室/月を除く実質比較' },
+  { label: 'SEKAI STAY 手数料', value: '8%', note: '固定管理費 ¥10,000/室/月を除く実質比較' },
   { label: '稼働率の改善', value: '+30%', note: 'OTA最適化・ダイナミックプライシング導入後の平均実績' },
   { label: '比較期間', value: '12ヶ月', note: '通年ベース（季節変動を平準化）' },
 ]

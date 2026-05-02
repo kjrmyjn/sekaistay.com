@@ -295,7 +295,7 @@ export default function SwitchServices() {
                 <span className="text-switch-teal-bright">手数料8%</span>で。
               </p>
               <p className="text-xs text-white/70 mt-1">
-                ＋ 物件あたり月額 ¥5,000 ｜ その他の費用は一切ありません
+                ＋ 物件あたり月額 ¥10,000 ｜ その他の費用は一切ありません
               </p>
             </div>
             <div className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-white/80">

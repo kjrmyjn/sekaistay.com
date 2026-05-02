@@ -36,7 +36,7 @@ export default function SwitchSolution() {
             <span className="text-4xl sm:text-6xl font-bold text-switch-accent">%</span>
           </div>
           <p className="text-sm sm:text-base text-switch-charcoal font-bold mb-1">
-            ＋ ¥5,000 / 部屋 / 月
+            ＋ ¥10,000 / 部屋 / 月
           </p>
           <p className="text-xl sm:text-2xl font-bold text-switch-charcoal mt-4">
             それ以外の費用は、<HighlightMarker>一切</HighlightMarker>ありません。

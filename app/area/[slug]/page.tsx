@@ -152,7 +152,7 @@ export default function AreaDetailPage({ params }: Props) {
     },
     {
       question: `${area.name}の民泊運用代行の料金はいくらですか？`,
-      answer: `初期費用0円（キャンペーン中）、固定管理費5,000円/室/月、変動運営委託費は売上の8%です。一般的な運用代行の15〜25%に対して大幅に低い水準で、最低契約期間もありません。${area.name}でも全国一律の料金でご利用いただけます。`,
+      answer: `初期費用0円（キャンペーン中）、固定管理費10,000円/室/月、変動運営委託費は売上の8%です。一般的な運用代行の15〜25%に対して大幅に低い水準で、最低契約期間もありません。${area.name}でも全国一律の料金でご利用いただけます。`,
     },
     {
       question: `${area.name}で民泊運営をする際の許認可はどうなりますか？`,
@@ -232,7 +232,7 @@ export default function AreaDetailPage({ params }: Props) {
               <p className="eyebrow-mono text-mid-gray mb-2">Market Comparison</p>
               <p className="font-sans text-body-sm md:text-[15px] text-dark-gray leading-[1.9]">
                 一般的な運用代行の手数料 <span className="font-sans text-mid-gray">15〜25%</span> に対し、SEKAI STAYは
-                <span className="font-sans text-sekai-teal mx-1">8%＋月5,000円/室</span>。{area.name}では住宅宿泊事業法・旅館業法いずれにも対応します。
+                <span className="font-sans text-sekai-teal mx-1">8%＋月10,000円/室</span>。{area.name}では住宅宿泊事業法・旅館業法いずれにも対応します。
               </p>
             </div>
           </div>

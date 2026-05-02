@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="mb-10 max-w-[560px] border-l-2 border-sekai-teal pl-5 py-2">
               <p className="text-body-sm text-ink jp-break">
                 業界水準の手数料<span className="font-medium">15〜25%</span>に対し、
-                SEKAI STAY は<span className="font-medium text-sekai-teal"> 8%＋月5,000円／室</span>。
+                SEKAI STAY は<span className="font-medium text-sekai-teal"> 8%＋月10,000円／室</span>。
                 最低契約期間なし・初期費用0円。
               </p>
             </div>

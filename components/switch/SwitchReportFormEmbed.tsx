@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { useScrollFade } from "@/hooks/useScrollFade";
 
 const EMBED_ORIGIN = "https://japanvillas.kss-cloud.com";
-const BASE_EMBED_SRC = `${EMBED_ORIGIN}/report-request?embed=1`;
+const FULL_EMBED_PATH = "/report-request?embed=1";
+const LITE_EMBED_PATH = "/report-request-lite?embed=1";
+
+export type ReportFormVariant = "full" | "lite";
 
 // 広告経路を iframe (japan-villas 側) に渡すために forwarding する URL パラメータ。
 // utm_*: 標準UTM / gclid: Google Ads クリックID / fbclid: Meta クリックID

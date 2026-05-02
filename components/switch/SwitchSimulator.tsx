@@ -13,7 +13,7 @@ type Props = {
 };
 
 const SEKAI_FEE = 8; // %
-const SEKAI_FIXED_MAN = 0.5; // ¥5,000/月 = 0.5万円/月 = 6万円/年 → でも月額なので年6万円 = 0.5万/月
+const SEKAI_FIXED_MAN = 1.0; // ¥10,000/月 = 1万円/月 = 12万円/年
 
 export default function SwitchSimulator({ onApply }: Props) {
   // 初期値は松本さん（PainPoints / FinalCTA と一貫）の設定。
@@ -37,10 +37,10 @@ export default function SwitchSimulator({ onApply }: Props) {
     const annualRevMan = monthlyRev * 12;
     const annualWasteMan = annualRevMan * diff;
 
-    // SEKAI STAY 物件あたり月額固定費 ¥5,000 = 年6万円
+    // SEKAI STAY 物件あたり月額固定費 ¥10,000 = 年12万円
     // 損失側も節約側も同じ annualSaving (四捨五入後) を掛け算するので、
     // 「今後N年の損失」と「N年で節約できる額」が常に完全一致する
-    const sekaiFixedAnnualMan = SEKAI_FIXED_MAN * 12; // 6万円/年
+    const sekaiFixedAnnualMan = SEKAI_FIXED_MAN * 12; // 12万円/年
     const annualNetDiffMan = Math.max(0, annualWasteMan - sekaiFixedAnnualMan);
 
     const annualSaving = Math.round(annualNetDiffMan);
@@ -246,7 +246,7 @@ export default function SwitchSimulator({ onApply }: Props) {
                   <span className="text-xs">万円</span> が手元に戻る
                 </p>
                 <p className="text-[10px] text-switch-gray-mid mt-1.5 text-center">
-                  ※ 手数料8% ＋ 物件あたり月額¥5,000 で計算
+                  ※ 手数料8% ＋ 物件あたり月額¥10,000 で計算
                 </p>
               </div>
             </div>

@@ -70,12 +70,12 @@ export default function SwitchPage() {
             leftValue: 1440000,
             leftSuffix: "/ 年",
             rightLabel: "SEKAI STAY（手数料8%）",
-            rightValue: 636000,
+            rightValue: 696000,
             rightSuffix: "/ 年",
             diffLabel: "年間差額",
-            diffValue: 804000,
+            diffValue: 744000,
             diffSuffix: "/ 年",
-            note: "※ 1部屋想定・月額固定費 ¥5,000/部屋 込みで試算",
+            note: "※ 1部屋想定・月額固定費 ¥10,000/部屋 込みで試算",
           }}
         />
 

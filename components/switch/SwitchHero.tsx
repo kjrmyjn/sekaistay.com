@@ -103,7 +103,7 @@ export default function SwitchHero() {
                     <span className="whitespace-nowrap">お任せ。</span>
                   </p>
                   <p className="relative text-[13px] sm:text-[15px] text-white/90 mt-2.5 tracking-wide font-semibold">
-                    <span className="text-white">＋ ¥5,000</span>
+                    <span className="text-white">＋ ¥10,000</span>
                     <span className="text-white/60 text-[11px] sm:text-xs mx-1">/ 部屋 / 月</span>
                     <span className="inline-block mx-2 w-px h-3 bg-white/25 align-middle" aria-hidden />
                     <span className="text-white/75 text-[11px] sm:text-xs">その他の費用は一切なし</span>

@@ -102,7 +102,7 @@ export default function SwitchBeforeAfter() {
                 <p className="text-4xl sm:text-5xl font-bold tabular-nums">
                   <CountUp target={8} />
                   <span className="text-lg">%</span>
-                  <span className="text-xs text-switch-teal-bright ml-2">+ ¥5,000/部屋</span>
+                  <span className="text-xs text-switch-teal-bright ml-2">+ ¥10,000/部屋</span>
                 </p>
               </div>
               <div>

@@ -337,7 +337,7 @@ export default function ServicesPage() {
                 <div className="pb-6 border-b border-ivory/10 mb-6">
                   <p className="eyebrow-mono text-ivory/50 mb-2">固定管理費</p>
                   <p className="font-sans text-[20px] text-ivory">
-                    ¥5,000
+                    ¥10,000
                     <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
                   </p>
                 </div>

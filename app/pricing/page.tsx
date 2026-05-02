@@ -8,10 +8,10 @@ import { IconArrowRight } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: '料金',
-  description: 'SEKAI STAYの料金体系。手数料8%＋月額5,000円/部屋の明朗会計。初期費用0円。他社との比較もご確認いただけます。',
+  description: 'SEKAI STAYの料金体系。手数料8%＋月額10,000円/部屋の明朗会計。初期費用0円。他社との比較もご確認いただけます。',
   openGraph: {
     title: '料金 | SEKAI STAY',
-    description: '手数料8%＋月額5,000円/部屋の明朗会計。初期費用0円キャンペーン中。',
+    description: '手数料8%＋月額10,000円/部屋の明朗会計。初期費用0円キャンペーン中。',
     type: 'website',
     locale: 'ja_JP',
     url: 'https://sekaistay.com/pricing',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '料金 | SEKAI STAY',
-    description: '手数料8%＋月額5,000円/部屋の明朗会計。初期費用0円キャンペーン中。',
+    description: '手数料8%＋月額10,000円/部屋の明朗会計。初期費用0円キャンペーン中。',
   },
   alternates: { canonical: 'https://sekaistay.com/pricing' },
 }
@@ -37,17 +37,17 @@ const INCLUDES = [
 ]
 
 const PRICING_FAQ = [
-  { q: 'SEKAI STAYの民泊運用代行の料金は？', a: '初期費用0円（キャンペーン中・通常10万円）、固定管理費5,000円/室/月、変動運営委託費は売上の8%です。月々の費用はこの2つの合計のみで、別途請求はありません。' },
+  { q: 'SEKAI STAYの民泊運用代行の料金は？', a: '初期費用0円（キャンペーン中・通常10万円）、固定管理費10,000円/室/月、変動運営委託費は売上の8%です。月々の費用はこの2つの合計のみで、別途請求はありません。' },
   { q: '他社からの乗り換えに費用はかかりますか？', a: '乗り換え費用は0円です。Airbnb・Booking.com等のOTAアカウント引き継ぎ、掲載情報の最適化、ゲスト対応引き継ぎまで無料で対応します。最短2週間で移行完了です。' },
   { q: '他社は手数料15〜25%なのに、なぜ8%なのですか？', a: '自社運営のオペレーション基盤と、清掃パートナーネットワーク、多言語ゲスト対応センターを内製化することで、一般的な代行業者の運営コストを大幅に削減しているためです。その差分をオーナー様に還元しています。' },
   { q: '最低契約期間はありますか？', a: 'ありません。最低契約期間・解約手数料ともに0円です。成果でご判断いただけるよう、縛りは設けていません。' },
-  { q: '宿泊予約がない月も費用はかかりますか？', a: '固定管理費（5,000円/室）のみ発生し、変動運営委託費（8%）は売上連動のため0円です。閑散期の固定費は1部屋で月5,000円に限定されます。' },
+  { q: '宿泊予約がない月も費用はかかりますか？', a: '固定管理費（10,000円/室）のみ発生し、変動運営委託費（8%）は売上連動のため0円です。閑散期の固定費は1部屋で月10,000円に限定されます。' },
   { q: '清掃費や備品補充は別途請求されますか？', a: '清掃費はゲスト負担（宿泊料金に含む）が基本です。清掃手配と品質管理は運営代行サービスに含まれており、オーナー様への追加請求はありません。消耗品の実費のみ、別途ご相談のうえ精算します。' },
 ]
 
 const COMPARE = [
   { label: '手数料率', us: '8%', others: '15〜25%', highlight: true },
-  { label: '月額固定費', us: '¥5,000/部屋', others: '¥15,000〜30,000', highlight: false },
+  { label: '月額固定費', us: '¥10,000/部屋', others: '¥15,000〜30,000', highlight: false },
   { label: '初期費用', us: '¥0', others: '¥50,000〜200,000', highlight: true },
   { label: '最低契約期間', us: 'なし', others: '6〜12ヶ月', highlight: false },
   { label: '多言語対応', us: '4言語', others: '日英のみが多い', highlight: false },
@@ -89,7 +89,7 @@ export default function PricingPage() {
               <p className="text-body text-ink jp-break leading-relaxed">
                 一般的な運用代行の手数料 <span className="font-sans text-[20px] text-mid-gray">15〜25%</span> に対し、
                 SEKAI STAY は <span className="font-sans text-[24px] text-sekai-teal">8%</span> ＋
-                月 <span className="font-sans text-[20px] text-sekai-teal">¥5,000/室</span>。
+                月 <span className="font-sans text-[20px] text-sekai-teal">¥10,000/室</span>。
                 最低契約期間なし・初期費用0円・解約手数料0円です。
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function PricingPage() {
                 <div className="pb-8 border-b border-ivory/10 mb-8">
                   <p className="eyebrow text-bright-teal mb-3">固定管理費</p>
                   <p className="font-sans text-[24px] text-ivory">
-                    ¥5,000
+                    ¥10,000
                     <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
                   </p>
                 </div>
@@ -320,11 +320,11 @@ export default function PricingPage() {
                 '@type': 'AggregateOffer',
                 priceCurrency: 'JPY',
                 lowPrice: '0',
-                highPrice: '5000',
+                highPrice: '10000',
                 offerCount: '2',
                 offers: [
                   { '@type': 'Offer', name: '初期費用', price: '0', priceCurrency: 'JPY', description: 'OTA初期設定・画像加工・掲載開始まで含む。キャンペーン中。', availability: 'https://schema.org/InStock' },
-                  { '@type': 'Offer', name: '月額固定管理費', price: '5000', priceCurrency: 'JPY', description: '1部屋あたり月額5,000円。変動運営委託費は売上の8%。', availability: 'https://schema.org/InStock' },
+                  { '@type': 'Offer', name: '月額固定管理費', price: '10000', priceCurrency: 'JPY', description: '1部屋あたり月額10,000円。変動運営委託費は売上の8%。', availability: 'https://schema.org/InStock' },
                 ],
               },
               aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '47', bestRating: '5' },
