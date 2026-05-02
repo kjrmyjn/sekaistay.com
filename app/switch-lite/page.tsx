@@ -12,49 +12,20 @@ import LpFooter from "@/components/switch/_shared/LpFooter";
 import LpCompanyInfo from "@/components/switch/_shared/LpCompanyInfo";
 import SwitchHeader from "@/components/switch/SwitchHeader";
 import SwitchHero from "@/components/switch/SwitchHero";
-import SwitchSimulator from "@/components/switch/SwitchSimulator";
-import SwitchPainPoints from "@/components/switch/SwitchPainPoints";
-import SwitchServices from "@/components/switch/SwitchServices";
-import SwitchComparison from "@/components/switch/SwitchComparison";
-import SwitchResults from "@/components/switch/SwitchResults";
 import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
-import SwitchPricing from "@/components/switch/SwitchPricing";
-import SwitchFlow from "@/components/switch/SwitchFlow";
-import SwitchFAQ from "@/components/switch/SwitchFAQ";
 import SwitchReportFormEmbed from "@/components/switch/SwitchReportFormEmbed";
 import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
-import WaveDivider from "@/components/switch/deco/WaveDivider";
 
 export default function SwitchLitePage() {
-  const handleApply = () => {
-    setTimeout(() => {
-      document
-        .getElementById("contact-form")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
-  };
-
   return (
     <>
       <SwitchHeader />
       <main>
+        {/* §1 Hero（既存の SwitchHero を流用） */}
         <SwitchHero />
-        <WaveDivider fromColor="#2d2d2d" toColor="#167b81" withDots />
 
-        <SwitchSimulator onApply={handleApply} />
-        <WaveDivider fromColor="#167b81" toColor="#ffffff" />
-
-        <SwitchPainPoints />
-
-        <SwitchPrimaryCTA />
-
-        <SwitchServices />
-
-        <SwitchPrimaryCTA title="どんなサービスなのか気になった方へ" />
-
-        <SwitchComparison />
-
+        {/* §2 数字差訴求 — 年間差額カード */}
         <SwitchPrimaryCTA
           title="他社との手数料差は、あなたの物件だと…"
           compareStat={{
@@ -71,17 +42,10 @@ export default function SwitchLitePage() {
           }}
         />
 
-        <SwitchResults />
-
+        {/* §3 オーナー様の声（既存・短い） */}
         <SwitchTestimonials />
 
-        <SwitchPricing />
-
-        <SwitchFlow />
-
-        <SwitchFAQ />
-
-        {/* §13 軽量フォーム — 連絡先のみ必須・物件情報は任意続行 */}
+        {/* §4 軽量フォーム — 連絡先のみ必須・物件情報は任意続行 */}
         <SwitchReportFormEmbed
           variant="lite"
           heading="まずはご相談だけでもどうぞ"
@@ -89,6 +53,7 @@ export default function SwitchLitePage() {
           subCopy="物件情報の入力は不要。お話を伺ってから、必要に応じてレポートをお作りします。無理な勧誘は致しません。"
         />
 
+        {/* §5 会社概要 */}
         <LpCompanyInfo />
       </main>
       <LpFooter />
