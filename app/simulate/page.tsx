@@ -20,6 +20,7 @@ import { IconArrowRight } from '@/components/Icons'
 const OUR_RATE = 0.08
 const CURRENT_RATE = 0.15
 const BOOST = 1.30
+const SEKAI_FIXED_ANNUAL = 120000 // 月額固定費 ¥10,000 × 12
 
 // エリア別 目安月商（ホームの Simulation セクションからのクエリパラメータ用）
 const AREA_REVENUE: Record<string, number> = {
@@ -80,7 +81,7 @@ function SimulatorCore() {
 
   const nowAnnual = revenue * (1 - CURRENT_RATE) * 12
   const boosted = revenue * BOOST
-  const sekaiAnnual = boosted * (1 - OUR_RATE) * 12
+  const sekaiAnnual = boosted * (1 - OUR_RATE) * 12 - SEKAI_FIXED_ANNUAL
   const diff = sekaiAnnual - nowAnnual
 
   return (

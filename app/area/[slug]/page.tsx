@@ -12,6 +12,7 @@ import { IconArrowRight } from '@/components/Icons'
 const SITE_URL = 'https://sekaistay.com'
 const OUR_RATE = 0.08
 const COMPETITOR_RATE = 0.20
+const SEKAI_FIXED_ANNUAL = 120000 // 月額固定費 ¥10,000 × 12
 
 interface Props {
   params: { slug: string }
@@ -133,7 +134,7 @@ export default function AreaDetailPage({ params }: Props) {
   if (!area) notFound()
 
   const monthlyRevenue = area.avgRevenue
-  const ourAnnualFee = monthlyRevenue * OUR_RATE * 12
+  const ourAnnualFee = monthlyRevenue * OUR_RATE * 12 + SEKAI_FIXED_ANNUAL
   const competitorAnnualFee = monthlyRevenue * COMPETITOR_RATE * 12
   const yearlyDiff = competitorAnnualFee - ourAnnualFee
 

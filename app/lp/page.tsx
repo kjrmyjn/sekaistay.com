@@ -399,10 +399,11 @@ function InlineSimulator() {
   const [revenue, setRevenue] = useState(500000)
   const BOOST = 1.30
   const CURRENT_RATE = 0.15
+  const SEKAI_FIXED_ANNUAL = 120000 // 月額固定費 ¥10,000 × 12
 
   const nowAnnual = revenue * (1 - CURRENT_RATE) * 12
   const boosted = revenue * BOOST
-  const sekaiAnnual = boosted * (1 - OUR_RATE) * 12
+  const sekaiAnnual = boosted * (1 - OUR_RATE) * 12 - SEKAI_FIXED_ANNUAL
   const diff = sekaiAnnual - nowAnnual
 
   return (
