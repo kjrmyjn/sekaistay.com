@@ -25,10 +25,12 @@ const FORWARDED_PARAMS = [
 // We crop 56px from the bottom so top/bottom whitespace match (24px each)
 const BOTTOM_CROP = 56;
 
-function buildEmbedSrc(): string {
-  if (typeof window === "undefined") return BASE_EMBED_SRC;
+function buildEmbedSrc(variant: ReportFormVariant): string {
+  const basePath = variant === "lite" ? LITE_EMBED_PATH : FULL_EMBED_PATH;
+  const baseSrc = `${EMBED_ORIGIN}${basePath}`;
+  if (typeof window === "undefined") return baseSrc;
   const here = new URLSearchParams(window.location.search);
-  const out = new URL(BASE_EMBED_SRC);
+  const out = new URL(baseSrc);
   for (const k of FORWARDED_PARAMS) {
     const v = here.get(k);
     if (v) out.searchParams.set(k, v.slice(0, 200));
@@ -37,7 +39,19 @@ function buildEmbedSrc(): string {
   return out.toString();
 }
 
-export default function SwitchReportFormEmbed() {
+type SwitchReportFormEmbedProps = {
+  variant?: ReportFormVariant;
+  heading?: string;
+  leadCopy?: string;
+  subCopy?: string;
+};
+
+export default function SwitchReportFormEmbed({
+  variant = "full",
+  heading = "無料パーソナライズ診断",
+  leadCopy = "3分で入力、次営業日にあなた専用レポートを送付",
+  subCopy = "民泊に強い専門の担当者が、診断レポートを作成します。無理な勧誘は致しません。",
+}: SwitchReportFormEmbedProps = {}) {
   const ref = useScrollFade();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -45,10 +59,12 @@ export default function SwitchReportFormEmbed() {
   // クライアント側で UTM/gclid/fbclid/landing_url を載せた URL に置換する。
   // useMemo([]) ではクライアント hydration で再評価されず UTM が iframe に
   // 渡らないため、useState + useEffect でマウント後の更新を保証する。
-  const [embedSrc, setEmbedSrc] = useState<string>(BASE_EMBED_SRC);
+  const [embedSrc, setEmbedSrc] = useState<string>(
+    `${EMBED_ORIGIN}${variant === "lite" ? LITE_EMBED_PATH : FULL_EMBED_PATH}`
+  );
   useEffect(() => {
-    setEmbedSrc(buildEmbedSrc());
-  }, []);
+    setEmbedSrc(buildEmbedSrc(variant));
+  }, [variant]);
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
@@ -124,13 +140,13 @@ export default function SwitchReportFormEmbed() {
             >
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
-            無料パーソナライズ診断
+            {heading}
           </h2>
           <p className="text-white font-bold text-base sm:text-lg leading-snug mb-2">
-            3分で入力、次営業日にあなた専用レポートを送付
+            {leadCopy}
           </p>
           <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-xl mx-auto">
-            民泊に強い専門の担当者が、診断レポートを作成します。無理な勧誘は致しません。
+            {subCopy}
           </p>
         </div>
 
