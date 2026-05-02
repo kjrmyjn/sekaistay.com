@@ -66,6 +66,36 @@ export default function SwitchReportFormEmbed({
     setEmbedSrc(buildEmbedSrc(variant));
   }, [variant]);
 
+  // CTA クリック (#contact-form アンカーボタン) を Meta「結果」イベントとして計上する。
+  // どの CTA ボタンも押下時点で Lead を発火（フォーム到達 = 強い意思表示）。
+  // ページ閲覧時の自動発火は無し。
+  useEffect(() => {
+    const onCtaClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement | null)?.closest?.(
+        'a[href="#contact-form"], a[href*="#contact-form"], [data-cta="contact-form"]'
+      ) as HTMLElement | null;
+      if (!target) return;
+      const w = window as Window & {
+        dataLayer?: Array<Record<string, unknown>>;
+        gtag?: (...a: unknown[]) => void;
+        fbq?: (...a: unknown[]) => void;
+      };
+      const label = (target.getAttribute("data-cta-label") ||
+        target.textContent ||
+        "cta").slice(0, 40).trim();
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({ event: "lead_cta_click", cta: label });
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "lead_cta_click", { cta: label });
+      }
+      if (typeof w.fbq === "function") {
+        w.fbq("track", "Lead", { source: "cta_click", cta: label });
+      }
+    };
+    document.addEventListener("click", onCtaClick, { capture: true });
+    return () => document.removeEventListener("click", onCtaClick, { capture: true });
+  }, []);
+
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (e.origin !== EMBED_ORIGIN) return;
@@ -84,9 +114,10 @@ export default function SwitchReportFormEmbed({
         if (typeof w.gtag === "function") {
           w.gtag("event", "switch_lead", { form_id: formId });
         }
-        // Meta Pixel Lead
+        // Meta Pixel: フォーム送信完了は CompleteRegistration（Lead は CTA クリック側で計上）。
+        // これで「結果（=Lead）」は CTA 押下数で集計され、CompleteRegistration は高品質シグナルに分離。
         if (typeof w.fbq === "function") {
-          w.fbq("track", "Lead", { form_id: formId });
+          w.fbq("track", "CompleteRegistration", { form_id: formId });
         }
         return;
       }
