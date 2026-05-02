@@ -4,11 +4,6 @@
       "source": "/lp",
       "destination": "/switch",
       "permanent": true
-    },
-    {
-      "source": "/switch-lite",
-      "destination": "/switch",
-      "permanent": true
     }
   ]
 }

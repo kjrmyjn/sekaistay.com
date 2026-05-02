@@ -94,15 +94,8 @@ export default function SwitchPage() {
         {/* §11 FAQ */}
         <SwitchFAQ />
 
-        {/* §13 お問い合わせフォーム（連絡先先取り型 lite に統一）
-            japanvillas /report-request-lite を iframe 埋め込み。
-            物件URL/売上等の詳細入力は送信後の任意続行で取得する。 */}
-        <SwitchReportFormEmbed
-          variant="lite"
-          heading="まずはご相談だけでもどうぞ"
-          leadCopy="お名前・メール・電話の30秒入力で、24時間以内に担当者からご連絡"
-          subCopy="物件情報の入力は不要。お話を伺ってから、必要に応じてレポートをお作りします。無理な勧誘は致しません。"
-        />
+        {/* §13 無料診断フォーム（japanvillas のレポート申請フォームを iframe 埋め込み） */}
+        <SwitchReportFormEmbed />
 
         {/* §14 会社概要 */}
         <LpCompanyInfo />
