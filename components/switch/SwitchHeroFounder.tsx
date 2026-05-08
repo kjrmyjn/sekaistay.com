@@ -52,7 +52,7 @@ export default function SwitchHeroFounder() {
             <br className="hidden sm:block" />
             ——その業界の常識を、ひっくり返す会社をつくりました。
             <br className="hidden sm:block" />
-            <strong className="text-ink">うちの代表が、必ず初回お話します。</strong>
+            <strong className="text-ink">専門家が、丁寧にお話を伺います。</strong>
           </p>
 
           {/* 創業者2名カード */}
@@ -85,7 +85,7 @@ export default function SwitchHeroFounder() {
               data-cta-label="founder-30min-primary"
               className="group inline-flex items-center justify-center bg-ink text-paper font-bold text-[15px] sm:text-base px-8 sm:px-10 py-4 rounded-md hover:bg-deep-teal transition-colors duration-300 shadow tracking-wide"
             >
-              代表に直接相談する
+              セカイチに相談する
               <span className="mx-2 inline-block w-px h-4 bg-paper/30 align-middle" aria-hidden />
               <span className="text-paper/80 font-medium text-[13px] sm:text-[14px]">30分の無料面談</span>
               <svg className="ml-3 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
