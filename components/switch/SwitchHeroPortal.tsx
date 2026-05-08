@@ -110,15 +110,11 @@ export default function SwitchHeroPortal() {
                     className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
                     aria-hidden
                   />
-                  {/* 横長 iPhone 傾き構図 (1362x1155) — 文字シャープ */}
+                  {/* 横長 iPhone 傾き構図 (1362x1155, 透過背景) — mask 不要 */}
                   <img
-                    src="/images/switch/dashboard-mockup.png?v=gpt55"
+                    src="/images/switch/dashboard-mockup.png?v=v3"
                     alt="SEKAI STAY オーナーポータル ダッシュボード"
                     className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
-                    style={{
-                      maskImage: "radial-gradient(ellipse 80% 90% at center, #000 65%, transparent 99%)",
-                      WebkitMaskImage: "radial-gradient(ellipse 80% 90% at center, #000 65%, transparent 99%)",
-                    }}
                   />
                   {/* 浮き出るデータラベル — リアルタイム感の演出 */}
                   <FloatingDataChip className="absolute top-2 left-0 sm:top-6 lg:top-10 lg:left-[-2%] z-20" label="ピーク売上" value="+18%" trend="up" />
