@@ -21,6 +21,7 @@ import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 import LpVariantForm from "@/components/switch/LpVariantForm";
 import WaveDivider from "@/components/switch/deco/WaveDivider";
+import PageViewTracker from "@/components/switch/PageViewTracker";
 
 export default function SwitchSimplePage() {
   const handleApply = () => {
@@ -31,6 +32,7 @@ export default function SwitchSimplePage() {
 
   return (
     <>
+      <PageViewTracker lpVariant="switch-simple" />
       <SwitchHeader />
       <main>
         {/* §1 Hero — シンプル装飾版 */}

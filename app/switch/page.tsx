@@ -25,6 +25,7 @@ import SwitchReportFormEmbed from "@/components/switch/SwitchReportFormEmbed";
 import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 import WaveDivider from "@/components/switch/deco/WaveDivider";
+import PageViewTracker from "@/components/switch/PageViewTracker";
 
 export default function SwitchPage() {
   const handleApply = () => {
@@ -37,6 +38,7 @@ export default function SwitchPage() {
 
   return (
     <>
+      <PageViewTracker lpVariant="switch" />
       <SwitchHeader />
       <main>
         {/* §1 Hero */}

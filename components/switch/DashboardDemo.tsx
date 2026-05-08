@@ -632,7 +632,7 @@ function ExpensesView() {
     <>
       <div className="px-5 pt-3 pb-2">
         <h2 className="text-base font-bold text-black leading-tight">経費</h2>
-        <p className="text-[10px] text-switch-gray-mid mt-0.5">領収書をAIが自動入力</p>
+        <p className="text-[10px] text-switch-gray-mid mt-0.5">領収書から自動入力</p>
       </div>
 
       <div className="px-5 pb-3">
@@ -648,7 +648,7 @@ function ExpensesView() {
             <button className="text-[9px] font-bold bg-white border border-switch-gray-light text-switch-gray-dark px-2.5 py-1 rounded-md">📸 撮影</button>
           </div>
           <span className="inline-block text-[8px] font-bold bg-switch-teal-deep text-white px-2 py-0.5 rounded-full">
-            ✨ AI自動入力対応
+            ✨ 自動仕分け対応
           </span>
         </div>
       </div>
