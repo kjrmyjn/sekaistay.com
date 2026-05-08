@@ -21,7 +21,7 @@ import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
 import SwitchPricing from "@/components/switch/SwitchPricing";
 import SwitchFlow from "@/components/switch/SwitchFlow";
 import SwitchFAQ from "@/components/switch/SwitchFAQ";
-import SwitchReportFormEmbed from "@/components/switch/SwitchReportFormEmbed";
+import LpVariantForm from "@/components/switch/LpVariantForm";
 import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 import WaveDivider from "@/components/switch/deco/WaveDivider";
@@ -96,11 +96,12 @@ export default function SwitchPage() {
         {/* §11 FAQ */}
         <SwitchFAQ />
 
-        {/* §13 お問い合わせフォーム（連絡先先取り型 lite に統一）
-            A/Bテストの差分は LP 構成（セクション数・コピー）のみ。
-            フォーム実体は /switch / /switch-lite で共通の lite 版を使う。 */}
-        <SwitchReportFormEmbed
-          variant="lite"
+        {/* §13 お問い合わせフォーム — 引き継ぎ計画 (2026-05-04 吉蔵) Phase 1 移行完了。
+            iframe (japanvillas.kss-cloud.com/report-request-lite) → ネイティブ実装に置換。
+            Supabase lead_submissions に lp_variant="switch" で保存。
+            吉蔵側への Webhook 転送は /api/lead-forward 実装後に有効化（secret 受領待ち）。 */}
+        <LpVariantForm
+          lpVariant="switch"
           heading="まずはご相談だけでもどうぞ"
           leadCopy="お名前・メール・電話の30秒入力で、24時間以内に担当者からご連絡"
           subCopy="物件情報の入力は不要。お話を伺ってから、必要に応じてレポートをお作りします。無理な勧誘は致しません。"
