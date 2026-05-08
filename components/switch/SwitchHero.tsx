@@ -181,7 +181,7 @@ export default function SwitchHero() {
 
                 {/* iPhoneモックアップ（さらに拡大） */}
                 <img
-                  src="/images/switch/dashboard-mockup.png"
+                  src="/images/switch/dashboard-mockup.png?v=gpt55"
                   alt="SEKAI STAY オーナーポータル ダッシュボード"
                   className="relative w-[82%] max-w-[320px] sm:max-w-md lg:max-w-[600px] select-none pointer-events-none drop-shadow-2xl z-10"
                   style={{
