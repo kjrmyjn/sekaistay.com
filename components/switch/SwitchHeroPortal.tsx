@@ -7,6 +7,7 @@
 
 import { useEffect, useState } from "react";
 import DotPattern from "./deco/DotPattern";
+import DashboardDemo from "./DashboardDemo";
 
 export default function SwitchHeroPortal() {
   const [visible, setVisible] = useState(false);
@@ -102,30 +103,31 @@ export default function SwitchHeroPortal() {
                 </div>
               </div>
 
-              {/* 右: ダッシュボード巨大化（control の 1.5倍想定） */}
+              {/* 右: 実際のダッシュボードUIを iPhone フレームで表示（DOM レンダリング = 拡大してもシャープ） */}
               <div className="flex flex-col items-center w-full">
-                <div className="relative flex justify-center items-center w-full min-h-[360px] sm:min-h-[480px] lg:min-h-[560px]">
+                <div className="relative flex justify-center items-center w-full min-h-[600px] sm:min-h-[680px] lg:min-h-[720px]">
+                  {/* グロー */}
                   <div
                     className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
                     aria-hidden
                   />
-                  <img
-                    src="/images/switch/dashboard-mockup.png"
-                    alt="SEKAI STAY オーナーポータル ダッシュボード"
-                    className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
-                    style={{
-                      maskImage: "radial-gradient(ellipse 80% 90% at center, #000 65%, transparent 99%)",
-                      WebkitMaskImage: "radial-gradient(ellipse 80% 90% at center, #000 65%, transparent 99%)",
-                    }}
-                  />
+
+                  {/* DashboardDemo を scale で拡大 (DOM = 画質劣化なし) */}
+                  <div
+                    className="relative z-10 origin-center scale-[1.05] sm:scale-[1.15] lg:scale-[1.3] drop-shadow-2xl pointer-events-none select-none"
+                    aria-hidden
+                  >
+                    <DashboardDemo />
+                  </div>
+
                   {/* 浮き出るデータラベル — リアルタイム感の演出 */}
-                  <FloatingDataChip className="absolute top-4 left-2 lg:top-8 lg:left-[-2%] z-20" label="ピーク売上" value="+18%" trend="up" />
-                  <FloatingDataChip className="absolute top-12 right-2 lg:top-16 lg:right-[-2%] z-20" label="稼働率" value="74%" trend="up" />
-                  <FloatingDataChip className="absolute bottom-16 left-0 lg:bottom-24 lg:left-[-4%] z-20" label="清掃完了" value="3/3" trend="ok" />
-                  <FloatingDataChip className="absolute bottom-4 right-2 lg:bottom-12 lg:right-[-4%] z-20" label="新規予約" value="2件" trend="up" />
+                  <FloatingDataChip className="absolute top-2 left-1 sm:top-6 sm:left-2 lg:top-12 lg:left-[2%] z-20" label="ピーク売上" value="+18%" trend="up" />
+                  <FloatingDataChip className="absolute top-10 right-1 sm:top-14 sm:right-2 lg:top-20 lg:right-[2%] z-20" label="稼働率" value="74%" trend="up" />
+                  <FloatingDataChip className="absolute bottom-20 left-0 sm:bottom-28 sm:left-2 lg:bottom-32 lg:left-[1%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                  <FloatingDataChip className="absolute bottom-8 right-1 sm:bottom-16 sm:right-2 lg:bottom-20 lg:right-[1%] z-20" label="新規予約" value="2件" trend="up" />
                 </div>
 
-                <p className="text-[11px] sm:text-[12px] text-white/55 mt-1 sm:mt-2 text-center max-w-md tracking-wide leading-relaxed">
+                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 text-center max-w-md tracking-wide leading-relaxed">
                   予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
                 </p>
               </div>
