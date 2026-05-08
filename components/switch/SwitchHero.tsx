@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import CountUp from "./deco/CountUp";
 import DotPattern from "./deco/DotPattern";
 
-export default function SwitchHero() {
+export default function SwitchHero({ showUrgencyStrip = true }: { showUrgencyStrip?: boolean }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(true), []);
 
   return (
     <section className="relative">
       {/* Top strip — 黒ベース + 究極のプレミアム感 */}
-      <div className="bg-gradient-to-r from-black via-[#1a1a1a] to-black text-white py-2.5 sm:py-3 px-3 sm:px-4 relative overflow-hidden border-b border-white/10">
+      {showUrgencyStrip && <div className="bg-gradient-to-r from-black via-[#1a1a1a] to-black text-white py-2.5 sm:py-3 px-3 sm:px-4 relative overflow-hidden border-b border-white/10">
         {/* ゴールドのアクセント光 */}
         <div
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.08),transparent_60%)] pointer-events-none"
@@ -40,7 +40,7 @@ export default function SwitchHero() {
             <span className="text-[11px] sm:text-xs text-white/90">〆切 <span className="text-yellow-400 font-bold tracking-wider">5/31</span></span>
           </span>
         </p>
-      </div>
+      </div>}
 
       <div className="bg-switch-charcoal text-white relative overflow-hidden">
         {/* Ambient teal glow */}
