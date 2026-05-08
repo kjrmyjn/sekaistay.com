@@ -1,7 +1,10 @@
 "use client";
 
-/* /switch/simple — シンプル版 (装飾控えめ・Top strip削除・上質ミニマル)
- * セクション構成・コピーは /switch と完全同一。Hero とフォームの装飾だけが differ。
+/* /switch/simple — シンプル版 (装飾控えめ・上質ミニマル)
+ * セクション構成は /switch のコンテンツ（Simulator / PainPoints / Services / Comparison /
+ * Results / Testimonials / Pricing / Flow / FAQ）を維持。
+ * 取り除く装飾: WaveDivider × 2、SwitchPrimaryCTA × 3、SwitchStickyCTA、LpVariantForm の teal-gradient burst
+ * → ヘッダー以下を「Hero と同じ ivory ラグジュアリー世界観」に統一する。
  */
 
 import LpFooter from "@/components/switch/_shared/LpFooter";
@@ -17,10 +20,7 @@ import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
 import SwitchPricing from "@/components/switch/SwitchPricing";
 import SwitchFlow from "@/components/switch/SwitchFlow";
 import SwitchFAQ from "@/components/switch/SwitchFAQ";
-import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
-import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
-import LpVariantForm from "@/components/switch/LpVariantForm";
-import WaveDivider from "@/components/switch/deco/WaveDivider";
+import SimpleContactForm from "@/components/switch/SimpleContactForm";
 import PageViewTracker from "@/components/switch/PageViewTracker";
 
 export default function SwitchSimplePage() {
@@ -37,43 +37,18 @@ export default function SwitchSimplePage() {
       <main>
         {/* §1 Hero — シンプル装飾版 */}
         <SwitchHeroSimple />
-        <WaveDivider fromColor="#2d2d2d" toColor="#167b81" withDots />
 
-        {/* §2 簡易診断 */}
+        {/* §2 簡易診断（コンテンツ維持） */}
         <SwitchSimulator onApply={handleApply} />
-        <WaveDivider fromColor="#167b81" toColor="#ffffff" />
 
         {/* §3 共感ストーリー */}
         <SwitchPainPoints />
 
-        {/* MidCTA① */}
-        <SwitchPrimaryCTA />
-
         {/* §4 サービス内容 */}
         <SwitchServices />
 
-        {/* MidCTA② */}
-        <SwitchPrimaryCTA title="どんなサービスなのか気になった方へ" />
-
         {/* §5 他社比較 */}
         <SwitchComparison />
-
-        {/* MidCTA③ — 数値比較 */}
-        <SwitchPrimaryCTA
-          title="他社との手数料差は、あなたの物件だと…"
-          compareStat={{
-            leftLabel: "松本さんの場合（手数料20%）",
-            leftValue: 1440000,
-            leftSuffix: "/ 年",
-            rightLabel: "SEKAI STAY（手数料8%）",
-            rightValue: 696000,
-            rightSuffix: "/ 年",
-            diffLabel: "年間差額",
-            diffValue: 744000,
-            diffSuffix: "/ 年",
-            note: "※ 1部屋想定・月額固定費 ¥10,000/部屋 込みで試算",
-          }}
-        />
 
         {/* §7 実績 */}
         <SwitchResults />
@@ -90,19 +65,14 @@ export default function SwitchSimplePage() {
         {/* §11 FAQ */}
         <SwitchFAQ />
 
-        {/* §13 フォーム — lp_variant=switch-simple */}
-        <LpVariantForm
-          lpVariant="switch-simple"
-          heading="まずはご相談だけでもどうぞ"
-          leadCopy="お名前・メール・電話の30秒入力で、24時間以内に担当者からご連絡"
-          subCopy="物件情報の入力は不要。お話を伺ってから、必要に応じてレポートをお作りします。無理な勧誘は致しません。"
-        />
+        {/* §13 フォーム — シンプル版（lp_variant=switch-simple） */}
+        <SimpleContactForm />
 
         {/* §14 会社概要 */}
         <LpCompanyInfo />
       </main>
       <LpFooter />
-      <SwitchStickyCTA />
+      {/* SwitchStickyCTA は意図的に削除 — 追従CTA はシンプル思想に反する */}
     </>
   );
 }
