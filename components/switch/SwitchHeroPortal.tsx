@@ -112,7 +112,7 @@ export default function SwitchHeroPortal() {
                   />
                   {/* 横長 iPhone 傾き構図 (1362x1155, 透過背景) — mask 不要 */}
                   <img
-                    src="/images/switch/dashboard-mockup.png?v=v3"
+                    src="/images/switch/dashboard-mockup.png?v=v4"
                     alt="SEKAI STAY オーナーポータル ダッシュボード"
                     className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
                   />

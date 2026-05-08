@@ -119,7 +119,7 @@ export default function SwitchHeroKotekote() {
                 <div className="relative w-full">
                   <div className="absolute inset-0 bg-switch-teal-bright/15 blur-[80px] rounded-full scale-90 pointer-events-none" aria-hidden />
                   <img
-                    src="/images/switch/dashboard-mockup.png?v=v3"
+                    src="/images/switch/dashboard-mockup.png?v=v4"
                     alt="SEKAI STAY オーナーポータル"
                     className="relative w-full max-w-[340px] mx-auto select-none pointer-events-none drop-shadow-2xl"
                     style={{
