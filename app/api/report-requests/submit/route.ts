@@ -1,0 +1,171 @@
+import { NextRequest, NextResponse } from "next/server";
+import { insertLeadSubmission, type SubmitPayload } from "@/lib/lead-submissions";
+import { classifyKind } from "@/lib/test-classifier";
+
+export const runtime = "nodejs";
+
+const ALLOWED_HOSTS = new Set([
+  "sekaistay.com",
+  "www.sekaistay.com",
+  "localhost:3000",
+  "localhost",
+]);
+
+const MAX_LENGTHS: Record<string, number> = {
+  name: 100,
+  email: 200,
+  phone: 50,
+  airbnbUrl: 1000,
+  peakRevenue: 20,
+  offpeakRevenue: 20,
+  commissionRate: 20,
+  operatingYears: 10,
+  complaints: 2000,
+  companyName: 200,
+  utmSource: 200,
+  utmMedium: 200,
+  utmCampaign: 200,
+  utmContent: 200,
+  utmTerm: 200,
+  gclid: 200,
+  fbclid: 200,
+  landingUrl: 1000,
+  referrer: 1000,
+  lpVariant: 100,
+};
+
+const EMAIL_RE = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
+
+function isValidAirbnbUrl(url: string): boolean {
+  if (!url) return false;
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return /(^|\.)airbnb\.(com|jp|co\.jp)$/.test(host) || host === "abnb.me" || host.startsWith("m.airbnb.");
+  } catch {
+    return false;
+  }
+}
+
+function getOriginHost(req: NextRequest): string | null {
+  const origin = req.headers.get("origin");
+  if (origin) {
+    try {
+      return new URL(origin).host.toLowerCase();
+    } catch {}
+  }
+  const referer = req.headers.get("referer");
+  if (referer) {
+    try {
+      return new URL(referer).host.toLowerCase();
+    } catch {}
+  }
+  return null;
+}
+
+function getClientIp(req: NextRequest): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0].trim();
+  return req.headers.get("x-real-ip") || "unknown";
+}
+
+// In-memory rate limiter (per-instance; sufficient for low-volume LP)
+const rateMap = new Map<string, number[]>();
+const RATE_WINDOW_MS = 60 * 60 * 1000; // 1h
+const RATE_LIMIT = 10;
+
+function checkRate(ip: string): boolean {
+  const now = Date.now();
+  const arr = rateMap.get(ip) || [];
+  const recent = arr.filter((t) => now - t < RATE_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT) return false;
+  recent.push(now);
+  rateMap.set(ip, recent);
+  return true;
+}
+
+function trim(value: unknown, max: number): string {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, max);
+}
+
+export async function POST(req: NextRequest) {
+  // CSRF: Origin/Referer host check
+  const host = getOriginHost(req);
+  if (process.env.NODE_ENV === "production" && (!host || !ALLOWED_HOSTS.has(host))) {
+    return NextResponse.json({ error: "Forbidden origin" }, { status: 403 });
+  }
+
+  // Rate limit
+  const ip = getClientIp(req);
+  if (!checkRate(ip)) {
+    return NextResponse.json({ error: "申請の上限に達しました。時間をおいてもう一度お試しください。" }, { status: 429 });
+  }
+
+  let body: any;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "リクエストの形式が正しくありません" }, { status: 400 });
+  }
+
+  // Required
+  const name = trim(body.name, MAX_LENGTHS.name);
+  const email = trim(body.email, MAX_LENGTHS.email);
+  const phone = trim(body.phone, MAX_LENGTHS.phone);
+  if (!name) return NextResponse.json({ error: "お名前を入力してください" }, { status: 400 });
+  if (!email || !EMAIL_RE.test(email))
+    return NextResponse.json({ error: "メールアドレスの形式が正しくありません" }, { status: 400 });
+  if (!phone) return NextResponse.json({ error: "電話番号を入力してください" }, { status: 400 });
+
+  // Airbnb URL (default form: required)
+  const airbnbUrl = trim(body.airbnbUrl, MAX_LENGTHS.airbnbUrl);
+  if (airbnbUrl && !isValidAirbnbUrl(airbnbUrl)) {
+    return NextResponse.json({ error: "Airbnb の URL を入力してください" }, { status: 400 });
+  }
+
+  // totalProperties
+  let totalProperties: number | undefined;
+  if (typeof body.totalProperties === "number" && Number.isFinite(body.totalProperties)) {
+    totalProperties = Math.max(1, Math.min(30, Math.floor(body.totalProperties)));
+  }
+
+  const payload: SubmitPayload = {
+    name,
+    email,
+    phone,
+    airbnbUrl: airbnbUrl || undefined,
+    totalProperties,
+    peakRevenue: trim(body.peakRevenue, MAX_LENGTHS.peakRevenue) || undefined,
+    offpeakRevenue: trim(body.offpeakRevenue, MAX_LENGTHS.offpeakRevenue) || undefined,
+    commissionRate: trim(body.commissionRate, MAX_LENGTHS.commissionRate) || undefined,
+    operatingYears: trim(body.operatingYears, MAX_LENGTHS.operatingYears) || undefined,
+    complaints: trim(body.complaints, MAX_LENGTHS.complaints) || undefined,
+    companyName: trim(body.companyName, MAX_LENGTHS.companyName) || undefined,
+    utmSource: trim(body.utmSource, MAX_LENGTHS.utmSource) || undefined,
+    utmMedium: trim(body.utmMedium, MAX_LENGTHS.utmMedium) || undefined,
+    utmCampaign: trim(body.utmCampaign, MAX_LENGTHS.utmCampaign) || undefined,
+    utmContent: trim(body.utmContent, MAX_LENGTHS.utmContent) || undefined,
+    utmTerm: trim(body.utmTerm, MAX_LENGTHS.utmTerm) || undefined,
+    gclid: trim(body.gclid, MAX_LENGTHS.gclid) || undefined,
+    fbclid: trim(body.fbclid, MAX_LENGTHS.fbclid) || undefined,
+    landingUrl: trim(body.landingUrl, MAX_LENGTHS.landingUrl) || undefined,
+    referrer: trim(body.referrer, MAX_LENGTHS.referrer) || undefined,
+    lpVariant: trim(body.lpVariant, MAX_LENGTHS.lpVariant) || undefined,
+    formVariant: body.formVariant === "lite" ? "lite" : "default",
+  };
+
+  const kind = classifyKind(name, email);
+  const userAgent = req.headers.get("user-agent")?.slice(0, 500) || undefined;
+
+  try {
+    const row = await insertLeadSubmission({ payload, kind, clientIp: ip, userAgent });
+    // TODO Day 3: trigger /api/lead-forward → 吉蔵 /api/lead-intake (when secret arrives)
+    return NextResponse.json({ id: row.id, status: "received" }, { status: 200 });
+  } catch (err: any) {
+    console.error("[submit] insert failed:", err?.message || err);
+    return NextResponse.json(
+      { error: "送信処理に失敗しました。時間をおいて再度お試しください。" },
+      { status: 500 },
+    );
+  }
+}
