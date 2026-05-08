@@ -6,6 +6,9 @@ export const runtime = "nodejs";
 
 const ALLOWED_VARIANTS = new Set([
   "switch",
+  "switch-portal",
+  "switch-founder",
+  // legacy (archived but accept submissions if any preview links remain):
   "switch-simple",
   "switch-kotekote",
 ]);

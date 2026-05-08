@@ -18,9 +18,9 @@ type Stat = {
 };
 
 const VARIANTS: { id: string; label: string }[] = [
-  { id: "switch", label: "Balance (control)" },
-  { id: "switch-simple", label: "Simple" },
-  { id: "switch-kotekote", label: "Kotekote" },
+  { id: "switch", label: "A: 価格主導 (control)" },
+  { id: "switch-portal", label: "B: ポータル主導" },
+  { id: "switch-founder", label: "C: 信頼主導" },
 ];
 
 // 比率の Z 検定 (control vs variant)
