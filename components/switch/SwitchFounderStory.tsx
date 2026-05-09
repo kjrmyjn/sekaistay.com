@@ -40,7 +40,11 @@ export default function SwitchFounderStory() {
               切り替えは、心理的にもオペレーション的にも重い決断です。だからこそ、入り口は軽くしました。
             </p>
             <p>
-              <mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">初期費用 ¥0（期間限定）</mark>、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">解約金 ¥0</mark>。
+              <mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">初期費用 ¥0<sup className="text-[10px] font-normal ml-0.5">※1</sup></mark>、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">解約金 ¥0<sup className="text-[10px] font-normal ml-0.5">※2</sup></mark>。
+            </p>
+            <p className="text-[12px] sm:text-[13px] leading-[1.8] text-ink/55 tracking-normal">
+              ※1 運用中物件のみ期間限定無料（新規立ち上げ物件は別途お見積もり）<br />
+              ※2 最低契約期間（6ヶ月）以降は解約金 ¥0
             </p>
             <p>
               初回のご相談では、専門家が丁寧にお話を伺います。運用が変わって、結果としてお付き合いが続いたら嬉しい。それくらいのスタンスで、お会いできればと思っています。
