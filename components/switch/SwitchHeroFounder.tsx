@@ -10,8 +10,6 @@
 import { useEffect, useState } from "react";
 import DotPattern from "./deco/DotPattern";
 
-const TIMEREX_45MIN = "https://timerex.net/s/sekai-stay/d61b424d";
-
 export default function SwitchHeroFounder() {
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(true), []);
@@ -75,8 +73,6 @@ export default function SwitchHeroFounder() {
               「業者に任せきりで、何が起きてるか分からない」
               <br className="hidden sm:block" />
               ——その業界の常識を、ひっくり返すサービスをつくりました。
-              <br className="hidden sm:block" />
-              <strong className="text-white">専門チームが、丁寧にお話を伺います。</strong>
             </p>
           </div>
 
@@ -104,23 +100,22 @@ export default function SwitchHeroFounder() {
             />
           </div>
 
-          {/* 主CTA + 副CTA */}
+          {/* 主CTA */}
           <div className="relative z-30 flex flex-col items-center gap-3 mt-12 sm:mt-14">
             <a
-              href={TIMEREX_45MIN}
-              target="_blank"
-              rel="noreferrer"
-              data-cta="founder-meeting"
-              data-cta-label="founder-45min-primary"
+              href="#contact-form"
+              data-cta="contact-form"
+              data-cta-label="founder-primary"
               className="group inline-flex items-center justify-center bg-switch-accent text-white font-bold text-[15px] sm:text-base px-8 sm:px-10 py-4 rounded-md hover:bg-switch-accent-hover transition-colors duration-300 shadow-[0_0_40px_rgba(235,110,40,0.35)] hover:shadow-[0_0_56px_rgba(235,110,40,0.5)] tracking-wide"
             >
-              専門家に相談する
-              <span className="mx-2 inline-block w-px h-4 bg-white/30 align-middle" aria-hidden />
-              <span className="text-white/85 font-medium text-[13px] sm:text-[14px]">45分の無料面談</span>
+              無料面談はこちら
               <svg className="ml-3 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
+            <p className="text-[13px] sm:text-[14px] text-white font-bold tracking-wide mt-1">
+              専門チームが、丁寧にお話を伺います。
+            </p>
           </div>
         </div>
       </div>

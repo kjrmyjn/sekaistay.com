@@ -25,7 +25,7 @@ export function useSwitchCtaLabels(): SwitchCtaLabels {
   if (pathname?.startsWith("/switch/founder")) {
     return {
       primary: "専門家に相談する",
-      sticky: "45分の無料面談",
+      sticky: "無料面談はこちら",
     };
   }
 
