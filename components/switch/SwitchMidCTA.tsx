@@ -2,6 +2,7 @@
 
 import BounceArrow from "./deco/BounceArrow";
 import CountUp from "./deco/CountUp";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 
 type Chip = {
   icon: string;
@@ -46,7 +47,7 @@ export default function SwitchMidCTA({
   headline,
   subline,
   eyebrow,
-  ctaLabel = "無料で診断レポートをもらう",
+  ctaLabel,
   variant = "light",
   withArrow = true,
   layout = "simple",
@@ -55,6 +56,8 @@ export default function SwitchMidCTA({
   compareStat,
   features,
 }: Props) {
+  const { primary } = useSwitchCtaLabels();
+  const finalCtaLabel = ctaLabel ?? primary;
   const isOnDark = variant === "dark" || variant === "deep";
   const bgClass =
     variant === "dark"
@@ -74,7 +77,7 @@ export default function SwitchMidCTA({
       href="#contact-form"
       className="group inline-flex items-center justify-center bg-switch-accent text-white font-bold text-sm sm:text-base px-7 sm:px-9 py-3.5 rounded-md hover:bg-switch-accent-hover transition-all shadow-sm cta-breath hover:-translate-y-0.5 min-h-[44px]"
     >
-      {ctaLabel}
+      {finalCtaLabel}
       <svg
         className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
         fill="none"

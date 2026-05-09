@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 
 export default function SwitchHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const { primary } = useSwitchCtaLabels();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -51,7 +53,7 @@ export default function SwitchHeader() {
             href="#contact-form"
             className="bg-switch-accent text-white text-[10px] sm:text-sm font-bold px-3 sm:px-5 py-2.5 rounded-md hover:bg-switch-accent-hover transition-all shadow-sm min-h-[44px] flex items-center whitespace-nowrap"
           >
-            無料で診断レポートをもらう
+            {primary}
           </a>
         </div>
       </header>

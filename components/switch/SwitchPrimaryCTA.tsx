@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 
 /**
  * SwitchPrimaryCTA — /switch LP の最重要CTA（PainPoints直後に配置）
@@ -39,6 +40,7 @@ export default function SwitchPrimaryCTA({
   title?: string;
   compareStat?: CompareStat;
 } = {}) {
+  const { primary } = useSwitchCtaLabels();
   return (
     <div className="relative">
     <section className="relative py-12 sm:py-16 overflow-hidden bg-[linear-gradient(135deg,#0d5a60_0%,#167b81_40%,#1a8f96_55%,#167b81_75%,#0d5a60_100%)] text-white">
@@ -142,7 +144,7 @@ export default function SwitchPrimaryCTA({
             href="#contact-form"
             className="group relative inline-flex items-center justify-center w-full sm:w-auto bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-base sm:text-lg px-8 sm:px-12 py-3.5 sm:py-4 rounded-md shadow-[0_0_40px_rgba(235,110,40,0.45)] hover:shadow-[0_0_56px_rgba(235,110,40,0.6)] hover:-translate-y-0.5 transition-all cta-breath min-h-[52px]"
           >
-            <span>無料で診断レポートをもらう</span>
+            <span>{primary}</span>
             <svg
               className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"

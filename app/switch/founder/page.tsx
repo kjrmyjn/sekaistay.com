@@ -20,6 +20,7 @@ import SwitchFlow from "@/components/switch/SwitchFlow";
 import SwitchFAQ from "@/components/switch/SwitchFAQ";
 import LpVariantForm from "@/components/switch/LpVariantForm";
 import PageViewTracker from "@/components/switch/PageViewTracker";
+import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 
 export default function SwitchFounderPage() {
   const handleApply = () => {
@@ -75,7 +76,8 @@ export default function SwitchFounderPage() {
         <LpCompanyInfo />
       </main>
       <LpFooter />
-      {/* SwitchStickyCTA は意図的に未配置 — 信頼系の落ち着いた世界観を保つ */}
+      {/* 右下の追従 CTA：「45分の無料面談」（バリアント別ラベルは useSwitchCtaLabels で出し分け） */}
+      <SwitchStickyCTA />
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import CountUp from "./deco/CountUp";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 
 type Props = {
   onApply: (v: {
@@ -16,6 +17,7 @@ const SEKAI_FEE = 8; // %
 const SEKAI_FIXED_MAN = 1.0; // ¥10,000/月 = 1万円/月 = 12万円/年
 
 export default function SwitchSimulator({ onApply }: Props) {
+  const { primary: ctaLabel } = useSwitchCtaLabels();
   // 初期値は松本さん（PainPoints / FinalCTA と一貫）の設定。
   const [feePct, setFeePct] = useState(20);
   const [monthlyRev, setMonthlyRev] = useState(60); // 万円
@@ -280,7 +282,7 @@ export default function SwitchSimulator({ onApply }: Props) {
               }
               className="group w-full flex items-center justify-center bg-switch-accent text-white font-bold text-sm sm:text-base py-3.5 rounded-md hover:bg-switch-accent-hover transition-all shadow-sm min-h-[44px]"
             >
-              無料で診断レポートをもらう
+              {ctaLabel}
               <svg
                 className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
                 fill="none"

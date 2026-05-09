@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 
 /**
- * スクロール後にフッター追従で現れる小さな「無料診断」ボタン。
+ * スクロール後にフッター追従で現れる小さなCTA ボタン。
  * 年配オーナーがスクロール中にCTAを見失わないための保険。
  * Hero通過後に出現し、フォーム到達時は非表示。
+ * バリアントごとにラベルを出し分け（useSwitchCtaLabels）。
  */
 export default function SwitchStickyCTA() {
   const [visible, setVisible] = useState(false);
+  const { sticky } = useSwitchCtaLabels();
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,7 +42,7 @@ export default function SwitchStickyCTA() {
           <span className="absolute inset-0 bg-yellow-400 rounded-full animate-ping opacity-75" />
           <span className="relative w-3 h-3 bg-yellow-400 rounded-full border border-white" />
         </span>
-        無料で診断
+        {sticky}
       </a>
     </div>
   );

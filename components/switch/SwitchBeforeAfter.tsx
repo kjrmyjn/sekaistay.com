@@ -1,11 +1,13 @@
 "use client";
 
 import { useScrollFade } from "@/hooks/useScrollFade";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 import CountUp from "./deco/CountUp";
 import SectionHead from "./deco/SectionHead";
 
 export default function SwitchBeforeAfter() {
   const ref = useScrollFade();
+  const { primary: ctaLabel } = useSwitchCtaLabels();
 
   return (
     <section className="py-16 sm:py-20 bg-gradient-to-b from-white to-switch-cloud" ref={ref}>
@@ -145,7 +147,7 @@ export default function SwitchBeforeAfter() {
             href="#contact-form"
             className="group inline-flex items-center justify-center bg-switch-accent text-white font-bold text-sm sm:text-base px-8 sm:px-10 py-4 rounded-md hover:bg-switch-accent-hover transition-all shadow-sm cta-breath min-h-[44px]"
           >
-            無料で診断レポートをもらう
+            {ctaLabel}
             <svg
               className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"

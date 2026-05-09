@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollFade } from "@/hooks/useScrollFade";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 import SectionHead from "./deco/SectionHead";
 
 const zeroItems = [
@@ -14,6 +15,7 @@ const zeroItems = [
 
 export default function SwitchPricing() {
   const ref = useScrollFade();
+  const { primary: ctaLabel } = useSwitchCtaLabels();
 
   return (
     <section
@@ -171,7 +173,7 @@ export default function SwitchPricing() {
             href="#contact-form"
             className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-base sm:text-lg px-10 sm:px-12 py-4 rounded-md shadow-[0_0_40px_rgba(235,110,40,0.35)] hover:shadow-[0_0_56px_rgba(235,110,40,0.5)] hover:-translate-y-0.5 transition-all min-h-[52px]"
           >
-            無料で診断レポートをもらう
+            {ctaLabel}
             <svg
               className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
