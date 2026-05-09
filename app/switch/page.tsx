@@ -26,6 +26,7 @@ import SwitchPrimaryCTA from "@/components/switch/SwitchPrimaryCTA";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 import WaveDivider from "@/components/switch/deco/WaveDivider";
 import PageViewTracker from "@/components/switch/PageViewTracker";
+import EngagementTracker from "@/components/EngagementTracker";
 
 export default function SwitchPage() {
   const handleApply = () => {
@@ -39,73 +40,102 @@ export default function SwitchPage() {
   return (
     <>
       <PageViewTracker lpVariant="switch" />
+      <EngagementTracker lpVariant="switch" />
       <SwitchHeader />
       <main>
         {/* §1 Hero */}
-        <SwitchHero />
+        <div data-track-section="hero">
+          <SwitchHero />
+        </div>
         <WaveDivider fromColor="#2d2d2d" toColor="#167b81" withDots />
 
         {/* §2 簡易診断 */}
-        <SwitchSimulator onApply={handleApply} />
+        <div data-track-section="simulator">
+          <SwitchSimulator onApply={handleApply} />
+        </div>
         <WaveDivider fromColor="#167b81" toColor="#ffffff" />
 
         {/* §3 共感ストーリー（松本さん・悩み） */}
-        <SwitchPainPoints />
+        <div data-track-section="pain-points">
+          <SwitchPainPoints />
+        </div>
 
         {/* MidCTA① — 共感 → プライマリCTA（濃紺ヒーロー） */}
-        <SwitchPrimaryCTA />
+        <div data-track-section="mid-cta-1">
+          <SwitchPrimaryCTA />
+        </div>
 
         {/* §4 サービス内容 */}
-        <SwitchServices />
+        <div data-track-section="services">
+          <SwitchServices />
+        </div>
 
         {/* MidCTA② — 機能 → プライマリCTA（同デザイン） */}
-        <SwitchPrimaryCTA title="どんなサービスなのか気になった方へ" />
+        <div data-track-section="mid-cta-2">
+          <SwitchPrimaryCTA title="どんなサービスなのか気になった方へ" />
+        </div>
 
         {/* §5 他社比較 */}
-        <SwitchComparison />
+        <div data-track-section="comparison">
+          <SwitchComparison />
+        </div>
 
         {/* MidCTA③ — 差分 → PrimaryCTA（同デザイン + 数値比較） */}
-        <SwitchPrimaryCTA
-          title="他社との手数料差は、あなたの物件だと…"
-          compareStat={{
-            leftLabel: "松本さんの場合（手数料20%）",
-            leftValue: 1440000,
-            leftSuffix: "/ 年",
-            rightLabel: "SEKAI STAY（手数料8%）",
-            rightValue: 696000,
-            rightSuffix: "/ 年",
-            diffLabel: "年間差額",
-            diffValue: 744000,
-            diffSuffix: "/ 年",
-            note: "※ 1物件想定・月額固定費 ¥10,000/物件 込みで試算",
-          }}
-        />
+        <div data-track-section="mid-cta-3">
+          <SwitchPrimaryCTA
+            title="他社との手数料差は、あなたの物件だと…"
+            compareStat={{
+              leftLabel: "松本さんの場合（手数料20%）",
+              leftValue: 1440000,
+              leftSuffix: "/ 年",
+              rightLabel: "SEKAI STAY（手数料8%）",
+              rightValue: 696000,
+              rightSuffix: "/ 年",
+              diffLabel: "年間差額",
+              diffValue: 744000,
+              diffSuffix: "/ 年",
+              note: "※ 1物件想定・月額固定費 ¥10,000/物件 込みで試算",
+            }}
+          />
+        </div>
 
         {/* §7 実績 */}
-        <SwitchResults />
+        <div data-track-section="results">
+          <SwitchResults />
+        </div>
 
         {/* §8 オーナー様の声（松本さん・乗り換え後） */}
-        <SwitchTestimonials />
+        <div data-track-section="testimonials">
+          <SwitchTestimonials />
+        </div>
 
         {/* §9 料金 */}
-        <SwitchPricing />
+        <div data-track-section="pricing">
+          <SwitchPricing />
+        </div>
 
         {/* §10 ご利用の流れ */}
-        <SwitchFlow />
+        <div data-track-section="flow">
+          <SwitchFlow />
+        </div>
 
         {/* §11 FAQ */}
-        <SwitchFAQ />
+        <div data-track-section="faq">
+          <SwitchFAQ />
+        </div>
 
         {/* §13 お問い合わせフォーム — 引き継ぎ計画 (2026-05-04 吉蔵) Phase 1 移行完了。
             iframe (japanvillas.kss-cloud.com/report-request-lite) → ネイティブ実装に置換。
             Supabase lead_submissions に lp_variant="switch" で保存。
             吉蔵側への Webhook 転送は /api/lead-forward 実装後に有効化（secret 受領待ち）。 */}
-        <LpVariantForm
-          lpVariant="switch"
-          heading="まずはご相談だけでもどうぞ"
-          leadCopy="24時間以内に担当者からご連絡"
-          subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
-        />
+        <div data-track-section="form">
+          <LpVariantForm
+            lpVariant="switch"
+            heading="まずはご相談だけでもどうぞ"
+            leadCopy="24時間以内に担当者からご連絡"
+            subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
+          />
+        </div>
 
         {/* §14 会社概要 */}
         <LpCompanyInfo />

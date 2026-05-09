@@ -18,6 +18,7 @@ import SwitchFlow from "@/components/switch/SwitchFlow";
 import SwitchFAQ from "@/components/switch/SwitchFAQ";
 import LpVariantForm from "@/components/switch/LpVariantForm";
 import PageViewTracker from "@/components/switch/PageViewTracker";
+import EngagementTracker from "@/components/EngagementTracker";
 import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 
 export default function SwitchFounderPage() {
@@ -30,39 +31,58 @@ export default function SwitchFounderPage() {
   return (
     <>
       <PageViewTracker lpVariant="switch-founder" />
+      <EngagementTracker lpVariant="switch-founder" />
       <SwitchHeader />
       <main>
         {/* §1 Hero — 創業者2名 + 語りかけ宣言 */}
-        <SwitchHeroFounder />
+        <div data-track-section="hero">
+          <SwitchHeroFounder />
+        </div>
 
         {/* §2 ストーリー（新規）「なぜ作ったか」 */}
-        <SwitchFounderStory />
+        <div data-track-section="founder-story">
+          <SwitchFounderStory />
+        </div>
 
         {/* §3 料金（ストーリー直後に配置 — 哲学の即時可視化） */}
-        <SwitchPricing />
+        <div data-track-section="pricing">
+          <SwitchPricing />
+        </div>
 
         {/* §4 サービス内容 */}
-        <SwitchServices />
+        <div data-track-section="services">
+          <SwitchServices />
+        </div>
 
         {/* §5 他社比較 */}
-        <SwitchComparison />
+        <div data-track-section="comparison">
+          <SwitchComparison />
+        </div>
 
         {/* §7 シミュレーター（数字は中盤後半に） */}
-        <SwitchSimulator onApply={handleApply} />
+        <div data-track-section="simulator">
+          <SwitchSimulator onApply={handleApply} />
+        </div>
 
         {/* §8 ご利用の流れ */}
-        <SwitchFlow />
+        <div data-track-section="flow">
+          <SwitchFlow />
+        </div>
 
         {/* §9 FAQ */}
-        <SwitchFAQ />
+        <div data-track-section="faq">
+          <SwitchFAQ />
+        </div>
 
-        {/* §10 フォーム — 副 CTA（メインの CTA は Hero/Story の代表面談） */}
-        <LpVariantForm
-          lpVariant="switch-founder"
-          heading="まずはご相談だけでもどうぞ"
-          leadCopy="24時間以内に担当者からご連絡"
-          subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
-        />
+        {/* §10 フォーム — 副 CTA */}
+        <div data-track-section="form">
+          <LpVariantForm
+            lpVariant="switch-founder"
+            heading="まずはご相談だけでもどうぞ"
+            leadCopy="24時間以内に担当者からご連絡"
+            subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
+          />
+        </div>
 
         {/* §11 会社概要 */}
         <LpCompanyInfo />
