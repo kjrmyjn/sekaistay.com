@@ -103,8 +103,8 @@ export default function SwitchPage() {
         <LpVariantForm
           lpVariant="switch"
           heading="まずはご相談だけでもどうぞ"
-          leadCopy="お名前・メール・電話の30秒入力で、24時間以内に担当者からご連絡"
-          subCopy="物件情報の入力は不要。お話を伺ってから、必要に応じてレポートをお作りします。無理な勧誘は致しません。"
+          leadCopy="24時間以内に担当者からご連絡"
+          subCopy="30秒入力で完了。無理な勧誘は致しません。"
         />
 
         {/* §14 会社概要 */}
