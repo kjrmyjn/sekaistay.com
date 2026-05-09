@@ -74,7 +74,7 @@ export default function SwitchHeroPortal() {
                 <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed mb-7">
                   予約状況・売上・経費・清掃 — オーナー専用ダッシュボードで全数値が手元に。
                   <br className="hidden sm:block" />
-                  「業者に任せきり」から「自分の事業として運営」へ。
+                  「任せきり」から、「いつでも見れる」運営へ。
                 </p>
 
                 {/* 8% は副題サイズに格下げ */}
@@ -91,7 +91,7 @@ export default function SwitchHeroPortal() {
                     data-cta-label="portal-primary"
                     className="group w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] sm:text-lg px-4 sm:px-9 py-3.5 sm:py-4 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
                   >
-                    ポータルのデモ
+                    SEKAI STAYポータルのデモ
                     <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -117,10 +117,10 @@ export default function SwitchHeroPortal() {
                     className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
                   />
                   {/* 浮き出るデータラベル — リアルタイム感の演出 */}
-                  <FloatingDataChip className="absolute top-2 left-0 sm:top-6 lg:top-10 lg:left-[-2%] z-20" label="ピーク売上" value="+18%" trend="up" />
+                  <FloatingDataChip className="absolute top-2 left-0 sm:top-6 lg:top-10 lg:left-[-2%] z-20" label="新規予約" value="2件" trend="up" />
                   <FloatingDataChip className="absolute top-10 right-0 sm:top-14 lg:top-16 lg:right-[-2%] z-20" label="稼働率" value="74%" trend="up" />
                   <FloatingDataChip className="absolute bottom-12 left-0 sm:bottom-20 lg:bottom-24 lg:left-[-4%] z-20" label="清掃完了" value="3/3" trend="ok" />
-                  <FloatingDataChip className="absolute bottom-4 right-0 sm:bottom-12 lg:bottom-16 lg:right-[-4%] z-20" label="新規予約" value="2件" trend="up" />
+                  <FloatingDataChip className="absolute bottom-4 right-0 sm:bottom-12 lg:bottom-16 lg:right-[-4%] z-20" label="ピーク売上" value="+18%" trend="up" />
                 </div>
 
                 <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 text-center max-w-md tracking-wide leading-relaxed">
