@@ -174,7 +174,7 @@ export default function SwitchPrimaryCTA({
       </div>
     </section>
       {/* 左側に営業マンイラスト（lg以上のみ表示、コンテンツ max-w-3xl と被らない位置） */}
-      <div className="hidden lg:block absolute left-[10%] xl:left-[14%] bottom-0 translate-y-[8%] pointer-events-none z-20">
+      <div className="hidden lg:block absolute left-[5%] xl:left-[9%] bottom-0 translate-y-[8%] pointer-events-none z-20">
         <Image
           src="/images/switch/salesman-illust.png"
           alt=""
