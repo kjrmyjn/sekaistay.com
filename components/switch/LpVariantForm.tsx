@@ -18,7 +18,7 @@ export default function LpVariantForm({
   lpVariant,
   heading = "無料パーソナライズ診断",
   leadCopy = "60秒入力で、24時間以内に診断レポートをお届け",
-  subCopy = "民泊運営代行のプロが、Airbnb URLから直接データを取得して個別レポートを作成。無理な勧誘は致しません。",
+  subCopy = "30秒入力で無料面談を予約。24時間後までに無料レポートをお送り致します。",
 }: Props) {
   return (
     <section
