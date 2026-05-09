@@ -24,10 +24,10 @@ export default function SwitchHeroFounder() {
       <DotPattern opacity={0.04} />
 
       {/* 写真は背景レイヤー（z-0）— 雰囲気のみ伝える */}
-      {/* 左: 劉 添毅 — 一回り小さく */}
-      <div className="absolute left-[-50%] sm:left-[-32%] lg:left-[-22%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[110%] sm:w-[82%] lg:w-[68%] z-0 pointer-events-none opacity-30 sm:opacity-35 lg:opacity-40 mix-blend-luminosity">
+      {/* 左: 劉 添毅 — 一回り小さく・位置を下げて顔をテキスト中央付近に */}
+      <div className="absolute left-[-50%] sm:left-[-32%] lg:left-[-22%] top-[2rem] sm:top-[1rem] lg:top-[0.5rem] w-[110%] sm:w-[82%] lg:w-[68%] z-0 pointer-events-none opacity-30 sm:opacity-35 lg:opacity-40 mix-blend-luminosity">
         <img
-          src="/images/switch/founder-tenichi.png"
+          src="/images/switch/founder-tenichi.png?v=2"
           alt=""
           aria-hidden
           className="w-full h-auto select-none"
