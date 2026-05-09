@@ -4,9 +4,49 @@ import { useEffect, useState } from "react";
 import CountUp from "./deco/CountUp";
 import DotPattern from "./deco/DotPattern";
 
-export default function SwitchHero({ showUrgencyStrip = true }: { showUrgencyStrip?: boolean }) {
+const TIMEREX_MEETING_URL = "https://timerex.net/s/sekai-stay/d61b424d";
+
+export default function SwitchHero({
+  showUrgencyStrip = true,
+  ctaMode = "diagnose",
+}: {
+  showUrgencyStrip?: boolean;
+  ctaMode?: "diagnose" | "meeting";
+}) {
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(true), []);
+
+  const ctaConfig = ctaMode === "meeting"
+    ? {
+        href: TIMEREX_MEETING_URL,
+        target: "_blank" as const,
+        rel: "noreferrer" as const,
+        label: "45分の無料面談を予約する",
+        bridgeCopy: (
+          <>
+            まずは45分、
+            <span className="font-bold text-white">"あなたの物件に合う運用"</span>
+            をご相談
+          </>
+        ),
+        dataCta: "founder-meeting",
+        dataCtaLabel: "switch-short-hero",
+      }
+    : {
+        href: "#simulator",
+        target: undefined,
+        rel: undefined,
+        label: "まずは10秒で損失額を診断する",
+        bridgeCopy: (
+          <>
+            まずは今の代行で
+            <span className="font-bold text-white">"いくら損しているか"</span>
+            を診断
+          </>
+        ),
+        dataCta: "simulator",
+        dataCtaLabel: "switch-hero",
+      };
 
   return (
     <section className="relative">
@@ -113,29 +153,40 @@ export default function SwitchHero({ showUrgencyStrip = true }: { showUrgencyStr
                 {/* CTA */}
                 <div className="flex flex-col lg:items-start items-center mb-2 sm:mb-3">
                   <a
-                    href="#simulator"
+                    href={ctaConfig.href}
+                    target={ctaConfig.target}
+                    rel={ctaConfig.rel}
+                    data-cta={ctaConfig.dataCta}
+                    data-cta-label={ctaConfig.dataCtaLabel}
                     className="group w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] sm:text-lg px-4 sm:px-10 py-3.5 sm:py-4 rounded-md hover:bg-switch-accent-hover transition-all shadow-sm hover:-translate-y-0.5 min-h-[48px]"
                   >
-                    まずは10秒で損失額を診断する
+                    {ctaConfig.label}
                     <svg
                       className="ml-2.5 w-5 h-5 group-hover:translate-y-0.5 transition-transform"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.2}
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
+                      {ctaMode === "meeting" ? (
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      ) : (
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.2}
+                          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        />
+                      )}
                     </svg>
                   </a>
                   {/* CTA 直下のブリッジコピー */}
                   <p className="text-[13px] sm:text-sm text-white/85 mt-3 sm:mt-3.5 mb-2 sm:mb-3 text-center lg:text-left leading-relaxed">
-                    まずは今の代行で
-                    <span className="font-bold text-white">“いくら損しているか”</span>
-                    を診断
+                    {ctaConfig.bridgeCopy}
                   </p>
                 </div>
 
