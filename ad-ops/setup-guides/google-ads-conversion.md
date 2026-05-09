@@ -13,7 +13,7 @@
 ```
 Step 1: GA4 ↔ Google Ads アカウント連携
 Step 2: フォーム送信 CV（GA4 イベント → Google Ads へインポート）
-Step 3: コンバージョンタグの追加（これは AI が PR3 で実装、テンイチは Tag ID をコピペするだけ）
+Step 3: コンバージョンタグの本番反映（AI が env 登録、テンイチは Tag ID をコピペで共有）
 Step 4: 動作確認
 ```
 
@@ -42,7 +42,7 @@ Step 4: 動作確認
 
 ### なぜ必要か
 
-GA4 に既に「`generate_lead`」イベントが実装されている（layout.tsx で確認済み）。これを Google Ads 側から「コンバージョン」として参照するためにアカウント連携が前提。
+GA4 に既に **`lead`** イベントが実装されている（`ReportRequestForm` のフォーム送信成功時に `gtag('event', 'lead', { lp_variant, ... })` で送信）。これを Google Ads 側から「コンバージョン」として参照するためにアカウント連携が前提。
 
 > **初心者ポイント**: 連携せずに Google Ads 側で別途 CV タグを実装する方法もあるが、GA4 と Google Ads の数字がズレる原因になりやすい。連携が王道。
 
@@ -77,13 +77,16 @@ GA4 に既に「`generate_lead`」イベントが実装されている（layout.
 
 ---
 
-## Step 3: コンバージョンタグの追加（AI が実装）
+## Step 3: コンバージョンタグの本番反映
 
-これは私（AI）が PR3 でコード実装します。テンイチの作業:
+**実装は完了済み** — `app/layout.tsx` に env-driven Google Ads タグが組み込まれており、`NEXT_PUBLIC_GOOGLE_ADS_ID` の Vercel env が設定されると自動的にスクリプトが emit される。
+
+### テンイチの作業
 
 1. Google Ads コンバージョン作成後の画面で表示される **「タグ ID」** と **「コンバージョン ラベル」** をメモ
    - 例: タグ ID = `AW-1234567890`、ラベル = `abcDEF123_ghi`
-2. これを Discord で私に共有 → 私が `app/layout.tsx` に追加 → PR3 を出す
+2. これを Discord で私に共有 → 私が `vercel env add NEXT_PUBLIC_GOOGLE_ADS_ID production` で登録
+3. Vercel が自動 redeploy → 本番反映
 
 > **セキュリティメモ**: タグ ID とラベルは公開情報（最終的にブラウザのソースコードに出る）。Discord で共有して問題なし。
 
@@ -97,7 +100,7 @@ GA4 に既に「`generate_lead`」イベントが実装されている（layout.
 2. GA4 → **「レポート」 → 「リアルタイム」**
 3. 自分のセッションが表示されることを確認
 4. `/switch` のフォームをテスト送信（実フォーム送信は自社CRM に届くので、テスト用と書いて送信）
-5. 「リアルタイム」で `generate_lead` イベントが発火することを確認
+5. 「リアルタイム」で `lead` イベントが発火することを確認
 
 ### 4-B: Google Ads コンバージョン確認
 
@@ -115,19 +118,19 @@ GA4 に既に「`generate_lead`」イベントが実装されている（layout.
 |---|---|---|
 | GA4 イベントが発火しない | フォーム送信時の JS エラー | ブラウザの DevTools → Console でエラー確認 |
 | Google Ads にイベントがインポートできない | GA4-Google Ads 連携が未完了 | Step 1 を再実行 |
-| ステータスが「未確認」のまま | コンバージョンタグが実装されていない | PR3 マージ後に再確認 |
+| ステータスが「未確認」のまま | `NEXT_PUBLIC_GOOGLE_ADS_ID` env 未設定 or タグが redeploy されていない | env 登録 + Vercel redeploy で再確認 |
 
 ---
 
 ## 完了後にすること
 
 - [ ] 設定完了を Discord `#sekai-stay` に投稿（私がそれを学習ログに記録）
-- [ ] タグ ID とコンバージョン ラベルを Discord で共有 → PR3 へ
+- [ ] タグ ID とコンバージョン ラベルを Discord で共有 → 私が Vercel env 登録
 
 ---
 
 ## 関連
 
-- 上位 LP の計測実装: `app/layout.tsx` （GA4 + Meta Pixel 既設置）
-- フォーム送信処理: Web3Forms 経由 → 自社CRM 起票
-- 後続 PR: PR3（コンバージョンタグの本番実装）
+- 上位 LP の計測実装: `app/layout.tsx` （GA4 + Meta Pixel + Google Ads タグ env-driven）
+- フォーム送信処理: `app/api/report-requests/submit/route.ts` → Supabase `lead_submissions` 直挿入 + `forwardLead` で 吉蔵（自社CRM）に転送
+- LP 改善トラッキング: `components/EngagementTracker.tsx`（scroll_depth / section_view / cta_click）+ Microsoft Clarity（env: `NEXT_PUBLIC_CLARITY_PROJECT_ID`）
