@@ -23,26 +23,31 @@ export default function SwitchHeroFounder() {
       <div className="absolute bottom-[-15%] left-[-15%] w-[55%] h-[60%] bg-switch-teal/14 blur-[140px] rounded-full pointer-events-none" aria-hidden />
       <DotPattern opacity={0.04} />
 
-      {/* 写真は section 直下に viewport コーナー基準で配置（テキスト・カードは z-20/30 で上に overlay） */}
-      {/* 左: 劉 添毅 — 上に移動してテキスト/カードと重なる */}
-      <div className="absolute left-[-55%] sm:left-[-38%] lg:left-[-28%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[130%] sm:w-[100%] lg:w-[85%] z-10 pointer-events-none">
+      {/* 写真は背景レイヤー（z-0）— 暗くフェードさせて雰囲気のみ伝える */}
+      {/* 左: 劉 添毅 */}
+      <div className="absolute left-[-55%] sm:left-[-38%] lg:left-[-28%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[130%] sm:w-[100%] lg:w-[85%] z-0 pointer-events-none opacity-30 sm:opacity-35 lg:opacity-40 mix-blend-luminosity">
         <img
           src="/images/switch/founder-tenichi.png"
-          alt="劉 添毅 代表取締役 CEO"
-          className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
+          alt=""
+          aria-hidden
+          className="w-full h-auto select-none"
           loading="eager"
         />
       </div>
 
-      {/* 右: 明神 洸次郎 — 上に + 右にシフト */}
-      <div className="absolute right-[-82%] sm:right-[-62%] lg:right-[-50%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[130%] sm:w-[100%] lg:w-[85%] z-10 pointer-events-none">
+      {/* 右: 明神 洸次郎 */}
+      <div className="absolute right-[-82%] sm:right-[-62%] lg:right-[-50%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[130%] sm:w-[100%] lg:w-[85%] z-0 pointer-events-none opacity-30 sm:opacity-35 lg:opacity-40 mix-blend-luminosity">
         <img
           src="/images/switch/founder-koji.png"
-          alt="明神 洸次郎 共同代表 Co-CEO"
-          className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
+          alt=""
+          aria-hidden
+          className="w-full h-auto select-none"
           loading="eager"
         />
       </div>
+
+      {/* 中央テキストの可読性を確保するための暗いグラデーション overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-switch-charcoal/70 via-switch-charcoal/40 to-switch-charcoal/70 z-[1] pointer-events-none" aria-hidden />
 
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
         <div
