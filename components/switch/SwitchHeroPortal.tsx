@@ -115,8 +115,8 @@ export default function SwitchHeroPortal() {
                       className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
                     />
                     <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] lg:top-12 lg:left-[10%] z-20" label="新規予約" value="2件" trend="up" />
-                    <FloatingDataChip className="absolute top-10 right-2 sm:top-14 sm:right-[6%] lg:top-16 lg:right-[10%] z-20" label="稼働率" value="74%" trend="up" />
-                    <FloatingDataChip className="absolute bottom-14 left-2 sm:bottom-24 sm:left-[8%] lg:bottom-28 lg:left-[12%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                    <FloatingDataChip className="absolute top-10 right-0 sm:top-14 sm:right-[-1%] lg:top-16 lg:right-[-3%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                    <FloatingDataChip className="absolute bottom-14 left-0 sm:bottom-24 sm:left-[-1%] lg:bottom-28 lg:left-[-3%] z-20" label="稼働率" value="74%" trend="up" />
                     <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] lg:bottom-20 lg:right-[12%] z-20" label="ピーク売上" value="+18%" trend="up" />
                   </div>
 
@@ -167,8 +167,8 @@ export default function SwitchHeroPortal() {
                     className="relative w-[88%] max-w-[420px] sm:max-w-[560px] select-none pointer-events-none drop-shadow-2xl z-10"
                   />
                   <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] z-20" label="新規予約" value="2件" trend="up" />
-                  <FloatingDataChip className="absolute top-10 right-2 sm:top-14 sm:right-[6%] z-20" label="稼働率" value="74%" trend="up" />
-                  <FloatingDataChip className="absolute bottom-14 left-2 sm:bottom-24 sm:left-[8%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                  <FloatingDataChip className="absolute top-10 right-0 sm:top-14 sm:right-[-1%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                  <FloatingDataChip className="absolute bottom-14 left-0 sm:bottom-24 sm:left-[-1%] z-20" label="稼働率" value="74%" trend="up" />
                   <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] z-20" label="ピーク売上" value="+18%" trend="up" />
                 </div>
                 <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 max-w-md tracking-wide leading-relaxed">
