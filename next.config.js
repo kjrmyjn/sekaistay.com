@@ -16,7 +16,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
     optimizeCss: false,
-    serverComponentsExternalPackages: ['playwright-core', '@sparticuz/chromium'],
   },
   reactStrictMode: true,
   compiler: {
