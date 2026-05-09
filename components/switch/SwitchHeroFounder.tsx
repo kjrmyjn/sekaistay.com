@@ -61,15 +61,15 @@ export default function SwitchHeroFounder() {
               name="劉 添毅"
               nameRomaji="Tenichi Liu"
               role="代表取締役 CEO"
-              bio="株式会社セカイチ創業者。前職は民泊投資家として複数物件を運営し、代行業界の不透明さに衝撃を受け創業。"
+              bio="SEKAI STAY創設者。Amazon米国本社で培った経験をもとに、日本の代行業界に世界基準の運用体験を提供することを目的に創業。民泊投資家として国内外の物件を運営してきた経験から、代行業界の不透明さに衝撃を受けた当事者でもある。"
               photoSrc="/images/switch/founder-tenichi.jpg"
               placeholder
             />
             <FounderCard
               name="明神 洸次郎"
               nameRomaji="Kojiro Myojin"
-              role="COO / プロダクト責任者"
-              bio="プロダクト・運用設計を統括。オーナーポータルと運用フローの設計者。Sekai Stay の中身は彼がつくっている。"
+              role="共同代表 Co-CEO"
+              bio="登録者数125万人超を誇った人気YouTubeグループ「カリスマブラザーズ」出身のクリエイター「ジロー」としても活動。プロダクト・運用設計を統括し、オーナーポータルと運用フローの設計者。SEKAI STAYの中身は彼がつくっている。"
               photoSrc="/images/switch/founder-koji.jpg"
               placeholder
             />
@@ -85,7 +85,7 @@ export default function SwitchHeroFounder() {
               data-cta-label="founder-30min-primary"
               className="group inline-flex items-center justify-center bg-ink text-paper font-bold text-[15px] sm:text-base px-8 sm:px-10 py-4 rounded-md hover:bg-deep-teal transition-colors duration-300 shadow tracking-wide"
             >
-              セカイチに相談する
+              専門家に相談する
               <span className="mx-2 inline-block w-px h-4 bg-paper/30 align-middle" aria-hidden />
               <span className="text-paper/80 font-medium text-[13px] sm:text-[14px]">30分の無料面談</span>
               <svg className="ml-3 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
