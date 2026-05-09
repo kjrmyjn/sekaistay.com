@@ -147,7 +147,7 @@ export default function SwitchPricing() {
               </div>
             ))}
           </div>
-          <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-[11px] text-white/60 mt-5 leading-relaxed max-w-2xl mx-auto">
+          <div className="relative grid grid-cols-2 gap-x-8 gap-y-3 text-[11px] text-white/60 mt-5 leading-relaxed max-w-2xl mx-auto">
             <ul className="space-y-1.5">
               <li className="flex items-start gap-2">
                 <span className="text-switch-teal-bright font-bold shrink-0">※1</span>
