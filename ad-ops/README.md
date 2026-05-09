@@ -104,22 +104,7 @@ ad-ops/
 | **ポータル主導** | 24h ダッシュボード・運営の可視化・データドリブン | `/switch/portal` | 複数物件オーナー・データドリブン投資家 |
 | **信頼主導** | スーパーホスト・国交大臣認定・レビュー4.8 | `/switch/founder` | 初心者・大口投資家・顔の見える運営代行を求める層 |
 
-### 4 分岐構造（3 パターン × 長/短 × MTG/診断）
-
-各パターンを 4 分岐に拡張し、コピー長 × ファネル選択の効果を分離検証。
-
-| 軸 | 値 | 効果検証 |
-|---|---|---|
-| **Length** | Long（100字+） / Short（50字-） | 長文で信頼を構築 vs 短文で即決 |
-| **Action** | MTG（45分面談直予約） / Diagnostic（60秒診断フォーム） | ハイコミット vs ロウコミット |
-
-| Branch ID | Pattern | Length | Action | LP |
-|---|---|---|---|---|
-| P-L-M / P-L-D / P-S-M / P-S-D | 価格主導 | L/S | M/D | M→/switch/short, D→/switch-lite |
-| O-L-M / O-L-D / O-S-M / O-S-D | ポータル主導 | L/S | M/D | M→/switch/short, D→/switch/portal |
-| T-L-M / T-L-D / T-S-M / T-S-D | 信頼主導 | L/S | M/D | M→/switch/short, D→/switch/founder |
-
-合計: **3 パターン × 4 分岐 × 3 媒体 = 36 ad creatives**。詳細コピーは [`copy-matrix.md`](copy-matrix.md) にマスター集約。各媒体のコピー詳細は `google-ads/copy-drafts.md` / `meta-ads/copy-drafts.md` / `x-ads/copy-drafts.md` 参照。
+各媒体のコピー詳細は `google-ads/copy-drafts.md` / `meta-ads/copy-drafts.md` / `x-ads/copy-drafts.md` 参照。
 
 ---
 
@@ -130,7 +115,7 @@ ad-ops/
 | 月間総リード数（広告 + オーガニック） | 110 |
 | 広告経由リード | 75（Google 35 / Meta 25 / X 15） |
 | 平均 CPA | ¥6,667 以下（予算50万 ÷ 75リード） |
-| 各分岐の最低サンプル | 各分岐 50 クリック以上を 1-2 週間で確保（統計検出のため） |
+| 各パターンの最低サンプル | 各媒体 50 クリック以上を1週間で確保 |
 
 > パフォーマンスが低調なら、コンバージョン定義を「問い合わせフォーム送信」→「LINE@登録」に切り替え検討（より浅いCVで母数を増やす）。
 
