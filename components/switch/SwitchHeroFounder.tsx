@@ -121,14 +121,6 @@ export default function SwitchHeroFounder() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a
-              href="#contact-form"
-              data-cta="contact-form"
-              data-cta-label="founder-secondary"
-              className="text-[13px] text-white/60 underline underline-offset-4 hover:text-white transition-colors"
-            >
-              先にメールで診断レポートだけ受け取る
-            </a>
           </div>
         </div>
       </div>
