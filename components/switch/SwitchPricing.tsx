@@ -70,7 +70,7 @@ export default function SwitchPricing() {
               <div className="text-xl sm:text-2xl font-bold text-switch-charcoal mb-5 leading-tight">
                 ＋ ¥10,000
                 <span className="text-sm text-switch-gray-mid ml-1 font-semibold">
-                  / 部屋 / 月
+                  / 物件 / 月
                 </span>
               </div>
               <div className="inline-flex items-center gap-2 bg-white border border-switch-teal/30 rounded-md px-4 py-2.5 shadow-sm">
@@ -105,7 +105,7 @@ export default function SwitchPricing() {
                   </span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-switch-gray-light">
-                  <span className="text-switch-gray-dark">部屋固定費</span>
+                  <span className="text-switch-gray-dark">物件固定費</span>
                   <span className="font-bold text-switch-charcoal tabular-nums">
                     ¥10,000
                   </span>

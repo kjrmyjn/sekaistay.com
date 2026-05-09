@@ -21,22 +21,33 @@ export default function SwitchFounderStory() {
 
           <div className="space-y-6 text-[14px] sm:text-[15px] lg:text-[16px] leading-[2] text-ink/75 tracking-wide">
             <p>
-              3年前、知り合いの民泊オーナーから「代行に騙された」と相談を受けたのがきっかけでした。
+              3年前、ある民泊オーナーの方から「20%の手数料を払い続けているのに、毎月の運用判断が一切見えない」とご相談を受けたのがきっかけでした。
               手数料20%、月額固定費 ¥30,000、清掃も人材紹介料も別。
-              実際に手元に残るのは想定の半分以下。にもかかわらず、運用の中身は何ひとつ見えない。
+              実際に手元に残るのは想定の半分以下。にもかかわらず、運用の中身は完全にブラックボックスでした。
             </p>
             <p>
               業界平均15-25%という手数料率は、相場というより「<strong className="text-ink">情報の非対称性で成立してきた価格</strong>」だと気づきました。
               テクノロジーと運用設計の見直しで、半額にできるはずでした。
             </p>
             <p>
-              ——だから僕たちは、<strong className="text-deep-teal">手数料 8% + 月額1万円</strong>。
+              ——だから私たちは、<strong className="text-deep-teal">手数料 8% + 月額1万円</strong>。
               そして<strong className="text-ink">オーナー専用のダッシュボード</strong>で、運用の中身をぜんぶ可視化しました。
               「お任せください」じゃなくて、「<strong className="text-ink">いつでも見られます</strong>」をプロダクトの軸に据えています。
             </p>
             <p>
-              代行を切り替えるのは、心理的にもオペレーション的にもコストが高い決断です。
-              だからこそ、初回は<strong className="text-ink">専門家が、丁寧にお話を伺います</strong>。
+              切り替えてくださったオーナー様の中には、
+              <strong className="text-ink">稼働率を 58% → 82%</strong>、
+              <strong className="text-ink">月売上を 45万円 → 76万円</strong>に伸ばした事例もあります。
+              手数料を下げるだけでなく、運用の質そのものを引き上げて利益を伸ばしています。
+            </p>
+            <p>
+              さらに、<strong className="text-deep-teal">初期費用は期間限定で ¥0</strong>、
+              <strong className="text-deep-teal">最低契約期間 6ヶ月以降は解約金も ¥0</strong>。
+              「合わなければやめられる」前提で、まずは 6ヶ月、運用の手応えを試していただけます。
+            </p>
+            <p>
+              切り替えは心理的にもオペレーション的にもコストが高い決断です。
+              だからこそ、初回は<strong className="text-ink">専門アナリストが、丁寧にお話を伺います</strong>。
               判断材料が揃ってから、無理なく進められるようにご案内します。
             </p>
             <p className="text-right text-[13px] text-ink/55 italic">

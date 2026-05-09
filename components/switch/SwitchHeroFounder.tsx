@@ -52,7 +52,7 @@ export default function SwitchHeroFounder() {
             <br className="hidden sm:block" />
             ——その業界の常識を、ひっくり返す会社をつくりました。
             <br className="hidden sm:block" />
-            <strong className="text-ink">専門家が、丁寧にお話を伺います。</strong>
+            <strong className="text-ink">専門アナリストが、丁寧にお話を伺います。</strong>
           </p>
 
           {/* 創業者2名カード */}

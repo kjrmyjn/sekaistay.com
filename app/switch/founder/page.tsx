@@ -67,8 +67,8 @@ export default function SwitchFounderPage() {
         <LpVariantForm
           lpVariant="switch-founder"
           heading="まずは話を聞きたい方へ"
-          leadCopy="30秒入力で代表との 30 分無料面談を予約 ・ 24時間以内にご返信"
-          subCopy="物件情報の入力は不要。代表の劉が直接お話を伺ってから、必要な資料・診断レポートをお送りします。"
+          leadCopy="30秒入力で 30 分無料面談を予約 ・ 24時間以内にご返信"
+          subCopy="物件情報の入力は不要。専門アナリストがお話を伺ってから、必要な資料・診断レポートをお送りします。"
         />
 
         {/* §12 会社概要 */}
