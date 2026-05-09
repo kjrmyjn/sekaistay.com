@@ -21,32 +21,32 @@ export default function SwitchFounderStory() {
 
           <div className="space-y-6 text-[14px] sm:text-[15px] lg:text-[16px] leading-[2] text-ink/75 tracking-wide">
             <p>
-              3年前、<span className="font-bold text-ink">私たち自身も民泊のオーナーとして</span>、代行業者に物件を任せていました。
-              <span className="font-bold text-ink">手数料20%、月額固定費 ¥20,000</span>。手元に残るのは、<span className="font-bold text-ink">売上の半分以下</span>でした。運用の中身は<span className="font-bold text-ink">完全にブラックボックス</span>で、届くレポートは<span className="font-bold text-ink">月1回のPDFだけ</span>。
+              3年前、私たち自身も民泊のオーナーとして、代行業者に物件を任せていました。
+              <span className="font-bold text-ink">手数料20%、月額固定費 ¥20,000</span>。手元に残るのは売上の半分以下、運用の中身は完全にブラックボックスで、届くレポートは月1回のPDFだけ。
             </p>
             <p>
               業界平均15〜25%という手数料率は、相場というより<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">「情報の非対称性で成立してきた価格」</mark>だと気づきました。テクノロジーと運用設計を一から組み直せば、<span className="font-bold text-deep-teal">業界平均の半額ほど</span>にできる確信がありました。
             </p>
             <p>
-              ──だから私たちは、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">手数料 8% + 月額1万円</mark>。そして<span className="font-bold text-deep-teal">オーナー専用のダッシュボード</span>で、運用の中身を<span className="font-bold text-ink">ぜんぶ可視化</span>しました。
+              ──だから私たちは、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">手数料 8% + 月額1万円</mark>。そしてオーナー専用のダッシュボードで、運用の中身をぜんぶ可視化しました。
             </p>
             <p>
               「お任せください」ではなく、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">「いつでも見られます」</mark>をプロダクトの軸に据えています。
             </p>
             <p>
-              切り替えてくださったオーナー様の中には、<span className="font-bold text-deep-teal">稼働率を 58% → 82%</span>、<span className="font-bold text-deep-teal">月売上を ¥45万 → ¥76万</span>に伸ばされた方もいます。<span className="font-bold text-ink">手数料は半額、成果はそれ以上</span>。これが SEKAI STAY のアプローチです。
+              切り替えてくださったオーナー様の中には、<span className="font-bold text-deep-teal">稼働率 58% → 82%</span>、<span className="font-bold text-deep-teal">月売上 ¥45万 → ¥76万</span>に伸ばされた方もいます。<span className="font-bold text-ink">2倍安くて、2倍良い</span>。これが SEKAI STAY の哲学です。
             </p>
             <p>
-              切り替えは、心理的にもオペレーション的にも、<span className="font-bold text-ink">重い決断</span>です。だからこそ、<span className="font-bold text-deep-teal">入り口は軽く</span>しました。
+              切り替えは、心理的にもオペレーション的にも重い決断です。だからこそ、入り口は軽くしました。
             </p>
             <p>
               <mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">初期費用 ¥0（期間限定）</mark>、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">解約金 ¥0</mark>。
             </p>
             <p>
-              最低契約期間は <span className="font-bold text-ink">6ヶ月</span>だけお願いしています──運用の真価が数字に表れるには、それくらいの時間が必要だからです。<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">「合わなければやめられる、ただし試す価値のある時間だけは確保したい」</mark>という線引きです。
+              最低契約期間は 6ヶ月だけお願いしています──運用の真価が数字に表れるには、それくらいの時間が必要だからです。<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">「合わなければやめられる、ただし試す価値のある時間だけは確保したい」</mark>という線引きです。
             </p>
             <p>
-              初回のご相談では、専門家が丁寧にお話を伺います。<span className="font-bold text-ink">営業はしません</span>。運用が変わって、結果としてお付き合いが続いたら嬉しい。それくらいのスタンスで、お会いできればと思っています。
+              初回のご相談では、専門家が丁寧にお話を伺います。運用が変わって、結果としてお付き合いが続いたら嬉しい。それくらいのスタンスで、お会いできればと思っています。
             </p>
             <p className="text-right text-[13px] text-ink/55 italic">
               ── 劉 添毅・明神 洸次郎
