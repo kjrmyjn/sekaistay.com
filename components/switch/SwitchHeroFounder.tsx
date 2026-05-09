@@ -25,7 +25,7 @@ export default function SwitchHeroFounder() {
 
       {/* 写真は背景レイヤー（z-0）— 雰囲気のみ伝える */}
       {/* 左: 劉 添毅 — 下辺を明神に揃える（アスペクト比差を top offset で吸収） */}
-      <div className="absolute left-[-30%] sm:left-[-37%] lg:left-[-25%] top-[0.5rem] sm:top-[0rem] lg:top-[-2rem] w-[110%] sm:w-[107%] lg:w-[90%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
+      <div className="absolute left-[-30%] sm:left-[-37%] lg:left-[-25%] top-[1.5rem] sm:top-[0rem] lg:top-[-2rem] w-[110%] sm:w-[107%] lg:w-[90%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
         <img
           src="/images/switch/founder-tenichi.png?v=2"
           alt=""
