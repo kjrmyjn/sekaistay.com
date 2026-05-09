@@ -261,7 +261,13 @@ function FloatingDataChip({
 }) {
   const trendColor = trend === "up" ? "text-switch-teal-bright" : trend === "down" ? "text-switch-accent" : "text-white";
   return (
-    <div className={`bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/40 px-2.5 py-2 sm:px-3.5 sm:py-2.5 ${className}`}>
+    <div className={`relative bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/40 px-2.5 py-2 sm:px-3.5 sm:py-2.5 ${className}`}>
+      <span
+        className="absolute -top-1.5 -right-1.5 text-[10px] sm:text-[12px] leading-none drop-shadow-sm select-none"
+        aria-hidden
+      >
+        🔔
+      </span>
       <p className="text-[8px] sm:text-[9px] text-switch-charcoal/60 font-medium tracking-wider uppercase leading-none">{label}</p>
       <div className="flex items-baseline gap-1 mt-1">
         <span className={`text-[14px] sm:text-[18px] font-bold tabular-nums leading-none ${trend === "up" ? "text-switch-teal-deep" : trend === "down" ? "text-switch-accent" : "text-switch-charcoal"}`}>
