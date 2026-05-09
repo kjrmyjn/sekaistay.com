@@ -14,7 +14,7 @@ const COMMISSION_OPTIONS = [
   { value: "15", label: "15%" },
   { value: "20", label: "20%" },
   { value: "25", label: "25%" },
-  { value: "unknown", label: "わからない" },
+  { value: "unknown", label: "わからない / 自主管理" },
 ];
 
 const YEARS_OPTIONS = [
@@ -36,6 +36,7 @@ type FormState = {
   totalProperties: number; // 1〜30+
   peakRevenueMan: number;
   offpeakRevenueMan: number;
+  noPriorOperation: boolean;
   commissionRate: string;
   operatingYears: string;
   name: string;
@@ -50,6 +51,7 @@ const INITIAL: FormState = {
   totalProperties: 1,
   peakRevenueMan: 80,
   offpeakRevenueMan: 20,
+  noPriorOperation: false,
   commissionRate: "",
   operatingYears: "",
   name: "",
@@ -235,8 +237,10 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     [form.airbnbUrl, form.noPropertyYet],
   );
   const canNextFromStep2 = useMemo(
-    () => form.peakRevenueMan >= 0 && form.offpeakRevenueMan >= 0,
-    [form.peakRevenueMan, form.offpeakRevenueMan],
+    () =>
+      form.noPriorOperation ||
+      (form.peakRevenueMan >= 0 && form.offpeakRevenueMan >= 0),
+    [form.peakRevenueMan, form.offpeakRevenueMan, form.noPriorOperation],
   );
   const canNextFromStep3 = useMemo(
     () => form.commissionRate !== "" && form.operatingYears !== "",
@@ -252,18 +256,21 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     setError("");
     setSubmitting(true);
     try {
-      const complaintsOut = form.noPropertyYet
-        ? `[これから民泊を始める / 物件未掲載]${form.complaints ? "\n" + form.complaints : ""}`
+      const markers: string[] = [];
+      if (form.noPropertyYet) markers.push("[これから民泊を始める / 物件未掲載]");
+      if (form.noPriorOperation) markers.push("[これから民泊を始める / 売上実績なし]");
+      const complaintsOut = markers.length > 0
+        ? `${markers.join(" ")}${form.complaints ? "\n" + form.complaints : ""}`
         : form.complaints;
       const payload = {
         name: form.name,
         email: form.email,
         phone: form.phone,
         airbnbUrl: form.noPropertyYet ? "" : form.airbnbUrl.trim(),
-        peakRevenue: manToRange(form.peakRevenueMan),
-        offpeakRevenue: manToRange(form.offpeakRevenueMan),
-        commissionRate: form.commissionRate,
-        operatingYears: form.operatingYears,
+        peakRevenue: form.noPriorOperation ? "" : manToRange(form.peakRevenueMan),
+        offpeakRevenue: form.noPriorOperation ? "" : manToRange(form.offpeakRevenueMan),
+        commissionRate: form.noPriorOperation ? "" : form.commissionRate,
+        operatingYears: form.noPriorOperation ? "" : form.operatingYears,
         complaints: complaintsOut,
         totalProperties: form.totalProperties,
         lpVariant,
@@ -281,7 +288,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
         return;
       }
       setDeadline(new Date(Date.now() + 24 * 60 * 60 * 1000));
-      setAnnualLoss(estimateAnnualLoss(form.peakRevenueMan, form.offpeakRevenueMan, form.commissionRate));
+      setAnnualLoss(form.noPriorOperation ? null : estimateAnnualLoss(form.peakRevenueMan, form.offpeakRevenueMan, form.commissionRate));
       setDone(true);
       // GA4 event
       try {
@@ -338,7 +345,9 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             <Step2Revenue
               peakMan={form.peakRevenueMan}
               offpeakMan={form.offpeakRevenueMan}
+              noPriorOperation={form.noPriorOperation}
               onChange={(k, v) => update(k, v as never)}
+              onNoPriorOperation={(v) => update("noPriorOperation", v)}
             />
           )}
           {step === 3 && (
@@ -368,7 +377,10 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             {step > 1 && (
               <button
                 type="button"
-                onClick={() => setStep((s) => (s > 1 ? ((s - 1) as Step) : s))}
+                onClick={() => setStep((s) => {
+                  if (s === 4 && form.noPriorOperation) return 2;
+                  return (s > 1 ? ((s - 1) as Step) : s);
+                })}
                 className="flex-1 rounded-lg py-3 text-[15px] font-medium bg-white text-ink border border-rule transition-all active:scale-[0.98]"
               >
                 ← 戻る
@@ -382,7 +394,10 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
                   (step === 2 && !canNextFromStep2) ||
                   (step === 3 && !canNextFromStep3)
                 }
-                onClick={() => setStep((s) => (s + 1) as Step)}
+                onClick={() => setStep((s) => {
+                  if (s === 2 && form.noPriorOperation) return 4;
+                  return (s + 1) as Step;
+                })}
                 className="flex-1 rounded-lg py-3 text-[15px] font-semibold text-white transition-all active:scale-[0.98] bg-sekai-teal disabled:bg-mid-gray disabled:cursor-not-allowed disabled:opacity-80"
               >
                 次へ →
@@ -609,15 +624,20 @@ function Step1Property({
 function Step2Revenue({
   peakMan,
   offpeakMan,
+  noPriorOperation,
   onChange,
+  onNoPriorOperation,
 }: {
   peakMan: number;
   offpeakMan: number;
+  noPriorOperation: boolean;
   onChange: (k: "peakRevenueMan" | "offpeakRevenueMan", v: number) => void;
+  onNoPriorOperation: (v: boolean) => void;
 }) {
+  const dimmed = noPriorOperation ? "opacity-50 pointer-events-none" : "";
   return (
     <div className="flex flex-col gap-6">
-      <div>
+      <div className={dimmed}>
         <label className="block text-[14px] font-semibold mb-2 text-ink">
           ピーク月の売上（1物件あたり・月）
         </label>
@@ -629,14 +649,15 @@ function Step2Revenue({
           step={10}
           value={peakMan}
           onChange={(e) => onChange("peakRevenueMan", parseInt(e.target.value, 10))}
-          className="w-full accent-sekai-teal"
+          disabled={noPriorOperation}
+          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
         />
         <div className="flex justify-between text-[11px] text-mid-gray mt-1">
           <span>0万円</span>
           <span>300万円以上</span>
         </div>
       </div>
-      <div>
+      <div className={dimmed}>
         <label className="block text-[14px] font-semibold mb-2 text-ink">
           オフピーク月の売上（1物件あたり・月）
         </label>
@@ -648,13 +669,25 @@ function Step2Revenue({
           step={10}
           value={offpeakMan}
           onChange={(e) => onChange("offpeakRevenueMan", parseInt(e.target.value, 10))}
-          className="w-full accent-sekai-teal"
+          disabled={noPriorOperation}
+          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
         />
         <div className="flex justify-between text-[11px] text-mid-gray mt-1">
           <span>0万円</span>
           <span>300万円以上</span>
         </div>
       </div>
+      <label className="flex items-start gap-2 cursor-pointer select-none border-t border-rule pt-4">
+        <input
+          type="checkbox"
+          checked={noPriorOperation}
+          onChange={(e) => onNoPriorOperation(e.target.checked)}
+          className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
+        />
+        <span className="text-[13px] leading-relaxed text-dark-gray">
+          これから民泊を始める方、運営実績がまだない方（売上・手数料の入力をスキップ）
+        </span>
+      </label>
     </div>
   );
 }
