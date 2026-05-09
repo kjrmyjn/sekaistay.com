@@ -43,9 +43,6 @@ export default function SwitchFounderStory() {
               <mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">初期費用 ¥0（期間限定）</mark>、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">解約金 ¥0</mark>。
             </p>
             <p>
-              最低契約期間は 6ヶ月だけお願いしています──運用の真価が数字に表れるには、それくらいの時間が必要だからです。「合わなければやめられる、ただし試す価値のある時間だけは確保したい」という線引きです。
-            </p>
-            <p>
               初回のご相談では、専門家が丁寧にお話を伺います。運用が変わって、結果としてお付き合いが続いたら嬉しい。それくらいのスタンスで、お会いできればと思っています。
             </p>
             <p className="text-right text-[13px] text-ink/55 italic">
@@ -55,9 +52,6 @@ export default function SwitchFounderStory() {
 
           {/* セクション末の CTA — ボタン化 */}
           <div className="mt-12 sm:mt-14 pt-8 border-t border-rule text-center">
-            <p className="text-[13px] text-ink/60 mb-4">
-              45分、お話だけ聞いてみたい方へ。
-            </p>
             <a
               href="https://timerex.net/s/sekai-stay/d61b424d"
               target="_blank"
