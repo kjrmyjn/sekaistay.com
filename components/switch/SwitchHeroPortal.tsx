@@ -43,50 +43,48 @@ export default function SwitchHeroPortal() {
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            {/* 配置: 左コピー | 右ダッシュボード（control の比率を逆転、右を大きく） */}
-            <div className="grid lg:grid-cols-[0.85fr_1.3fr] gap-8 lg:gap-12 items-center">
-              {/* 左: コピー（ポータル主導） */}
-              <div className="text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 bg-white/8 border border-switch-teal-bright/40 rounded-full px-3 py-1 mb-4 backdrop-blur-sm">
-                  <span className="w-1.5 h-1.5 bg-switch-teal-bright rounded-full" aria-hidden />
-                  <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-switch-teal-bright uppercase">
-                    Owner Portal
-                  </span>
-                </div>
+            {/* ===== Desktop layout (lg以上): 既存の 2列グリッド ===== */}
+            <div className="hidden lg:block">
+              <div className="grid lg:grid-cols-[0.85fr_1.3fr] gap-8 lg:gap-12 items-center">
+                {/* 左: コピー（ポータル主導） */}
+                <div className="text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 bg-white/8 border border-switch-teal-bright/40 rounded-full px-3 py-1 mb-4 backdrop-blur-sm">
+                    <span className="w-1.5 h-1.5 bg-switch-teal-bright rounded-full" aria-hidden />
+                    <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-switch-teal-bright uppercase">
+                      Owner Portal
+                    </span>
+                  </div>
 
-                <h1 className="font-bold leading-[1.18] mb-5 sm:mb-6 tracking-tight">
-                  <span className="block text-[30px] sm:text-[40px] lg:text-[48px]">
-                    あなたの物件、
-                  </span>
-                  <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
-                    <span className="gradient-highlight-box">リアルタイム</span>で、
-                  </span>
-                  <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
-                    ぜんぶ見える。
-                  </span>
-                </h1>
+                  <h1 className="font-bold leading-[1.18] mb-5 sm:mb-6 tracking-tight">
+                    <span className="block text-[30px] sm:text-[40px] lg:text-[48px]">
+                      あなたの物件、
+                    </span>
+                    <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
+                      <span className="gradient-highlight-box">リアルタイム</span>で、
+                    </span>
+                    <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
+                      ぜんぶ見える。
+                    </span>
+                  </h1>
 
-                <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-white/85 leading-relaxed mb-6 font-medium">
-                  民泊代行に、
-                  <span className="text-switch-teal-bright font-bold">透明性</span>を。
-                </p>
+                  <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-white/85 leading-relaxed mb-6 font-medium">
+                    民泊代行に、
+                    <span className="text-switch-teal-bright font-bold">透明性</span>を。
+                  </p>
 
-                <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed mb-7">
-                  予約状況・売上・経費・清掃 — オーナー専用ダッシュボードで全数値が手元に。
-                  <br className="hidden sm:block" />
-                  「任せきり」から、「いつでも見れる」運営へ。
-                </p>
+                  <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed mb-7">
+                    予約状況・売上・経費・清掃 — オーナー専用ダッシュボードで全数値が手元に。
+                    <br className="hidden sm:block" />
+                    「任せきり」から、「いつでも見れる」運営へ。
+                  </p>
 
-                {/* モバイルだけ swap: ボタン群を上、8%pill を下に。lg は元通り（pill→ボタン→キャプション） */}
-                <div className="flex flex-col items-center lg:contents">
-                  {/* 8% は副題サイズに格下げ */}
-                  <div className="order-2 lg:order-none inline-flex items-baseline gap-2 mt-6 lg:mt-0 lg:mb-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
+                  <div className="inline-flex items-baseline gap-2 mb-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
                     <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
                     <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
                     <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
                   </div>
 
-                  <div className="order-1 lg:order-none flex flex-col-reverse lg:flex-col lg:items-start items-center">
+                  <div className="flex flex-col lg:items-start items-center">
                     <a
                       href="#contact-form"
                       data-cta="contact-form"
@@ -98,55 +96,151 @@ export default function SwitchHeroPortal() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </a>
-                    <p className="text-[12px] text-white/55 mb-3 lg:mb-0 lg:mt-3 leading-relaxed">
+                    <p className="text-[12px] text-white/55 mt-3 leading-relaxed">
                       入力60秒・24時間以内にレポート + デモログイン情報をお届け
                     </p>
                   </div>
                 </div>
+
+                {/* 右: ダッシュボード画像 */}
+                <div className="flex flex-col items-center w-full">
+                  <div className="relative flex justify-center items-center w-full min-h-[320px] sm:min-h-[440px] lg:min-h-[520px]">
+                    <div
+                      className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
+                      aria-hidden
+                    />
+                    <img
+                      src="/images/switch/dashboard-mockup.png?v=v4"
+                      alt="SEKAI STAY オーナーポータル ダッシュボード"
+                      className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
+                    />
+                    <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] lg:top-12 lg:left-[10%] z-20" label="新規予約" value="2件" trend="up" />
+                    <FloatingDataChip className="absolute top-10 right-2 sm:top-14 sm:right-[6%] lg:top-16 lg:right-[10%] z-20" label="稼働率" value="74%" trend="up" />
+                    <FloatingDataChip className="absolute bottom-14 left-2 sm:bottom-24 sm:left-[8%] lg:bottom-28 lg:left-[12%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                    <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] lg:bottom-20 lg:right-[12%] z-20" label="ピーク売上" value="+18%" trend="up" />
+                  </div>
+
+                  <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 text-center max-w-md tracking-wide leading-relaxed">
+                    予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
+                  </p>
+                </div>
               </div>
 
-              {/* 右: 高解像度ダッシュボード画像（GPT-5.5 で生成された 1362x1155 横長傾きiPhone構図） */}
+              {/* Trust ライン */}
+              <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 pt-5 mt-6 border-t border-white/10">
+                <Metric value="97" unit="%" label="継続率" />
+                <Divider />
+                <Metric value="4.8" unit="/5" label="満足度" />
+                <Divider />
+                <Metric value="61" unit="%" label="稼働率" />
+                <Divider />
+                <span className="text-[11px] text-white/75 font-bold tracking-wide">
+                  住宅宿泊管理業 <span className="text-switch-teal-bright">第F05780号</span>
+                </span>
+              </div>
+              <p className="text-[10px] text-white/50 text-center mt-2 leading-normal">
+                ※ 2026年4月時点 ｜ 継続6ヶ月以上の平均
+              </p>
+            </div>
+
+            {/* ===== Mobile layout (lg未満): 並び替え版 =====
+                順序: Pill → 画像+chips+tagline → Trust → 60秒+ボタン+8% → 見出し+sub+desc */}
+            <div className="lg:hidden flex flex-col items-center gap-6 text-center">
+              {/* 1. OWNER PORTAL pill */}
+              <div className="inline-flex items-center gap-2 bg-white/8 border border-switch-teal-bright/40 rounded-full px-3 py-1 backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 bg-switch-teal-bright rounded-full" aria-hidden />
+                <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-switch-teal-bright uppercase">
+                  Owner Portal
+                </span>
+              </div>
+
+              {/* 2. ダッシュボード画像 + chips + tagline */}
               <div className="flex flex-col items-center w-full">
-                <div className="relative flex justify-center items-center w-full min-h-[320px] sm:min-h-[440px] lg:min-h-[520px]">
-                  {/* グロー */}
+                <div className="relative flex justify-center items-center w-full min-h-[320px] sm:min-h-[440px]">
                   <div
                     className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
                     aria-hidden
                   />
-                  {/* 横長 iPhone 傾き構図 (1362x1155, 透過背景) — mask 不要 */}
                   <img
                     src="/images/switch/dashboard-mockup.png?v=v4"
                     alt="SEKAI STAY オーナーポータル ダッシュボード"
-                    className="relative w-[88%] max-w-[420px] sm:max-w-[560px] lg:max-w-[680px] select-none pointer-events-none drop-shadow-2xl z-10"
+                    className="relative w-[88%] max-w-[420px] sm:max-w-[560px] select-none pointer-events-none drop-shadow-2xl z-10"
                   />
-                  {/* 浮き出るデータラベル — リアルタイム感の演出 */}
-                  <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] lg:top-12 lg:left-[10%] z-20" label="新規予約" value="2件" trend="up" />
-                  <FloatingDataChip className="absolute top-10 right-2 sm:top-14 sm:right-[6%] lg:top-16 lg:right-[10%] z-20" label="稼働率" value="74%" trend="up" />
-                  <FloatingDataChip className="absolute bottom-14 left-2 sm:bottom-24 sm:left-[8%] lg:bottom-28 lg:left-[12%] z-20" label="清掃完了" value="3/3" trend="ok" />
-                  <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] lg:bottom-20 lg:right-[12%] z-20" label="ピーク売上" value="+18%" trend="up" />
+                  <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] z-20" label="新規予約" value="2件" trend="up" />
+                  <FloatingDataChip className="absolute top-10 right-2 sm:top-14 sm:right-[6%] z-20" label="稼働率" value="74%" trend="up" />
+                  <FloatingDataChip className="absolute bottom-14 left-2 sm:bottom-24 sm:left-[8%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                  <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] z-20" label="ピーク売上" value="+18%" trend="up" />
                 </div>
-
-                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 text-center max-w-md tracking-wide leading-relaxed">
+                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 max-w-md tracking-wide leading-relaxed">
                   予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
                 </p>
               </div>
-            </div>
 
-            {/* Trust ライン */}
-            <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 pt-5 mt-6 border-t border-white/10">
-              <Metric value="97" unit="%" label="継続率" />
-              <Divider />
-              <Metric value="4.8" unit="/5" label="満足度" />
-              <Divider />
-              <Metric value="61" unit="%" label="稼働率" />
-              <Divider />
-              <span className="text-[11px] text-white/75 font-bold tracking-wide">
-                住宅宿泊管理業 <span className="text-switch-teal-bright">第F05780号</span>
-              </span>
+              {/* 3. Trust ライン + footnote */}
+              <div className="w-full">
+                <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 pt-5 border-t border-white/10">
+                  <Metric value="97" unit="%" label="継続率" />
+                  <Divider />
+                  <Metric value="4.8" unit="/5" label="満足度" />
+                  <Divider />
+                  <Metric value="61" unit="%" label="稼働率" />
+                  <Divider />
+                  <span className="text-[11px] text-white/75 font-bold tracking-wide">
+                    住宅宿泊管理業 <span className="text-switch-teal-bright">第F05780号</span>
+                  </span>
+                </div>
+                <p className="text-[10px] text-white/50 mt-2 leading-normal">
+                  ※ 2026年4月時点 ｜ 継続6ヶ月以上の平均
+                </p>
+              </div>
+
+              {/* 4. 60秒キャプション + デモボタン + 8% pill */}
+              <div className="flex flex-col items-center w-full">
+                <p className="text-[12px] text-white/55 mb-3 leading-relaxed">
+                  入力60秒・24時間以内にレポート + デモログイン情報をお届け
+                </p>
+                <a
+                  href="#contact-form"
+                  data-cta="contact-form"
+                  data-cta-label="portal-primary"
+                  className="group w-full inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] px-4 py-3.5 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
+                >
+                  SEKAI STAYのデモ
+                  <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                <div className="inline-flex items-baseline gap-2 mt-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
+                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
+                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
+                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
+                </div>
+              </div>
+
+              {/* 5. 見出し + サブヘッド + 説明文 */}
+              <div className="w-full">
+                <h1 className="font-bold leading-[1.18] mb-4 tracking-tight">
+                  <span className="block text-[30px] sm:text-[40px]">
+                    あなたの物件、
+                  </span>
+                  <span className="block text-[30px] sm:text-[40px] mt-1.5">
+                    <span className="gradient-highlight-box">リアルタイム</span>で、
+                  </span>
+                  <span className="block text-[30px] sm:text-[40px] mt-1.5">
+                    ぜんぶ見える。
+                  </span>
+                </h1>
+                <p className="text-[16px] sm:text-[18px] text-white/85 leading-relaxed mb-3 font-medium">
+                  民泊代行に、
+                  <span className="text-switch-teal-bright font-bold">透明性</span>を。
+                </p>
+                <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed">
+                  予約状況・売上・経費・清掃 — オーナー専用ダッシュボードで全数値が手元に。
+                  <br className="hidden sm:block" />
+                  「任せきり」から、「いつでも見れる」運営へ。
+                </p>
+              </div>
             </div>
-            <p className="text-[10px] text-white/50 text-center mt-2 leading-normal">
-              ※ 2026年4月時点 ｜ 継続6ヶ月以上の平均
-            </p>
           </div>
         </div>
       </div>
