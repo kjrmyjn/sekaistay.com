@@ -289,7 +289,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           );
         }
       } catch {}
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // 完了画面を画面内に収める（LPの一番上に飛ぶのを防ぐ）
+      if (embed) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     } catch {
       setError("送信できませんでした。少し時間をおいてもう一度お試しください。");
       setSubmitting(false);
