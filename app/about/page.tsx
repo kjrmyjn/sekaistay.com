@@ -528,7 +528,7 @@ export default function AboutPage() {
             <div className="pt-6 border-t border-ivory/10 flex flex-wrap items-center gap-x-6 gap-y-2 font-sans text-caption text-ivory/60">
               <span className="inline-flex items-center gap-2"><IconCheck size={12} color="#54BEC3" /> 初期費用0円</span>
               <span className="inline-flex items-center gap-2"><IconCheck size={12} color="#54BEC3" /> 手数料8%</span>
-              <span className="inline-flex items-center gap-2"><IconCheck size={12} color="#54BEC3" /> 無理な営業はしません</span>
+
             </div>
           </div>
         </section>
