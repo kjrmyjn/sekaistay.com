@@ -38,30 +38,15 @@
 | ポータル主導 | `/switch/portal` | 24h ダッシュボード・運営の可視化 |
 | 信頼主導 | `/switch/founder` | スーパーホスト・国交大臣認定・レビュー4.8 |
 
-### 4 分岐構造（2026-05-09 確定）
-
-各パターンを {長文/短文} × {直接MTG/診断} の 4 分岐で並走。詳細は [`copy-matrix.md`](copy-matrix.md)。
-
 ### 初月の仮説（テスト対象）
 
 #### パターン × LP マッピング仮説
 
 | # | 仮説 | 検証方法 |
 |---|---|---|
-| H1 | 価格主導 → /switch-lite が最良の組み合わせ（軽量フォームで離脱低減） | Meta P-*-D の CVR を他パターン × Diagnostic と比較 |
+| H1 | 価格主導 → /switch-lite が最良の組み合わせ（軽量フォームで離脱低減） | Meta 価格主導 ad の CVR を他パターンと比較 |
 | H2 | ポータル主導 → /switch/portal が複数物件オーナーで CVR 高 | Supabase で `lpVariant=switch-portal` の `totalProperties >= 3` 比率 |
-| H3 | 信頼主導 → /switch/founder が初心者・大口で CVR 高 | Meta T-*-D の CVR とリード品質を Supabase で確認 |
-
-#### 4 分岐の長/短 × MTG/診断 仮説
-
-| # | 仮説 | 検証方法 |
-|---|---|---|
-| 4B-H1 | **Long copy** は信頼主導で Short より勝つ（信頼構築には文字量必要） | T-L-M/D vs T-S-M/D の CTR/CVR 比較 |
-| 4B-H2 | **Short copy** は価格主導で Long より勝つ（価格訴求は即決） | P-S-M/D vs P-L-M/D の CTR/CVR 比較 |
-| 4B-H3 | **Direct MTG** は Lookalike や既存リードで Diagnostic より勝つ（高熱量層） | Meta Lookalike で *-M vs *-D 比較 |
-| 4B-H4 | **Diagnostic** は新規興味関心層で MTG より勝つ（コミット閾値が低い） | Meta Interest で *-M vs *-D 比較 |
-| 4B-H5 | **L+M（最もハイコミット）** はリターゲ層で勝つ | Retargeting で全 12 ads を比較 |
-| 4B-H6 | **S+D（最もロウコミット）** は X で勝つ（X のスクロール文化） | X で *-S-D vs *-L-M 比較 |
+| H3 | 信頼主導 → /switch/founder が初心者・大口で CVR 高 | Meta 信頼主導 ad の CVR とリード品質を Supabase で確認 |
 
 #### 媒体・キーワード関連仮説
 
