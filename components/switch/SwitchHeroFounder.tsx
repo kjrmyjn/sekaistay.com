@@ -4,6 +4,7 @@
  * 仮説: スイッチング先の選定では「会社」より「人」を見る層がいる。
  * オーナー専用ダッシュボード（switch/portal）と統一の dark teal 背景に、
  * 創業者ポートレートを左右に大きく配置し、タイトル端と重ねる構成。
+ * 左: 明神 洸次郎 / 右: 劉 添毅
  */
 
 import { useEffect, useState } from "react";
@@ -39,21 +40,21 @@ export default function SwitchHeroFounder() {
           {/* 写真 + 大見出しのレイヤード構成 */}
           <div className="relative">
             {/* 左: 明神 洸次郎（photo as background, bottom-aligned） */}
-            <div className="absolute left-0 sm:left-[-2%] lg:left-[-4%] bottom-[-10%] sm:bottom-[-8%] lg:bottom-[-6%] w-[40%] sm:w-[34%] lg:w-[32%] z-10 pointer-events-none">
+            <div className="absolute left-0 sm:left-[-4%] lg:left-[-6%] bottom-[-12%] sm:bottom-[-10%] lg:bottom-[-8%] w-[52%] sm:w-[46%] lg:w-[44%] z-10 pointer-events-none">
               <img
                 src="/images/switch/founder-koji.png"
-                alt="明神 洸次_郎 共同代表 Co-CEO"
-                className="w-full h-auto select-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                alt="明神 洸次郎 共同代表 Co-CEO"
+                className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
                 loading="eager"
               />
             </div>
 
             {/* 右: 劉 添毅（photo as background, bottom-aligned） */}
-            <div className="absolute right-0 sm:right-[-2%] lg:right-[-4%] bottom-[-10%] sm:bottom-[-8%] lg:bottom-[-6%] w-[40%] sm:w-[34%] lg:w-[32%] z-10 pointer-events-none">
+            <div className="absolute right-0 sm:right-[-4%] lg:right-[-6%] bottom-[-12%] sm:bottom-[-10%] lg:bottom-[-8%] w-[52%] sm:w-[46%] lg:w-[44%] z-10 pointer-events-none">
               <img
                 src="/images/switch/founder-tenichi.png"
                 alt="劉 添毅 代表取締役 CEO"
-                className="w-full h-auto select-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
                 loading="eager"
               />
             </div>
