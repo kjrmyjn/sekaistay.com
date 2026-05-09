@@ -40,23 +40,23 @@ export default function SwitchFounderPage() {
         {/* §2 ストーリー（新規）「なぜ作ったか」 */}
         <SwitchFounderStory />
 
-        {/* §3 共感（オーナーが抱える痛み） */}
+        {/* §3 料金（ストーリー直後に配置 — 哲学の即時可視化） */}
+        <SwitchPricing />
+
+        {/* §4 共感（オーナーが抱える痛み） */}
         <SwitchPainPoints />
 
-        {/* §4 サービス内容 */}
+        {/* §5 サービス内容 */}
         <SwitchServices />
 
-        {/* §5 オーナー様の声（信頼の積み上げ） */}
+        {/* §6 オーナー様の声（信頼の積み上げ） */}
         <SwitchTestimonials />
 
-        {/* §6 他社比較 */}
+        {/* §7 他社比較 */}
         <SwitchComparison />
 
-        {/* §7 シミュレーター（数字は中盤後半に） */}
+        {/* §8 シミュレーター（数字は中盤後半に） */}
         <SwitchSimulator onApply={handleApply} />
-
-        {/* §8 料金 */}
-        <SwitchPricing />
 
         {/* §9 ご利用の流れ */}
         <SwitchFlow />
