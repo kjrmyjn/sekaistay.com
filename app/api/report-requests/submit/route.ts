@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertLeadSubmission, type SubmitPayload } from "@/lib/lead-submissions";
+import { forwardLead } from "@/lib/lead-forward";
 import { classifyKind } from "@/lib/test-classifier";
 
 export const runtime = "nodejs";
@@ -159,7 +160,10 @@ export async function POST(req: NextRequest) {
 
   try {
     const row = await insertLeadSubmission({ payload, kind, clientIp: ip, userAgent });
-    // TODO Day 3: trigger /api/lead-forward → 吉蔵 /api/lead-intake (when secret arrives)
+    const outcome = await forwardLead(row.id);
+    if (!outcome.ok) {
+      console.warn(`[submit] forward to 吉蔵 failed (lead=${row.id}): ${outcome.error}`);
+    }
     return NextResponse.json({ id: row.id, status: "received" }, { status: 200 });
   } catch (err: any) {
     console.error("[submit] insert failed:", err?.message || err);
