@@ -173,8 +173,8 @@ export default function SwitchPrimaryCTA({
         </div>
       </div>
     </section>
-      {/* 左側に営業マンイラスト（セクション左端に配置、中央コンテンツ max-w-3xl と被らない） */}
-      <div className="hidden md:block absolute left-2 lg:left-6 xl:left-[5%] bottom-0 translate-y-[8%] pointer-events-none z-20">
+      {/* 左側に営業マンイラスト（lg以上のみ表示、コンテンツ max-w-3xl と被らない位置） */}
+      <div className="hidden lg:block absolute left-0 xl:left-[3%] bottom-0 translate-y-[8%] pointer-events-none z-20">
         <Image
           src="/images/switch/salesman-illust.png"
           alt=""
