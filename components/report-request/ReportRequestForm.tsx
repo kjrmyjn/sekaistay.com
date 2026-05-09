@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+type PropertySearchResult = {
+  source: "airbnb" | "other";
+  url: string;
+  title?: string;
+};
 
 // ─────── Constants ───────
 
@@ -443,8 +449,116 @@ function Step1Property({
   onTotalProperties: (v: number) => void;
 }) {
   const valid = airbnbUrl.trim() === "" || isAirbnbUrl(airbnbUrl.trim());
+  // ── property name → Airbnb search (proxies to /api/property-search) ──
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<PropertySearchResult[]>([]);
+  const [searching, setSearching] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchAbortRef = useRef<AbortController | null>(null);
+  useEffect(() => {
+    const q = searchQuery.trim();
+    if (q.length < 2) {
+      setSearchResults([]);
+      setSearching(false);
+      return;
+    }
+    if (airbnbUrl) {
+      // Already filled; skip search until user clears name to retry
+      setSearching(false);
+      return;
+    }
+    const ac = new AbortController();
+    searchAbortRef.current = ac;
+    const handle = setTimeout(async () => {
+      setSearching(true);
+      try {
+        const res = await fetch(`/api/property-search?q=${encodeURIComponent(q)}`, {
+          signal: ac.signal,
+        });
+        const data = await res.json();
+        if (ac.signal.aborted) return;
+        setSearchResults(Array.isArray(data?.results) ? data.results : []);
+        setSearchOpen(true);
+      } catch {
+        if (!ac.signal.aborted) setSearchResults([]);
+      } finally {
+        if (!ac.signal.aborted) setSearching(false);
+      }
+    }, 400);
+    return () => {
+      clearTimeout(handle);
+      ac.abort();
+      setSearching(false);
+    };
+  }, [searchQuery, airbnbUrl]);
+
+  function pickResult(r: PropertySearchResult) {
+    onAirbnbUrl(r.url);
+    if (r.title) setSearchQuery(r.title);
+    setSearchOpen(false);
+    setSearchResults([]);
+  }
+
   return (
     <div className="flex flex-col gap-5">
+      <div className="relative">
+        <label className="block text-[14px] font-semibold mb-2 text-ink">
+          物件名で検索{" "}
+          <span className="text-[12px] text-mid-gray font-normal">（任意・2文字以上）</span>
+        </label>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => {
+            if (searchResults.length > 0) setSearchOpen(true);
+          }}
+          onBlur={() => {
+            setTimeout(() => setSearchOpen(false), 150);
+          }}
+          placeholder="例：代々木STAY"
+          className="w-full px-4 py-3 rounded-lg border border-rule bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20"
+        />
+        {searching && (
+          <p className="text-[12px] text-mid-gray mt-1.5">物件を検索しています…</p>
+        )}
+        {searchOpen && searchResults.length > 0 && (
+          <ul className="absolute z-20 left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-lg border border-rule bg-white shadow-lg">
+            {searchResults.slice(0, 6).map((r) => (
+              <li key={r.url}>
+                <button
+                  type="button"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    pickResult(r);
+                  }}
+                  className="w-full text-left px-3 py-2 text-[14px] hover:bg-light-gray flex items-center gap-2"
+                >
+                  <span
+                    className={`inline-block px-1.5 py-0.5 text-[10px] rounded font-bold ${
+                      r.source === "airbnb"
+                        ? "bg-rose-50 text-rose-600"
+                        : "bg-light-gray text-ink"
+                    }`}
+                  >
+                    {r.source === "airbnb" ? "Airbnb" : "その他"}
+                  </span>
+                  <span className="truncate">{r.title || r.url}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {searchOpen &&
+          !searching &&
+          searchQuery.trim().length >= 2 &&
+          !airbnbUrl &&
+          searchResults.length === 0 && (
+            <p className="text-[12px] text-mid-gray mt-1.5">
+              候補が見つかりませんでした。下のURL貼付けをご利用ください。
+            </p>
+          )}
+      </div>
       <div>
         <label className="block text-[14px] font-semibold mb-2 text-ink">
           物件のAirbnb URL <span className="text-red-600">*</span>
