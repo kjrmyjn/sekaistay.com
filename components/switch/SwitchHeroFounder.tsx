@@ -24,8 +24,8 @@ export default function SwitchHeroFounder() {
       <DotPattern opacity={0.04} />
 
       {/* 写真は背景レイヤー（z-0）— 雰囲気のみ伝える */}
-      {/* 左: 劉 添毅 — 若干大きく＋若干右にシフト＋下辺を明神と揃える */}
-      <div className="absolute left-[-58%] sm:left-[-38%] lg:left-[-26%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[145%] sm:w-[112%] lg:w-[96%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
+      {/* 左: 劉 添毅 — 若干小さく＋左シフト＋頭の位置を明神に揃える */}
+      <div className="absolute left-[-62%] sm:left-[-43%] lg:left-[-31%] top-[-4rem] sm:top-[-5rem] lg:top-[-6rem] w-[135%] sm:w-[104%] lg:w-[88%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
         <img
           src="/images/switch/founder-tenichi.png?v=2"
           alt=""
