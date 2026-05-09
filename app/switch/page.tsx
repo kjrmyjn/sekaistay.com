@@ -104,7 +104,7 @@ export default function SwitchPage() {
           lpVariant="switch"
           heading="まずはご相談だけでもどうぞ"
           leadCopy="24時間以内に担当者からご連絡"
-          subCopy="30秒入力で無料面談を予約。24時間後までに無料レポートをお送り致します。"
+          subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
         />
 
         {/* §14 会社概要 */}

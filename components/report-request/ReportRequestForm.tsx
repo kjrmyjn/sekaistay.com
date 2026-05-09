@@ -533,7 +533,7 @@ function Step1Property({
           onChange={(e) => onAirbnbUrl(e.target.value)}
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
-          placeholder="2文字以上入力して検索"
+          placeholder="2文字以上入力してAirBnBで検索"
           disabled={noPropertyYet}
           className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
@@ -571,7 +571,7 @@ function Step1Property({
             className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
           />
           <span className="text-[13px] leading-relaxed text-dark-gray">
-            これから民泊を始める方、まだ物件を Airbnb 等に掲載されていない方
+            これから民泊を始める方、まだ物件を Airbnb 等に掲載されていない方（レポート無し）
           </span>
         </label>
       </div>

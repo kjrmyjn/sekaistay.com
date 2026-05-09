@@ -18,7 +18,7 @@ export default function LpVariantForm({
   lpVariant,
   heading = "無料パーソナライズ診断",
   leadCopy = "60秒入力で、24時間以内に診断レポートをお届け",
-  subCopy = "30秒入力で無料面談を予約。24時間後までに無料レポートをお送り致します。",
+  subCopy = "30秒入力で無料面談を予約。無料レポートをお送り致します。",
 }: Props) {
   return (
     <section
