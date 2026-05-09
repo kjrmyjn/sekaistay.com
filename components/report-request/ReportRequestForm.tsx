@@ -803,7 +803,7 @@ function DoneScreen({
     : null;
 
   return (
-    <div className={embed ? "" : "py-12 min-h-screen bg-ivory"}>
+    <div className={embed ? "" : "py-12 min-h-screen bg-white"}>
       <div className="max-w-xl mx-auto px-5">
         <div className="rounded-2xl p-8 mb-5 bg-white border border-rule shadow-sm">
           <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5 bg-teal-tint">
@@ -863,7 +863,7 @@ function DoneScreen({
 
         <div className="rounded-lg p-4 text-[13px] leading-relaxed bg-mist text-dark-gray">
           <p className="mb-1 text-ink font-medium">お急ぎの場合</p>
-          <p>contact@sekaichi.org までお問い合わせください。</p>
+          <p>contact@sekaichi.org（担当：小川）までお問い合わせください。</p>
         </div>
       </div>
     </div>
