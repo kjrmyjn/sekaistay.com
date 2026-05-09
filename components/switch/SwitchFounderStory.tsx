@@ -42,12 +42,8 @@ export default function SwitchFounderStory() {
             <p>
               <mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">初期費用 ¥0<sup className="text-[10px] font-normal ml-0.5">※1</sup></mark>、<mark className="bg-deep-teal/10 text-deep-teal font-bold px-1 rounded-sm">解約金 ¥0<sup className="text-[10px] font-normal ml-0.5">※2</sup></mark>。
             </p>
-            <p className="text-[12px] sm:text-[13px] leading-[1.8] text-ink/55 tracking-normal">
-              ※1 運用中物件のみ期間限定無料（新規立ち上げ物件は別途お見積もり）<br />
-              ※2 最低契約期間（6ヶ月）以降は解約金 ¥0
-            </p>
             <p>
-              初回のご相談では、専門家が丁寧にお話を伺います。運用が変わって、結果としてお付き合いが続いたら嬉しい。それくらいのスタンスで、お会いできればと思っています。
+              運用が変わって、結果としてお付き合いが続いたら嬉しいです。
             </p>
             <p className="text-right text-[13px] text-ink/55 italic">
               ── 劉 添毅・明神 洸次郎
@@ -56,6 +52,10 @@ export default function SwitchFounderStory() {
 
           {/* セクション末の CTA — ボタン化 */}
           <div className="mt-12 sm:mt-14 pt-8 border-t border-rule text-center">
+            <p className="text-[12px] sm:text-[13px] leading-[1.8] text-ink/55 tracking-normal text-left mb-8">
+              ※1 運用中物件のみ期間限定無料（新規立ち上げ物件は別途お見積もり）<br />
+              ※2 最低契約期間（6ヶ月）以降は解約金 ¥0
+            </p>
             <a
               href="https://timerex.net/s/sekai-stay/d61b424d"
               target="_blank"
