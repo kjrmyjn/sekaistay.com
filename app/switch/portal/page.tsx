@@ -21,6 +21,7 @@ import SwitchStickyCTA from "@/components/switch/SwitchStickyCTA";
 import LpVariantForm from "@/components/switch/LpVariantForm";
 import PortalTestimonials from "@/components/switch/PortalTestimonials";
 import PageViewTracker from "@/components/switch/PageViewTracker";
+import EngagementTracker from "@/components/EngagementTracker";
 import WaveDivider from "@/components/switch/deco/WaveDivider";
 
 export default function SwitchPortalPage() {
@@ -33,49 +34,74 @@ export default function SwitchPortalPage() {
   return (
     <>
       <PageViewTracker lpVariant="switch-portal" />
+      <EngagementTracker lpVariant="switch-portal" />
       <SwitchHeader />
       <main>
         {/* §1 Hero — ダッシュボード主役 */}
-        <SwitchHeroPortal />
+        <div data-track-section="hero">
+          <SwitchHeroPortal />
+        </div>
         <WaveDivider fromColor="#2d2d2d" toColor="#ffffff" withDots />
 
         {/* §3 共感ストーリー（不透明さの痛み） */}
-        <SwitchPainPoints />
+        <div data-track-section="pain-points">
+          <SwitchPainPoints />
+        </div>
 
         {/* MidCTA */}
-        <SwitchPrimaryCTA title="ダッシュボードのデモを見る" />
+        <div data-track-section="mid-cta-1">
+          <SwitchPrimaryCTA title="ダッシュボードのデモを見る" />
+        </div>
 
-        {/* §4 サービス内容（並び替えは中で行うのが理想だが、まずはコンポーネント単位で配置） */}
-        <SwitchServices />
+        {/* §4 サービス内容 */}
+        <div data-track-section="services">
+          <SwitchServices />
+        </div>
 
-        {/* §5 他社比較（Comparison のダッシュボード行は SwitchComparison 内で並び替え推奨） */}
-        <SwitchComparison />
+        {/* §5 他社比較 */}
+        <div data-track-section="comparison">
+          <SwitchComparison />
+        </div>
 
         {/* MidCTA */}
-        <SwitchPrimaryCTA title="数字が見える運営に切り替える" />
+        <div data-track-section="mid-cta-2">
+          <SwitchPrimaryCTA title="数字が見える運営に切り替える" />
+        </div>
 
         {/* §7 実績 */}
-        <SwitchResults />
+        <div data-track-section="results">
+          <SwitchResults />
+        </div>
 
         {/* §8 オーナー様の声 — Portal専用差し替え版 */}
-        <PortalTestimonials />
+        <div data-track-section="testimonials">
+          <PortalTestimonials />
+        </div>
 
         {/* §9 料金 */}
-        <SwitchPricing />
+        <div data-track-section="pricing">
+          <SwitchPricing />
+        </div>
 
         {/* §10 ご利用の流れ */}
-        <SwitchFlow />
+        <div data-track-section="flow">
+          <SwitchFlow />
+        </div>
 
         {/* §11 FAQ */}
-        <SwitchFAQ />
+        <div data-track-section="faq">
+          <SwitchFAQ />
+        </div>
 
         {/* §13 フォーム */}
-        <LpVariantForm
-          lpVariant="switch-portal"
-          heading="まずはご相談だけでもどうぞ"
-          leadCopy="24時間以内に担当者からご連絡"
-          subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
-        />
+        <div data-track-section="form">
+          <LpVariantForm
+            lpVariant="switch-portal"
+            heading="まずはご相談だけでもどうぞ"
+            leadCopy="24時間以内に担当者からご連絡"
+            subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
+          />
+        </div>
 
         {/* §14 会社概要 */}
         <LpCompanyInfo />
