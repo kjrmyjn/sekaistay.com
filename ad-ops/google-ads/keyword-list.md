@@ -173,18 +173,18 @@ Campaign 3: SS-Geo（地名×業界）         日予算 ¥3,000  CV 最大化
 
 ---
 
-## ランディングURL
+## ランディングURL（5 variants 体制）
 
-すべて UTM パラメータ付与。LP A/B 振り分けは **広告URLレベルで分ける**（実装方針は別 PR で確定）。
+すべて UTM パラメータ付与。LP A/B/C/D/E 振り分けは **広告URLレベルで分ける**。
 
-```
-Editorial Luxury LP:
-  https://sekaistay.com/lp?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=editorial&utm_term={keyword}
+| Variant | URL | 用途 |
+|---|---|---|
+| Control | `https://sekaistay.com/switch?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=switch&utm_term={keyword}` | 基準 |
+| B (lite) | `https://sekaistay.com/switch-lite?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=switch-lite&utm_term={keyword}` | フォーム軽量 |
+| D (short) | `https://sekaistay.com/switch/short?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=switch-short&utm_term={keyword}` | 45分面談誘導 |
 
-Simple LP:
-  https://sekaistay.com/lp/simple?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=simple&utm_term={keyword}
-```
+> **初月の推奨**: 3 variants（Control / B / D）に Google 予算を 33/33/34 で振り分け。`/switch/founder` と `/switch/portal` は Meta/X で先行検証してから Google にも追加するか判断（Google で広く回すには statistical power が分散する）。
 
-各広告グループ内で 50/50 で振り分け（Google Ads は広告ローテーション機能 or 広告コピー側で URL 分岐）。
+`lp_variant` は URL のパスから `<PageViewTracker lpVariant="..." />` 経由で GA4 / Meta Pixel に伝播するため、URL を分けるだけで variant 別の CV 集計が自動化される。
 
-> **詳細**: A/B 統計設計は `../meta-ads/audience-targeting.md` 末尾の「3媒体共通: A/B 設計原則」参照（後で書く）。
+> **詳細**: A/B 統計設計は `../meta-ads/audience-targeting.md` 末尾の「A/B 設計原則」参照（後で書く）。

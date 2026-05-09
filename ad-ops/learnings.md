@@ -20,15 +20,28 @@
 
 **前提**: コンバージョン = 問い合わせフォーム送信。性能が悪ければ LINE@ 登録に切り替え検討。
 
+### LP variants（5 variants 体制・2026-05-09 確認）
+
+| URL | lp_variant | 役割 |
+|---|---|---|
+| `/switch` | `switch` | Control（Full LP） |
+| `/switch-lite` | `switch-lite` | フォーム lite（連絡先のみ） |
+| `/switch/short` | `switch-short` | 45分面談 CTA |
+| `/switch/founder` | `switch-founder` | Founder 前面 |
+| `/switch/portal` | `switch-portal` | オーナーポータル前面 |
+
 ### 初月の仮説（テスト対象）
 
 | # | 仮説 | 検証方法 |
 |---|---|---|
-| H1 | `/lp` (Editorial Luxury) は信頼感重視のため Google 検索流入で勝つ | 媒体ごとに /lp と /lp/simple を 50/50 で配信、CVR 比較 |
-| H2 | `/lp/simple` はモバイル流入の多い Meta で勝つ | 同上 |
-| H3 | 競合代行業者名キーワード（指名出し）は CPA が安い | 指名広告キャンペーン単独でCPA計測 |
-| H4 | 「乗り換え」訴求は既存代行に不満を持つオーナーに刺さる | 「乗り換え」「切り替え」訴求 vs 「成果」訴求でCTR比較 |
-| H5 | 手数料8%（業界半額）の数字訴求は CTR が高い | 「8%」を見出しに含むコピー vs 含まないコピーで比較 |
+| H1 | `/switch` (Control) は情報量が多く検索意図の高い Google 検索流入で勝つ | Google で 3 variants 配信、variant 別 CVR 比較 |
+| H2 | `/switch-lite` はフォーム入力負荷が低く、興味の浅い Meta 流入で勝つ | Meta で Control vs Lite vs Founder で比較 |
+| H3 | `/switch/short` は短時間で意思決定するモバイル X 流入で勝つ | X で Control vs Short で比較 |
+| H4 | `/switch/founder` は信頼軸の Meta オーディエンスで CTR が高い | Meta 興味関心ターゲ向け配信 |
+| H5 | 競合代行業者名キーワード（指名出し）は CPA が安い | 指名広告キャンペーン単独でCPA計測 |
+| H6 | 「乗り換え」訴求は既存代行に不満を持つオーナーに刺さる | 「乗り換え」「切り替え」訴求 vs 「成果」訴求でCTR比較 |
+| H7 | 手数料8%（業界半額）の数字訴求は CTR が高い | 「8%」を見出しに含むコピー vs 含まないコピーで比較 |
+| H8 | フォーム送信のリード品質は variant 間で差がある（lite < full） | Supabase の `lp_variant` 別に `forwardLead` 結果（成約率）を追跡 |
 
 ---
 
