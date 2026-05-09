@@ -46,6 +46,7 @@ export default function SwitchFlow() {
             enLabel="契約の流れ"
             jaTitle={<><HighlightMarker>最短2週間</HighlightMarker>で切り替え完了。</>}
             subtitle="他社からの引き継ぎもお任せ。既存の予約・ゲスト対応も途切れなく移行します。"
+            hideUnderline
           />
         </div>
 

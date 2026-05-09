@@ -9,6 +9,8 @@ type Props = {
   subtitle?: ReactNode;
   /** 見出しの色（デフォルトは charcoal、ダーク背景では white を指定） */
   titleColor?: "charcoal" | "white";
+  /** ティールアンダーライン装飾を非表示にする */
+  hideUnderline?: boolean;
   className?: string;
 };
 
@@ -21,6 +23,7 @@ export default function SectionHead({
   jaTitle,
   subtitle,
   titleColor = "charcoal",
+  hideUnderline = false,
   className = "",
 }: Props) {
   return (
@@ -36,10 +39,12 @@ export default function SectionHead({
         {jaTitle}
       </h2>
       {/* ティールアンダーライン装飾 */}
-      <div className="mx-auto mt-5 mb-5 h-[3px] w-16 bg-switch-teal rounded-full" />
+      {!hideUnderline && (
+        <div className="mx-auto mt-5 mb-5 h-[3px] w-16 bg-switch-teal rounded-full" />
+      )}
       {subtitle && (
         <p
-          className={`text-base leading-normal max-w-2xl mx-auto ${
+          className={`text-base leading-normal max-w-2xl mx-auto ${hideUnderline ? "mt-4" : ""} ${
             titleColor === "white" ? "text-white/70" : "text-switch-gray-dark"
           }`}
         >
