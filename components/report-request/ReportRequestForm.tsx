@@ -2,6 +2,12 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
+type PropertySearchResult = {
+  source: "airbnb" | "other";
+  url: string;
+  title?: string;
+};
+
 // ─────── Constants ───────
 
 const COMMISSION_OPTIONS = [
