@@ -42,8 +42,9 @@ export default function SwitchFounderStory() {
             </p>
             <p>
               さらに、<strong className="text-deep-teal">初期費用は期間限定で ¥0</strong>、
-              <strong className="text-deep-teal">最低契約期間 6ヶ月以降は解約金も ¥0</strong>。
-              「合わなければやめられる」前提で、まずは 6ヶ月、運用の手応えを試していただけます。
+              <strong className="text-deep-teal">解約金も ¥0</strong>。
+              「合わなければやめられる」前提で、運用の手応えをご自身で確かめていただけます。
+              <span className="block text-[12px] text-ink/45 mt-1">※最低契約期間 6ヶ月</span>
             </p>
             <p>
               切り替えは心理的にもオペレーション的にもコストが高い決断です。

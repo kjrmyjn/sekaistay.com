@@ -77,7 +77,7 @@ export default function SwitchPage() {
             diffLabel: "年間差額",
             diffValue: 744000,
             diffSuffix: "/ 年",
-            note: "※ 1部屋想定・月額固定費 ¥10,000/部屋 込みで試算",
+            note: "※ 1物件想定・月額固定費 ¥10,000/物件 込みで試算",
           }}
         />
 

@@ -297,7 +297,7 @@ export default function BlogPostPage({ params }: Props) {
                   <span className="block font-sans text-bright-teal mt-1">手数料8%で一括代行。</span>
                 </h2>
                 <p className="font-sans text-body-sm text-ivory/80 leading-[1.95] mb-8 max-w-lg">
-                  OTA掲載・プライシング・ゲスト対応・清掃まで。初期費用0円・最低契約期間なし。
+                  OTA掲載・プライシング・ゲスト対応・清掃まで。初期費用 ¥0・解約金 ¥0。
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link

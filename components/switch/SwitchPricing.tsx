@@ -4,9 +4,9 @@ import { useScrollFade } from "@/hooks/useScrollFade";
 import SectionHead from "./deco/SectionHead";
 
 const zeroItems = [
-  "初期費用",
+  "初期費用 ※1",
   "契約手数料",
-  "解約金",
+  "解約金 ※2",
   "清掃費の別請求",
   "広告費の別請求",
   "レポート作成費",
@@ -146,7 +146,8 @@ export default function SwitchPricing() {
             ))}
           </div>
           <p className="relative text-[11px] text-white/60 text-center mt-5 leading-relaxed">
-            ※ 清掃費はゲスト宿泊料金内でカバー。広告費・レポート費は8%内に含まれます。
+            ※1 初期費用は期間限定無料キャンペーン中 ／ ※2 最低契約期間（6ヶ月）以降は解約金¥0
+            <br />※ 清掃費はゲスト宿泊料金内でカバー。広告費・レポート費は8%内に含まれます。
           </p>
         </div>
 

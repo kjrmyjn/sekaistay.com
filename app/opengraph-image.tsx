@@ -36,7 +36,7 @@ export default function OGImage() {
             ✓ 移行コスト0円
           </span>
           <span style={{ fontSize: '20px', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            ✓ 解約手数料0円
+            ✓ 解約金 ¥0
           </span>
           <span style={{ fontSize: '20px', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '8px' }}>
             ✓ 最短2週間

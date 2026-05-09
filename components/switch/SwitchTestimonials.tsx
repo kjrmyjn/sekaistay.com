@@ -38,7 +38,7 @@ const testimonials = [
     impactSub: "★",
     impactLabel: "ゲスト評価 4.2→4.8",
     color: "from-switch-teal-deep to-switch-teal",
-    text: "前の代行がひどくて、レビューに「清掃が汚い」と書かれたこともあった。切り替えてからはそういったこともなく、レビューが改善して単価も上げられるようになった。妻にも「任せてよかったね」と言われました。",
+    text: "前の代行では月1レポートが届くだけで、物件に何が起きているか把握できていなかった。SEKAI STAYに切り替えてから清掃・運用の細かいところまで改善され、ゲストレビューが自然に上がりました。単価も引き上げられるようになって、妻にも「ちゃんと任せてよかったね」と言われました。",
   },
 ];
 
@@ -53,6 +53,30 @@ export default function SwitchTestimonials() {
             enLabel="実際のオーナー様の声"
             jaTitle={<>切り替えた人の、リアルな結果。</>}
           />
+        </div>
+
+        {/* 改善実績バナー */}
+        <div className="fade-in grid grid-cols-3 gap-3 sm:gap-5 mb-10">
+          {[
+            { label: "稼働率改善（実例）", value: "58%→82%", sub: "+24pt" },
+            { label: "月売上改善（実例）", value: "45万→76万", sub: "+69%" },
+            { label: "ゲスト評価平均", value: "4.8", sub: "/ 5.0" },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-white rounded-lg border border-switch-teal/20 shadow-sm px-3 py-4 text-center"
+            >
+              <p className="text-[18px] sm:text-2xl font-bold text-switch-teal-deep leading-none tabular-nums">
+                {stat.value}
+              </p>
+              <p className="text-[10px] sm:text-xs font-bold text-switch-teal mt-1 tabular-nums">
+                {stat.sub}
+              </p>
+              <p className="text-[9px] sm:text-[10px] text-switch-gray-mid mt-1.5 leading-tight">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className="stagger grid md:grid-cols-3 gap-5">

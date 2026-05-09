@@ -564,7 +564,7 @@ export default function AuditPage() {
               {[
                 { title: '手数料8%', body: '業界平均(15〜25%)の半分以下。明朗会計で、月次レポートもすべて開示します。' },
                 { title: '稼働率 +30%', body: 'OTA最適化・ダイナミックプライシング導入後の、弊社管理物件の平均実績です。' },
-                { title: '最短2週間', body: '他社からの乗り換え費用0円・最低契約期間なし。縛りのない運営パートナーです。' },
+                { title: '最短2週間', body: '他社からの乗り換え費用 ¥0・解約金 ¥0。縛りの少ない運営パートナーです。' },
               ].map(item => (
                 <div key={item.title} className="bg-paper p-8 md:p-10">
                   <p className="eyebrow-mono text-mid-gray mb-3">SEKAI STAY</p>
