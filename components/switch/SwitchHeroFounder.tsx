@@ -4,7 +4,7 @@
  * 仮説: スイッチング先の選定では「会社」より「人」を見る層がいる。
  * オーナー専用ダッシュボード（switch/portal）と統一の dark teal 背景に、
  * 創業者ポートレートを左右に大きく配置し、タイトル端と重ねる構成。
- * 左: 明神 洸次郎 / 右: 劉 添毅
+ * 左: 劉 添毅 / 右: 明神 洸次郎
  */
 
 import { useEffect, useState } from "react";
@@ -39,21 +39,21 @@ export default function SwitchHeroFounder() {
 
           {/* 写真 + 大見出しのレイヤード構成 */}
           <div className="relative">
-            {/* 左: 明神 洸次郎（photo as background, bottom-aligned） */}
+            {/* 左: 劉 添毅（photo as background, bottom-aligned） */}
             <div className="absolute left-0 sm:left-[-4%] lg:left-[-6%] bottom-[-12%] sm:bottom-[-10%] lg:bottom-[-8%] w-[52%] sm:w-[46%] lg:w-[44%] z-10 pointer-events-none">
               <img
-                src="/images/switch/founder-koji.png"
-                alt="明神 洸次郎 共同代表 Co-CEO"
+                src="/images/switch/founder-tenichi.png"
+                alt="劉 添毅 代表取締役 CEO"
                 className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
                 loading="eager"
               />
             </div>
 
-            {/* 右: 劉 添毅（photo as background, bottom-aligned） */}
+            {/* 右: 明神 洸次郎（photo as background, bottom-aligned） */}
             <div className="absolute right-0 sm:right-[-4%] lg:right-[-6%] bottom-[-12%] sm:bottom-[-10%] lg:bottom-[-8%] w-[52%] sm:w-[46%] lg:w-[44%] z-10 pointer-events-none">
               <img
-                src="/images/switch/founder-tenichi.png"
-                alt="劉 添毅 代表取締役 CEO"
+                src="/images/switch/founder-koji.png"
+                alt="明神 洸次郎 共同代表 Co-CEO"
                 className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
                 loading="eager"
               />
@@ -80,18 +80,8 @@ export default function SwitchHeroFounder() {
             </div>
           </div>
 
-          {/* 浮遊カード（写真の上に被さる）— 左: 明神 / 右: 劉 */}
+          {/* 浮遊カード（写真の上に被さる）— 左: 劉 / 右: 明神 */}
           <div className="relative z-30 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto mt-6 sm:mt-10">
-            <FloatingFounderCard
-              name="明神 洸次郎"
-              nameRomaji="Kojiro Myojin"
-              role="共同代表 Co-CEO"
-              bio={
-                <>
-                  登録者数125万人超を誇った人気YouTubeグループ「<strong className="text-white">カリスマブラザーズ</strong>」出身のクリエイター「<strong className="text-white">ジロー</strong>」としても活動。プロダクト・運用設計を統括し、SEKAI STAYの中身は彼がつくっている。
-                </>
-              }
-            />
             <FloatingFounderCard
               name="劉 添毅"
               nameRomaji="Tenichi Liu"
@@ -99,6 +89,16 @@ export default function SwitchHeroFounder() {
               bio={
                 <>
                   <strong className="text-white">SEKAI STAY創設者</strong>。<strong className="text-white">Amazon米国本社</strong>で培った経験をもとに、日本の代行業界に世界基準の運用体験を提供することを目的に創業。民泊投資家として国内外の物件を運営してきた当事者でもある。
+                </>
+              }
+            />
+            <FloatingFounderCard
+              name="明神 洸次郎"
+              nameRomaji="Kojiro Myojin"
+              role="共同代表 Co-CEO"
+              bio={
+                <>
+                  登録者数125万人超を誇った人気YouTubeグループ「<strong className="text-white">カリスマブラザーズ</strong>」出身のクリエイター「<strong className="text-white">ジロー</strong>」としても活動。プロダクト・運用設計を統括し、SEKAI STAYの中身は彼がつくっている。
                 </>
               }
             />
