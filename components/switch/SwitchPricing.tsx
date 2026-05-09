@@ -145,10 +145,24 @@ export default function SwitchPricing() {
               </div>
             ))}
           </div>
-          <p className="relative text-[11px] text-white/60 text-center mt-5 leading-relaxed">
-            ※1 初期費用は期間限定無料キャンペーン中 ／ ※2 最低契約期間（6ヶ月）以降は解約金¥0
-            <br />※ 清掃費はゲスト宿泊料金内でカバー。広告費・レポート費は8%内に含まれます。
-          </p>
+          <ul className="relative text-[11px] text-white/60 mt-5 leading-relaxed space-y-1.5 max-w-md mx-auto">
+            <li className="flex items-start gap-2">
+              <span className="text-switch-teal-bright font-bold shrink-0">※1</span>
+              <span>初期費用は期間限定の無料キャンペーン中</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-switch-teal-bright font-bold shrink-0">※2</span>
+              <span>最低契約期間（6ヶ月）以降は解約金 ¥0</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-white/40 font-bold shrink-0">※</span>
+              <span>清掃費はゲスト宿泊料金内でカバー</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-white/40 font-bold shrink-0">※</span>
+              <span>広告費・レポート費は手数料 8% 内に含まれます</span>
+            </li>
+          </ul>
         </div>
 
         {/* CTA */}
