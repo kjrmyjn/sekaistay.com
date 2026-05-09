@@ -151,21 +151,6 @@ export default function SwitchServices() {
           />
         </div>
 
-        {/* プログレスバー風 7つナビ */}
-        <div className="fade-in mb-8 hidden sm:flex items-center justify-center gap-1 text-[11px] font-bold text-switch-gray-mid">
-          {CIRCLED.map((c, i) => (
-            <span
-              key={c}
-              className="flex items-center gap-1"
-            >
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white border border-switch-teal/30 text-switch-teal-deep shadow-sm">
-                {c}
-              </span>
-              {i < CIRCLED.length - 1 && <span className="w-4 h-px bg-switch-teal/20" />}
-            </span>
-          ))}
-        </div>
-
         {/* 機能01：オーナー専用ダッシュボード — ヒーロー級 */}
         <div className="fade-in relative bg-gradient-to-br from-switch-teal-tint via-white to-switch-teal-tint rounded-xl p-6 sm:p-8 lg:p-10 mb-10 border-2 border-switch-teal/40 shadow-xl overflow-visible">
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-switch-teal-bright via-switch-teal to-switch-teal-deep rounded-t-xl overflow-hidden" />
@@ -288,23 +273,14 @@ export default function SwitchServices() {
         {/* サマリーバナー */}
         <div className="fade-in mt-10 bg-switch-charcoal rounded-xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-switch-teal-bright/10 blur-3xl rounded-full pointer-events-none" />
-          <div className="relative flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-              <p className="text-lg sm:text-xl font-bold leading-tight">
-                この<span className="text-switch-teal-bright">7つ</span>、すべてを
-                <span className="text-switch-teal-bright">手数料8%</span>で。
-              </p>
-              <p className="text-xs text-white/70 mt-1">
-                ＋ 物件あたり月額 ¥10,000 ｜ その他の費用は一切ありません
-              </p>
-            </div>
-            <div className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-white/80">
-              {CIRCLED.map((c) => (
-                <span key={c} className="w-7 h-7 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-sm">
-                  {c}
-                </span>
-              ))}
-            </div>
+          <div className="relative flex flex-col items-center text-center gap-1">
+            <p className="text-lg sm:text-xl font-bold leading-tight">
+              この<span className="text-switch-teal-bright">7つ</span>、すべてを
+              <span className="text-switch-teal-bright">手数料8%</span>で。
+            </p>
+            <p className="text-xs text-white/70">
+              ＋ 物件あたり月額 ¥10,000 ｜ その他の費用は一切ありません
+            </p>
           </div>
         </div>
       </div>
