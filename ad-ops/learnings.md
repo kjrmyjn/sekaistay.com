@@ -30,6 +30,14 @@
 | `/switch/founder` | `switch-founder` | Founder 前面 |
 | `/switch/portal` | `switch-portal` | オーナーポータル前面 |
 
+### 訴求パターン × LP マッピング（Google/Meta/X 共通・2026-05-09 確定）
+
+| パターン | LP | 訴求の核 |
+|---|---|---|
+| 価格主導 | `/switch-lite` | 業界相場の半額・手数料8% |
+| ポータル主導 | `/switch/portal` | 24h ダッシュボード・運営の可視化 |
+| 信頼主導 | `/switch/founder` | スーパーホスト・国交大臣認定・レビュー4.8 |
+
 ### 4 分岐構造（2026-05-09 確定）
 
 各パターンを {長文/短文} × {直接MTG/診断} の 4 分岐で並走。詳細は [`copy-matrix.md`](copy-matrix.md)。
@@ -63,6 +71,10 @@
 | H5 | 「乗り換え」訴求は既存代行に不満を持つオーナーに刺さる | 「乗り換え」訴求 vs 「成果」訴求で CTR 比較 |
 | H6 | 手数料 8%（業界半額）の数字訴求は CTR が高い | 「8%」を見出しに含むコピー vs 含まないで比較 |
 | H7 | フォーム送信のリード品質は variant 間で差がある（lite < full） | Supabase の `lp_variant` 別に `forwardLead` 結果（成約率）を追跡 |
+| H8 | **/switch-lite LP は CVR は高いが商談化率が低い**（連絡先のみ → 後続の温度上げが必要） | `forwardLead` 後の商談化率を `lpVariant` 別に追跡 |
+| H9 | **指名検索（SS-Brand）** は CPA ¥1,500 以下で安定 | Brand キャンペーン単独で CPA 計測 |
+| H10 | **Geo Campaign（地名×業界）** は他より CPA が安い（検索意図が具体的） | SS-Geo Campaign の CPA を SS-Generic-* と比較 |
+| H11 | **創業者本人画像 × 信頼主導** で Meta CTR が 1.5-2倍 | T-1（本人画像あり）vs T-2（数字のみ）で CTR/CVR 比較 |
 
 ---
 
