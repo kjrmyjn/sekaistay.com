@@ -12,7 +12,6 @@ import SwitchHeroPortal from "@/components/switch/SwitchHeroPortal";
 import SwitchPainPoints from "@/components/switch/SwitchPainPoints";
 import SwitchServices from "@/components/switch/SwitchServices";
 import SwitchComparison from "@/components/switch/SwitchComparison";
-import SwitchSimulator from "@/components/switch/SwitchSimulator";
 import SwitchResults from "@/components/switch/SwitchResults";
 import SwitchPricing from "@/components/switch/SwitchPricing";
 import SwitchFlow from "@/components/switch/SwitchFlow";
@@ -51,9 +50,6 @@ export default function SwitchPortalPage() {
 
         {/* §5 他社比較（Comparison のダッシュボード行は SwitchComparison 内で並び替え推奨） */}
         <SwitchComparison />
-
-        {/* §6 損失シミュレーター — 中盤に降格（control では §2 だったのを §6 へ） */}
-        <SwitchSimulator onApply={handleApply} />
 
         {/* MidCTA */}
         <SwitchPrimaryCTA title="数字が見える運営に切り替える" />
