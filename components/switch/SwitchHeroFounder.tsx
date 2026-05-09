@@ -23,27 +23,28 @@ export default function SwitchHeroFounder() {
       <div className="absolute bottom-[-15%] left-[-15%] w-[55%] h-[60%] bg-switch-teal/14 blur-[140px] rounded-full pointer-events-none" aria-hidden />
       <DotPattern opacity={0.04} />
 
+      {/* 写真は section 直下に viewport コーナー基準で配置（肩が画面端で見切れる） */}
+      {/* 左: 劉 添毅 — viewport 左端から飛び出す */}
+      <div className="absolute left-[-18%] sm:left-[-15%] lg:left-[-12%] top-16 sm:top-20 lg:top-24 w-[80%] sm:w-[68%] lg:w-[60%] z-10 pointer-events-none">
+        <img
+          src="/images/switch/founder-tenichi.png"
+          alt="劉 添毅 代表取締役 CEO"
+          className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
+          loading="eager"
+        />
+      </div>
+
+      {/* 右: 明神 洸次郎 — viewport 右端から飛び出す */}
+      <div className="absolute right-[-18%] sm:right-[-15%] lg:right-[-12%] top-16 sm:top-20 lg:top-24 w-[80%] sm:w-[68%] lg:w-[60%] z-10 pointer-events-none">
+        <img
+          src="/images/switch/founder-koji.png"
+          alt="明神 洸次郎 共同代表 Co-CEO"
+          className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
+          loading="eager"
+        />
+      </div>
+
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
-        {/* 左: 劉 添毅（最外側 div の top に揃える — From the Founders と同じ高さから始まる） */}
-        <div className="absolute left-0 sm:left-[-8%] lg:left-[-10%] top-16 sm:top-20 lg:top-24 w-[64%] sm:w-[58%] lg:w-[56%] z-10 pointer-events-none">
-          <img
-            src="/images/switch/founder-tenichi.png"
-            alt="劉 添毅 代表取締役 CEO"
-            className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
-            loading="eager"
-          />
-        </div>
-
-        {/* 右: 明神 洸次郎（最外側 div の top に揃える — From the Founders と同じ高さから始まる） */}
-        <div className="absolute right-0 sm:right-[-8%] lg:right-[-10%] top-16 sm:top-20 lg:top-24 w-[64%] sm:w-[58%] lg:w-[56%] z-10 pointer-events-none">
-          <img
-            src="/images/switch/founder-koji.png"
-            alt="明神 洸次郎 共同代表 Co-CEO"
-            className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
-            loading="eager"
-          />
-        </div>
-
         <div
           className={`relative transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
