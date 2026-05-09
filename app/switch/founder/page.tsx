@@ -10,7 +10,6 @@ import LpCompanyInfo from "@/components/switch/_shared/LpCompanyInfo";
 import SwitchHeader from "@/components/switch/SwitchHeader";
 import SwitchHeroFounder from "@/components/switch/SwitchHeroFounder";
 import SwitchFounderStory from "@/components/switch/SwitchFounderStory";
-import SwitchPainPoints from "@/components/switch/SwitchPainPoints";
 import SwitchServices from "@/components/switch/SwitchServices";
 import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
 import SwitchComparison from "@/components/switch/SwitchComparison";
@@ -43,28 +42,25 @@ export default function SwitchFounderPage() {
         {/* §3 料金（ストーリー直後に配置 — 哲学の即時可視化） */}
         <SwitchPricing />
 
-        {/* §4 共感（オーナーが抱える痛み） */}
-        <SwitchPainPoints />
-
-        {/* §5 サービス内容 */}
+        {/* §4 サービス内容 */}
         <SwitchServices />
 
-        {/* §6 オーナー様の声（信頼の積み上げ） */}
+        {/* §5 オーナー様の声（信頼の積み上げ） */}
         <SwitchTestimonials />
 
-        {/* §7 他社比較 */}
+        {/* §6 他社比較 */}
         <SwitchComparison />
 
-        {/* §8 シミュレーター（数字は中盤後半に） */}
+        {/* §7 シミュレーター（数字は中盤後半に） */}
         <SwitchSimulator onApply={handleApply} />
 
-        {/* §9 ご利用の流れ */}
+        {/* §8 ご利用の流れ */}
         <SwitchFlow />
 
-        {/* §10 FAQ */}
+        {/* §9 FAQ */}
         <SwitchFAQ />
 
-        {/* §11 フォーム — 副 CTA（メインの CTA は Hero/Story の代表面談） */}
+        {/* §10 フォーム — 副 CTA（メインの CTA は Hero/Story の代表面談） */}
         <LpVariantForm
           lpVariant="switch-founder"
           heading="まずはご相談だけでもどうぞ"
@@ -72,7 +68,7 @@ export default function SwitchFounderPage() {
           subCopy="30秒入力で無料面談を予約。無料レポートをお送り致します。"
         />
 
-        {/* §12 会社概要 */}
+        {/* §11 会社概要 */}
         <LpCompanyInfo />
       </main>
       <LpFooter />
