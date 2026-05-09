@@ -51,7 +51,7 @@ export default function SwitchHeroPortal() {
                   <div className="inline-flex items-center gap-2 bg-white/8 border border-switch-teal-bright/40 rounded-full px-3 py-1 mb-4 backdrop-blur-sm">
                     <span className="w-1.5 h-1.5 bg-switch-teal-bright rounded-full" aria-hidden />
                     <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-switch-teal-bright uppercase">
-                      Owner Portal
+                      SEKAI STAY アプリ
                     </span>
                   </div>
 
