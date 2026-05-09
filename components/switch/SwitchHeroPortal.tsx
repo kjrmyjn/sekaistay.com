@@ -77,28 +77,31 @@ export default function SwitchHeroPortal() {
                   「任せきり」から、「いつでも見れる」運営へ。
                 </p>
 
-                {/* 8% は副題サイズに格下げ */}
-                <div className="inline-flex items-baseline gap-2 mb-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
-                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
-                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
-                </div>
+                {/* モバイルだけ swap: ボタン群を上、8%pill を下に。lg は元通り（pill→ボタン→キャプション） */}
+                <div className="flex flex-col items-center lg:contents">
+                  {/* 8% は副題サイズに格下げ */}
+                  <div className="order-2 lg:order-none inline-flex items-baseline gap-2 mt-6 lg:mt-0 lg:mb-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
+                    <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
+                    <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
+                    <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
+                  </div>
 
-                <div className="flex flex-col lg:items-start items-center">
-                  <a
-                    href="#contact-form"
-                    data-cta="contact-form"
-                    data-cta-label="portal-primary"
-                    className="group w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] sm:text-lg px-4 sm:px-9 py-3.5 sm:py-4 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
-                  >
-                    SEKAI STAYのデモ
-                    <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
-                  <p className="text-[12px] text-white/55 mt-3 leading-relaxed">
-                    入力60秒・24時間以内にレポート + デモログイン情報をお届け
-                  </p>
+                  <div className="order-1 lg:order-none flex flex-col-reverse lg:flex-col lg:items-start items-center">
+                    <a
+                      href="#contact-form"
+                      data-cta="contact-form"
+                      data-cta-label="portal-primary"
+                      className="group w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] sm:text-lg px-4 sm:px-9 py-3.5 sm:py-4 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
+                    >
+                      SEKAI STAYのデモ
+                      <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                    <p className="text-[12px] text-white/55 mb-3 lg:mb-0 lg:mt-3 leading-relaxed">
+                      入力60秒・24時間以内にレポート + デモログイン情報をお届け
+                    </p>
+                  </div>
                 </div>
               </div>
 
