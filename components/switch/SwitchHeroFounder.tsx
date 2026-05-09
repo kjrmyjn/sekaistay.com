@@ -25,7 +25,7 @@ export default function SwitchHeroFounder() {
 
       {/* 写真は背景レイヤー（z-0）— 雰囲気のみ伝える */}
       {/* 左: 劉 添毅 — 下辺を明神に揃える（アスペクト比差を top offset で吸収） */}
-      <div className="absolute left-[-22%] sm:left-[-37%] lg:left-[-25%] top-[-1rem] sm:top-[0rem] lg:top-[-2rem] w-[100%] sm:w-[107%] lg:w-[90%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
+      <div className="absolute left-[-30%] sm:left-[-37%] lg:left-[-25%] top-[2rem] sm:top-[0rem] lg:top-[-2rem] w-[120%] sm:w-[107%] lg:w-[90%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
         <img
           src="/images/switch/founder-tenichi.png?v=2"
           alt=""
@@ -36,7 +36,7 @@ export default function SwitchHeroFounder() {
       </div>
 
       {/* 右: 明神 洸次郎 — カラーで表示 */}
-      <div className="absolute right-[-25%] sm:right-[-45%] lg:right-[-32%] top-[-1rem] sm:top-[-4rem] lg:top-[-5rem] w-[100%] sm:w-[100%] lg:w-[85%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
+      <div className="absolute right-[-35%] sm:right-[-45%] lg:right-[-32%] top-[-1rem] sm:top-[-4rem] lg:top-[-5rem] w-[120%] sm:w-[100%] lg:w-[85%] z-0 pointer-events-none opacity-50 sm:opacity-55 lg:opacity-60">
         <img
           src="/images/switch/founder-koji.png"
           alt=""
