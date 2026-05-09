@@ -155,13 +155,6 @@ export default function SwitchServices() {
         <div className="fade-in relative bg-gradient-to-br from-switch-teal-tint via-white to-switch-teal-tint rounded-xl p-6 sm:p-8 lg:p-10 mb-10 border-2 border-switch-teal/40 shadow-xl overflow-visible">
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-switch-teal-bright via-switch-teal to-switch-teal-deep rounded-t-xl overflow-hidden" />
 
-          {/* ①ナンバーバッジ */}
-          <span className="absolute -top-5 -left-3 sm:-left-5 flex items-center gap-1.5 z-10">
-            <span className="w-12 h-12 bg-gradient-to-br from-switch-teal to-switch-teal-deep text-white text-2xl font-bold rounded-full flex items-center justify-center shadow-lg ring-4 ring-white">
-              ①
-            </span>
-          </span>
-
           <div className="grid md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 items-center">
             {/* Text column */}
             <div className="md:col-span-3">
@@ -230,11 +223,8 @@ export default function SwitchServices() {
               </span>
 
               <div className="relative p-5 pt-5 flex-1 flex flex-col">
-                {/* header: circled number + tag */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`inline-flex items-center gap-1.5 bg-gradient-to-br ${f.accent} text-white text-sm font-bold px-2.5 py-1 rounded-full shadow-sm`}>
-                    <span className="text-base leading-none">{f.circled}</span>
-                  </span>
+                {/* header: tag */}
+                <div className="flex items-center mb-3">
                   <span className="text-[10px] font-bold text-switch-teal-deep bg-switch-teal-tint px-2 py-0.5 rounded tracking-wider">
                     {f.tag}
                   </span>
@@ -273,12 +263,12 @@ export default function SwitchServices() {
         {/* サマリーバナー */}
         <div className="fade-in mt-10 bg-switch-charcoal rounded-xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-switch-teal-bright/10 blur-3xl rounded-full pointer-events-none" />
-          <div className="relative flex flex-col items-center text-center gap-1">
-            <p className="text-lg sm:text-xl font-bold leading-tight">
+          <div className="relative flex flex-col items-center text-center gap-1 w-full">
+            <p className="text-lg sm:text-xl font-bold leading-tight text-center w-full">
               この<span className="text-switch-teal-bright">7つ</span>、すべてを
               <span className="text-switch-teal-bright">手数料8%</span>で。
             </p>
-            <p className="text-xs text-white/70">
+            <p className="text-xs text-white/70 text-center w-full">
               ＋ 物件あたり月額 ¥10,000 ｜ その他の費用は一切ありません
             </p>
           </div>
