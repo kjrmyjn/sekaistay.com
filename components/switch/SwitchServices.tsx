@@ -228,12 +228,12 @@ export default function SwitchServices() {
           </div>
         </div>
 
-        {/* 機能02〜07：モバイルは横スワイプ（1.5枚見え） / sm以上はグリッド */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 stagger overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none -mx-6 px-6 sm:mx-0 sm:px-0 pb-3 sm:pb-0 scroll-pl-6 sm:scroll-pl-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* 機能02〜07：全ブレークポイント横スワイプ（mobile 1.5枚 / sm 2.3枚 / lg 3枚＋αが見える） */}
+        <div className="flex gap-4 sm:gap-5 stagger overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-3 scroll-pl-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {otherFeatures.map((f, i) => (
             <div
               key={f.no}
-              className="fade-in group relative bg-white rounded-md border border-switch-gray-light shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col flex-shrink-0 w-[72%] snap-start sm:w-auto sm:flex-shrink"
+              className="fade-in group relative bg-white rounded-md border border-switch-gray-light shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col flex-shrink-0 w-[72%] sm:w-[42%] lg:w-[30%] snap-start"
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               {/* top accent stripe */}
