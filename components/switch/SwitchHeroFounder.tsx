@@ -74,7 +74,7 @@ export default function SwitchHeroFounder() {
             <p className="text-[13px] sm:text-[16px] lg:text-[17px] text-white/80 leading-[1.95] tracking-wide max-w-2xl mx-auto mt-6 sm:mt-8">
               「業者に任せきりで、何が起きてるか分からない」
               <br className="hidden sm:block" />
-              ——その業界の常識を、ひっくり返す会社をつくりました。
+              ——その業界の常識を、ひっくり返すサービスをつくりました。
               <br className="hidden sm:block" />
               <strong className="text-white">専門チームが、丁寧にお話を伺います。</strong>
             </p>
