@@ -204,7 +204,7 @@ export default function SwitchHero({
 
                 {/* 物件カード → iPhone へのフロー線 */}
                 <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none hidden sm:block"
+                  className="absolute inset-0 w-full h-full pointer-events-none"
                   viewBox="0 0 600 600"
                   preserveAspectRatio="none"
                   aria-hidden
