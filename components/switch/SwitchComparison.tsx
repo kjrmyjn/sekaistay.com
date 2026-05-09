@@ -44,7 +44,7 @@ export default function SwitchComparison() {
               key={row.label}
               className="bg-white rounded-md shadow-sm border border-switch-gray-light/60 overflow-hidden"
             >
-              <div className="bg-switch-charcoal text-white text-[13px] font-bold px-3.5 py-2 leading-tight">
+              <div className="bg-switch-charcoal text-white text-[11px] font-bold px-3 py-1 leading-tight tracking-wide">
                 {row.label}
               </div>
               <div className="grid grid-cols-2">
