@@ -154,70 +154,7 @@ export default function SwitchHeroPortal() {
                 </span>
               </div>
 
-              {/* 2. ダッシュボード画像 + chips + tagline */}
-              <div className="flex flex-col items-center w-full">
-                <div className="relative flex justify-center items-center w-full min-h-[320px] sm:min-h-[440px]">
-                  <div
-                    className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
-                    aria-hidden
-                  />
-                  <img
-                    src="/images/switch/dashboard-mockup.png?v=v4"
-                    alt="SEKAI STAY オーナーポータル ダッシュボード"
-                    className="relative w-[88%] max-w-[420px] sm:max-w-[560px] select-none pointer-events-none drop-shadow-2xl z-10"
-                  />
-                  <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] z-20" label="新規予約" value="2件" trend="up" />
-                  <FloatingDataChip className="absolute top-10 right-0 sm:top-14 sm:right-[-1%] z-20" label="清掃完了" value="3/3" trend="ok" />
-                  <FloatingDataChip className="absolute bottom-14 left-0 sm:bottom-24 sm:left-[-1%] z-20" label="稼働率" value="74%" trend="up" />
-                  <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] z-20" label="ピーク売上" value="+18%" trend="up" />
-                </div>
-                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 max-w-md tracking-wide leading-relaxed">
-                  予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
-                </p>
-              </div>
-
-              {/* 3. Trust ライン + footnote */}
-              <div className="w-full">
-                <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 pt-5 border-t border-white/10">
-                  <Metric value="97" unit="%" label="継続率" />
-                  <Divider />
-                  <Metric value="4.8" unit="/5" label="満足度" />
-                  <Divider />
-                  <Metric value="61" unit="%" label="稼働率" />
-                  <Divider />
-                  <span className="text-[11px] text-white/75 font-bold tracking-wide">
-                    住宅宿泊管理業 <span className="text-switch-teal-bright">第F05780号</span>
-                  </span>
-                </div>
-                <p className="text-[10px] text-white/50 mt-2 leading-normal">
-                  ※ 2026年4月時点 ｜ 継続6ヶ月以上の平均
-                </p>
-              </div>
-
-              {/* 4. 60秒キャプション + デモボタン + 8% pill */}
-              <div className="flex flex-col items-center w-full">
-                <p className="text-[12px] text-white/55 mb-3 leading-relaxed">
-                  入力60秒・24時間以内にレポート + デモログイン情報をお届け
-                </p>
-                <a
-                  href="#contact-form"
-                  data-cta="contact-form"
-                  data-cta-label="portal-primary"
-                  className="group w-full inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] px-4 py-3.5 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
-                >
-                  SEKAI STAYのデモ
-                  <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-                <div className="inline-flex items-baseline gap-2 mt-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
-                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
-                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
-                </div>
-              </div>
-
-              {/* 5. 見出し + サブヘッド + 説明文 */}
+              {/* 2. 見出し + サブヘッド + 説明文 (Owner Portal pill 直下に配置) */}
               <div className="w-full">
                 <h1 className="font-bold leading-[1.18] mb-4 tracking-tight">
                   <span className="block text-[30px] sm:text-[40px]">
@@ -239,6 +176,69 @@ export default function SwitchHeroPortal() {
                   <br className="hidden sm:block" />
                   「任せきり」から、「いつでも見れる」運営へ。
                 </p>
+              </div>
+
+              {/* 3. ダッシュボード画像 + chips + tagline */}
+              <div className="flex flex-col items-center w-full">
+                <div className="relative flex justify-center items-center w-full min-h-[320px] sm:min-h-[440px]">
+                  <div
+                    className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
+                    aria-hidden
+                  />
+                  <img
+                    src="/images/switch/dashboard-mockup.png?v=v4"
+                    alt="SEKAI STAY オーナーポータル ダッシュボード"
+                    className="relative w-[88%] max-w-[420px] sm:max-w-[560px] select-none pointer-events-none drop-shadow-2xl z-10"
+                  />
+                  <FloatingDataChip className="absolute top-4 left-2 sm:top-8 sm:left-[6%] z-20" label="新規予約" value="2件" trend="up" />
+                  <FloatingDataChip className="absolute top-10 right-0 sm:top-14 sm:right-[-1%] z-20" label="清掃完了" value="3/3" trend="ok" />
+                  <FloatingDataChip className="absolute bottom-14 left-0 sm:bottom-24 sm:left-[-1%] z-20" label="稼働率" value="74%" trend="up" />
+                  <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] z-20" label="ピーク売上" value="+18%" trend="up" />
+                </div>
+                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 max-w-md tracking-wide leading-relaxed">
+                  予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
+                </p>
+              </div>
+
+              {/* 4. Trust ライン + footnote */}
+              <div className="w-full">
+                <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 pt-5 border-t border-white/10">
+                  <Metric value="97" unit="%" label="継続率" />
+                  <Divider />
+                  <Metric value="4.8" unit="/5" label="満足度" />
+                  <Divider />
+                  <Metric value="61" unit="%" label="稼働率" />
+                  <Divider />
+                  <span className="text-[11px] text-white/75 font-bold tracking-wide">
+                    住宅宿泊管理業 <span className="text-switch-teal-bright">第F05780号</span>
+                  </span>
+                </div>
+                <p className="text-[10px] text-white/50 mt-2 leading-normal">
+                  ※ 2026年4月時点 ｜ 継続6ヶ月以上の平均
+                </p>
+              </div>
+
+              {/* 5. 60秒キャプション + デモボタン + 8% pill */}
+              <div className="flex flex-col items-center w-full">
+                <p className="text-[12px] text-white/55 mb-3 leading-relaxed">
+                  入力60秒・24時間以内にレポート + デモログイン情報をお届け
+                </p>
+                <a
+                  href="#contact-form"
+                  data-cta="contact-form"
+                  data-cta-label="portal-primary"
+                  className="group w-full inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] px-4 py-3.5 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
+                >
+                  SEKAI STAYのデモ
+                  <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                <div className="inline-flex items-baseline gap-2 mt-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
+                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
+                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
+                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
+                </div>
               </div>
             </div>
           </div>
