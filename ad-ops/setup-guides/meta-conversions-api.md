@@ -76,7 +76,7 @@ Step 7: 本番 Live・Event Match Quality 確認
 
 1. **Events Manager → 「テストイベント」タブ**
 2. 上部の **「Test Browser Events」** セクション
-3. **「URL でテスト」** に `https://sekaistay.com/lp/contact` を入力
+3. **「URL でテスト」** に `https://sekaistay.com/switch` を入力
 4. **「ウェブサイトを開く」** で別タブが開く（テストモード）
 5. 上部に **「テストイベント コード（例: `TEST12345`）」** が表示されるのでコピー
 6. このコードを Discord で私に共有 → Vercel 環境変数（`META_CAPI_TEST_EVENT_CODE`）に登録
@@ -128,20 +128,38 @@ Step 7: 本番 Live・Event Match Quality 確認
 
 ## Step 5: Vercel Function 実装（AI が PR4 で実装）
 
-これは私の作業。実装するもの:
+> **2026-05-09 更新**: `/switch` ファミリのフォームは **native（iframe ではない）** で `/api/report-requests/submit` 経由で送信されているため、CAPI を別ルートに分けず **既存 `/api/report-requests/submit` 内に統合実装する**。これにより:
+> - 余分な HTTP ラウンドトリップなし
+> - PII（name / email / phone）が同じスコープで使える → SHA-256 ハッシュ化が即できる
+> - IP / UA / fbc / fbp / landingUrl は HTTP ヘッダー + cookie + 既存ペイロードから取得可
+> - **EMQ 8+ 狙える**
+
+### 実装方針（PR4 で実装）
 
 ```
-app/api/meta-capi/lead/route.ts
-  ↓
-  POST 受信 → Pixel と同じ event_id で Meta API 呼び出し
-  ↓
-  PII（メール・電話）を SHA-256 ハッシュ化して送信
+ReportRequestForm (client)
+  ↓ POST /api/report-requests/submit
+[server-side, app/api/report-requests/submit/route.ts]:
+  1. 既存処理: Supabase insert + forwardLead
+  2. 追加: crypto.randomUUID() で event_id 生成
+  3. 追加: lib/meta-capi.ts の sendMetaCapiLead({ eventId, hashedPII, ip, ua, fbp, fbc, eventSourceUrl, customData }) を fire-and-forget 呼び出し
+  4. レスポンスに event_id を含める
+  ↓ res.json({ id, status, eventId })
+[client]:
+  5. 既存 fbq('track', 'Lead', {...}) に { eventID: data.eventId } を追加 → 重複除去のキーになる
 ```
 
-LP のフォーム送信時に:
-1. Pixel が `fbq('track', 'Lead')` 発火（クライアント・既存実装）
-2. **同時に** `/api/meta-capi/lead` に同じ `event_id` で POST（新規・PR4で追加）
-3. Meta が両方を受信 → `event_id` が同じなら重複扱いで除去
+### 新規ファイル
+
+- `lib/meta-capi.ts` — SHA-256 ハッシュ化 + Meta Graph API 呼び出し helper
+- `app/api/report-requests/submit/route.ts` — **既存ファイルに追加実装**（新規ファイル不要）
+- `components/report-request/ReportRequestForm.tsx` — `fbq` 呼び出しに `eventID` を渡す
+
+### 重複除去の仕組み
+
+- Pixel: `fbq('track', 'Lead', {...}, { eventID: 'abc-123' })`
+- CAPI: `POST /events?event_id=abc-123, event_name=Lead`
+- Meta が同じ `event_id` を見たら**ブラウザ + サーバー両方を受信**として扱う（理想形）
 
 > **重複除去のために**、Pixel と CAPI で **同じ event_id** を送ることが必須。私が実装する `crypto.randomUUID()` ベースで生成。
 
@@ -152,7 +170,7 @@ LP のフォーム送信時に:
 ### PR4 マージ後の確認
 
 1. **Events Manager → テストイベント** を開いておく
-2. ブラウザで `https://sekaistay.com/lp` に Step 3 と同じテストモードでアクセス（テストコードが URL に付いている状態）
+2. ブラウザで `https://sekaistay.com/switch` に Step 3 と同じテストモードでアクセス（テストコードが URL に付いている状態）
 3. フォームを送信
 4. テストイベント画面に **2件の `Lead` イベント**が表示される（Pixel 1件 + CAPI 1件）
 5. Meta が自動重複除去すると **「Browser」+「Server」両方を受信** と表示される（理想）

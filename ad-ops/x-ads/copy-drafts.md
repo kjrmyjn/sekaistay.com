@@ -150,11 +150,11 @@ X 広告では **Website Card** という表示形式があり、ツイートの
 ## ランディング URL
 
 ```
-https://sekaistay.com/lp?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative_name}
-https://sekaistay.com/lp/simple?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative_name}
+https://sekaistay.com/switch?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative_name}        ← Control
+https://sekaistay.com/switch/short?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative_name}   ← D (45min meeting)
 ```
 
-A/B 振り分けは X 広告マネージャー側で 50/50。
+> **X 推奨**: 月¥150K 予算で 15 リードを狙うため、variant を絞る方が良い。**Control + D（45分面談）の 2 variants** からスタート。X はテキスト主体で短文と CTA が効きやすいので /switch/short と相性が良い。
 
 ---
 

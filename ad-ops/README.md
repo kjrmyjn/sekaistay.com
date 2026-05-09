@@ -109,9 +109,36 @@ ad-ops/
 
 ## 関連リンク
 
-- 広告対象LP: `/lp`（Editorial Luxury 17セクション） / `/lp/simple`（Simple 5セクション）
-- フォーム送信: Web3Forms 経由 → **自社CRM** 起票（HubSpot は不採用・2026-05-09 確定）
-- 既存計測: GA4 (`G-B7M920RCGR`) + Meta Pixel (`1658477098524563`)
+### 広告対象 LP（A/B/C/D/E variants）
+
+| URL | lp_variant | 役割 |
+|---|---|---|
+| `/switch` | `switch` | **Control** — Full 17-section LP |
+| `/switch-lite` | `switch-lite` | **B** — フォーム lite 版に差替え（連絡先のみ） |
+| `/switch/short` | `switch-short` | **D** — Hero CTA = 45分の無料面談 (Timerex) |
+| `/switch/founder` | `switch-founder` | E — 創業者前面（Founder ストーリー強化） |
+| `/switch/portal` | `switch-portal` | E — オーナーポータル前面 |
+
+> 全 variant が共通で `LpVariantForm` (`components/switch/LpVariantForm.tsx`) → `ReportRequestForm` (`components/report-request/ReportRequestForm.tsx`) を内包。`lp_variant` は GA4 / Meta Pixel / Supabase に伝播。
+
+### フォーム送信フロー
+
+```
+ReportRequestForm (client)
+  ↓ POST /api/report-requests/submit
+Supabase (lead_submissions テーブル) + 自社CRM (forwardLead to 吉蔵)
+  ↓ res 200 OK
+client → fbq("track", "Lead", { lp_variant, content_name: "report_request" })
+client → gtag("event", "lead", { lp_variant, form_variant, commission_rate })
+```
+
+PII（name / email / phone）はサーバーサイドで保持されるため、**Meta CAPI を `/api/report-requests/submit` 内に統合実装可能**（PR4 で実装予定）。EMQ 8+ が現実的。
+
+### 既存計測タグ
+
+- GA4: `G-B7M920RCGR`（layout.tsx ハードコード）
+- Meta Pixel: `1658477098524563`（layout.tsx ハードコード + 環境変数化済み）
+- Meta CAPI: トークン Vercel env 登録済み（PR4 で Function 実装）
 - 親プロジェクト: `~/.claude/projects/-Users-sekaichi-Desktop-claude-code/memory/project_sekai_stay.md`
 - ブランドガイド: `SEKAI_STAY_Creative_Guide.md`
 - 画像資産マニフェスト: `IMAGES_MANIFEST.md`

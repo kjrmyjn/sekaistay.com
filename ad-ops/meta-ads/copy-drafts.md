@@ -196,15 +196,16 @@
 ## ランディング URL
 
 ```
-Feed:
-  https://sekaistay.com/lp?utm_source=meta&utm_medium=cpc&utm_campaign={campaign_name}&utm_content={ad_name}
-  https://sekaistay.com/lp/simple?utm_source=meta&utm_medium=cpc&utm_campaign={campaign_name}&utm_content={ad_name}
-
-Stories/Reels:
-  同上（モバイル最適化されているか確認）
+Feed / Stories / Reels:
+  https://sekaistay.com/switch?utm_source=meta&utm_medium=cpc&utm_campaign={campaign_name}&utm_content={ad_name}        ← Control
+  https://sekaistay.com/switch-lite?utm_source=meta&utm_medium=cpc&utm_campaign={campaign_name}&utm_content={ad_name}    ← B (lite form)
+  https://sekaistay.com/switch/short?utm_source=meta&utm_medium=cpc&utm_campaign={campaign_name}&utm_content={ad_name}   ← D (45min meeting)
+  https://sekaistay.com/switch/founder?utm_source=meta&utm_medium=cpc&utm_campaign={campaign_name}&utm_content={ad_name} ← E (founder)
 ```
 
-LP A/B 振り分けは広告URL 50/50 配分（Meta 広告マネージャー側で 50/50 設定 → 広告セット内で URL を 2 種類用意）。
+LP A/B/C/D/E 振り分けは広告URL でコントロール（広告セット内で variant ごとに URL を分ける）。`lp_variant` は `<PageViewTracker lpVariant="..." />` 経由で GA4 / Meta Pixel / Supabase に伝播済み。
+
+> **初月の Meta 推奨**: 全 5 variants を回すと統計的に弱くなるので、**Control + B + E（founder）の 3 変種**から開始。Founder variant は信頼訴求と相性が良い Meta オーディエンスで効きそう。
 
 ---
 
