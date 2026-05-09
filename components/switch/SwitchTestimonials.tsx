@@ -80,7 +80,7 @@ export default function SwitchTestimonials() {
         </div>
 
         {/* モバイル: 横スクロール / md以上: 3カラムグリッド */}
-        <div className="stagger flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none scrollbar-thin pb-2 md:pb-0">
+        <div className="stagger flex md:grid md:grid-cols-3 gap-5 overflow-x-auto overflow-y-hidden md:overflow-visible touch-pan-x md:touch-auto overscroll-y-none md:overscroll-auto -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none scrollbar-thin pb-2 md:pb-0">
           {testimonials.map((t, i) => (
             <div
               key={i}
