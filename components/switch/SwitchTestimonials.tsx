@@ -66,7 +66,7 @@ export default function SwitchTestimonials() {
               key={stat.label}
               className="bg-white rounded-lg border border-switch-teal/20 shadow-sm px-2 py-4 sm:px-3 text-center"
             >
-              <p className="text-[15px] sm:text-2xl font-bold text-switch-teal-deep leading-none tabular-nums whitespace-nowrap">
+              <p className="text-[12px] sm:text-2xl font-bold text-switch-teal-deep leading-none tabular-nums whitespace-nowrap">
                 {stat.value}
               </p>
               <p className="text-[10px] sm:text-xs font-bold text-switch-teal mt-1 tabular-nums">

@@ -51,9 +51,9 @@ export default function PortalTestimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <div className="flex md:grid md:grid-cols-2 gap-4 md:gap-5 overflow-x-auto md:overflow-visible -mx-5 px-5 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none pb-3 md:pb-0">
           {VOICES.map((v, i) => (
-            <div key={i} className="fade-in bg-white rounded-2xl p-5 sm:p-7 border border-switch-stone-border shadow-sm hover:shadow-md transition-shadow">
+            <div key={i} className="fade-in bg-white rounded-2xl p-5 sm:p-7 border border-switch-stone-border shadow-sm hover:shadow-md transition-shadow shrink-0 w-[82%] md:w-auto snap-center">
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-block px-2 py-0.5 rounded-full bg-switch-teal-tint text-switch-teal-deep text-[10px] font-bold tracking-wider">
                   {v.point}
