@@ -2,17 +2,12 @@
 
 /* /switch/founder Hero — 信頼主導 (人・創業者型)
  * 仮説: スイッチング先の選定では「会社」より「人」を見る層がいる。商談化率も上がる。
- * 数字は控えめ・語りかけ調・代表写真ファースト。
- *
- * ⚠️ 写真の差替え:
- *   /public/images/switch/founder-tenichi.jpg / founder-koji.jpg を配置
- *   → 配置完了後に <FounderPhoto> の placeholder=true を false に変更
+ * 創業者ポートレートをヒーロービジュアルの主役に据える設計。
  */
 
 import { useEffect, useState } from "react";
 
 const TIMEREX_30MIN = "https://timerex.net/s/sekai-stay/d61b424d";
-// TODO: 代表 30min 専用の Timerex リンクが用意されたら差替え
 
 export default function SwitchHeroFounder() {
   const [visible, setVisible] = useState(false);
@@ -22,15 +17,16 @@ export default function SwitchHeroFounder() {
     <section className="relative bg-paper text-ink overflow-hidden">
       {/* 微かな暖色グロー — 人間味を演出 */}
       <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-deep-teal/8 blur-[160px] rounded-full pointer-events-none" aria-hidden />
+      <div className="absolute bottom-[-15%] left-[-10%] w-[50%] h-[50%] bg-deep-teal/6 blur-[160px] rounded-full pointer-events-none" aria-hidden />
 
-      <div className="relative max-w-6xl mx-auto px-6 py-20 sm:py-24 lg:py-28">
+      <div className="relative max-w-6xl mx-auto px-6 py-16 sm:py-20 lg:py-24">
         <div
           className={`transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           {/* キッカー */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-8">
             <p className="text-[11px] sm:text-[12px] tracking-[0.4em] text-deep-teal/80 font-medium uppercase mb-2">
               From the Founders
             </p>
@@ -38,7 +34,7 @@ export default function SwitchHeroFounder() {
           </div>
 
           {/* 中央寄せ大見出し */}
-          <h1 className="text-center font-bold leading-[1.32] tracking-tight text-ink mb-8 sm:mb-10">
+          <h1 className="text-center font-bold leading-[1.32] tracking-tight text-ink mb-6 sm:mb-8">
             <span className="block text-[28px] sm:text-[40px] lg:text-[52px]">
               民泊代行業界の不透明さを、
             </span>
@@ -47,7 +43,7 @@ export default function SwitchHeroFounder() {
             </span>
           </h1>
 
-          <p className="text-center text-[15px] sm:text-[17px] lg:text-[18px] text-ink/75 leading-[2] tracking-wide max-w-2xl mx-auto mb-14 sm:mb-16">
+          <p className="text-center text-[14px] sm:text-[16px] lg:text-[17px] text-ink/75 leading-[1.95] tracking-wide max-w-2xl mx-auto mb-10 sm:mb-14">
             「業者に任せきりで、何が起きてるか分からない」
             <br className="hidden sm:block" />
             ——その業界の常識を、ひっくり返す会社をつくりました。
@@ -55,23 +51,31 @@ export default function SwitchHeroFounder() {
             <strong className="text-ink">専門アナリストが、丁寧にお話を伺います。</strong>
           </p>
 
-          {/* 創業者2名カード */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7 max-w-3xl mx-auto mb-14 sm:mb-16">
-            <FounderCard
-              name="劉 添毅"
-              nameRomaji="Tenichi Liu"
-              role="代表取締役 CEO"
-              bio="SEKAI STAY創設者。Amazon米国本社で培った経験をもとに、日本の代行業界に世界基準の運用体験を提供することを目的に創業。民泊投資家として国内外の物件を運営してきた経験から、代行業界の不透明さに衝撃を受けた当事者でもある。"
-              photoSrc="/images/switch/founder-tenichi.jpg"
-              placeholder
-            />
+          {/* 創業者2名カード — 左: 明神 / 右: 劉（左右入替済み） */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12 sm:mb-14">
             <FounderCard
               name="明神 洸次郎"
               nameRomaji="Kojiro Myojin"
               role="共同代表 Co-CEO"
-              bio="登録者数125万人超を誇った人気YouTubeグループ「カリスマブラザーズ」出身のクリエイター「ジロー」としても活動。プロダクト・運用設計を統括し、オーナーポータルと運用フローの設計者。SEKAI STAYの中身は彼がつくっている。"
-              photoSrc="/images/switch/founder-koji.jpg"
-              placeholder
+              bio={
+                <>
+                  登録者数125万人超を誇った人気YouTubeグループ「<strong className="text-ink">カリスマブラザーズ</strong>」出身のクリエイター「<strong className="text-ink">ジロー</strong>」としても活動。プロダクト・運用設計を統括し、オーナーポータルと運用フローの設計者。SEKAI STAYの中身は彼がつくっている。
+                </>
+              }
+              photoSrc="/images/switch/founder-koji.png"
+              accent="from-amber-50 via-paper to-paper"
+            />
+            <FounderCard
+              name="劉 添毅"
+              nameRomaji="Tenichi Liu"
+              role="代表取締役 CEO"
+              bio={
+                <>
+                  <strong className="text-ink">SEKAI STAY創設者</strong>。<strong className="text-ink">Amazon米国本社</strong>で培った経験をもとに、日本の代行業界に世界基準の運用体験を提供することを目的に創業。民泊投資家として国内外の物件を運営してきた経験から、代行業界の不透明さに衝撃を受けた当事者でもある。
+                </>
+              }
+              photoSrc="/images/switch/founder-tenichi.png"
+              accent="from-slate-50 via-paper to-paper"
             />
           </div>
 
@@ -113,35 +117,35 @@ function FounderCard({
   role,
   bio,
   photoSrc,
-  placeholder,
+  accent,
 }: {
   name: string;
   nameRomaji: string;
   role: string;
-  bio: string;
+  bio: React.ReactNode;
   photoSrc: string;
-  placeholder?: boolean;
+  accent: string;
 }) {
   return (
-    <div className="bg-ivory border border-rule rounded-2xl p-5 sm:p-7 flex gap-4 sm:gap-5">
-      {/* 写真スロット — placeholder=true の間はイニシャル表示 */}
-      <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-bone border border-rule relative">
-        {!placeholder && (
-          <img src={photoSrc} alt={`${name} ${role}`} className="w-full h-full object-cover" loading="eager" />
-        )}
-        {placeholder && (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-bone to-paper">
-            <span className="text-[28px] sm:text-[36px] font-bold text-deep-teal/30 tracking-tight">
-              {name.charAt(0)}
-            </span>
-          </div>
-        )}
+    <div className={`relative bg-gradient-to-br ${accent} border border-rule rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow`}>
+      {/* 上部: ポートレート（背景としてカード全幅で配置） */}
+      <div className="relative w-full h-[280px] sm:h-[320px] lg:h-[360px] bg-gradient-to-b from-bone/30 to-paper">
+        <img
+          src={photoSrc}
+          alt={`${name} ${role}`}
+          className="absolute inset-0 w-full h-full object-contain object-bottom"
+          loading="eager"
+        />
+        {/* 下端のフェード（テキスト境界をなじませる） */}
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-paper to-transparent pointer-events-none" aria-hidden />
       </div>
-      <div className="flex flex-col justify-center min-w-0">
+
+      {/* 下部: テキスト */}
+      <div className="px-6 sm:px-7 pt-2 pb-6 sm:pb-7">
         <p className="text-[10px] sm:text-[11px] tracking-[0.2em] text-deep-teal/70 uppercase font-semibold mb-1">{role}</p>
-        <h3 className="text-[18px] sm:text-[22px] font-bold text-ink leading-tight">{name}</h3>
-        <p className="text-[10px] sm:text-[11px] text-ink/45 tracking-wider mb-2">{nameRomaji}</p>
-        <p className="text-[12px] sm:text-[13px] text-ink/65 leading-relaxed">{bio}</p>
+        <h3 className="text-[20px] sm:text-[24px] font-bold text-ink leading-tight">{name}</h3>
+        <p className="text-[10px] sm:text-[11px] text-ink/45 tracking-wider mb-3">{nameRomaji}</p>
+        <p className="text-[12px] sm:text-[13px] text-ink/70 leading-relaxed">{bio}</p>
       </div>
     </div>
   );
