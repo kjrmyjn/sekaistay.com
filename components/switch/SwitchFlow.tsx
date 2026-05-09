@@ -27,14 +27,6 @@ const steps = [
   },
 ];
 
-// STEP 3「最短2週間」の内訳（信頼性の裏付け）
-const step3Breakdown = [
-  { days: "0〜2日", task: "契約書締結・OTAアカウント連携" },
-  { days: "3〜7日", task: "OTA掲載の写真・文章・価格を最適化" },
-  { days: "8〜10日", task: "清掃パートナー手配・運営体制構築" },
-  { days: "11〜14日", task: "並行運用で予約を途切れなく引き継ぎ" },
-];
-
 export default function SwitchFlow() {
   const ref = useScrollFade();
 
@@ -76,24 +68,6 @@ export default function SwitchFlow() {
                   <p className="text-base text-switch-gray-dark leading-normal">
                     {s.description}
                   </p>
-                  {/* STEP 3 のみ、2週間の内訳を表示 */}
-                  {i === 2 && (
-                    <div className="mt-4 bg-switch-cloud rounded-md p-4 sm:p-5 border border-switch-gray-light/60">
-                      <p className="text-[11px] text-switch-teal font-bold tracking-widest mb-3">
-                        2週間の内訳
-                      </p>
-                      <ul className="space-y-2">
-                        {step3Breakdown.map((b) => (
-                          <li key={b.days} className="flex items-start gap-3 text-sm">
-                            <span className="inline-block min-w-[4.5rem] text-switch-teal font-bold tabular-nums">
-                              {b.days}
-                            </span>
-                            <span className="text-switch-charcoal">{b.task}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                 </div>
               </div>
             ))}
