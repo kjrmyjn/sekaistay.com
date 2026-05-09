@@ -41,9 +41,13 @@
 
 ---
 
-## Campaign 2: SS-Generic（一般語）
+## 共通キーワードプール（Campaign 2-4 で並走）
 
-### AdGroup A: 民泊運用代行
+> **AdGroup A / B は 3 パターン共通**（民泊運用代行・Airbnb 運用代行という汎用キーワード）。同じキーワードプールに対して 3 パターン × 3 LP の広告を Google AI に学習させ、検索意図とパターンマッチを統計的に分離する設計。
+>
+> **AdGroup C / D はパターン別に分割**（比較系・課題系の検索意図がパターンと自然に対応するため）。
+
+### AdGroup A: 民泊運用代行（汎用・3 パターン共通）
 
 | マッチタイプ | キーワード |
 |---|---|
@@ -55,7 +59,7 @@
 | 完全一致 | [民泊管理代行] |
 | 部分一致 | 民泊 運営 委託 |
 
-### AdGroup B: Airbnb 運用代行
+### AdGroup B: Airbnb 運用代行（汎用・3 パターン共通）
 
 | マッチタイプ | キーワード |
 |---|---|
@@ -66,32 +70,105 @@
 | 完全一致 | [Airbnb運用代行] |
 | 完全一致 | [Airbnb管理代行] |
 
-### AdGroup C: 比較・検討段階
+> **内部競合について**: A/B を 3 Campaign で並走させると同じキーワードに対して 3 つの広告グループが競合する。Google は Quality Score が高い方を優先表示するため、自動的に勝者にトラフィックが寄る。**意図的な並走** によりパターン間の効果差を測定可能。
+
+---
+
+## Campaign 2: SS-Generic-Price（価格主導 → /switch-lite）
+
+**狙い**: 既存代行のコストに不満があり、より安い選択肢を探しているオーナー層。
+
+**LP**: `/switch-lite`（フォーム軽量・離脱低減）
+
+**含む AdGroup**:
+- AdGroup A（民泊運用代行・汎用）
+- AdGroup B（Airbnb 運用代行・汎用）
+- AdGroup C-Price（コスト比較系）
+- AdGroup D-Price（乗り換え系）
+
+### AdGroup C-Price: コスト比較
 
 | マッチタイプ | キーワード |
 |---|---|
 | フレーズ一致 | "民泊代行 比較" |
 | フレーズ一致 | "民泊代行 おすすめ" |
-| フレーズ一致 | "民泊代行 ランキング" |
-| フレーズ一致 | "民泊代行 評判" |
-| フレーズ一致 | "民泊代行 口コミ" |
 | フレーズ一致 | "民泊代行 手数料" |
 | フレーズ一致 | "民泊代行 費用" |
 
-### AdGroup D: 課題・乗り換え
+### AdGroup D-Price: 乗り換え
 
 | マッチタイプ | キーワード |
 |---|---|
-| フレーズ一致 | "民泊 稼働率 上げる" |
-| フレーズ一致 | "民泊 稼働率 上がらない" |
-| フレーズ一致 | "民泊 レビュー 改善" |
 | フレーズ一致 | "民泊代行 乗り換え" |
 | フレーズ一致 | "民泊代行 切り替え" |
 | フレーズ一致 | "民泊代行 解約" |
 
 ---
 
-## Campaign 3: SS-Geo（地名×業界）
+## Campaign 3: SS-Generic-Portal（ポータル主導 → /switch/portal）
+
+**狙い**: 「複数物件を効率的に管理したい」「数字で運営を見たい」データドリブン層。稼働率や運営の可視化を求めるオーナー。
+
+**LP**: `/switch/portal`（オーナーポータル前面）
+
+**含む AdGroup**:
+- AdGroup A（民泊運用代行・汎用）
+- AdGroup B（Airbnb 運用代行・汎用）
+- AdGroup C-Portal（情報・ランキング系）
+- AdGroup D-Portal（稼働率・可視化系）
+
+### AdGroup C-Portal: 情報・ランキング
+
+| マッチタイプ | キーワード |
+|---|---|
+| フレーズ一致 | "民泊代行 比較" |
+| フレーズ一致 | "民泊代行 おすすめ" |
+| フレーズ一致 | "民泊代行 ランキング" |
+
+### AdGroup D-Portal: 稼働率・可視化
+
+| マッチタイプ | キーワード |
+|---|---|
+| フレーズ一致 | "民泊 稼働率 上げる" |
+| フレーズ一致 | "民泊 稼働率 上がらない" |
+| フレーズ一致 | "民泊 ダッシュボード" |
+| フレーズ一致 | "民泊 運営 可視化" |
+
+---
+
+## Campaign 4: SS-Generic-Trust（信頼主導 → /switch/founder）
+
+**狙い**: 「失敗したくない」「初めての民泊運用代行」初心者・大口投資家層。評判・口コミ・代表者の信頼性を重視するオーナー。
+
+**LP**: `/switch/founder`（創業者前面・顔の見える運営代行）
+
+**含む AdGroup**:
+- AdGroup A（民泊運用代行・汎用）
+- AdGroup B（Airbnb 運用代行・汎用）
+- AdGroup C-Trust（評判・信頼系）
+- AdGroup D-Trust（レビュー・品質系）
+
+### AdGroup C-Trust: 評判・口コミ
+
+| マッチタイプ | キーワード |
+|---|---|
+| フレーズ一致 | "民泊代行 評判" |
+| フレーズ一致 | "民泊代行 口コミ" |
+| フレーズ一致 | "民泊代行 おすすめ" |
+| フレーズ一致 | "民泊代行 ランキング" |
+
+### AdGroup D-Trust: レビュー・品質改善
+
+| マッチタイプ | キーワード |
+|---|---|
+| フレーズ一致 | "民泊 レビュー 改善" |
+| フレーズ一致 | "民泊 レビュー 上げる" |
+| フレーズ一致 | "Airbnb スーパーホスト" |
+| フレーズ一致 | "民泊 運営 失敗" |
+
+---
+
+## Campaign 5: SS-Geo（地名×業界）
 
 > **戦略**: 既存物件のあるエリアと、Airbnb 物件密度の高いエリアを優先。
 
@@ -162,25 +239,41 @@
 | キャンペーン | 初期戦略 | 移行先 |
 |---|---|---|
 | SS-Brand | 目標インプレッションシェア 90% | データ蓄積後に「クリック数の最大化」 |
-| SS-Generic | クリック数の最大化（上限CPC ¥300） | 30CV後「コンバージョン数の最大化」 |
+| SS-Generic-Price | クリック数の最大化（上限CPC ¥300） | 30CV後「コンバージョン数の最大化」 |
+| SS-Generic-Portal | クリック数の最大化（上限CPC ¥300） | 30CV後「コンバージョン数の最大化」 |
+| SS-Generic-Trust | クリック数の最大化（上限CPC ¥300） | 30CV後「コンバージョン数の最大化」 |
 | SS-Geo | クリック数の最大化（上限CPC ¥300） | 30CV後「コンバージョン数の最大化」 |
 
 > **初心者ポイント**: いきなり「コンバージョン数の最大化」にしないこと。Google の機械学習は CV データ最低15-30件必要。それまでは「クリック数の最大化」で安く流入を集めて CV を貯める。
+>
+> **3 パターン Generic キャンペーンの予算移行**: 初月は ¥3,000/日 × 3 で並走 → 1ヶ月後にパターン別 CPA を比較し、勝ったパターンに予算を寄せる。例: Trust が CPA ¥4,000 で Price が ¥7,000 なら、Trust を ¥5,000/日に増やし Price を ¥1,000/日に減らす。
 
 ---
 
-## ランディングURL（5 variants 体制）
+## ランディングURL（パターン × LP マッピング）
 
-すべて UTM パラメータ付与。LP A/B/C/D/E 振り分けは **広告URLレベルで分ける**。
+すべて UTM パラメータ付与。Campaign 単位で LP が固定され、Campaign 名から LP が一意に決まる。
 
-| Variant | URL | 用途 |
-|---|---|---|
-| Control | `https://sekaistay.com/switch?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=switch&utm_term={keyword}` | 基準 |
-| B (lite) | `https://sekaistay.com/switch-lite?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=switch-lite&utm_term={keyword}` | フォーム軽量 |
-| D (short) | `https://sekaistay.com/switch/short?utm_source=google&utm_medium=cpc&utm_campaign={campaign}&utm_content=switch-short&utm_term={keyword}` | 45分面談誘導 |
+| Campaign | URL（base） | UTM term | Variant |
+|---|---|---|---|
+| SS-Brand | `https://sekaistay.com/switch` | brand | Control |
+| SS-Generic-Price | `https://sekaistay.com/switch-lite` | price | B (lite) |
+| SS-Generic-Portal | `https://sekaistay.com/switch/portal` | portal | E (portal) |
+| SS-Generic-Trust | `https://sekaistay.com/switch/founder` | trust | E (founder) |
+| SS-Geo | エリアに応じて `/switch` `/switch-lite` `/switch/founder` | geo | mixed |
 
-> **初月の推奨**: 3 variants（Control / B / D）に Google 予算を 33/33/34 で振り分け。`/switch/founder` と `/switch/portal` は Meta/X で先行検証してから Google にも追加するか判断（Google で広く回すには statistical power が分散する）。
+UTM 例:
+```
+SS-Generic-Price:
+  https://sekaistay.com/switch-lite?utm_source=google&utm_medium=cpc&utm_campaign=ss-generic-price&utm_content={ad_name}&utm_term=price
 
-`lp_variant` は URL のパスから `<PageViewTracker lpVariant="..." />` 経由で GA4 / Meta Pixel に伝播するため、URL を分けるだけで variant 別の CV 集計が自動化される。
+SS-Generic-Portal:
+  https://sekaistay.com/switch/portal?utm_source=google&utm_medium=cpc&utm_campaign=ss-generic-portal&utm_content={ad_name}&utm_term=portal
+
+SS-Generic-Trust:
+  https://sekaistay.com/switch/founder?utm_source=google&utm_medium=cpc&utm_campaign=ss-generic-trust&utm_content={ad_name}&utm_term=trust
+```
+
+`lp_variant` は URL のパスから `<PageViewTracker lpVariant="..." />` 経由で GA4 / Meta Pixel / Supabase に伝播するため、Campaign が異なれば自動的に variant 別の CV 集計が分かれる。
 
 > **詳細**: A/B 統計設計は `../meta-ads/audience-targeting.md` 末尾の「A/B 設計原則」参照（後で書く）。
