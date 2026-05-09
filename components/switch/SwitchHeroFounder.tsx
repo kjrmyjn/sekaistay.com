@@ -70,7 +70,7 @@ export default function SwitchHeroFounder() {
             </h1>
 
             <p className="text-[13px] sm:text-[16px] lg:text-[17px] text-white/80 leading-[1.95] tracking-wide max-w-2xl mx-auto mt-6 sm:mt-8">
-              「業者に任せきりで、何が起きてるか分からない」
+              「任せきりで、何が起きてるか分からない」
               <br className="hidden sm:block" />
               ——その業界の常識を、ひっくり返すサービスをつくりました。
             </p>
