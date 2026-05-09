@@ -24,8 +24,8 @@ export default function SwitchHeroFounder() {
       <DotPattern opacity={0.04} />
 
       {/* 写真は section 直下に viewport コーナー基準で配置（テキスト・カードは z-20/30 で上に overlay） */}
-      {/* 左: 劉 添毅 — もっと上に */}
-      <div className="absolute left-[-55%] sm:left-[-38%] lg:left-[-28%] top-0 sm:top-2 lg:top-4 w-[130%] sm:w-[100%] lg:w-[85%] z-10 pointer-events-none">
+      {/* 左: 劉 添毅 — 上に移動してテキスト/カードと重なる */}
+      <div className="absolute left-[-55%] sm:left-[-38%] lg:left-[-28%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[130%] sm:w-[100%] lg:w-[85%] z-10 pointer-events-none">
         <img
           src="/images/switch/founder-tenichi.png"
           alt="劉 添毅 代表取締役 CEO"
@@ -34,8 +34,8 @@ export default function SwitchHeroFounder() {
         />
       </div>
 
-      {/* 右: 明神 洸次郎 — もっと上に + もっと右に */}
-      <div className="absolute right-[-70%] sm:right-[-50%] lg:right-[-38%] top-0 sm:top-2 lg:top-4 w-[130%] sm:w-[100%] lg:w-[85%] z-10 pointer-events-none">
+      {/* 右: 明神 洸次郎 — 上に + 右にシフト */}
+      <div className="absolute right-[-82%] sm:right-[-62%] lg:right-[-50%] top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] w-[130%] sm:w-[100%] lg:w-[85%] z-10 pointer-events-none">
         <img
           src="/images/switch/founder-koji.png"
           alt="明神 洸次郎 共同代表 Co-CEO"
