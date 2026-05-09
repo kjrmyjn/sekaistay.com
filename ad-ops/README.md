@@ -151,7 +151,7 @@ PII（name / email / phone）はサーバーサイドで保持されるため、
 ### 既存計測タグ
 
 - GA4: `G-B7M920RCGR`（layout.tsx ハードコード）
-- Meta Pixel: `1658477098524563`（layout.tsx ハードコード + 環境変数化済み）
+- Meta Pixel: `989839370242915`（layout.tsx ハードコード + 環境変数化済み・2026-05-10 切替）
 - Meta CAPI: トークン Vercel env 登録済み（PR4 で Function 実装）
 - 親プロジェクト: `~/.claude/projects/-Users-sekaichi-Desktop-claude-code/memory/project_sekai_stay.md`
 - ブランドガイド: `SEKAI_STAY_Creative_Guide.md`
