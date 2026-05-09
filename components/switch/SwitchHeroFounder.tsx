@@ -62,7 +62,7 @@ export default function SwitchHeroFounder() {
           <div className="relative z-20 text-center pt-4 pb-8 sm:py-12 lg:py-16 px-2 sm:px-12 lg:px-24">
             <h1 className="font-bold leading-[1.32] tracking-tight text-white">
               <span className="block text-[26px] sm:text-[40px] lg:text-[56px]">
-                民泊代行業界の不透明さを、
+                民泊代行業界を、
               </span>
               <span className="block text-[26px] sm:text-[40px] lg:text-[56px] mt-1.5">
                 <span className="text-switch-teal-bright italic font-serif">変えに来ました。</span>
