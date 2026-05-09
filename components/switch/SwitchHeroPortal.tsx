@@ -110,6 +110,33 @@ export default function SwitchHeroPortal() {
                       className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
                       aria-hidden
                     />
+                    {/* chip → iPhone のフロー点線（control の SwitchHero と同じ表現） */}
+                    <svg
+                      className="absolute inset-0 w-full h-full pointer-events-none z-10"
+                      viewBox="0 0 600 600"
+                      preserveAspectRatio="none"
+                      aria-hidden
+                    >
+                      <defs>
+                        <linearGradient id="portalFlowLine" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#54bec3" stopOpacity="0" />
+                          <stop offset="50%" stopColor="#54bec3" stopOpacity="0.6" />
+                          <stop offset="100%" stopColor="#54bec3" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M 70 110 Q 200 220 300 300" stroke="url(#portalFlowLine)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="3s" repeatCount="indefinite" />
+                      </path>
+                      <path d="M 530 80 Q 400 200 310 300" stroke="url(#portalFlowLine)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="3.5s" repeatCount="indefinite" />
+                      </path>
+                      <path d="M 60 540 Q 200 420 295 340" stroke="url(#portalFlowLine)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="4s" repeatCount="indefinite" />
+                      </path>
+                      <path d="M 510 510 Q 400 420 320 340" stroke="url(#portalFlowLine)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="3.2s" repeatCount="indefinite" />
+                      </path>
+                    </svg>
                     <img
                       src="/images/switch/dashboard-mockup.png?v=v4"
                       alt="SEKAI STAY オーナーポータル ダッシュボード"
@@ -186,6 +213,33 @@ export default function SwitchHeroPortal() {
                     className="absolute inset-0 bg-switch-teal-bright/25 blur-[120px] rounded-full scale-95 pointer-events-none"
                     aria-hidden
                   />
+                  {/* chip → iPhone のフロー点線（モバイル） */}
+                  <svg
+                    className="absolute inset-0 w-full h-full pointer-events-none z-10"
+                    viewBox="0 0 600 600"
+                    preserveAspectRatio="none"
+                    aria-hidden
+                  >
+                    <defs>
+                      <linearGradient id="portalFlowLineMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#54bec3" stopOpacity="0" />
+                        <stop offset="50%" stopColor="#54bec3" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#54bec3" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M 70 110 Q 200 220 300 300" stroke="url(#portalFlowLineMobile)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                      <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="3s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 530 80 Q 400 200 310 300" stroke="url(#portalFlowLineMobile)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                      <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="3.5s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 60 540 Q 200 420 295 340" stroke="url(#portalFlowLineMobile)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                      <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="4s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 510 510 Q 400 420 320 340" stroke="url(#portalFlowLineMobile)" strokeWidth="1.3" fill="none" strokeDasharray="3 6">
+                      <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="3.2s" repeatCount="indefinite" />
+                    </path>
+                  </svg>
                   <img
                     src="/images/switch/dashboard-mockup.png?v=v4"
                     alt="SEKAI STAY オーナーポータル ダッシュボード"
