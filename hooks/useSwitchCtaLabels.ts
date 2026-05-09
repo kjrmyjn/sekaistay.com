@@ -15,8 +15,9 @@ export function useSwitchCtaLabels(): SwitchCtaLabels {
   const pathname = usePathname();
 
   if (pathname?.startsWith("/switch/portal")) {
+    // header の primary CTA は /switch と同じ文言で統一（2026-05-09 テンイチ指示）
     return {
-      primary: "SEKAI STAYのデモを予約する",
+      primary: "無料で診断レポートをもらう",
       sticky: "無料相談はこちら",
     };
   }
