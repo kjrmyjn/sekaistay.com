@@ -11,7 +11,6 @@ import SwitchHeader from "@/components/switch/SwitchHeader";
 import SwitchHeroFounder from "@/components/switch/SwitchHeroFounder";
 import SwitchFounderStory from "@/components/switch/SwitchFounderStory";
 import SwitchServices from "@/components/switch/SwitchServices";
-import SwitchTestimonials from "@/components/switch/SwitchTestimonials";
 import SwitchComparison from "@/components/switch/SwitchComparison";
 import SwitchSimulator from "@/components/switch/SwitchSimulator";
 import SwitchPricing from "@/components/switch/SwitchPricing";
@@ -45,10 +44,7 @@ export default function SwitchFounderPage() {
         {/* §4 サービス内容 */}
         <SwitchServices />
 
-        {/* §5 オーナー様の声（信頼の積み上げ） */}
-        <SwitchTestimonials />
-
-        {/* §6 他社比較 */}
+        {/* §5 他社比較 */}
         <SwitchComparison />
 
         {/* §7 シミュレーター（数字は中盤後半に） */}
