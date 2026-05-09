@@ -97,6 +97,7 @@ function formatMan(man: number): string {
 }
 
 function formatProperties(n: number): string {
+  if (n <= 1) return "上記のみ";
   if (n >= 30) return "30棟以上";
   return `${n}棟`;
 }
@@ -532,7 +533,7 @@ function Step1Property({
           onChange={(e) => onAirbnbUrl(e.target.value)}
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
-          placeholder="物件名で検索、または URL を貼り付け"
+          placeholder="2文字以上入力して検索"
           disabled={noPropertyYet}
           className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
@@ -575,9 +576,9 @@ function Step1Property({
         </label>
       </div>
 
-      <div>
+      <div className={noPropertyYet ? "opacity-50 pointer-events-none" : ""}>
         <label className="block text-[14px] font-semibold mb-2 text-ink">
-          全ての管理物件数
+          他にも管理されている物件はございますか？
         </label>
         <div className="flex items-center justify-between mb-2">
           <span className="text-[24px] font-bold text-sekai-teal">
@@ -591,10 +592,11 @@ function Step1Property({
           step={1}
           value={totalProperties}
           onChange={(e) => onTotalProperties(parseInt(e.target.value, 10))}
-          className="w-full accent-sekai-teal"
+          disabled={noPropertyYet}
+          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
         />
         <div className="flex justify-between text-[11px] text-mid-gray mt-1">
-          <span>1棟</span>
+          <span>上記のみ</span>
           <span>30棟以上</span>
         </div>
       </div>
