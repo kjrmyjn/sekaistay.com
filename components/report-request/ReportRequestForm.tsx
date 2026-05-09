@@ -32,6 +32,7 @@ const MAX_REVENUE_MAN = 300;
 
 type FormState = {
   airbnbUrl: string;
+  noPropertyYet: boolean;
   totalProperties: number; // 1〜30+
   peakRevenueMan: number;
   offpeakRevenueMan: number;
@@ -45,6 +46,7 @@ type FormState = {
 
 const INITIAL: FormState = {
   airbnbUrl: "",
+  noPropertyYet: false,
   totalProperties: 1,
   peakRevenueMan: 80,
   offpeakRevenueMan: 20,
@@ -226,8 +228,10 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
   }
 
   const canNextFromStep1 = useMemo(
-    () => form.airbnbUrl.trim().length > 0 && isAirbnbUrl(form.airbnbUrl.trim()),
-    [form.airbnbUrl],
+    () =>
+      form.noPropertyYet ||
+      (form.airbnbUrl.trim().length > 0 && isAirbnbUrl(form.airbnbUrl.trim())),
+    [form.airbnbUrl, form.noPropertyYet],
   );
   const canNextFromStep2 = useMemo(
     () => form.peakRevenueMan >= 0 && form.offpeakRevenueMan >= 0,
@@ -247,16 +251,19 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     setError("");
     setSubmitting(true);
     try {
+      const complaintsOut = form.noPropertyYet
+        ? `[これから民泊を始める / 物件未掲載]${form.complaints ? "\n" + form.complaints : ""}`
+        : form.complaints;
       const payload = {
         name: form.name,
         email: form.email,
         phone: form.phone,
-        airbnbUrl: form.airbnbUrl.trim(),
+        airbnbUrl: form.noPropertyYet ? "" : form.airbnbUrl.trim(),
         peakRevenue: manToRange(form.peakRevenueMan),
         offpeakRevenue: manToRange(form.offpeakRevenueMan),
         commissionRate: form.commissionRate,
         operatingYears: form.operatingYears,
-        complaints: form.complaints,
+        complaints: complaintsOut,
         totalProperties: form.totalProperties,
         lpVariant,
         ...attribution,
@@ -319,8 +326,10 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           {step === 1 && (
             <Step1Property
               airbnbUrl={form.airbnbUrl}
+              noPropertyYet={form.noPropertyYet}
               totalProperties={form.totalProperties}
               onAirbnbUrl={(v) => update("airbnbUrl", v)}
+              onNoPropertyYet={(v) => update("noPropertyYet", v)}
               onTotalProperties={(v) => update("totalProperties", v)}
             />
           )}
@@ -439,13 +448,17 @@ function ProgressBar({ step }: { step: Step }) {
 
 function Step1Property({
   airbnbUrl,
+  noPropertyYet,
   totalProperties,
   onAirbnbUrl,
+  onNoPropertyYet,
   onTotalProperties,
 }: {
   airbnbUrl: string;
+  noPropertyYet: boolean;
   totalProperties: number;
   onAirbnbUrl: (v: string) => void;
+  onNoPropertyYet: (v: boolean) => void;
   onTotalProperties: (v: number) => void;
 }) {
   const [searchResults, setSearchResults] = useState<PropertySearchResult[]>([]);
@@ -454,9 +467,20 @@ function Step1Property({
   const abortRef = useRef<AbortController | null>(null);
 
   const looksLikeUrl = (v: string) => /^https?:\/\//i.test(v.trim());
-  const showUrlError = looksLikeUrl(airbnbUrl) && airbnbUrl.trim() !== "" && !isAirbnbUrl(airbnbUrl.trim());
+  const showUrlError =
+    !noPropertyYet &&
+    looksLikeUrl(airbnbUrl) &&
+    airbnbUrl.trim() !== "" &&
+    !isAirbnbUrl(airbnbUrl.trim());
 
   useEffect(() => {
+    if (noPropertyYet) {
+      abortRef.current?.abort();
+      setSearchResults([]);
+      setSearchOpen(false);
+      setSearching(false);
+      return;
+    }
     const q = airbnbUrl.trim();
     if (q.length < 2 || looksLikeUrl(q)) {
       abortRef.current?.abort();
@@ -487,7 +511,7 @@ function Step1Property({
       ac.abort();
       setSearching(false);
     };
-  }, [airbnbUrl]);
+  }, [airbnbUrl, noPropertyYet]);
 
   function pickResult(r: PropertySearchResult) {
     onAirbnbUrl(r.url);
@@ -499,7 +523,7 @@ function Step1Property({
     <div className="flex flex-col gap-5">
       <div className="relative">
         <label className="block text-[14px] font-semibold mb-2 text-ink">
-          物件のAirbnb URL <span className="text-red-600">*</span>
+          物件名で検索 {!noPropertyYet && <span className="text-red-600">*</span>}
         </label>
         <input
           type="text"
@@ -509,14 +533,15 @@ function Step1Property({
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
           placeholder="物件名で検索、または URL を貼り付け"
-          className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 ${
+          disabled={noPropertyYet}
+          className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
           }`}
         />
-        {searching && (
+        {searching && !noPropertyYet && (
           <p className="text-[12px] text-mid-gray mt-1.5">物件を検索しています…</p>
         )}
-        {searchOpen && searchResults.length > 0 && (
+        {searchOpen && !noPropertyYet && searchResults.length > 0 && (
           <ul className="absolute z-20 left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-lg border border-rule bg-white shadow-lg">
             {searchResults.slice(0, 6).map((r) => (
               <li key={r.url}>
@@ -537,9 +562,17 @@ function Step1Property({
         {showUrlError && (
           <p className="text-[12px] text-red-600 mt-1.5">Airbnb の URL を入力してください</p>
         )}
-        <p className="text-[12px] text-mid-gray mt-1.5">
-          物件名で検索して選択 or https://www.airbnb.jp/rooms/… を直接貼り付け
-        </p>
+        <label className="flex items-start gap-2 mt-3 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={noPropertyYet}
+            onChange={(e) => onNoPropertyYet(e.target.checked)}
+            className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
+          />
+          <span className="text-[13px] leading-relaxed text-dark-gray">
+            これから民泊を始める方、まだ物件を Airbnb 等に掲載されていない方
+          </span>
+        </label>
       </div>
 
       <div>
