@@ -30,18 +30,39 @@
 | `/switch/founder` | `switch-founder` | Founder 前面 |
 | `/switch/portal` | `switch-portal` | オーナーポータル前面 |
 
+### 4 分岐構造（2026-05-09 確定）
+
+各パターンを {長文/短文} × {直接MTG/診断} の 4 分岐で並走。詳細は [`copy-matrix.md`](copy-matrix.md)。
+
 ### 初月の仮説（テスト対象）
+
+#### パターン × LP マッピング仮説
 
 | # | 仮説 | 検証方法 |
 |---|---|---|
-| H1 | `/switch` (Control) は情報量が多く検索意図の高い Google 検索流入で勝つ | Google で 3 variants 配信、variant 別 CVR 比較 |
-| H2 | `/switch-lite` はフォーム入力負荷が低く、興味の浅い Meta 流入で勝つ | Meta で Control vs Lite vs Founder で比較 |
-| H3 | `/switch/short` は短時間で意思決定するモバイル X 流入で勝つ | X で Control vs Short で比較 |
-| H4 | `/switch/founder` は信頼軸の Meta オーディエンスで CTR が高い | Meta 興味関心ターゲ向け配信 |
-| H5 | 競合代行業者名キーワード（指名出し）は CPA が安い | 指名広告キャンペーン単独でCPA計測 |
-| H6 | 「乗り換え」訴求は既存代行に不満を持つオーナーに刺さる | 「乗り換え」「切り替え」訴求 vs 「成果」訴求でCTR比較 |
-| H7 | 手数料8%（業界半額）の数字訴求は CTR が高い | 「8%」を見出しに含むコピー vs 含まないコピーで比較 |
-| H8 | フォーム送信のリード品質は variant 間で差がある（lite < full） | Supabase の `lp_variant` 別に `forwardLead` 結果（成約率）を追跡 |
+| H1 | 価格主導 → /switch-lite が最良の組み合わせ（軽量フォームで離脱低減） | Meta P-*-D の CVR を他パターン × Diagnostic と比較 |
+| H2 | ポータル主導 → /switch/portal が複数物件オーナーで CVR 高 | Supabase で `lpVariant=switch-portal` の `totalProperties >= 3` 比率 |
+| H3 | 信頼主導 → /switch/founder が初心者・大口で CVR 高 | Meta T-*-D の CVR とリード品質を Supabase で確認 |
+
+#### 4 分岐の長/短 × MTG/診断 仮説
+
+| # | 仮説 | 検証方法 |
+|---|---|---|
+| 4B-H1 | **Long copy** は信頼主導で Short より勝つ（信頼構築には文字量必要） | T-L-M/D vs T-S-M/D の CTR/CVR 比較 |
+| 4B-H2 | **Short copy** は価格主導で Long より勝つ（価格訴求は即決） | P-S-M/D vs P-L-M/D の CTR/CVR 比較 |
+| 4B-H3 | **Direct MTG** は Lookalike や既存リードで Diagnostic より勝つ（高熱量層） | Meta Lookalike で *-M vs *-D 比較 |
+| 4B-H4 | **Diagnostic** は新規興味関心層で MTG より勝つ（コミット閾値が低い） | Meta Interest で *-M vs *-D 比較 |
+| 4B-H5 | **L+M（最もハイコミット）** はリターゲ層で勝つ | Retargeting で全 12 ads を比較 |
+| 4B-H6 | **S+D（最もロウコミット）** は X で勝つ（X のスクロール文化） | X で *-S-D vs *-L-M 比較 |
+
+#### 媒体・キーワード関連仮説
+
+| # | 仮説 | 検証方法 |
+|---|---|---|
+| H4 | 競合代行業者名キーワード（指名出し）は CPA が安い | 指名広告キャンペーン単独で CPA 計測 |
+| H5 | 「乗り換え」訴求は既存代行に不満を持つオーナーに刺さる | 「乗り換え」訴求 vs 「成果」訴求で CTR 比較 |
+| H6 | 手数料 8%（業界半額）の数字訴求は CTR が高い | 「8%」を見出しに含むコピー vs 含まないで比較 |
+| H7 | フォーム送信のリード品質は variant 間で差がある（lite < full） | Supabase の `lp_variant` 別に `forwardLead` 結果（成約率）を追跡 |
 
 ---
 
