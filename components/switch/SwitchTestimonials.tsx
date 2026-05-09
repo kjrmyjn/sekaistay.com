@@ -56,7 +56,7 @@ export default function SwitchTestimonials() {
         </div>
 
         {/* 改善実績バナー */}
-        <div className="fade-in grid grid-cols-3 gap-3 sm:gap-5 mb-10">
+        <div className="fade-in grid grid-cols-3 gap-2 sm:gap-5 mb-10">
           {[
             { label: "稼働率改善（実例）", value: "58%→82%", sub: "+24pt" },
             { label: "月売上改善（実例）", value: "45万→76万", sub: "+69%" },
@@ -64,9 +64,9 @@ export default function SwitchTestimonials() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-white rounded-lg border border-switch-teal/20 shadow-sm px-3 py-4 text-center"
+              className="bg-white rounded-lg border border-switch-teal/20 shadow-sm px-2 py-4 sm:px-3 text-center"
             >
-              <p className="text-[18px] sm:text-2xl font-bold text-switch-teal-deep leading-none tabular-nums">
+              <p className="text-[15px] sm:text-2xl font-bold text-switch-teal-deep leading-none tabular-nums whitespace-nowrap">
                 {stat.value}
               </p>
               <p className="text-[10px] sm:text-xs font-bold text-switch-teal mt-1 tabular-nums">
@@ -79,11 +79,12 @@ export default function SwitchTestimonials() {
           ))}
         </div>
 
-        <div className="stagger grid md:grid-cols-3 gap-5">
+        {/* モバイル: 横スクロール / md以上: 3カラムグリッド */}
+        <div className="stagger flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none scrollbar-thin pb-2 md:pb-0">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="fade-in bg-white rounded-md overflow-hidden shadow-sm hover:shadow transition-shadow flex flex-col"
+              className="fade-in bg-white rounded-md overflow-hidden shadow-sm hover:shadow transition-shadow flex flex-col shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center"
             >
               {/* Impact */}
               <div
