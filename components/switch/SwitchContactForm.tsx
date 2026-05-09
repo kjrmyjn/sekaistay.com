@@ -75,11 +75,13 @@ export default function SwitchContactForm({ prefill }: Props) {
       return;
     }
     // Skip search once user has chosen a URL (until they edit name again)
-    if (airbnbUrl) return;
+    if (airbnbUrl) {
+      setSearching(false);
+      return;
+    }
+    const ac = new AbortController();
+    searchAbortRef.current = ac;
     const handle = setTimeout(async () => {
-      searchAbortRef.current?.abort();
-      const ac = new AbortController();
-      searchAbortRef.current = ac;
       setSearching(true);
       try {
         const res = await fetch(`/api/property-search?q=${encodeURIComponent(q)}`, {
@@ -95,7 +97,11 @@ export default function SwitchContactForm({ prefill }: Props) {
         if (!ac.signal.aborted) setSearching(false);
       }
     }, 400);
-    return () => clearTimeout(handle);
+    return () => {
+      clearTimeout(handle);
+      ac.abort();
+      setSearching(false);
+    };
   }, [propertyName, airbnbUrl]);
 
   function pickSearchResult(r: PropertySearchResult) {
