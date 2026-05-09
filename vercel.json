@@ -5,11 +5,5 @@
       "destination": "/switch",
       "permanent": true
     }
-  ],
-  "functions": {
-    "app/api/property-search/route.ts": {
-      "memory": 1024,
-      "maxDuration": 30
-    }
-  }
+  ]
 }
