@@ -207,7 +207,7 @@ export default function SwitchServices() {
         </div>
 
         {/* 機能02〜07：全ブレークポイント横スワイプ（mobile 1.5枚 / sm 2.3枚 / lg 3枚＋αが見える） */}
-        <div className="flex gap-4 sm:gap-5 stagger overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-3 scroll-pl-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-4 sm:gap-5 stagger overflow-x-auto overflow-y-hidden snap-x snap-mandatory -mx-6 px-6 pt-2 pb-3 scroll-pl-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {otherFeatures.map((f, i) => (
             <div
               key={f.no}
