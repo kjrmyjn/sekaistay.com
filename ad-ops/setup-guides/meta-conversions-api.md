@@ -31,9 +31,11 @@ Step 7: 本番 Live・Event Match Quality 確認
 
 ---
 
-## Step 1: Conversions API トークン取得
+## Step 1: Conversions API トークン取得 ✅ 完了 (2026-05-09)
 
 > このトークンが**最重要・厳秘扱い**。GitHub 公開コミットには絶対入れない。Vercel 環境変数で管理。
+>
+> **2026-05-09 確認**: テンイチが Meta Events Manager で取得 → 私に共有 → 私が `vercel env add META_CAPI_ACCESS_TOKEN production` で Vercel 本番環境変数に登録済み（Encrypted）。Pixel ID（`META_PIXEL_ID = 1658477098524563`）も同時に env 登録済み。以下の手順は将来的にトークンを再発行する場合の参照用。
 
 ### 操作手順
 

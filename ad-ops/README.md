@@ -110,7 +110,7 @@ ad-ops/
 ## 関連リンク
 
 - 広告対象LP: `/lp`（Editorial Luxury 17セクション） / `/lp/simple`（Simple 5セクション）
-- フォーム送信: Web3Forms 経由 → HubSpot 起票（japanvillas.kss-cloud.com）
+- フォーム送信: Web3Forms 経由 → **自社CRM** 起票（HubSpot は不採用・2026-05-09 確定）
 - 既存計測: GA4 (`G-B7M920RCGR`) + Meta Pixel (`1658477098524563`)
 - 親プロジェクト: `~/.claude/projects/-Users-sekaichi-Desktop-claude-code/memory/project_sekai_stay.md`
 - ブランドガイド: `SEKAI_STAY_Creative_Guide.md`
