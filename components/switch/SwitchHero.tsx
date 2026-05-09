@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import CountUp from "./deco/CountUp";
 import DotPattern from "./deco/DotPattern";
 
-const TIMEREX_MEETING_URL = "https://timerex.net/s/sekai-stay/d61b424d";
 
 export default function SwitchHero({
   showUrgencyStrip = true,
@@ -18,18 +17,16 @@ export default function SwitchHero({
 
   const ctaConfig = ctaMode === "meeting"
     ? {
-        href: TIMEREX_MEETING_URL,
-        target: "_blank" as const,
-        rel: "noreferrer" as const,
-        label: "45分の無料面談を予約する",
+        href: "#contact-form",
+        target: undefined,
+        rel: undefined,
+        label: "無料面談はこちら",
         bridgeCopy: (
           <>
-            まずは45分、
-            <span className="font-bold text-white">"あなたの物件に合う運用"</span>
-            をご相談
+            専門チームが、丁寧にお話を伺います。
           </>
         ),
-        dataCta: "founder-meeting",
+        dataCta: "contact-form",
         dataCtaLabel: "switch-short-hero",
       }
     : {
