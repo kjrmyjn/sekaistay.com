@@ -71,6 +71,7 @@ export default function SwitchHero({
             <span className="text-white/40 line-through decoration-[1.5px]">¥10万円</span>
             <span aria-hidden className="text-white/50">→</span>
             <span className="text-yellow-400 font-bold text-[15px] sm:text-lg tracking-wider">¥0</span>
+            <span className="text-[9px] sm:text-[10px] text-white/45 font-normal tracking-normal ml-0.5">※既存物件</span>
           </span>
           <span className="hidden sm:inline text-white/40">／</span>
           <span className="inline-flex items-center gap-1 whitespace-nowrap">
