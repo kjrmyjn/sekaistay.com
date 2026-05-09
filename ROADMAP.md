@@ -2,6 +2,8 @@
 
 > SEKAI STAY の Google / Meta / X 広告運用ロードマップ。
 >
+> **目的**: 月 50 万円予算で 75 リード（Google 35 / Meta 25 / X 15）を獲得し、再現可能な広告運用ノウハウを会社資産にする。
+>
 > **役割分担**: AI（てんちむ）が観測・コード実装・計測整備、テンイチが配信オン/オフ・予算・課金・採用判断。
 > 詳細は `ad-ops/README.md` の役割分担表 + `feedback_yoshizo_absolute_rules.md`。
 >
@@ -11,88 +13,82 @@
 
 ---
 
-## 現状（2026-05-10）
+## Phase 0: 基盤構築 ✅
 
-**できていること:**
-- ad-ops ディレクトリ整備（setup-guides / google-ads / meta-ads / x-ads / learnings）
-- Meta CAPI トークン取得（2026-05-09）
-- X Ads アカウント申請（2026-05-09）
-- 訴求パターン × LP マッピング確定（2026-05-09・5 variants）
-
-**残された課題:**
-- Google Ads CV 計測（連携・タグ実装・動作確認）
-- Meta CAPI Function 実装 + 本番 Live
-- X Ads 審査通過 → Pixel 実装 → 初回キャンペーン
-- 日次 / 週次 / 月次の KPI 自動レポートとガードレール通知
-
----
-
-## Phase 1: 計測整備（5 月前半）[P0]
-
-> 配信前に CV 計測が動いていないと、広告は「金を捨てる装置」になる。
-
-### Google Ads 計測
-
-- [ ] (人間) Google Ads ↔ GA4 アカウント連携 @urgency:high
-- [ ] (人間) GA4 → Google Ads CV インポート設定 @urgency:high
-- [ ] (人間) Google Ads コンバージョン タグ ID + ラベルを Discord で共有 @urgency:high
-- [ ] Vercel env に Google Ads タグ ID + コンバージョン ラベルを登録 @impact:high @effort:small
-- [ ] sekaistay.com にコンバージョン タグを実装（PR） @impact:high @effort:small
-- [ ] (人間) Google Ads 管理画面で CV 動作確認
-
-### Meta Conversions API
-
-- [x] Meta CAPI トークン取得 ✅ 2026-05-09
-- [ ] (人間) Meta Events Manager で CV イベント定義（Lead / CompleteRegistration） @urgency:high
-- [ ] (人間) Test Events コード取得 @urgency:high
-- [ ] Vercel env に CAPI トークン + Pixel ID + Test コード登録 @impact:high @effort:small
-- [ ] /api/meta-capi/* Vercel Function 実装（Lead 送信・CORS 同一オリジン制限） @impact:high @effort:medium
-- [ ] フォーム送信時に CAPI Function を呼び出す JS 組み込み @impact:high @effort:small
-- [ ] (人間) Meta Test Events で受信確認 → 本番 Live 切替
-
-### X Ads
-
-- [x] X Ads アカウント申請 ✅ 2026-05-09
-- [ ] (人間) X Ads アカウント審査通過確認 + 課金方法登録
-- [ ] (人間) X Pixel 発行 → ID を Discord で共有
-- [ ] Vercel env に X Pixel ID 登録 @impact:medium @effort:small
-- [ ] sekaistay.com に X Universal Website Tag 実装 @impact:medium @effort:small
-- [ ] (人間) X Ads 管理画面で CV イベント定義（フォーム送信）
+- [x] GA4 (`G-B7M920RCGR`) layout.tsx 実装済み
+- [x] Meta Pixel (`1658477098524563`) layout.tsx 実装済み
+- [x] Meta CAPI アクセストークン → Vercel env 登録済み (2026-05-09)
+- [x] X Ads アカウント @tenichiliu 開通済み・Campaign 画面到達確認 (2026-05-09)
+- [x] LP variants 5 種（switch / switch-lite / switch-short / switch-founder / switch-portal）実装済み
+- [x] フォーム送信 API（/api/report-requests/submit → Supabase + CRM 転送）実装済み
+- [x] 訴求パターン × LP マッピング確定（価格主導 / ポータル主導 / 信頼主導）(2026-05-09)
+- [x] Privacy Policy に Meta CAPI 言及済み
+- [x] Google Ads コピー下書き作成済み（google-ads/copy-drafts.md）
+- [x] Google Ads キーワードリスト作成済み（google-ads/keyword-list.md）
+- [x] Meta Ads コピー下書き作成済み（meta-ads/copy-drafts.md）
+- [x] Meta Ads オーディエンス設計済み（meta-ads/audience-targeting.md）
+- [x] X Ads コピー下書き作成済み（x-ads/copy-drafts.md）
 
 ---
 
-## Phase 2: 配信開始・初月運用（5 月後半）[P0]
+## Phase 1: Google Ads 計測セットアップ [P1]
 
-> 月 50 万円予算で 75 リード（Google 35 / Meta 25 / X 15）を達成。
-
-- [ ] (人間) Google Ads キャンペーン Live 化（指名 + 検索 + ディスプレイ）
-- [ ] (人間) Meta Ads キャンペーン Live 化（Advantage+ + Lookalike）
-- [ ] (人間) X Ads 初回キャンペーン Live 化（フォロワー Lookalike + 興味関心）
-- [ ] 日次 KPI 自動収集（Google/Meta/X API 経由で CTR/CV/CPA/CPC を Slack 投稿） @impact:high @effort:medium
-- [ ] 異常検知（日予算 ¥30,000 超 / CPA 中央値 2 倍超 / CV ゼロ 24h）→ Inbox kind=`danger` @impact:high @effort:small
-- [ ] 週次 KPI 集計（Slack `#001-ai-agent-hq` に投稿） @impact:medium @effort:small
+- [ ] (人間) Google Ads アカウント開設・課金方法紐付け @impact:9 @urgency:9 @effort:2
+- [ ] (人間) GA4 ↔ Google Ads アカウント連携（管理画面でリンク設定） @impact:9 @urgency:9 @effort:1
+- [ ] (人間) フォーム送信 CV インポート設定（GA4 `lead` イベント → Google Ads・値 ¥5,000・カウント 1 回） @impact:9 @urgency:8 @effort:1
+- [ ] タグ ID・コンバージョン ラベルを Discord 共有 → NEXT_PUBLIC_GOOGLE_ADS_ID Vercel env 登録 @impact:8 @urgency:8 @effort:1
+- [ ] (人間) Google Ads CV 動作確認（GA4 リアルタイム + Ads ステータス確認） @impact:7 @urgency:7 @effort:1
 
 ---
 
-## Phase 3: 学習・最適化（継続）[P1]
+## Phase 2: Meta CAPI 実装 [P1]
 
-> 何が効いて何が効かなかったかを `ad-ops/learnings.md` に蓄積し、
-> 「再現可能な広告運用ノウハウ」を会社の資産にする。
-
-- [ ] 日次パフォーマンス → `ad-ops/learnings.md` 自動追記（観測のみ） @impact:medium @effort:medium
-- [ ] 週次振り返り提案（勝ち訴求 / 負け訴求の整理を Inbox kind=`pattern` で投稿） @impact:medium @effort:medium
-- [ ] 月次サマリー（CPA トレンド・LP variant 別 CVR・予算配分案を Inbox kind=`general` で提案） @impact:medium @effort:medium
-- [ ] (人間) 月次レビューミーティング（AI 要約 + テンイチが配分判断）
-- [ ] LP 改善提案（CVR 低い variant の改善案を Inbox に PR ドラフト） @impact:medium @effort:medium
+- [ ] (人間) テストイベント コード取得（Events Manager → テストイベント タブ）→ Discord 共有 → META_CAPI_TEST_EVENT_CODE Vercel env 登録 @impact:8 @urgency:8 @effort:1
+- [ ] PR4: lib/meta-capi.ts 作成（SHA-256 ハッシュ + Meta Graph API 呼び出し helper） @impact:9 @urgency:8 @effort:3
+- [ ] PR4: /api/report-requests/submit に CAPI 統合実装（event_id 生成・fire-and-forget） @impact:9 @urgency:8 @effort:2
+- [ ] PR4: ReportRequestForm.tsx の fbq 呼び出しに eventID を渡す（重複除去のキー） @impact:8 @urgency:8 @effort:1
+- [ ] Test Events 動作確認（Pixel + CAPI 2 件確認・Meta が両方受信表示） @impact:7 @urgency:7 @effort:1
+- [ ] EMQ スコア 8 点以上確認 @impact:7 @urgency:6 @effort:1
+- [ ] (人間) 本番 Live（META_CAPI_TEST_EVENT_CODE を空に → Redeploy） @impact:8 @urgency:7 @effort:1
 
 ---
 
-## Phase 4: スケール（6 月以降）[P2]
+## Phase 3: X Ads 計測セットアップ [P2]
+
+- [ ] (人間) X Pixel ID 取得（Ads Manager → ツール → コンバージョン トラッキング → UWT 作成） @impact:7 @urgency:6 @effort:1
+- [ ] X Pixel ID・タグコードを Discord 共有 → app/layout.tsx 実装（PR5） @impact:7 @urgency:6 @effort:2
+- [ ] (人間) X Ads コンバージョン イベント定義（URL ベース or イベントベース・方式選択要） @impact:7 @urgency:6 @effort:1
+- [ ] (人間) X Ads 課金方法設定（法人クレジットカード・Ads Manager → アカウント設定 → 課金） @impact:7 @urgency:6 @effort:1
+- [ ] x-ads/audience-targeting.md 作成 @impact:6 @urgency:5 @effort:2
+
+---
+
+## Phase 4: 初回キャンペーン Live [P1]
+
+- [ ] PR5: サンクスページ作成（/contact/thanks・X CV URL ベース方式用） @impact:6 @urgency:5 @effort:2
+- [ ] (人間) Google Ads 初回キャンペーン設定（キーワード選定・CPA 目標入札・日予算 ¥17k） @impact:9 @urgency:7 @effort:3
+- [ ] (人間) Meta Ads 初回キャンペーン設定（3 パターン × 3 LP AB テスト・日予算 ¥13k） @impact:9 @urgency:7 @effort:3
+- [ ] (人間) X Ads 初回キャンペーン設定（/switch + /switch/short・日予算 ¥5k → 慣らし ¥3k） @impact:7 @urgency:6 @effort:2
+- [ ] (人間) 本人画像・クリエイティブ素材準備（IMAGES_MANIFEST.md から選定 + 追加撮影判断） @impact:7 @urgency:6 @effort:2
+
+---
+
+## Phase 5: 観測・自動化 [P2]
+
+- [ ] 日次パフォーマンス観測スクリプト（GA4 / Google Ads / Meta / X 指標収集 → Discord #sekai-stay サマリ投稿） @impact:8 @urgency:5 @effort:5
+- [ ] 異常検知実装（日予算超過 ¥30k / CPA 中央値 2 倍 / CV ゼロ 24h → Inbox `danger` + Slack） @impact:8 @urgency:5 @effort:4
+- [ ] 週次レビュー下書き自動生成（月曜朝・Inbox `general` → テンイチが気づき追記） @impact:7 @urgency:4 @effort:4
+- [ ] reports/ 日次レポート自動生成（媒体別・LP variant 別・reports/YYYY-MM-DD.md） @impact:6 @urgency:4 @effort:3
+- [ ] 月次 KGI 達成度レビュー自動集計（リード数 / CPA / 媒体別）→ learnings.md 自動下書き @impact:6 @urgency:3 @effort:4
+
+---
+
+## Phase 6: スケール（6 月以降）[P2]
 
 - [ ] (人間) 6 月: アフィリエイト開始（5 月は広告検証・PR 配信に集中）
 - [ ] (人間) 勝ちパターンへの予算集中判断（CPA 優位の媒体に再配分）
-- [ ] 新規訴求パターン追加 → A/B テスト設計（Inbox 提案） @impact:medium @effort:medium
-- [ ] PR タイムズ配信（6/1）と広告の連動効果計測 @impact:medium @effort:small
+- [ ] 新規訴求パターン追加 → A/B テスト設計（Inbox 提案） @impact:6 @urgency:5 @effort:3
+- [ ] PR タイムズ配信（6/1）と広告の連動効果計測 @impact:6 @urgency:5 @effort:2
 
 ---
 
