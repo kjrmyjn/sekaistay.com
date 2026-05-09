@@ -21,38 +21,43 @@ export default function SwitchFounderStory() {
 
           <div className="space-y-6 text-[14px] sm:text-[15px] lg:text-[16px] leading-[2] text-ink/75 tracking-wide">
             <p>
-              3年前、ある民泊オーナーの方から「20%の手数料を払い続けているのに、毎月の運用判断が一切見えない」とご相談を受けたのがきっかけでした。
-              手数料20%、月額固定費 ¥30,000、清掃も人材紹介料も別。
-              実際に手元に残るのは想定の半分以下。にもかかわらず、運用の中身は完全にブラックボックスでした。
+              3年前、私たち自身も民泊のオーナーとして、代行業者に物件を任せていました。
+              手数料20%、月額固定費 ¥20,000。手元に残るのは、売上の半分以下でした。
+              運用の中身は完全にブラックボックスで、届くレポートは月1回のPDFだけ。
             </p>
             <p>
-              業界平均15-25%という手数料率は、相場というより「<strong className="text-ink">情報の非対称性で成立してきた価格</strong>」だと気づきました。
-              テクノロジーと運用設計の見直しで、半額にできるはずでした。
+              業界平均15〜25%という手数料率は、相場というより「<strong className="text-ink">情報の非対称性で成立してきた価格</strong>」だと気づきました。
+              テクノロジーと運用設計を一から組み直せば、業界平均の半額ほどにできる確信がありました。
             </p>
             <p>
-              ——だから私たちは、<strong className="text-deep-teal">手数料 8% + 月額1万円</strong>。
+              ──だから私たちは、<strong className="text-deep-teal">手数料 8% + 月額1万円</strong>。
               そして<strong className="text-ink">オーナー専用のダッシュボード</strong>で、運用の中身をぜんぶ可視化しました。
-              「お任せください」じゃなくて、「<strong className="text-ink">いつでも見られます</strong>」をプロダクトの軸に据えています。
+            </p>
+            <p>
+              「お任せください」ではなく、「<strong className="text-ink">いつでも見られます</strong>」をプロダクトの軸に据えています。
             </p>
             <p>
               切り替えてくださったオーナー様の中には、
               <strong className="text-ink">稼働率を 58% → 82%</strong>、
-              <strong className="text-ink">月売上を 45万円 → 76万円</strong>に伸ばした事例もあります。
-              手数料を下げるだけでなく、運用の質そのものを引き上げて利益を伸ばしています。
+              <strong className="text-ink">月売上を ¥45万 → ¥76万</strong>に伸ばされた方もいます。
+              手数料は半額、成果はそれ以上。これが SEKAI STAY のアプローチです。
             </p>
             <p>
-              さらに、<strong className="text-deep-teal">初期費用は期間限定で ¥0</strong>、
-              <strong className="text-deep-teal">解約金も ¥0</strong>。
-              「合わなければやめられる」前提で、運用の手応えをご自身で確かめていただけます。
-              <span className="block text-[12px] text-ink/45 mt-1">※最低契約期間 6ヶ月</span>
+              切り替えは、心理的にもオペレーション的にも、重い決断です。
+              だからこそ、入り口は軽くしました。
             </p>
             <p>
-              切り替えは心理的にもオペレーション的にもコストが高い決断です。
-              だからこそ、初回は<strong className="text-ink">専門チームが、丁寧にお話を伺います</strong>。
-              判断材料が揃ってから、無理なく進められるようにご案内します。
+              <strong className="text-deep-teal">初期費用 ¥0（期間限定）</strong>、
+              <strong className="text-deep-teal">解約金 ¥0</strong>。
+              最低契約期間は 6ヶ月だけお願いしています──運用の真価が数字に表れるには、それくらいの時間が必要だからです。
+              「<strong className="text-ink">合わなければやめられる、ただし試す価値のある時間だけは確保したい</strong>」という線引きです。
+            </p>
+            <p>
+              初回のご相談では、専門家が丁寧にお話を伺います。営業はしません。
+              運用が変わって、結果としてお付き合いが続いたら嬉しい。それくらいのスタンスで、お会いできればと思っています。
             </p>
             <p className="text-right text-[13px] text-ink/55 italic">
-              — 株式会社セカイチ
+              ── 劉 添毅・明神 洸次郎
             </p>
           </div>
 
