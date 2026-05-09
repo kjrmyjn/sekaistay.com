@@ -67,7 +67,7 @@ export default function SwitchFounderStory() {
               rel="noreferrer"
               data-cta="founder-meeting"
               data-cta-label="founder-story-cta"
-              className="group inline-flex items-center justify-center bg-deep-teal text-white font-bold text-[14px] sm:text-[15px] px-7 sm:px-9 py-3.5 sm:py-4 rounded-md hover:bg-ink transition-colors duration-300 shadow-md tracking-wide"
+              className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-[14px] sm:text-[15px] px-7 sm:px-9 py-3.5 sm:py-4 rounded-md transition-colors duration-300 shadow-md tracking-wide"
             >
               45 分無料面談を予約する
               <svg className="ml-2.5 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

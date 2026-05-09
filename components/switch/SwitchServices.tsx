@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollFade } from "@/hooks/useScrollFade";
+import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 import SectionHead from "./deco/SectionHead";
 import DashboardDemo from "./DashboardDemo";
 
@@ -118,6 +119,7 @@ const dashboardStats = [
 
 export default function SwitchServices() {
   const ref = useScrollFade();
+  const { primary: ctaLabel } = useSwitchCtaLabels();
 
   return (
     <section className="py-16 sm:py-20 bg-gradient-to-b from-white via-switch-cloud/40 to-white relative overflow-hidden" ref={ref}>
@@ -272,6 +274,24 @@ export default function SwitchServices() {
               ＋ 物件あたり月額 ¥10,000 ｜ その他の費用は一切ありません
             </p>
           </div>
+        </div>
+
+        {/* CTA — バナー直下 */}
+        <div className="fade-in mt-6 flex justify-center">
+          <a
+            href="#contact-form"
+            className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-sm sm:text-base px-8 sm:px-10 py-4 rounded-md shadow-[0_0_32px_rgba(235,110,40,0.3)] hover:shadow-[0_0_48px_rgba(235,110,40,0.45)] hover:-translate-y-0.5 transition-all min-h-[48px]"
+          >
+            {ctaLabel}
+            <svg
+              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
