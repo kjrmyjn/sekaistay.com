@@ -218,8 +218,13 @@ export default function SwitchHeroPortal() {
                 </p>
               </div>
 
-              {/* 5. デモボタン → 60秒キャプション → 8% pill */}
+              {/* 5. 8% pill → デモボタン → 60秒キャプション */}
               <div className="flex flex-col items-center w-full">
+                <div className="inline-flex items-baseline gap-2 mb-4 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
+                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
+                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
+                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
+                </div>
                 <a
                   href="#contact-form"
                   data-cta="contact-form"
@@ -234,11 +239,6 @@ export default function SwitchHeroPortal() {
                 <p className="text-[12px] text-white/55 mt-3 leading-relaxed">
                   入力60秒・24時間以内にレポート + デモログイン情報をお届け
                 </p>
-                <div className="inline-flex items-baseline gap-2 mt-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
-                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
-                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
-                </div>
               </div>
             </div>
           </div>
