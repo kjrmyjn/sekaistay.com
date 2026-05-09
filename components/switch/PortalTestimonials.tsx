@@ -44,10 +44,10 @@ export default function PortalTestimonials() {
             Owner Voices
           </p>
           <h2 className="text-[24px] sm:text-[32px] lg:text-[36px] font-bold tracking-tight text-switch-charcoal leading-tight">
-            「数字が、ちゃんと自分のもの」
+            「毎朝、ダッシュボードを開くようになった」
           </h2>
           <p className="text-[13px] sm:text-[14px] text-switch-gray-mid mt-3 leading-relaxed">
-            手数料を下げたのは結果。本当の変化は、毎朝の景色でした。
+            手数料の差は、出発点でした。本当の変化は、「待つ」運用が「いつでも見られる」運用に変わったこと。
           </p>
         </div>
 
