@@ -586,12 +586,12 @@ function Step1Property({
             className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
           />
           <span className="text-[13px] leading-relaxed text-dark-gray">
-            これから民泊を始める方、まだ物件を Airbnb 等に掲載されていない方（レポート無し）
+            これから民泊を始める方、もしくは物件をAirBnBに掲載していない方（レポート無し）
           </span>
         </label>
         {noPropertyYet && (
           <p className="text-[12px] text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-2 mt-2 leading-relaxed">
-            ※ 新規立ち上げ物件の初期費用は別途お見積もりとなります（サイト記載の初期費用無料は既存物件が対象です）
+            ※ 新規立ち上げ物件の初期費用は別途お見積もりとなります（初期費用無料は運用中の物件が対象です）
           </p>
         )}
       </div>
