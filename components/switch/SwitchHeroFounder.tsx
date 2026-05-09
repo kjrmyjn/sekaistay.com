@@ -10,7 +10,7 @@
 import { useEffect, useState } from "react";
 import DotPattern from "./deco/DotPattern";
 
-const TIMEREX_30MIN = "https://timerex.net/s/sekai-stay/d61b424d";
+const TIMEREX_45MIN = "https://timerex.net/s/sekai-stay/d61b424d";
 
 export default function SwitchHeroFounder() {
   const [visible, setVisible] = useState(false);
@@ -24,8 +24,28 @@ export default function SwitchHeroFounder() {
       <DotPattern opacity={0.04} />
 
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
+        {/* 左: 劉 添毅（最外側 div の top に揃える — From the Founders と同じ高さから始まる） */}
+        <div className="absolute left-0 sm:left-[-8%] lg:left-[-10%] top-16 sm:top-20 lg:top-24 w-[64%] sm:w-[58%] lg:w-[56%] z-10 pointer-events-none">
+          <img
+            src="/images/switch/founder-tenichi.png"
+            alt="劉 添毅 代表取締役 CEO"
+            className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
+            loading="eager"
+          />
+        </div>
+
+        {/* 右: 明神 洸次郎（最外側 div の top に揃える — From the Founders と同じ高さから始まる） */}
+        <div className="absolute right-0 sm:right-[-8%] lg:right-[-10%] top-16 sm:top-20 lg:top-24 w-[64%] sm:w-[58%] lg:w-[56%] z-10 pointer-events-none">
+          <img
+            src="/images/switch/founder-koji.png"
+            alt="明神 洸次郎 共同代表 Co-CEO"
+            className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
+            loading="eager"
+          />
+        </div>
+
         <div
-          className={`transition-all duration-1000 ${
+          className={`relative transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -37,47 +57,24 @@ export default function SwitchHeroFounder() {
             <div className="inline-block w-12 h-px bg-switch-teal-bright/40" />
           </div>
 
-          {/* 写真 + 大見出しのレイヤード構成 */}
-          <div className="relative">
-            {/* 左: 劉 添毅（より大きく・より上に・テキストに被せる） */}
-            <div className="absolute left-0 sm:left-[-8%] lg:left-[-10%] top-[-8%] sm:top-[-12%] lg:top-[-16%] w-[64%] sm:w-[58%] lg:w-[56%] z-10 pointer-events-none">
-              <img
-                src="/images/switch/founder-tenichi.png"
-                alt="劉 添毅 代表取締役 CEO"
-                className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
-                loading="eager"
-              />
-            </div>
+          {/* 中央: 大見出し（写真の端と少し重なるように z-20） */}
+          <div className="relative z-20 text-center pt-4 pb-8 sm:py-12 lg:py-16 px-2 sm:px-12 lg:px-24">
+            <h1 className="font-bold leading-[1.32] tracking-tight text-white">
+              <span className="block text-[26px] sm:text-[40px] lg:text-[56px]">
+                民泊代行業界の不透明さを、
+              </span>
+              <span className="block text-[26px] sm:text-[40px] lg:text-[56px] mt-1.5">
+                <span className="text-switch-teal-bright italic font-serif">変えに来ました。</span>
+              </span>
+            </h1>
 
-            {/* 右: 明神 洸次郎（より大きく・より上に・テキストに被せる） */}
-            <div className="absolute right-0 sm:right-[-8%] lg:right-[-10%] top-[-8%] sm:top-[-12%] lg:top-[-16%] w-[64%] sm:w-[58%] lg:w-[56%] z-10 pointer-events-none">
-              <img
-                src="/images/switch/founder-koji.png"
-                alt="明神 洸次郎 共同代表 Co-CEO"
-                className="w-full h-auto select-none drop-shadow-[0_24px_48px_rgba(0,0,0,0.7)]"
-                loading="eager"
-              />
-            </div>
-
-            {/* 中央: 大見出し（写真の端と少し重なるように z-20） */}
-            <div className="relative z-20 text-center pt-4 pb-8 sm:py-12 lg:py-16 px-2 sm:px-12 lg:px-24">
-              <h1 className="font-bold leading-[1.32] tracking-tight text-white">
-                <span className="block text-[26px] sm:text-[40px] lg:text-[56px]">
-                  民泊代行業界の不透明さを、
-                </span>
-                <span className="block text-[26px] sm:text-[40px] lg:text-[56px] mt-1.5">
-                  <span className="text-switch-teal-bright italic font-serif">変えに来ました。</span>
-                </span>
-              </h1>
-
-              <p className="text-[13px] sm:text-[16px] lg:text-[17px] text-white/80 leading-[1.95] tracking-wide max-w-2xl mx-auto mt-6 sm:mt-8">
-                「業者に任せきりで、何が起きてるか分からない」
-                <br className="hidden sm:block" />
-                ——その業界の常識を、ひっくり返す会社をつくりました。
-                <br className="hidden sm:block" />
-                <strong className="text-white">専門アナリストが、丁寧にお話を伺います。</strong>
-              </p>
-            </div>
+            <p className="text-[13px] sm:text-[16px] lg:text-[17px] text-white/80 leading-[1.95] tracking-wide max-w-2xl mx-auto mt-6 sm:mt-8">
+              「業者に任せきりで、何が起きてるか分からない」
+              <br className="hidden sm:block" />
+              ——その業界の常識を、ひっくり返す会社をつくりました。
+              <br className="hidden sm:block" />
+              <strong className="text-white">専門チームが、丁寧にお話を伺います。</strong>
+            </p>
           </div>
 
           {/* 浮遊カード（写真の上に被さる）— 左: 劉 / 右: 明神 */}
@@ -107,16 +104,16 @@ export default function SwitchHeroFounder() {
           {/* 主CTA + 副CTA */}
           <div className="relative z-30 flex flex-col items-center gap-3 mt-12 sm:mt-14">
             <a
-              href={TIMEREX_30MIN}
+              href={TIMEREX_45MIN}
               target="_blank"
               rel="noreferrer"
               data-cta="founder-meeting"
-              data-cta-label="founder-30min-primary"
+              data-cta-label="founder-45min-primary"
               className="group inline-flex items-center justify-center bg-switch-accent text-white font-bold text-[15px] sm:text-base px-8 sm:px-10 py-4 rounded-md hover:bg-switch-accent-hover transition-colors duration-300 shadow-[0_0_40px_rgba(235,110,40,0.35)] hover:shadow-[0_0_56px_rgba(235,110,40,0.5)] tracking-wide"
             >
               専門家に相談する
               <span className="mx-2 inline-block w-px h-4 bg-white/30 align-middle" aria-hidden />
-              <span className="text-white/85 font-medium text-[13px] sm:text-[14px]">30分の無料面談</span>
+              <span className="text-white/85 font-medium text-[13px] sm:text-[14px]">45分の無料面談</span>
               <svg className="ml-3 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

@@ -48,7 +48,7 @@ export default function SwitchFounderStory() {
             </p>
             <p>
               切り替えは心理的にもオペレーション的にもコストが高い決断です。
-              だからこそ、初回は<strong className="text-ink">専門アナリストが、丁寧にお話を伺います</strong>。
+              だからこそ、初回は<strong className="text-ink">専門チームが、丁寧にお話を伺います</strong>。
               判断材料が揃ってから、無理なく進められるようにご案内します。
             </p>
             <p className="text-right text-[13px] text-ink/55 italic">
@@ -56,10 +56,10 @@ export default function SwitchFounderStory() {
             </p>
           </div>
 
-          {/* セクション末の控えめな CTA */}
+          {/* セクション末の CTA — ボタン化 */}
           <div className="mt-12 sm:mt-14 pt-8 border-t border-rule text-center">
             <p className="text-[13px] text-ink/60 mb-4">
-              30分、お話だけ聞いてみたい方へ。
+              45分、お話だけ聞いてみたい方へ。
             </p>
             <a
               href="https://timerex.net/s/sekai-stay/d61b424d"
@@ -67,9 +67,12 @@ export default function SwitchFounderStory() {
               rel="noreferrer"
               data-cta="founder-meeting"
               data-cta-label="founder-story-cta"
-              className="inline-flex items-center gap-2 text-[14px] sm:text-[15px] font-bold text-deep-teal hover:text-ink transition-colors underline underline-offset-4 decoration-deep-teal/30 hover:decoration-ink"
+              className="group inline-flex items-center justify-center bg-deep-teal text-white font-bold text-[14px] sm:text-[15px] px-7 sm:px-9 py-3.5 sm:py-4 rounded-md hover:bg-ink transition-colors duration-300 shadow-md tracking-wide"
             >
-              30 分無料面談を予約する →
+              45 分無料面談を予約する
+              <svg className="ml-2.5 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
           </div>
         </div>
