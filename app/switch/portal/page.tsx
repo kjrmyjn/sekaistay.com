@@ -76,9 +76,9 @@ export default function SwitchPortalPage() {
         {/* §13 フォーム */}
         <LpVariantForm
           lpVariant="switch-portal"
-          heading="SEKAI STAYのデモ + 無料診断"
-          leadCopy="60秒入力で、24時間以内にダッシュボードのデモログイン情報 + 物件診断レポートをお届け"
-          subCopy="物件URLは任意。お話を伺ってから必要に応じてレポートを作成します。"
+          heading="まずはご相談だけでもどうぞ"
+          leadCopy="24時間以内に担当者からご連絡"
+          subCopy="30秒入力で無料面談を予約。24時間後までに無料レポートをお送り致します。"
         />
 
         {/* §14 会社概要 */}

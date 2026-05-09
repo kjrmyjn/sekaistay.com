@@ -66,9 +66,9 @@ export default function SwitchFounderPage() {
         {/* §11 フォーム — 副 CTA（メインの CTA は Hero/Story の代表面談） */}
         <LpVariantForm
           lpVariant="switch-founder"
-          heading="まずは話を聞きたい方へ"
-          leadCopy="30秒入力で 45 分無料面談を予約 ・ 24時間以内にご返信"
-          subCopy="物件情報の入力は不要。専門チームがお話を伺ってから、必要な資料・診断レポートをお送りします。"
+          heading="まずはご相談だけでもどうぞ"
+          leadCopy="24時間以内に担当者からご連絡"
+          subCopy="30秒入力で無料面談を予約。24時間後までに無料レポートをお送り致します。"
         />
 
         {/* §12 会社概要 */}
