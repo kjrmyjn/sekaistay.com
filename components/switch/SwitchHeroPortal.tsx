@@ -261,7 +261,7 @@ function FloatingDataChip({
 }) {
   const trendColor = trend === "up" ? "text-switch-teal-bright" : trend === "down" ? "text-switch-accent" : "text-white";
   return (
-    <div className={`relative bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/40 px-2.5 py-2 sm:px-3.5 sm:py-2.5 ${className}`}>
+    <div className={`bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/40 px-2.5 py-2 sm:px-3.5 sm:py-2.5 ${className}`}>
       <span
         className="absolute -top-1.5 -right-1.5 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-orange-500 border-2 border-white shadow-md"
         aria-hidden
