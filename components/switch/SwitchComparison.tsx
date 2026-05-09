@@ -37,43 +37,40 @@ export default function SwitchComparison() {
           />
         </div>
 
-        {/* モバイル：カード形式で見やすく */}
-        <div className="fade-in sm:hidden space-y-2.5 mb-6">
+        {/* モバイル：超コンパクトなカード形式（黒ヘッダー削除・密度↑） */}
+        <div className="fade-in sm:hidden space-y-1.5 mb-6">
+          {/* カラムラベル（1回だけ表示・スティッキー風） */}
+          <div className="grid grid-cols-[34%_1fr_1fr] gap-1 px-2 mb-1">
+            <span className="text-[9px] text-switch-gray-mid font-bold tracking-wider" />
+            <span className="text-[9px] text-switch-gray-mid font-bold tracking-wider text-center">
+              一般的な他社
+            </span>
+            <span className="text-[9px] text-switch-teal-deep font-bold tracking-wider text-center">
+              SEKAI STAY
+            </span>
+          </div>
           {rows.map((row) => (
             <div
               key={row.label}
-              className="bg-white rounded-md shadow-sm border border-switch-gray-light/60 overflow-hidden"
+              className="bg-white rounded-md border border-switch-gray-light/60 overflow-hidden flex"
             >
-              <div className="bg-switch-charcoal text-white text-[11px] font-bold px-3 py-1 leading-tight tracking-wide">
-                {row.label}
-              </div>
-              <div className="grid grid-cols-2">
-                <div className="px-3 py-3 border-r border-switch-gray-light/60">
-                  <p className="text-[10px] text-switch-gray-mid font-bold tracking-wider mb-1">
-                    一般的な他社
-                  </p>
-                  <p className="text-[13px] text-switch-gray-dark leading-snug flex items-start gap-1">
-                    <span className="text-switch-teal-deep shrink-0">✗</span>
-                    <span>{row.others}</span>
-                  </p>
-                </div>
-                <div
-                  className={`px-3 py-3 ${
-                    row.sekaiHighlight ? "bg-switch-teal-tint" : "bg-switch-teal-tint/40"
+              <span className="w-[3px] bg-switch-teal-deep flex-shrink-0" aria-hidden />
+              <div className="flex-1 grid grid-cols-[calc(34%-3px)_1fr_1fr] gap-1 items-center px-2 py-1.5">
+                <p className="text-[11px] font-bold text-switch-charcoal leading-tight">
+                  {row.label}
+                </p>
+                <p className="text-[11px] text-switch-gray-dark leading-snug">
+                  <span className="text-switch-gray-mid mr-0.5">✗</span>
+                  {row.others}
+                </p>
+                <p
+                  className={`text-[11px] leading-snug font-bold ${
+                    row.sekaiHighlight ? "text-switch-teal-deep" : "text-switch-charcoal"
                   }`}
                 >
-                  <p className="text-[10px] text-switch-teal-deep font-bold tracking-wider mb-1">
-                    SEKAI STAY
-                  </p>
-                  <p
-                    className={`text-[13px] leading-snug font-bold flex items-start gap-1 ${
-                      row.sekaiHighlight ? "text-switch-teal-deep" : "text-switch-charcoal"
-                    }`}
-                  >
-                    <span className="text-switch-teal shrink-0">✓</span>
-                    <span>{row.sekai}</span>
-                  </p>
-                </div>
+                  <span className="text-switch-teal mr-0.5">✓</span>
+                  {row.sekai}
+                </p>
               </div>
             </div>
           ))}
