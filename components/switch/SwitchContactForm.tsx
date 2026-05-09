@@ -1,8 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScrollFade } from "@/hooks/useScrollFade";
+
+type PropertySearchResult = {
+  source: "airbnb" | "other";
+  url: string;
+  title?: string;
+  thumbnail?: string;
+};
 
 export type PrefillState = {
   currentFeeRate: number;
@@ -54,6 +61,49 @@ export default function SwitchContactForm({ prefill }: Props) {
   const [propertyType, setPropertyType] = useState("");
   const [area, setArea] = useState("");
   const [rooms, setRooms] = useState("1");
+
+  // property name → Airbnb URL search (debounced 400ms, fallback to manual URL paste)
+  const [searchResults, setSearchResults] = useState<PropertySearchResult[]>([]);
+  const [searching, setSearching] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchAbortRef = useRef<AbortController | null>(null);
+  useEffect(() => {
+    const q = propertyName.trim();
+    if (q.length < 2) {
+      setSearchResults([]);
+      setSearching(false);
+      return;
+    }
+    // Skip search once user has chosen a URL (until they edit name again)
+    if (airbnbUrl) return;
+    const handle = setTimeout(async () => {
+      searchAbortRef.current?.abort();
+      const ac = new AbortController();
+      searchAbortRef.current = ac;
+      setSearching(true);
+      try {
+        const res = await fetch(`/api/property-search?q=${encodeURIComponent(q)}`, {
+          signal: ac.signal,
+        });
+        const data = await res.json();
+        if (ac.signal.aborted) return;
+        setSearchResults(Array.isArray(data?.results) ? data.results : []);
+        setSearchOpen(true);
+      } catch {
+        if (!ac.signal.aborted) setSearchResults([]);
+      } finally {
+        if (!ac.signal.aborted) setSearching(false);
+      }
+    }, 400);
+    return () => clearTimeout(handle);
+  }, [propertyName, airbnbUrl]);
+
+  function pickSearchResult(r: PropertySearchResult) {
+    setAirbnbUrl(r.url);
+    if (r.title) setPropertyName(r.title);
+    setSearchOpen(false);
+    setSearchResults([]);
+  }
 
   // ② revenue
   const [peakRevenue, setPeakRevenue] = useState<number>(
@@ -334,17 +384,72 @@ export default function SwitchContactForm({ prefill }: Props) {
 
                 <StepTitle no="①" title="物件を教えてください" />
 
-                <div className="mb-3">
+                <div className="mb-3 relative">
                   <label className="block text-sm font-bold text-switch-charcoal mb-1.5">
                     物件名 <span className="text-switch-accent text-xs">*必須</span>
+                    <span className="ml-2 text-xs text-switch-gray-mid font-normal">
+                      （2文字以上で Airbnb から候補を検索）
+                    </span>
                   </label>
                   <input
                     type="text"
                     value={propertyName}
-                    onChange={(e) => setPropertyName(e.target.value)}
+                    onChange={(e) => {
+                      setPropertyName(e.target.value);
+                      // Editing the name invalidates the previous pick
+                      if (airbnbUrl) setAirbnbUrl("");
+                    }}
+                    onFocus={() => {
+                      if (searchResults.length > 0) setSearchOpen(true);
+                    }}
+                    onBlur={() => {
+                      // Delay so click on a result registers before the dropdown closes
+                      setTimeout(() => setSearchOpen(false), 150);
+                    }}
                     placeholder="例：代々木STAY"
                     className="w-full border border-switch-gray-light rounded-md px-4 py-3 text-base sm:text-sm bg-white focus:outline-none focus:border-switch-teal"
                   />
+                  {searching && (
+                    <p className="text-xs text-switch-gray-mid mt-1">
+                      物件を検索しています…
+                    </p>
+                  )}
+                  {searchOpen && searchResults.length > 0 && (
+                    <ul className="absolute z-20 left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-md border border-switch-gray-light bg-white shadow-lg">
+                      {searchResults.slice(0, 6).map((r) => (
+                        <li key={r.url}>
+                          <button
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              pickSearchResult(r);
+                            }}
+                            className="w-full text-left px-3 py-2 text-sm hover:bg-switch-gray-light/40 flex items-center gap-2"
+                          >
+                            <span
+                              className={`inline-block px-1.5 py-0.5 text-[10px] rounded font-bold ${
+                                r.source === "airbnb"
+                                  ? "bg-rose-50 text-rose-600"
+                                  : "bg-switch-gray-light text-switch-charcoal"
+                              }`}
+                            >
+                              {r.source === "airbnb" ? "Airbnb" : "その他"}
+                            </span>
+                            <span className="truncate">{r.title || r.url}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {searchOpen &&
+                    !searching &&
+                    propertyName.trim().length >= 2 &&
+                    !airbnbUrl &&
+                    searchResults.length === 0 && (
+                      <p className="text-xs text-switch-gray-mid mt-1">
+                        候補が見つかりませんでした。下のURL貼付けをご利用ください。
+                      </p>
+                    )}
                 </div>
 
                 <div className="mb-3">
