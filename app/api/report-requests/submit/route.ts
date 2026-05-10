@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertLeadSubmission, type SubmitPayload } from "@/lib/lead-submissions";
-import { forwardLead } from "@/lib/lead-forward";
+import { forwardLead, forwardLeadToSalesPortal } from "@/lib/lead-forward";
 import { classifyKind } from "@/lib/test-classifier";
 
 export const runtime = "nodejs";
@@ -160,9 +160,25 @@ export async function POST(req: NextRequest) {
 
   try {
     const row = await insertLeadSubmission({ payload, kind, clientIp: ip, userAgent });
-    const outcome = await forwardLead(row.id);
-    if (!outcome.ok) {
-      console.warn(`[submit] forward to 吉蔵 failed (lead=${row.id}): ${outcome.error}`);
+    // 2 系統並列で forward (吉蔵 既存 CRM + sekaistay 営業ポータル)。
+    // どちらかが失敗してもクライアントへの応答は 200 を返す（lead は Supabase に保存済み）。
+    const [yoshizoOutcome, salesPortalOutcome] = await Promise.allSettled([
+      forwardLead(row.id),
+      forwardLeadToSalesPortal(row.id),
+    ]);
+    if (yoshizoOutcome.status === "fulfilled" && !yoshizoOutcome.value.ok) {
+      console.warn(`[submit] forward to 吉蔵 failed (lead=${row.id}): ${yoshizoOutcome.value.error}`);
+    } else if (yoshizoOutcome.status === "rejected") {
+      console.warn(`[submit] forward to 吉蔵 threw (lead=${row.id}): ${yoshizoOutcome.reason}`);
+    }
+    // TODO(sales-portal-retry): 失敗時の persistence + retry は別 PR で対応。
+    // 現状ポータル outage 中の lead は Supabase に保存されるが portal 送信は失われる。
+    // 実装方針: lead_submissions に sales_portal_forwarded_at / sales_portal_forward_error 列を
+    // 追加 + lead-forward-retry/route.ts に portal の retry パスを追加。
+    if (salesPortalOutcome.status === "fulfilled" && !salesPortalOutcome.value.ok) {
+      console.warn(`[submit] forward to sales-portal failed (lead=${row.id}): ${salesPortalOutcome.value.error}`);
+    } else if (salesPortalOutcome.status === "rejected") {
+      console.warn(`[submit] forward to sales-portal threw (lead=${row.id}): ${salesPortalOutcome.reason}`);
     }
     return NextResponse.json({ id: row.id, status: "received" }, { status: 200 });
   } catch (err: any) {
