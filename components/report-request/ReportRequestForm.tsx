@@ -10,14 +10,29 @@ type PropertySearchResult = {
 
 // ─────── Constants ───────
 
-const COMMISSION_OPTIONS = [
-  { value: "15", label: "15%" },
-  { value: "20", label: "20%" },
-  { value: "25", label: "25%" },
-  { value: "unknown", label: "わからない / 自主管理" },
+const FEE_CARDS = ["15", "20", "25"] as const;
+const OTHER_FEE_OPTIONS = [
+  { value: "10", label: "10%" },
+  { value: "12", label: "12%" },
+  { value: "13", label: "13%" },
+  { value: "14", label: "14%" },
+  { value: "16", label: "16%" },
+  { value: "17", label: "17%" },
+  { value: "18", label: "18%" },
+  { value: "19", label: "19%" },
+  { value: "21", label: "21%" },
+  { value: "22", label: "22%" },
+  { value: "23", label: "23%" },
+  { value: "24", label: "24%" },
+  { value: "26", label: "26%" },
+  { value: "27", label: "27%" },
+  { value: "28", label: "28%" },
+  { value: "29", label: "29%" },
+  { value: "30", label: "30%" },
+  { value: "unknown", label: "不明 / まだ運用していない" },
 ];
 
-const YEARS_OPTIONS = [
+const YEARS_STOPS: { value: string; label: string }[] = [
   { value: "0", label: "1年未満" },
   { value: "1", label: "1〜2年" },
   { value: "3", label: "3〜5年" },
@@ -26,19 +41,21 @@ const YEARS_OPTIONS = [
 
 const MEETING_URL = "https://timerex.net/s/sekai-stay/d61b424d";
 const SEKAI_STAY_FEE = 8;
-const MAX_REVENUE_MAN = 300;
+const REVENUE_MIN_MAN = 10;
+const REVENUE_MAX_MAN = 300;
+const PROPERTIES_MAX = 30;
 
 // ─────── Types ───────
 
 type FormState = {
+  commissionRate: string;
   airbnbUrl: string;
   noPropertyYet: boolean;
-  totalProperties: number; // 1〜30+
+  totalProperties: number;
   peakRevenueMan: number;
   offpeakRevenueMan: number;
+  yearsIdx: number; // 0..3 → YEARS_STOPS index
   noPriorOperation: boolean;
-  commissionRate: string;
-  operatingYears: string;
   name: string;
   email: string;
   phone: string;
@@ -46,21 +63,21 @@ type FormState = {
 };
 
 const INITIAL: FormState = {
+  commissionRate: "",
   airbnbUrl: "",
   noPropertyYet: false,
   totalProperties: 1,
   peakRevenueMan: 80,
-  offpeakRevenueMan: 20,
+  offpeakRevenueMan: 30,
+  yearsIdx: 1,
   noPriorOperation: false,
-  commissionRate: "",
-  operatingYears: "",
   name: "",
   email: "",
   phone: "",
   complaints: "",
 };
 
-type Step = 1 | 2 | 3 | 4;
+type Step = 1 | 2 | 3;
 
 type AdAttribution = {
   utmSource?: string;
@@ -94,13 +111,13 @@ function manToRange(man: number): string {
 }
 
 function formatMan(man: number): string {
-  if (man >= MAX_REVENUE_MAN) return `${MAX_REVENUE_MAN}万円以上`;
+  if (man >= REVENUE_MAX_MAN) return `${REVENUE_MAX_MAN}万円以上`;
   return `約${man}万円`;
 }
 
 function formatProperties(n: number): string {
   if (n <= 1) return "上記のみ";
-  if (n >= 30) return "30棟以上";
+  if (n >= PROPERTIES_MAX) return `${PROPERTIES_MAX}棟以上`;
   return `${n}棟`;
 }
 
@@ -230,21 +247,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  const canNextFromStep1 = useMemo(
+  const canNextFromStep1 = useMemo(() => form.commissionRate !== "", [form.commissionRate]);
+  const canNextFromStep2 = useMemo(
     () =>
       form.noPropertyYet ||
       (form.airbnbUrl.trim().length > 0 && isAirbnbUrl(form.airbnbUrl.trim())),
     [form.airbnbUrl, form.noPropertyYet],
-  );
-  const canNextFromStep2 = useMemo(
-    () =>
-      form.noPriorOperation ||
-      (form.peakRevenueMan >= 0 && form.offpeakRevenueMan >= 0),
-    [form.peakRevenueMan, form.offpeakRevenueMan, form.noPriorOperation],
-  );
-  const canNextFromStep3 = useMemo(
-    () => form.commissionRate !== "" && form.operatingYears !== "",
-    [form.commissionRate, form.operatingYears],
   );
   const canSubmit = useMemo(
     () => form.name.trim() && form.email.trim() && form.phone.trim(),
@@ -262,6 +270,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
       const complaintsOut = markers.length > 0
         ? `${markers.join(" ")}${form.complaints ? "\n" + form.complaints : ""}`
         : form.complaints;
+      const yearsValue = YEARS_STOPS[form.yearsIdx]?.value ?? "";
       const payload = {
         name: form.name,
         email: form.email,
@@ -269,8 +278,8 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
         airbnbUrl: form.noPropertyYet ? "" : form.airbnbUrl.trim(),
         peakRevenue: form.noPriorOperation ? "" : manToRange(form.peakRevenueMan),
         offpeakRevenue: form.noPriorOperation ? "" : manToRange(form.offpeakRevenueMan),
-        commissionRate: form.noPriorOperation ? "" : form.commissionRate,
-        operatingYears: form.noPriorOperation ? "" : form.operatingYears,
+        commissionRate: form.commissionRate,
+        operatingYears: form.noPriorOperation ? "" : yearsValue,
         complaints: complaintsOut,
         totalProperties: form.totalProperties,
         lpVariant,
@@ -341,35 +350,47 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     <div className={embed ? "" : "py-8"}>
       <div className="max-w-xl mx-auto px-5">
         <ProgressBar step={step} />
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5 mt-6">
+
+        <div className="mt-5 mb-1">
+          <p className="text-[13px] leading-relaxed text-mid-gray">
+            {step === 1 && "物件診断レポート無料作成 / 3項目で、1営業日以内にメールで専用レポートをお届けします。"}
+            {step === 2 && "あと2項目で、1営業日以内にメールで専用レポートをお届けします。"}
+            {step === 3 && "こちらをもとにいただいたメールに専用レポートをお届けします。"}
+          </p>
+        </div>
+        <h2 className="text-[18px] font-semibold text-ink mb-1">
+          {step === 1 && "今の運営代行の手数料を教えてください"}
+          {step === 2 && "メインの物件の情報を教えてください"}
+          {step === 3 && "レポートをお届けするご連絡先を教えてください"}
+        </h2>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 mt-5">
           {step === 1 && (
-            <Step1Property
-              airbnbUrl={form.airbnbUrl}
-              noPropertyYet={form.noPropertyYet}
-              totalProperties={form.totalProperties}
-              onAirbnbUrl={(v) => update("airbnbUrl", v)}
-              onNoPropertyYet={(v) => update("noPropertyYet", v)}
-              onTotalProperties={(v) => update("totalProperties", v)}
+            <Step1Fee
+              commissionRate={form.commissionRate}
+              onChange={(v) => update("commissionRate", v)}
             />
           )}
           {step === 2 && (
-            <Step2Revenue
+            <Step2Property
+              airbnbUrl={form.airbnbUrl}
+              noPropertyYet={form.noPropertyYet}
+              totalProperties={form.totalProperties}
               peakMan={form.peakRevenueMan}
               offpeakMan={form.offpeakRevenueMan}
+              yearsIdx={form.yearsIdx}
               noPriorOperation={form.noPriorOperation}
-              onChange={(k, v) => update(k, v as never)}
+              onAirbnbUrl={(v) => update("airbnbUrl", v)}
+              onNoPropertyYet={(v) => update("noPropertyYet", v)}
+              onTotalProperties={(v) => update("totalProperties", v)}
+              onPeakMan={(v) => update("peakRevenueMan", v)}
+              onOffpeakMan={(v) => update("offpeakRevenueMan", v)}
+              onYearsIdx={(v) => update("yearsIdx", v)}
               onNoPriorOperation={(v) => update("noPriorOperation", v)}
             />
           )}
           {step === 3 && (
-            <Step3FeeYears
-              commissionRate={form.commissionRate}
-              operatingYears={form.operatingYears}
-              onChange={(k, v) => update(k, v as never)}
-            />
-          )}
-          {step === 4 && (
-            <Step4Contact
+            <Step3Contact
               name={form.name}
               email={form.email}
               phone={form.phone}
@@ -388,27 +409,20 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             {step > 1 && (
               <button
                 type="button"
-                onClick={() => setStep((s) => {
-                  if (s === 4 && form.noPriorOperation) return 2;
-                  return (s > 1 ? ((s - 1) as Step) : s);
-                })}
+                onClick={() => setStep((s) => (s > 1 ? ((s - 1) as Step) : s))}
                 className="flex-1 rounded-lg py-3 text-[15px] font-medium bg-white text-ink border border-rule transition-all active:scale-[0.98]"
               >
                 ← 戻る
               </button>
             )}
-            {step < 4 ? (
+            {step < 3 ? (
               <button
                 type="button"
                 disabled={
                   (step === 1 && !canNextFromStep1) ||
-                  (step === 2 && !canNextFromStep2) ||
-                  (step === 3 && !canNextFromStep3)
+                  (step === 2 && !canNextFromStep2)
                 }
-                onClick={() => setStep((s) => {
-                  if (s === 2 && form.noPriorOperation) return 4;
-                  return (s + 1) as Step;
-                })}
+                onClick={() => setStep((s) => (s + 1) as Step)}
                 className="flex-1 rounded-lg py-3 text-[15px] font-semibold text-white transition-all active:scale-[0.98] bg-sekai-teal disabled:bg-mid-gray disabled:cursor-not-allowed disabled:opacity-80"
               >
                 次へ →
@@ -425,7 +439,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             )}
           </div>
 
-          {step === 4 && (
+          {step === 3 && (
             <p className="text-[11px] text-center leading-relaxed text-mid-gray">
               ご入力いただいた情報は暗号化して送信され、レポート作成以外の目的では使用されません。
             </p>
@@ -439,7 +453,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
 // ─────── ProgressBar ───────
 
 function ProgressBar({ step }: { step: Step }) {
-  const labels = ["物件情報", "売上", "手数料", "ご連絡先"];
+  const labels = ["手数料", "物件情報", "ご連絡先"];
   return (
     <div className="flex items-center gap-1">
       {labels.map((label, i) => {
@@ -456,7 +470,7 @@ function ProgressBar({ step }: { step: Step }) {
                 {state === "done" ? "✓" : idx}
               </div>
               <span
-                className={`text-[11px] font-medium truncate ${
+                className={`text-[12px] font-medium truncate ${
                   state === "pending" ? "text-mid-gray" : "text-ink"
                 }`}
               >
@@ -471,22 +485,104 @@ function ProgressBar({ step }: { step: Step }) {
   );
 }
 
-// ─────── Step 1: Property ───────
+// ─────── Step 1: Fee ───────
 
-function Step1Property({
+function Step1Fee({
+  commissionRate,
+  onChange,
+}: {
+  commissionRate: string;
+  onChange: (v: string) => void;
+}) {
+  const isCardValue = (FEE_CARDS as readonly string[]).includes(commissionRate);
+  const otherSelected = !isCardValue && commissionRate !== "";
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="grid grid-cols-2 gap-2.5">
+        {FEE_CARDS.map((v) => {
+          const selected = commissionRate === v;
+          return (
+            <button
+              key={v}
+              type="button"
+              onClick={() => onChange(v)}
+              className={`rounded-xl py-5 text-[20px] font-bold border-2 transition-all active:scale-[0.98] ${
+                selected
+                  ? "bg-sekai-teal text-white border-sekai-teal shadow-sm"
+                  : "bg-white text-ink border-rule hover:border-sekai-teal/40"
+              }`}
+            >
+              {v}%
+            </button>
+          );
+        })}
+        <div
+          className={`rounded-xl border-2 transition-all relative ${
+            otherSelected
+              ? "bg-sekai-teal border-sekai-teal shadow-sm"
+              : "bg-white border-rule"
+          }`}
+        >
+          <select
+            value={otherSelected ? commissionRate : ""}
+            onChange={(e) => onChange(e.target.value)}
+            className={`w-full h-full px-4 py-5 text-center text-[15px] font-semibold rounded-xl appearance-none cursor-pointer bg-transparent focus:outline-none focus:ring-2 focus:ring-sekai-teal/30 ${
+              otherSelected ? "text-white" : "text-ink"
+            }`}
+          >
+            <option value="" disabled>その他 ▾</option>
+            {OTHER_FEE_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value} className="text-ink">
+                {o.label}
+              </option>
+            ))}
+          </select>
+          <span
+            className={`pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[11px] ${
+              otherSelected ? "text-white/70" : "text-mid-gray"
+            }`}
+          >
+            ▾
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────── Step 2: Property + Revenue + Years ───────
+
+function Step2Property({
   airbnbUrl,
   noPropertyYet,
   totalProperties,
+  peakMan,
+  offpeakMan,
+  yearsIdx,
+  noPriorOperation,
   onAirbnbUrl,
   onNoPropertyYet,
   onTotalProperties,
+  onPeakMan,
+  onOffpeakMan,
+  onYearsIdx,
+  onNoPriorOperation,
 }: {
   airbnbUrl: string;
   noPropertyYet: boolean;
   totalProperties: number;
+  peakMan: number;
+  offpeakMan: number;
+  yearsIdx: number;
+  noPriorOperation: boolean;
   onAirbnbUrl: (v: string) => void;
   onNoPropertyYet: (v: boolean) => void;
   onTotalProperties: (v: number) => void;
+  onPeakMan: (v: number) => void;
+  onOffpeakMan: (v: number) => void;
+  onYearsIdx: (v: number) => void;
+  onNoPriorOperation: (v: boolean) => void;
 }) {
   const [searchResults, setSearchResults] = useState<PropertySearchResult[]>([]);
   const [searching, setSearching] = useState(false);
@@ -546,11 +642,14 @@ function Step1Property({
     setSearchResults([]);
   }
 
+  const dimmed = noPriorOperation ? "opacity-50 pointer-events-none" : "";
+
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-6">
+      {/* Airbnb URL or property name search */}
       <div className="relative">
         <label className="block text-[14px] font-semibold mb-2 text-ink">
-          物件名で検索 {!noPropertyYet && <span className="text-red-600">*</span>}
+          物件名またはAirbnbのURL {!noPropertyYet && <span className="text-red-600">*</span>}
         </label>
         <input
           type="text"
@@ -559,7 +658,7 @@ function Step1Property({
           onChange={(e) => onAirbnbUrl(e.target.value)}
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
-          placeholder="2文字以上入力してAirBnBで検索"
+          placeholder="物件名で検索 or Airbnb URL を貼り付け"
           disabled={noPropertyYet}
           className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
@@ -597,102 +696,92 @@ function Step1Property({
             className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
           />
           <span className="text-[13px] leading-relaxed text-dark-gray">
-            これから民泊を始める方、もしくは物件をAirBnBに掲載していない方（レポート無し）
+            まだ物件を Airbnb に掲載していない / これから民泊を始める
           </span>
         </label>
-        {noPropertyYet && (
-          <p className="text-[12px] text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-2 mt-2 leading-relaxed">
-            ※ 新規立ち上げ物件の初期費用は別途お見積もりとなります（初期費用無料は運用中の物件が対象です）
-          </p>
-        )}
       </div>
 
-      <div className={noPropertyYet ? "opacity-50 pointer-events-none" : ""}>
-        <label className="block text-[14px] font-semibold mb-2 text-ink">
-          他にも管理されている物件はございますか？
-        </label>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[24px] font-bold text-sekai-teal">
-            {formatProperties(totalProperties)}
-          </span>
+      {/* Peak revenue */}
+      <div className={dimmed}>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">ピーク月の売上（1物件あたり）</label>
+        <div className="text-[24px] font-bold text-sekai-teal mb-2">{formatMan(peakMan)}</div>
+        <input
+          type="range"
+          min={REVENUE_MIN_MAN}
+          max={REVENUE_MAX_MAN}
+          step={10}
+          value={peakMan}
+          onChange={(e) => onPeakMan(parseInt(e.target.value, 10))}
+          disabled={noPriorOperation}
+          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
+        />
+        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
+          <span>10万円</span>
+          <span>300万円以上</span>
         </div>
+      </div>
+
+      {/* Off-peak revenue */}
+      <div className={dimmed}>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">オフピーク月の売上（1物件あたり）</label>
+        <div className="text-[24px] font-bold text-sekai-teal mb-2">{formatMan(offpeakMan)}</div>
+        <input
+          type="range"
+          min={REVENUE_MIN_MAN}
+          max={REVENUE_MAX_MAN}
+          step={10}
+          value={offpeakMan}
+          onChange={(e) => onOffpeakMan(parseInt(e.target.value, 10))}
+          disabled={noPriorOperation}
+          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
+        />
+        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
+          <span>10万円</span>
+          <span>300万円以上</span>
+        </div>
+      </div>
+
+      {/* Operating years */}
+      <div className={dimmed}>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">運用年数</label>
+        <div className="text-[20px] font-bold text-sekai-teal mb-2">{YEARS_STOPS[yearsIdx]?.label ?? ""}</div>
+        <input
+          type="range"
+          min={0}
+          max={YEARS_STOPS.length - 1}
+          step={1}
+          value={yearsIdx}
+          onChange={(e) => onYearsIdx(parseInt(e.target.value, 10))}
+          disabled={noPriorOperation}
+          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
+        />
+        <div className="flex justify-between text-[10px] text-mid-gray mt-1">
+          {YEARS_STOPS.map((s) => (
+            <span key={s.value}>{s.label}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Total properties */}
+      <div>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">全ての管理物件数</label>
+        <div className="text-[20px] font-bold text-sekai-teal mb-2">{formatProperties(totalProperties)}</div>
         <input
           type="range"
           min={1}
-          max={30}
+          max={PROPERTIES_MAX}
           step={1}
           value={totalProperties}
           onChange={(e) => onTotalProperties(parseInt(e.target.value, 10))}
-          disabled={noPropertyYet}
-          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
+          className="w-full accent-sekai-teal"
         />
         <div className="flex justify-between text-[11px] text-mid-gray mt-1">
-          <span>上記のみ</span>
+          <span>1棟</span>
           <span>30棟以上</span>
         </div>
       </div>
-    </div>
-  );
-}
 
-// ─────── Step 2: Revenue ───────
-
-function Step2Revenue({
-  peakMan,
-  offpeakMan,
-  noPriorOperation,
-  onChange,
-  onNoPriorOperation,
-}: {
-  peakMan: number;
-  offpeakMan: number;
-  noPriorOperation: boolean;
-  onChange: (k: "peakRevenueMan" | "offpeakRevenueMan", v: number) => void;
-  onNoPriorOperation: (v: boolean) => void;
-}) {
-  const dimmed = noPriorOperation ? "opacity-50 pointer-events-none" : "";
-  return (
-    <div className="flex flex-col gap-6">
-      <div className={dimmed}>
-        <label className="block text-[14px] font-semibold mb-2 text-ink">
-          ピーク月の売上（1物件あたり・月）
-        </label>
-        <div className="text-[28px] font-bold text-sekai-teal mb-2">{formatMan(peakMan)}</div>
-        <input
-          type="range"
-          min={0}
-          max={MAX_REVENUE_MAN}
-          step={10}
-          value={peakMan}
-          onChange={(e) => onChange("peakRevenueMan", parseInt(e.target.value, 10))}
-          disabled={noPriorOperation}
-          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
-        />
-        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
-          <span>0万円</span>
-          <span>300万円以上</span>
-        </div>
-      </div>
-      <div className={dimmed}>
-        <label className="block text-[14px] font-semibold mb-2 text-ink">
-          オフピーク月の売上（1物件あたり・月）
-        </label>
-        <div className="text-[28px] font-bold text-sekai-teal mb-2">{formatMan(offpeakMan)}</div>
-        <input
-          type="range"
-          min={0}
-          max={MAX_REVENUE_MAN}
-          step={10}
-          value={offpeakMan}
-          onChange={(e) => onChange("offpeakRevenueMan", parseInt(e.target.value, 10))}
-          disabled={noPriorOperation}
-          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
-        />
-        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
-          <span>0万円</span>
-          <span>300万円以上</span>
-        </div>
-      </div>
+      {/* No prior operation toggle */}
       <label className="flex items-start gap-2 cursor-pointer select-none border-t border-rule pt-4">
         <input
           type="checkbox"
@@ -701,71 +790,16 @@ function Step2Revenue({
           className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
         />
         <span className="text-[13px] leading-relaxed text-dark-gray">
-          これから民泊を始める方、運営実績がまだない方（売上・手数料の入力をスキップ）
+          売上実績がまだない / 運用開始前（売上・運用年数の入力をスキップ）
         </span>
       </label>
     </div>
   );
 }
 
-// ─────── Step 3: Fee + Years ───────
+// ─────── Step 3: Contact ───────
 
-function Step3FeeYears({
-  commissionRate,
-  operatingYears,
-  onChange,
-}: {
-  commissionRate: string;
-  operatingYears: string;
-  onChange: (k: "commissionRate" | "operatingYears", v: string) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-6">
-      <div>
-        <label className="block text-[14px] font-semibold mb-2 text-ink">現在の運営代行手数料</label>
-        <div className="grid grid-cols-2 gap-2">
-          {COMMISSION_OPTIONS.map((o) => (
-            <button
-              key={o.value}
-              type="button"
-              onClick={() => onChange("commissionRate", o.value)}
-              className={`rounded-lg py-3 text-[15px] font-medium border transition-all active:scale-[0.98] ${
-                commissionRate === o.value
-                  ? "bg-sekai-teal text-white border-sekai-teal"
-                  : "bg-white text-ink border-rule"
-              }`}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div>
-        <label className="block text-[14px] font-semibold mb-2 text-ink">運用年数</label>
-        <div className="grid grid-cols-2 gap-2">
-          {YEARS_OPTIONS.map((o) => (
-            <button
-              key={o.value}
-              type="button"
-              onClick={() => onChange("operatingYears", o.value)}
-              className={`rounded-lg py-3 text-[15px] font-medium border transition-all active:scale-[0.98] ${
-                operatingYears === o.value
-                  ? "bg-sekai-teal text-white border-sekai-teal"
-                  : "bg-white text-ink border-rule"
-              }`}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─────── Step 4: Contact ───────
-
-function Step4Contact({
+function Step3Contact({
   name,
   email,
   phone,
@@ -823,14 +857,15 @@ function Step4Contact({
       </div>
       <div>
         <label className="block text-[14px] font-semibold mb-1.5 text-ink">
-          現代行や運営面でのご不満・ご要望（任意）
+          現状の課題（任意）
         </label>
         <textarea
           value={complaints}
           onChange={(e) => onChange("complaints", e.target.value)}
           rows={4}
           maxLength={2000}
-          className="w-full px-4 py-3 rounded-lg border border-rule bg-white text-[14px] focus:outline-none focus:ring-2 focus:ring-sekai-teal/20"
+          placeholder="現代行や運営面でのご不満・ご要望があればお書きください"
+          className="w-full px-4 py-3 rounded-lg border border-rule bg-white text-[14px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20"
         />
       </div>
     </div>
