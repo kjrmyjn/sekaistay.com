@@ -9,7 +9,6 @@ import LpFooter from "@/components/switch/_shared/LpFooter";
 import LpCompanyInfo from "@/components/switch/_shared/LpCompanyInfo";
 import SwitchHeader from "@/components/switch/SwitchHeader";
 import SwitchHeroPortal from "@/components/switch/SwitchHeroPortal";
-import SwitchPainPoints from "@/components/switch/SwitchPainPoints";
 import SwitchServices from "@/components/switch/SwitchServices";
 import SwitchComparison from "@/components/switch/SwitchComparison";
 import SwitchResults from "@/components/switch/SwitchResults";
@@ -42,16 +41,6 @@ export default function SwitchPortalPage() {
           <SwitchHeroPortal />
         </div>
         <WaveDivider fromColor="#2d2d2d" toColor="#ffffff" withDots />
-
-        {/* §3 共感ストーリー（不透明さの痛み） */}
-        <div data-track-section="pain-points">
-          <SwitchPainPoints />
-        </div>
-
-        {/* MidCTA */}
-        <div data-track-section="mid-cta-1">
-          <SwitchPrimaryCTA title="ダッシュボードのデモを見る" />
-        </div>
 
         {/* §4 サービス内容 */}
         <div data-track-section="services">
