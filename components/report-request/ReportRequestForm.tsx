@@ -300,6 +300,17 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
         });
         // @ts-ignore
         window.fbq?.("track", "Lead", { lp_variant: lpVariant || "direct", content_name: "report_request" });
+        // CompleteRegistration: フォーム送信成功時の高品質シグナル (KGI トラッキング用)。
+        // top-level 経路 (window.parent === window) でのみ直接 fire。iframe 内で動作する場合は
+        // 親 frame の listener (SwitchReportFormEmbed 等) が同イベントを fire するため、ここで
+        // fire すると二重計上になる。
+        if (typeof window !== "undefined" && window.parent === window) {
+          // @ts-ignore
+          window.fbq?.("track", "CompleteRegistration", {
+            lp_variant: lpVariant || "direct",
+            form_id: lpVariant || "report-request",
+          });
+        }
       } catch {}
       // iframe parent notify
       try {
