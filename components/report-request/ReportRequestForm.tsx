@@ -251,7 +251,8 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
   const canNextFromStep2 = useMemo(
     () =>
       form.noPropertyYet ||
-      (form.airbnbUrl.trim().length > 0 && isAirbnbUrl(form.airbnbUrl.trim())),
+      form.airbnbUrl.trim() === "" ||
+      isAirbnbUrl(form.airbnbUrl.trim()),
     [form.airbnbUrl, form.noPropertyYet],
   );
   const canSubmit = useMemo(
@@ -353,7 +354,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
 
         <div className="mt-5 mb-1">
           <p className="text-[13px] leading-relaxed text-mid-gray">
-            {step === 1 && "物件診断レポート無料作成 / 3項目で、1営業日以内にメールで専用レポートをお届けします。"}
+            {step === 1 && "物件診断レポート無料作成　3項目で、1営業日以内にメールで専用レポートをお届けします。"}
             {step === 2 && "あと2項目で、1営業日以内にメールで専用レポートをお届けします。"}
             {step === 3 && "こちらをもとにいただいたメールに専用レポートをお届けします。"}
           </p>
@@ -649,7 +650,7 @@ function Step2Property({
       {/* Airbnb URL or property name search */}
       <div className="relative">
         <label className="block text-[14px] font-semibold mb-2 text-ink">
-          物件名またはAirbnbのURL {!noPropertyYet && <span className="text-red-600">*</span>}
+          物件名またはAirbnbのURL <span className="text-[12px] font-normal text-mid-gray">（任意）</span>
         </label>
         <input
           type="text"
