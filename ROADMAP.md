@@ -19,7 +19,7 @@
 - [x] Meta Pixel (`989839370242915`) layout.tsx 実装済み（2026-05-10 切替）
 - [x] Meta CAPI アクセストークン → Vercel env 登録済み (2026-05-09)
 - [x] X Ads アカウント @tenichiliu 開通済み・Campaign 画面到達確認 (2026-05-09)
-- [x] LP variants 3 種（switch / switch/portal / switch/founder）実装済み（switch-lite と switch/short は試作のため削除 2026-05-12）
+- [x] LP variants 3 種（switch / switch/portal / switch/founder）実装済み
 - [x] フォーム送信 API（/api/report-requests/submit → Supabase + CRM 転送）実装済み
 - [x] 訴求パターン × LP マッピング確定（価格主導 / ポータル主導 / 信頼主導）(2026-05-09)
 - [x] Privacy Policy に Meta CAPI 言及済み

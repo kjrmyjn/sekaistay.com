@@ -12,7 +12,7 @@
 
 | パターン | 訴求軸 | 対応 LP | LP の訴求点 |
 |---|---|---|---|
-| **価格主導** | 業界相場の半額・手数料8% | `/switch-lite` | フォーム軽量・離脱低減・価格 friction を最小化 |
+| **価格主導** | 業界相場の半額・手数料8% | `/switch` | Control LP・フル17セクションで価格訴求を厚く展開 |
 | **ポータル主導** | 24時間オーナーダッシュボード・運営の可視化・データドリブン | `/switch/portal` | オーナーポータルを前面・運用透明性 |
 | **信頼主導** | Airbnbスーパーホスト・国交大臣認定・レビュー4.8・全国7拠点 | `/switch/founder` | 創業者前面・顔の見える運営代行 |
 
@@ -28,7 +28,7 @@ Campaign 2: SS-Generic-Price（価格主導）    日予算 ¥3,000
   ├─ AdGroup A: 民泊運用代行
   ├─ AdGroup B: 比較・検討
   └─ AdGroup C: 課題・乗り換え
-  → ランディング: /switch-lite
+  → ランディング: /switch
 
 Campaign 3: SS-Generic-Portal（ポータル主導） 日予算 ¥3,000
   ├─ AdGroup A: 民泊運用代行
@@ -44,7 +44,7 @@ Campaign 4: SS-Generic-Trust（信頼主導）   日予算 ¥3,000
 
 Campaign 5: SS-Geo（地名×業界・3パターン横断）日予算 ¥3,000
   ├─ AdGroup A: 東京エリア（信頼主導 → /switch/founder）
-  ├─ AdGroup B: 関西エリア（価格主導 → /switch-lite）
+  ├─ AdGroup B: 関西エリア（価格主導 → /switch）
   └─ AdGroup C: 観光地（信頼主導 → /switch/founder）
 ```
 
@@ -54,7 +54,7 @@ Campaign 5: SS-Geo（地名×業界・3パターン横断）日予算 ¥3,000
 
 ---
 
-## パターン1: 価格主導 → `/switch-lite`
+## パターン1: 価格主導 → `/switch`
 
 **狙い**: 「コストが高いから他に乗り換えたい」オーナー層。
 
@@ -150,7 +150,7 @@ Campaign 5: SS-Geo（地名×業界・3パターン横断）日予算 ¥3,000
 | 60秒で無料診断 | 物件情報入力で個別レポート | 24時間以内に送付 | /switch |
 | 料金を見る | 手数料8%だけ | 業界相場の半額 | /switch#pricing |
 | 創業ストーリー | 代表が直接対応 | 顔の見える運営代行 | /switch/founder |
-| 45分の無料面談 | カレンダー直接予約 | 物件状況をヒアリング | /switch/short |
+| オーナーポータルを見る | 24h ダッシュボード | 運営の可視化 | /switch/portal |
 
 ### コールアウト（6本・25文字以内）
 
@@ -186,4 +186,4 @@ H1（SS-Geo 用）: {KeyWord:民泊運用代行}ならSEKAI STAY
 2. **「業界相場の半額」根拠資料**: テンイチ用意可能・審査時提出予定
 3. **競合社名キーワード**: 初月入札なし・データ蓄積後に判断
 4. **電話番号アセット**: 不採用・全 CV はフォーム送信
-5. **LP マッピング**: Price → /switch-lite / Portal → /switch/portal / Trust → /switch/founder
+5. **LP マッピング**: Price → /switch / Portal → /switch/portal / Trust → /switch/founder

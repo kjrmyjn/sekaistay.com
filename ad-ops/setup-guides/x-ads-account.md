@@ -156,7 +156,7 @@ Step 6: 初回キャンペーン Live 化
 5. オーディエンス設定 → `ad-ops/x-ads/audience-targeting.md` の採用案
 6. クリエイティブ → `ad-ops/x-ads/copy-drafts.md` の採用案
 7. ピクセル: Step 4 で作成した `Lead` イベントを選択
-8. ランディング URL: `/switch`（Control）と `/switch/short`（D variant・45分面談）の2本（X 推奨組み合わせ）
+8. ランディング URL: `/switch`（Control）と `/switch/portal`（オーナーポータル前面）の2本（X 推奨組み合わせ）
 
 ---
 

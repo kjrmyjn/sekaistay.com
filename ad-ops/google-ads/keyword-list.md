@@ -11,7 +11,7 @@
 | キャンペーン | パターン | 日予算 | LP | 入札戦略 |
 |---|---|---|---|---|
 | SS-Brand（指名） | 全パターン共通 | ¥1,000 | /switch | 目標 IS 90% |
-| **SS-Generic-Price** | 価格主導 | ¥3,000 | `/switch-lite` | クリック数の最大化 |
+| **SS-Generic-Price** | 価格主導 | ¥3,000 | `/switch` | クリック数の最大化 |
 | **SS-Generic-Portal** | ポータル主導 | ¥3,000 | `/switch/portal` | クリック数の最大化 |
 | **SS-Generic-Trust** | 信頼主導 | ¥3,000 | `/switch/founder` | クリック数の最大化 |
 | SS-Geo（地名×業界） | 価格・信頼ミックス | ¥3,000 | エリア別 | クリック数の最大化 |
@@ -74,11 +74,11 @@
 
 ---
 
-## Campaign 2: SS-Generic-Price（価格主導 → /switch-lite）
+## Campaign 2: SS-Generic-Price（価格主導 → /switch）
 
 **狙い**: 既存代行のコストに不満があり、より安い選択肢を探しているオーナー層。
 
-**LP**: `/switch-lite`（フォーム軽量・離脱低減）
+**LP**: `/switch`（Control LP・フル17セクションで価格訴求を厚く展開）
 
 **含む AdGroup**:
 - AdGroup A（民泊運用代行・汎用）
@@ -257,15 +257,15 @@
 | Campaign | URL（base） | UTM term | Variant |
 |---|---|---|---|
 | SS-Brand | `https://sekaistay.com/switch` | brand | Control |
-| SS-Generic-Price | `https://sekaistay.com/switch-lite` | price | B (lite) |
-| SS-Generic-Portal | `https://sekaistay.com/switch/portal` | portal | E (portal) |
-| SS-Generic-Trust | `https://sekaistay.com/switch/founder` | trust | E (founder) |
-| SS-Geo | エリアに応じて `/switch` `/switch-lite` `/switch/founder` | geo | mixed |
+| SS-Generic-Price | `https://sekaistay.com/switch` | price | Control |
+| SS-Generic-Portal | `https://sekaistay.com/switch/portal` | portal | portal |
+| SS-Generic-Trust | `https://sekaistay.com/switch/founder` | trust | founder |
+| SS-Geo | エリアに応じて `/switch` `/switch/portal` `/switch/founder` | geo | mixed |
 
 UTM 例:
 ```
 SS-Generic-Price:
-  https://sekaistay.com/switch-lite?utm_source=google&utm_medium=cpc&utm_campaign=ss-generic-price&utm_content={ad_name}&utm_term=price
+  https://sekaistay.com/switch?utm_source=google&utm_medium=cpc&utm_campaign=ss-generic-price&utm_content={ad_name}&utm_term=price
 
 SS-Generic-Portal:
   https://sekaistay.com/switch/portal?utm_source=google&utm_medium=cpc&utm_campaign=ss-generic-portal&utm_content={ad_name}&utm_term=portal

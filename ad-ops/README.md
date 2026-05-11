@@ -100,7 +100,7 @@ ad-ops/
 
 | パターン | 訴求軸 | 対応 LP | 想定オーディエンス |
 |---|---|---|---|
-| **価格主導** | 業界相場の半額・手数料8% | `/switch-lite` | コスト意識の高い既存代行ユーザー |
+| **価格主導** | 業界相場の半額・手数料8% | `/switch` | コスト意識の高い既存代行ユーザー |
 | **ポータル主導** | 24h ダッシュボード・運営の可視化・データドリブン | `/switch/portal` | 複数物件オーナー・データドリブン投資家 |
 | **信頼主導** | スーパーホスト・国交大臣認定・レビュー4.8 | `/switch/founder` | 初心者・大口投資家・顔の見える運営代行を求める層 |
 
@@ -123,15 +123,13 @@ ad-ops/
 
 ## 関連リンク
 
-### 広告対象 LP（A/B/C/D/E variants）
+### 広告対象 LP（3 variants）
 
 | URL | lp_variant | 役割 |
 |---|---|---|
-| `/switch` | `switch` | **Control** — Full 17-section LP |
-| `/switch-lite` | `switch-lite` | **B** — フォーム lite 版に差替え（連絡先のみ） |
-| `/switch/short` | `switch-short` | **D** — Hero CTA = 45分の無料面談 (Timerex) |
-| `/switch/founder` | `switch-founder` | E — 創業者前面（Founder ストーリー強化） |
-| `/switch/portal` | `switch-portal` | E — オーナーポータル前面 |
+| `/switch` | `switch` | **Control** — Full 17-section LP（シンプル・価格主導） |
+| `/switch/founder` | `switch-founder` | 創業者前面・信頼主導（Founder ストーリー強化） |
+| `/switch/portal` | `switch-portal` | オーナーポータル前面・ポータル主導 |
 
 > 全 variant が共通で `LpVariantForm` (`components/switch/LpVariantForm.tsx`) → `ReportRequestForm` (`components/report-request/ReportRequestForm.tsx`) を内包。`lp_variant` は GA4 / Meta Pixel / Supabase に伝播。
 

@@ -14,7 +14,7 @@
 
 | パターン | LP | 訴求の核 |
 |---|---|---|
-| **価格主導** | `/switch-lite` | 業界相場の半額・手数料8% |
+| **価格主導** | `/switch` | 業界相場の半額・手数料8% |
 | **ポータル主導** | `/switch/portal` | 24h ダッシュボード・運営の可視化 |
 | **信頼主導** | `/switch/founder` | スーパーホスト・国交大臣認定・レビュー4.8 |
 
@@ -34,7 +34,7 @@
 
 ---
 
-## パターン1: 価格主導 → `/switch-lite`
+## パターン1: 価格主導 → `/switch`
 
 ### P-X1: 短く強く
 
@@ -188,12 +188,12 @@
 ## ランディング URL
 
 ```
-価格主導 → /switch-lite
+価格主導 → /switch
 ポータル主導 → /switch/portal
 信頼主導 → /switch/founder
 
 URL 例:
-https://sekaistay.com/switch-lite?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative}&utm_term=price
+https://sekaistay.com/switch?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative}&utm_term=price
 https://sekaistay.com/switch/portal?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative}&utm_term=portal
 https://sekaistay.com/switch/founder?utm_source=x&utm_medium=cpc&utm_campaign={campaign}&utm_content={creative}&utm_term=trust
 ```
