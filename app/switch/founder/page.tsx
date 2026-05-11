@@ -11,6 +11,7 @@ import SwitchHeader from "@/components/switch/SwitchHeader";
 import SwitchHeroFounder from "@/components/switch/SwitchHeroFounder";
 import SwitchFounderStory from "@/components/switch/SwitchFounderStory";
 import SwitchServices from "@/components/switch/SwitchServices";
+import SwitchResults from "@/components/switch/SwitchResults";
 import SwitchComparison from "@/components/switch/SwitchComparison";
 import SwitchSimulator from "@/components/switch/SwitchSimulator";
 import SwitchPricing from "@/components/switch/SwitchPricing";
@@ -52,6 +53,11 @@ export default function SwitchFounderPage() {
         {/* §4 サービス内容 */}
         <div data-track-section="services">
           <SwitchServices />
+        </div>
+
+        {/* §4.5 SEKAI STAY 改善実績 */}
+        <div data-track-section="results">
+          <SwitchResults />
         </div>
 
         {/* §5 他社比較 */}
