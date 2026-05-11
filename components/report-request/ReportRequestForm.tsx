@@ -789,6 +789,11 @@ function Step2Property({
             まだ物件をAirBnBに掲載していない
           </span>
         </label>
+        {noPropertyYet && (
+          <p className="text-[12px] text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-2 mt-2 leading-relaxed">
+            ※ 新規立ち上げ物件の初期費用は別途お見積もりとなります（サイト記載の初期費用無料は運用中の物件が対象です）
+          </p>
+        )}
       </div>
 
       {/* Total properties */}
