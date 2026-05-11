@@ -71,10 +71,7 @@ export default function SwitchHeroPortal() {
                       あなたの物件、
                     </span>
                     <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
-                      <span className="gradient-highlight-box">リアルタイム</span>で、
-                    </span>
-                    <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
-                      ぜんぶ見える。
+                      <span className="gradient-highlight-box">リアルタイム</span>で全部みえる
                     </span>
                   </h1>
 
@@ -212,19 +209,25 @@ export default function SwitchHeroPortal() {
                     あなたの物件、
                   </span>
                   <span className="block text-[30px] sm:text-[40px] mt-1.5">
-                    <span className="gradient-highlight-box">リアルタイム</span>で、
-                  </span>
-                  <span className="block text-[30px] sm:text-[40px] mt-1.5">
-                    ぜんぶ見える。
+                    <span className="gradient-highlight-box">リアルタイム</span>で全部みえる
                   </span>
                 </h1>
                 <p className="text-[16px] sm:text-[18px] text-white/85 leading-relaxed mb-3 font-medium">
                   民泊代行に、
                   <span className="text-switch-teal-bright font-bold">透明性</span>を。
                 </p>
-                <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed">
-                  予約・売上・経費・清掃 — 数字は全部、手元で動いてる。
-                </p>
+                <div className="flex flex-col items-center gap-1.5 sm:gap-2">
+                  <span className="inline-flex items-center gap-1 bg-gradient-to-br from-yellow-300 to-yellow-500 text-black text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm shadow-[0_0_14px_rgba(251,191,36,0.4)] tracking-[0.15em]">
+                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    日本初
+                  </span>
+                  <p className="text-[11px] sm:text-sm text-white/80 tracking-wide font-semibold leading-relaxed text-center">
+                    <span className="block">あなたの物件を、<span className="text-switch-teal-bright">リアルタイム</span>でみえる「専用ダッシュボード」で、</span>
+                    <span className="block">透明性の高い民泊運用を</span>
+                  </p>
+                </div>
               </div>
 
               {/* 3. ダッシュボード画像 + chips + tagline */}
@@ -271,18 +274,9 @@ export default function SwitchHeroPortal() {
                   <FloatingDataChip className="absolute bottom-1 left-0 sm:bottom-4 sm:left-[-1%] z-20" label="稼働率" value="74%" trend="up" />
                   <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] z-20" label="ピーク売上" value="+18%" trend="up" />
                 </div>
-                <div className="mt-3 sm:mt-4 flex flex-col items-center gap-1.5 sm:gap-2 relative z-20">
-                  <span className="inline-flex items-center gap-1 bg-gradient-to-br from-yellow-300 to-yellow-500 text-black text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm shadow-[0_0_14px_rgba(251,191,36,0.4)] tracking-[0.15em]">
-                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    日本初
-                  </span>
-                  <p className="text-[11px] sm:text-sm text-white/80 tracking-wide font-semibold leading-relaxed text-center">
-                    <span className="block">あなたの物件を、<span className="text-switch-teal-bright">リアルタイム</span>でみえる「専用ダッシュボード」で、</span>
-                    <span className="block">透明性の高い民泊運用を</span>
-                  </p>
-                </div>
+                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 max-w-md tracking-wide leading-relaxed text-center relative z-20">
+                  予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
+                </p>
               </div>
 
               {/* 4. Trust ライン + footnote */}
