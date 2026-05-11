@@ -19,7 +19,10 @@ const nextConfig = {
   },
   reactStrictMode: true,
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    // 本番では console.log は削除（ノイズ削減）するが、サーバ側の障害調査に必要な
+    // warn/error は残す。これがないと lib/meta-capi.ts 等の警告ログが
+    // Vercel logs に届かず、CAPI 失敗時の切り分けが不可能になる。
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
   async headers() {
     return [
