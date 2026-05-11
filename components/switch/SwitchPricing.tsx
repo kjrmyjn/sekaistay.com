@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useScrollFade } from "@/hooks/useScrollFade";
 import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 import SectionHead from "./deco/SectionHead";
@@ -15,7 +16,9 @@ const zeroItems = [
 
 export default function SwitchPricing() {
   const ref = useScrollFade();
+  const pathname = usePathname();
   const { primary: ctaLabel } = useSwitchCtaLabels();
+  const showCta = !pathname?.startsWith("/switch/founder");
 
   return (
     <section
@@ -175,28 +178,30 @@ export default function SwitchPricing() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="fade-in text-center">
-          <a
-            href="#contact-form"
-            className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-base sm:text-lg px-10 sm:px-12 py-4 rounded-md shadow-[0_0_40px_rgba(235,110,40,0.35)] hover:shadow-[0_0_56px_rgba(235,110,40,0.5)] hover:-translate-y-0.5 transition-all min-h-[52px]"
-          >
-            {ctaLabel}
-            <svg
-              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        {/* CTA — /founder では非表示 */}
+        {showCta && (
+          <div className="fade-in text-center">
+            <a
+              href="#contact-form"
+              className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-base sm:text-lg px-10 sm:px-12 py-4 rounded-md shadow-[0_0_40px_rgba(235,110,40,0.35)] hover:shadow-[0_0_56px_rgba(235,110,40,0.5)] hover:-translate-y-0.5 transition-all min-h-[52px]"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-        </div>
+              {ctaLabel}
+              <svg
+                className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
