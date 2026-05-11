@@ -258,6 +258,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     [form.name, form.email, form.phone],
   );
 
+  const submitLabel = useMemo(() => {
+    if (lpVariant === "switch-founder") return "専門家に相談する";
+    if (lpVariant === "switch-portal") return "アプリのデモを予約する";
+    return "無料レポート申込";
+  }, [lpVariant]);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -363,13 +369,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
       <div className="max-w-xl mx-auto px-5">
         <ProgressBar step={step} />
 
-        <div className="mt-5 mb-1">
-          <p className="text-[13px] leading-relaxed text-mid-gray">
-            {step === 2 && "あと2項目で、1営業日以内にメールで専用レポートをお届けします。"}
-            {step === 3 && "こちらをもとにいただいたメールに専用レポートをお届けします。"}
-          </p>
-        </div>
-        <h2 className="text-[18px] font-semibold text-ink mb-1">
+        <h2 className="text-[18px] font-semibold text-ink mt-5 mb-1">
           {step === 1 && "今の運営代行の手数料を教えてください"}
           {step === 2 && "メインの物件の情報を教えてください"}
           {step === 3 && "レポートをお届けするご連絡先を教えてください"}
@@ -455,7 +455,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
                 className="flex-1 rounded-lg py-3 text-[15px] font-semibold text-white transition-all active:scale-[0.98] bg-sekai-teal disabled:bg-mid-gray disabled:cursor-not-allowed"
                 style={{ opacity: submitting ? 0.7 : 1 }}
               >
-                {submitting ? "送信中..." : "無料レポートを申し込む"}
+                {submitting ? "送信中..." : submitLabel}
               </button>
             )}
           </div>
