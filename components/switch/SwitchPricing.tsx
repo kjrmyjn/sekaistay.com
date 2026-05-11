@@ -155,7 +155,7 @@ export default function SwitchPricing() {
               <li className="flex items-start gap-2">
                 <span className="text-switch-teal-bright font-bold shrink-0">※1</span>
                 <span>
-                  初期費用は既存物件のみ期間限定無料
+                  初期費用は運用中の物件のみ期間限定無料
                   <br />
                   <span className="text-white/45">（新規立ち上げ物件は別途お見積もり）</span>
                 </span>

@@ -27,11 +27,11 @@ const FooterCatch = dynamic(() => import('@/components/home/FooterCatch'))
 export const metadata: Metadata = {
   title: 'SEKAI STAY | 民泊運営は、もう丸投げでいい。',
   description:
-    'SEKAI STAYは、価格設計・OTA最適化・多言語対応・清掃・ゲスト対応まで一気通貫で支援する民泊運用代行サービス。既存物件の改善も、これから始める民泊の立ち上げも、まずは無料で物件の伸びしろを確認できます。',
+    'SEKAI STAYは、価格設計・OTA最適化・多言語対応・清掃・ゲスト対応まで一気通貫で支援する民泊運用代行サービス。運用中の物件の改善も、これから始める民泊の立ち上げも、まずは無料で物件の伸びしろを確認できます。',
   openGraph: {
     title: 'SEKAI STAY | 民泊運営は、もう丸投げでいい。',
     description:
-      '既存物件の運用改善から、これから始める民泊の立ち上げまで。一気通貫で支援する民泊運用代行。',
+      '運用中の物件の改善から、これから始める民泊の立ち上げまで。一気通貫で支援する民泊運用代行。',
     type: 'website',
     locale: 'ja_JP',
     url: 'https://sekaistay.com',
