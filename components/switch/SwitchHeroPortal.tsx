@@ -71,7 +71,10 @@ export default function SwitchHeroPortal() {
                       あなたの物件、
                     </span>
                     <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
-                      <span className="gradient-highlight-box">
+                      <span
+                        className="gradient-highlight-box"
+                        style={{ display: "inline-block", lineHeight: "1.05", paddingBottom: 0 }}
+                      >
                         リアルタイム
                       </span>
                       でぜんぶみえる
@@ -112,7 +115,7 @@ export default function SwitchHeroPortal() {
                       </svg>
                     </a>
                     <p className="text-[12px] text-white/55 mt-3 leading-relaxed">
-                      入力60秒・24時間以内にレポート + デモログイン情報をお届け
+                      入力60秒でアプリのデモ予約完了
                     </p>
                   </div>
                 </div>
@@ -206,7 +209,7 @@ export default function SwitchHeroPortal() {
               </div>
 
               {/* 2. 見出し + サブヘッド + 予約・売上 tagline */}
-              <div className="w-full mt-6">
+              <div className="w-full">
                 <h1 className="font-bold leading-[1.18] mb-4 tracking-tight">
                   <span className="block text-[30px] sm:text-[40px]">
                     あなたの物件、
@@ -214,7 +217,7 @@ export default function SwitchHeroPortal() {
                   <span className="block text-[30px] sm:text-[40px] mt-1.5">
                     <span
                       className="gradient-highlight-box"
-                      style={{ display: "inline-block", lineHeight: "0.95", paddingBottom: 0 }}
+                      style={{ display: "inline-block", lineHeight: "1.05", paddingBottom: 0 }}
                     >
                       リアルタイム
                     </span>
@@ -330,7 +333,7 @@ export default function SwitchHeroPortal() {
                   </svg>
                 </a>
                 <p className="text-[12px] text-white/55 mt-3 leading-relaxed">
-                  入力60秒・24時間以内にレポート + デモログイン情報をお届け
+                  入力60秒でアプリのデモ予約完了
                 </p>
               </div>
             </div>
