@@ -12,24 +12,13 @@ type PropertySearchResult = {
 
 const FEE_CARDS = ["15", "20", "25"] as const;
 const OTHER_FEE_OPTIONS = [
+  { value: "0", label: "自己運用（0%）" },
+  { value: "unknown", label: "わからない" },
+  { value: "lt10", label: "10%未満" },
   { value: "10", label: "10%" },
-  { value: "12", label: "12%" },
-  { value: "13", label: "13%" },
-  { value: "14", label: "14%" },
-  { value: "16", label: "16%" },
-  { value: "17", label: "17%" },
-  { value: "18", label: "18%" },
-  { value: "19", label: "19%" },
-  { value: "21", label: "21%" },
-  { value: "22", label: "22%" },
-  { value: "23", label: "23%" },
-  { value: "24", label: "24%" },
-  { value: "26", label: "26%" },
-  { value: "27", label: "27%" },
-  { value: "28", label: "28%" },
-  { value: "29", label: "29%" },
-  { value: "30", label: "30%" },
-  { value: "unknown", label: "不明 / まだ運用していない" },
+  { value: "11-14", label: "11〜14%" },
+  { value: "16-19", label: "16〜19%" },
+  { value: "25plus", label: "25%以上" },
 ];
 
 const YEARS_STOPS: { value: string; label: string }[] = [
@@ -49,6 +38,7 @@ const PROPERTIES_MAX = 30;
 
 type FormState = {
   commissionRate: string;
+  startingNew: boolean;
   airbnbUrl: string;
   noPropertyYet: boolean;
   totalProperties: number;
@@ -64,6 +54,7 @@ type FormState = {
 
 const INITIAL: FormState = {
   commissionRate: "",
+  startingNew: false,
   airbnbUrl: "",
   noPropertyYet: false,
   totalProperties: 1,
@@ -121,15 +112,16 @@ function formatProperties(n: number): string {
   return `${n}棟`;
 }
 
-const TEMPLATE_FEE_OPTIONS = [10, 15, 20, 25, 30];
 function commissionPct(code: string): number | null {
   if (!code || code === "unknown") return null;
+  if (code === "0") return 0;
+  if (code === "lt10") return 8;
+  if (code === "11-14") return 12.5;
+  if (code === "16-19") return 17.5;
+  if (code === "25plus") return 27.5;
   const n = parseInt(code, 10);
   if (!Number.isFinite(n)) return null;
-  return TEMPLATE_FEE_OPTIONS.reduce(
-    (a, b) => (Math.abs(b - n) < Math.abs(a - n) ? b : a),
-    TEMPLATE_FEE_OPTIONS[0],
-  );
+  return n;
 }
 
 function rangeMidpointYen(man: number): number {
@@ -247,7 +239,20 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  const canNextFromStep1 = useMemo(() => form.commissionRate !== "", [form.commissionRate]);
+  const canNextFromStep1 = useMemo(
+    () => form.startingNew || form.commissionRate !== "",
+    [form.commissionRate, form.startingNew],
+  );
+
+  function handleStartingNew(v: boolean) {
+    setForm((f) => ({
+      ...f,
+      startingNew: v,
+      ...(v
+        ? { commissionRate: "", noPropertyYet: true, noPriorOperation: true }
+        : {}),
+    }));
+  }
   const canNextFromStep2 = useMemo(
     () =>
       form.noPropertyYet ||
@@ -266,8 +271,9 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     setSubmitting(true);
     try {
       const markers: string[] = [];
-      if (form.noPropertyYet) markers.push("[これから民泊を始める / 物件未掲載]");
-      if (form.noPriorOperation) markers.push("[これから民泊を始める / 売上実績なし]");
+      if (form.startingNew) markers.push("[これから民泊を始める方]");
+      if (form.noPropertyYet && !form.startingNew) markers.push("[これから民泊を始める / 物件未掲載]");
+      if (form.noPriorOperation && !form.startingNew) markers.push("[これから民泊を始める / 売上実績なし]");
       const complaintsOut = markers.length > 0
         ? `${markers.join(" ")}${form.complaints ? "\n" + form.complaints : ""}`
         : form.complaints;
@@ -370,6 +376,8 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             <Step1Fee
               commissionRate={form.commissionRate}
               onChange={(v) => update("commissionRate", v)}
+              startingNew={form.startingNew}
+              onStartingNew={handleStartingNew}
             />
           )}
           {step === 2 && (

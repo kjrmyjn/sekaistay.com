@@ -51,8 +51,8 @@ export default function SwitchShortPage() {
         <LpVariantForm
           lpVariant="switch-short"
           heading="まずはご相談だけでもどうぞ"
-          leadCopy="お名前・メール・電話の30秒入力で、24時間以内に担当者からご連絡"
-          subCopy="物件情報の入力は不要。お話を伺ってから、必要に応じてレポートをお作りします。無理な勧誘は致しません。"
+          leadCopy="物件診断レポート無料作成"
+          subCopy={<>たったの<strong className="font-bold text-white">&quot;3項目&quot;</strong>で、1営業日以内にメールで専用レポートをお届けします。</>}
         />
 
         {/* §8 会社概要 */}

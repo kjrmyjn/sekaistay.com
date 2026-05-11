@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useScrollFade } from "@/hooks/useScrollFade";
 
 const EMBED_ORIGIN = "https://japanvillas.kss-cloud.com";
@@ -42,8 +42,8 @@ function buildEmbedSrc(variant: ReportFormVariant): string {
 type SwitchReportFormEmbedProps = {
   variant?: ReportFormVariant;
   heading?: string;
-  leadCopy?: string;
-  subCopy?: string;
+  leadCopy?: ReactNode;
+  subCopy?: ReactNode;
 };
 
 export default function SwitchReportFormEmbed({
