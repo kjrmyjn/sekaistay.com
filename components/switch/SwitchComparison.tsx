@@ -29,7 +29,7 @@ export default function SwitchComparison() {
   const ref = useScrollFade();
   const pathname = usePathname();
   const { primary: ctaLabel } = useSwitchCtaLabels();
-  const showCta = !pathname?.startsWith("/switch/portal");
+  const showCta = pathname !== "/switch";
 
   return (
     <section className="py-16 sm:py-20 bg-switch-cloud" ref={ref}>
