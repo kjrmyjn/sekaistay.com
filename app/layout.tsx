@@ -29,7 +29,7 @@ const notoSansJP = Noto_Sans_JP({
 
 const SITE_URL = 'https://sekaistay.com'
 const GA_MEASUREMENT_ID = 'G-B7M920RCGR'
-const META_PIXEL_ID = '989839370242915'
+const META_PIXEL_ID = '1658477098524563'
 
 // 広告タグ（Vercel env 経由で本番稼働）
 //   NEXT_PUBLIC_GOOGLE_ADS_ID:    AW-XXXXXXXXXX 形式（Google Ads コンバージョン ID）
