@@ -312,8 +312,15 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           form_variant: "default",
           commission_rate: form.commissionRate,
         });
+        // Meta Pixel Lead: サーバ側 CAPI と同じ eventID を渡して dedup を効かせる。
+        const eventID = typeof data?.eventId === "string" ? data.eventId : undefined;
         // @ts-ignore
-        window.fbq?.("track", "Lead", { lp_variant: lpVariant || "direct", content_name: "report_request" });
+        window.fbq?.(
+          "track",
+          "Lead",
+          { lp_variant: lpVariant || "direct", content_name: "report_request" },
+          eventID ? { eventID } : undefined,
+        );
         // CompleteRegistration: フォーム送信成功時の高品質シグナル (KGI トラッキング用)。
         // top-level 経路 (window.parent === window) でのみ直接 fire。iframe 内で動作する場合は
         // 親 frame の listener (SwitchReportFormEmbed 等) が同イベントを fire するため、ここで

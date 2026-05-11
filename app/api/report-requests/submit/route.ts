@@ -1,6 +1,8 @@
+import crypto from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { insertLeadSubmission, type SubmitPayload } from "@/lib/lead-submissions";
 import { forwardLead, forwardLeadToSalesPortal } from "@/lib/lead-forward";
+import { sendMetaCapiLead } from "@/lib/meta-capi";
 import { classifyKind } from "@/lib/test-classifier";
 
 export const runtime = "nodejs";
@@ -158,13 +160,45 @@ export async function POST(req: NextRequest) {
   const kind = classifyKind(name, email);
   const userAgent = req.headers.get("user-agent")?.slice(0, 500) || undefined;
 
+  // Meta CAPI 用の dedup キー。Pixel 側にも同じ id を返してブラウザ↔サーバの二重計上を避ける。
+  const eventId = crypto.randomUUID();
+  const fbp = req.cookies.get("_fbp")?.value;
+  const fbc = req.cookies.get("_fbc")?.value;
+  const eventSourceUrl =
+    payload.landingUrl ||
+    req.headers.get("referer") ||
+    (payload.lpVariant ? `https://sekaistay.com/${payload.lpVariant}` : "https://sekaistay.com/");
+
   try {
     const row = await insertLeadSubmission({ payload, kind, clientIp: ip, userAgent });
-    // 2 系統並列で forward (吉蔵 既存 CRM + sekaistay 営業ポータル)。
-    // どちらかが失敗してもクライアントへの応答は 200 を返す（lead は Supabase に保存済み）。
-    const [yoshizoOutcome, salesPortalOutcome] = await Promise.allSettled([
+    // 3 系統並列で forward (吉蔵 CRM + sekaistay 営業ポータル + Meta CAPI)。
+    // いずれかが失敗してもクライアントへの応答は 200 を返す（lead は Supabase に保存済み）。
+    // 内部テスト (kind === "test") は本番の Meta 広告レポートを汚染しないよう CAPI を skip。
+    // forwardLead/forwardLeadToSalesPortal の test-skip と一致させる。
+    const capiPromise: Promise<void> =
+      kind === "test"
+        ? Promise.resolve()
+        : sendMetaCapiLead({
+            eventId,
+            email,
+            phone,
+            name,
+            ip,
+            userAgent,
+            fbp,
+            fbc,
+            eventSourceUrl,
+            customData: {
+              lp_variant: payload.lpVariant || "direct",
+              content_name: "report_request",
+              currency: "JPY",
+              value: 0,
+            },
+          });
+    const [yoshizoOutcome, salesPortalOutcome, capiOutcome] = await Promise.allSettled([
       forwardLead(row.id),
       forwardLeadToSalesPortal(row.id),
+      capiPromise,
     ]);
     if (yoshizoOutcome.status === "fulfilled" && !yoshizoOutcome.value.ok) {
       console.warn(`[submit] forward to 吉蔵 failed (lead=${row.id}): ${yoshizoOutcome.value.error}`);
@@ -180,7 +214,10 @@ export async function POST(req: NextRequest) {
     } else if (salesPortalOutcome.status === "rejected") {
       console.warn(`[submit] forward to sales-portal threw (lead=${row.id}): ${salesPortalOutcome.reason}`);
     }
-    return NextResponse.json({ id: row.id, status: "received" }, { status: 200 });
+    if (capiOutcome.status === "rejected") {
+      console.warn(`[submit] meta-capi threw (lead=${row.id}): ${capiOutcome.reason}`);
+    }
+    return NextResponse.json({ id: row.id, status: "received", eventId }, { status: 200 });
   } catch (err: any) {
     console.error("[submit] insert failed:", err?.message || err);
     return NextResponse.json(
