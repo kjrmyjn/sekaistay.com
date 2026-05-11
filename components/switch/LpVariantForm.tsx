@@ -5,13 +5,14 @@
  * lp_variant が Supabase / GA4 / Meta Pixel に伝播する。
  */
 
+import type { ReactNode } from "react";
 import { ReportRequestForm } from "@/components/report-request/ReportRequestForm";
 
 type Props = {
   lpVariant: string;
   heading?: string;
-  leadCopy?: string;
-  subCopy?: string;
+  leadCopy?: ReactNode;
+  subCopy?: ReactNode;
 };
 
 export default function LpVariantForm({
