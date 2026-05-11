@@ -61,7 +61,7 @@ export default function SwitchResults() {
           </h3>
         </div>
 
-        <div className="flex sm:grid sm:grid-cols-2 gap-4 sm:gap-6 mt-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-6 sm:mx-0 px-6 sm:px-0 pb-3 sm:pb-0 touch-pan-x sm:touch-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-6 mt-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-6 sm:mx-0 pl-10 pr-6 sm:px-0 scroll-pl-10 sm:scroll-pl-0 pb-3 sm:pb-0 touch-pan-x sm:touch-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light">
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
@@ -79,9 +79,12 @@ export default function SwitchResults() {
                 <p className="font-bold text-lg text-switch-charcoal">
                   Lake House Nojiriko
                 </p>
-                <div className="flex items-center gap-1 shrink-0">
-                  <span className="text-switch-teal-bright">★</span>
-                  <span className="text-sm font-bold">4.86</span>
+                <div className="flex flex-col items-end shrink-0">
+                  <div className="flex items-center gap-1">
+                    <span className="text-switch-teal-bright">★</span>
+                    <span className="text-sm font-bold">4.88</span>
+                  </div>
+                  <span className="text-[10px] text-switch-gray-mid mt-0.5">レビュー 41件</span>
                 </div>
               </div>
               <p className="text-xs text-switch-gray-mid mb-3">220㎡ / 1日1組限定</p>
@@ -118,9 +121,12 @@ export default function SwitchResults() {
                 <p className="font-bold text-lg text-switch-charcoal">
                   The Lake Side INN
                 </p>
-                <div className="flex items-center gap-1 shrink-0">
-                  <span className="text-switch-teal-bright">★</span>
-                  <span className="text-sm font-bold">4.97</span>
+                <div className="flex flex-col items-end shrink-0">
+                  <div className="flex items-center gap-1">
+                    <span className="text-switch-teal-bright">★</span>
+                    <span className="text-sm font-bold">4.97</span>
+                  </div>
+                  <span className="text-[10px] text-switch-gray-mid mt-0.5">レビュー 61件</span>
                 </div>
               </div>
               <p className="text-xs text-switch-gray-mid mb-3">全4棟 / ペットOK</p>
@@ -134,6 +140,48 @@ export default function SwitchResults() {
                   <p className="font-bold text-switch-teal">
                     レビュー 61件{" "}
                     <span className="text-[10px]">(3倍↑)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light">
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <Image
+                src="/images/switch/property-niseko.jpg"
+                alt="Mountain Villa Niseko"
+                fill
+                className="object-cover"
+              />
+              <span className="absolute top-3 left-3 bg-switch-teal-deep text-white text-[10px] font-bold px-3 py-1 rounded-full">
+                ロッジ
+              </span>
+            </div>
+            <div className="p-5">
+              <div className="flex justify-between items-start mb-2">
+                <p className="font-bold text-lg text-switch-charcoal">
+                  Mountain Villa Niseko
+                </p>
+                <div className="flex flex-col items-end shrink-0">
+                  <div className="flex items-center gap-1">
+                    <span className="text-switch-teal-bright">★</span>
+                    <span className="text-sm font-bold">4.95</span>
+                  </div>
+                  <span className="text-[10px] text-switch-gray-mid mt-0.5">レビュー 20件</span>
+                </div>
+              </div>
+              <p className="text-xs text-switch-gray-mid mb-3">ゲレンデから10分</p>
+              <div className="bg-gradient-to-r from-switch-cloud to-switch-teal-tint rounded-lg p-3 grid grid-cols-2 gap-2 text-xs text-center">
+                <div>
+                  <p className="text-switch-gray-mid">導入前</p>
+                  <p className="font-bold text-switch-charcoal line-through">ピーク売上</p>
+                </div>
+                <div>
+                  <p className="text-switch-teal font-bold">導入後</p>
+                  <p className="font-bold text-switch-teal">
+                    ピーク売上{" "}
+                    <span className="text-[10px]">(+22%)</span>
                   </p>
                 </div>
               </div>
