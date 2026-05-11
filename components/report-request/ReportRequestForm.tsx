@@ -45,7 +45,6 @@ type FormState = {
   peakRevenueMan: number;
   offpeakRevenueMan: number;
   yearsIdx: number; // 0..3 → YEARS_STOPS index
-  noPriorOperation: boolean;
   name: string;
   email: string;
   phone: string;
@@ -61,7 +60,6 @@ const INITIAL: FormState = {
   peakRevenueMan: 80,
   offpeakRevenueMan: 30,
   yearsIdx: 1,
-  noPriorOperation: false,
   name: "",
   email: "",
   phone: "",
@@ -248,16 +246,11 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     setForm((f) => ({
       ...f,
       startingNew: v,
-      ...(v
-        ? { commissionRate: "", noPropertyYet: true, noPriorOperation: true }
-        : {}),
+      ...(v ? { commissionRate: "", noPropertyYet: true } : {}),
     }));
   }
   const canNextFromStep2 = useMemo(
-    () =>
-      form.noPropertyYet ||
-      form.airbnbUrl.trim() === "" ||
-      isAirbnbUrl(form.airbnbUrl.trim()),
+    () => form.noPropertyYet || form.airbnbUrl.trim() !== "",
     [form.airbnbUrl, form.noPropertyYet],
   );
   const canSubmit = useMemo(
@@ -272,21 +265,21 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     try {
       const markers: string[] = [];
       if (form.startingNew) markers.push("[これから民泊を始める方]");
-      if (form.noPropertyYet && !form.startingNew) markers.push("[これから民泊を始める / 物件未掲載]");
-      if (form.noPriorOperation && !form.startingNew) markers.push("[これから民泊を始める / 売上実績なし]");
+      if (form.noPropertyYet && !form.startingNew) markers.push("[物件未掲載]");
       const complaintsOut = markers.length > 0
         ? `${markers.join(" ")}${form.complaints ? "\n" + form.complaints : ""}`
         : form.complaints;
       const yearsValue = YEARS_STOPS[form.yearsIdx]?.value ?? "";
+      const skipPropertyDetails = form.startingNew;
       const payload = {
         name: form.name,
         email: form.email,
         phone: form.phone,
         airbnbUrl: form.noPropertyYet ? "" : form.airbnbUrl.trim(),
-        peakRevenue: form.noPriorOperation ? "" : manToRange(form.peakRevenueMan),
-        offpeakRevenue: form.noPriorOperation ? "" : manToRange(form.offpeakRevenueMan),
+        peakRevenue: skipPropertyDetails ? "" : manToRange(form.peakRevenueMan),
+        offpeakRevenue: skipPropertyDetails ? "" : manToRange(form.offpeakRevenueMan),
         commissionRate: form.commissionRate,
-        operatingYears: form.noPriorOperation ? "" : yearsValue,
+        operatingYears: skipPropertyDetails ? "" : yearsValue,
         complaints: complaintsOut,
         totalProperties: form.totalProperties,
         lpVariant,
@@ -304,9 +297,8 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
         return;
       }
       setDeadline(new Date(Date.now() + 24 * 60 * 60 * 1000));
-      setAnnualLoss(form.noPriorOperation ? null : estimateAnnualLoss(form.peakRevenueMan, form.offpeakRevenueMan, form.commissionRate));
-      setDone(true);
-      // GA4 event
+      setAnnualLoss(skipPropertyDetails ? null : estimateAnnualLoss(form.peakRevenueMan, form.offpeakRevenueMan, form.commissionRate));
+      // GA4 event (fire before redirect)
       try {
         // @ts-ignore
         window.gtag?.("event", "lead", {
@@ -337,11 +329,24 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           );
         }
       } catch {}
-      // 完了画面を画面内に収める（LPの一番上に飛ぶのを防ぐ）
-      if (embed) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      // MTG予約フォームへリダイレクト（fbq/gtag が beacon を送り終えるよう短いディレイ）
+      await new Promise((r) => setTimeout(r, 150));
+      try {
+        if (embed && typeof window !== "undefined" && window.parent !== window) {
+          try {
+            if (window.top) {
+              window.top.location.href = MEETING_URL;
+            } else {
+              window.location.href = MEETING_URL;
+            }
+          } catch {
+            window.parent.postMessage({ type: "japan-villas-redirect", url: MEETING_URL }, "*");
+          }
+        } else {
+          window.location.href = MEETING_URL;
+        }
+      } catch {
+        window.location.href = MEETING_URL;
       }
     } catch {
       setError("送信できませんでした。少し時間をおいてもう一度お試しください。");
@@ -388,14 +393,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
               peakMan={form.peakRevenueMan}
               offpeakMan={form.offpeakRevenueMan}
               yearsIdx={form.yearsIdx}
-              noPriorOperation={form.noPriorOperation}
               onAirbnbUrl={(v) => update("airbnbUrl", v)}
               onNoPropertyYet={(v) => update("noPropertyYet", v)}
               onTotalProperties={(v) => update("totalProperties", v)}
               onPeakMan={(v) => update("peakRevenueMan", v)}
               onOffpeakMan={(v) => update("offpeakRevenueMan", v)}
               onYearsIdx={(v) => update("yearsIdx", v)}
-              onNoPriorOperation={(v) => update("noPriorOperation", v)}
             />
           )}
           {step === 3 && (
@@ -418,7 +421,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             {step > 1 && (
               <button
                 type="button"
-                onClick={() => setStep((s) => (s > 1 ? ((s - 1) as Step) : s))}
+                onClick={() =>
+                  setStep((s) => {
+                    if (s === 3 && form.startingNew) return 1;
+                    return s > 1 ? ((s - 1) as Step) : s;
+                  })
+                }
                 className="flex-1 rounded-lg py-3 text-[15px] font-medium bg-white text-ink border border-rule transition-all active:scale-[0.98]"
               >
                 ← 戻る
@@ -431,7 +439,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
                   (step === 1 && !canNextFromStep1) ||
                   (step === 2 && !canNextFromStep2)
                 }
-                onClick={() => setStep((s) => (s + 1) as Step)}
+                onClick={() =>
+                  setStep((s) => {
+                    if (s === 1 && form.startingNew) return 3;
+                    return (s + 1) as Step;
+                  })
+                }
                 className="flex-1 rounded-lg py-3 text-[15px] font-semibold text-white transition-all active:scale-[0.98] bg-sekai-teal disabled:bg-mid-gray disabled:cursor-not-allowed disabled:opacity-80"
               >
                 次へ →
@@ -587,14 +600,12 @@ function Step2Property({
   peakMan,
   offpeakMan,
   yearsIdx,
-  noPriorOperation,
   onAirbnbUrl,
   onNoPropertyYet,
   onTotalProperties,
   onPeakMan,
   onOffpeakMan,
   onYearsIdx,
-  onNoPriorOperation,
 }: {
   airbnbUrl: string;
   noPropertyYet: boolean;
@@ -602,14 +613,12 @@ function Step2Property({
   peakMan: number;
   offpeakMan: number;
   yearsIdx: number;
-  noPriorOperation: boolean;
   onAirbnbUrl: (v: string) => void;
   onNoPropertyYet: (v: boolean) => void;
   onTotalProperties: (v: number) => void;
   onPeakMan: (v: number) => void;
   onOffpeakMan: (v: number) => void;
   onYearsIdx: (v: number) => void;
-  onNoPriorOperation: (v: boolean) => void;
 }) {
   const [searchResults, setSearchResults] = useState<PropertySearchResult[]>([]);
   const [searching, setSearching] = useState(false);
@@ -669,23 +678,78 @@ function Step2Property({
     setSearchResults([]);
   }
 
-  const dimmed = noPriorOperation ? "opacity-50 pointer-events-none" : "";
-
   return (
     <div className="flex flex-col gap-6">
-      {/* Airbnb URL or property name search */}
+      {/* Peak revenue */}
+      <div>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">ピーク月の売上（1物件あたり）</label>
+        <div className="text-[24px] font-bold text-sekai-teal mb-2">{formatMan(peakMan)}</div>
+        <input
+          type="range"
+          min={REVENUE_MIN_MAN}
+          max={REVENUE_MAX_MAN}
+          step={10}
+          value={peakMan}
+          onChange={(e) => onPeakMan(parseInt(e.target.value, 10))}
+          className="w-full accent-sekai-teal"
+        />
+        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
+          <span>10万円</span>
+          <span>300万円以上</span>
+        </div>
+      </div>
+
+      {/* Off-peak revenue */}
+      <div>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">オフピーク月の売上（1物件あたり）</label>
+        <div className="text-[24px] font-bold text-sekai-teal mb-2">{formatMan(offpeakMan)}</div>
+        <input
+          type="range"
+          min={REVENUE_MIN_MAN}
+          max={REVENUE_MAX_MAN}
+          step={10}
+          value={offpeakMan}
+          onChange={(e) => onOffpeakMan(parseInt(e.target.value, 10))}
+          className="w-full accent-sekai-teal"
+        />
+        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
+          <span>10万円</span>
+          <span>300万円以上</span>
+        </div>
+      </div>
+
+      {/* Operating years */}
+      <div>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">運用年数</label>
+        <div className="text-[20px] font-bold text-sekai-teal mb-2">{YEARS_STOPS[yearsIdx]?.label ?? ""}</div>
+        <input
+          type="range"
+          min={0}
+          max={YEARS_STOPS.length - 1}
+          step={1}
+          value={yearsIdx}
+          onChange={(e) => onYearsIdx(parseInt(e.target.value, 10))}
+          className="w-full accent-sekai-teal"
+        />
+        <div className="flex justify-between text-[10px] text-mid-gray mt-1">
+          {YEARS_STOPS.map((s) => (
+            <span key={s.value}>{s.label}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Property name search */}
       <div className="relative">
         <label className="block text-[14px] font-semibold mb-2 text-ink">
-          物件名またはAirbnbのURL <span className="text-[12px] font-normal text-mid-gray">（任意）</span>
+          物件名を検索 <span className="text-red-600">*</span>
         </label>
         <input
           type="text"
-          inputMode="url"
           value={airbnbUrl}
           onChange={(e) => onAirbnbUrl(e.target.value)}
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
-          placeholder="物件名で検索 or Airbnb URL を貼り付け"
+          placeholder="物件名で検索"
           disabled={noPropertyYet}
           className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
@@ -723,70 +787,9 @@ function Step2Property({
             className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
           />
           <span className="text-[13px] leading-relaxed text-dark-gray">
-            まだ物件を Airbnb に掲載していない / これから民泊を始める
+            まだ物件をAirBnBに掲載していない
           </span>
         </label>
-      </div>
-
-      {/* Peak revenue */}
-      <div className={dimmed}>
-        <label className="block text-[14px] font-semibold mb-1 text-ink">ピーク月の売上（1物件あたり）</label>
-        <div className="text-[24px] font-bold text-sekai-teal mb-2">{formatMan(peakMan)}</div>
-        <input
-          type="range"
-          min={REVENUE_MIN_MAN}
-          max={REVENUE_MAX_MAN}
-          step={10}
-          value={peakMan}
-          onChange={(e) => onPeakMan(parseInt(e.target.value, 10))}
-          disabled={noPriorOperation}
-          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
-        />
-        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
-          <span>10万円</span>
-          <span>300万円以上</span>
-        </div>
-      </div>
-
-      {/* Off-peak revenue */}
-      <div className={dimmed}>
-        <label className="block text-[14px] font-semibold mb-1 text-ink">オフピーク月の売上（1物件あたり）</label>
-        <div className="text-[24px] font-bold text-sekai-teal mb-2">{formatMan(offpeakMan)}</div>
-        <input
-          type="range"
-          min={REVENUE_MIN_MAN}
-          max={REVENUE_MAX_MAN}
-          step={10}
-          value={offpeakMan}
-          onChange={(e) => onOffpeakMan(parseInt(e.target.value, 10))}
-          disabled={noPriorOperation}
-          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
-        />
-        <div className="flex justify-between text-[11px] text-mid-gray mt-1">
-          <span>10万円</span>
-          <span>300万円以上</span>
-        </div>
-      </div>
-
-      {/* Operating years */}
-      <div className={dimmed}>
-        <label className="block text-[14px] font-semibold mb-1 text-ink">運用年数</label>
-        <div className="text-[20px] font-bold text-sekai-teal mb-2">{YEARS_STOPS[yearsIdx]?.label ?? ""}</div>
-        <input
-          type="range"
-          min={0}
-          max={YEARS_STOPS.length - 1}
-          step={1}
-          value={yearsIdx}
-          onChange={(e) => onYearsIdx(parseInt(e.target.value, 10))}
-          disabled={noPriorOperation}
-          className="w-full accent-sekai-teal disabled:cursor-not-allowed"
-        />
-        <div className="flex justify-between text-[10px] text-mid-gray mt-1">
-          {YEARS_STOPS.map((s) => (
-            <span key={s.value}>{s.label}</span>
-          ))}
-        </div>
       </div>
 
       {/* Total properties */}
@@ -807,19 +810,6 @@ function Step2Property({
           <span>30棟以上</span>
         </div>
       </div>
-
-      {/* No prior operation toggle */}
-      <label className="flex items-start gap-2 cursor-pointer select-none border-t border-rule pt-4">
-        <input
-          type="checkbox"
-          checked={noPriorOperation}
-          onChange={(e) => onNoPriorOperation(e.target.checked)}
-          className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
-        />
-        <span className="text-[13px] leading-relaxed text-dark-gray">
-          売上実績がまだない / 運用開始前（売上・運用年数の入力をスキップ）
-        </span>
-      </label>
     </div>
   );
 }
