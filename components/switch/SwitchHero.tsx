@@ -107,14 +107,14 @@ export default function SwitchHero({
                 <h1 className="font-bold leading-[1.2] mb-3 sm:mb-4 tracking-tight">
                   {/* モバイル（〜640px）: 1行表示 */}
                   <span className="block sm:hidden text-[34px] whitespace-nowrap">
-                    <span className="gradient-highlight-box">民泊運用</span>
+                    <span className="text-white font-bold">民泊運用</span>
                     <span className="text-white">の</span>
                     <span className="gradient-highlight-box">ぜんぶ</span>
                     <span className="text-white">を</span>
                   </span>
                   {/* sm+: 2行表示（既存デザイン） */}
                   <span className="hidden sm:block text-[44px] lg:text-[52px]">
-                    <span className="gradient-highlight-box">民泊運用</span>
+                    <span className="text-white font-bold">民泊運用</span>
                     <span className="text-white">の</span>
                   </span>
                   <span className="hidden sm:block text-[44px] lg:text-[52px] mt-1.5">
