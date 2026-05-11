@@ -73,7 +73,7 @@ export default function SwitchHeroPortal() {
                     <span className="block text-[30px] sm:text-[40px] lg:text-[48px] mt-1.5">
                       <span
                         className="gradient-highlight-box"
-                        style={{ display: "inline-block", lineHeight: "1.05", paddingBottom: 0 }}
+                        style={{ display: "inline-block", lineHeight: "1.0", paddingBottom: 0 }}
                       >
                         リアルタイム
                       </span>
@@ -217,7 +217,7 @@ export default function SwitchHeroPortal() {
                   <span className="block text-[30px] sm:text-[40px] mt-1.5">
                     <span
                       className="gradient-highlight-box"
-                      style={{ display: "inline-block", lineHeight: "1.05", paddingBottom: 0 }}
+                      style={{ display: "inline-block", lineHeight: "1.0", paddingBottom: 0 }}
                     >
                       リアルタイム
                     </span>
