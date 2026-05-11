@@ -46,9 +46,9 @@ export default function SwitchTestimonials() {
   const ref = useScrollFade();
 
   return (
-    <section className="py-16 sm:py-20 bg-switch-cloud" ref={ref}>
+    <section className="py-12 sm:py-16 bg-switch-cloud" ref={ref}>
       <div className="max-w-5xl mx-auto px-6">
-        <div className="fade-in mb-12">
+        <div className="fade-in mb-8">
           <SectionHead
             enLabel="実際のオーナー様の声"
             jaTitle={<>切り替えた人の、リアルな結果。</>}
@@ -56,7 +56,7 @@ export default function SwitchTestimonials() {
         </div>
 
         {/* 改善実績バナー */}
-        <div className="fade-in grid grid-cols-3 gap-2 sm:gap-5 mb-10">
+        <div className="fade-in grid grid-cols-3 gap-2 sm:gap-4 mb-6">
           {[
             { label: "稼働率改善（実例）", value: "58%→82%", sub: "+24pt" },
             { label: "月売上改善（実例）", value: "45万→76万", sub: "+69%" },
@@ -64,15 +64,15 @@ export default function SwitchTestimonials() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-white rounded-lg border border-switch-teal/20 shadow-sm px-2 py-4 sm:px-3 text-center"
+              className="bg-white rounded-lg border border-switch-teal/20 shadow-sm px-2 py-3 sm:px-3 text-center"
             >
-              <p className="text-[12px] sm:text-2xl font-bold text-switch-teal-deep leading-none tabular-nums whitespace-nowrap">
+              <p className="text-[12px] sm:text-xl font-bold text-switch-teal-deep leading-none tabular-nums whitespace-nowrap">
                 {stat.value}
               </p>
               <p className="text-[10px] sm:text-xs font-bold text-switch-teal mt-1 tabular-nums">
                 {stat.sub}
               </p>
-              <p className="text-[9px] sm:text-[10px] text-switch-gray-mid mt-1.5 leading-tight">
+              <p className="text-[9px] sm:text-[10px] text-switch-gray-mid mt-1 leading-tight">
                 {stat.label}
               </p>
             </div>
@@ -88,28 +88,28 @@ export default function SwitchTestimonials() {
             >
               {/* Impact */}
               <div
-                className={`bg-gradient-to-br ${t.color} p-4 sm:p-6 text-center text-white relative overflow-hidden`}
+                className={`bg-gradient-to-br ${t.color} p-3 sm:p-5 text-center text-white relative overflow-hidden`}
               >
-                <p className="text-[40px] sm:text-6xl font-bold leading-none tabular-nums tracking-tight">
-                  {t.impactSub && <span className="text-2xl mr-1">{t.impactSub}</span>}
+                <p className="text-[36px] sm:text-5xl font-bold leading-none tabular-nums tracking-tight">
+                  {t.impactSub && <span className="text-xl mr-1">{t.impactSub}</span>}
                   {t.impact}
                   {t.impactUnit && (
-                    <span className="text-xl sm:text-2xl ml-0.5">
+                    <span className="text-lg sm:text-xl ml-0.5">
                       {t.impactUnit}
                     </span>
                   )}
                 </p>
-                <p className="text-[11px] text-white/90 font-bold tracking-widest mt-3">
+                <p className="text-[11px] text-white/90 font-bold tracking-widest mt-2">
                   {t.impactLabel}
                 </p>
               </div>
 
-              <div className="p-5 flex flex-col flex-1">
-                <div className="flex gap-0.5 mb-3">
+              <div className="p-4 flex flex-col flex-1">
+                <div className="flex gap-0.5 mb-2">
                   {[...Array(5)].map((_, j) => (
                     <svg
                       key={j}
-                      className="w-5 h-5 text-switch-teal-bright"
+                      className="w-4 h-4 text-switch-teal-bright"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -118,11 +118,11 @@ export default function SwitchTestimonials() {
                   ))}
                 </div>
 
-                <p className="text-base text-switch-charcoal leading-normal mb-3">
+                <p className="text-[15px] text-switch-charcoal leading-relaxed mb-3">
                   「{t.text}」
                 </p>
 
-                <div className="mt-auto pt-3 border-t border-switch-gray-light">
+                <div className="mt-auto pt-2.5 border-t border-switch-gray-light">
                   <p className="text-sm font-bold text-switch-charcoal">
                     {t.name}{" "}
                     <span className="text-xs text-switch-gray-mid">
