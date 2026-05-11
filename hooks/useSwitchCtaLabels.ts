@@ -18,7 +18,7 @@ export function useSwitchCtaLabels(): SwitchCtaLabels {
   if (pathname?.startsWith("/switch/portal")) {
     return {
       primary: "アプリのデモを予約する",
-      sticky: "運用に関するご相談はこちら",
+      sticky: "運用のご相談はこちら",
       header: "アプリのデモを予約する",
     };
   }
