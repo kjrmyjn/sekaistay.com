@@ -49,8 +49,8 @@ type SwitchReportFormEmbedProps = {
 export default function SwitchReportFormEmbed({
   variant = "full",
   heading = "無料パーソナライズ診断",
-  leadCopy = "3分で入力、次営業日にあなた専用レポートを送付",
-  subCopy = "民泊に強い専門の担当者が、診断レポートを作成します。無理な勧誘は致しません。",
+  leadCopy,
+  subCopy,
 }: SwitchReportFormEmbedProps = {}) {
   const ref = useScrollFade();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -173,12 +173,8 @@ export default function SwitchReportFormEmbed({
             </svg>
             {heading}
           </h2>
-          <p className="text-white font-bold text-base sm:text-lg leading-snug mb-2">
-            {leadCopy}
-          </p>
-          <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-xl mx-auto">
-            {subCopy}
-          </p>
+          {leadCopy && <p className="text-white font-bold text-base sm:text-lg leading-snug mb-2">{leadCopy}</p>}
+          {subCopy && <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-xl mx-auto">{subCopy}</p>}
         </div>
 
         <div className="fade-in bg-white rounded-2xl p-4 sm:p-6 shadow-2xl">

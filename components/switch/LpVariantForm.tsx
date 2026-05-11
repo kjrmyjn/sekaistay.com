@@ -18,8 +18,8 @@ type Props = {
 export default function LpVariantForm({
   lpVariant,
   heading = "無料パーソナライズ診断",
-  leadCopy = "60秒入力で、24時間以内に診断レポートをお届け",
-  subCopy = "30秒入力で無料面談を予約。無料レポートをお送り致します。",
+  leadCopy,
+  subCopy,
 }: Props) {
   return (
     <section
@@ -56,8 +56,8 @@ export default function LpVariantForm({
             </svg>
             {heading}
           </h2>
-          <p className="text-white font-bold text-base sm:text-lg leading-snug mb-2">{leadCopy}</p>
-          <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-xl mx-auto">{subCopy}</p>
+          {leadCopy && <p className="text-white font-bold text-base sm:text-lg leading-snug mb-2">{leadCopy}</p>}
+          {subCopy && <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-xl mx-auto">{subCopy}</p>}
         </div>
 
         <div className="bg-white rounded-2xl p-2 sm:p-4 shadow-2xl">
