@@ -95,7 +95,7 @@ export default function SwitchHeroPortal() {
                       aria-hidden
                     />
                     <span className="relative text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                    <span className="relative gradient-text-mega text-[28px] sm:text-[32px] font-bold tabular-nums leading-none">8%</span>
+                    <span className="relative gradient-text-mega text-[24px] sm:text-[28px] font-bold tabular-nums leading-none">8%</span>
                     <span className="relative text-[11px] text-white/55">+ ¥10,000/月</span>
                   </div>
 
@@ -312,7 +312,7 @@ export default function SwitchHeroPortal() {
                     aria-hidden
                   />
                   <span className="relative text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                  <span className="relative gradient-text-mega text-[28px] sm:text-[32px] font-bold tabular-nums leading-none">8%</span>
+                  <span className="relative gradient-text-mega text-[24px] sm:text-[28px] font-bold tabular-nums leading-none">8%</span>
                   <span className="relative text-[11px] text-white/55">+ ¥10,000/月</span>
                 </div>
                 <a
