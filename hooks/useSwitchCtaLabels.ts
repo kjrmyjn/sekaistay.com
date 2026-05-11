@@ -34,6 +34,6 @@ export function useSwitchCtaLabels(): SwitchCtaLabels {
   return {
     primary: "無料で診断レポートをもらう",
     sticky: "無料で診断",
-    header: "運用に関するご相談はこちら",
+    header: "運用のご相談はこちら",
   };
 }
