@@ -217,6 +217,7 @@ export async function POST(req: NextRequest) {
     if (capiOutcome.status === "rejected") {
       console.warn(`[submit] meta-capi threw (lead=${row.id}): ${capiOutcome.reason}`);
     }
+    console.log(`[submit] done lead=${row.id} eventId=${eventId} kind=${kind} capiPath=${kind === "test" ? "skipped" : "attempted"} capiOutcome=${capiOutcome.status}`);
     return NextResponse.json({ id: row.id, status: "received", eventId }, { status: 200 });
   } catch (err: any) {
     console.error("[submit] insert failed:", err?.message || err);
