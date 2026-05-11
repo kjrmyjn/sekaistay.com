@@ -313,12 +313,13 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           commission_rate: form.commissionRate,
         });
         // Meta Pixel Lead: サーバ側 CAPI と同じ eventID を渡して dedup を効かせる。
+        // currency/value は Meta Diagnostics 「Send valid currency information」要件のため必須。
         const eventID = typeof data?.eventId === "string" ? data.eventId : undefined;
         // @ts-ignore
         window.fbq?.(
           "track",
           "Lead",
-          { lp_variant: lpVariant || "direct", content_name: "report_request" },
+          { lp_variant: lpVariant || "direct", content_name: "report_request", currency: "JPY", value: 0 },
           eventID ? { eventID } : undefined,
         );
         // CompleteRegistration: フォーム送信成功時の高品質シグナル (KGI トラッキング用)。
@@ -330,6 +331,8 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           window.fbq?.("track", "CompleteRegistration", {
             lp_variant: lpVariant || "direct",
             form_id: lpVariant || "report-request",
+            currency: "JPY",
+            value: 0,
           });
         }
       } catch {}

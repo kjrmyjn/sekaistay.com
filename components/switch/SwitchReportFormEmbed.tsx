@@ -89,7 +89,7 @@ export default function SwitchReportFormEmbed({
         w.gtag("event", "lead_cta_click", { cta: label });
       }
       if (typeof w.fbq === "function") {
-        w.fbq("track", "Lead", { source: "cta_click", cta: label });
+        w.fbq("track", "Lead", { source: "cta_click", cta: label, currency: "JPY", value: 0 });
       }
     };
     document.addEventListener("click", onCtaClick, { capture: true });
@@ -117,7 +117,7 @@ export default function SwitchReportFormEmbed({
         // Meta Pixel: フォーム送信完了は CompleteRegistration（Lead は CTA クリック側で計上）。
         // これで「結果（=Lead）」は CTA 押下数で集計され、CompleteRegistration は高品質シグナルに分離。
         if (typeof w.fbq === "function") {
-          w.fbq("track", "CompleteRegistration", { form_id: formId });
+          w.fbq("track", "CompleteRegistration", { form_id: formId, currency: "JPY", value: 0 });
         }
         return;
       }
