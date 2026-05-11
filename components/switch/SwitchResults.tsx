@@ -61,8 +61,8 @@ export default function SwitchResults() {
           </h3>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 mt-6">
-          <div className="rounded-md overflow-hidden bg-white border border-switch-gray-light">
+        <div className="flex sm:grid sm:grid-cols-2 gap-4 sm:gap-6 mt-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-6 sm:mx-0 px-6 sm:px-0 pb-3 sm:pb-0 touch-pan-x sm:touch-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light">
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src="/images/switch/property-villa.jpg"
@@ -101,7 +101,7 @@ export default function SwitchResults() {
             </div>
           </div>
 
-          <div className="rounded-md overflow-hidden bg-white border border-switch-gray-light">
+          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light">
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src="/images/switch/property-cabin.jpg"
