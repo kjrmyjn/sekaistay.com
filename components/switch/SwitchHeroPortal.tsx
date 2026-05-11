@@ -101,9 +101,9 @@ export default function SwitchHeroPortal() {
                       <CountUp
                         target={8}
                         initialValue={8}
-                        className="gradient-text-mega text-[5.5rem] sm:text-[8.5rem] lg:text-[9rem] font-bold leading-none tabular-nums pr-1"
+                        className="gradient-text-mega text-[5.5rem] sm:text-[8.5rem] lg:text-[10rem] font-bold leading-none tabular-nums pr-1"
                       />
-                      <span className="gradient-text-mega text-6xl sm:text-8xl lg:text-[7rem] font-bold leading-none">
+                      <span className="gradient-text-mega text-6xl sm:text-8xl lg:text-[7.5rem] font-bold leading-none">
                         %
                       </span>
                     </div>
