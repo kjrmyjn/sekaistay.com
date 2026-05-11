@@ -19,7 +19,7 @@
 - [x] Meta Pixel (`989839370242915`) layout.tsx 実装済み（2026-05-10 切替）
 - [x] Meta CAPI アクセストークン → Vercel env 登録済み (2026-05-09)
 - [x] X Ads アカウント @tenichiliu 開通済み・Campaign 画面到達確認 (2026-05-09)
-- [x] LP variants 5 種（switch / switch-lite / switch-short / switch-founder / switch-portal）実装済み
+- [x] LP variants 3 種（switch / switch/portal / switch/founder）実装済み（switch-lite と switch/short は試作のため削除 2026-05-12）
 - [x] フォーム送信 API（/api/report-requests/submit → Supabase + CRM 転送）実装済み
 - [x] 訴求パターン × LP マッピング確定（価格主導 / ポータル主導 / 信頼主導）(2026-05-09)
 - [x] Privacy Policy に Meta CAPI 言及済み
@@ -68,7 +68,7 @@
 - [ ] PR5: サンクスページ作成（/contact/thanks・X CV URL ベース方式用） @impact:6 @urgency:5 @effort:2
 - [ ] (人間) Google Ads 初回キャンペーン設定（キーワード選定・CPA 目標入札・日予算 ¥17k） @impact:9 @urgency:7 @effort:3
 - [ ] (人間) Meta Ads 初回キャンペーン設定（3 パターン × 3 LP AB テスト・日予算 ¥13k） @impact:9 @urgency:7 @effort:3
-- [ ] (人間) X Ads 初回キャンペーン設定（/switch + /switch/short・日予算 ¥5k → 慣らし ¥3k） @impact:7 @urgency:6 @effort:2
+- [ ] (人間) X Ads 初回キャンペーン設定（/switch + /switch/portal・日予算 ¥5k → 慣らし ¥3k） @impact:7 @urgency:6 @effort:2
 - [ ] (人間) 本人画像・クリエイティブ素材準備（IMAGES_MANIFEST.md から選定 + 追加撮影判断） @impact:7 @urgency:6 @effort:2
 
 ---
