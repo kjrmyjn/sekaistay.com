@@ -365,7 +365,6 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
 
         <div className="mt-5 mb-1">
           <p className="text-[13px] leading-relaxed text-mid-gray">
-            {step === 1 && "物件診断レポート無料作成　3項目で、1営業日以内にメールで専用レポートをお届けします。"}
             {step === 2 && "あと2項目で、1営業日以内にメールで専用レポートをお届けします。"}
             {step === 3 && "こちらをもとにいただいたメールに専用レポートをお届けします。"}
           </p>
@@ -680,6 +679,26 @@ function Step2Property({
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Operating years */}
+      <div>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">運用年数</label>
+        <div className="text-[20px] font-bold text-sekai-teal mb-2">{YEARS_STOPS[yearsIdx]?.label ?? ""}</div>
+        <input
+          type="range"
+          min={0}
+          max={YEARS_STOPS.length - 1}
+          step={1}
+          value={yearsIdx}
+          onChange={(e) => onYearsIdx(parseInt(e.target.value, 10))}
+          className="w-full accent-sekai-teal"
+        />
+        <div className="flex justify-between text-[10px] text-mid-gray mt-1">
+          {YEARS_STOPS.map((s) => (
+            <span key={s.value}>{s.label}</span>
+          ))}
+        </div>
+      </div>
+
       {/* Peak revenue */}
       <div>
         <label className="block text-[14px] font-semibold mb-1 text-ink">ピーク月の売上（1物件あたり）</label>
@@ -718,26 +737,6 @@ function Step2Property({
         </div>
       </div>
 
-      {/* Operating years */}
-      <div>
-        <label className="block text-[14px] font-semibold mb-1 text-ink">運用年数</label>
-        <div className="text-[20px] font-bold text-sekai-teal mb-2">{YEARS_STOPS[yearsIdx]?.label ?? ""}</div>
-        <input
-          type="range"
-          min={0}
-          max={YEARS_STOPS.length - 1}
-          step={1}
-          value={yearsIdx}
-          onChange={(e) => onYearsIdx(parseInt(e.target.value, 10))}
-          className="w-full accent-sekai-teal"
-        />
-        <div className="flex justify-between text-[10px] text-mid-gray mt-1">
-          {YEARS_STOPS.map((s) => (
-            <span key={s.value}>{s.label}</span>
-          ))}
-        </div>
-      </div>
-
       {/* Property name search */}
       <div className="relative">
         <label className="block text-[14px] font-semibold mb-2 text-ink">
@@ -749,7 +748,7 @@ function Step2Property({
           onChange={(e) => onAirbnbUrl(e.target.value)}
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
-          placeholder="物件名で検索"
+          placeholder="2文字以上で検索を開始"
           disabled={noPropertyYet}
           className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
