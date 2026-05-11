@@ -371,7 +371,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
 
         <h2 className="text-[18px] font-semibold text-ink mt-5 mb-1">
           {step === 1 && "今の運営代行の手数料を教えてください"}
-          {step === 2 && "メインの物件の情報を教えてください"}
+          {step === 2 && "物件の情報を教えてください"}
           {step === 3 && "レポートをお届けするご連絡先を教えてください"}
         </h2>
 
@@ -793,7 +793,7 @@ function Step2Property({
 
       {/* Total properties */}
       <div>
-        <label className="block text-[14px] font-semibold mb-1 text-ink">全ての管理物件数</label>
+        <label className="block text-[14px] font-semibold mb-1 text-ink">他にも物件を管理されてますか？</label>
         <div className="text-[20px] font-bold text-sekai-teal mb-2">{formatProperties(totalProperties)}</div>
         <input
           type="range"
