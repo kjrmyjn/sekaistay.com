@@ -499,16 +499,21 @@ function ProgressBar({ step }: { step: Step }) {
 function Step1Fee({
   commissionRate,
   onChange,
+  startingNew,
+  onStartingNew,
 }: {
   commissionRate: string;
   onChange: (v: string) => void;
+  startingNew: boolean;
+  onStartingNew: (v: boolean) => void;
 }) {
   const isCardValue = (FEE_CARDS as readonly string[]).includes(commissionRate);
   const otherSelected = !isCardValue && commissionRate !== "";
+  const dimmed = startingNew ? "opacity-40 pointer-events-none" : "";
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className={`grid grid-cols-2 gap-2.5 transition-opacity ${dimmed}`}>
         {FEE_CARDS.map((v) => {
           const selected = commissionRate === v;
           return (
@@ -516,6 +521,7 @@ function Step1Fee({
               key={v}
               type="button"
               onClick={() => onChange(v)}
+              disabled={startingNew}
               className={`rounded-xl py-5 text-[20px] font-bold border-2 transition-all active:scale-[0.98] ${
                 selected
                   ? "bg-sekai-teal text-white border-sekai-teal shadow-sm"
@@ -536,6 +542,7 @@ function Step1Fee({
           <select
             value={otherSelected ? commissionRate : ""}
             onChange={(e) => onChange(e.target.value)}
+            disabled={startingNew}
             className={`w-full h-full px-4 py-5 text-center text-[15px] font-semibold rounded-xl appearance-none cursor-pointer bg-transparent focus:outline-none focus:ring-2 focus:ring-sekai-teal/30 ${
               otherSelected ? "text-white" : "text-ink"
             }`}
@@ -556,6 +563,17 @@ function Step1Fee({
           </span>
         </div>
       </div>
+      <label className="flex items-start gap-2 mt-1 cursor-pointer select-none">
+        <input
+          type="checkbox"
+          checked={startingNew}
+          onChange={(e) => onStartingNew(e.target.checked)}
+          className="mt-0.5 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
+        />
+        <span className="text-[13px] leading-relaxed text-dark-gray">
+          これから民泊を始める方
+        </span>
+      </label>
     </div>
   );
 }
