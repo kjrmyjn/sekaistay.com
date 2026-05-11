@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useScrollFade } from "@/hooks/useScrollFade";
 import { useSwitchCtaLabels } from "@/hooks/useSwitchCtaLabels";
 import SectionHead from "./deco/SectionHead";
@@ -26,7 +27,9 @@ const rows: Row[] = [
 
 export default function SwitchComparison() {
   const ref = useScrollFade();
+  const pathname = usePathname();
   const { primary: ctaLabel } = useSwitchCtaLabels();
+  const showCta = !pathname?.startsWith("/switch/portal");
 
   return (
     <section className="py-16 sm:py-20 bg-switch-cloud" ref={ref}>
@@ -142,23 +145,25 @@ export default function SwitchComparison() {
           </div>
         </div>
 
-        {/* CTA — バッジ直下 */}
-        <div className="fade-in mt-6 flex justify-center">
-          <a
-            href="#contact-form"
-            className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-sm sm:text-base px-8 sm:px-10 py-4 rounded-md shadow-[0_0_32px_rgba(235,110,40,0.3)] hover:shadow-[0_0_48px_rgba(235,110,40,0.45)] hover:-translate-y-0.5 transition-all min-h-[48px]"
-          >
-            {ctaLabel}
-            <svg
-              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        {/* CTA — バッジ直下（/switch では非表示） */}
+        {showCta && (
+          <div className="fade-in mt-6 flex justify-center">
+            <a
+              href="#contact-form"
+              className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-sm sm:text-base px-8 sm:px-10 py-4 rounded-md shadow-[0_0_32px_rgba(235,110,40,0.3)] hover:shadow-[0_0_48px_rgba(235,110,40,0.45)] hover:-translate-y-0.5 transition-all min-h-[48px]"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
+              {ctaLabel}
+              <svg
+                className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        )}
 
         <p className="fade-in text-xs text-switch-gray-mid text-center mt-6">
           ※ 他社の相場は2026年4月時点で当社調べ。契約内容により異なります。

@@ -6,6 +6,7 @@
  */
 
 import { useEffect, useState } from "react";
+import CountUp from "./deco/CountUp";
 import DotPattern from "./deco/DotPattern";
 
 export default function SwitchHeroPortal() {
@@ -19,6 +20,9 @@ export default function SwitchHeroPortal() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.08),transparent_60%)] pointer-events-none" aria-hidden />
         <p className="relative flex items-center justify-center flex-wrap gap-x-2 gap-y-1 sm:gap-x-3 text-[11px] sm:text-base font-bold tracking-wide">
           <span className="inline-flex items-center gap-1 bg-gradient-to-br from-yellow-300 to-yellow-500 text-black text-[10px] sm:text-xs font-bold px-1.5 sm:px-2.5 py-0.5 rounded-sm shrink-0 shadow-[0_0_12px_rgba(251,191,36,0.4)] whitespace-nowrap">
+            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
             限定
           </span>
           <span className="text-white whitespace-nowrap">先着10オーナー</span>
@@ -29,6 +33,13 @@ export default function SwitchHeroPortal() {
             <span aria-hidden className="text-white/50">→</span>
             <span className="text-yellow-400 font-bold text-[15px] sm:text-lg tracking-wider">¥0</span>
             <span className="text-[9px] sm:text-[10px] text-white/45 font-normal tracking-normal ml-0.5">※既存物件</span>
+          </span>
+          <span className="hidden sm:inline text-white/40">／</span>
+          <span className="inline-flex items-center gap-1 whitespace-nowrap">
+            <svg className="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+            </svg>
+            <span className="text-[11px] sm:text-xs text-white/90">〆切 <span className="text-yellow-400 font-bold tracking-wider">5/31</span></span>
           </span>
         </p>
       </div>
@@ -73,16 +84,35 @@ export default function SwitchHeroPortal() {
                     <span className="text-switch-teal-bright font-bold">透明性</span>を。
                   </p>
 
-                  <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed mb-7">
-                    予約状況・売上・経費・清掃 — オーナー専用ダッシュボードで全数値が手元に。
-                    <br className="hidden sm:block" />
-                    「任せきり」から、「いつでも見れる」運営へ。
+                  <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed mb-5">
+                    予約・売上・経費・清掃 — 数字は全部、手元で動いてる。
                   </p>
 
-                  <div className="inline-flex items-baseline gap-2 mb-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
-                    <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                    <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
-                    <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
+                  {/* 8% ブロック — /switch と同じ巨大グロー版 */}
+                  <div className="mb-6 relative">
+                    <div
+                      className="absolute left-1/2 lg:left-[20%] top-[30%] -translate-x-1/2 lg:translate-x-0 w-[180px] h-[140px] bg-switch-teal-bright/15 blur-[70px] rounded-full pointer-events-none"
+                      aria-hidden
+                    />
+                    <div className="relative flex items-end justify-center lg:justify-start gap-2 mb-1 overflow-visible">
+                      <span className="inline-flex items-center text-lg sm:text-xl lg:text-2xl font-bold text-white/80 tracking-wider leading-none">
+                        手数料
+                      </span>
+                      <CountUp
+                        target={8}
+                        initialValue={8}
+                        className="gradient-text-mega text-[5.5rem] sm:text-[8.5rem] lg:text-[9rem] font-bold leading-none tabular-nums pr-1"
+                      />
+                      <span className="gradient-text-mega text-6xl sm:text-8xl lg:text-[7rem] font-bold leading-none">
+                        %
+                      </span>
+                    </div>
+                    <p className="relative text-[13px] sm:text-[15px] text-white/90 mt-2 tracking-wide font-semibold">
+                      <span className="text-white">＋ ¥10,000</span>
+                      <span className="text-white/60 text-[11px] sm:text-xs mx-1">/ 物件 / 月</span>
+                      <span className="inline-block mx-2 w-px h-3 bg-white/25 align-middle" aria-hidden />
+                      <span className="text-white/75 text-[11px] sm:text-xs">その他の費用は一切なし</span>
+                    </p>
                   </div>
 
                   <div className="flex flex-col lg:items-start items-center">
@@ -148,9 +178,18 @@ export default function SwitchHeroPortal() {
                     <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] lg:bottom-20 lg:right-[12%] z-20" label="ピーク売上" value="+18%" trend="up" />
                   </div>
 
-                  <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 text-center max-w-md tracking-wide leading-relaxed">
-                    予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
-                  </p>
+                  <div className="mt-3 sm:mt-4 flex flex-col items-center gap-1.5 sm:gap-2 relative z-20">
+                    <span className="inline-flex items-center gap-1 bg-gradient-to-br from-yellow-300 to-yellow-500 text-black text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm shadow-[0_0_14px_rgba(251,191,36,0.4)] tracking-[0.15em]">
+                      <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      日本初
+                    </span>
+                    <p className="text-[11px] sm:text-sm text-white/80 tracking-wide font-semibold leading-relaxed text-center">
+                      <span className="block">あなたの物件を、<span className="text-switch-teal-bright">リアルタイム</span>でみえる「専用ダッシュボード」で、</span>
+                      <span className="block">透明性の高い民泊運用を</span>
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -200,9 +239,7 @@ export default function SwitchHeroPortal() {
                   <span className="text-switch-teal-bright font-bold">透明性</span>を。
                 </p>
                 <p className="text-[13px] sm:text-[14px] text-white/60 leading-relaxed">
-                  予約状況・売上・経費・清掃 — オーナー専用ダッシュボードで全数値が手元に。
-                  <br className="hidden sm:block" />
-                  「任せきり」から、「いつでも見れる」運営へ。
+                  予約・売上・経費・清掃 — 数字は全部、手元で動いてる。
                 </p>
               </div>
 
@@ -250,9 +287,18 @@ export default function SwitchHeroPortal() {
                   <FloatingDataChip className="absolute bottom-1 left-0 sm:bottom-4 sm:left-[-1%] z-20" label="稼働率" value="74%" trend="up" />
                   <FloatingDataChip className="absolute bottom-6 right-2 sm:bottom-14 sm:right-[8%] z-20" label="ピーク売上" value="+18%" trend="up" />
                 </div>
-                <p className="text-[11px] sm:text-[12px] text-white/55 mt-3 sm:mt-4 max-w-md tracking-wide leading-relaxed">
-                  予約・売上・経費・清掃 — <span className="text-switch-teal-bright font-semibold">数字は全部、手元で動いてる。</span>
-                </p>
+                <div className="mt-3 sm:mt-4 flex flex-col items-center gap-1.5 sm:gap-2 relative z-20">
+                  <span className="inline-flex items-center gap-1 bg-gradient-to-br from-yellow-300 to-yellow-500 text-black text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm shadow-[0_0_14px_rgba(251,191,36,0.4)] tracking-[0.15em]">
+                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    日本初
+                  </span>
+                  <p className="text-[11px] sm:text-sm text-white/80 tracking-wide font-semibold leading-relaxed text-center">
+                    <span className="block">あなたの物件を、<span className="text-switch-teal-bright">リアルタイム</span>でみえる「専用ダッシュボード」で、</span>
+                    <span className="block">透明性の高い民泊運用を</span>
+                  </p>
+                </div>
               </div>
 
               {/* 4. Trust ライン + footnote */}
@@ -273,12 +319,28 @@ export default function SwitchHeroPortal() {
                 </p>
               </div>
 
-              {/* 5. 8% pill → デモボタン → 60秒キャプション */}
+              {/* 5. 8% glow → デモボタン → 60秒キャプション */}
               <div className="flex flex-col items-center w-full">
-                <div className="inline-flex items-baseline gap-2 mb-4 px-4 py-2.5 rounded-md bg-white/5 border border-white/10">
-                  <span className="text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
-                  <span className="text-[24px] sm:text-[28px] font-bold text-yellow-400 tabular-nums leading-none">8%</span>
-                  <span className="text-[11px] text-white/55">+ ¥10,000/月</span>
+                <div className="mb-4 relative">
+                  <div
+                    className="absolute left-1/2 top-[30%] -translate-x-1/2 w-[180px] h-[140px] bg-switch-teal-bright/15 blur-[70px] rounded-full pointer-events-none"
+                    aria-hidden
+                  />
+                  <div className="relative flex items-end justify-center gap-2 mb-1 overflow-visible">
+                    <span className="inline-flex items-center text-lg sm:text-xl font-bold text-white/80 tracking-wider leading-none">
+                      手数料
+                    </span>
+                    <span className="gradient-text-mega text-[5.5rem] sm:text-[8.5rem] font-bold leading-none tabular-nums pr-1">
+                      8
+                    </span>
+                    <span className="gradient-text-mega text-6xl sm:text-8xl font-bold leading-none">
+                      %
+                    </span>
+                  </div>
+                  <p className="relative text-[13px] sm:text-[15px] text-white/90 mt-2 tracking-wide font-semibold text-center">
+                    <span className="text-white">＋ ¥10,000</span>
+                    <span className="text-white/60 text-[11px] sm:text-xs mx-1">/ 物件 / 月</span>
+                  </p>
                 </div>
                 <a
                   href="#contact-form"

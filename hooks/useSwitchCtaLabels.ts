@@ -9,16 +9,17 @@ import { usePathname } from "next/navigation";
 export type SwitchCtaLabels = {
   primary: string;
   sticky: string;
+  header: string;
 };
 
 export function useSwitchCtaLabels(): SwitchCtaLabels {
   const pathname = usePathname();
 
   if (pathname?.startsWith("/switch/portal")) {
-    // header の primary CTA は /switch と同じ文言で統一（2026-05-09 テンイチ指示）
     return {
-      primary: "無料で診断レポートをもらう",
-      sticky: "無料相談はこちら",
+      primary: "アプリのデモを予約する",
+      sticky: "運用に関するご相談はこちら",
+      header: "アプリのデモを予約する",
     };
   }
 
@@ -26,11 +27,13 @@ export function useSwitchCtaLabels(): SwitchCtaLabels {
     return {
       primary: "専門家に相談する",
       sticky: "無料面談はこちら",
+      header: "専門家に相談する",
     };
   }
 
   return {
     primary: "無料で診断レポートをもらう",
     sticky: "無料で診断",
+    header: "運用に関するご相談はこちら",
   };
 }
