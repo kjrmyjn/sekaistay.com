@@ -132,6 +132,8 @@ export default function SwitchPage() {
           <LpVariantForm
             lpVariant="switch"
             heading="まずはご相談だけでもどうぞ"
+            leadCopy="物件診断レポート無料作成"
+            subCopy={<>たったの<strong className="font-bold text-white">&quot;3項目&quot;</strong>で、1営業日以内にメールで専用レポートをお届けします。</>}
           />
         </div>
 
