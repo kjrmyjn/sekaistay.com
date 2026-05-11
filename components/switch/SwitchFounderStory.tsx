@@ -64,7 +64,7 @@ export default function SwitchFounderStory() {
               data-cta-label="founder-story-cta"
               className="group inline-flex items-center justify-center bg-switch-accent hover:bg-switch-accent-hover text-white font-bold text-[14px] sm:text-[15px] px-7 sm:px-9 py-3.5 sm:py-4 rounded-md transition-colors duration-300 shadow-md tracking-wide"
             >
-              45 分無料面談を予約する
+              無料面談を予約する
               <svg className="ml-2.5 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
