@@ -6,7 +6,6 @@
  */
 
 import { useEffect, useState } from "react";
-import CountUp from "./deco/CountUp";
 import DotPattern from "./deco/DotPattern";
 
 export default function SwitchHeroPortal() {
@@ -88,31 +87,16 @@ export default function SwitchHeroPortal() {
                     予約・売上・経費・清掃 — 数字は全部、手元で動いてる。
                   </p>
 
-                  {/* 8% ブロック — /switch と同じ巨大グロー版 */}
-                  <div className="mb-6 relative">
-                    <div
-                      className="absolute left-1/2 lg:left-[20%] top-[30%] -translate-x-1/2 lg:translate-x-0 w-[180px] h-[140px] bg-switch-teal-bright/15 blur-[70px] rounded-full pointer-events-none"
+                  {/* 8% ブロック — コンパクト版（8%だけ光る） */}
+                  <div className="relative inline-flex items-baseline gap-2 mb-6 px-4 py-2.5 rounded-md bg-white/5 border border-white/10 overflow-visible">
+                    <span
+                      className="absolute -inset-2 bg-switch-teal-bright/25 blur-[24px] rounded-full pointer-events-none"
+                      style={{ left: "38%", right: "32%" }}
                       aria-hidden
                     />
-                    <div className="relative flex items-end justify-center lg:justify-start gap-2 mb-1 overflow-visible">
-                      <span className="inline-flex items-center text-lg sm:text-xl lg:text-2xl font-bold text-white/80 tracking-wider leading-none">
-                        手数料
-                      </span>
-                      <CountUp
-                        target={8}
-                        initialValue={8}
-                        className="gradient-text-mega text-[5.5rem] sm:text-[8.5rem] lg:text-[10rem] font-bold leading-none tabular-nums pr-1"
-                      />
-                      <span className="gradient-text-mega text-6xl sm:text-8xl lg:text-[7.5rem] font-bold leading-none">
-                        %
-                      </span>
-                    </div>
-                    <p className="relative text-[13px] sm:text-[15px] text-white/90 mt-2 tracking-wide font-semibold">
-                      <span className="text-white">＋ ¥10,000</span>
-                      <span className="text-white/60 text-[11px] sm:text-xs mx-1">/ 物件 / 月</span>
-                      <span className="inline-block mx-2 w-px h-3 bg-white/25 align-middle" aria-hidden />
-                      <span className="text-white/75 text-[11px] sm:text-xs">その他の費用は一切なし</span>
-                    </p>
+                    <span className="relative text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
+                    <span className="relative gradient-text-mega text-[28px] sm:text-[32px] font-bold tabular-nums leading-none">8%</span>
+                    <span className="relative text-[11px] text-white/55">+ ¥10,000/月</span>
                   </div>
 
                   <div className="flex flex-col lg:items-start items-center">
@@ -122,7 +106,7 @@ export default function SwitchHeroPortal() {
                       data-cta-label="portal-primary"
                       className="group w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] sm:text-lg px-4 sm:px-9 py-3.5 sm:py-4 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
                     >
-                      SEKAI STAYのデモ
+                      SEKAI STAYアプリのデモ
                       <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
@@ -319,28 +303,17 @@ export default function SwitchHeroPortal() {
                 </p>
               </div>
 
-              {/* 5. 8% glow → デモボタン → 60秒キャプション */}
+              {/* 5. 8% pill → デモボタン → 60秒キャプション */}
               <div className="flex flex-col items-center w-full">
-                <div className="mb-4 relative">
-                  <div
-                    className="absolute left-1/2 top-[30%] -translate-x-1/2 w-[180px] h-[140px] bg-switch-teal-bright/15 blur-[70px] rounded-full pointer-events-none"
+                <div className="relative inline-flex items-baseline gap-2 mb-4 px-4 py-2.5 rounded-md bg-white/5 border border-white/10 overflow-visible">
+                  <span
+                    className="absolute -inset-2 bg-switch-teal-bright/25 blur-[24px] rounded-full pointer-events-none"
+                    style={{ left: "38%", right: "32%" }}
                     aria-hidden
                   />
-                  <div className="relative flex items-end justify-center gap-2 mb-1 overflow-visible">
-                    <span className="inline-flex items-center text-lg sm:text-xl font-bold text-white/80 tracking-wider leading-none">
-                      手数料
-                    </span>
-                    <span className="gradient-text-mega text-[5.5rem] sm:text-[8.5rem] font-bold leading-none tabular-nums pr-1">
-                      8
-                    </span>
-                    <span className="gradient-text-mega text-6xl sm:text-8xl font-bold leading-none">
-                      %
-                    </span>
-                  </div>
-                  <p className="relative text-[13px] sm:text-[15px] text-white/90 mt-2 tracking-wide font-semibold text-center">
-                    <span className="text-white">＋ ¥10,000</span>
-                    <span className="text-white/60 text-[11px] sm:text-xs mx-1">/ 物件 / 月</span>
-                  </p>
+                  <span className="relative text-[11px] text-white/55 tracking-wider">しかも手数料は業界最安の</span>
+                  <span className="relative gradient-text-mega text-[28px] sm:text-[32px] font-bold tabular-nums leading-none">8%</span>
+                  <span className="relative text-[11px] text-white/55">+ ¥10,000/月</span>
                 </div>
                 <a
                   href="#contact-form"
@@ -348,7 +321,7 @@ export default function SwitchHeroPortal() {
                   data-cta-label="portal-primary"
                   className="group w-full inline-flex items-center justify-center whitespace-nowrap bg-switch-accent text-white font-bold text-[15px] px-4 py-3.5 rounded-md hover:bg-switch-accent-hover transition-all shadow hover:-translate-y-0.5 min-h-[48px]"
                 >
-                  SEKAI STAYのデモ
+                  SEKAI STAYアプリのデモ
                   <svg className="ml-2.5 w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
