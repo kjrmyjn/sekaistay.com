@@ -118,10 +118,6 @@ export function buildMetaCapiPayload(input: MetaCapiLeadInput, testEventCode?: s
 export async function sendMetaCapiLead(input: MetaCapiLeadInput): Promise<void> {
   const pixelId = process.env.META_PIXEL_ID;
   const accessToken = process.env.META_CAPI_TOKEN;
-  // DEBUG: env presence の切り分け用。原因確定後に削除する。console.warn で本番 strip 回避。
-  console.warn(
-    `[meta-capi] entry eventId=${input.eventId} pixelId=${pixelId ? pixelId.slice(0, 6) + "…" : "<missing>"} tokenPresent=${!!accessToken} testCodePresent=${!!process.env.META_CAPI_TEST_EVENT_CODE}`,
-  );
   if (!pixelId || !accessToken) {
     console.warn(`[meta-capi] missing env, skipping (pixelId=${!!pixelId}, token=${!!accessToken})`);
     return;
