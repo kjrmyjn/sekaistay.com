@@ -92,7 +92,6 @@ function trim(value: unknown, max: number): string {
 }
 
 export async function POST(req: NextRequest) {
-  console.error(`[DEPLOY-CHECK-V2] POST received at ${new Date().toISOString()}`);
   // CSRF: Origin/Referer host check
   const host = getOriginHost(req);
   if (process.env.NODE_ENV === "production" && (!host || !ALLOWED_HOSTS.has(host))) {
