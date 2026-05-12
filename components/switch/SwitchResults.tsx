@@ -62,7 +62,7 @@ export default function SwitchResults() {
         </div>
 
         <div className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-6 mt-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-6 sm:mx-0 pl-14 pr-6 sm:px-0 scroll-pl-14 sm:scroll-pl-0 pb-3 sm:pb-0 touch-pan-x sm:touch-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light">
+          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light ring-2 ring-yellow-400/60">
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src="/images/switch/property-villa.jpg"
@@ -72,6 +72,9 @@ export default function SwitchResults() {
               />
               <span className="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full">
                 高級ヴィラ
+              </span>
+              <span className="absolute top-3 right-3 bg-yellow-400 text-switch-charcoal text-[10px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                <span aria-hidden>🏆</span>サウナ部門 全国1位
               </span>
             </div>
             <div className="p-5">
@@ -88,6 +91,20 @@ export default function SwitchResults() {
                 </div>
               </div>
               <p className="text-xs text-switch-gray-mid mb-3">220㎡ / 1日1組限定</p>
+              <a
+                href="https://prtimes.jp/main/html/rd/p/000000035.000155058.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mb-3 rounded-lg border border-yellow-400/70 bg-yellow-50 px-3 py-2 text-xs hover:bg-yellow-100 transition-colors"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="leading-tight">
+                    <p className="font-bold text-switch-charcoal">BEST OF SAUNA STAY 2026 受賞</p>
+                    <p className="text-[10px] text-switch-gray-mid mt-0.5">民泊旅館簡易宿所業組合主催／サウナ付き部門 全国1位</p>
+                  </div>
+                  <span className="text-switch-charcoal text-[10px] font-bold whitespace-nowrap">詳細 →</span>
+                </div>
+              </a>
               <div className="bg-gradient-to-r from-switch-cloud to-switch-teal-tint rounded-lg p-3 grid grid-cols-2 gap-2 text-xs text-center">
                 <div>
                   <p className="text-switch-gray-mid">導入前</p>
