@@ -124,10 +124,8 @@ export default function SwitchPage() {
           <SwitchFAQ />
         </div>
 
-        {/* §13 お問い合わせフォーム — 引き継ぎ計画 (2026-05-04 吉蔵) Phase 1 移行完了。
-            iframe (japanvillas.kss-cloud.com/report-request-lite) → ネイティブ実装に置換。
-            Supabase lead_submissions に lp_variant="switch" で保存。
-            吉蔵側への Webhook 転送は /api/lead-forward 実装後に有効化（secret 受領待ち）。 */}
+        {/* §13 お問い合わせフォーム — Supabase lead_submissions に lp_variant="switch" で保存・
+            吉蔵 CRM + sekaistay-sales-portal の 2 系統に並列転送。 */}
         <div data-track-section="form">
           <LpVariantForm
             lpVariant="switch"

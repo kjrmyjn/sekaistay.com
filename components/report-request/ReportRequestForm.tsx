@@ -387,9 +387,8 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
           eventID ? { eventID } : undefined,
         );
         // CompleteRegistration: フォーム送信成功時の高品質シグナル (KGI トラッキング用)。
-        // top-level 経路 (window.parent === window) でのみ直接 fire。iframe 内で動作する場合は
-        // 親 frame の listener (SwitchReportFormEmbed 等) が同イベントを fire するため、ここで
-        // fire すると二重計上になる。
+        // top-level 経路 (window.parent === window) でのみ直接 fire。iframe embed 経由の場合は
+        // 親 frame 側の postMessage listener が同イベントを fire するため二重計上回避。
         if (typeof window !== "undefined" && window.parent === window) {
           // @ts-ignore
           window.fbq?.("track", "CompleteRegistration", {

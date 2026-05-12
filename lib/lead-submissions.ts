@@ -56,9 +56,6 @@ export type LeadSubmissionRow = {
   lp_variant: string | null;
   form_variant: string;
   kind: "real" | "test";
-  hubspot_contact_id: string | null;
-  hubspot_deal_id: string | null;
-  hubspot_note_id: string | null;
   forwarded_at: string | null;
   forward_error: string | null;
   forward_retry_count: number;

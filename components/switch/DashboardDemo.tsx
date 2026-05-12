@@ -4,8 +4,7 @@ import { useState } from "react";
 
 /**
  * Premium版オーナーポータルのデモUI。
- * https://japanvillas.kss-cloud.com/demo (Premium / 8タブ) を忠実にトレース。
- * 各タブで中身のUIを切り替える（ホーム / 予約 / 状況 / 連絡 / 経費 / 分析 / 申告 / 設定）。
+ * 8タブ構成（ホーム / 予約 / 状況 / 連絡 / 経費 / 分析 / 申告 / 設定）で中身のUIを切り替える。
  */
 
 /* ============ Icons ============ */
