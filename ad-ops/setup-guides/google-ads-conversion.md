@@ -42,7 +42,7 @@ Step 4: 動作確認
 
 ### なぜ必要か
 
-GA4 に既に **`lead`** イベントが実装されている（`ReportRequestForm` のフォーム送信成功時に `gtag('event', 'lead', { lp_variant, ... })` で送信）。これを Google Ads 側から「コンバージョン」として参照するためにアカウント連携が前提。
+GA4 に **`generate_lead`** イベント（GA4 公式の標準推奨イベント名）が実装されている（`ReportRequestForm` のフォーム送信成功時に `gtag('event', 'generate_lead', { lp_variant, ... })` で送信）。これを Google Ads 側から「コンバージョン」として参照するためにアカウント連携が前提。
 
 > **初心者ポイント**: 連携せずに Google Ads 側で別途 CV タグを実装する方法もあるが、GA4 と Google Ads の数字がズレる原因になりやすい。連携が王道。
 
@@ -57,10 +57,10 @@ GA4 に既に **`lead`** イベントが実装されている（`ReportRequestFo
 3. アクションタイプ: **「インポート」**
 4. ソース: **「Google アナリティクス 4 プロパティ」 → 「ウェブ」**
 5. **「続行」**
-6. 一覧から **`lead`** イベントにチェック（GA4 は `ReportRequestForm` から `gtag('event', 'lead', {...})` で送信。`generate_lead` ではなく `lead` イベントが正）
+6. 一覧から **`generate_lead`** イベントにチェック（GA4 は `ReportRequestForm` から `gtag('event', 'generate_lead', {...})` で送信。GA4 公式の標準推奨イベント名）
 7. **「インポートして続行」**
-8. インポート後、`lead` をクリックして詳細設定:
-   - **コンバージョン名**: `Lead Form Submission`（わかりやすい名前に変更）
+8. インポート後、`generate_lead` をクリックして詳細設定:
+   - **コンバージョン名**: `Lead Form Submission`（わかりやすい名前に変更・既に「SEKAI STAY (web) generate_lead」が存在する場合はそれを流用）
    - **目標とアクションの最適化**: **「お問い合わせ」** を選択
    - **値**: 「すべてのコンバージョンに同じ値を使用」 → `5000`（リード1件あたりの推定価値・あとで実態に合わせて調整）
    - **カウント**: **「1 回」**（同じユーザーが何度送信しても1日1CV扱い・推奨）

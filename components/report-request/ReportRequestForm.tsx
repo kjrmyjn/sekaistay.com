@@ -307,7 +307,9 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
       // GA4 event (fire before redirect)
       try {
         // @ts-ignore
-        window.gtag?.("event", "lead", {
+        // GA4 標準推奨イベント名 `generate_lead` を使用。Google Ads 側で既存の
+        // "SEKAI STAY (web) generate_lead" CV にそのまま紐付けるため。
+        window.gtag?.("event", "generate_lead", {
           lp_variant: lpVariant || "direct",
           form_variant: "default",
           commission_rate: form.commissionRate,

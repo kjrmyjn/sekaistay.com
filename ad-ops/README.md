@@ -141,16 +141,16 @@ ReportRequestForm (client)
 Supabase (lead_submissions テーブル) + 自社CRM (forwardLead to 吉蔵)
   ↓ res 200 OK
 client → fbq("track", "Lead", { lp_variant, content_name: "report_request" })
-client → gtag("event", "lead", { lp_variant, form_variant, commission_rate })
+client → gtag("event", "generate_lead", { lp_variant, form_variant, commission_rate })
 ```
 
-PII（name / email / phone）はサーバーサイドで保持されるため、**Meta CAPI を `/api/report-requests/submit` 内に統合実装可能**（PR4 で実装予定）。EMQ 8+ が現実的。
+PII（name / email / phone）はサーバーサイドで保持されるため、**Meta CAPI を `/api/report-requests/submit` 内に統合実装済み**（`lib/meta-capi.ts`）。EMQ 8+ が現実的。
 
 ### 既存計測タグ
 
 - GA4: `G-B7M920RCGR`（layout.tsx ハードコード）
-- Meta Pixel: `989839370242915`（layout.tsx ハードコード + 環境変数化済み・2026-05-10 切替）
-- Meta CAPI: トークン Vercel env 登録済み（PR4 で Function 実装）
+- Meta Pixel: `1658477098524563`（env: `META_PIXEL_ID`、Production 登録済み）
+- Meta CAPI: 実装完了（env: `META_CAPI_TOKEN` + `META_CAPI_TEST_EVENT_CODE`、Production 登録済み）
 - 親プロジェクト: `~/.claude/projects/-Users-sekaichi-Desktop-claude-code/memory/project_sekai_stay.md`
 - ブランドガイド: `SEKAI_STAY_Creative_Guide.md`
 - 画像資産マニフェスト: `IMAGES_MANIFEST.md`
