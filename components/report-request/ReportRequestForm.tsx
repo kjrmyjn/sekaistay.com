@@ -157,6 +157,25 @@ function formatYen(n: number): string {
   return `約¥${n.toLocaleString("ja-JP")}`;
 }
 
+// GA4 (snake_case `event_name`) と Meta Pixel (PascalCase trackCustom 名) の両方に同じ
+// ペイロードを発火する。ファネル分析: form_step_complete → 各ステップ通過率、
+// form_step_back → 後戻り率、form_submit_error → 最終ステップでの送信失敗率。
+function trackFunnel(eventName: string, params: Record<string, unknown>): void {
+  if (typeof window === "undefined") return;
+  try {
+    // @ts-ignore
+    window.gtag?.("event", eventName, params);
+  } catch {}
+  try {
+    const metaName = eventName
+      .split("_")
+      .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : w))
+      .join("");
+    // @ts-ignore
+    window.fbq?.("trackCustom", metaName, params);
+  } catch {}
+}
+
 function isAirbnbUrl(url: string): boolean {
   if (!url) return false;
   try {
@@ -264,6 +283,43 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
     return "無料レポート申込";
   }, [lpVariant]);
 
+  function handleNext() {
+    const fromStep = step;
+    const nextStep: Step = fromStep === 1 && form.startingNew ? 3 : ((fromStep + 1) as Step);
+    if (fromStep === 1) {
+      trackFunnel("form_step_complete", {
+        step: 1,
+        next_step: nextStep,
+        lp_variant: lpVariant || "direct",
+        starting_new: form.startingNew,
+        commission_rate: form.commissionRate || "unset",
+      });
+    } else if (fromStep === 2) {
+      trackFunnel("form_step_complete", {
+        step: 2,
+        next_step: nextStep,
+        lp_variant: lpVariant || "direct",
+        no_property_yet: form.noPropertyYet,
+        has_property_url: !form.noPropertyYet && form.airbnbUrl.trim() !== "",
+        total_properties: form.totalProperties,
+        operating_years: YEARS_STOPS[form.yearsIdx]?.value ?? "",
+      });
+    }
+    setStep(nextStep);
+  }
+
+  function handleBack() {
+    const fromStep = step;
+    const toStep: Step =
+      fromStep === 3 && form.startingNew ? 1 : ((fromStep > 1 ? fromStep - 1 : fromStep) as Step);
+    trackFunnel("form_step_back", {
+      from_step: fromStep,
+      to_step: toStep,
+      lp_variant: lpVariant || "direct",
+    });
+    setStep(toStep);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -299,6 +355,12 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || "送信に失敗しました。時間をおいて再度お試しください。");
+        trackFunnel("form_submit_error", {
+          lp_variant: lpVariant || "direct",
+          error_type: "server_error",
+          status: res.status,
+          error_message: String(data?.error || "unknown").slice(0, 200),
+        });
         setSubmitting(false);
         return;
       }
@@ -368,6 +430,10 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
       }
     } catch {
       setError("送信できませんでした。少し時間をおいてもう一度お試しください。");
+      trackFunnel("form_submit_error", {
+        lp_variant: lpVariant || "direct",
+        error_type: "network_error",
+      });
       setSubmitting(false);
     }
   }
@@ -432,12 +498,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             {step > 1 && (
               <button
                 type="button"
-                onClick={() =>
-                  setStep((s) => {
-                    if (s === 3 && form.startingNew) return 1;
-                    return s > 1 ? ((s - 1) as Step) : s;
-                  })
-                }
+                onClick={handleBack}
                 className="flex-1 rounded-lg py-3 text-[15px] font-medium bg-white text-ink border border-rule transition-all active:scale-[0.98]"
               >
                 ← 戻る
@@ -450,12 +511,7 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
                   (step === 1 && !canNextFromStep1) ||
                   (step === 2 && !canNextFromStep2)
                 }
-                onClick={() =>
-                  setStep((s) => {
-                    if (s === 1 && form.startingNew) return 3;
-                    return (s + 1) as Step;
-                  })
-                }
+                onClick={handleNext}
                 className="flex-1 rounded-lg py-3 text-[15px] font-semibold text-white transition-all active:scale-[0.98] bg-sekai-teal disabled:bg-mid-gray disabled:cursor-not-allowed disabled:opacity-80"
               >
                 次へ →
