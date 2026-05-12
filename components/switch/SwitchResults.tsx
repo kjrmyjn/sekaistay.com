@@ -54,6 +54,20 @@ export default function SwitchResults() {
           ))}
         </div>
 
+        {/* Award callout */}
+        <div className="mb-10 rounded-xl border border-yellow-400/70 bg-gradient-to-r from-yellow-50 via-yellow-100/40 to-yellow-50 px-5 py-4 sm:px-6 sm:py-5 flex items-center gap-4 shadow-sm">
+          <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-400 text-switch-charcoal flex items-center justify-center text-2xl sm:text-3xl shadow-md">
+            🏆
+          </div>
+          <div className="leading-tight">
+            <p className="text-[10px] sm:text-xs font-bold text-yellow-700 tracking-widest uppercase">BEST OF SAUNA STAY 2026</p>
+            <p className="text-sm sm:text-base font-bold text-switch-charcoal mt-1">
+              Lake House Nojiriko がサウナ付き部門 全国1位を受賞
+            </p>
+            <p className="text-[10px] sm:text-xs text-switch-gray-mid mt-0.5">民泊旅館簡易宿所業組合 主催</p>
+          </div>
+        </div>
+
         {/* Portfolio */}
         <div className="text-center mb-8">
           <h3 className="text-xl sm:text-2xl font-bold text-switch-charcoal">
@@ -62,7 +76,7 @@ export default function SwitchResults() {
         </div>
 
         <div className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-6 mt-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-6 sm:mx-0 pl-14 pr-6 sm:px-0 scroll-pl-14 sm:scroll-pl-0 pb-3 sm:pb-0 touch-pan-x sm:touch-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light ring-2 ring-yellow-400/60">
+          <div className="flex-shrink-0 w-[85%] sm:w-auto snap-start rounded-md overflow-hidden bg-white border border-switch-gray-light">
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src="/images/switch/property-villa.jpg"
@@ -91,10 +105,6 @@ export default function SwitchResults() {
                 </div>
               </div>
               <p className="text-xs text-switch-gray-mid mb-3">220㎡ / 1日1組限定</p>
-              <div className="mb-3 rounded-lg border border-yellow-400/70 bg-yellow-50 px-3 py-2 text-xs leading-tight">
-                <p className="font-bold text-switch-charcoal">BEST OF SAUNA STAY 2026 受賞</p>
-                <p className="text-[10px] text-switch-gray-mid mt-0.5">民泊旅館簡易宿所業組合主催／サウナ付き部門 全国1位</p>
-              </div>
               <div className="bg-gradient-to-r from-switch-cloud to-switch-teal-tint rounded-lg p-3 grid grid-cols-2 gap-2 text-xs text-center">
                 <div>
                   <p className="text-switch-gray-mid">導入前</p>
