@@ -173,8 +173,10 @@ export async function POST(req: NextRequest) {
     const row = await insertLeadSubmission({ payload, kind, clientIp: ip, userAgent });
     // 3 系統並列で forward (吉蔵 CRM + sekaistay 営業ポータル + Meta CAPI)。
     // いずれかが失敗してもクライアントへの応答は 200 を返す（lead は Supabase に保存済み）。
-    // 内部テスト (kind === "test") は本番の Meta 広告レポートを汚染しないよう CAPI を skip。
-    // forwardLead/forwardLeadToSalesPortal の test-skip と一致させる。
+    // test 振分けポリシー:
+    //   - 吉蔵 CRM (forwardLead): test は skip（Hikaru 側ノイズ嫌うため・5/8 合意）
+    //   - sales-portal (forwardLeadToSalesPortal): test も送る（小川さんが CRM 受信確認できるよう・source に _test suffix）
+    //   - Meta CAPI: test は skip（本番広告レポート汚染防止）
     const capiPromise: Promise<void> =
       kind === "test"
         ? Promise.resolve()

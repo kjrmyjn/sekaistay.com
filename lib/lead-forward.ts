@@ -134,7 +134,9 @@ export async function forwardLead(leadId: string): Promise<ForwardOutcome> {
  * 吉蔵の既存 forwardLead とは別経路。並行して 2 系統に送る運用。
  *
  * - public endpoint（認証なし）。本番ドメイン (sekaistay.com) からの POST は CORS 申請不要。
- * - kind === 'test' は portal を汚染しないよう skip。
+ * - kind === 'test' でも portal には送る（小川さんが CRM 受信確認できるよう）。
+ *   識別のため source に `_test` suffix を付け、message 先頭に内部テスト旨を明記する。
+ *   吉蔵 CRM / Meta CAPI 側は引き続き test skip。
  * - ガイド: https://sekaistay-sales-portal.vercel.app/integration-guide.html
  */
 export async function forwardLeadToSalesPortal(leadId: string): Promise<ForwardOutcome> {
@@ -147,14 +149,13 @@ export async function forwardLeadToSalesPortal(leadId: string): Promise<ForwardO
   if (fetchErr || !row) {
     return { ok: false, error: fetchErr?.message || "row not found" };
   }
-  if (row.kind === "test") {
-    return { ok: true };
-  }
 
   // ポータルが受け付けるフィールドにマッピング (name/email/phone/company/message/source)。
   // 詳細な物件情報・収益見込みは message に集約して営業担当が即座に把握できる形に。
   const r = row as LeadSubmissionRow;
+  const isTest = r.kind === "test";
   const messageBody = [
+    isTest ? "[内部テスト送信 — Supabase kind=test。本番リード対応は不要]" : undefined,
     r.complaints || undefined,
     r.airbnb_url ? `Airbnb URL: ${r.airbnb_url}` : undefined,
     typeof r.total_properties === "number" ? `物件数: ${r.total_properties} 棟` : undefined,
@@ -168,7 +169,8 @@ export async function forwardLeadToSalesPortal(leadId: string): Promise<ForwardO
   ]
     .filter(Boolean)
     .join("\n");
-  const source = `lp_${(r.lp_variant || "report-request").replace(/[^a-z0-9_-]/gi, "_")}`;
+  const baseSource = `lp_${(r.lp_variant || "report-request").replace(/[^a-z0-9_-]/gi, "_")}`;
+  const source = isTest ? `${baseSource}_test` : baseSource;
 
   const ac = new AbortController();
   const timer = setTimeout(() => ac.abort(), FORWARD_TIMEOUT_MS);
