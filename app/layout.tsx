@@ -179,15 +179,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
+        {/* Meta Pixel noscript フォールバック (JS 無効ユーザー向け)。
+            <noscript> 内の <img> を JSX で書くと Next.js/React の自動 resource hints が
+            <link rel="preload" as="image"> を生成し、JS 有効ユーザーでも実際に preload で
+            HTTP リクエストが飛び、Meta 側で PageView が二重カウントされる。
+            dangerouslySetInnerHTML で raw HTML として渡すことで React の解析対象から外す。 */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1" alt="" />`,
+          }}
+        />
         <Suspense fallback={null}>
           <AnalyticsRouteTracker />
         </Suspense>
