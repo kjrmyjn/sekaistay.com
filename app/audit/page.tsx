@@ -4,18 +4,23 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
-import { ReportRequestForm } from '@/components/report-request/ReportRequestForm'
+import { AuditReportRequestForm } from '@/components/audit/AuditReportRequestForm'
 
 /* ─────────────────────────────────────────────────────────────
- * /audit — 無料物件診断フォーム (2026-05-14 LP と統一)
+ * /audit — 無料物件診断フォーム (2026-05-14)
  *
- * Before (〜2026-05-13): 独自の 3ステップ editorial デザインフォーム + Web3Forms 経由
- * After (2026-05-14): LP (/switch/*) と同じ ReportRequestForm を使用。
- *   - Step 1: 手数料 (card grid + これから始める方 checkbox)
- *   - Step 2: 物件情報 (運用年数 / 売上スライダー / 物件名検索 / 物件数)
- *   - Step 3: ご連絡先 (氏名・メール・電話・課題)
- *   - lpVariant="audit" で /api/report-requests/submit へ POST
- *   - 送信後は timerex MTG 予約ページへリダイレクト (LP と同じ挙動)
+ * 機能: LP (/switch/*) の ReportRequestForm と完全同一
+ *   - 3-step: 手数料 / 物件情報 / ご連絡先
+ *   - lpVariant="audit" で /api/report-requests/submit に POST
+ *   - 6系統 forward: Supabase / 吉蔵 / sales-portal / Meta CAPI / Sheets / Discord
+ *   - 送信後は timerex MTG 予約ページへリダイレクト
+ *
+ * デザイン: HP editorial スタイル (ivory/paper/ink パレット)
+ *   - chapter-marker + eyebrow ヘッダー
+ *   - numbered Field component (01〜10)
+ *   - bg-mist border-rule inputs
+ *   - btn-primary 角ボタン (ink filled)
+ *   - 3-col 「Step 01 · Label」 progress ledger
  * ──────────────────────────────────────────────────────────── */
 
 export default function AuditPage() {
@@ -35,20 +40,21 @@ export default function AuditPage() {
             </div>
             <h1 className="heading-display text-ink mb-5">
               無料物件診断
-              <span className="block font-sans font-light text-mid-gray text-[0.6em] mt-3">3 minutes · personalized report</span>
+              <span className="block font-sans font-light text-mid-gray text-[0.6em] mt-3">
+                3 minutes · personalized report
+              </span>
             </h1>
             <p className="lead text-dark-gray max-w-2xl">
-              あなたの物件の稼働率改善余地・手数料比較・運営ロードマップを、SEKAI STAY の担当アナリストが個別レポートとしてお届けします。最短24時間後にメールでご返送します。
+              あなたの物件の稼働率改善余地・手数料比較・運営ロードマップを、SEKAI STAY
+              の担当アナリストが個別レポートとしてお届けします。最短24時間後にメールでご返送します。
             </p>
           </div>
         </section>
 
         {/* Form */}
         <section className="section-xl">
-          <div className="max-w-xl mx-auto px-5 md:px-8">
-            <div className="bg-white border border-rule rounded-2xl p-4 sm:p-6 shadow-sm">
-              <ReportRequestForm lpVariant="audit" embed={false} />
-            </div>
+          <div className="container-edit max-w-2xl mx-auto px-5 md:px-8">
+            <AuditReportRequestForm />
           </div>
         </section>
       </main>
