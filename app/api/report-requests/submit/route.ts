@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { insertLeadSubmission, type SubmitPayload } from "@/lib/lead-submissions";
-import { forwardLead, forwardLeadToSalesPortal } from "@/lib/lead-forward";
+import { forwardLead, forwardLeadToSalesPortal, forwardLeadToDiscord } from "@/lib/lead-forward";
 import { sendMetaCapiLead } from "@/lib/meta-capi";
 import { classifyKind } from "@/lib/test-classifier";
 import { appendLeadToSheet } from "@/lib/sheets-backup";
@@ -198,11 +198,12 @@ export async function POST(req: NextRequest) {
               value: 0,
             },
           });
-    const [yoshizoOutcome, salesPortalOutcome, capiOutcome, sheetOutcome] = await Promise.allSettled([
+    const [yoshizoOutcome, salesPortalOutcome, capiOutcome, sheetOutcome, discordOutcome] = await Promise.allSettled([
       forwardLead(row.id),
       forwardLeadToSalesPortal(row.id),
       capiPromise,
       appendLeadToSheet(row),
+      forwardLeadToDiscord(row.id),
     ]);
     if (yoshizoOutcome.status === "fulfilled" && !yoshizoOutcome.value.ok) {
       console.warn(`[submit] forward to 吉蔵 failed (lead=${row.id}): ${yoshizoOutcome.value.error}`);
@@ -225,6 +226,11 @@ export async function POST(req: NextRequest) {
       console.warn(`[submit] sheet backup failed (lead=${row.id}): ${sheetOutcome.value.error}`);
     } else if (sheetOutcome.status === "rejected") {
       console.warn(`[submit] sheet backup threw (lead=${row.id}): ${sheetOutcome.reason}`);
+    }
+    if (discordOutcome.status === "fulfilled" && !discordOutcome.value.ok) {
+      console.warn(`[submit] discord notification failed (lead=${row.id}): ${discordOutcome.value.error}`);
+    } else if (discordOutcome.status === "rejected") {
+      console.warn(`[submit] discord notification threw (lead=${row.id}): ${discordOutcome.reason}`);
     }
     console.warn(`[submit] done lead=${row.id} eventId=${eventId} kind=${kind} capiPath=${kind === "test" ? "skipped" : "attempted"} capiOutcome=${capiOutcome.status}`);
     return NextResponse.json({ id: row.id, status: "received", eventId }, { status: 200 });

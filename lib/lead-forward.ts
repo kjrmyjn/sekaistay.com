@@ -38,6 +38,118 @@ function rowToPayload(row: LeadSubmissionRow): Record<string, unknown> {
   };
 }
 
+/**
+ * Discord 通知: 新規リードを #sekai-stay チャンネルに即時投稿。
+ *
+ * 設計背景 (2026-05-14):
+ * - 吉蔵 CRM (japanvillas.kss-cloud.com) と sekaistay-sales-portal は両方とも自動通知を持たない
+ *   → リードが届いても小川/吉田は気づかない (ダッシュボード手動チェック頼み)。
+ * - Discord 通知を3系統目として追加し、リアルタイムで担当者に届ける。
+ *
+ * 動作:
+ * - kind="test" は skip (テストリードでチャンネルを汚さない)
+ * - 環境変数:
+ *   - DISCORD_LEAD_WEBHOOK_URL (必須・未設定なら no-op で成功扱い)
+ *   - DISCORD_LEAD_MENTIONS (任意・"<@user_id_1> <@user_id_2>" 形式で小川/吉田を明示メンション)
+ * - 失敗してもクライアント応答 200 を維持 (Promise.allSettled 内で実行)。
+ */
+export async function forwardLeadToDiscord(leadId: string): Promise<ForwardOutcome> {
+  const webhookUrl = (process.env.DISCORD_LEAD_WEBHOOK_URL || "").trim();
+  if (!webhookUrl) {
+    return { ok: true, error: "DISCORD_LEAD_WEBHOOK_URL not configured (skipped)" };
+  }
+
+  const supabase = getSupabaseAdmin();
+  const { data: row, error: fetchErr } = await supabase
+    .from("lead_submissions")
+    .select("*")
+    .eq("id", leadId)
+    .single();
+  if (fetchErr || !row) {
+    return { ok: false, error: fetchErr?.message || "row not found" };
+  }
+  const r = row as LeadSubmissionRow;
+
+  // テストリードは Discord 通知 skip (チャンネル汚染防止)
+  if (r.kind === "test") return { ok: true };
+
+  const mentions = (process.env.DISCORD_LEAD_MENTIONS || "").trim();
+  const lpVariant = r.lp_variant || "(direct)";
+  const utmInfo =
+    r.utm_source || r.utm_campaign
+      ? `${r.utm_source ?? "?"} / ${r.utm_campaign ?? "?"} / ${r.utm_content ?? "?"}`
+      : "(なし)";
+
+  const fields: Array<{ name: string; value: string; inline?: boolean }> = [
+    { name: "👤 名前", value: r.name || "(未入力)", inline: true },
+    { name: "📧 Email", value: r.email || "(未入力)", inline: true },
+    { name: "📞 電話", value: r.phone || "(未入力)", inline: true },
+  ];
+  if (r.airbnb_url) {
+    fields.push({ name: "🏠 Airbnb URL", value: r.airbnb_url.slice(0, 1024), inline: false });
+  }
+  if (typeof r.total_properties === "number") {
+    fields.push({ name: "物件数", value: `${r.total_properties} 棟`, inline: true });
+  }
+  if (r.commission_rate) {
+    fields.push({ name: "現手数料", value: r.commission_rate, inline: true });
+  }
+  if (r.operating_years) {
+    fields.push({ name: "運営年数", value: r.operating_years, inline: true });
+  }
+  if (r.peak_revenue || r.offpeak_revenue) {
+    fields.push({
+      name: "想定年商",
+      value: `繁忙期: ${r.peak_revenue ?? "?"} / 閑散期: ${r.offpeak_revenue ?? "?"}`,
+      inline: false,
+    });
+  }
+  if (r.complaints) {
+    fields.push({ name: "課題・要望", value: r.complaints.slice(0, 1024), inline: false });
+  }
+  fields.push({ name: "LP", value: lpVariant, inline: true });
+  fields.push({ name: "計測", value: utmInfo, inline: true });
+
+  const payload = {
+    content: mentions ? `${mentions} 新規リードが届きました 🔔` : "新規リードが届きました 🔔",
+    embeds: [
+      {
+        title: `🏡 新規リード: ${r.name}`,
+        description: "sekaistay.com フォームから受信しました。担当営業はダッシュボードからアサインしてください。",
+        color: 0x167b81, // SEKAI Deep Teal
+        fields,
+        footer: { text: `Lead ID: ${r.id}` },
+        timestamp: r.created_at,
+      },
+    ],
+    // Discord の allowed_mentions で意図しない @everyone をブロック
+    allowed_mentions: { parse: ["users"] as const },
+  };
+
+  const ac = new AbortController();
+  const timer = setTimeout(() => ac.abort(), FORWARD_TIMEOUT_MS);
+  try {
+    const resp = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: ac.signal,
+    });
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => "");
+      return { ok: false, status: resp.status, error: `HTTP ${resp.status}: ${text.slice(0, 500)}` };
+    }
+    return { ok: true, status: resp.status };
+  } catch (err: any) {
+    return {
+      ok: false,
+      error: err?.name === "AbortError" ? `timeout after ${FORWARD_TIMEOUT_MS}ms` : err?.message || String(err),
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function forwardLead(leadId: string): Promise<ForwardOutcome> {
   const supabase = getSupabaseAdmin();
   const { data: row, error: fetchErr } = await supabase
