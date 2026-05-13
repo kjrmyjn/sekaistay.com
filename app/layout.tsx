@@ -112,7 +112,7 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
     other: {
-      'facebook-domain-verification': '1ip0d4p8opbk8hljxznqz7dhb14hcy',
+      'facebook-domain-verification': 'jkah949lw53nfc2j5nz05zzwj7njdp',
     },
   },
 }
