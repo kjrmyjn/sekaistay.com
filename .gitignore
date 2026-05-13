@@ -3,6 +3,8 @@ node_modules/
 .next/
 .env
 .env.local
+.env.vercel.prod
+.env.vercel.preview
 node_modules/
 awesome-design-md-jp-main/
 

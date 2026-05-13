@@ -4,6 +4,7 @@ import { insertLeadSubmission, type SubmitPayload } from "@/lib/lead-submissions
 import { forwardLead, forwardLeadToSalesPortal } from "@/lib/lead-forward";
 import { sendMetaCapiLead } from "@/lib/meta-capi";
 import { classifyKind } from "@/lib/test-classifier";
+import { appendLeadToSheet } from "@/lib/sheets-backup";
 
 export const runtime = "nodejs";
 
@@ -197,10 +198,11 @@ export async function POST(req: NextRequest) {
               value: 0,
             },
           });
-    const [yoshizoOutcome, salesPortalOutcome, capiOutcome] = await Promise.allSettled([
+    const [yoshizoOutcome, salesPortalOutcome, capiOutcome, sheetOutcome] = await Promise.allSettled([
       forwardLead(row.id),
       forwardLeadToSalesPortal(row.id),
       capiPromise,
+      appendLeadToSheet(row),
     ]);
     if (yoshizoOutcome.status === "fulfilled" && !yoshizoOutcome.value.ok) {
       console.warn(`[submit] forward to 吉蔵 failed (lead=${row.id}): ${yoshizoOutcome.value.error}`);
@@ -218,6 +220,11 @@ export async function POST(req: NextRequest) {
     }
     if (capiOutcome.status === "rejected") {
       console.warn(`[submit] meta-capi threw (lead=${row.id}): ${capiOutcome.reason}`);
+    }
+    if (sheetOutcome.status === "fulfilled" && !sheetOutcome.value.ok) {
+      console.warn(`[submit] sheet backup failed (lead=${row.id}): ${sheetOutcome.value.error}`);
+    } else if (sheetOutcome.status === "rejected") {
+      console.warn(`[submit] sheet backup threw (lead=${row.id}): ${sheetOutcome.reason}`);
     }
     console.warn(`[submit] done lead=${row.id} eventId=${eventId} kind=${kind} capiPath=${kind === "test" ? "skipped" : "attempted"} capiOutcome=${capiOutcome.status}`);
     return NextResponse.json({ id: row.id, status: "received", eventId }, { status: 200 });
