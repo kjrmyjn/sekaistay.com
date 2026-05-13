@@ -56,13 +56,81 @@ export const HERO = {
 export const AUTHORITY = {
   label: 'Trusted Operation',
   items: [
-    { metric: '5年+', label: '運用の実績' },
-    { metric: '全国', label: '対応エリア' },
-    { metric: '3言語', label: '英・中・韓のゲスト対応' },
-    { metric: '自社運営', label: '宿泊・飲食の現場力' },
-    { metric: '20万+', label: 'YouTube登録者数' },
+    { metric: '5年+', label: '運用支援の実績' },
+    { metric: '4.8', label: 'レビュー平均（管理物件）' },
+    { metric: '国土交通大臣', label: '住宅宿泊管理業 (01)第F05780号' },
   ],
   note: '※ 数値は当社管理物件（Airbnb / Booking.com ほか主要OTA掲載）に基づく集計値／2024-2025。住宅宿泊事業法（民泊新法）・旅館業法いずれにも対応し、契約時に適用法令・許認可をご案内します。',
+} as const
+
+// ═══ Pain Points — 2ペルソナ並列 ═══
+export const PAIN_POINTS = {
+  eyebrow: 'Owner Concerns',
+  headline: {
+    line1: '今の悩み、整理してみませんか。',
+    line2: 'どちらの状況でも、同じところから始められます。',
+  },
+  body: '運用中の方も、これから始める方も。多くのオーナー様が、最初は同じところで止まります。',
+  personas: [
+    {
+      id: 'existing',
+      label: 'FOR EXISTING OWNERS',
+      title: 'すでに運用中で、伸び悩みを感じている方',
+      points: [
+        '手数料が高い（業界平均15〜25%）',
+        '稼働率が思うように伸びない',
+        'OTA設定・価格調整が複雑で手が回らない',
+        '今の運営会社の動きが見えない',
+      ],
+    },
+    {
+      id: 'starting',
+      label: 'FOR NEW OWNERS',
+      title: 'これから民泊を始めたい方',
+      points: [
+        '運営会社の選び方が分からない',
+        '初期費用・許認可・備品で何が必要か読めない',
+        '本業と両立できるか不安',
+        '物件選定の判断軸が分からない',
+      ],
+    },
+  ],
+  bridge: 'どちらにも、同じ答え。まず物件診断から。',
+} as const
+
+// ═══ Mid CTA — セクション間のCTAバンド ═══
+export const MID_CTA = {
+  headline: 'どちらの悩みも、まず物件診断から。',
+  body: '現状採点と収益試算を、無料レポートでお返しします。営業連絡はありません。',
+  cta: { label: '無料で物件診断を受ける', href: '/audit' },
+  microcopy: '入力3分 · 無料 · 営業連絡なし',
+} as const
+
+// ═══ Nav Cards — 詳細ページへの誘導カード行 ═══
+export const NAV_CARDS = {
+  eyebrow: 'Learn More',
+  headline: '詳しく知りたい方へ。',
+  body: '料金、ダッシュボード、よくあるご質問。気になる部分から確認できます。',
+  cards: [
+    {
+      eyebrow: 'Dashboard',
+      title: 'オーナーダッシュボード',
+      body: '売上・稼働率・予約状況・改善ポイントを一画面で確認。',
+      cta: { label: 'デモを見る', href: '/dashboard-demo' },
+    },
+    {
+      eyebrow: 'Pricing',
+      title: '料金体系',
+      body: '8%手数料・固定費¥10,000/月・初期費用¥0・解約金¥0。',
+      cta: { label: '料金を確認する', href: '/pricing' },
+    },
+    {
+      eyebrow: 'FAQ',
+      title: 'よくあるご質問',
+      body: 'サービス内容・乗り換え・新規開業・料金についての疑問にお答えします。',
+      cta: { label: '質問を確認する', href: '/faq' },
+    },
+  ],
 } as const
 
 // ═══ 2. Entry Points — 3つの入口導線 ═══
