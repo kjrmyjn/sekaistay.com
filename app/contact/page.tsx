@@ -6,34 +6,69 @@ import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import { IconCheck, IconArrowRight } from '@/components/Icons'
 
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
-
 const inputCls =
   'w-full bg-mist border border-rule px-5 py-4 text-[15px] font-sans text-ink placeholder:text-mid-gray/70 outline-none transition focus:border-sekai-teal focus:bg-paper'
+
+const getUtm = (k: string) => {
+  try { return typeof window !== 'undefined' ? sessionStorage.getItem(k) || '' : '' } catch { return '' }
+}
 
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setError('')
     setSubmitting(true)
     const form = e.currentTarget
     const data = new FormData(form)
-    data.append('access_key', WEB3FORMS_KEY)
-    data.append('subject', '【SEKAI STAY】お問い合わせ')
-    data.append('from_name', 'SEKAI STAY')
-    data.append('replyto', 'contact@sekaistay.com')
+    const name = String(data.get('name') || '').trim()
+    const email = String(data.get('email') || '').trim()
+    const phone = String(data.get('phone') || '').trim()
+    const message = String(data.get('message') || '').trim()
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      // /api/report-requests/submit に統一 (2026-05-14)
+      // 5系統 forward: Supabase / 吉蔵 / sales-portal / Meta CAPI / Sheets / Discord #sekai-stay
+      const res = await fetch('/api/report-requests/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: phone || undefined,
+          complaints: message,
+          lpVariant: 'contact',
+          formVariant: 'default',
+          utmSource: getUtm('utm_source') || undefined,
+          utmMedium: getUtm('utm_medium') || undefined,
+          utmCampaign: getUtm('utm_campaign') || undefined,
+          utmContent: getUtm('utm_content') || undefined,
+          utmTerm: getUtm('utm_term') || undefined,
+          gclid: getUtm('gclid') || undefined,
+          fbclid: getUtm('fbclid') || undefined,
+          landingUrl: typeof window !== 'undefined' ? window.location.href : undefined,
+          referrer: typeof document !== 'undefined' ? document.referrer || undefined : undefined,
+        }),
+      })
       if (res.ok) {
         setDone(true)
         if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-          (window as any).gtag('event', 'generate_lead', { event_category: 'contact', event_label: 'website_form' })
+          (window as any).gtag('event', 'generate_lead', { event_category: 'contact', event_label: 'website_form', lp_variant: 'contact' })
         }
+        if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
+          const body = await res.json().catch(() => ({}))
+          ;(window as any).fbq('track', 'Lead', { content_name: 'contact_form', lp_variant: 'contact' }, { eventID: body?.eventId })
+        }
+      } else {
+        const body = await res.json().catch(() => ({}))
+        setError(body?.error || '送信に失敗しました。時間をおいて再度お試しください。')
       }
-    } catch { /* ignore */ }
+    } catch {
+      setError('通信エラーが発生しました。時間をおいて再度お試しください。')
+    }
     setSubmitting(false)
   }
 
@@ -108,6 +143,11 @@ export default function ContactPage() {
                   <p className="eyebrow text-sekai-teal">Message Form</p>
                 </div>
 
+                {error && (
+                  <div className="mb-6 bg-paper border border-red-300 text-red-700 px-4 py-3 text-[14px] font-sans">
+                    {error}
+                  </div>
+                )}
                 <form onSubmit={handleSubmit} className="bg-paper border border-rule p-6 md:p-10 space-y-7">
                   <Field number="01" label="お名前" required>
                     <input

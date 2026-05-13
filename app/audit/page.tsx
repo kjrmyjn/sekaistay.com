@@ -109,51 +109,61 @@ function DiagnosticForm() {
     }
 
     try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
-      const res = await fetch('https://api.web3forms.com/submit', {
+      // /api/report-requests/submit に統一 (2026-05-14)
+      // 5系統 forward: Supabase / 吉蔵 / sales-portal / Meta CAPI / Sheets / Discord #sekai-stay
+      // Booking URL・noListing・月額固定費は complaints フィールドに集約 (API 側にこれ専用カラムがないため)
+      const complaintsParts: string[] = []
+      if (bookingUrl.trim()) complaintsParts.push(`Booking.com URL: ${bookingUrl.trim()}`)
+      if (noListing) complaintsParts.push('※リスティング未登録')
+      if (feeMonthly.trim()) complaintsParts.push(`月額固定費: ${feeMonthly.trim()}`)
+      if (complaint.trim()) complaintsParts.push(complaint.trim())
+      const complaints = complaintsParts.join('\n')
+
+      const res = await fetch('/api/report-requests/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: accessKey,
-          subject: `【無料物件診断】${name}様 - ピーク:${peakRevenue || '未選択'} / 手数料:${currentFee || '未選択'}`,
-          from_name: 'SEKAI STAY',
-          replyto: 'contact@sekaistay.com',
           name,
           email,
-          airbnb_url: airbnbUrl || '未入力',
-          booking_url: bookingUrl || '未入力',
-          no_listing: noListing ? 'はい' : 'いいえ',
-          peak_revenue: peakRevenue || '未入力',
-          offpeak_revenue: offpeakRevenue || '未入力',
-          current_fee: currentFee || '未入力',
-          fee_monthly: feeMonthly || '未入力',
-          years_operated: years || '未入力',
-          complaint: complaint || '未入力',
-          source_page: '/audit',
-          utm_source: getUtm('utm_source'),
-          utm_medium: getUtm('utm_medium'),
-          utm_campaign: getUtm('utm_campaign'),
-          utm_term: getUtm('utm_term'),
-          gclid: getUtm('gclid'),
-          fbclid: getUtm('fbclid'),
+          // phone は /audit では収集していないので未送信 (API 側で任意化済み)
+          airbnbUrl: airbnbUrl.trim() || undefined,
+          peakRevenue: peakRevenue || undefined,
+          offpeakRevenue: offpeakRevenue || undefined,
+          commissionRate: currentFee || undefined,
+          operatingYears: years || undefined,
+          complaints: complaints || undefined,
+          lpVariant: 'audit',
+          formVariant: 'default',
+          utmSource: getUtm('utm_source') || undefined,
+          utmMedium: getUtm('utm_medium') || undefined,
+          utmCampaign: getUtm('utm_campaign') || undefined,
+          utmContent: getUtm('utm_content') || undefined,
+          utmTerm: getUtm('utm_term') || undefined,
+          gclid: getUtm('gclid') || undefined,
+          fbclid: getUtm('fbclid') || undefined,
+          landingUrl: typeof window !== 'undefined' ? window.location.href : undefined,
+          referrer: typeof document !== 'undefined' ? document.referrer || undefined : undefined,
         }),
       })
 
-      const data = await res.json()
-
-      if (data.success) {
+      if (res.ok) {
+        const body = await res.json().catch(() => ({}))
         setSubmitted(true)
         if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
           (window as any).gtag('event', 'generate_lead', {
             currency: 'JPY',
             value: 1,
-            source_page: '/audit',
+            lp_variant: 'audit',
             peak_revenue: peakRevenue,
             current_fee: currentFee,
           })
         }
+        if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
+          ;(window as any).fbq('track', 'Lead', { content_name: 'audit_form', lp_variant: 'audit' }, { eventID: body?.eventId })
+        }
       } else {
-        setError('送信に失敗しました。しばらくしてから再度お試しください。')
+        const body = await res.json().catch(() => ({}))
+        setError(body?.error || '送信に失敗しました。しばらくしてから再度お試しください。')
       }
     } catch {
       setError('通信エラーが発生しました。しばらくしてから再度お試しください。')

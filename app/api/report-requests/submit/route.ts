@@ -112,14 +112,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "リクエストの形式が正しくありません" }, { status: 400 });
   }
 
-  // Required
+  // Required: name + email のみ (phone は /contact /audit からの送信を許容するため任意化・2026-05-14)
   const name = trim(body.name, MAX_LENGTHS.name);
   const email = trim(body.email, MAX_LENGTHS.email);
   const phone = trim(body.phone, MAX_LENGTHS.phone);
   if (!name) return NextResponse.json({ error: "お名前を入力してください" }, { status: 400 });
   if (!email || !EMAIL_RE.test(email))
     return NextResponse.json({ error: "メールアドレスの形式が正しくありません" }, { status: 400 });
-  if (!phone) return NextResponse.json({ error: "電話番号を入力してください" }, { status: 400 });
 
   // Airbnb URL (default form: required)
   const airbnbUrl = trim(body.airbnbUrl, MAX_LENGTHS.airbnbUrl);
