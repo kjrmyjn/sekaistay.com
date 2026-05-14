@@ -6,21 +6,16 @@ import Footer from '@/components/Footer'
 /* ── Above-fold: static imports (critical path) ── */
 import Hero from '@/components/home/Hero'
 import AuthorityBar from '@/components/home/AuthorityBar'
-import EntryPoints from '@/components/home/EntryPoints'
 
-/* ── Below-fold: dynamic imports (reduce initial JS bundle ~69 KiB) ── */
+/* ── Below-fold: dynamic imports (reduce initial JS bundle) ── */
 const FloatingCTA = dynamic(() => import('@/components/FloatingCTA'), { ssr: false })
 const Simulation = dynamic(() => import('@/components/home/Simulation'))
-const ValueProp = dynamic(() => import('@/components/home/ValueProp'))
-const Results = dynamic(() => import('@/components/home/Results'))
-const Dashboard = dynamic(() => import('@/components/home/Dashboard'))
-const Ecosystem = dynamic(() => import('@/components/home/Ecosystem'))
+const PainPoints = dynamic(() => import('@/components/home/PainPoints'))
+const MidCTA = dynamic(() => import('@/components/home/MidCTA'))
 const Flow = dynamic(() => import('@/components/home/Flow'))
-const Pricing = dynamic(() => import('@/components/home/Pricing'))
-const Credentials = dynamic(() => import('@/components/home/Credentials'))
-const FAQ = dynamic(() => import('@/components/home/FAQ'))
+const Results = dynamic(() => import('@/components/home/Results'))
+const NavCards = dynamic(() => import('@/components/home/NavCards'))
 const FinalCTA = dynamic(() => import('@/components/home/FinalCTA'))
-const FooterCatch = dynamic(() => import('@/components/home/FooterCatch'))
 
 /* ─── SEO Meta ────────────────────────────────── */
 
@@ -50,18 +45,13 @@ export default function Home() {
       <main>
         <Hero />
         <AuthorityBar />
-        <EntryPoints />
         <Simulation />
-        <ValueProp />
-        <Results />
-        <Dashboard />
-        <Ecosystem />
+        <PainPoints />
+        <MidCTA />
         <Flow />
-        <Pricing />
-        <Credentials />
-        <FAQ />
+        <Results />
+        <NavCards />
         <FinalCTA />
-        <FooterCatch />
       </main>
       <Footer />
     </>

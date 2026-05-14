@@ -9,6 +9,8 @@ import { IconCheck, IconArrowRight } from '@/components/Icons'
 const inputCls =
   'w-full bg-mist border border-rule px-5 py-4 text-[15px] font-sans text-ink placeholder:text-mid-gray/70 outline-none transition focus:border-sekai-teal focus:bg-paper'
 
+const MEETING_URL = 'https://timerex.net/s/sekai-stay/d61b424d'
+
 const getUtm = (k: string) => {
   try { return typeof window !== 'undefined' ? sessionStorage.getItem(k) || '' : '' } catch { return '' }
 }
@@ -62,6 +64,13 @@ export default function ContactPage() {
           const body = await res.json().catch(() => ({}))
           ;(window as any).fbq('track', 'Lead', { content_name: 'contact_form', lp_variant: 'contact' }, { eventID: body?.eventId })
         }
+        await new Promise((r) => setTimeout(r, 150))
+        try {
+          window.location.href = MEETING_URL
+        } catch {
+          window.location.href = MEETING_URL
+        }
+        return
       } else {
         const body = await res.json().catch(() => ({}))
         setError(body?.error || '送信に失敗しました。時間をおいて再度お試しください。')

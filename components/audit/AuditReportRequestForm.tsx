@@ -194,7 +194,7 @@ export function AuditReportRequestForm() {
     setForm((f) => ({
       ...f,
       startingNew: v,
-      ...(v ? { commissionRate: "", noPropertyYet: true } : {}),
+      ...(v ? { commissionRate: "" } : {}),
     }));
   }
   const canNextFromStep2 = useMemo(

@@ -12,9 +12,9 @@ export default function AuthorityBar() {
             <span className="eyebrow">{AUTHORITY.label}</span>
           </div>
 
-          {/* Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-6 flex-1">
-            {AUTHORITY.items.map((item, i) => (
+          {/* 3 Metrics */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-6 flex-1">
+            {AUTHORITY.items.map((item) => (
               <div key={item.metric} className="flex flex-col min-w-0 relative pl-4 lg:pl-5">
                 <span className="absolute left-0 top-1 bottom-1 w-px bg-rule" aria-hidden />
                 <span className="font-sans text-[22px] md:text-[24px] font-light text-ink leading-none mb-2 jp-keep">
