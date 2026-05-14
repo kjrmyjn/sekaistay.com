@@ -333,7 +333,7 @@ export default function AreaDetailPage({ params }: Props) {
 
             <div className="mt-10 text-center">
               <Link
-                href="/simulate"
+                href="/services#pricing"
                 className="group inline-flex items-center gap-3 text-bright-teal hover:text-ivory transition font-sans text-body-sm"
               >
                 詳細なシミュレーションを見る

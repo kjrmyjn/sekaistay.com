@@ -134,7 +134,7 @@ export default function ContactPage() {
                       <IconArrowRight size={14} />
                     </a>
                     <a
-                      href="/simulate"
+                      href="/services#pricing"
                       className="btn btn-ghost text-[14px]"
                     >
                       収益シミュレーション
@@ -227,7 +227,7 @@ export default function ContactPage() {
                       <IconArrowRight size={14} />
                     </a>
                     <a
-                      href="/simulate"
+                      href="/services#pricing"
                       className="btn btn-ghost text-[14px]"
                     >
                       収益シミュレーション

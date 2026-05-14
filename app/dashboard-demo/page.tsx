@@ -538,7 +538,7 @@ export default function DashboardDemoPage() {
                     <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
                   </Link>
                   <Link
-                    href="/simulate"
+                    href="/services#pricing"
                     className="group inline-flex items-center justify-between gap-3 border border-ivory/30 px-6 py-4 hover:bg-ivory/5 transition"
                   >
                     <div>

@@ -12,7 +12,7 @@
 export const CTA_LINKS = {
   contact: '/contact',
   audit: '/audit',
-  simulate: '/simulate',
+  simulate: '/services#pricing',
   caseStudies: '/case-studies',
   services: '/services',
   pricing: '/pricing',
@@ -44,7 +44,7 @@ export const HERO = {
   ],
   primaryCta: { label: '無料で物件診断を受ける', href: '/audit' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: 'まずは収益シミュレーションから', href: '/simulate' },
+  textLink: { label: 'まずは収益シミュレーションから', href: '/services#pricing' },
   sideCard: {
     title: 'まずは3分で、物件の伸びしろを確認',
     body: '現在のリスティング・売上・手数料をもとに、稼働率と収益の改善余地を算出。担当アナリストが個別レポートでお届けします。',
@@ -157,7 +157,7 @@ export const ENTRY = {
       label: 'FOR EXPLORERS',
       title: 'まずは収益感を知りたい方へ',
       body: 'エリア・物件タイプ・部屋数から、想定売上レンジと改善余地をその場で試算します。',
-      cta: { label: '無料でシミュレーションする', href: '/simulate' },
+      cta: { label: '無料でシミュレーションする', href: '/services#pricing' },
     },
   ],
 } as const
@@ -185,7 +185,7 @@ export const SIMULATION = {
     '優先して見直すべきポイント',
     '次に打つべき施策の方向性',
   ],
-  cta: { label: '無料で試算結果を受け取る', href: '/simulate' },
+  cta: { label: '無料で試算結果を受け取る', href: '/services#pricing' },
 } as const
 
 // ═══ 4. Value Proposition ═══
@@ -395,7 +395,7 @@ export const PRICING = {
 
   note: 'エリア・物件タイプ・運用状況によって最適なプランは変わります。なお、新規開業（0→1）の場合は、行政書士費用・許認可申請費用・備品調達・初期撮影などの実費が別途発生します。運用中の物件の運用代行契約・他社からの乗り換えは、これらの実費は基本発生しません。',
   cta: { label: '料金について相談する', href: '/contact' },
-  ctaSecondary: { label: 'まず収益シミュレーションを見る', href: '/simulate' },
+  ctaSecondary: { label: 'まず収益シミュレーションを見る', href: '/services#pricing' },
 } as const
 
 // ═══ 9. FAQ ═══
@@ -558,7 +558,7 @@ export const FINAL_CTA = {
   body: '今の運用を見直したい方も、これから民泊を始めたい方も。SEKAI STAYが、現状整理から収益化の方向性まで一緒に考えます。',
   primaryCta: { label: '無料で物件診断を受ける', href: '/audit' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: 'まずは収益シミュレーションから', href: '/simulate' },
+  textLink: { label: 'まずは収益シミュレーションから', href: '/services#pricing' },
 } as const
 
 // ═══ 11. Footer Catch ═══

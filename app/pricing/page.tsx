@@ -165,7 +165,7 @@ export default function PricingPage() {
 
             <div className="mt-12 flex justify-center">
               <Link
-                href="/simulate"
+                href="/services#pricing"
                 className="btn bg-ivory text-teal-ink hover:bg-bright-teal hover:text-ivory border-ivory"
               >
                 収支シミュレーション

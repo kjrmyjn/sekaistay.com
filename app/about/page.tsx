@@ -515,7 +515,7 @@ export default function AboutPage() {
                 <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
               </Link>
               <Link
-                href="/simulate"
+                href="/services#pricing"
                 className="group inline-flex items-center justify-between gap-4 border border-ivory/30 text-ivory px-7 py-5 transition hover:bg-ivory/5 hover:border-bright-teal"
               >
                 <div>

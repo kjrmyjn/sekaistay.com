@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import EditorialSimulator from '@/components/EditorialSimulator'
 import { IMG } from '@/lib/images'
 import { IconArrowRight } from '@/components/Icons'
 
@@ -296,8 +297,8 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Pricing — dark editorial */}
-        <section className="bg-ink text-ivory relative overflow-hidden">
+        {/* Pricing — dark editorial with inline simulator */}
+        <section id="pricing" className="bg-ink text-ivory relative overflow-hidden scroll-mt-24">
           <div
             aria-hidden
             className="absolute -top-40 left-1/3 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl"
@@ -315,39 +316,56 @@ export default function ServicesPage() {
                 <span className="font-sans font-light text-bright-teal">料金設計。</span>
               </h2>
               <p className="lead text-ivory/70 jp-break">
-                民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。
+                民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。下のシミュレーターで、あなたの物件での試算をご確認ください。
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10 mb-10">
-              <div className="bg-ink p-8 md:p-10">
-                <p className="eyebrow-mono text-ivory/50 mb-5">01 — Initial Cost</p>
-                <p className="font-sans text-[14px] text-ivory/60 line-through mb-2">通常 ¥100,000</p>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="font-sans font-light text-[96px] text-ivory leading-none tabular-nums">0</span>
-                  <span className="font-sans text-[24px] text-bright-teal">円</span>
-                </div>
-                <p className="eyebrow-mono text-bright-teal mb-4">Campaign 実施中</p>
-                <p className="text-body-sm text-ivory/70">
-                  OTA初期設定・画像加工・掲載開始まで含む。
-                </p>
-              </div>
-              <div className="bg-ink p-8 md:p-10">
-                <p className="eyebrow-mono text-ivory/50 mb-5">02 — Running Cost</p>
-                <div className="pb-6 border-b border-ivory/10 mb-6">
-                  <p className="eyebrow-mono text-ivory/50 mb-2">固定管理費</p>
-                  <p className="font-sans text-[20px] text-ivory">
-                    ¥10,000
-                    <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
+            {/* 2-col layout: cost cards (left, stacked) | simulator (right) */}
+            <div className="grid lg:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10 mb-10">
+              {/* Left column: 01 + 02 stacked */}
+              <div className="grid grid-rows-2 gap-px bg-ivory/10">
+                <div className="bg-ink p-8 md:p-10">
+                  <p className="eyebrow-mono text-ivory/50 mb-5">01 — Initial Cost</p>
+                  <p className="font-sans text-[14px] text-ivory/60 line-through mb-2">通常 ¥100,000</p>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="font-sans font-light text-[88px] md:text-[96px] text-ivory leading-none tabular-nums">0</span>
+                    <span className="font-sans text-[24px] text-bright-teal">円</span>
+                  </div>
+                  <p className="eyebrow-mono text-bright-teal mb-3">Campaign 実施中</p>
+                  <p className="text-body-sm text-ivory/70">
+                    OTA初期設定・画像加工・掲載開始まで含む。
                   </p>
                 </div>
-                <p className="eyebrow-mono text-ivory/50 mb-3">変動運営委託費</p>
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span className="font-sans text-[14px] text-ivory">売上の</span>
-                  <span className="font-sans font-light text-[88px] text-ivory leading-none tabular-nums">8</span>
-                  <span className="font-sans font-light text-[36px] text-bright-teal">%</span>
+                <div className="bg-ink p-8 md:p-10">
+                  <p className="eyebrow-mono text-ivory/50 mb-5">02 — Running Cost</p>
+                  <div className="pb-5 border-b border-ivory/10 mb-5">
+                    <p className="eyebrow-mono text-ivory/50 mb-2">固定管理費</p>
+                    <p className="font-sans text-[20px] text-ivory">
+                      ¥10,000
+                      <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
+                    </p>
+                  </div>
+                  <p className="eyebrow-mono text-ivory/50 mb-3">変動運営委託費</p>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="font-sans text-[14px] text-ivory">売上の</span>
+                    <span className="font-sans font-light text-[72px] md:text-[80px] text-ivory leading-none tabular-nums">8</span>
+                    <span className="font-sans font-light text-[32px] text-bright-teal">%</span>
+                  </div>
+                  <p className="font-sans text-[13px] text-ivory/60">他社平均: 15〜25%</p>
                 </div>
-                <p className="font-sans text-[13px] text-ivory/60">他社平均: 15〜25%</p>
+              </div>
+
+              {/* Right column: simulator (light panel inside dark section) */}
+              <div className="bg-paper text-ink p-8 md:p-10">
+                <div className="flex items-baseline justify-between mb-6">
+                  <p className="eyebrow-mono text-sekai-teal">03 — Estimate</p>
+                  <span className="font-sans text-[12px] text-mid-gray">10秒で完了</span>
+                </div>
+                <h3 className="font-sans font-medium text-[20px] md:text-[22px] text-ink leading-snug mb-6 jp-keep">
+                  あなたの物件、SEKAI STAYで
+                  <span className="text-sekai-teal">どう変わる？</span>
+                </h3>
+                <EditorialSimulator />
               </div>
             </div>
 
@@ -387,16 +405,6 @@ export default function ServicesPage() {
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-12 flex justify-center">
-              <Link
-                href="/simulate"
-                className="btn bg-ivory text-teal-ink hover:bg-bright-teal hover:text-ivory border-ivory"
-              >
-                収支シミュレーション
-                <IconArrowRight size={12} />
-              </Link>
             </div>
           </div>
         </section>
