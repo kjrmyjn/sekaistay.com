@@ -715,7 +715,7 @@ function Step2Property({
       </Field>
 
       {/* Property name search */}
-      <Field number="05" label="物件名を検索" required>
+      <Field number="05" label="物件名をAirBnBで検索" required>
         <div className="relative">
           <input
             type="text"
@@ -727,7 +727,7 @@ function Step2Property({
             onBlur={() => {
               setTimeout(() => setSearchOpen(false), 150);
             }}
-            placeholder="2文字以上で検索を開始"
+            placeholder="2文字以上でAirBnB検索を開始"
             disabled={noPropertyYet}
             className={`${editorialInput} disabled:bg-pale-gray disabled:cursor-not-allowed disabled:opacity-60 ${
               showUrlError ? "border-red-300" : ""
@@ -767,7 +767,7 @@ function Step2Property({
             className="mt-1 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
           />
           <span className="text-[13px] leading-relaxed text-dark-gray font-sans">
-            まだ物件を AirBnB に掲載していない
+            まだ物件を AirBnB に掲載していない・アクティブなリスティングが無い
           </span>
         </label>
         {noPropertyYet && (
