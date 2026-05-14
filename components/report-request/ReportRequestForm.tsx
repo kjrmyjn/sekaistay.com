@@ -807,7 +807,7 @@ function Step2Property({
       {/* Property name search */}
       <div className="relative">
         <label className="block text-[14px] font-semibold mb-2 text-ink">
-          物件名を検索 <span className="text-red-600">*</span>
+          物件名をAirBnBで検索 <span className="text-red-600">*</span>
         </label>
         <input
           type="text"
@@ -815,7 +815,7 @@ function Step2Property({
           onChange={(e) => onAirbnbUrl(e.target.value)}
           onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
           onBlur={() => { setTimeout(() => setSearchOpen(false), 150); }}
-          placeholder="2文字以上で検索を開始"
+          placeholder="2文字以上でAirBnB検索を開始"
           disabled={noPropertyYet}
           className={`w-full px-4 py-3 rounded-lg border bg-white text-[15px] placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-sekai-teal/20 disabled:bg-light-gray disabled:cursor-not-allowed disabled:opacity-60 ${
             showUrlError ? "border-red-300" : "border-rule"
