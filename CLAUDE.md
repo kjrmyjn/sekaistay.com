@@ -31,6 +31,20 @@
 - メタタグ・構造化データは絶対に壊さない（`SEO_AUDIT_REPORT.md` 参照）
 - Tailwindのデザイントークンは `SEKAI_STAY_Creative_Guide.md` に定義済み
 
+### 広告コピー・クリエイティブ作成時（必読）
+
+広告コピー（見出し・プライマリテキスト・説明文）やクリエイティブ案を**作成・修正・提案する前**に、以下を**必ず全て読んでから**着手する。直近セッションの文脈や決定事項が永続化されている。
+
+1. `ad-ops/google-ads/copy-drafts.md` — Google広告コピー現行案・却下パターン
+2. `ad-ops/meta-ads/copy-drafts.md` — Meta広告コピー現行案
+3. `ad-ops/learnings.md` — 出稿で得た学び・修正履歴
+4. `~/.claude/projects/-Users-sekaichi-Desktop-claude-code/memory/feedback_ad_copy_creative_alignment.md` — コピー作成原則（創業者=複数 / 信頼訴求3軸 / ネガティブフレーミング禁止 / 実態整合）
+5. `~/.claude/projects/-Users-sekaichi-Desktop-claude-code/memory/project_sekai_stay.md` — キャンペーン体制・キーワード実測Vol・NG表現リスト
+
+これらを読まずに見出し案を出すと、過去に却下した案を再提案したり、創業者単数表現・ネガティブフレーミング・誇大表現を含む案が出る事故が起きる（2026-05-14 ss-trust.png 事故等）。
+
+新しい決定や却下理由が出たら、その場で `ad-ops/learnings.md` か該当 copy-drafts.md に追記してから次の提案へ進む（揮発防止）。
+
 ## よく使う
 ```
 npm run dev       # ローカル開発（localhost:3000）
