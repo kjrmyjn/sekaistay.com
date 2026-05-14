@@ -151,8 +151,8 @@ async function searchBrave(query: string): Promise<Result[]> {
   }
   const params = new URLSearchParams({
     q: `site:airbnb.jp/rooms ${query}`,
-    // 削除済み listing を弾いた後に MAX_RESULTS 件確保するため overfetch (CANDIDATE_POOL 件まで validate)
-    count: String(CANDIDATE_POOL * 2),
+    // Brave API の count 上限は 20。CANDIDATE_POOL=12 件 validate するための overfetch (上限張り付け)
+    count: "20",
     country: "JP",
     search_lang: "jp",
     ui_lang: "ja-JP",

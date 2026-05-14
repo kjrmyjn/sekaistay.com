@@ -767,7 +767,7 @@ function Step2Property({
             className="mt-1 w-4 h-4 accent-sekai-teal shrink-0 cursor-pointer"
           />
           <span className="text-[13px] leading-relaxed text-dark-gray font-sans">
-            まだ物件を AirBnB に掲載していない
+            まだ物件を AirBnB に掲載していない・アクティブなリスティングが無い
           </span>
         </label>
         {noPropertyYet && (
