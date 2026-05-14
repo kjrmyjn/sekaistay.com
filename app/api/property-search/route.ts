@@ -16,14 +16,22 @@ import { NextResponse } from "next/server";
 const BRAVE_ENDPOINT = "https://api.search.brave.com/res/v1/web/search";
 const BRAVE_TIMEOUT_MS = 6_000;
 const MAX_RESULTS = 8;
+const CANDIDATE_POOL = 12; // validate up to N candidates to backfill 404 drops
+const LISTING_VALIDATE_TIMEOUT_MS = 3_000;
+const LISTING_FETCH_MAX_BYTES = 30_000; // stream until </title>; cap to be safe
 const CACHE_TTL_MS = 60 * 60 * 1000;
 const CACHE_MAX_ENTRIES = 200;
+const LIVENESS_TTL_MS = 24 * 60 * 60 * 1000;
+const LIVENESS_MAX_ENTRIES = 1_000;
 
 export const runtime = "nodejs";
 
 type Result = { source: "airbnb" | "other"; url: string; title?: string };
 type CacheEntry = { results: Result[]; expiresAt: number };
 const cache = new Map<string, CacheEntry>();
+
+type LivenessEntry = { live: boolean; expiresAt: number };
+const livenessCache = new Map<string, LivenessEntry>();
 
 function cacheGet(key: string): Result[] | null {
   const hit = cache.get(key);
@@ -67,6 +75,75 @@ function stripBraveHighlight(title: string): string {
   return title.replace(/<\/?[a-zA-Z][^>]*>/g, "").trim();
 }
 
+function livenessGet(url: string): boolean | null {
+  const hit = livenessCache.get(url);
+  if (!hit) return null;
+  if (hit.expiresAt < Date.now()) {
+    livenessCache.delete(url);
+    return null;
+  }
+  return hit.live;
+}
+
+function livenessSet(url: string, live: boolean): void {
+  if (livenessCache.size >= LIVENESS_MAX_ENTRIES) {
+    const oldest = livenessCache.keys().next().value;
+    if (oldest !== undefined) livenessCache.delete(oldest);
+  }
+  livenessCache.set(url, { live, expiresAt: Date.now() + LIVENESS_TTL_MS });
+}
+
+// Airbnb は削除済み listing でも HTTP 200 を返す SPA。HEAD/status では判別できないので
+// 本文先頭〜<title>までストリーム読みし、タイトルに 404/Page Not Found 系の文言が
+// 含まれる場合のみ "dead" 判定する。判別不能 (timeout・throw) は fail-open で live 扱い
+// にして表示機会を逃さない（最悪、これまで通り 404 URL を保存するだけ・現状回帰）。
+async function isLiveListing(url: string, timeoutMs: number): Promise<boolean> {
+  const ac = new AbortController();
+  const timer = setTimeout(() => ac.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+        Accept: "text/html",
+        "Accept-Language": "ja-JP,ja;q=0.9,en;q=0.8",
+      },
+      cache: "no-store",
+      signal: ac.signal,
+      redirect: "follow",
+    });
+    if (!res.ok) return false;
+    if (!res.body) return true; // can't inspect body → don't filter
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = "";
+    let total = 0;
+    try {
+      while (total < LISTING_FETCH_MAX_BYTES) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        total += value.byteLength;
+        buf += decoder.decode(value, { stream: true });
+        if (buf.includes("</title>")) break;
+      }
+    } finally {
+      try { await reader.cancel(); } catch {}
+    }
+    const m = buf.match(/<title>([^<]*)<\/title>/i);
+    const title = (m ? m[1] : "").toLowerCase();
+    if (!title) return true; // no title in chunk → fail-open
+    if (title.includes("404")) return false;
+    if (title.includes("page not found")) return false;
+    if (title.includes("not found")) return false;
+    if (title.includes("ページが見つかりません")) return false;
+    return true;
+  } catch {
+    return true; // timeout / network error → fail-open
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function searchBrave(query: string): Promise<Result[]> {
   const apiKey = (process.env.BRAVE_SEARCH_API_KEY || "").trim();
   if (!apiKey) {
@@ -74,7 +151,8 @@ async function searchBrave(query: string): Promise<Result[]> {
   }
   const params = new URLSearchParams({
     q: `site:airbnb.jp/rooms ${query}`,
-    count: String(MAX_RESULTS * 2), // overfetch then dedup
+    // 削除済み listing を弾いた後に MAX_RESULTS 件確保するため overfetch (CANDIDATE_POOL 件まで validate)
+    count: String(CANDIDATE_POOL * 2),
     country: "JP",
     search_lang: "jp",
     ui_lang: "ja-JP",
@@ -100,16 +178,33 @@ async function searchBrave(query: string): Promise<Result[]> {
       web?: { results?: Array<{ url?: string; title?: string }> };
     };
     const seen = new Set<string>();
-    const out: Result[] = [];
+    const candidates: Result[] = [];
     for (const item of data.web?.results ?? []) {
       const normalized = item.url ? normalizeAirbnbUrl(item.url) : null;
       if (!normalized || seen.has(normalized)) continue;
       seen.add(normalized);
-      out.push({
+      candidates.push({
         source: "airbnb",
         url: normalized,
         title: item.title ? stripBraveHighlight(item.title) : undefined,
       });
+      if (candidates.length >= CANDIDATE_POOL) break;
+    }
+    // Liveness validation を並列実行。Brave のインデックスは古い/削除済み listing も
+    // 拾うため、保存される URL が 404 にならないようここで弾く（楊維倫 lead 2026-05-14）。
+    const validations = await Promise.all(
+      candidates.map(async (c) => {
+        const cached = livenessGet(c.url);
+        if (cached !== null) return { c, live: cached };
+        const live = await isLiveListing(c.url, LISTING_VALIDATE_TIMEOUT_MS);
+        livenessSet(c.url, live);
+        return { c, live };
+      }),
+    );
+    const out: Result[] = [];
+    for (const { c, live } of validations) {
+      if (!live) continue;
+      out.push(c);
       if (out.length >= MAX_RESULTS) break;
     }
     return out;
