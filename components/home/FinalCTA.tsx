@@ -71,10 +71,10 @@ export default function FinalCTA() {
             </div>
 
             <Link
-              href={FINAL_CTA.textLink.href}
+              href="/services#pricing"
               className="inline-flex items-center gap-2 mt-8 font-sans text-[15px] text-ivory/80 hover:text-ivory border-b border-ivory/30 hover:border-ivory pb-1 transition"
             >
-              {FINAL_CTA.textLink.label}
+              30秒で年間損失額を試算する
               <IconArrowRight size={12} />
             </Link>
           </div>
