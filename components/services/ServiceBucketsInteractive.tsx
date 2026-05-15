@@ -48,22 +48,28 @@ export default function ServiceBucketsInteractive({ buckets }: Props) {
 
   return (
     <>
-      {/* 3 column vertical layout */}
-      <div className="grid md:grid-cols-3 gap-px bg-rule border border-rule">
+      {/*
+        3 column vertical layout with row alignment.
+        Using `grid-flow-col` + `grid-rows-[repeat(5,auto)]` on md+ so each bucket
+        occupies one column and the 5 row tiers (image / description / svc1-3) align
+        horizontally across columns regardless of content length.
+      */}
+      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[repeat(5,auto)] md:grid-flow-col gap-px bg-rule border border-rule">
         {buckets.map((bucket, bIdx) => (
-          <div key={bucket.id} className="bg-paper flex flex-col">
-            {/* Bucket image — uses first service's image as visual anchor */}
+          <div key={bucket.id} className="contents">
+            {/* Row 1: image header */}
             <div className="relative aspect-[16/10] md:aspect-[5/4] overflow-hidden bg-ink">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={bucket.services[0]?.image}
                 alt={bucket.label}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div
                 aria-hidden
                 className="absolute inset-0"
-                style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0) 35%, rgba(26,26,26,0.75) 100%)' }}
+                style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.15) 0%, rgba(26,26,26,0.85) 100%)' }}
               />
               <div className="absolute top-5 left-5 right-5">
                 <p className="eyebrow-mono text-bright-teal !text-[10px]">
@@ -77,51 +83,50 @@ export default function ServiceBucketsInteractive({ buckets }: Props) {
               </div>
             </div>
 
-            {/* Bucket description */}
-            <div className="p-7 md:p-8 border-b border-rule">
+            {/* Row 2: description */}
+            <div className="bg-paper p-7 md:p-8 border-b border-rule">
               <p className="text-body-sm text-dark-gray leading-relaxed jp-break">
                 {bucket.description}
               </p>
             </div>
 
-            {/* Service list — clickable rows */}
-            <ul className="flex flex-col flex-1">
-              {bucket.services.map((s, i) => (
-                <li key={i} className={i !== 0 ? 'border-t border-rule' : ''}>
-                  <button
-                    type="button"
-                    onClick={() => setActive(s)}
-                    className="group w-full text-left p-6 md:p-7 flex items-center justify-between gap-4 hover:bg-mist transition"
-                    aria-label={`${s.title} の詳細を見る`}
-                  >
-                    <div className="flex items-baseline gap-4 min-w-0">
-                      <span className="font-sans font-light text-[18px] text-sekai-teal tabular-nums flex-shrink-0">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span className="font-sans font-medium text-[15px] md:text-[16px] text-ink jp-keep group-hover:text-sekai-teal transition">
-                        {s.title}
-                      </span>
-                    </div>
-                    <svg
-                      className="w-4 h-4 text-mid-gray group-hover:text-sekai-teal group-hover:translate-x-1 transition flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            <p className="px-7 md:px-8 py-5 border-t border-rule text-[11.5px] text-mid-gray font-sans">
-              タップして各サービスの詳細を見る
-            </p>
+            {/* Rows 3-5: service rows */}
+            {bucket.services.map((s, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActive(s)}
+                className={`group bg-paper w-full text-left p-6 md:p-7 flex items-center justify-between gap-4 hover:bg-mist transition ${
+                  i !== 0 ? 'border-t border-rule' : ''
+                }`}
+                aria-label={`${s.title} の詳細を見る`}
+              >
+                <div className="flex items-baseline gap-4 min-w-0">
+                  <span className="font-sans font-light text-[18px] text-sekai-teal tabular-nums flex-shrink-0">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-sans font-medium text-[15px] md:text-[16px] text-ink jp-keep group-hover:text-sekai-teal transition">
+                    {s.title}
+                  </span>
+                </div>
+                <svg
+                  className="w-4 h-4 text-mid-gray group-hover:text-sekai-teal group-hover:translate-x-1 transition flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            ))}
           </div>
         ))}
       </div>
+
+      <p className="mt-5 text-center text-[11.5px] text-mid-gray font-sans">
+        タップして各サービスの詳細をご覧いただけます。
+      </p>
 
       {/* Modal overlay */}
       {active && (
