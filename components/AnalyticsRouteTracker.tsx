@@ -26,6 +26,7 @@ export default function AnalyticsRouteTracker() {
     const w = window as unknown as {
       fbq?: (...a: unknown[]) => void
       gtag?: (...a: unknown[]) => void
+      twq?: (...a: unknown[]) => void
       dataLayer?: unknown[]
     }
 
@@ -46,6 +47,13 @@ export default function AnalyticsRouteTracker() {
 
     if (typeof w.fbq === 'function') {
       w.fbq('track', 'PageView')
+    }
+
+    // X Pixel SPA tracking: twq('config', PIXEL_ID) は idempotent で再呼び出しで PageView を発火する。
+    // X_PIXEL_ID env が未設定なら layout.tsx で twq 自体が初期化されないため、ここの呼び出しは no-op。
+    const xPixelId = process.env.NEXT_PUBLIC_X_PIXEL_ID
+    if (xPixelId && typeof w.twq === 'function') {
+      w.twq('config', xPixelId)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
