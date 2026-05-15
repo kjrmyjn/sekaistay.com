@@ -27,16 +27,41 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://sekaistay.com/services' },
 }
 
-const SERVICE_CARDS = [
-  { title: '民泊運営代行', desc: '集客・インバウンド対応・清掃までワンストップ代行。AirbnbやBooking.comなどのOTA運用は専属チームが対応し、予約管理からゲスト対応まで一括で代行します。', details: ['複数OTAへの最適掲載', '24時間多言語ゲスト対応', '予約・売上管理', 'レビュー管理・改善'], image: IMG.svcManagement },
-  { title: 'マルチOTA掲載', desc: 'エリアや物件特性を活かし、Airbnb・Booking.com・Vrbo・Expedia等の複数OTAに最適な形で掲載。1つのOTAに留まらず、集客チャネルを最大化します。', details: ['物件特性に合ったOTA選定', 'エリア別の最適掲載戦略', '複数OTA間の在庫同期', '掲載コンテンツの継続最適化'], image: IMG.svcOta },
-  { title: 'マンスリー運営', desc: '民泊新法の180日規制外も逃さず稼働。マンスリー賃貸と民泊を柔軟に組み合わせ、年間の収益を最大化する戦略をご提案します。', details: ['民泊＋マンスリー併用戦略', '法令遵守の稼働日数管理', 'マンスリー専用OTA掲載', '年間収益シミュレーション'], image: IMG.svcMonthly },
-  { title: '開業支援', desc: '民泊開業に必要な集客戦略、インバウンド対応、オペレーション構築などを支援し最短で安定した運営を実現。初めての方でも安心してスタートできます。', details: ['事業計画・収益シミュレーション', 'オペレーション体制構築', 'OTA初期設定・掲載開始', '物件の差別化戦略立案'], image: IMG.svcStartup },
-  { title: '画像技術・掲載最適化', desc: 'プロカメラマン不要。お手持ちのスマホで撮影いただいた写真を、弊社の画像加工システムでトンマナを統一し、プロ品質のリスティングに仕上げます。', details: ['スマホ写真をプロ品質に加工', 'ブランドトンマナの自動統一', 'OTA最適サイズへのリサイズ', '掲載写真の継続的な改善提案'], image: IMG.svcPhoto },
-  { title: '清掃・メンテナンス', desc: 'ゲストの評価に直結するハイクオリティな清掃を徹底管理。専属スタッフがチェックリストに基づき品質を保証します。', details: ['チェックアウト後の清掃手配', 'リネン・アメニティ在庫管理', '設備の定期点検・修繕', '清掃品質チェックリスト検品'], image: IMG.svcCleaning },
-  { title: 'ダイナミックプライシング', desc: '周辺の競合価格、季節変動、イベント情報、予約動向をリアルタイムに分析。最適な価格を自動設定し、稼働率と売上の最大化を図ります。', details: ['競合物件の価格モニタリング', '需要予測に基づく価格自動調整', '長期滞在・直前割引の最適化', '月次収益レポート'], image: IMG.svcPricing },
-  { title: 'オーナーダッシュボード', desc: '24時間いつでもどこでもアクセス可能なオーナー専用ダッシュボード。リアルタイムで収益・稼働状況・レビューを確認。さらに月次の詳細レポートで、データに基づいた改善提案を実施。', details: ['リアルタイム収支・稼働率表示', '24h / PC・スマホ対応', '月次詳細レポート配信', 'データに基づく改善提案'], image: IMG.svcDashboard },
-  { title: 'コンサルティング', desc: '豊富な実績に基づき、開業前の事業コンセプトから成功を支援。物件の収益ポテンシャルを最大化するための戦略をご提案します。', details: ['物件診断・収益分析', '競合調査・エリア分析', '投資回収期間の試算', '運営改善提案'], image: IMG.svcConsulting },
+// 9 サービスを 3 バケットに整理 (Guesty 着想・効果ファースト分類)
+const SERVICE_BUCKETS = [
+  {
+    id: 'demand',
+    label: '集客・予約最大化',
+    sublabel: 'Distribution & Demand',
+    description: '物件を「見つけられる・選ばれる」状態にする。OTA戦略・写真・価格設計まで一気通貫で。',
+    services: [
+      { title: 'マルチOTA掲載', desc: 'エリアや物件特性を活かし、Airbnb・Booking.com・Vrbo・Expedia等の複数OTAに最適な形で掲載。1つのOTAに留まらず、集客チャネルを最大化します。', details: ['物件特性に合ったOTA選定', 'エリア別の最適掲載戦略', '複数OTA間の在庫同期', '掲載コンテンツの継続最適化'], image: IMG.svcOta },
+      { title: '画像技術・掲載最適化', desc: 'プロカメラマン不要。お手持ちのスマホで撮影いただいた写真を、弊社の画像加工システムでトンマナを統一し、プロ品質のリスティングに仕上げます。', details: ['スマホ写真をプロ品質に加工', 'ブランドトンマナの自動統一', 'OTA最適サイズへのリサイズ', '掲載写真の継続的な改善提案'], image: IMG.svcPhoto },
+      { title: 'ダイナミックプライシング', desc: '周辺の競合価格、季節変動、イベント情報、予約動向をリアルタイムに分析。最適な価格を自動設定し、稼働率と売上の最大化を図ります。', details: ['競合物件の価格モニタリング', '需要予測に基づく価格自動調整', '長期滞在・直前割引の最適化', '月次収益レポート'], image: IMG.svcPricing },
+    ],
+  },
+  {
+    id: 'operations',
+    label: '運営・ゲスト対応',
+    sublabel: 'Operations & Guest Care',
+    description: '予約からチェックアウトまで、日々の現場をまるごと代行。オーナーは成果だけ見ればいい状態に。',
+    services: [
+      { title: '民泊運営代行', desc: '集客・インバウンド対応・清掃までワンストップ代行。AirbnbやBooking.comなどのOTA運用は専属チームが対応し、予約管理からゲスト対応まで一括で代行します。', details: ['複数OTAへの最適掲載', '24時間多言語ゲスト対応', '予約・売上管理', 'レビュー管理・改善'], image: IMG.svcManagement },
+      { title: 'マンスリー運営', desc: '民泊新法の180日規制外も逃さず稼働。マンスリー賃貸と民泊を柔軟に組み合わせ、年間の収益を最大化する戦略をご提案します。', details: ['民泊＋マンスリー併用戦略', '法令遵守の稼働日数管理', 'マンスリー専用OTA掲載', '年間収益シミュレーション'], image: IMG.svcMonthly },
+      { title: '清掃・メンテナンス', desc: 'ゲストの評価に直結するハイクオリティな清掃を徹底管理。専属スタッフがチェックリストに基づき品質を保証します。', details: ['チェックアウト後の清掃手配', 'リネン・アメニティ在庫管理', '設備の定期点検・修繕', '清掃品質チェックリスト検品'], image: IMG.svcCleaning },
+    ],
+  },
+  {
+    id: 'growth',
+    label: '開業・成長支援',
+    sublabel: 'Launch & Growth',
+    description: '立ち上げから収益最大化まで、データと経験で伴走。透明なダッシュボードと月次レポート付き。',
+    services: [
+      { title: '開業支援', desc: '民泊開業に必要な集客戦略、インバウンド対応、オペレーション構築などを支援し最短で安定した運営を実現。初めての方でも安心してスタートできます。', details: ['事業計画・収益シミュレーション', 'オペレーション体制構築', 'OTA初期設定・掲載開始', '物件の差別化戦略立案'], image: IMG.svcStartup },
+      { title: 'オーナーダッシュボード', desc: '24時間いつでもどこでもアクセス可能なオーナー専用ダッシュボード。リアルタイムで収益・稼働状況・レビューを確認。さらに月次の詳細レポートで、データに基づいた改善提案を実施。', details: ['リアルタイム収支・稼働率表示', '24h / PC・スマホ対応', '月次詳細レポート配信', 'データに基づく改善提案'], image: IMG.svcDashboard },
+      { title: 'コンサルティング', desc: '豊富な実績に基づき、開業前の事業コンセプトから成功を支援。物件の収益ポテンシャルを最大化するための戦略をご提案します。', details: ['物件診断・収益分析', '競合調査・エリア分析', '投資回収期間の試算', '運営改善提案'], image: IMG.svcConsulting },
+    ],
+  },
 ]
 
 const REVENUE_CASES = [
@@ -113,7 +138,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Service Grid — editorial catalog */}
+        {/* Service Buckets — 3 categories instead of flat list */}
         <section className="bg-paper">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
@@ -121,42 +146,64 @@ export default function ServicesPage() {
               <span className="eyebrow">Service Catalog</span>
             </div>
             <h2 className="heading-section text-ink jp-keep mb-14 max-w-3xl">
-              9つの機能が、1つの契約に。
+              全機能を、3つの目的別に整理。
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-rule gap-px border border-rule">
-              {SERVICE_CARDS.map((s, i) => (
-                <article key={i} className="bg-paper flex flex-col">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                    <div
-                      aria-hidden
-                      className="absolute inset-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0) 55%, rgba(26,26,26,0.55) 100%)' }}
-                    />
-                    <span className="absolute top-5 left-5 font-sans text-[14px] text-ivory">
-                      Service № {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="p-7 md:p-8 flex flex-col flex-1">
-                    <h3 className="font-sans font-medium text-[18px] md:text-[20px] text-ink mb-4 leading-snug">
-                      {s.title}
-                    </h3>
-                    <p className="text-body-sm text-dark-gray mb-6 jp-break flex-1">
-                      {s.desc}
+            <div className="space-y-20 md:space-y-24">
+              {SERVICE_BUCKETS.map((bucket, bIdx) => (
+                <div key={bucket.id}>
+                  {/* Bucket header */}
+                  <div className="grid lg:grid-cols-[0.4fr_0.6fr] gap-6 lg:gap-12 mb-10 pb-6 border-b border-rule items-end">
+                    <div>
+                      <p className="eyebrow-mono text-sekai-teal mb-3">
+                        {String(bIdx + 1).padStart(2, '0')} — {bucket.sublabel}
+                      </p>
+                      <h3 className="font-sans font-light text-[26px] md:text-[32px] text-ink leading-tight jp-keep">
+                        {bucket.label}
+                      </h3>
+                    </div>
+                    <p className="text-body-sm md:text-body text-dark-gray jp-break leading-relaxed">
+                      {bucket.description}
                     </p>
-                    <ul className="space-y-2 pt-5 border-t border-rule">
-                      {s.details.map((d, j) => (
-                        <li key={j} className="flex items-baseline gap-3 text-[13px] text-ink">
-                          <span className="font-sans text-[11px] text-sekai-teal tabular-nums flex-shrink-0">
-                            {String(j + 1).padStart(2, '0')}
-                          </span>
-                          <span className="jp-break">{d}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-                </article>
+
+                  {/* Service cards in this bucket */}
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-rule gap-px border border-rule">
+                    {bucket.services.map((s, i) => (
+                      <article key={i} className="bg-paper flex flex-col">
+                        <div className="relative aspect-[4/3] overflow-hidden">
+                          <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
+                          <div
+                            aria-hidden
+                            className="absolute inset-0"
+                            style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0) 55%, rgba(26,26,26,0.55) 100%)' }}
+                          />
+                          <span className="absolute top-5 left-5 font-sans text-[13px] text-ivory">
+                            {bucket.sublabel} № {String(i + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <div className="p-7 md:p-8 flex flex-col flex-1">
+                          <h4 className="font-sans font-medium text-[18px] md:text-[20px] text-ink mb-4 leading-snug">
+                            {s.title}
+                          </h4>
+                          <p className="text-body-sm text-dark-gray mb-6 jp-break flex-1">
+                            {s.desc}
+                          </p>
+                          <ul className="space-y-2 pt-5 border-t border-rule">
+                            {s.details.map((d, j) => (
+                              <li key={j} className="flex items-baseline gap-3 text-[13px] text-ink">
+                                <span className="font-sans text-[11px] text-sekai-teal tabular-nums flex-shrink-0">
+                                  {String(j + 1).padStart(2, '0')}
+                                </span>
+                                <span className="jp-break">{d}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
