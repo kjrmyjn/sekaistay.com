@@ -5,6 +5,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import EditorialSimulator from '@/components/EditorialSimulator'
+import ServiceBucketsInteractive from '@/components/services/ServiceBucketsInteractive'
 import { IMG } from '@/lib/images'
 import { IconArrowRight } from '@/components/Icons'
 
@@ -149,63 +150,7 @@ export default function ServicesPage() {
               全機能を、3つの目的別に整理。
             </h2>
 
-            <div className="space-y-20 md:space-y-24">
-              {SERVICE_BUCKETS.map((bucket, bIdx) => (
-                <div key={bucket.id}>
-                  {/* Bucket header */}
-                  <div className="grid lg:grid-cols-[0.4fr_0.6fr] gap-6 lg:gap-12 mb-10 pb-6 border-b border-rule items-end">
-                    <div>
-                      <p className="eyebrow-mono text-sekai-teal mb-3">
-                        {String(bIdx + 1).padStart(2, '0')} — {bucket.sublabel}
-                      </p>
-                      <h3 className="font-sans font-light text-[26px] md:text-[32px] text-ink leading-tight jp-keep">
-                        {bucket.label}
-                      </h3>
-                    </div>
-                    <p className="text-body-sm md:text-body text-dark-gray jp-break leading-relaxed">
-                      {bucket.description}
-                    </p>
-                  </div>
-
-                  {/* Service cards in this bucket */}
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-rule gap-px border border-rule">
-                    {bucket.services.map((s, i) => (
-                      <article key={i} className="bg-paper flex flex-col">
-                        <div className="relative aspect-[4/3] overflow-hidden">
-                          <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                          <div
-                            aria-hidden
-                            className="absolute inset-0"
-                            style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0) 55%, rgba(26,26,26,0.55) 100%)' }}
-                          />
-                          <span className="absolute top-5 left-5 font-sans text-[13px] text-ivory">
-                            {bucket.sublabel} № {String(i + 1).padStart(2, '0')}
-                          </span>
-                        </div>
-                        <div className="p-7 md:p-8 flex flex-col flex-1">
-                          <h4 className="font-sans font-medium text-[18px] md:text-[20px] text-ink mb-4 leading-snug">
-                            {s.title}
-                          </h4>
-                          <p className="text-body-sm text-dark-gray mb-6 jp-break flex-1">
-                            {s.desc}
-                          </p>
-                          <ul className="space-y-2 pt-5 border-t border-rule">
-                            {s.details.map((d, j) => (
-                              <li key={j} className="flex items-baseline gap-3 text-[13px] text-ink">
-                                <span className="font-sans text-[11px] text-sekai-teal tabular-nums flex-shrink-0">
-                                  {String(j + 1).padStart(2, '0')}
-                                </span>
-                                <span className="jp-break">{d}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ServiceBucketsInteractive buckets={SERVICE_BUCKETS} />
           </div>
         </section>
 
