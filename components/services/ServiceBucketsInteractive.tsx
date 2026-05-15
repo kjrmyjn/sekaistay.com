@@ -52,14 +52,33 @@ export default function ServiceBucketsInteractive({ buckets }: Props) {
       <div className="grid md:grid-cols-3 gap-px bg-rule border border-rule">
         {buckets.map((bucket, bIdx) => (
           <div key={bucket.id} className="bg-paper flex flex-col">
-            {/* Bucket header */}
+            {/* Bucket image — uses first service's image as visual anchor */}
+            <div className="relative aspect-[16/10] md:aspect-[5/4] overflow-hidden bg-ink">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={bucket.services[0]?.image}
+                alt={bucket.label}
+                className="w-full h-full object-cover"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0) 35%, rgba(26,26,26,0.75) 100%)' }}
+              />
+              <div className="absolute top-5 left-5 right-5">
+                <p className="eyebrow-mono text-bright-teal !text-[10px]">
+                  {String(bIdx + 1).padStart(2, '0')} — {bucket.sublabel}
+                </p>
+              </div>
+              <div className="absolute bottom-5 left-5 right-5">
+                <h3 className="font-sans font-medium text-[20px] md:text-[22px] text-ivory leading-tight jp-keep">
+                  {bucket.label}
+                </h3>
+              </div>
+            </div>
+
+            {/* Bucket description */}
             <div className="p-7 md:p-8 border-b border-rule">
-              <p className="eyebrow-mono text-sekai-teal mb-3">
-                {String(bIdx + 1).padStart(2, '0')} — {bucket.sublabel}
-              </p>
-              <h3 className="font-sans font-medium text-[20px] md:text-[22px] text-ink leading-tight mb-4 jp-keep">
-                {bucket.label}
-              </h3>
               <p className="text-body-sm text-dark-gray leading-relaxed jp-break">
                 {bucket.description}
               </p>
