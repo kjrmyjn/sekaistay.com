@@ -187,19 +187,30 @@ Step 6: 初回キャンペーン Live 化
 
 ---
 
-## 確定済み判断（2026-05-09）
+## 確定済み判断
 
-| 項目 | 確定 / 推奨 | 備考 |
+| 項目 | 確定 | 備考 |
 |---|---|---|
-| アカウント主体 | ✅ テンイチ個人 `@tenichiliu` | ID `18ce55mifxw`・Campaign 画面到達済み |
-| Pixel イベント方式 | 要判断 | URL ベース（サンクスページ要・PR5 で実装）/ イベントベース |
-| 初月予算 | 要判断 | ¥3,000/日（慣らし）→ 1週間後 ¥5,000/日 推奨 |
+| アカウント主体 | ✅ テンイチ個人 `@tenichiliu` (2026-05-09) | ID `18ce55mifxw`・Campaign 画面到達済み |
+| Pixel イベント方式 | ✅ **イベントベース** (2026-05-15) | Meta Pixel と同パターン・サンクスページ不要・フォーム送信成功時に `twq('event', X_LEAD_EVENT_ID, ...)` 発火 |
+| 初月予算 | ✅ ¥3K/日 (慣らし) → 1週間後 ¥5K/日 (2026-05-15) | Campaign 1 / KW-Price 単独で開始 |
+| Pixel 実装 | ✅ コード PR 済み (`feat/x-ads-launch`) | `NEXT_PUBLIC_X_PIXEL_ID` + `NEXT_PUBLIC_X_LEAD_EVENT_ID` env 設定で稼働 |
 | 課金方式 | 要判断 | カード推奨（実績蓄積後に請求書化） |
+
+---
+
+## Pixel 稼働手順（PR マージ後）
+
+1. X Ads Manager で Universal Website Tag (Pixel) 発行 → Pixel ID (`o1234` 形式) 取得
+2. X Ads Manager で Lead イベント作成 (イベントベース・コンバージョン値 ¥5,000) → Event ID (`tw-XXXXX-YYYYY` 形式) 取得
+3. Vercel に env 追加:
+   - `NEXT_PUBLIC_X_PIXEL_ID` = Pixel ID
+   - `NEXT_PUBLIC_X_LEAD_EVENT_ID` = Event ID
+4. Production deploy → X Ads Manager で「タグテスト」モードで PageView と Lead が届くか確認
 
 ---
 
 ## 関連
 
-- 後続 PR: PR3/5（X Pixel 実装 + サンクスページ）
-- コピー: `ad-ops/x-ads/copy-drafts.md`（次に書く）
-- オーディエンス: `ad-ops/x-ads/audience-targeting.md`（次に書く）
+- コピー: `ad-ops/x-ads/copy-drafts.md`
+- オーディエンス: `ad-ops/x-ads/audience-targeting.md`

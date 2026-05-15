@@ -398,6 +398,18 @@ export function ReportRequestForm({ lpVariant, embed = false }: ReportRequestFor
             value: 0,
           });
         }
+        // X (Twitter) Pixel Lead 発火。NEXT_PUBLIC_X_LEAD_EVENT_ID は X Ads Manager で
+        // Lead イベントを作成すると発行される tw-XXXXX-YYYYY 形式の ID。未設定なら no-op。
+        const xLeadEventId = process.env.NEXT_PUBLIC_X_LEAD_EVENT_ID;
+        if (xLeadEventId && typeof window !== "undefined") {
+          // @ts-ignore
+          window.twq?.("event", xLeadEventId, {
+            conversion_id: typeof data?.eventId === "string" ? data.eventId : undefined,
+            value: null,
+            currency: "JPY",
+            contents: [{ content_name: "report_request", content_type: "lead" }],
+          });
+        }
       } catch {}
       // iframe parent notify
       try {
