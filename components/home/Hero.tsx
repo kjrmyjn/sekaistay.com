@@ -16,6 +16,11 @@ export default function Hero() {
       />
 
       <div className="container-edit relative section-hero">
+        {/* Eyebrow — category leader declaration */}
+        <p className="eyebrow-mono text-sekai-teal mb-5">
+          {HERO.eyebrow}
+        </p>
+
         {/* Chapter label */}
         <div className="chapter-marker">
           <span className="rule-teal-sm" />
@@ -23,9 +28,9 @@ export default function Hero() {
         </div>
 
         <div className="hero-grid">
-          {/* ── Left : headline + single CTA ── */}
+          {/* ── Left : headline + numbers + CTAs ── */}
           <div className="min-w-0 relative z-10 anim-fade-up">
-            <h1 className="heading-display text-ink mb-10 jp-keep">
+            <h1 className="heading-display text-ink mb-8 jp-keep">
               <JP>{HERO.headline.line1}</JP>
               <br />
               <span className="font-sans font-light text-sekai-teal">
@@ -35,15 +40,33 @@ export default function Hero() {
 
             <div className="rule-thin mb-8 max-w-[520px]" />
 
-            <p className="lead mb-10 jp-break">
+            <p className="lead mb-8 jp-break">
               {HERO.body}
             </p>
 
-            {/* Single CTA */}
+            {/* Numbers strip — 3 metrics integrated into Hero */}
+            <div className="grid grid-cols-3 gap-4 md:gap-6 mb-10 border-y border-rule py-6">
+              {HERO.numbers.map((n) => (
+                <div key={n.metric} className="flex flex-col min-w-0">
+                  <span className="font-sans text-[18px] md:text-[22px] font-light text-ink leading-none mb-2 jp-keep">
+                    <JP>{n.metric}</JP>
+                  </span>
+                  <span className="text-[10.5px] md:text-[11.5px] text-mid-gray leading-snug jp-keep">
+                    <JP>{n.label}</JP>
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs — heavy primary + light text link */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 mb-4">
               <Link href={HERO.primaryCta.href} className="btn btn-primary group">
                 {HERO.primaryCta.label}
                 <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
+              </Link>
+              <Link href={HERO.lightCta.href} className="btn-link group">
+                {HERO.lightCta.label}
+                <IconArrowRight size={12} className="group-hover:translate-x-1 transition" />
               </Link>
             </div>
 
