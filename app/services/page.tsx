@@ -172,21 +172,21 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            {/* Quality stats — ledger */}
+            {/* Quality stats — ledger (compact) */}
             <div className="bg-paper border border-rule mb-10">
               <div className="grid md:grid-cols-2">
-                <div className="px-8 py-10 border-b md:border-b-0 md:border-r border-rule">
-                  <p className="eyebrow-mono text-mid-gray mb-4">Airbnb — Host Rating</p>
+                <div className="px-6 py-6 md:px-8 md:py-7 border-b md:border-b-0 md:border-r border-rule">
+                  <p className="eyebrow-mono text-mid-gray mb-3 !text-[10px]">Airbnb — Host Rating</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-sans font-light text-[72px] text-ink leading-none tabular-nums">4.7</span>
-                    <span className="font-sans text-[14px] text-mid-gray">／5.0</span>
+                    <span className="font-sans font-light text-[40px] md:text-[48px] text-ink leading-none tabular-nums">4.7</span>
+                    <span className="font-sans text-[13px] text-mid-gray">／5.0</span>
                   </div>
                 </div>
-                <div className="px-8 py-10">
-                  <p className="eyebrow-mono text-mid-gray mb-4">Booking.com — Review Score</p>
+                <div className="px-6 py-6 md:px-8 md:py-7">
+                  <p className="eyebrow-mono text-mid-gray mb-3 !text-[10px]">Booking.com — Review Score</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-sans font-light text-[72px] text-ink leading-none tabular-nums">4.8</span>
-                    <span className="font-sans text-[14px] text-mid-gray">／5.0</span>
+                    <span className="font-sans font-light text-[40px] md:text-[48px] text-ink leading-none tabular-nums">4.8</span>
+                    <span className="font-sans text-[13px] text-mid-gray">／5.0</span>
                   </div>
                 </div>
               </div>
@@ -210,9 +210,9 @@ export default function ServicesPage() {
                       className="absolute inset-0"
                       style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.1) 0%, rgba(26,26,26,0.65) 100%)' }}
                     />
-                    <p className="absolute top-3 left-4 right-4 eyebrow-mono text-bright-teal !text-[10px]">
+                    <span className="absolute top-3 left-3 inline-flex items-center bg-ink/85 backdrop-blur-sm text-bright-teal px-2.5 py-1 eyebrow-mono !text-[10px] tracking-[0.18em]">
                       Case № {String(i + 1).padStart(2, '0')}
-                    </p>
+                    </span>
                     <div className="absolute bottom-3 left-4 right-4 text-ivory">
                       <h3 className="font-sans font-medium text-[15px] md:text-[16px] leading-tight jp-keep mb-0.5">
                         {c.area}
