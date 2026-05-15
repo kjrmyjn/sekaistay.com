@@ -192,59 +192,59 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* Revenue cases — compact w/ property photo */}
+            {/* Revenue cases — compact w/ property photo (grid for reliable image stretch) */}
             <div className="grid md:grid-cols-2 gap-6">
               {REVENUE_CASES.map((c, i) => (
-                <article key={i} className="bg-paper border border-rule overflow-hidden flex flex-col md:flex-row">
-                  {/* Property photo */}
-                  <div className="relative md:w-2/5 aspect-[16/10] md:aspect-auto overflow-hidden bg-ink flex-shrink-0">
+                <article key={i} className="bg-paper border border-rule overflow-hidden grid grid-cols-1 md:grid-cols-[2fr_3fr]">
+                  {/* Property photo — absolute fill, always renders */}
+                  <div className="relative aspect-[16/10] md:aspect-auto overflow-hidden bg-ink">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={c.image}
                       alt={c.area}
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div
                       aria-hidden
                       className="absolute inset-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.1) 0%, rgba(26,26,26,0.55) 100%)' }}
+                      style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.1) 0%, rgba(26,26,26,0.65) 100%)' }}
                     />
                     <p className="absolute top-3 left-4 right-4 eyebrow-mono text-bright-teal !text-[10px]">
                       Case № {String(i + 1).padStart(2, '0')}
                     </p>
                     <div className="absolute bottom-3 left-4 right-4 text-ivory">
-                      <h3 className="font-sans font-medium text-[16px] md:text-[17px] leading-tight jp-keep mb-0.5">
+                      <h3 className="font-sans font-medium text-[15px] md:text-[16px] leading-tight jp-keep mb-0.5">
                         {c.area}
                       </h3>
-                      <p className="text-[11px] text-ivory/75">{c.spec}</p>
+                      <p className="text-[10.5px] text-ivory/75">{c.spec}</p>
                     </div>
                   </div>
 
                   {/* Compact stats */}
-                  <div className="p-6 md:p-7 flex flex-col flex-1">
-                    <p className="eyebrow-mono text-sekai-teal mb-2 !text-[10px]">Revenue Uplift</p>
-                    <div className="flex items-baseline gap-1.5 mb-5 pb-5 border-b border-rule">
-                      <span className="font-sans font-light text-[52px] md:text-[60px] text-ink leading-none tabular-nums">
+                  <div className="p-5 md:p-6 flex flex-col justify-center">
+                    <p className="eyebrow-mono text-sekai-teal mb-1.5 !text-[9.5px]">Revenue Uplift</p>
+                    <div className="flex items-baseline gap-1 mb-4 pb-4 border-b border-rule">
+                      <span className="font-sans font-light text-[36px] md:text-[42px] text-ink leading-none tabular-nums">
                         {c.pctUp}
                       </span>
-                      <span className="font-sans text-[20px] text-sekai-teal">%</span>
+                      <span className="font-sans text-[16px] text-sekai-teal">%</span>
                     </div>
 
-                    <div className="space-y-2.5 text-[12.5px]">
+                    <div className="space-y-2 text-[12px]">
                       <div className="flex items-baseline justify-between gap-2">
-                        <span className="eyebrow-mono text-mid-gray !text-[9.5px]">月次</span>
-                        <div className="flex items-baseline gap-2 flex-wrap justify-end">
-                          <span className="font-sans text-mid-gray line-through">¥{c.before.monthly}</span>
-                          <span className="text-mid-gray">→</span>
+                        <span className="eyebrow-mono text-mid-gray !text-[9px]">月次</span>
+                        <div className="flex items-baseline gap-1.5 flex-wrap justify-end">
+                          <span className="font-sans text-[11px] text-mid-gray line-through">¥{c.before.monthly}</span>
+                          <span className="text-mid-gray text-[11px]">→</span>
                           <span className="font-sans font-medium text-ink tabular-nums">¥{c.after.monthly}</span>
                         </div>
                       </div>
                       <div className="flex items-baseline justify-between gap-2">
-                        <span className="eyebrow-mono text-mid-gray !text-[9.5px]">年次</span>
-                        <div className="flex items-baseline gap-2 flex-wrap justify-end">
-                          <span className="font-sans text-mid-gray line-through">¥{c.before.annual}</span>
-                          <span className="text-mid-gray">→</span>
+                        <span className="eyebrow-mono text-mid-gray !text-[9px]">年次</span>
+                        <div className="flex items-baseline gap-1.5 flex-wrap justify-end">
+                          <span className="font-sans text-[11px] text-mid-gray line-through">¥{c.before.annual}</span>
+                          <span className="text-mid-gray text-[11px]">→</span>
                           <span className="font-sans font-medium text-ink tabular-nums">¥{c.after.annual}</span>
                         </div>
                       </div>
