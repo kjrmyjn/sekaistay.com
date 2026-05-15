@@ -49,7 +49,7 @@ export default function CompanyPage() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Company</p>
+              <p className="eyebrow text-sekai-teal">Company</p>
             </div>
             <h1 className="heading-display text-ink mb-5">
               会社概要
@@ -109,7 +109,7 @@ export default function CompanyPage() {
           <div className="container-edit px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · National Network</p>
+              <p className="eyebrow text-sekai-teal">National Network</p>
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
               <h2 className="heading-section text-ink max-w-2xl">

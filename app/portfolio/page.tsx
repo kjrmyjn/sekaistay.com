@@ -88,7 +88,7 @@ export default function PortfolioPage() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Track Record</p>
+              <p className="eyebrow text-sekai-teal">Track Record</p>
             </div>
             <h1 className="heading-display text-ink mb-5">
               民泊運営代行の実績
@@ -127,7 +127,7 @@ export default function PortfolioPage() {
           <div className="container-edit px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Revenue Results</p>
+              <p className="eyebrow text-sekai-teal">Revenue Results</p>
             </div>
             <h2 className="heading-section text-ink mb-14 max-w-3xl">
               民泊収益アップ
@@ -233,7 +233,7 @@ export default function PortfolioPage() {
           <div className="container-edit px-5 md:px-8 max-w-5xl">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅴ · Voice</p>
+              <p className="eyebrow text-sekai-teal">Voice</p>
             </div>
             <h2 className="heading-section text-ink mb-14 max-w-3xl">
               お客様の

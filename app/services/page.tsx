@@ -61,7 +61,6 @@ export default function ServicesPage() {
         <section className="bg-ivory border-b border-rule">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅰ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Services · Full Spectrum</span>
             </div>
@@ -118,7 +117,6 @@ export default function ServicesPage() {
         <section className="bg-paper">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅱ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Service Catalog</span>
             </div>
@@ -168,7 +166,6 @@ export default function ServicesPage() {
         <section className="bg-mist">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅲ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Results · Before / After</span>
             </div>
@@ -260,7 +257,6 @@ export default function ServicesPage() {
         <section className="bg-ivory">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅳ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Owner Voices</span>
             </div>
@@ -306,7 +302,6 @@ export default function ServicesPage() {
           />
           <div className="relative container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter text-bright-teal">Chapter Ⅴ</span>
               <span className="w-6 h-px bg-bright-teal" />
               <span className="eyebrow !text-bright-teal">Clear Pricing</span>
             </div>
@@ -413,7 +408,6 @@ export default function ServicesPage() {
         <section className="bg-bone">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅵ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Process · From Inquiry to Launch</span>
             </div>

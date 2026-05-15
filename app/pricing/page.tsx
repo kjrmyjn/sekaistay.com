@@ -67,7 +67,6 @@ export default function PricingPage() {
         <section className="bg-ivory border-b border-rule">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅰ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Pricing · The Clean Math</span>
             </div>
@@ -105,7 +104,6 @@ export default function PricingPage() {
           />
           <div className="relative container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter text-bright-teal">Chapter Ⅱ</span>
               <span className="w-6 h-px bg-bright-teal" />
               <span className="eyebrow !text-bright-teal">Two-Tier Cost</span>
             </div>
@@ -179,7 +177,6 @@ export default function PricingPage() {
         <section className="bg-paper">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅲ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">What's Included</span>
             </div>
@@ -205,7 +202,6 @@ export default function PricingPage() {
         <section className="bg-mist">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅳ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Side by Side</span>
             </div>
@@ -251,7 +247,6 @@ export default function PricingPage() {
         <section className="bg-bone">
           <div className="container-narrow section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅴ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Pricing FAQ</span>
             </div>

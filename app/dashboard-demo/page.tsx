@@ -167,7 +167,7 @@ export default function DashboardDemoPage() {
           <div className="relative container-edit section-hero max-w-6xl mx-auto">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅰ · Owner Dashboard Demo</p>
+              <p className="eyebrow text-bright-teal">Owner Dashboard Demo</p>
             </div>
             <div className="hero-grid">
               <h1 className="heading-display jp-keep">
@@ -475,7 +475,7 @@ export default function DashboardDemoPage() {
           <div className="container-edit px-5 md:px-8 max-w-6xl mx-auto">
             <div className="flex items-center gap-3 mb-3">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Features</p>
+              <p className="eyebrow text-sekai-teal">Features</p>
             </div>
             <h2 className="heading-section text-ink mb-3">
               毎日見たくなる、<span className="font-sans text-sekai-teal">6つの機能。</span>
@@ -516,7 +516,7 @@ export default function DashboardDemoPage() {
               <div className="relative">
                 <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
-                  <p className="eyebrow text-bright-teal">Chapter Ⅳ · Next Step</p>
+                  <p className="eyebrow text-bright-teal">Next Step</p>
                 </div>
                 <h2 className="font-sans font-bold text-[28px] md:text-[40px] leading-[1.3] mb-6">
                   あなたの物件も、

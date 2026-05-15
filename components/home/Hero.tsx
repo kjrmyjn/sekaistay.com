@@ -21,12 +21,6 @@ export default function Hero() {
           {HERO.eyebrow}
         </p>
 
-        {/* Chapter label */}
-        <div className="chapter-marker">
-          <span className="rule-teal-sm" />
-          <span className="eyebrow">Chapter Ⅰ · Vacation Rental Management</span>
-        </div>
-
         <div className="hero-grid">
           {/* ── Left : headline + numbers + CTAs ── */}
           <div className="min-w-0 relative z-10 anim-fade-up">

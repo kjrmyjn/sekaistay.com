@@ -91,7 +91,7 @@ export default function ContactPage() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Contact</p>
+              <p className="eyebrow text-sekai-teal">Contact</p>
             </div>
             <h1 className="heading-display text-ink mb-5">
               お問い合わせ
