@@ -23,7 +23,6 @@ export default function Ecosystem() {
         {/* Header */}
         <div className="heading-mb-lg">
           <div className="chapter-marker">
-            <span className="chapter">Chapter Ⅶ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">{ECOSYSTEM.eyebrow}</span>
           </div>

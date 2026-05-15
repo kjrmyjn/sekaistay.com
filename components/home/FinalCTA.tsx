@@ -39,7 +39,6 @@ export default function FinalCTA() {
       <div className="relative container-edit section-xl">
         {/* Chapter header */}
         <div className="flex items-center gap-4 mb-10 md:mb-12">
-          <span className="chapter text-bright-teal">Chapter Ⅻ</span>
           <span className="w-6 h-px bg-bright-teal" />
           <span className="eyebrow !text-bright-teal">Start Here</span>
         </div>

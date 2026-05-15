@@ -153,7 +153,7 @@ export default function FAQClient() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Frequently Asked</p>
+              <p className="eyebrow text-sekai-teal">Frequently Asked</p>
             </div>
             <h1 className="heading-display text-ink mb-5">
               よくあるご質問
@@ -288,7 +288,7 @@ export default function FAQClient() {
           <div className="container-narrow px-5 md:px-8 section-xl relative">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅲ · Closing</p>
+              <p className="eyebrow text-bright-teal">Closing</p>
             </div>
             <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
               <div>
@@ -312,7 +312,7 @@ export default function FAQClient() {
                   <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
                 </Link>
                 <Link
-                  href="/simulate"
+                  href="/services#pricing"
                   className="group w-full inline-flex items-center justify-between gap-4 border border-ivory/30 text-ivory px-7 py-5 transition hover:bg-ivory/5 hover:border-bright-teal"
                 >
                   <div>

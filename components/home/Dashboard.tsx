@@ -17,7 +17,6 @@ export default function Dashboard() {
         {/* Header */}
         <div className="heading-mb">
           <div className="chapter-marker">
-            <span className="chapter text-bright-teal">Chapter Ⅵ</span>
             <span className="w-6 h-px bg-bright-teal" />
             <span className="eyebrow !text-bright-teal">Owner Dashboard</span>
           </div>

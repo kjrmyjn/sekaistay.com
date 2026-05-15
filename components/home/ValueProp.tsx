@@ -10,7 +10,6 @@ export default function ValueProp() {
         {/* Header */}
         <div className="heading-mb-lg">
           <div className="chapter-marker">
-            <span className="chapter">Chapter Ⅳ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">The Difference</span>
           </div>

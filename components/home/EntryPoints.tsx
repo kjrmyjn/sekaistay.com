@@ -19,7 +19,6 @@ export default function EntryPoints() {
         <div className="heading-mb-lg grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-7">
             <div className="chapter-marker">
-              <span className="chapter">Chapter Ⅱ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Three Entrances</span>
             </div>

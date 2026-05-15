@@ -25,7 +25,6 @@ export default function FAQ() {
         {/* Header */}
         <div className="heading-mb-lg">
           <div className="chapter-marker">
-            <span className="chapter">Chapter Ⅺ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">Frequently Asked Questions</span>
           </div>

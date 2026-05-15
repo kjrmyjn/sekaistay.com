@@ -10,7 +10,6 @@ export default function Pricing() {
         {/* Header */}
         <div className="heading-mb-lg">
           <div className="chapter-marker">
-            <span className="chapter">Chapter Ⅸ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">Pricing · Transparent by Design</span>
           </div>

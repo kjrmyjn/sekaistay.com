@@ -15,7 +15,6 @@ export default function Results() {
         <div className="heading-mb grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
             <div className="chapter-marker">
-              <span className="chapter">Chapter Ⅴ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Case Studies · Numbers</span>
             </div>
