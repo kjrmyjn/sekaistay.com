@@ -26,7 +26,7 @@ export default function BlogPage() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Column</p>
+              <p className="eyebrow text-sekai-teal">Column</p>
             </div>
             <div className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-end">
               <h1 className="heading-display text-ink">

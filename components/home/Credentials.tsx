@@ -32,7 +32,6 @@ export default function Credentials() {
         {/* Header */}
         <div className="heading-mb-lg">
           <div className="chapter-marker">
-            <span className="chapter">Chapter Ⅹ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">{CREDENTIALS.eyebrow}</span>
           </div>

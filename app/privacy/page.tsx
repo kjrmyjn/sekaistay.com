@@ -70,7 +70,7 @@ export default function PrivacyPage() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Legal</p>
+              <p className="eyebrow text-sekai-teal">Legal</p>
             </div>
             <h1 className="heading-display text-ink mb-5">
               プライバシーポリシー

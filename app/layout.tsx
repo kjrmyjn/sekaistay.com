@@ -17,10 +17,11 @@ export const viewport: Viewport = {
 
 // SEKAI STAY ブランドガイドライン準拠:
 //   日本語: Noto Sans JP / 英語: Helvetica Neue
-// 見出しBold(700) / 本文Regular(400) のみ使用
+// LP と HP のフォントウェイト整合のため 300/600 も読み込み
+// （font-light/font-semibold が Helvetica Neue にフォールバックしないように）
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-noto-sans-jp',
   preload: true,

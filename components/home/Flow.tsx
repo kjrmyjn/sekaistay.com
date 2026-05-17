@@ -10,7 +10,6 @@ export default function Flow() {
         {/* Header */}
         <div className="heading-mb-lg">
           <div className="chapter-marker">
-            <span className="chapter">Chapter Ⅷ</span>
             <span className="rule-teal-sm" />
             <span className="eyebrow">Process · From Inquiry to Launch</span>
           </div>

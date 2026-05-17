@@ -12,7 +12,7 @@
 export const CTA_LINKS = {
   contact: '/contact',
   audit: '/audit',
-  simulate: '/simulate',
+  simulate: '/services#pricing',
   caseStudies: '/case-studies',
   services: '/services',
   pricing: '/pricing',
@@ -23,19 +23,26 @@ export const CTA_LINKS = {
 export const CTA_LABELS = {
   simulate: '収益シミュレーション',
   simulateAction: '収益をシミュレーションする',
+  simulateLight: '30秒で年間損失額を試算',
   audit: '無料物件診断',
   auditAction: '無料で物件診断を受ける',
   contact: '無料相談',
-  contactAction: '無料相談を予約する',
+  contactAction: '個別相談を予約する',
 } as const
 
 // ═══ 1. Hero ═══
 export const HERO = {
+  eyebrow: 'THE LEADING VACATION RENTAL MANAGEMENT IN JAPAN',
   headline: {
     line1: '民泊運営は、もう丸投げでいい。',
     line2: 'オーナーは、成果だけ見ればいい。',
   },
   body: '運用中の物件の改善から、これから始める民泊の立ち上げまで。SEKAI STAYは、価格設計・OTA最適化・多言語対応・清掃・ゲスト対応まで一気通貫で支援します。まずは無料で、あなたの物件の伸びしろを確認してください。',
+  numbers: [
+    { metric: '★4.8', label: 'レビュー平均（管理物件）' },
+    { metric: '+30%', label: '平均稼働率の改善幅' },
+    { metric: '国土交通大臣', label: '住宅宿泊管理業 (01)第F05780号' },
+  ],
   stats: [
     { value: '4.8', label: 'レビュー平均' },
     { value: '全国', label: '対応エリア' },
@@ -43,8 +50,9 @@ export const HERO = {
     { value: '8%', label: '業界平均の半分以下' },
   ],
   primaryCta: { label: '無料で物件診断を受ける', href: '/audit' },
+  lightCta: { label: '30秒で年間損失額を試算', href: '/services#pricing' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: 'まずは収益シミュレーションから', href: '/simulate' },
+  textLink: { label: 'まずは収益シミュレーションから', href: '/services#pricing' },
   sideCard: {
     title: 'まずは3分で、物件の伸びしろを確認',
     body: '現在のリスティング・売上・手数料をもとに、稼働率と収益の改善余地を算出。担当アナリストが個別レポートでお届けします。',
@@ -106,29 +114,32 @@ export const MID_CTA = {
   microcopy: '入力3分 · 無料 · 営業連絡なし',
 } as const
 
-// ═══ Nav Cards — 詳細ページへの誘導カード行 ═══
+// ═══ Nav Cards — 3段ファンネル誘導（軽/中/重） ═══
 export const NAV_CARDS = {
-  eyebrow: 'Learn More',
-  headline: '詳しく知りたい方へ。',
-  body: '料金、ダッシュボード、よくあるご質問。気になる部分から確認できます。',
+  eyebrow: 'Choose Your Path',
+  headline: '入口は、あなたのペースで。',
+  body: '物件診断や個別相談まで、コミット度に合わせて段階的にご利用いただけます。',
   cards: [
     {
-      eyebrow: 'Dashboard',
-      title: 'オーナーダッシュボード',
-      body: '売上・稼働率・予約状況・改善ポイントを一画面で確認。',
-      cta: { label: 'デモを見る', href: '/dashboard-demo' },
+      step: '01',
+      weight: '軽い入口',
+      title: '30秒で年間損失額を試算',
+      body: '現在の手数料・売上から、SEKAI STAY に切り替えると年間どれだけ手元に残るかを即時表示。営業連絡なし。',
+      cta: { label: '計算機を使う', href: '/services#pricing' },
     },
     {
-      eyebrow: 'Pricing',
-      title: '料金体系',
-      body: '8%手数料・固定費¥10,000/月・初期費用¥0・解約金¥0。',
-      cta: { label: '料金を確認する', href: '/pricing' },
+      step: '02',
+      weight: '無料レポート',
+      title: '無料で物件診断を受ける',
+      body: '物件URL・運用状況をもとに、改善余地と収益シミュレーションを担当アナリストが個別レポートでお届け。',
+      cta: { label: '診断を始める', href: '/audit' },
     },
     {
-      eyebrow: 'FAQ',
-      title: 'よくあるご質問',
-      body: 'サービス内容・乗り換え・新規開業・料金についての疑問にお答えします。',
-      cta: { label: '質問を確認する', href: '/faq' },
+      step: '03',
+      weight: '直接相談',
+      title: '個別相談を予約する',
+      body: '複数物件・新規開業・乗り換え検討中の方。担当者とオンラインで直接相談（30分）。',
+      cta: { label: '相談枠を見る', href: '/contact' },
     },
   ],
 } as const
@@ -157,7 +168,7 @@ export const ENTRY = {
       label: 'FOR EXPLORERS',
       title: 'まずは収益感を知りたい方へ',
       body: 'エリア・物件タイプ・部屋数から、想定売上レンジと改善余地をその場で試算します。',
-      cta: { label: '無料でシミュレーションする', href: '/simulate' },
+      cta: { label: '無料でシミュレーションする', href: '/services#pricing' },
     },
   ],
 } as const
@@ -185,7 +196,7 @@ export const SIMULATION = {
     '優先して見直すべきポイント',
     '次に打つべき施策の方向性',
   ],
-  cta: { label: '無料で試算結果を受け取る', href: '/simulate' },
+  cta: { label: '無料で試算結果を受け取る', href: '/services#pricing' },
 } as const
 
 // ═══ 4. Value Proposition ═══
@@ -277,6 +288,7 @@ export const RESULTS = {
 
   cases: [
     {
+      effectHeadline: '月商 +57% / 稼働率 1.4倍',
       title: '野尻湖エリアの貸別荘',
       tag: 'リゾート物件',
       metrics: [
@@ -286,6 +298,7 @@ export const RESULTS = {
       body: '写真と訴求、価格設計、見せ方を再設計し、稼働率と売上の両方を改善しました。',
     },
     {
+      effectHeadline: '平均単価 +30% / レビュー +0.5',
       title: '京都エリアの宿泊物件',
       tag: '都市型・インバウンド',
       metrics: [
@@ -295,6 +308,7 @@ export const RESULTS = {
       body: '多言語対応やゲスト導線、体験価値の伝え方を調整し、予約率と満足度の改善につなげました。',
     },
     {
+      effectHeadline: '初月稼働 68% / 一気通貫設計',
       title: '立ち上げ初期の新規物件',
       tag: '新規オープン支援',
       metrics: [
@@ -395,7 +409,7 @@ export const PRICING = {
 
   note: 'エリア・物件タイプ・運用状況によって最適なプランは変わります。なお、新規開業（0→1）の場合は、行政書士費用・許認可申請費用・備品調達・初期撮影などの実費が別途発生します。運用中の物件の運用代行契約・他社からの乗り換えは、これらの実費は基本発生しません。',
   cta: { label: '料金について相談する', href: '/contact' },
-  ctaSecondary: { label: 'まず収益シミュレーションを見る', href: '/simulate' },
+  ctaSecondary: { label: 'まず収益シミュレーションを見る', href: '/services#pricing' },
 } as const
 
 // ═══ 9. FAQ ═══
@@ -558,7 +572,7 @@ export const FINAL_CTA = {
   body: '今の運用を見直したい方も、これから民泊を始めたい方も。SEKAI STAYが、現状整理から収益化の方向性まで一緒に考えます。',
   primaryCta: { label: '無料で物件診断を受ける', href: '/audit' },
   secondaryCta: { label: '無料相談を予約する', href: '/contact' },
-  textLink: { label: 'まずは収益シミュレーションから', href: '/simulate' },
+  textLink: { label: 'まずは収益シミュレーションから', href: '/services#pricing' },
 } as const
 
 // ═══ 11. Footer Catch ═══

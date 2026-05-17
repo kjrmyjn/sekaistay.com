@@ -52,7 +52,7 @@ export default function AreaPage() {
           <div className="container-edit section-hero">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅰ · Coverage</p>
+              <p className="eyebrow text-sekai-teal">Coverage</p>
             </div>
             <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-14 items-end">
               <h1 className="heading-display text-ink">
@@ -141,7 +141,7 @@ export default function AreaPage() {
               <div className="relative">
                 <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
-                  <p className="eyebrow text-bright-teal">Chapter Ⅲ · Not Listed?</p>
+                  <p className="eyebrow text-bright-teal">Not Listed?</p>
                 </div>
                 <h2 className="font-sans font-medium text-[26px] md:text-[34px] leading-tight mb-6">
                   お住まいのエリアについて、

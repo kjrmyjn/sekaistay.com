@@ -179,7 +179,7 @@ export default function AboutPage() {
           <div className="container-edit relative section-hero">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅰ · About SEKAI STAY</p>
+              <p className="eyebrow text-bright-teal">About SEKAI STAY</p>
             </div>
             <h1 className="heading-display heading-mb-lg jp-keep">
               <JP>宿を管理するのではない。</JP>
@@ -201,7 +201,7 @@ export default function AboutPage() {
           <div className="container-narrow px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅱ · Our Mission</p>
+              <p className="eyebrow text-sekai-teal">Our Mission</p>
             </div>
             <h2 className="heading-section text-ink mb-12 max-w-3xl">
               まだ届いていない宿の価値を、
@@ -255,7 +255,7 @@ export default function AboutPage() {
           <div className="container-narrow px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅲ · Origin Story</p>
+              <p className="eyebrow text-sekai-teal">Origin Story</p>
             </div>
             <h2 className="heading-section text-ink mb-12 max-w-3xl">
               この業界を、
@@ -293,7 +293,7 @@ export default function AboutPage() {
           <div className="container-edit px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅳ · Founders</p>
+              <p className="eyebrow text-sekai-teal">Founders</p>
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
               <h2 className="heading-section text-ink max-w-2xl">
@@ -347,7 +347,7 @@ export default function AboutPage() {
           <div className="container-edit relative px-5 md:px-8 section-xl">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅴ · Numbers</p>
+              <p className="eyebrow text-bright-teal">Numbers</p>
             </div>
             <h2 className="font-sans font-bold text-[28px] md:text-[42px] leading-[1.3] mb-14 max-w-3xl">
               数字で見る、
@@ -396,7 +396,7 @@ export default function AboutPage() {
           <div className="container-narrow px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅵ · Team &amp; Culture</p>
+              <p className="eyebrow text-sekai-teal">Team &amp; Culture</p>
             </div>
             <h2 className="heading-section text-ink mb-12 max-w-3xl">
               宿の運用は、ひとりの力ではなく、
@@ -445,7 +445,7 @@ export default function AboutPage() {
           <div className="container-edit px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅶ · Credo</p>
+              <p className="eyebrow text-sekai-teal">Credo</p>
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
               <h2 className="heading-section text-ink max-w-2xl">
@@ -494,7 +494,7 @@ export default function AboutPage() {
           <div className="container-narrow relative px-5 md:px-8 section-xl">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅷ · Begin</p>
+              <p className="eyebrow text-bright-teal">Begin</p>
             </div>
             <h2 className="font-sans font-bold text-[28px] md:text-[44px] leading-[1.3] mb-8 max-w-3xl">
               まずは、あなたの宿の
@@ -515,7 +515,7 @@ export default function AboutPage() {
                 <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
               </Link>
               <Link
-                href="/simulate"
+                href="/services#pricing"
                 className="group inline-flex items-center justify-between gap-4 border border-ivory/30 text-ivory px-7 py-5 transition hover:bg-ivory/5 hover:border-bright-teal"
               >
                 <div>

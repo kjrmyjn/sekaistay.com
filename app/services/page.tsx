@@ -4,6 +4,8 @@ import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import EditorialSimulator from '@/components/EditorialSimulator'
+import ServiceBucketsInteractive from '@/components/services/ServiceBucketsInteractive'
 import { IMG } from '@/lib/images'
 import { IconArrowRight } from '@/components/Icons'
 
@@ -26,21 +28,46 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://sekaistay.com/services' },
 }
 
-const SERVICE_CARDS = [
-  { title: '民泊運営代行', desc: '集客・インバウンド対応・清掃までワンストップ代行。AirbnbやBooking.comなどのOTA運用は専属チームが対応し、予約管理からゲスト対応まで一括で代行します。', details: ['複数OTAへの最適掲載', '24時間多言語ゲスト対応', '予約・売上管理', 'レビュー管理・改善'], image: IMG.svcManagement },
-  { title: 'マルチOTA掲載', desc: 'エリアや物件特性を活かし、Airbnb・Booking.com・Vrbo・Expedia等の複数OTAに最適な形で掲載。1つのOTAに留まらず、集客チャネルを最大化します。', details: ['物件特性に合ったOTA選定', 'エリア別の最適掲載戦略', '複数OTA間の在庫同期', '掲載コンテンツの継続最適化'], image: IMG.svcOta },
-  { title: 'マンスリー運営', desc: '民泊新法の180日規制外も逃さず稼働。マンスリー賃貸と民泊を柔軟に組み合わせ、年間の収益を最大化する戦略をご提案します。', details: ['民泊＋マンスリー併用戦略', '法令遵守の稼働日数管理', 'マンスリー専用OTA掲載', '年間収益シミュレーション'], image: IMG.svcMonthly },
-  { title: '開業支援', desc: '民泊開業に必要な集客戦略、インバウンド対応、オペレーション構築などを支援し最短で安定した運営を実現。初めての方でも安心してスタートできます。', details: ['事業計画・収益シミュレーション', 'オペレーション体制構築', 'OTA初期設定・掲載開始', '物件の差別化戦略立案'], image: IMG.svcStartup },
-  { title: '画像技術・掲載最適化', desc: 'プロカメラマン不要。お手持ちのスマホで撮影いただいた写真を、弊社の画像加工システムでトンマナを統一し、プロ品質のリスティングに仕上げます。', details: ['スマホ写真をプロ品質に加工', 'ブランドトンマナの自動統一', 'OTA最適サイズへのリサイズ', '掲載写真の継続的な改善提案'], image: IMG.svcPhoto },
-  { title: '清掃・メンテナンス', desc: 'ゲストの評価に直結するハイクオリティな清掃を徹底管理。専属スタッフがチェックリストに基づき品質を保証します。', details: ['チェックアウト後の清掃手配', 'リネン・アメニティ在庫管理', '設備の定期点検・修繕', '清掃品質チェックリスト検品'], image: IMG.svcCleaning },
-  { title: 'ダイナミックプライシング', desc: '周辺の競合価格、季節変動、イベント情報、予約動向をリアルタイムに分析。最適な価格を自動設定し、稼働率と売上の最大化を図ります。', details: ['競合物件の価格モニタリング', '需要予測に基づく価格自動調整', '長期滞在・直前割引の最適化', '月次収益レポート'], image: IMG.svcPricing },
-  { title: 'オーナーダッシュボード', desc: '24時間いつでもどこでもアクセス可能なオーナー専用ダッシュボード。リアルタイムで収益・稼働状況・レビューを確認。さらに月次の詳細レポートで、データに基づいた改善提案を実施。', details: ['リアルタイム収支・稼働率表示', '24h / PC・スマホ対応', '月次詳細レポート配信', 'データに基づく改善提案'], image: IMG.svcDashboard },
-  { title: 'コンサルティング', desc: '豊富な実績に基づき、開業前の事業コンセプトから成功を支援。物件の収益ポテンシャルを最大化するための戦略をご提案します。', details: ['物件診断・収益分析', '競合調査・エリア分析', '投資回収期間の試算', '運営改善提案'], image: IMG.svcConsulting },
+// 9 サービスを 3 バケットに整理 (Guesty 着想・効果ファースト分類)
+const SERVICE_BUCKETS = [
+  {
+    id: 'demand',
+    label: '集客・予約最大化',
+    sublabel: 'Distribution & Demand',
+    description: '物件を「見つけられる・選ばれる」状態にする。OTA戦略・写真・価格設計まで一気通貫で。',
+    services: [
+      { title: 'マルチOTA掲載', desc: 'エリアや物件特性を活かし、Airbnb・Booking.com・Vrbo・Expedia等の複数OTAに最適な形で掲載。1つのOTAに留まらず、集客チャネルを最大化します。', details: ['物件特性に合ったOTA選定', 'エリア別の最適掲載戦略', '複数OTA間の在庫同期', '掲載コンテンツの継続最適化'], image: IMG.svcOta },
+      { title: '画像技術・掲載最適化', desc: 'プロカメラマン不要。お手持ちのスマホで撮影いただいた写真を、弊社の画像加工システムでトンマナを統一し、プロ品質のリスティングに仕上げます。', details: ['スマホ写真をプロ品質に加工', 'ブランドトンマナの自動統一', 'OTA最適サイズへのリサイズ', '掲載写真の継続的な改善提案'], image: IMG.svcPhoto },
+      { title: 'ダイナミックプライシング', desc: '周辺の競合価格、季節変動、イベント情報、予約動向をリアルタイムに分析。最適な価格を自動設定し、稼働率と売上の最大化を図ります。', details: ['競合物件の価格モニタリング', '需要予測に基づく価格自動調整', '長期滞在・直前割引の最適化', '月次収益レポート'], image: IMG.svcPricing },
+    ],
+  },
+  {
+    id: 'operations',
+    label: '運営・ゲスト対応',
+    sublabel: 'Operations & Guest Care',
+    description: '予約からチェックアウトまで、日々の現場をまるごと代行。オーナーは成果だけ見ればいい状態に。',
+    services: [
+      { title: '民泊運営代行', desc: '集客・インバウンド対応・清掃までワンストップ代行。AirbnbやBooking.comなどのOTA運用は専属チームが対応し、予約管理からゲスト対応まで一括で代行します。', details: ['複数OTAへの最適掲載', '24時間多言語ゲスト対応', '予約・売上管理', 'レビュー管理・改善'], image: IMG.svcManagement },
+      { title: 'マンスリー運営', desc: '民泊新法の180日規制外も逃さず稼働。マンスリー賃貸と民泊を柔軟に組み合わせ、年間の収益を最大化する戦略をご提案します。', details: ['民泊＋マンスリー併用戦略', '法令遵守の稼働日数管理', 'マンスリー専用OTA掲載', '年間収益シミュレーション'], image: IMG.svcMonthly },
+      { title: '清掃・メンテナンス', desc: 'ゲストの評価に直結するハイクオリティな清掃を徹底管理。専属スタッフがチェックリストに基づき品質を保証します。', details: ['チェックアウト後の清掃手配', 'リネン・アメニティ在庫管理', '設備の定期点検・修繕', '清掃品質チェックリスト検品'], image: IMG.svcCleaning },
+    ],
+  },
+  {
+    id: 'growth',
+    label: '開業・成長支援',
+    sublabel: 'Launch & Growth',
+    description: '立ち上げから収益最大化まで、データと経験で伴走。透明なダッシュボードと月次レポート付き。',
+    services: [
+      { title: '開業支援', desc: '民泊開業に必要な集客戦略、インバウンド対応、オペレーション構築などを支援し最短で安定した運営を実現。初めての方でも安心してスタートできます。', details: ['事業計画・収益シミュレーション', 'オペレーション体制構築', 'OTA初期設定・掲載開始', '物件の差別化戦略立案'], image: IMG.svcStartup },
+      { title: 'オーナーダッシュボード', desc: '24時間いつでもどこでもアクセス可能なオーナー専用ダッシュボード。リアルタイムで収益・稼働状況・レビューを確認。さらに月次の詳細レポートで、データに基づいた改善提案を実施。', details: ['リアルタイム収支・稼働率表示', '24h / PC・スマホ対応', '月次詳細レポート配信', 'データに基づく改善提案'], image: IMG.svcDashboard },
+      { title: 'コンサルティング', desc: '豊富な実績に基づき、開業前の事業コンセプトから成功を支援。物件の収益ポテンシャルを最大化するための戦略をご提案します。', details: ['物件診断・収益分析', '競合調査・エリア分析', '投資回収期間の試算', '運営改善提案'], image: IMG.svcConsulting },
+    ],
+  },
 ]
 
 const REVENUE_CASES = [
-  { area: '京都 / 町家ヴィラ', spec: '一棟貸し / 町家リノベーション / 最大8名', pctUp: '209', before: { monthly: '185,000', annual: '2,220,000' }, after: { monthly: '387,000', annual: '4,644,000' } },
-  { area: '湖畔 / 高級ヴィラ', spec: '高級ヴィラ / 220㎡ / 1日1組限定', pctUp: '178', before: { monthly: '320,000', annual: '3,840,000' }, after: { monthly: '570,000', annual: '6,840,000' } },
+  { area: '京都 / 町家ヴィラ', spec: '一棟貸し / 町家リノベーション / 最大8名', pctUp: '209', before: { monthly: '185,000', annual: '2,220,000' }, after: { monthly: '387,000', annual: '4,644,000' }, image: IMG.propKyoto },
+  { area: '湖畔 / 高級ヴィラ', spec: '高級ヴィラ / 220㎡ / 1日1組限定', pctUp: '178', before: { monthly: '320,000', annual: '3,840,000' }, after: { monthly: '570,000', annual: '6,840,000' }, image: IMG.propVilla },
 ]
 
 const TESTIMONIALS = [
@@ -60,7 +87,6 @@ export default function ServicesPage() {
         <section className="bg-ivory border-b border-rule">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅰ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Services · Full Spectrum</span>
             </div>
@@ -90,7 +116,7 @@ export default function ServicesPage() {
           <div className="relative container-edit section-lg">
             <div className="grid md:grid-cols-[auto_1fr_auto] gap-10 items-center">
               <div>
-                <p className="eyebrow-mono text-ivory/50 mb-4">Flat Fee — Industry Reset</p>
+                <p className="eyebrow-mono text-bright-teal mb-4">Flat Fee — Industry Reset</p>
                 <div className="flex items-baseline gap-2">
                   <span className="font-sans font-light text-[108px] md:text-[140px] text-ivory leading-none tracking-tight tabular-nums">
                     8
@@ -105,7 +131,7 @@ export default function ServicesPage() {
                 <p className="font-sans text-[18px] md:text-[22px] text-ivory mb-3 leading-snug">
                   これだけのサービスが、すべて含まれています。
                 </p>
-                <p className="text-body-sm text-ivory/70">
+                <p className="text-body-sm text-ivory/90">
                   他社平均 15〜25%、初期費用は今なら 0円。
                 </p>
               </div>
@@ -113,53 +139,18 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Service Grid — editorial catalog */}
+        {/* Service Buckets — 3 categories instead of flat list */}
         <section className="bg-paper">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅱ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Service Catalog</span>
             </div>
             <h2 className="heading-section text-ink jp-keep mb-14 max-w-3xl">
-              9つの機能が、1つの契約に。
+              全機能を、3つの目的別に整理。
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-rule gap-px border border-rule">
-              {SERVICE_CARDS.map((s, i) => (
-                <article key={i} className="bg-paper flex flex-col">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                    <div
-                      aria-hidden
-                      className="absolute inset-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0) 55%, rgba(26,26,26,0.55) 100%)' }}
-                    />
-                    <span className="absolute top-5 left-5 font-sans text-[14px] text-ivory">
-                      Service № {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="p-7 md:p-8 flex flex-col flex-1">
-                    <h3 className="font-sans font-medium text-[18px] md:text-[20px] text-ink mb-4 leading-snug">
-                      {s.title}
-                    </h3>
-                    <p className="text-body-sm text-dark-gray mb-6 jp-break flex-1">
-                      {s.desc}
-                    </p>
-                    <ul className="space-y-2 pt-5 border-t border-rule">
-                      {s.details.map((d, j) => (
-                        <li key={j} className="flex items-baseline gap-3 text-[13px] text-ink">
-                          <span className="font-sans text-[11px] text-sekai-teal tabular-nums flex-shrink-0">
-                            {String(j + 1).padStart(2, '0')}
-                          </span>
-                          <span className="jp-break">{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <ServiceBucketsInteractive buckets={SERVICE_BUCKETS} />
           </div>
         </section>
 
@@ -167,7 +158,6 @@ export default function ServicesPage() {
         <section className="bg-mist">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅲ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Results · Before / After</span>
             </div>
@@ -182,63 +172,81 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            {/* Quality stats — ledger */}
-            <div className="bg-paper border border-rule mb-10">
-              <div className="grid md:grid-cols-2">
-                <div className="px-8 py-10 border-b md:border-b-0 md:border-r border-rule">
-                  <p className="eyebrow-mono text-mid-gray mb-4">Airbnb — Host Rating</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-sans font-light text-[72px] text-ink leading-none tabular-nums">4.7</span>
-                    <span className="font-sans text-[14px] text-mid-gray">／5.0</span>
+            {/* Quality stats — dark band (portfolio スタイル踏襲) */}
+            <div className="bg-ink text-ivory border border-ivory/10 mb-10">
+              <div className="grid grid-cols-2 gap-px bg-ivory/10">
+                <div className="bg-ink px-6 py-6 md:px-8 md:py-7">
+                  <p className="eyebrow-mono text-bright-teal mb-3 !text-[10px]">Airbnb — Host Rating</p>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-sans font-light text-[40px] md:text-[52px] text-ivory leading-none tabular-nums">4.7</span>
+                    <span className="font-sans text-[14px] text-ivory/85">／5.0</span>
                   </div>
                 </div>
-                <div className="px-8 py-10">
-                  <p className="eyebrow-mono text-mid-gray mb-4">Booking.com — Review Score</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-sans font-light text-[72px] text-ink leading-none tabular-nums">4.8</span>
-                    <span className="font-sans text-[14px] text-mid-gray">／5.0</span>
+                <div className="bg-ink px-6 py-6 md:px-8 md:py-7">
+                  <p className="eyebrow-mono text-bright-teal mb-3 !text-[10px]">Booking.com — Review Score</p>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-sans font-light text-[40px] md:text-[52px] text-ivory leading-none tabular-nums">4.8</span>
+                    <span className="font-sans text-[14px] text-ivory/85">／5.0</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Revenue cases */}
+            {/* Revenue cases — compact w/ property photo (grid for reliable image stretch) */}
             <div className="grid md:grid-cols-2 gap-6">
               {REVENUE_CASES.map((c, i) => (
-                <article key={i} className="bg-paper border border-rule p-8 md:p-10">
-                  <div className="flex items-start justify-between mb-6">
-                    <div>
-                      <p className="eyebrow-mono text-mid-gray mb-3">Case № {String(i + 1).padStart(2, '0')}</p>
-                      <h3 className="font-sans font-medium text-[20px] text-ink mb-1">{c.area}</h3>
-                      <p className="text-caption text-mid-gray">{c.spec}</p>
+                <article key={i} className="bg-paper border border-rule overflow-hidden grid grid-cols-1 md:grid-cols-[2fr_3fr]">
+                  {/* Property photo — absolute fill, always renders */}
+                  <div className="relative aspect-[16/10] md:aspect-auto overflow-hidden bg-ink">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={c.image}
+                      alt={c.area}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute inset-0"
+                      style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.1) 0%, rgba(26,26,26,0.65) 100%)' }}
+                    />
+                    <span className="absolute top-3 left-3 inline-flex items-center bg-ivory/95 backdrop-blur-sm border border-rule text-ink px-3 py-1 eyebrow-mono !text-[10px] tracking-[0.18em]">
+                      Case № {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div className="absolute bottom-3 left-4 right-4 text-ivory">
+                      <h3 className="font-sans font-medium text-[15px] md:text-[16px] leading-tight jp-keep mb-0.5">
+                        {c.area}
+                      </h3>
+                      <p className="text-[10.5px] text-ivory/90">{c.spec}</p>
                     </div>
                   </div>
 
-                  <div className="border-y border-rule py-8 mb-6">
-                    <p className="eyebrow-mono text-sekai-teal mb-3">Revenue Uplift</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-sans font-light text-[88px] text-ink leading-none tabular-nums">
+                  {/* Compact stats */}
+                  <div className="p-5 md:p-6 flex flex-col justify-center">
+                    <p className="eyebrow-mono text-sekai-teal mb-1.5 !text-[9.5px]">Revenue Uplift</p>
+                    <div className="flex items-baseline gap-1 mb-4 pb-4 border-b border-rule">
+                      <span className="font-sans font-light text-[36px] md:text-[42px] text-ink leading-none tabular-nums">
                         {c.pctUp}
                       </span>
-                      <span className="font-sans text-[28px] text-sekai-teal">%</span>
+                      <span className="font-sans text-[16px] text-sekai-teal">%</span>
                     </div>
-                  </div>
 
-                  <div className="space-y-3">
-                    <div className="flex items-baseline justify-between gap-3 pb-3 border-b border-rule">
-                      <span className="eyebrow-mono text-mid-gray">月次粗利</span>
-                      <div className="flex items-baseline gap-3 flex-wrap justify-end">
-                        <span className="font-sans text-[13px] text-mid-gray line-through">¥{c.before.monthly}</span>
-                        <span className="text-mid-gray">→</span>
-                        <span className="font-sans font-light text-[22px] text-ink tabular-nums">¥{c.after.monthly}</span>
+                    <div className="space-y-2 text-[12px]">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="eyebrow-mono text-dark-gray !text-[9px]">月次</span>
+                        <div className="flex items-baseline gap-1.5 flex-wrap justify-end">
+                          <span className="font-sans text-[11px] text-dark-gray line-through">¥{c.before.monthly}</span>
+                          <span className="text-dark-gray text-[11px]">→</span>
+                          <span className="font-sans font-medium text-ink tabular-nums">¥{c.after.monthly}</span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="eyebrow-mono text-mid-gray">年次粗利</span>
-                      <div className="flex items-baseline gap-3 flex-wrap justify-end">
-                        <span className="font-sans text-[13px] text-mid-gray line-through">¥{c.before.annual}</span>
-                        <span className="text-mid-gray">→</span>
-                        <span className="font-sans font-light text-[22px] text-ink tabular-nums">¥{c.after.annual}</span>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="eyebrow-mono text-dark-gray !text-[9px]">年次</span>
+                        <div className="flex items-baseline gap-1.5 flex-wrap justify-end">
+                          <span className="font-sans text-[11px] text-dark-gray line-through">¥{c.before.annual}</span>
+                          <span className="text-dark-gray text-[11px]">→</span>
+                          <span className="font-sans font-medium text-ink tabular-nums">¥{c.after.annual}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -259,7 +267,6 @@ export default function ServicesPage() {
         <section className="bg-ivory">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅳ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Owner Voices</span>
             </div>
@@ -280,7 +287,7 @@ export default function ServicesPage() {
                       </div>
                       <div>
                         <p className="font-sans text-[14px] text-ink">{t.name}</p>
-                        <p className="text-caption text-mid-gray">{t.role}</p>
+                        <p className="text-caption text-dark-gray">{t.role}</p>
                       </div>
                     </div>
                     <span className="font-sans text-[16px] text-sekai-teal tabular-nums">
@@ -296,8 +303,8 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Pricing — dark editorial */}
-        <section className="bg-ink text-ivory relative overflow-hidden">
+        {/* Pricing — dark editorial with inline simulator */}
+        <section id="pricing" className="bg-ink text-ivory relative overflow-hidden scroll-mt-24">
           <div
             aria-hidden
             className="absolute -top-40 left-1/3 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl"
@@ -305,7 +312,6 @@ export default function ServicesPage() {
           />
           <div className="relative container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter text-bright-teal">Chapter Ⅴ</span>
               <span className="w-6 h-px bg-bright-teal" />
               <span className="eyebrow !text-bright-teal">Clear Pricing</span>
             </div>
@@ -314,40 +320,57 @@ export default function ServicesPage() {
                 明確な、
                 <span className="font-sans font-light text-bright-teal">料金設計。</span>
               </h2>
-              <p className="lead text-ivory/70 jp-break">
-                民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。
+              <p className="text-body md:text-body-lg text-ivory font-normal jp-break leading-relaxed">
+                民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。<span className="text-bright-teal font-medium">下のシミュレーターで、あなたの物件での試算をご確認ください。</span>
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10 mb-10">
-              <div className="bg-ink p-8 md:p-10">
-                <p className="eyebrow-mono text-ivory/50 mb-5">01 — Initial Cost</p>
-                <p className="font-sans text-[14px] text-ivory/60 line-through mb-2">通常 ¥100,000</p>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="font-sans font-light text-[96px] text-ivory leading-none tabular-nums">0</span>
-                  <span className="font-sans text-[24px] text-bright-teal">円</span>
-                </div>
-                <p className="eyebrow-mono text-bright-teal mb-4">Campaign 実施中</p>
-                <p className="text-body-sm text-ivory/70">
-                  OTA初期設定・画像加工・掲載開始まで含む。
-                </p>
-              </div>
-              <div className="bg-ink p-8 md:p-10">
-                <p className="eyebrow-mono text-ivory/50 mb-5">02 — Running Cost</p>
-                <div className="pb-6 border-b border-ivory/10 mb-6">
-                  <p className="eyebrow-mono text-ivory/50 mb-2">固定管理費</p>
-                  <p className="font-sans text-[20px] text-ivory">
-                    ¥10,000
-                    <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
+            {/* 2-col layout: cost cards (left, stacked) | simulator (right) */}
+            <div className="grid lg:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10 mb-10">
+              {/* Left column: 01 + 02 stacked */}
+              <div className="grid grid-rows-2 gap-px bg-ivory/10">
+                <div className="bg-ink p-8 md:p-10">
+                  <p className="eyebrow-mono text-bright-teal mb-5">01 — Initial Cost</p>
+                  <p className="font-sans text-[14px] text-ivory/85 line-through mb-2">通常 ¥100,000</p>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="font-sans font-light text-[88px] md:text-[96px] text-ivory leading-none tabular-nums">0</span>
+                    <span className="font-sans text-[24px] text-bright-teal">円</span>
+                  </div>
+                  <p className="eyebrow-mono text-bright-teal mb-3">Campaign 実施中</p>
+                  <p className="text-body-sm text-ivory/90">
+                    OTA初期設定・画像加工・掲載開始まで含む。
                   </p>
                 </div>
-                <p className="eyebrow-mono text-ivory/50 mb-3">変動運営委託費</p>
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span className="font-sans text-[14px] text-ivory">売上の</span>
-                  <span className="font-sans font-light text-[88px] text-ivory leading-none tabular-nums">8</span>
-                  <span className="font-sans font-light text-[36px] text-bright-teal">%</span>
+                <div className="bg-ink p-8 md:p-10">
+                  <p className="eyebrow-mono text-bright-teal mb-5">02 — Running Cost</p>
+                  <div className="pb-5 border-b border-ivory/10 mb-5">
+                    <p className="eyebrow-mono text-bright-teal mb-2">固定管理費</p>
+                    <p className="font-sans text-[20px] text-ivory">
+                      ¥10,000
+                      <span className="text-[14px] text-ivory/85 font-sans ml-2">/ 1部屋 / 月</span>
+                    </p>
+                  </div>
+                  <p className="eyebrow-mono text-bright-teal mb-3">変動運営委託費</p>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="font-sans text-[14px] text-ivory">売上の</span>
+                    <span className="font-sans font-light text-[72px] md:text-[80px] text-ivory leading-none tabular-nums">8</span>
+                    <span className="font-sans font-light text-[32px] text-bright-teal">%</span>
+                  </div>
+                  <p className="font-sans text-[13px] text-ivory/85">他社平均: 15〜25%</p>
                 </div>
-                <p className="font-sans text-[13px] text-ivory/60">他社平均: 15〜25%</p>
+              </div>
+
+              {/* Right column: simulator (light panel inside dark section) */}
+              <div className="bg-paper text-ink p-8 md:p-10">
+                <div className="flex items-baseline justify-between mb-6">
+                  <p className="eyebrow-mono text-sekai-teal">03 — Estimate</p>
+                  <span className="font-sans text-[12px] text-dark-gray">10秒で完了</span>
+                </div>
+                <h3 className="font-sans font-medium text-[20px] md:text-[22px] text-ink leading-snug mb-6 jp-keep">
+                  あなたの物件、SEKAI STAYで
+                  <span className="text-sekai-teal">どう変わる？</span>
+                </h3>
+                <EditorialSimulator />
               </div>
             </div>
 
@@ -359,7 +382,7 @@ export default function ServicesPage() {
                   <p className="eyebrow !text-bright-teal">SEKAI STAY</p>
                 </div>
                 <div className="p-4 bg-mist text-center">
-                  <p className="eyebrow text-mid-gray">業界平均</p>
+                  <p className="eyebrow text-dark-gray">業界平均</p>
                 </div>
               </div>
               {[
@@ -383,20 +406,10 @@ export default function ServicesPage() {
                     <p className="font-sans text-[18px] text-sekai-teal tabular-nums">{sekai}</p>
                   </div>
                   <div className="p-5 text-center">
-                    <p className="font-sans text-[13px] text-mid-gray">{other}</p>
+                    <p className="font-sans text-[13px] text-dark-gray">{other}</p>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-12 flex justify-center">
-              <Link
-                href="/simulate"
-                className="btn bg-ivory text-teal-ink hover:bg-bright-teal hover:text-ivory border-ivory"
-              >
-                収支シミュレーション
-                <IconArrowRight size={12} />
-              </Link>
             </div>
           </div>
         </section>
@@ -405,7 +418,6 @@ export default function ServicesPage() {
         <section className="bg-bone">
           <div className="container-edit section-xl">
             <div className="flex items-center gap-4 mb-10">
-              <span className="chapter">Chapter Ⅵ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Process · From Inquiry to Launch</span>
             </div>
@@ -457,7 +469,7 @@ export default function ServicesPage() {
 
             <div className="mt-14 md:mt-16 pt-10 border-t border-rule flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
               <div>
-                <p className="eyebrow-mono text-mid-gray mb-3">Next Step</p>
+                <p className="eyebrow-mono text-dark-gray mb-3">Next Step</p>
                 <p className="font-sans text-[20px] md:text-[22px] text-ink">
                   まずは、お話を聞かせてください。
                 </p>

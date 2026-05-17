@@ -36,10 +36,10 @@ export default function Header() {
 
       {/* Main header */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
+        className={`sticky top-0 z-50 transition-all duration-500 bg-ivory ${
           scrolled
-            ? 'bg-ivory/92 backdrop-blur-md border-b border-rule'
-            : 'bg-ivory border-b border-transparent'
+            ? 'border-b border-rule shadow-sm'
+            : 'border-b border-transparent'
         }`}
       >
         <div className="container-edit h-[76px] flex items-center justify-between gap-6">

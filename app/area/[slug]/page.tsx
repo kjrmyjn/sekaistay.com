@@ -244,7 +244,7 @@ export default function AreaDetailPage({ params }: Props) {
           <div className="container-edit px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅱ · Market Brief</p>
+              <p className="eyebrow text-sekai-teal">Market Brief</p>
             </div>
             <h2 className="heading-section text-ink mb-12 max-w-3xl">
               {area.name}で民泊運営が
@@ -284,7 +284,7 @@ export default function AreaDetailPage({ params }: Props) {
           <div className="container-edit px-5 md:px-8 section-xl relative">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅲ · Ledger</p>
+              <p className="eyebrow text-bright-teal">Ledger</p>
             </div>
             <h2 className="font-sans font-bold text-[26px] sm:text-[32px] md:text-[40px] leading-[1.3] mb-12 max-w-3xl">
               {area.name}での
@@ -333,7 +333,7 @@ export default function AreaDetailPage({ params }: Props) {
 
             <div className="mt-10 text-center">
               <Link
-                href="/simulate"
+                href="/services#pricing"
                 className="group inline-flex items-center gap-3 text-bright-teal hover:text-ivory transition font-sans text-body-sm"
               >
                 詳細なシミュレーションを見る
@@ -348,7 +348,7 @@ export default function AreaDetailPage({ params }: Props) {
           <div className="container-edit px-5 md:px-8">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅳ · Our Services</p>
+              <p className="eyebrow text-sekai-teal">Our Services</p>
             </div>
             <h2 className="heading-section text-ink mb-12 max-w-3xl">
               SEKAI STAYの
@@ -377,7 +377,7 @@ export default function AreaDetailPage({ params }: Props) {
           <div className="container-narrow px-5 md:px-8 max-w-3xl">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅴ · FAQ</p>
+              <p className="eyebrow text-sekai-teal">FAQ</p>
             </div>
             <h2 className="heading-section text-ink mb-10">
               {area.name}の民泊運用について、
@@ -423,7 +423,7 @@ export default function AreaDetailPage({ params }: Props) {
               <div className="bg-paper border border-rule p-8 md:p-10">
                 <div className="flex items-center justify-between mb-6 pb-5 border-b border-rule">
                   <p className="eyebrow-mono text-mid-gray">Local Office</p>
-                  <p className="eyebrow text-sekai-teal">Chapter Ⅵ</p>
+                  <p className="eyebrow text-sekai-teal"></p>
                 </div>
                 <div className="flex items-start gap-6">
                   <div className="w-14 h-14 bg-ink text-ivory flex items-center justify-center flex-shrink-0">
@@ -462,7 +462,7 @@ export default function AreaDetailPage({ params }: Props) {
               <div className="relative">
                 <div className="chapter-marker">
                   <span className="h-px w-10 bg-bright-teal" />
-                  <p className="eyebrow text-bright-teal">Chapter Ⅶ · Begin</p>
+                  <p className="eyebrow text-bright-teal">Begin</p>
                 </div>
                 <h2 className="font-sans font-bold text-[28px] md:text-[40px] leading-[1.3] mb-8">
                   {area.name}での民泊運営を

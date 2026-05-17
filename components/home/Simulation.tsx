@@ -127,7 +127,6 @@ export default function Simulation() {
         <div className="heading-mb grid md:grid-cols-12 gap-8">
           <div className="md:col-span-7">
             <div className="chapter-marker">
-              <span className="chapter">Chapter Ⅲ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Income Simulation</span>
             </div>

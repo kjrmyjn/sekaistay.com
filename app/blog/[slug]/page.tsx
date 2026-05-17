@@ -308,7 +308,7 @@ export default function BlogPostPage({ params }: Props) {
                     <IconArrowRight size={14} className="group-hover:translate-x-1 transition" />
                   </Link>
                   <Link
-                    href="/simulate"
+                    href="/services#pricing"
                     className="group inline-flex items-center gap-3 border border-ivory/30 text-ivory px-7 py-4 transition hover:bg-ivory/5 hover:border-bright-teal font-sans font-medium text-[14px]"
                   >
                     収支シミュレーション

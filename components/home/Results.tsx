@@ -15,7 +15,6 @@ export default function Results() {
         <div className="heading-mb grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
             <div className="chapter-marker">
-              <span className="chapter">Chapter Ⅴ</span>
               <span className="rule-teal-sm" />
               <span className="eyebrow">Case Studies · Numbers</span>
             </div>
@@ -84,11 +83,13 @@ export default function Results() {
                   />
                   <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-ivory">
                     <span className="font-sans text-[15px]">Case № {String(idx + 1).padStart(2, '0')}</span>
-                    <span className="eyebrow-mono text-ivory/80 !text-[10px]">{c.tag}</span>
                   </div>
                   <div className="absolute bottom-5 left-5 right-5 text-ivory">
-                    <h3 className="font-sans font-medium text-[18px] md:text-[19px] jp-keep leading-snug">
-                      <JP>{c.title}</JP>
+                    <p className="font-sans font-medium text-[20px] md:text-[24px] leading-tight mb-2 tabular-nums">
+                      {c.effectHeadline}
+                    </p>
+                    <h3 className="eyebrow-mono text-ivory/80 jp-keep leading-snug !text-[10.5px]">
+                      <JP>{c.title}</JP> · {c.tag}
                     </h3>
                   </div>
                 </div>

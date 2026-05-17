@@ -5,7 +5,6 @@ import Footer from '@/components/Footer'
 
 /* ── Above-fold: static imports (critical path) ── */
 import Hero from '@/components/home/Hero'
-import AuthorityBar from '@/components/home/AuthorityBar'
 
 /* ── Below-fold: dynamic imports (reduce initial JS bundle) ── */
 const FloatingCTA = dynamic(() => import('@/components/FloatingCTA'), { ssr: false })
@@ -44,7 +43,6 @@ export default function Home() {
       <FloatingCTA />
       <main>
         <Hero />
-        <AuthorityBar />
         <Simulation />
         <PainPoints />
         <MidCTA />

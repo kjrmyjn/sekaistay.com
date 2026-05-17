@@ -64,7 +64,7 @@ export default function CaseStudiesPage() {
           <div className="container-edit relative section-hero">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅰ · Success Stories</p>
+              <p className="eyebrow text-bright-teal">Success Stories</p>
             </div>
             <h1 className="heading-display heading-mb-lg jp-keep">
               導入事例
@@ -221,7 +221,7 @@ export default function CaseStudiesPage() {
           <div className="container-narrow relative px-5 md:px-8 section-xl max-w-4xl">
             <div className="chapter-marker">
               <span className="h-px w-10 bg-bright-teal" />
-              <p className="eyebrow text-bright-teal">Chapter Ⅲ · Start Growing</p>
+              <p className="eyebrow text-bright-teal">Start Growing</p>
             </div>
             <h2 className="font-sans font-bold text-[28px] md:text-[44px] leading-[1.3] mb-8">
               あなたの物件も同じように
@@ -260,7 +260,7 @@ export default function CaseStudiesPage() {
           <div className="container-narrow px-5 md:px-8 max-w-3xl">
             <div className="chapter-marker">
               <span className="rule-teal-sm" />
-              <p className="eyebrow text-sekai-teal">Chapter Ⅳ · FAQ</p>
+              <p className="eyebrow text-sekai-teal">FAQ</p>
             </div>
             <h2 className="heading-section text-ink mb-12">
               導入事例について、
