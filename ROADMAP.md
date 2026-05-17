@@ -92,6 +92,47 @@
 
 ---
 
+## Phase 7: X 長文投稿 × Boost the Winners [P1]
+
+> 戦略詳細: [`ad-ops/STRATEGY_REPORT_X_2026-05-17.md`](ad-ops/STRATEGY_REPORT_X_2026-05-17.md)
+> 初週ドラフト: [`ad-ops/x-ads/long-form-content-bank.md`](ad-ops/x-ads/long-form-content-bank.md)
+
+### W1（5/18-24）: アカウント整備
+
+- [ ] (人間) @tenichiliu プロフィール統一（bio + ヘッダー + 固定ツイート） @impact:7 @urgency:8 @effort:1
+- [ ] (人間) ジローと X 運用方針確認・週次工数合意（Unplugged との両立判断） @impact:8 @urgency:8 @effort:1
+- [ ] (人間) @jirosan アカウント開設 + プロフィール設定（ジロー合意取得後） @impact:8 @urgency:7 @effort:1
+- [ ] (人間) @ss_unei_chan 架空社員アカウント開設 + bio で「SEKAI STAY 運営チームメンバー」明記 @impact:7 @urgency:7 @effort:1
+- [ ] (人間) 3 アカウントの X Premium+ 課金（長文 4000 字解禁） @impact:8 @urgency:7 @effort:1
+- [ ] 既存 X Ads 9 パターン投稿の棚卸し（Boost the Winners 対象から除外する投稿の選別） @impact:6 @urgency:6 @effort:2
+
+### W2（5/25-31）: コンテンツ供給開始
+
+- [ ] 初週ドラフト 6 本（long-form-content-bank.md）を 3 アカウントに分散投稿（人間最終チェック後） @impact:9 @urgency:8 @effort:2
+- [ ] utm_content による Supabase 集計クエリ整備（オーガニック vs Promoted 内訳） @impact:7 @urgency:6 @effort:2
+- [ ] 6/1 PR TIMES 配信文面と X 長文 B のメッセージ整合性チェック @impact:7 @urgency:7 @effort:1
+- [ ] W3 以降の長文 B ドラフト 6 本を Claude が自動生成 → long-form-content-bank.md に追記 @impact:7 @urgency:5 @effort:3
+
+### W3（6/1-7）: PR 連動・Boost 開始
+
+- [ ] (人間) 6/1 PR TIMES 配信当日: テンイチ + ジロー両アカウントで PR 連動投稿同時砲火 @impact:9 @urgency:9 @effort:1
+- [ ] (人間) 6/4 から Boost the Winners 運用開始（W2 オーガニックの上位 20% を Promoted 化） @impact:9 @urgency:8 @effort:2
+- [ ] 日次 X 配信レポート Discord 投稿（Inbox `general`・3 アカウント別 impressions / engage / link click 集計） @impact:7 @urgency:7 @effort:3
+
+### W4（6/8-14）: 学習・最適化
+
+- [ ] Boost the Winners 1 週分データ分析 → 勝ちパターン特定（CPL ≤ ¥15K のクリエイティブを抽出） @impact:8 @urgency:7 @effort:2
+- [ ] 長文 B コピー A/B 仮説抽出 → W5 以降のドラフト方針に反映 @impact:7 @urgency:6 @effort:2
+- [ ] (人間) 義人さん週次レビュー受けて戦略修正 @impact:8 @urgency:7 @effort:1
+
+### W5 以降（継続運用）
+
+- [ ] 長文 B コンテンツバンクを M3 末で 50 本まで蓄積 @impact:7 @urgency:5 @effort:8
+- [ ] X Pixel + UWT CV 設定（Phase 3 完了が前提）→ Promoted Post の正確な CPL 測定 @impact:8 @urgency:6 @effort:2
+- [ ] 月次 X チャネル KGI レビュー（M1: 3-5 lead / M2: 8-12 lead / M3: 15-20 lead） @impact:7 @urgency:5 @effort:1
+
+---
+
 ## 設計原則（吉蔵基準）
 
 1. AI は広告アカウントの管理画面を**自動操作しない**（広告アカウント設定・予算変更・配信 ON/OFF はテンイチ）
