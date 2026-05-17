@@ -320,8 +320,8 @@ export default function ServicesPage() {
                 明確な、
                 <span className="font-sans font-light text-bright-teal">料金設計。</span>
               </h2>
-              <p className="lead text-ivory jp-break">
-                民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。下のシミュレーターで、あなたの物件での試算をご確認ください。
+              <p className="text-body md:text-body-lg text-ivory font-normal jp-break leading-relaxed">
+                民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。<span className="text-bright-teal font-medium">下のシミュレーターで、あなたの物件での試算をご確認ください。</span>
               </p>
             </div>
 
