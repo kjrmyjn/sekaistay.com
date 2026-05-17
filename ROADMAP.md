@@ -96,30 +96,49 @@
 
 > 戦略詳細: [`ad-ops/STRATEGY_REPORT_X_2026-05-17.md`](ad-ops/STRATEGY_REPORT_X_2026-05-17.md)
 > 初週ドラフト: [`ad-ops/x-ads/long-form-content-bank.md`](ad-ops/x-ads/long-form-content-bank.md)
+>
+> **タイムライン変更（2026-05-17）**: 5/22 プロダクトローンチ + PR TIMES 配信確定により全体を 1.5 週間前倒し。投稿開始は 5/18 (明日)、ローンチ同時砲火は 5/22、Boost the Winners 開始は 5/25。
 
-### W1（5/18-24）: アカウント整備
+### 🔴 Pre-W1: 今日（2026-05-17）— 即実行
 
-- [ ] (人間) @tenichiliu プロフィール統一（bio + ヘッダー + 固定ツイート） @impact:7 @urgency:8 @effort:1
-- [ ] (人間) ジローと X 運用方針確認・週次工数合意（Unplugged との両立判断） @impact:8 @urgency:8 @effort:1
-- [ ] (人間) @jirosan アカウント開設 + プロフィール設定（ジロー合意取得後） @impact:8 @urgency:7 @effort:1
-- [ ] (人間) @ss_unei_chan 架空社員アカウント開設 + bio で「SEKAI STAY 運営チームメンバー」明記 @impact:7 @urgency:7 @effort:1
-- [ ] (人間) 3 アカウントの X Premium+ 課金（長文 4000 字解禁） @impact:8 @urgency:7 @effort:1
-- [ ] 既存 X Ads 9 パターン投稿の棚卸し（Boost the Winners 対象から除外する投稿の選別） @impact:6 @urgency:6 @effort:2
+- [ ] (人間) @tenichiliu プロフィール統一（bio + ヘッダー + 固定ツイート） @impact:8 @urgency:10 @effort:1
+- [ ] (人間) ジローと X 運用方針確認・週次工数合意（Unplugged との両立判断） @impact:9 @urgency:10 @effort:1
+- [ ] (人間) @jirosan アカウント開設 + プロフィール設定（ジロー合意取得後） @impact:9 @urgency:10 @effort:1
+- [ ] (人間) @ss_unei_chan 架空社員アカウント開設 + bio で「SEKAI STAY 運営チームメンバー」明記 @impact:8 @urgency:10 @effort:1
+- [ ] (人間) 3 アカウントの X Premium+ 課金（長文 4000 字解禁・明日からの投稿に必須） @impact:9 @urgency:10 @effort:1
+- [ ] X Pixel ID 取得 → `NEXT_PUBLIC_X_PIXEL_ID` Vercel env 登録 → layout.tsx 実装 @impact:8 @urgency:9 @effort:2
 
-### W2（5/25-31）: コンテンツ供給開始
+### 🟠 W1: 5/18-21 — 助走期間（ローンチ前 4 日間で長文 4 本投下）
 
-- [ ] 初週ドラフト 6 本（long-form-content-bank.md）を 3 アカウントに分散投稿（人間最終チェック後） @impact:9 @urgency:8 @effort:2
-- [ ] utm_content による Supabase 集計クエリ整備（オーガニック vs Promoted 内訳） @impact:7 @urgency:6 @effort:2
-- [ ] 6/1 PR TIMES 配信文面と X 長文 B のメッセージ整合性チェック @impact:7 @urgency:7 @effort:1
-- [ ] W3 以降の長文 B ドラフト 6 本を Claude が自動生成 → long-form-content-bank.md に追記 @impact:7 @urgency:5 @effort:3
+- [ ] 5/18(月) 08:00: @tenichiliu 長文B #1（8% 構造解説）投稿 @impact:9 @urgency:10 @effort:1
+- [ ] 5/19(火) 12:00: @jirosan 長文B #3（DP 毎日触る話）投稿 @impact:9 @urgency:10 @effort:1
+- [ ] 5/20(水) 19:00: @ss_unei_chan 長文B #5（家具失敗談）投稿 @impact:8 @urgency:9 @effort:1
+- [ ] 5/21(木) 08:00: @tenichiliu 長文B #2（受賞振り返り）投稿 @impact:9 @urgency:9 @effort:1
+- [ ] 5/21(木) 20:00: @tenichiliu / @jirosan からローンチ予告通常ツイート @impact:8 @urgency:9 @effort:1
+- [ ] 既存 X Ads 9 パターン投稿の棚卸し @impact:6 @urgency:7 @effort:2
 
-### W3（6/1-7）: PR 連動・Boost 開始
+### 🚀 5/22(金) — プロダクトローンチ + PR TIMES 配信日
 
-- [ ] (人間) 6/1 PR TIMES 配信当日: テンイチ + ジロー両アカウントで PR 連動投稿同時砲火 @impact:9 @urgency:9 @effort:1
-- [ ] (人間) 6/4 から Boost the Winners 運用開始（W2 オーガニックの上位 20% を Promoted 化） @impact:9 @urgency:8 @effort:2
-- [ ] 日次 X 配信レポート Discord 投稿（Inbox `general`・3 アカウント別 impressions / engage / link click 集計） @impact:7 @urgency:7 @effort:3
+- [ ] (人間) PR TIMES 配信実行 @impact:10 @urgency:10 @effort:2
+- [ ] 5/22 ローンチ長文B 作成（@tenichiliu 経営者視点版・@jirosan 現場実証版）→ long-form-content-bank.md に追記 @impact:10 @urgency:10 @effort:3
+- [ ] 5/22 10:00: @tenichiliu + @jirosan で同時砲火（人間最終チェック後） @impact:10 @urgency:10 @effort:1
+- [ ] 5/22 11:00: @ss_unei_chan 通常ツイート（中の人歓喜・短文） @impact:7 @urgency:10 @effort:1
+- [ ] 全アカウントで PR TIMES 記事リンクの引用 RT + リプ強化 @impact:8 @urgency:10 @effort:1
 
-### W4（6/8-14）: 学習・最適化
+### 🟡 W2: 5/23-24 — 余韻投下
+
+- [ ] 5/23(土) 12:00: @jirosan 長文B #4（民泊新法 2026）投稿 @impact:8 @urgency:9 @effort:1
+- [ ] 5/24(日) 19:00: @ss_unei_chan 長文B #6（オーナーダッシュボード）投稿 @impact:8 @urgency:9 @effort:1
+- [ ] PR TIMES 反響モニタリング（impressions / engagement 集計）→ Discord 報告 @impact:7 @urgency:8 @effort:2
+- [ ] W3 分の長文B 6 本ドラフトを Claude 生成 → long-form-content-bank.md 追記 @impact:7 @urgency:7 @effort:3
+
+### 🟢 W3: 5/25-31 — Boost the Winners 開始
+
+- [ ] (人間) 5/25 から Boost the Winners 運用開始（W1-W2 オーガニック上位 20% を Promoted 化） @impact:9 @urgency:9 @effort:2
+- [ ] utm_content による Supabase 集計クエリ整備（オーガニック vs Promoted 内訳） @impact:7 @urgency:8 @effort:2
+- [ ] 日次 X 配信レポート Discord 投稿（Inbox `general`・3 アカウント別 impressions / engage / link click 集計） @impact:7 @urgency:8 @effort:3
+
+### 🟣 W4: 6/1-7 — 学習・最適化
 
 - [ ] Boost the Winners 1 週分データ分析 → 勝ちパターン特定（CPL ≤ ¥15K のクリエイティブを抽出） @impact:8 @urgency:7 @effort:2
 - [ ] 長文 B コピー A/B 仮説抽出 → W5 以降のドラフト方針に反映 @impact:7 @urgency:6 @effort:2
@@ -128,7 +147,6 @@
 ### W5 以降（継続運用）
 
 - [ ] 長文 B コンテンツバンクを M3 末で 50 本まで蓄積 @impact:7 @urgency:5 @effort:8
-- [ ] X Pixel + UWT CV 設定（Phase 3 完了が前提）→ Promoted Post の正確な CPL 測定 @impact:8 @urgency:6 @effort:2
 - [ ] 月次 X チャネル KGI レビュー（M1: 3-5 lead / M2: 8-12 lead / M3: 15-20 lead） @impact:7 @urgency:5 @effort:1
 
 ---
