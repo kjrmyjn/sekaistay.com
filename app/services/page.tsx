@@ -210,14 +210,14 @@ export default function ServicesPage() {
                       className="absolute inset-0"
                       style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.1) 0%, rgba(26,26,26,0.65) 100%)' }}
                     />
-                    <span className="absolute top-3 left-3 inline-flex items-center bg-ink/85 backdrop-blur-sm text-bright-teal px-2.5 py-1 eyebrow-mono !text-[10px] tracking-[0.18em]">
+                    <span className="absolute top-3 left-3 inline-flex items-center bg-ink/85 backdrop-blur-sm text-ivory px-2.5 py-1 eyebrow-mono !text-[10px] tracking-[0.18em]">
                       Case № {String(i + 1).padStart(2, '0')}
                     </span>
                     <div className="absolute bottom-3 left-4 right-4 text-ivory">
                       <h3 className="font-sans font-medium text-[15px] md:text-[16px] leading-tight jp-keep mb-0.5">
                         {c.area}
                       </h3>
-                      <p className="text-[10.5px] text-ivory/75">{c.spec}</p>
+                      <p className="text-[10.5px] text-ivory/90">{c.spec}</p>
                     </div>
                   </div>
 
