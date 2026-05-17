@@ -116,7 +116,7 @@ export default function ServicesPage() {
           <div className="relative container-edit section-lg">
             <div className="grid md:grid-cols-[auto_1fr_auto] gap-10 items-center">
               <div>
-                <p className="eyebrow-mono text-ivory/50 mb-4">Flat Fee — Industry Reset</p>
+                <p className="eyebrow-mono text-bright-teal mb-4">Flat Fee — Industry Reset</p>
                 <div className="flex items-baseline gap-2">
                   <span className="font-sans font-light text-[108px] md:text-[140px] text-ivory leading-none tracking-tight tabular-nums">
                     8
@@ -131,7 +131,7 @@ export default function ServicesPage() {
                 <p className="font-sans text-[18px] md:text-[22px] text-ivory mb-3 leading-snug">
                   これだけのサービスが、すべて含まれています。
                 </p>
-                <p className="text-body-sm text-ivory/70">
+                <p className="text-body-sm text-ivory/90">
                   他社平均 15〜25%、初期費用は今なら 0円。
                 </p>
               </div>
@@ -179,14 +179,14 @@ export default function ServicesPage() {
                   <p className="eyebrow-mono text-bright-teal mb-3 !text-[10px]">Airbnb — Host Rating</p>
                   <div className="flex items-baseline gap-1.5">
                     <span className="font-sans font-light text-[40px] md:text-[52px] text-ivory leading-none tabular-nums">4.7</span>
-                    <span className="font-sans text-[14px] text-ivory/60">／5.0</span>
+                    <span className="font-sans text-[14px] text-ivory/85">／5.0</span>
                   </div>
                 </div>
                 <div className="bg-ink px-6 py-6 md:px-8 md:py-7">
                   <p className="eyebrow-mono text-bright-teal mb-3 !text-[10px]">Booking.com — Review Score</p>
                   <div className="flex items-baseline gap-1.5">
                     <span className="font-sans font-light text-[40px] md:text-[52px] text-ivory leading-none tabular-nums">4.8</span>
-                    <span className="font-sans text-[14px] text-ivory/60">／5.0</span>
+                    <span className="font-sans text-[14px] text-ivory/85">／5.0</span>
                   </div>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function ServicesPage() {
                       className="absolute inset-0"
                       style={{ background: 'linear-gradient(180deg, rgba(26,26,26,0.1) 0%, rgba(26,26,26,0.65) 100%)' }}
                     />
-                    <span className="absolute top-3 left-3 inline-flex items-center bg-ink/85 backdrop-blur-sm text-ivory px-2.5 py-1 eyebrow-mono !text-[10px] tracking-[0.18em]">
+                    <span className="absolute top-3 left-3 inline-flex items-center bg-ivory/95 backdrop-blur-sm border border-rule text-ink px-3 py-1 eyebrow-mono !text-[10px] tracking-[0.18em]">
                       Case № {String(i + 1).padStart(2, '0')}
                     </span>
                     <div className="absolute bottom-3 left-4 right-4 text-ivory">
@@ -233,18 +233,18 @@ export default function ServicesPage() {
 
                     <div className="space-y-2 text-[12px]">
                       <div className="flex items-baseline justify-between gap-2">
-                        <span className="eyebrow-mono text-mid-gray !text-[9px]">月次</span>
+                        <span className="eyebrow-mono text-dark-gray !text-[9px]">月次</span>
                         <div className="flex items-baseline gap-1.5 flex-wrap justify-end">
-                          <span className="font-sans text-[11px] text-mid-gray line-through">¥{c.before.monthly}</span>
-                          <span className="text-mid-gray text-[11px]">→</span>
+                          <span className="font-sans text-[11px] text-dark-gray line-through">¥{c.before.monthly}</span>
+                          <span className="text-dark-gray text-[11px]">→</span>
                           <span className="font-sans font-medium text-ink tabular-nums">¥{c.after.monthly}</span>
                         </div>
                       </div>
                       <div className="flex items-baseline justify-between gap-2">
-                        <span className="eyebrow-mono text-mid-gray !text-[9px]">年次</span>
+                        <span className="eyebrow-mono text-dark-gray !text-[9px]">年次</span>
                         <div className="flex items-baseline gap-1.5 flex-wrap justify-end">
-                          <span className="font-sans text-[11px] text-mid-gray line-through">¥{c.before.annual}</span>
-                          <span className="text-mid-gray text-[11px]">→</span>
+                          <span className="font-sans text-[11px] text-dark-gray line-through">¥{c.before.annual}</span>
+                          <span className="text-dark-gray text-[11px]">→</span>
                           <span className="font-sans font-medium text-ink tabular-nums">¥{c.after.annual}</span>
                         </div>
                       </div>
@@ -287,7 +287,7 @@ export default function ServicesPage() {
                       </div>
                       <div>
                         <p className="font-sans text-[14px] text-ink">{t.name}</p>
-                        <p className="text-caption text-mid-gray">{t.role}</p>
+                        <p className="text-caption text-dark-gray">{t.role}</p>
                       </div>
                     </div>
                     <span className="font-sans text-[16px] text-sekai-teal tabular-nums">
@@ -320,7 +320,7 @@ export default function ServicesPage() {
                 明確な、
                 <span className="font-sans font-light text-bright-teal">料金設計。</span>
               </h2>
-              <p className="lead text-ivory/70 jp-break">
+              <p className="lead text-ivory jp-break">
                 民泊運営代行をご利用いただく際には、開業準備時の初期費用と、運営開始後の月額運営費用が発生します。下のシミュレーターで、あなたの物件での試算をご確認ください。
               </p>
             </div>
@@ -330,33 +330,33 @@ export default function ServicesPage() {
               {/* Left column: 01 + 02 stacked */}
               <div className="grid grid-rows-2 gap-px bg-ivory/10">
                 <div className="bg-ink p-8 md:p-10">
-                  <p className="eyebrow-mono text-ivory/50 mb-5">01 — Initial Cost</p>
-                  <p className="font-sans text-[14px] text-ivory/60 line-through mb-2">通常 ¥100,000</p>
+                  <p className="eyebrow-mono text-bright-teal mb-5">01 — Initial Cost</p>
+                  <p className="font-sans text-[14px] text-ivory/85 line-through mb-2">通常 ¥100,000</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="font-sans font-light text-[88px] md:text-[96px] text-ivory leading-none tabular-nums">0</span>
                     <span className="font-sans text-[24px] text-bright-teal">円</span>
                   </div>
                   <p className="eyebrow-mono text-bright-teal mb-3">Campaign 実施中</p>
-                  <p className="text-body-sm text-ivory/70">
+                  <p className="text-body-sm text-ivory/90">
                     OTA初期設定・画像加工・掲載開始まで含む。
                   </p>
                 </div>
                 <div className="bg-ink p-8 md:p-10">
-                  <p className="eyebrow-mono text-ivory/50 mb-5">02 — Running Cost</p>
+                  <p className="eyebrow-mono text-bright-teal mb-5">02 — Running Cost</p>
                   <div className="pb-5 border-b border-ivory/10 mb-5">
-                    <p className="eyebrow-mono text-ivory/50 mb-2">固定管理費</p>
+                    <p className="eyebrow-mono text-bright-teal mb-2">固定管理費</p>
                     <p className="font-sans text-[20px] text-ivory">
                       ¥10,000
-                      <span className="text-[14px] text-ivory/60 font-sans ml-2">/ 1部屋 / 月</span>
+                      <span className="text-[14px] text-ivory/85 font-sans ml-2">/ 1部屋 / 月</span>
                     </p>
                   </div>
-                  <p className="eyebrow-mono text-ivory/50 mb-3">変動運営委託費</p>
+                  <p className="eyebrow-mono text-bright-teal mb-3">変動運営委託費</p>
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="font-sans text-[14px] text-ivory">売上の</span>
                     <span className="font-sans font-light text-[72px] md:text-[80px] text-ivory leading-none tabular-nums">8</span>
                     <span className="font-sans font-light text-[32px] text-bright-teal">%</span>
                   </div>
-                  <p className="font-sans text-[13px] text-ivory/60">他社平均: 15〜25%</p>
+                  <p className="font-sans text-[13px] text-ivory/85">他社平均: 15〜25%</p>
                 </div>
               </div>
 
@@ -364,7 +364,7 @@ export default function ServicesPage() {
               <div className="bg-paper text-ink p-8 md:p-10">
                 <div className="flex items-baseline justify-between mb-6">
                   <p className="eyebrow-mono text-sekai-teal">03 — Estimate</p>
-                  <span className="font-sans text-[12px] text-mid-gray">10秒で完了</span>
+                  <span className="font-sans text-[12px] text-dark-gray">10秒で完了</span>
                 </div>
                 <h3 className="font-sans font-medium text-[20px] md:text-[22px] text-ink leading-snug mb-6 jp-keep">
                   あなたの物件、SEKAI STAYで
@@ -382,7 +382,7 @@ export default function ServicesPage() {
                   <p className="eyebrow !text-bright-teal">SEKAI STAY</p>
                 </div>
                 <div className="p-4 bg-mist text-center">
-                  <p className="eyebrow text-mid-gray">業界平均</p>
+                  <p className="eyebrow text-dark-gray">業界平均</p>
                 </div>
               </div>
               {[
@@ -406,7 +406,7 @@ export default function ServicesPage() {
                     <p className="font-sans text-[18px] text-sekai-teal tabular-nums">{sekai}</p>
                   </div>
                   <div className="p-5 text-center">
-                    <p className="font-sans text-[13px] text-mid-gray">{other}</p>
+                    <p className="font-sans text-[13px] text-dark-gray">{other}</p>
                   </div>
                 </div>
               ))}
@@ -469,7 +469,7 @@ export default function ServicesPage() {
 
             <div className="mt-14 md:mt-16 pt-10 border-t border-rule flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
               <div>
-                <p className="eyebrow-mono text-mid-gray mb-3">Next Step</p>
+                <p className="eyebrow-mono text-dark-gray mb-3">Next Step</p>
                 <p className="font-sans text-[20px] md:text-[22px] text-ink">
                   まずは、お話を聞かせてください。
                 </p>
