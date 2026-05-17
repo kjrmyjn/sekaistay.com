@@ -4,6 +4,8 @@
 > **方針**: 5本柱 × 3アカウント切り口マトリクスに沿って供給。重複ネタを構造的に排除
 > **運用フロー**: Claude 下書き → 人間（テンイチ / ジロー / 運営チーム）が最終チェック → X 公開
 > **戦略**: [`STRATEGY_REPORT_X_2026-05-17.md`](../STRATEGY_REPORT_X_2026-05-17.md)
+> **文体スキル**: `shared/docs/japanese-business-sns-copywriting.md`（日本ビジネスSNSコピーライティング・引用フック / 敬体タメ口ミックス / 数字を投げる / 「よかったら」CTA）必ず適用
+> **本ファイルのドラフトは Google Sheet 側 (v3) と同期**: https://docs.google.com/spreadsheets/d/19qsHLdmIex59mj-xABMbF4jCatHoy6SN7LE8x4EzWVY/
 
 ---
 
