@@ -172,21 +172,21 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            {/* Quality stats — ledger (compact, horizontal layout) */}
-            <div className="bg-paper border border-rule mb-10">
-              <div className="grid md:grid-cols-2">
-                <div className="px-6 py-5 border-b md:border-b-0 md:border-r border-rule flex items-center justify-between gap-4">
-                  <p className="eyebrow-mono text-mid-gray !text-[10px]">Airbnb — Host Rating</p>
-                  <div className="flex items-baseline gap-1.5 flex-shrink-0">
-                    <span className="font-sans font-medium text-[28px] md:text-[32px] text-ink leading-none tabular-nums">4.7</span>
-                    <span className="font-sans text-[12px] text-mid-gray">／5.0</span>
+            {/* Quality stats — dark band (portfolio スタイル踏襲) */}
+            <div className="bg-ink text-ivory border border-ivory/10 mb-10">
+              <div className="grid grid-cols-2 gap-px bg-ivory/10">
+                <div className="bg-ink px-6 py-6 md:px-8 md:py-7">
+                  <p className="eyebrow-mono text-bright-teal mb-3 !text-[10px]">Airbnb — Host Rating</p>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-sans font-light text-[40px] md:text-[52px] text-ivory leading-none tabular-nums">4.7</span>
+                    <span className="font-sans text-[14px] text-ivory/60">／5.0</span>
                   </div>
                 </div>
-                <div className="px-6 py-5 flex items-center justify-between gap-4">
-                  <p className="eyebrow-mono text-mid-gray !text-[10px]">Booking.com — Review Score</p>
-                  <div className="flex items-baseline gap-1.5 flex-shrink-0">
-                    <span className="font-sans font-medium text-[28px] md:text-[32px] text-ink leading-none tabular-nums">4.8</span>
-                    <span className="font-sans text-[12px] text-mid-gray">／5.0</span>
+                <div className="bg-ink px-6 py-6 md:px-8 md:py-7">
+                  <p className="eyebrow-mono text-bright-teal mb-3 !text-[10px]">Booking.com — Review Score</p>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-sans font-light text-[40px] md:text-[52px] text-ivory leading-none tabular-nums">4.8</span>
+                    <span className="font-sans text-[14px] text-ivory/60">／5.0</span>
                   </div>
                 </div>
               </div>
