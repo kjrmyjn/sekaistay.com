@@ -40,9 +40,6 @@ export default function SwitchSolution() {
           <p className="text-sm sm:text-base text-switch-charcoal font-bold mb-1">
             ＋ ¥10,000 / 物件 / 月
           </p>
-          <p className="text-xl sm:text-2xl font-bold text-switch-charcoal mt-4">
-            それ以外の費用は、<HighlightMarker>一切</HighlightMarker>ありません。
-          </p>
         </div>
 
         {/* 3つの約束 */}

@@ -30,7 +30,7 @@ export default function SwitchPricing() {
           <SectionHead
             enLabel="料金プラン"
             jaTitle={<>料金は、たったひとつ。</>}
-            subtitle="成果報酬 ＋ 物件固定費のみ。これ以外に、いただくお金はありません。"
+            subtitle="成果報酬 ＋ 物件固定費。シンプルな料金体系です。"
           />
         </div>
 
@@ -76,23 +76,6 @@ export default function SwitchPricing() {
                 ＋ ¥10,000
                 <span className="text-sm text-switch-gray-mid ml-1 font-semibold">
                   / 物件 / 月
-                </span>
-              </div>
-              <div className="inline-flex items-center gap-2 bg-white border border-switch-teal/30 rounded-md px-4 py-2.5 shadow-sm">
-                <svg
-                  className="w-4 h-4 text-switch-teal-deep shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  aria-hidden
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="text-xs sm:text-sm font-bold text-switch-teal-deep">
-                  これ以外に、いただくお金は一切ありません
                 </span>
               </div>
             </div>
