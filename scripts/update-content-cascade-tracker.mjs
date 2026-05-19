@@ -15,7 +15,7 @@ const ACCOUNT = "sekaichi";
 
 const PIPELINE_HEADER = [
   "ID", "Account", "Pillar", "Topic/Hook", "LP送客先",
-  "Publish Date", "Status", "URL", "Impressions", "Engagement",
+  "Publish Date", "Status",
   "Notes",
   "📝 Full Draft Content",
 ];
@@ -438,32 +438,32 @@ K さんはポータルにログイン → 期間指定（過去 12 ヶ月）→
 const PIPELINE_ROWS = [
   ["T-1", "@tenichiliu", "業界トレンド",
     '"8%って、ボランティアでやってるんですか?" — 業界相場の半額で回せる構造を分解',
-    "/switch", "2026-05-18 08:00", "Draft", "", "", "",
+    "/switch", "2026-05-18 08:00", "Draft",
     "✨ 100物件以上 + バックオフィス AI 自動化を明示",
     DRAFT_T1],
   ["T-2", "@tenichiliu", "オーナー成功事例",
     '"なんでうちだけ稼働78%なんですか?" — 受賞振り返り・ニッチを攻める',
-    "/switch/founder", "2026-05-21 08:00", "Draft", "", "", "",
+    "/switch/founder", "2026-05-21 08:00", "Draft",
     "サウナ × 民泊 / ポジショニング再設計 / +30%増収",
     DRAFT_T2],
   ["T-3", "@tenichiliu", "業界トレンド",
     '"今の代行、ちょっと変えたいんですよね" — 代行を変えるべき3つの兆候 + ベストタイミング',
-    "/switch", "2026-05-19 08:00", "Draft", "", "", "",
+    "/switch", "2026-05-19 08:00", "Draft",
     "民泊代行 / 乗り換えタイミング / 月次レポート / 価格設定",
     DRAFT_T3],
   ["T-4", "@tenichiliu", "民泊家具・アメニティ",
     '"20万円の家具をケチって、100万円逃してます" — 家具投資ROIフレーム',
-    "/switch/portal", "2026-05-20 08:00", "Draft", "", "", "",
+    "/switch/portal", "2026-05-20 08:00", "Draft",
     "家具投資ROI / シンボル家具 vs コスパ / 造作家具 / プロジェクター",
     DRAFT_T4],
   ["J-4", "@jirosan", "法務制度",
     "2026 年 民泊新法 周辺で何が変わるか（保健所と毎月やり取りしてる現場感）",
-    "/switch", "2026-05-23 12:00", "Draft", "", "", "",
+    "/switch", "2026-05-23 12:00", "Draft",
     "民泊新法 / 保健所対応 / 騒音問題 / 旅館業法切替",
     DRAFT_J4],
   ["U-6", "@ss_unei_chan", "オーナー成功事例",
     '"これがあって本当に救われた" — オーナーポータルが救った深夜0時の融資資料',
-    "/switch/portal", "2026-05-24 19:00", "Draft", "", "", "",
+    "/switch/portal", "2026-05-24 19:00", "Draft",
     "オーナーポータル / 24時間ダッシュボード / 収益エクスポート",
     DRAFT_U6],
 ];
@@ -491,25 +491,22 @@ async function main() {
     spreadsheetId: SPREADSHEET_ID,
     requestBody: {
       requests: [
-        // 列幅: ID 60, Account 110, Pillar 140, Topic 320, LP 110, Date 120, Status 80, URL 100, Imp 90, Eng 90, Notes 200, Draft 700
+        // 列幅 (9 列): ID 60, Account 120, Pillar 140, Topic 340, LP 120, Date 130, Status 80, Notes 240, Draft 750
         { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 60 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 120 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 2, endIndex: 3 }, properties: { pixelSize: 140 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 320 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 5, endIndex: 6 }, properties: { pixelSize: 120 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 340 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 120 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 5, endIndex: 6 }, properties: { pixelSize: 130 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 6, endIndex: 7 }, properties: { pixelSize: 80 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 7, endIndex: 8 }, properties: { pixelSize: 100 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 8, endIndex: 9 }, properties: { pixelSize: 90 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 9, endIndex: 10 }, properties: { pixelSize: 90 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 10, endIndex: 11 }, properties: { pixelSize: 200 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 11, endIndex: 12 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 7, endIndex: 8 }, properties: { pixelSize: 240 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 8, endIndex: 9 }, properties: { pixelSize: 750 }, fields: "pixelSize" } },
         // 行高
         { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "ROWS", startIndex: 1, endIndex: PIPELINE_ROWS.length + 1 }, properties: { pixelSize: 360 }, fields: "pixelSize" } },
-        // wrap (Full Draft + Notes)
+        // wrap (Notes + Full Draft)
         {
           repeatCell: {
-            range: { sheetId: pipelineSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 10, endColumnIndex: 12 },
+            range: { sheetId: pipelineSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 7, endColumnIndex: 9 },
             cell: { userEnteredFormat: { wrapStrategy: "WRAP", verticalAlignment: "TOP", textFormat: { fontSize: 9 } } },
             fields: "userEnteredFormat(wrapStrategy,verticalAlignment,textFormat)",
           },

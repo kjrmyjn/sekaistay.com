@@ -19,7 +19,7 @@ const ACCOUNT = "sekaichi";
 
 const HEADER = [
   "ID", "Channel", "Account", "Publish Date", "Title",
-  "Status", "URL", "Engagement", "Notes",
+  "Status", "Notes",
   "📝 Full Draft Content",
 ];
 
@@ -265,27 +265,27 @@ https://sekaistay.com/switch?utm_source=x&utm_medium=organic&utm_campaign=launch
 const ROWS = [
   ["PR_TIMES", "PR TIMES", "株式会社セカイチ", "2026-06-01 10:00",
     "業界相場の半額となる手数料 8% の民泊運用代行「SEKAI STAY」本格ローンチ",
-    "Draft", "", "",
+    "Draft",
     "🔴 配信前: タイトル・本文・画像 (3-5 枚) 確定要 | カテゴリ: サービス・住宅/不動産",
     PR_TIMES_BODY],
   ["X_T_LAUNCH", "X (Twitter)", "@tenichiliu (テンイチ)", "2026-06-01 10:30",
     "X 長文B: SEKAI STAY 正式発表 (経営者ビジョン軸・業界構造変革訴求)",
-    "Draft", "", "",
+    "Draft",
     "🟢 PR TIMES 配信 30 分後に投稿 | 100 物件以上 + AI 自動化 | 🔴 [PR TIMES Link] に挿入要",
     X_T_LAUNCH_BODY],
   ["X_J_LAUNCH", "X (Twitter)", "@jirosan (ジロー)", "2026-06-01 11:00",
     "X 長文B: SEKAI STAY 正式発表 (現場視点・3 つの実証ポイント)",
-    "Draft", "", "",
+    "Draft",
     "🟢 PR TIMES 配信 1h 後に投稿 | AI 価格・ポータル・24h 対応 | 🔴 [PR TIMES Link] に挿入要 | ジロー初投稿",
     X_J_LAUNCH_BODY],
   ["FB_T", "Facebook", "@tenichiliu (テンイチ)", "2026-06-01 11:30",
     "FB: SEKAI STAY 本格ローンチ報告 (経営者ストーリー型)",
-    "Draft", "", "",
+    "Draft",
     "🟢 PR TIMES 配信 1.5h 後 | 構造変革の意思決定の話 | 画像: テンイチ単独 + サービスカード",
     FB_T_BODY],
   ["FB_J", "Facebook", "@jirosan (ジロー)", "2026-06-01 12:00",
     "FB: SEKAI STAY ローンチ (現場視点・3 つの運営原則)",
-    "Draft", "", "",
+    "Draft",
     "🟢 PR TIMES 配信 2h 後 | 現場側からの実証訴求 | 画像: 現場視察 or オーナーポータル画面",
     FB_J_BODY],
 ];
@@ -328,16 +328,20 @@ async function main() {
     spreadsheetId: SPREADSHEET_ID,
     requestBody: {
       requests: [
-        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 90 }, fields: "pixelSize" } },
+        // 列幅 (8 列): ID 100, Channel 110, Account 170, Date 130, Title 340, Status 80, Notes 280, Draft 750
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 100 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 2, endIndex: 3 }, properties: { pixelSize: 160 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 320 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 8, endIndex: 9 }, properties: { pixelSize: 280 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 9, endIndex: 10 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 2, endIndex: 3 }, properties: { pixelSize: 170 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 130 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 340 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 5, endIndex: 6 }, properties: { pixelSize: 80 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 6, endIndex: 7 }, properties: { pixelSize: 280 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 7, endIndex: 8 }, properties: { pixelSize: 750 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "ROWS", startIndex: 1, endIndex: 6 }, properties: { pixelSize: 460 }, fields: "pixelSize" } },
+        // wrap (Notes + Full Draft)
         {
           repeatCell: {
-            range: { sheetId: launchSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 8, endColumnIndex: 10 },
+            range: { sheetId: launchSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 6, endColumnIndex: 8 },
             cell: { userEnteredFormat: { wrapStrategy: "WRAP", verticalAlignment: "TOP", textFormat: { fontSize: 9 } } },
             fields: "userEnteredFormat(wrapStrategy,verticalAlignment,textFormat)",
           },

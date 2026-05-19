@@ -27,7 +27,7 @@ const ACCOUNT = "sekaichi";
 
 const PIPELINE_HEADER = [
   "ID", "Type", "Pillar", "Title", "LP送客先",
-  "Publish Date", "Status", "URL", "Likes / PV",
+  "Publish Date", "Status",
   "字数", "Notes",
   "📝 Full Draft Content",
 ];
@@ -331,19 +331,19 @@ K さんの鎌倉と箱根の物件は今もうちで運用していて、毎月
 const PIPELINE_ROWS = [
   ["N-1", "A. 経営者自己開示", "業界トレンド",
     "民泊代行を 8% でやろうと決めた日",
-    "/switch", "2026-05-19 09:00", "Draft", "", "",
+    "/switch", "2026-05-19 09:00", "Draft",
     "約 1,800 字",
     "けんすう note 寄り・落ち着いた自己開示・AI 言及ゼロ",
     DRAFT_N1],
   ["N-2", "B. 業界構造分析", "業界トレンド",
     "民泊代行の中身を、お金の流れから見直す",
-    "/switch", "2026-05-21 09:00", "Draft", "", "",
+    "/switch", "2026-05-21 09:00", "Draft",
     "約 2,200 字",
     "経営学的フレームで業界を分解・横文字最小化",
     DRAFT_N2],
   ["N-3", "C. オーナー成功物語", "オーナー成功事例",
     "鎌倉でプール付き 1 棟貸しを作ったら、平均宿泊単価が 2 倍になった話",
-    "/switch/founder", "2026-05-23 09:00", "Draft", "", "",
+    "/switch/founder", "2026-05-23 09:00", "Draft",
     "約 2,500 字",
     "鎌倉プール付き物件 (2020) → 5 年運用 → 2026 箱根 2 軒目オープンの実話",
     DRAFT_N3],
@@ -387,17 +387,22 @@ async function main() {
     spreadsheetId: SPREADSHEET_ID,
     requestBody: {
       requests: [
+        // 列幅 (10 列): ID 60, Type 140, Pillar 140, Title 340, LP 120, Date 130, Status 80, 字数 90, Notes 240, Draft 750
         { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 60 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 140 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 2, endIndex: 3 }, properties: { pixelSize: 140 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 340 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 10, endIndex: 11 }, properties: { pixelSize: 240 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 11, endIndex: 12 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 120 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 5, endIndex: 6 }, properties: { pixelSize: 130 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 6, endIndex: 7 }, properties: { pixelSize: 80 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 7, endIndex: 8 }, properties: { pixelSize: 90 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 8, endIndex: 9 }, properties: { pixelSize: 240 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 9, endIndex: 10 }, properties: { pixelSize: 750 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "ROWS", startIndex: 1, endIndex: 4 }, properties: { pixelSize: 480 }, fields: "pixelSize" } },
+        // wrap (Notes + Full Draft)
         {
           repeatCell: {
-            range: { sheetId: noteSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 10, endColumnIndex: 12 },
+            range: { sheetId: noteSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 8, endColumnIndex: 10 },
             cell: { userEnteredFormat: { wrapStrategy: "WRAP", verticalAlignment: "TOP", textFormat: { fontSize: 9 } } },
             fields: "userEnteredFormat(wrapStrategy,verticalAlignment,textFormat)",
           },
