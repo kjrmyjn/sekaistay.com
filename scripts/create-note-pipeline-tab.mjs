@@ -26,10 +26,9 @@ const SPREADSHEET_ID = "19qsHLdmIex59mj-xABMbF4jCatHoy6SN7LE8x4EzWVY";
 const ACCOUNT = "sekaichi";
 
 const PIPELINE_HEADER = [
-  "ID", "Type", "Pillar", "Title",
-  "LP送客先", "note Publish Date", "note Status", "note URL", "note Likes", "note PV",
-  "HP Status", "HP Publish Date", "HP URL", "HP SEO Keywords",
-  "字数", "Review Comments",
+  "ID", "Type", "Pillar", "Title", "LP送客先",
+  "Publish Date", "Status", "URL", "Likes / PV",
+  "字数", "Notes",
   "📝 Full Draft Content",
 ];
 
@@ -330,26 +329,23 @@ K さんの鎌倉と箱根の物件は今もうちで運用していて、毎月
 60 秒で簡易診断ができます → https://sekaistay.com/switch/founder?utm_source=note&utm_medium=organic&utm_campaign=note_story&utm_content=tenichi_kamakura_pool`;
 
 const PIPELINE_ROWS = [
-  ["N-1", "A. 経営者自己開示型", "業界トレンド",
+  ["N-1", "A. 経営者自己開示", "業界トレンド",
     "民泊代行を 8% でやろうと決めた日",
-    "/switch", "2026-05-19 09:00", "Draft", "", "", "",
-    "Pending", "", "", "民泊代行 手数料 / 業界相場 / 仕組み化",
+    "/switch", "2026-05-19 09:00", "Draft", "", "",
     "約 1,800 字",
-    "✨ v3: スーパーホスト注記を削除（固有名詞はそのまま使用）",
+    "けんすう note 寄り・落ち着いた自己開示・AI 言及ゼロ",
     DRAFT_N1],
-  ["N-2", "B. 業界構造分析型", "業界トレンド",
+  ["N-2", "B. 業界構造分析", "業界トレンド",
     "民泊代行の中身を、お金の流れから見直す",
-    "/switch", "2026-05-21 09:00", "Draft", "", "", "",
-    "Pending", "", "", "民泊代行 コスト / 手数料 / 損益",
+    "/switch", "2026-05-21 09:00", "Draft", "", "",
     "約 2,200 字",
-    "✨ v2: タイトルから「経営学的に分解」を削除・P/L → 損益・横文字最小化",
+    "経営学的フレームで業界を分解・横文字最小化",
     DRAFT_N2],
-  ["N-3", "C. オーナー成功物語型", "オーナー成功事例",
+  ["N-3", "C. オーナー成功物語", "オーナー成功事例",
     "鎌倉でプール付き 1 棟貸しを作ったら、平均宿泊単価が 2 倍になった話",
-    "/switch/founder", "2026-05-23 09:00", "Draft", "", "", "",
-    "Pending", "", "", "民泊 単価改善 / 鎌倉 プール / グループ利用 / 訪日外国人",
+    "/switch/founder", "2026-05-23 09:00", "Draft", "", "",
     "約 2,500 字",
-    "✨ v4: 鎌倉プール付き物件 (2020) → 5 年運用 → 2026 箱根 2 軒目オープンの実話に差し替え",
+    "鎌倉プール付き物件 (2020) → 5 年運用 → 2026 箱根 2 軒目オープンの実話",
     DRAFT_N3],
 ];
 
@@ -391,14 +387,17 @@ async function main() {
     spreadsheetId: SPREADSHEET_ID,
     requestBody: {
       requests: [
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 80 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 150 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 320 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 16, endIndex: 17 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "ROWS", startIndex: 1, endIndex: 4 }, properties: { pixelSize: 500 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 60 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 140 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 2, endIndex: 3 }, properties: { pixelSize: 140 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 340 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 10, endIndex: 11 }, properties: { pixelSize: 240 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "COLUMNS", startIndex: 11, endIndex: 12 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: noteSheetId, dimension: "ROWS", startIndex: 1, endIndex: 4 }, properties: { pixelSize: 480 }, fields: "pixelSize" } },
         {
           repeatCell: {
-            range: { sheetId: noteSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 16, endColumnIndex: 17 },
+            range: { sheetId: noteSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 10, endColumnIndex: 12 },
             cell: { userEnteredFormat: { wrapStrategy: "WRAP", verticalAlignment: "TOP", textFormat: { fontSize: 9 } } },
             fields: "userEnteredFormat(wrapStrategy,verticalAlignment,textFormat)",
           },

@@ -1,31 +1,12 @@
 #!/usr/bin/env node
-// SEKAI STAY X Content Cascade Tracker の Pipeline タブを更新
+// SEKAI STAY X Content Tracker - X Pipeline タブを更新
 // Sheet: 19qsHLdmIex59mj-xABMbF4jCatHoy6SN7LE8x4EzWVY
 //
-// v6 (2026-05-17): AI 活用してる起業家像を全ドラフトに通す
-//   T-2 (受賞): "ポジショニング転換後の価格は AI(Pricelabs + Claude)が毎日触ってる"
-//   T-3 (民泊新法): "A/B/C 診断を AI(Claude)に投げて 30 秒で判定"
-//   T-4 (家具ROI): "家具リストを AI に投げて ROI 自動計算 / 月30h→3h"
-//   J-3 (DP): "Pricelabs (マクロ) + Claude (ミクロ) で役割分担"
-//   J-4 (新法現場): 24h 対応・騒音センサー・トラブル対応・書類すべて AI 中継
-//   U-5 (家具失敗): "選定基準を AI に学習させてあるからミスが構造的に起きない"
-//   U-6 (ポータル): "裏側で AI が複数 OTA データを毎日結合・整形"
-//
-// v5 (2026-05-17): インパクト数字 "1人で100物件以上" + バックオフィス AI 自動化に明示化
-//   T-1 / T-LAUNCH の "30-50件" → "100物件以上"・"営業・マーケ・経理は自社運用" →
-//   "Web マーケ出稿・経理などのバックオフィス業務は AI で自動化"（営業は AI 排除して人介在を残す）
-//
-// v4 (2026-05-17): AI + 社内エスカレーション の実態反映
-//   T-1 / T-LAUNCH / J-LAUNCH のオペレーション説明を「マニュアル化」→「AI が日次/AI + 社内エスカレーション」に修正
-//   X SNS では AI 活用を明示的に押し出す（起業家感・AI バズ活用）
-//   ※ LP/HP では引き続き lp_design_ai_mention に従い AI 押しは抑える（X SNS 限定の方針）
-//
-// v3 (2026-05-17): japanese-business-sns-copywriting スキルを適用してリライト
-//   shared/docs/japanese-business-sns-copywriting.md 参照
-//   - 引用 / 問いかけ / ぶっちゃけ型フック
-//   - 敬体 + タメ口 + 体言止めミックス
-//   - 数字を投げて解釈は読者に
-//   - 押し売り感ないCTA「よかったら」
+// v11 (2026-05-19): タブ整理 - X Pipeline は通常運用のみに整理
+//   - LAUNCH 関連 (T-LAUNCH, J-LAUNCH) → Launch Channels タブに移管
+//   - Deferred 行 (J-3, U-5) を削除
+//   - PIPELINE_HEADER を 20 列 → 12 列に圧縮 (note/HP カラムは別タブで管理)
+//   - 通常運用 6 行のみに整理: T-1, T-2, T-3, T-4, J-4, U-6
 
 import { getSheets } from "../../../shared/google-auth/index.js";
 
@@ -34,10 +15,8 @@ const ACCOUNT = "sekaichi";
 
 const PIPELINE_HEADER = [
   "ID", "Account", "Pillar", "Topic/Hook", "LP送客先",
-  "X Post Date", "X Status", "X URL", "X Impressions", "X Engagement",
-  "note Status", "note Publish Date", "note URL", "note Likes/PV",
-  "HP Status", "HP Publish Date", "HP URL", "HP SEO Keywords",
-  "Review Comments",
+  "Publish Date", "Status", "URL", "Impressions", "Engagement",
+  "Notes",
   "📝 Full Draft Content",
 ];
 
@@ -328,124 +307,6 @@ ADR ¥26,000 / 稼働 65%
 
 ※ Airbnb 未掲載のオーナーも OK`;
 
-const DRAFT_LAUNCH_T = `「民泊代行は高すぎる、品質も読めない」
-
-業界でよく言われること。
-
-今日、SEKAI STAY を世に正式に発表します。
-
-業界相場の半額・手数料 8%。それでもスーパーホストの運営力が生きてくる構造を作りたくて、立ち上げました。
-
----
-
-民泊代行の手数料相場は 15-25%。
-
-これを「人が物件に張り付く」運営構造のコストだと考えてる。
-
-僕たちは、AI で効率化する前提で運営構造を全部見直しました。
-
-- 価格管理は日次で自動チューニング（人力では追いつかない速度）
-- カスタマー対応は一次自動化 + 社内エスカレーション（属人化を排除）
-- 清掃は信頼パートナーと長期契約・スケジュール配信は自動（バラ売りしない）
-- Web マーケ出稿・経理などのバックオフィス業務は自動化（外注しない）
-
-これで 1 人で 100 物件以上を見られるようになりました。
-業界の 2 倍以上の効率です。
-
-仕組みを真ん中に置いた事業構造だから、8% でもスーパーホストの運営力が生きてくる。
-
----
-
-ここまでの実証:
-
-- BEST OF SAUNA STAY 2026 受賞（THE LAKE HOUSE 野尻湖）
-- 他社からの乗り換えオーナーで +30% 増収多数
-- 全国主要エリアで運営中
-
-数字は嘘をつかない。
-
----
-
-僕たちが向き合いたいのは、こんなオーナーさんです:
-
-- 今の代行に手数料を払いすぎてると感じてる
-- 数字が見えない運営にモヤモヤしてる
-- もっと稼働を上げたいけど時間がない
-- これから民泊を始めたいけど、何から手をつければいいか分からない
-
-1 つでも当てはまったら、よかったら相談してください。
-
----
-
-民泊運用代行を、もっと透明に、もっと公平に。
-
-業界の常識を変えていきます。
-
-詳細はプレスリリースに書きました → [PR TIMES Link]
-
-うちの物件、いくら損してるか診断できます。
-よかったら → https://sekaistay.com/switch/founder?utm_source=x&utm_medium=organic&utm_campaign=launch&utm_content=launch_tenichi
-
-※ Airbnb 未掲載のオーナーも OK`;
-
-const DRAFT_LAUNCH_J = `今日、SEKAI STAY を正式発表します。
-
-僕は現場で運営代行をやってる立場。
-（テンイチは経営の話、僕は現場の話を書きます）
-
-「8%」って聞くと、「安すぎる、品質落ちる」って思いますよね。
-僕も最初そう思いました。
-
----
-
-だからチームに入る前に、めちゃくちゃ中を見たんです。
-
-実際に見て納得したポイント、3 つあります。
-
----
-
-1️⃣ AI に毎日価格を触らせてる
-
-Pricelabs（AI 価格自動化）+ DP API で、毎日全物件の価格が自動更新。
-月 1 で人が設定して放置する代行とは、稼働率も ADR も別物です。
-
-同エリア相場の 1.3-1.6 倍の稼働を出してる物件が複数。
-
----
-
-2️⃣ オーナーポータルで「数字が見える運営」が標準
-
-オーナーさんがいつでも収益・稼働・レビューを自分で確認できる。
-代行と毎月メールでやり取りする必要がない。
-
-融資・確定申告・複数物件管理で、これが効くんですよ。
-
----
-
-3️⃣ 24 時間対応の体制が組まれてる
-
-清掃・カスタマー対応を完全に外注に丸投げしてる代行が多いんですが、
-うちは一次対応を自動化 + 信頼パートナーの長期契約 + 社内エスカレーション。
-
-保健所対応・近隣トラブルも 24 時間社内で動けます。
-
----
-
-僕が SEKAI STAY に入ったのは、こういう「AI 中心で真剣に作ってある代行」をオーナーさんに届けたかったから。
-
-業界のほとんどが「人力 × 高手数料」モデルで止まってる中で、
-「仕組み化 × 業界半額」を成立させてる稀有な構造です。
-
-今日からは僕も、現場で見えてきたことをここで発信していきます。
-よろしくお願いします。
-
-詳細はプレスリリース → [PR TIMES Link]
-
-うちの物件、いくら損してるか診断 →
-https://sekaistay.com/switch?utm_source=x&utm_medium=organic&utm_campaign=launch&utm_content=launch_jiro
-
-※ Airbnb 未掲載のオーナーも OK`;
-
 const DRAFT_J4 = `保健所と毎月やり取りしてる立場から書きます。
 
 2026 年、民泊周りで何が変わるか。
@@ -574,205 +435,37 @@ K さんはポータルにログイン → 期間指定（過去 12 ヶ月）→
 
 ※ Airbnb 未掲載のオーナーも OK`;
 
-const DRAFT_J3 = `Airbnb の価格、毎日触ってますか?
-
-僕は毎日触ります。
-1 日サボると、その日の予約が逃げる。
-（厳密には Pricelabs に毎日チューニングさせてる）
-
-「毎日って大袈裟だろ」って思う人にこそ読んでほしい話を書きます。
-
----
-
-民泊の価格は、需要が日次でガンガン動きます。
-
-- 3 日前に近隣でフェスが発表 → +30%
-- 翌週に雨予報 → -15%
-- 同エリアの競合が値下げ → -10%
-- Airbnb 検索結果での自分の順位 → ±20%
-
-これを月 1 で価格設定して放置すると、
-高需要日に取りこぼし・低需要日に空室、両方が起きます。
-
-「毎日触る」というのは、人が朝コーヒー飲みながら触るって意味じゃない。
-
-Pricelabs（AI 価格自動化）+ DP API + Claude を組み合わせて、
-毎日自動で再計算 → Airbnb / Booking.com / 自社サイトに同期。
-
-ちなみに僕は Pricelabs の数字をそのまま使わない。
-ベース価格は Pricelabs に出させて、最終調整を Claude にやらせてる。
-（Pricelabs はマクロ判断、Claude はミクロ判断、と役割を分けてる）
-
-これが前提です。
-
----
-
-具体的にどう設定するか、僕がいつもやってる手順:
-
-1. ベースプライス: 過去 12 ヶ月のリスティングデータから AI で算出（Pricelabs）
-2. 季節係数: 月単位で ±0-40% の幅（GW・お盆・年末年始は +30%）
-3. 曜日係数: 金土 +15%、日月 -10%
-4. 残日数係数: 30 日前 -5%、14 日前 +0%、7 日前 +10%、3 日前 +20%（or -10%）
-5. 競合連動: 同エリア類似物件の最新価格を毎日スクレイプして ±5% 補正
-
-毎日実行 → 各 OTA に API で同期。
-
----
-
-要は、価格は日次で動く需要に毎日合わせるもの。
-
-人力では絶対に追いつかない（30 物件触るのに 1 人日かかる）。
-
-Pricelabs + DP API の組み合わせが、現状ベストプラクティス。
-「価格設定」を「予約管理」と別タスクで考えてる代行業者は要警戒です。
-
-民泊運用は、人力でやれる範囲を超えてる業務。
-毎日触れる仕組みを持ってる代行を選ぶといいです。
-
-うちのダッシュボードで「毎日自動で何をしているか」見られます。
-よかったら → https://sekaistay.com/switch/portal?utm_source=x&utm_medium=organic&utm_campaign=longform&utm_content=jiro_dp_daily_tuning
-
-※ Airbnb 未掲載のオーナーも OK`;
-
-const DRAFT_U5 = `家具選定で失敗した話を書きます。
-
-去年、京都の物件で和モダンのお洒落な「天然木のローテーブル」を入れたんです。
-
-オーナーさんも「これ良いね」って言ってくれて、
-リスティング写真も映えた。
-
-→ 3 ヶ月でひび割れ。
-
----
-
-天然木は湿度差に弱いことを、知識としては知ってたんですよ。
-
-でも「写真映えするから」を優先して採用してしまった。
-
-結果、3 ヶ月で交換、20 万円の損失。
-
----
-
-そこから、チームで「民泊で使う家具・アメニティの選定基準」を文書化しました。
-
-選定基準は 5 つ:
-
-1. 耐久性: 業務用 or 業務向け表記があるか
-2. 清掃のしやすさ: 取り外し可能 or 拭き取りやすい素材か
-3. 修理コスト: 部分交換可能か（IKEA は部品単位で買える）
-4. 写真映え: あくまで上記 4 点を満たした上で
-5. 価格: 1 物件あたり 10-30 万円で抑える
-
----
-
-実際に「これは外れた」家具・アメニティ:
-
-- 天然木のテーブル → 業務向け突板材に変更
-- ラタンのソファ → 合成ラタンに変更（雨水に強い・色褪せしない）
-- 麻のシーツ → 厚手のコットン（洗濯耐久 200 回以上）
-- アロマディフューザー（ガラス製）→ 樹脂製（割れない）
-
-逆に「これは正解だった」もの:
-
-- IKEA POÄNG（修理パーツが買える定番椅子）
-- 業務用乾燥機（家庭用は 1-2 年で壊れる）
-- カトラリーは全部 100 均（紛失前提）
-- タオルはホテル業務用（耐久性 + 統一感）
-
----
-
-ちなみに今は、選定基準を AI（Claude）に全部学習させてあります。
-
-新しい物件に入る時、家具リスト案を AI に投げると 30 秒で「これは耐久 NG」「これは ROI 合わない」が返ってくる。
-
-20 万円損した京都の物件みたいなミスは、もう構造的に起きない仕組みになった。
-
----
-
-要は、民泊家具は「業務用 or 業務向け」を基準にする。
-
-写真映えは、選定の最後の条件。
-修理可能な家具を選ぶ。
-アメニティは紛失前提で安く・統一感を持たせる。
-
-家具選定は地味だけど、ここを外すと毎年の修繕費が積み上がります。
-
-うちのオーナーポータルでは、家具・アメニティの推奨リストも見られます。
-よかったら → https://sekaistay.com/switch/portal?utm_source=x&utm_medium=organic&utm_campaign=longform&utm_content=unei_furniture_fail
-
-※ Airbnb 未掲載のオーナーも OK`;
-
 const PIPELINE_ROWS = [
   ["T-1", "@tenichiliu", "業界トレンド",
     '"8%って、ボランティアでやってるんですか?" — 業界相場の半額で回せる構造を分解',
     "/switch", "2026-05-18 08:00", "Draft", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "民泊運用代行 手数料 / 8%構造 / 仕組み化",
-    "✨ v5: 100物件以上 + バックオフィス AI 自動化を明示",
+    "✨ 100物件以上 + バックオフィス AI 自動化を明示",
     DRAFT_T1],
+  ["T-2", "@tenichiliu", "オーナー成功事例",
+    '"なんでうちだけ稼働78%なんですか?" — 受賞振り返り・ニッチを攻める',
+    "/switch/founder", "2026-05-21 08:00", "Draft", "", "", "",
+    "サウナ × 民泊 / ポジショニング再設計 / +30%増収",
+    DRAFT_T2],
   ["T-3", "@tenichiliu", "業界トレンド",
     '"今の代行、ちょっと変えたいんですよね" — 代行を変えるべき3つの兆候 + ベストタイミング',
     "/switch", "2026-05-19 08:00", "Draft", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "民泊代行 / 乗り換えタイミング / 月次レポート / 価格設定",
-    "✨ v10: 民泊新法ネタからSEKAI STAYターゲット直撃の乗り換え兆候ネタに差し替え",
+    "民泊代行 / 乗り換えタイミング / 月次レポート / 価格設定",
     DRAFT_T3],
   ["T-4", "@tenichiliu", "民泊家具・アメニティ",
     '"20万円の家具をケチって、100万円逃してます" — 家具投資ROIフレーム',
     "/switch/portal", "2026-05-20 08:00", "Draft", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "民泊家具 / 家具投資ROI / ADR向上",
-    "✨ v3: 日本SNS文体 (数字+違和感フック + ニセコ物語)",
+    "家具投資ROI / シンボル家具 vs コスパ / 造作家具 / プロジェクター",
     DRAFT_T4],
-  ["T-2", "@tenichiliu", "オーナー成功事例",
-    '"なんでうちだけ稼働78%なんですか?" — 受賞振り返り・ニッチを攻める',
-    "/switch/founder", "2026-05-21 08:00", "Draft", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "サウナ × 民泊 / ポジショニング再設計 / +30%増収",
-    "✨ v3: 日本SNS文体 (他社オーナー引用 + 物語型)",
-    DRAFT_T2],
-  ["T-LAUNCH", "@tenichiliu", "業界トレンド + オーナー成功事例",
-    "🚀 SEKAI STAY 本格発表 (経営者ビジョン軸)",
-    "/switch/founder", "2026-05-22 10:00", "Draft", "", "", "",
-    "Pending (同日)", "2026-05-22", "", "",
-    "Pending", "2026-05-24", "", "民泊運用代行 8% / スーパーホスト多数認定 / 業界半額",
-    "✨ v5: 100物件以上 + バックオフィス AI 自動化 ｜ 🔴 PR TIMES URL を [PR TIMES Link] に挿入要",
-    DRAFT_LAUNCH_T],
-  ["J-LAUNCH", "@jirosan", "OTA運用 + オーナー成功事例",
-    "🚀 SEKAI STAY 本格発表 (現場実証3ポイント)",
-    "/switch", "2026-05-22 10:00", "Draft", "", "", "",
-    "Pending (同日)", "2026-05-22", "", "",
-    "Pending", "2026-05-24", "", "民泊代行 現場 / DP 毎日 / オーナーポータル",
-    "✨ v4: AI に毎日価格触らせる構造を明示 ｜ 🔴 PR TIMES URL 挿入要 ｜ ジロー初投稿",
-    DRAFT_LAUNCH_J],
   ["J-4", "@jirosan", "法務制度",
     "2026 年 民泊新法 周辺で何が変わるか（保健所と毎月やり取りしてる現場感）",
     "/switch", "2026-05-23 12:00", "Draft", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "民泊新法 / 保健所対応 / 騒音問題",
-    "✨ v3: 日本SNS文体 (現場体験フック)",
+    "民泊新法 / 保健所対応 / 騒音問題 / 旅館業法切替",
     DRAFT_J4],
   ["U-6", "@ss_unei_chan", "オーナー成功事例",
     '"これがあって本当に救われた" — オーナーポータルが救った深夜0時の融資資料',
     "/switch/portal", "2026-05-24 19:00", "Draft", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "オーナーポータル / 24時間ダッシュボード / 収益エクスポート",
-    "✨ v3: 日本SNS文体 (オーナー引用 + Kさん物語)",
+    "オーナーポータル / 24時間ダッシュボード / 収益エクスポート",
     DRAFT_U6],
-  ["J-3 (deferred)", "@jirosan", "OTA運用テクニック",
-    "[W3移行] Airbnb 価格、毎日触ってますか?",
-    "/switch/portal", "2026-05-26 12:00", "Skipped", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "ダイナミックプライシング / Pricelabs",
-    "✨ v3: 日本SNS文体 (問いかけフック)",
-    DRAFT_J3],
-  ["U-5 (deferred)", "@ss_unei_chan", "民泊家具・アメニティ",
-    "[W3移行] 家具選定で失敗した話 (天然木テーブル ¥20万損)",
-    "/switch/portal", "2026-05-27 19:00", "Skipped", "", "", "",
-    "Pending", "", "", "",
-    "Pending", "", "", "民泊家具 / 業務用 / 修理可能",
-    "✨ v3: 日本SNS文体 (体験告白フック)",
-    DRAFT_U5],
 ];
 
 async function main() {
@@ -798,22 +491,38 @@ async function main() {
     spreadsheetId: SPREADSHEET_ID,
     requestBody: {
       requests: [
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 19, endIndex: 20 }, properties: { pixelSize: 650 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "ROWS", startIndex: 1, endIndex: 11 }, properties: { pixelSize: 360 }, fields: "pixelSize" } },
+        // 列幅: ID 60, Account 110, Pillar 140, Topic 320, LP 110, Date 120, Status 80, URL 100, Imp 90, Eng 90, Notes 200, Draft 700
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 0, endIndex: 1 }, properties: { pixelSize: 60 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 1, endIndex: 2 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 2, endIndex: 3 }, properties: { pixelSize: 140 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 3, endIndex: 4 }, properties: { pixelSize: 320 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 110 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 5, endIndex: 6 }, properties: { pixelSize: 120 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 6, endIndex: 7 }, properties: { pixelSize: 80 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 7, endIndex: 8 }, properties: { pixelSize: 100 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 8, endIndex: 9 }, properties: { pixelSize: 90 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 9, endIndex: 10 }, properties: { pixelSize: 90 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 10, endIndex: 11 }, properties: { pixelSize: 200 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "COLUMNS", startIndex: 11, endIndex: 12 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
+        // 行高
+        { updateDimensionProperties: { range: { sheetId: pipelineSheetId, dimension: "ROWS", startIndex: 1, endIndex: PIPELINE_ROWS.length + 1 }, properties: { pixelSize: 360 }, fields: "pixelSize" } },
+        // wrap (Full Draft + Notes)
         {
           repeatCell: {
-            range: { sheetId: pipelineSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 19, endColumnIndex: 20 },
+            range: { sheetId: pipelineSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 10, endColumnIndex: 12 },
             cell: { userEnteredFormat: { wrapStrategy: "WRAP", verticalAlignment: "TOP", textFormat: { fontSize: 9 } } },
             fields: "userEnteredFormat(wrapStrategy,verticalAlignment,textFormat)",
           },
         },
+        // ヘッダー (青系)
         {
           repeatCell: {
             range: { sheetId: pipelineSheetId, startRowIndex: 0, endRowIndex: 1 },
-            cell: { userEnteredFormat: { textFormat: { bold: true }, backgroundColor: { red: 0.85, green: 0.92, blue: 0.95 }, horizontalAlignment: "CENTER" } },
+            cell: { userEnteredFormat: { textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } }, backgroundColor: { red: 0.25, green: 0.45, blue: 0.7 }, horizontalAlignment: "CENTER" } },
             fields: "userEnteredFormat(textFormat,backgroundColor,horizontalAlignment)",
           },
         },
+        // 凍結
         {
           updateSheetProperties: {
             properties: { sheetId: pipelineSheetId, gridProperties: { frozenRowCount: 1, frozenColumnCount: 1 } },
@@ -824,11 +533,12 @@ async function main() {
     },
   });
 
-  console.log(`✅ Pipeline v10 updated: ${PIPELINE_ROWS.length} rows (T-3を乗り換え兆候ネタに差し替え)`);
-  console.log(`📊 https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/edit#gid=0`);
+  console.log(`\n✅ X Pipeline v11 反映: ${PIPELINE_ROWS.length} 行 (通常運用のみ・LAUNCH/deferred は別タブ)`);
+  console.log(`📊 https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/edit#gid=${pipelineSheetId}`);
 }
 
 main().catch((err) => {
   console.error("❌ Error:", err.message);
+  console.error(err);
   process.exit(1);
 });
