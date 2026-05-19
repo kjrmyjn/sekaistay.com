@@ -15,7 +15,6 @@ type Row = {
 const rows: Row[] = [
   { label: "手数料率", others: "15〜25%", sekai: "8%", sekaiHighlight: true },
   { label: "月額固定費", others: "別途数万円", sekai: "¥10,000/物件 のみ" },
-  { label: "隠れた費用", others: "清掃・広告・諸経費 別請求", sekai: "一切なし", sekaiHighlight: true },
   { label: "オーナー向けダッシュボード", others: "なし 〜 月次PDF", sekai: "リアルタイム統合型（オーナー専用設計）", sekaiHighlight: true },
   { label: "オーナー自身の予約機能", others: "毎度相談", sekai: "ダッシュボードから1タップ" },
   { label: "税理士用データ書き出し", others: "手作業で数日", sekai: "ワンタップで即時" },
