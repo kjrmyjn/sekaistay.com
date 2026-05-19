@@ -144,21 +144,149 @@ const FB_J_BODY = `民泊運用代行「SEKAI STAY」が本日 6 月 1 日にロ
 
 オーナーさんからの紹介・パートナー連携も歓迎です。お気軽にメッセージください。`;
 
+const X_T_LAUNCH_BODY = `「民泊代行は高すぎる、品質も読めない」
+
+業界でよく言われること。
+
+今日、SEKAI STAY を世に正式に発表します。
+
+業界相場の半額・手数料 8%。それでもスーパーホストの運営力が生きてくる構造を作りたくて、立ち上げました。
+
+---
+
+民泊代行の手数料相場は 15-25%。
+
+これを「人が物件に張り付く」運営構造のコストだと考えてる。
+
+僕たちは、AI で効率化する前提で運営構造を全部見直しました。
+
+- 価格管理は日次で自動チューニング（人力では追いつかない速度）
+- カスタマー対応は一次自動化 + 社内エスカレーション（属人化を排除）
+- 清掃は信頼パートナーと長期契約・スケジュール配信は自動（バラ売りしない）
+- Web マーケ出稿・経理などのバックオフィス業務は自動化（外注しない）
+
+これで 1 人で 100 物件以上を見られるようになりました。
+業界の 2 倍以上の効率です。
+
+仕組みを真ん中に置いた事業構造だから、8% でもスーパーホストの運営力が生きてくる。
+
+---
+
+ここまでの実証:
+
+- BEST OF SAUNA STAY 2026 受賞（THE LAKE HOUSE 野尻湖）
+- 他社からの乗り換えオーナーで +30% 増収多数
+- 全国主要エリアで運営中
+
+数字は嘘をつかない。
+
+---
+
+僕たちが向き合いたいのは、こんなオーナーさんです:
+
+- 今の代行に手数料を払いすぎてると感じてる
+- 数字が見えない運営にモヤモヤしてる
+- もっと稼働を上げたいけど時間がない
+- これから民泊を始めたいけど、何から手をつければいいか分からない
+
+1 つでも当てはまったら、よかったら相談してください。
+
+---
+
+民泊運用代行を、もっと透明に、もっと公平に。
+
+業界の常識を変えていきます。
+
+詳細はプレスリリースに書きました → [PR TIMES Link]
+
+うちの物件、いくら損してるか診断できます。
+よかったら → https://sekaistay.com/switch/founder?utm_source=x&utm_medium=organic&utm_campaign=launch&utm_content=launch_tenichi
+
+※ Airbnb 未掲載のオーナーも OK`;
+
+const X_J_LAUNCH_BODY = `今日、SEKAI STAY を正式発表します。
+
+僕は現場で運営代行をやってる立場。
+（テンイチは経営の話、僕は現場の話を書きます）
+
+「8%」って聞くと、「安すぎる、品質落ちる」って思いますよね。
+僕も最初そう思いました。
+
+---
+
+だからチームに入る前に、めちゃくちゃ中を見たんです。
+
+実際に見て納得したポイント、3 つあります。
+
+---
+
+1️⃣ AI に毎日価格を触らせてる
+
+Pricelabs（AI 価格自動化）+ DP API で、毎日全物件の価格が自動更新。
+月 1 で人が設定して放置する代行とは、稼働率も ADR も別物です。
+
+同エリア相場の 1.3-1.6 倍の稼働を出してる物件が複数。
+
+---
+
+2️⃣ オーナーポータルで「数字が見える運営」が標準
+
+オーナーさんがいつでも収益・稼働・レビューを自分で確認できる。
+代行と毎月メールでやり取りする必要がない。
+
+融資・確定申告・複数物件管理で、これが効くんですよ。
+
+---
+
+3️⃣ 24 時間対応の体制が組まれてる
+
+清掃・カスタマー対応を完全に外注に丸投げしてる代行が多いんですが、
+うちは一次対応を自動化 + 信頼パートナーの長期契約 + 社内エスカレーション。
+
+保健所対応・近隣トラブルも 24 時間社内で動けます。
+
+---
+
+僕が SEKAI STAY に入ったのは、こういう「AI 中心で真剣に作ってある代行」をオーナーさんに届けたかったから。
+
+業界のほとんどが「人力 × 高手数料」モデルで止まってる中で、
+「仕組み化 × 業界半額」を成立させてる稀有な構造です。
+
+今日からは僕も、現場で見えてきたことをここで発信していきます。
+よろしくお願いします。
+
+詳細はプレスリリース → [PR TIMES Link]
+
+うちの物件、いくら損してるか診断 →
+https://sekaistay.com/switch?utm_source=x&utm_medium=organic&utm_campaign=launch&utm_content=launch_jiro
+
+※ Airbnb 未掲載のオーナーも OK`;
+
 const ROWS = [
   ["PR_TIMES", "PR TIMES", "株式会社セカイチ", "2026-06-01 10:00",
     "業界相場の半額となる手数料 8% の民泊運用代行「SEKAI STAY」本格ローンチ",
     "Draft", "", "",
     "🔴 配信前: タイトル・本文・画像 (3-5 枚) 確定要 | カテゴリ: サービス・住宅/不動産",
     PR_TIMES_BODY],
-  ["FB_T", "Facebook", "@tenichiliu (テンイチ)", "2026-06-01 11:00",
-    "民泊運用代行 SEKAI STAY 本格ローンチ報告 (経営者ストーリー型)",
+  ["X_T_LAUNCH", "X (Twitter)", "@tenichiliu (テンイチ)", "2026-06-01 10:30",
+    "X 長文B: SEKAI STAY 正式発表 (経営者ビジョン軸・業界構造変革訴求)",
     "Draft", "", "",
-    "🟢 PR TIMES 配信 1h 後に投稿 | 構造変革の意思決定の話 | 画像: テンイチ単独 + サービスカード",
+    "🟢 PR TIMES 配信 30 分後に投稿 | 100 物件以上 + AI 自動化 | 🔴 [PR TIMES Link] に挿入要",
+    X_T_LAUNCH_BODY],
+  ["X_J_LAUNCH", "X (Twitter)", "@jirosan (ジロー)", "2026-06-01 11:00",
+    "X 長文B: SEKAI STAY 正式発表 (現場視点・3 つの実証ポイント)",
+    "Draft", "", "",
+    "🟢 PR TIMES 配信 1h 後に投稿 | AI 価格・ポータル・24h 対応 | 🔴 [PR TIMES Link] に挿入要 | ジロー初投稿",
+    X_J_LAUNCH_BODY],
+  ["FB_T", "Facebook", "@tenichiliu (テンイチ)", "2026-06-01 11:30",
+    "FB: SEKAI STAY 本格ローンチ報告 (経営者ストーリー型)",
+    "Draft", "", "",
+    "🟢 PR TIMES 配信 1.5h 後 | 構造変革の意思決定の話 | 画像: テンイチ単独 + サービスカード",
     FB_T_BODY],
   ["FB_J", "Facebook", "@jirosan (ジロー)", "2026-06-01 12:00",
-    "民泊運用代行 SEKAI STAY ローンチ (現場視点・3 つの運営原則)",
+    "FB: SEKAI STAY ローンチ (現場視点・3 つの運営原則)",
     "Draft", "", "",
-    "🟢 PR TIMES 配信 2h 後に投稿 | 現場側からの実証訴求 | 画像: 現場視察 or オーナーポータル画面",
+    "🟢 PR TIMES 配信 2h 後 | 現場側からの実証訴求 | 画像: 現場視察 or オーナーポータル画面",
     FB_J_BODY],
 ];
 
@@ -206,7 +334,7 @@ async function main() {
         { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 4, endIndex: 5 }, properties: { pixelSize: 320 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 8, endIndex: 9 }, properties: { pixelSize: 280 }, fields: "pixelSize" } },
         { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "COLUMNS", startIndex: 9, endIndex: 10 }, properties: { pixelSize: 700 }, fields: "pixelSize" } },
-        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "ROWS", startIndex: 1, endIndex: 4 }, properties: { pixelSize: 520 }, fields: "pixelSize" } },
+        { updateDimensionProperties: { range: { sheetId: launchSheetId, dimension: "ROWS", startIndex: 1, endIndex: 6 }, properties: { pixelSize: 460 }, fields: "pixelSize" } },
         {
           repeatCell: {
             range: { sheetId: launchSheetId, startRowIndex: 1, endRowIndex: 200, startColumnIndex: 8, endColumnIndex: 10 },
